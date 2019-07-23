@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="ko-KR" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:fragment="configFragment">
+  <title layout:title-pattern="$CONTENT_TITLE"></title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=640, user-scalable=no" />
+
+  <!-- favicon icon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+  <th:block layout:fragment="meta"></th:block>
+  <!-- 공통으로 사용하는 CSS 파일만 넣어주세요 -->
+  <th:block layout:fragment="css"></th:block>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+  <!-- 공통으로 사용하는 Script 파일만 넣어주세요 -->
+  <script src="/vendor/jquery/jquery-3.3.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+  <script src="/vendor/vue/vue.min.js"></script>
+  <script src="/vendor/jquery/jquery.form.min.js"></script>
+  <script src="/vendor/jquery/jquery.validate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.3/clipboard.min.js"></script>
+  <script src="/renewal/js/jquery.scrollify.js"></script>
+  <script src="/vendor/jquery/jquery.touchSwipe.min.js"></script>
+  <script src="/dev-common/js/common-pub.js"></script>
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P6V5MN3');
+  </script>
+  <!-- End Google Tag Manager -->
+  <th:block layout:fragment="script"></th:block>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6V5MN3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div layout:fragment="content"></div>
+
+  <script type="text/javascript" src="/dev-common/js/dev-common.js"></script>
+  <script type="text/javascript" src="/dev-common/js/sns-common.js"></script>
+  <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <script type="text/javascript">
+    // kakao api setting
+    Kakao.init('0f3ac2f73bd036936a20f3d3dcdea22a');
+
+    /* validation message alert */
+    $.validator.setDefaults({
+      onkeyup: false,
+      onclick: false,
+      onfocusout: false,
+      showErrors: function (errorMap, errorList) {
+        if (this.numberOfInvalids() && errorList != '') {
+          alert(errorList[0].message);
+          $(errorList[0].element).focus();
+        }
+      }
+    });
+  </script>
+  <th:block layout:fragment="body-script"></th:block>
+  <script>
+    // navigation control
+    $(function () {
+      toggleNav();
+    });
+
+    function toggleNav() {
+      var $vitualInput = $('.input__virtual');
+      $('.btn__hamburger').on('click', function () {
+        $(this).toggleClass('is-active');
+
+        if (!$(this).hasClass('is-active')) {
+          $vitualInput.attr('checked', false);
+        } else if ($(this).hasClass('is-active')) {
+          $vitualInput.attr('checked', true);
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>

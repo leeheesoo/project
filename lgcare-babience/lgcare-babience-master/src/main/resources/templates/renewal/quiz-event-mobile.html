@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="shared/layout-mobile">
+
+<head>
+  <title>카브리타 100% 쿠폰</title>
+</head>
+
+<!-- 이벤트 Meta 태그 추가 -->
+<th:block layout:fragment="meta" th:remove="tag">
+  <meta property="og:title" content="알쏭달쏭 카브리타 OX퀴즈" />
+  <meta property="og:url" content="https://www.kabrita.kr/kabrita_quiz" />
+  <meta property="og:image" content="/renewal/images/sns/share-kabrita-quiz.jpg" />
+  <meta property="og:description" content="퀴즈만 풀어도 베비언스 쿠폰 100% 증정" />
+</th:block>
+
+<!-- 이벤트 CSS 파일 추가 -->
+<th:block layout:fragment="css" th:remove="tag">
+  <link rel="stylesheet" href="/renewal/ox-quiz/css/style_m.min.css">
+  </link>
+</th:block>
+
+<!-- 이벤트 JS 파일 추가 -->
+<th:block layout:fragment="script" th:remove="tag">
+</th:block>
+
+<body>
+  <div layout:fragment="content" style="height:100%;">
+    <div class="quiz-event kabrita" id="quizEvent" v-cloak>
+      <!-- nav : start -->
+      <div id="kabrita-nav" th:include="renewal/_nav-mobile :: kabrita-nav"></div>
+      <!-- nav : end -->
+      <section class="kv section v3show">
+        <div class="a11y-hidden">
+          <h3>100% 쿠폰 OX퀴즈</h3>
+          <P>알쏭달쏭 카브리타 OX퀴즈에 참여한 모든 분께 베비언스 할인쿠폰을 드립니다</P>
+        </div>
+       	<button type="button" id="kabrita-quiz-open-btn" class="btn btn btn__quiz-start" onclick="alert('이벤트 기간에 신청해주세요. ^^');">OX퀴즈 도전하기</button>
+       	<button type="button" id="kabrita-quiz-sns-open-btn" class="btn btn btn__quiz-share" onclick="alert('이벤트 기간에 신청해주세요. ^^');">이벤트 소문내기</button>
+      </section>
+
+      <!-- quiz slider -->
+      <div class="quiz-wrap section">
+        <!-- <pre style="position:fixed; background:blue; color:#fff; font-size:11px; right:0; z-index: 1">
+              {{ $data }}
+            </pre> -->
+        <button type="button" class="btn btn__reload-close" onClick="window.location.reload()">닫기</button>
+        <div class="quizSlider">
+          <div class="step-wrap quiz" v-for="(quiz, idx) in quizShuffled">
+            <!-- 질문 -->
+            <p class="quiz-number"><img :src="imgUrl + 'text_quiz' + idx + '.png'" alt=""></p>
+            <!-- O / X -->
+            <div class="quiz-select" v-if="quiz.userAnswer === '' ">
+              <p class="quiz-question"><img :src="imgUrl + 'question0' + quiz.quizId + '.png'" alt=""></p>
+
+              <span class="btn btn__o" @click="quiz.userAnswer = 'o'" :alt="quiz.quizId"></span>
+              <span class="btn btn__x" @click="quiz.userAnswer = 'x'" :alt="quiz.quizId"></span>
+
+              <!-- <span class="thum-img"></span> -->
+            </div>
+            
+            <!-- 해답 -->
+            <div class="quiz-answer" v-else>
+              <p class="quiz-question"><img :src="imgUrl + 'question0' + quiz.quizId + '.png'" alt=""></p>
+              <!-- 정답오답 문구 -->
+              <p class="quiz-answer-text" v-if="quiz.answer === quiz.userAnswer"><img src="/renewal/images/ox-quiz/m/quiz-answer-right.png" alt="딩동댕 정답입니다!"></p>
+              <p class="quiz-answer-text" v-else><img src="/renewal/images/ox-quiz/m/quiz-answer-wrong.png" alt="땡! 정답은~"></p>
+              
+              <div class="answer-wrap">         
+                <img :src="imgUrl + 'answer0' + quiz.quizId + '.png'" alt="">
+              </div>
+              <button type="button" class="btn btn__next-quiz" @click="goNextQuiz()"v-if="idx < 2">다음 문제 풀기</button>
+              <button type="button" class="btn btn__coupon-download" onclick="openPopup('quiz-personal'); return false;" @click="quizFinish()"
+                v-else>쿠폰다운로드</button>
+
+              <div class="nav-dot">
+                <span :class="{active : idx === 0 }"></span>
+                <span :class="{active : idx === 1 }"></span>
+                <span :class="{active : idx === 2 }"></span>
+              </div>
+            </div>
+            
+          </div>
+          
+        </div>
+        <div class="quiz-finish">        
+          <a class="btn btn__product-link" href="http://www.babience.com/story/lineA_new.jsp?info=2" target="_blank">자세히보기</a>
+          <button type="button" class="btn btn__reload" onClick="window.location.reload()">처음으로</button>
+          <!-- nav : start -->
+          <div id="kabrita-nav-bottom-quiz" th:include="renewal/_nav-bottom-mobile :: kabrita-nav-bottom"></div>
+          <!-- nav : end -->
+
+          <!-- <span class="thum-img"></span> -->
+        </div>
+      </div>
+
+      </section>
+      <!-- popup group : start -->
+      <div id="quiz-popup" th:include="renewal/_popup-quiz :: quiz-popup"></div>
+      <!-- popup group : end -->
+
+
+    </div>
+  </div>
+
+  <th:block layout:fragment="body-script" th:remove="tag">
+    <script src="/vendor/slick/slick.min.js"></script>
+    <script src="/renewal/ox-quiz/js/shuffled.js"></script>
+    <script src="/renewal/ox-quiz/js/quizSlider.js"></script>
+    <script>
+      var deviceKind = "m";
+      var openVersion = 3;
+    </script>
+    <script src="/renewal/ox-quiz/js/ox-quiz.js"></script>
+  </th:block>
+
+</body>
+
+</html>

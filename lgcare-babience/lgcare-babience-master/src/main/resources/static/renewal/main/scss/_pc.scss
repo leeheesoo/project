@@ -1,0 +1,88 @@
+//===================================
+// variable
+//===================================
+$location: '/renewal/images/main/w/';
+$mainNavLocation : '/renewal/images/nav/w/';
+//===================================
+// reset
+//===================================
+html,body {
+    width:100%;
+    height:100%;
+}
+
+nav {
+  //display:none;
+  // width: 826px;
+  // height: 56px;
+  // position: fixed;
+  // top:16px;
+  // left:50%;
+  // margin-left:-413px;
+  // background:rgba(32,33,35,.6);
+  // border:2px solid #fff;
+
+  li {
+    &:nth-child(1) {  
+      background-position: center -57px;
+    }
+    &.on {
+      &::before {
+        content: '';
+        background-color: #fff;
+
+      }
+    }
+  } 
+}
+//===================================
+// page
+//===================================
+
+.kabrita-main {
+    position:relative;
+    width:100%;
+    max-width:$width-max;
+    min-width:$width-min;
+    margin:0 auto;
+    text-align:center;
+    background:#192963;
+}
+.main-kv {
+  width: 100%;
+  height: 1673px;
+  @include background('kv_v2.jpg', $repeat:no-repeat, $position:top center);
+
+  .try-landing-btn {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top:950px;
+    left:50%;
+    margin-left:-298.5px;
+  }
+}
+
+.main__wrap {
+
+  .main-movie {
+    position: relative;
+    top:1082px;
+  }
+  .mov-cover {
+    position: absolute;
+    top:0;
+    left:108px;
+    width: 983px;
+    height: 543px;
+    cursor: pointer;
+  }
+  #maintMov{
+    width: 983px;
+    height: 543px;
+  }
+}
+
+
+
+

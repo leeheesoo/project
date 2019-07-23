@@ -1,0 +1,272 @@
+//===================================
+// variable
+//===================================\
+$location: '/renewal/images/product/w/';
+$locationV4: '/fourth/images/product/w/';
+$sliderBtnDist: 53px;
+
+//===================================
+// mixin
+//===================================
+
+
+//===================================
+// reset
+//===================================
+
+
+//===================================
+// helper
+//===================================
+
+
+//===================================
+// common
+//===================================
+
+
+
+//===================================
+// page
+//===================================
+nav {
+  z-index: 2;
+}
+
+.v-cloak {
+  display: none;
+}
+.product {
+  position: relative;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.kabrita-product {
+  position: relative;
+  width: 100%;
+  min-width: 1200px;
+  max-width:1920px;
+  margin:0 auto;
+  .section__outer {
+    overflow: hidden;
+  }
+
+  .section-content {
+    width:1000px;
+    margin:0 auto;
+  }
+
+  // background
+  @for $i from 1 through 7 {
+    section:nth-child(#{$i}) {
+      @include background('s0#{$i}.jpg', $position: top center);
+    }
+  }
+
+  // visual
+  .visual {
+    height: 1410px;
+
+    .arrow {
+      position: absolute;
+      left: 50%;
+      bottom: 54px;
+      margin-left: -40.5px;
+      display: inline-block;
+    }
+
+    .product-movie {
+      position: relative;
+      top: 628px;
+      left: 7px;
+    }
+
+    #productMov {
+      width: 980px;
+      height: 543px;
+    }
+
+    .mov-cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 980px;
+      height: 543px;
+      cursor: pointer;
+    }
+  }
+
+  //02
+  .philosophy {
+    display: none;
+  }
+
+  // 03
+  .nutrition {
+    height: 1178px;
+  }
+
+  //04
+  .technology {
+    height: 1104px;
+  }
+
+  //05
+  .management-system {
+    height: 908px;
+  }
+
+  //06
+  .kabrita-goat {
+    height: 853px;
+  }
+
+  //07
+  .kabrita-origin {
+    background: url($locationV4+'s07.jpg')no-repeat top center !important;
+    height: 860px;
+    text-align: center;
+    .product-btns {
+      margin-top:237px;
+      font-size: 0;
+    }
+    .btn {
+      width: 246px;
+      height: 55px;
+      background: url($locationV4+'btns.png')no-repeat;
+      &__free {
+        background-position: 0 0;
+        margin-right:5px;
+      }
+      &__product {
+        background-position: -254px 0;
+      }
+    }
+  }
+
+  // pager
+  .section-pager {
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+
+    width: 100%;
+    text-align: center;
+
+    &__item {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      background-color: #223f85;
+      border-radius: 50%;
+
+      &:not(:last-child) {
+        margin-right: 14px;
+      }
+
+      &.on {
+        background-color: #c91e62;
+      }
+    }
+  }
+
+  // slider
+
+  .contentSlide {
+    position: relative;
+    width: 1200px;
+    margin: 195px auto 0;
+    overflow: hidden;
+    // margin-top: 355px;   
+    // height: 610px;        
+    // slider img
+    .section-slider {
+      width: 675px;
+      height: 650px;
+      margin:0 auto;
+    }
+    .slick-list {
+     // padding:0 120px !important;
+    //  margin:0 50px;
+    padding:0 110px !important;
+    }
+    .slick-slide {
+      display: inline-block;
+      // height: 630px;
+      transition: all .3s;
+      transform: scale(.6);
+      opacity:.8;
+      //margin:0 50px;
+      &.slick-current,
+      &.slick-center,
+      &.slick-active,
+      &.slick-clone-current {
+        transform: scale(1); 
+        opacity:1;
+        //width: 537px !important;
+      }
+    }
+
+    img {
+      width: 100%;
+      //margin: 20px auto 25px -26px;
+      -webkit-box-shadow: 10px 10px 46px -17px rgba(0, 0, 0, 0.7);
+      -moz-box-shadow: 10px 10px 46px -17px rgba(0, 0, 0, 0.7);
+      box-shadow: 10px 10px 46px -17px rgba(0, 0, 0, 0.7);
+    }
+
+    // slider img: current
+
+    // slider buttons
+    .slick-prev,
+    .slick-next {
+      position: absolute;
+      width: 34px;
+      height: 58px;
+      top: 39%;
+
+      &:before {
+        content: ''
+      }
+    }
+
+    .slick-prev {
+      z-index: 100;
+      left: 303px;
+      background: url($location+'slider-btn-prev.png') center center no-repeat;
+    }
+
+    .slick-next {
+      right: 303px;
+      background: url($location+'slider-btn-next.png') center center no-repeat;
+    }
+  }
+}
+
+
+.bounce {
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-10px);
+  }
+
+  60% {
+    transform: translateY(-15px);
+  }
+}

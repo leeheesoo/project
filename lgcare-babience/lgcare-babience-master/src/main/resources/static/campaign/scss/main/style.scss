@@ -1,0 +1,26 @@
+﻿@charset 'utf-8';
+
+$device: 'w';
+
+//===================================
+// common
+//===================================
+@import '../../scssCommon/mixin/_background';
+@import '../../scssCommon/util/_a11y-hidden';
+@import '../../scssCommon/vender/_normalize';
+@import "../../scssCommon/mixin/prefix";
+
+@import "../_layout";
+@import "../reset";
+
+
+//===================================
+// page
+//===================================
+@import '../_nav';
+@import '_pc';
+
+//===================================
+// popup
+//===================================
+//@import '_popup';

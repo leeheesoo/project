@@ -1,0 +1,77 @@
+//===================================
+// variable
+//===================================
+$location: '/fourth/images/main/m/';
+$gnbLocation:'/renewal/images/nav/m/main-gnb/';
+//===================================
+// reset
+//===================================
+html,body {
+    width:100%;
+    height:100%;
+}
+//===================================
+// 하단 nav
+//===================================
+.nav__bottom {
+  background:rgba(32,33,35,.6);;
+  li {
+    &.on {
+      &::before { 
+        //background-color:#c32b5e;   
+        border: 2px solid #fff; 
+      }
+    }
+  }
+}
+
+//===================================
+// 상단햄버거메뉴
+//===================================
+nav {
+  position: absolute;
+  z-index: 2;
+  .nav__default {
+    background:none;   
+  }
+  .nav__bi {
+    display:none;
+  }
+}
+
+//===================================
+// page
+//===================================
+.kabrita-main {
+    position:relative;
+    width:100%;
+    max-width:$width-max;
+    min-width:$width-min;
+    margin:0 auto;
+    text-align:center;
+}
+.babience__bi {
+  position: absolute;
+  top:25px;
+  left:30px;
+  z-index: 1;
+}
+.main-kv {
+  position: relative;
+  width: 100%;
+  height: 807px;
+  @include background('main-kv.jpg', $repeat:no-repeat);
+
+}
+
+.main-bottom {
+  width:100%;
+  height: 740px;
+  @include background('main-bottom.jpg', $repeat:no-repeat);
+  .try-landing-btn {
+    width: 250px;
+    height: 59px;
+    margin-top:250px;
+    @include background('btns.png', $repeat:no-repeat);
+  }
+}

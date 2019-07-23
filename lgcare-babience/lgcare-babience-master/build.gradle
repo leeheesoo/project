@@ -1,0 +1,57 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.13.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+		jcenter()
+		maven { url "https://plugins.gradle.org/m2/" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.13.0')
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'com.palantir.docker'
+
+group = 'lgcare'
+version = '0.0.1'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile("org.springframework.boot:spring-boot-starter-mobile")
+	runtime('org.springframework.boot:spring-boot-devtools')
+	runtime('mysql:mysql-connector-java')
+	compileOnly('org.projectlombok:lombok')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile("org.springframework.boot:spring-boot-starter-security")
+	compile("org.modelmapper:modelmapper:1.1.0")
+	compile('org.springframework.session:spring-session')
+	compile('net.sourceforge.nekohtml:nekohtml:1.9.21')
+}
+
+jar {
+    baseName = 'lgcare-babience'
+    version =  '1.0.0'
+}
+
+docker {
+    name "${project.group}/${jar.baseName}"
+    files jar.archivePath
+    buildArgs(['JAR_FILE': "${jar.archiveName}"])
+}
+
+bootRun {
+	systemProperty 'spring.profiles.active', System.properties['spring.profiles.active']
+}

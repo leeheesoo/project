@@ -1,0 +1,201 @@
+//===================================
+// variable
+//===================================\
+$location: '/renewal/images/survey-event/w/';
+
+//===================================
+// page
+//===================================
+
+#kabrita-nav {
+  position: relative;
+  z-index: 2;
+}
+.survey-event {
+  position: relative;
+  width: 100%;
+  max-width: $width-max;
+  min-width: $width-min;
+  margin: 0 auto;
+  form {
+    display: inline-block;
+  }
+  .btn {
+    display: inline-block;
+    @include background('btns_v2.png', $repeat: no-repeat);
+
+    &__kakao-share {
+      width: 340px;
+      height: 67px;
+      margin-top: 1370px;
+      background-position: 0 0;
+    }
+    &__prizewinner {
+      position: absolute;
+      bottom: 28px;
+      left: 437px;
+      width: 335px;
+      height: 74px;
+      background-position: 4px -238px;
+    }
+    &__experience01 {
+      width: 371px;
+      height: 143px;
+      background-position: 0 -86px;
+    }
+    &__experience02 {
+      width: 371px;
+      height: 143px;
+      background-position: -371px -86px;
+    }
+    &__review-ok {
+      width: 342px;
+      height: 81px;
+      background-position: 0 -324px;
+      vertical-align: top;
+      margin-top: -1px;
+    }
+  }
+}
+
+.kv {
+  position: relative;
+  height: 1475px;
+  text-align: center;
+  @include background('survey-top_v2.jpg', $repeat: no-repeat, $position:top center);
+  .mov-wrap {
+    position: absolute;
+    top: 768px;
+    left: 106px;
+    text-align:center;
+  }
+  #surveyMov {
+    width: 984px;
+    height: 545px;
+  }
+  .mov-cover {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 984px;
+    height: 545px;
+    cursor: pointer;
+  }
+
+}
+
+.experience {
+  position: relative;
+  height: 1305px;
+  @include background('experience_v3.jpg', $repeat: no-repeat, $position:top center);
+  &.v3show {
+    @include background('experience_v3-1.jpg', $repeat: no-repeat, $position:top center);
+  }
+  // font-size: 0;
+  &__btns {
+    position: absolute;
+    top: 1017px;
+    left: 237px;
+    font-size: 0;
+  }
+}
+
+
+
+
+.review {
+  height: 1410px;
+  @include background('review.jpg', $repeat: no-repeat, $position:top center);
+  &.v3show {
+    @include background('review_v3.jpg', $repeat: no-repeat, $position:top center);
+  }
+  &__input {
+    width: 1000px;
+    height: 62px;
+    margin: 0 auto;
+    padding-top: 1291px;
+    box-sizing: border-box;
+    font-size: 0;
+
+    input[type="text"] {
+      width: 655px;
+      height: 69px;
+      padding-left: 20px;
+      margin-top:-1px;
+      font-size: 20px;
+      border: 2px solid #c91e62;
+      border-radius: 10px 0 0 10px;
+      box-sizing: border-box;
+    
+    }
+
+  }
+}
+.event-notice {
+  height: 1104px;
+  @include background('event-notice_v3.jpg', $repeat: no-repeat, $position:top center);
+  &.v3show {
+    height: 1213px;
+    @include background('event-notice_v3-1.jpg', $repeat: no-repeat, $position:top center);
+  }
+}
+
+
+
+footer {
+  height:549px;
+  @include background('notice.jpg', $repeat: no-repeat, $position:top center, $color:#f2f2f2);
+}
+
+
+//===================================
+// floating gnb
+//===================================
+.survey-event__tab-wrap {
+  position: absolute;
+  right:80px;
+  top:205px;
+  z-index: 1;
+  &:after {
+    content: '';
+    position: absolute;
+    top:-83px;
+    left:-35px;
+    width: 185px;
+    height: 83px;
+    @include background('floating-nav-top.png', $repeat: no-repeat);
+    z-index: 1;
+
+  }
+}
+.survey-event__tab {
+  width: 120px;
+  height: 465px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 10px 10px 60px #3a3e4261; 
+  z-index: 1;
+
+  li {
+    width: 100%;
+    height: 155px;
+    background-image:url($location + 'floating-nav-bg_v2.png');
+    background-color:#e9d3da;
+    background-repeat: no-repeat;
+    border-bottom:1px solid #fff;
+    &:nth-child(1) {
+      background-position: left 0;
+    }
+    &:nth-child(2) {
+      background-position: left -156px;
+    }
+    &:nth-child(3) {
+      background-position: left -311px;
+      border:none;
+    }
+    &.active {
+      background-position-x:right;
+      background-color:#bd3362;
+    }
+  }
+}

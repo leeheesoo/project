@@ -1,0 +1,131 @@
+//===================================
+// variable
+//===================================
+$location: '/renewal/images/main/m/';
+$gnbLocation:'/renewal/images/nav/m/main-gnb/';
+//===================================
+// reset
+//===================================
+html,body {
+    width:100%;
+    height:100%;
+}
+//===================================
+// 하단 nav
+//===================================
+.nav__bottom {
+  background:rgba(32,33,35,.6);;
+  li {
+    &.on {
+      &::before {
+        background-color:#c32b5e;   
+        border: 2px solid #fff; 
+      }
+    }
+  }
+}
+
+//===================================
+// 상단햄버거메뉴
+//===================================
+nav {
+  z-index: 2;
+  .nav__default {
+    background:none;   
+  }
+  .nav__bi {
+    display:none;
+  }
+  .btn__hamburger {
+
+    &-inner {
+      background-color:#fff;
+      &:after,
+      &:before {
+        background-color:#fff;
+      }
+    }
+    // navigation 활성화
+    &.is-active {
+      .btn__hamburger-inner {
+        background-color:#121f54;
+
+        &:before {
+          background-color:#121f54;
+        }
+
+        &:after {
+          background-color:#121f54;
+        }
+      }
+    }
+
+
+  }
+}
+
+//===================================
+// page
+//===================================
+.kabrita-main {
+    position:relative;
+    width:100%;
+    max-width:$width-max;
+    min-width:$width-min;
+    margin:0 auto;
+    text-align:center;
+    background:#192963;
+}
+.babience__bi {
+  position: absolute;
+  top:10px;
+  left:20px;
+  z-index: 1;
+}
+.main-kv {
+  position: relative;
+  width: 100%;
+  height: 1055px;
+  @include background('main-kv_v2.jpg', $repeat:no-repeat);
+  .arrow {
+    position: absolute;
+    left: 50%;
+    bottom: 65px;
+    margin-left: -40.5px;
+    display: inline-block;
+  }
+  .try-landing-btn {
+    position: absolute;
+    width: auto;
+    height: auto;
+    bottom:0;
+    left:50%;
+    margin-left:-246px;
+  }
+}
+
+.main__wrap {
+  position: relative;
+  height: 445px;
+  text-align:center;
+  @include background('_main-bottom.jpg', $repeat:no-repeat);
+  .main-movie {
+    position: relative;
+    top:35px;
+  }
+  .mov-cover {
+    position: absolute;
+    top:0;
+    left:28px;
+    width: 584px;
+    height: 328px;
+  }
+  #maintMov{
+    width: 584px;
+    height: 328px;
+  }
+}
+
+
+
+

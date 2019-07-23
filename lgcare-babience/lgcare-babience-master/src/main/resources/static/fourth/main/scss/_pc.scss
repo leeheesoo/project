@@ -1,0 +1,68 @@
+//===================================
+// variable
+//===================================
+$location: '/fourth/images/main/w/';
+$mainNavLocation : '/renewal/images/nav/w/';
+//===================================
+// reset
+//===================================
+html,body {
+    width:100%;
+    height:100%;
+}
+
+nav {
+  border: 2px solid #c2c6d3;
+  li {
+    &:nth-child(1) {  
+      background:url($location+'bottom-gnb1.png') no-repeat;
+      background-position: center -57px;
+    }
+    &.on {
+      &::before {
+        content: '';
+        border:1px solid #c2c6d3;
+      }
+    }
+  } 
+}
+//===================================
+// page
+//===================================
+.babience__bi {
+  padding:10px 0 0 30px;
+}
+.kabrita-main {
+  position:relative;
+  width:100%;
+  max-width:$width-max;
+  min-width:$width-min;
+  margin:0 auto;
+  text-align:center;
+}
+.main-kv {
+  width: 100%;
+  height: 983px;
+  @include background('main-kv.jpg', $repeat:no-repeat, $position:top center);
+
+
+}
+.main-bottom {
+  position: relative;
+  width: 100%;
+  height: 733px;
+  @include background('main-bottom.jpg', $repeat:no-repeat, $position:top center);
+  .try-landing-btn {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top:210px;
+    left:50%;
+    margin-left:-177.5px;
+  }
+}
+
+
+
+
+

@@ -1,0 +1,198 @@
+//===================================
+// variable
+//===================================\
+$location: '/fourth/images/survey-event/w/';
+
+//===================================
+// page
+//===================================
+
+#kabrita-nav {
+  position: relative;
+  z-index: 2;
+}
+.survey-event {
+  position: relative;
+  width: 100%;
+  max-width: $width-max;
+  min-width: $width-min;
+  margin: 0 auto;
+  form {
+    display: inline-block;
+  }
+  .btn {
+    display: inline-block;
+    @include background('btns.png', $repeat: no-repeat);
+
+    &__kakao-share {
+      width: 340px;
+      height: 67px;
+      margin-top: 1122px;
+      background-position: 0 0;
+    }
+    &__link-history{
+      width: 309px;
+      height: 67px;
+      margin-top:973px;
+      background-position: -353px 0;
+    }
+    &__prizewinner {
+      position: absolute;
+      top: 454px;
+      left: 380px;
+      width: 335px;
+      height: 74px;
+      background-position: 4px -232px;
+    }
+    &__experience01 {
+      width: 331px;
+      height: 142px;
+      margin-right:15px;
+      background-position: 0 -86px;
+    }
+    &__experience02 {
+      width: 331px;
+      height: 142px;
+      background-position: -345px -86px;
+    }
+    &__review-ok {
+      width: 342px;
+      height: 81px;
+      background-position: 0 -324px;
+      vertical-align: top;
+      margin-top: -1px;
+    }
+  }
+}
+
+.kv {
+  position: relative;
+  height: 1246px;
+  text-align: center;
+  @include background('survey-top.jpg', $repeat: no-repeat, $position:top center);
+  .mov-wrap {
+    position: absolute;
+    top: 520px;
+    left: 106px;
+    text-align:center;
+  }
+  #surveyMov {
+    width: 984px;
+    height: 545px;
+  }
+  .mov-cover {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 984px;
+    height: 545px;
+    cursor: pointer;
+  }
+
+}
+
+.experience {
+  position: relative;
+  height: 1274px;
+  text-align:center;
+  @include background('experience.jpg', $repeat: no-repeat, $position:top center);
+  // font-size: 0;
+  &__btns {
+    position: absolute;
+    bottom: 57px;
+    left: 263px;
+    font-size: 0;
+  }
+}
+
+
+
+
+.review {
+  height: 1817px;
+  @include background('review_v2.jpg', $repeat: no-repeat, $position:top center);
+  &__input {
+    width: 1000px;
+    height: 62px;
+    margin: 0 auto;
+    padding-top: 1032px;
+    box-sizing: border-box;
+    font-size: 0;
+
+    input[type="text"] {
+      width: 655px;
+      height: 69px;
+      padding-left: 20px;
+      margin-top:-1px;
+      font-size: 20px;
+      border: 2px solid #c91e62;
+      border-radius: 10px 0 0 10px;
+      box-sizing: border-box;
+    
+    }
+
+  }
+}
+.event-notice {
+  position: relative;
+  height: 1242px;
+  @include background('event-notice_v2.jpg', $repeat: no-repeat, $position:top center);
+}
+
+
+
+footer {
+  height:579px;
+  @include background('notice.jpg', $repeat: no-repeat, $position:top center, $color:#f2f2f2);
+}
+
+
+//===================================
+// floating gnb
+//===================================
+.survey-event__tab-wrap {
+  position: absolute;
+  right:80px;
+  top:205px;
+  z-index: 1;
+  &:after {
+    content: '';
+    position: absolute;
+    top:-83px;
+    left:-35px;
+    width: 185px;
+    height: 83px;
+    // /@include background('floating-nav-top.png', $repeat: no-repeat);
+    z-index: 1;
+
+  }
+}
+.survey-event__tab {
+  width: 120px;
+  height: 465px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 10px 10px 60px #3a3e4261; 
+  z-index: 1;
+
+  li {
+    width: 100%;
+    height: 155px;
+    @include background('floating-nav-bg.png', $repeat: no-repeat, $color:#e9d3da);
+    border-bottom:1px solid #fff;
+    &:nth-child(1) {
+      background-position: left 0;
+    }
+    &:nth-child(2) {
+      background-position: left -156px;
+    }
+    &:nth-child(3) {
+      background-position: left -311px;
+      border:none;
+    }
+    &.active {
+      background-position-x:right;
+      background-color:#bd3362;
+    }
+  }
+}

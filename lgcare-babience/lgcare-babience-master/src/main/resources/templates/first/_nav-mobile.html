@@ -1,0 +1,38 @@
+﻿<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>kabrita-nav</title>
+</head>
+
+<body>
+  <div th:fragment="kabrita-nav">
+    <nav role="navigation">
+      <div class="nav__default">
+        <h1 class="nav__bi"><a href="/v1">kabrita</a></h1>
+        <button class="btn__hamburger" type="button">
+          <span class="btn__hamburger-box">
+            <span class="btn__hamburger-inner"></span>
+          </span>
+        </button>
+      </div>
+
+      <input type="checkbox" class="input__virtual" />
+      <div class="nav__active">
+        <div class="nav__inner">
+          <ul>
+            <li><a href="/v1" id="nav-kabrita-main-landing">Kabrita</a></li>
+            <li><a href="/kabrita_quality" id="nav-kabrita-quality-landing">Why kabrita? 80Years history</a></li>
+            <li><a href="/kabrita_nickname" id="nav-kabrita-try-landing">Event01 카브리타 애칭작명소</a></li>
+            <li><a href="/kabrita_try/v1" id="nav-kabrita-quiz-landing">Event02 카브리타 체험신청</a></li>
+            <li><a href="http://www.babience.com/m/index.jsp" id="nav-babience-main-landing" target="_blank">베비언스</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </nav>
+  </div>
+</body>
+
+</html>

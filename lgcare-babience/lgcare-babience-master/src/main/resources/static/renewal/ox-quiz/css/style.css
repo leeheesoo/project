@@ -1,0 +1,409 @@
+.a11y-hidden { position: absolute; top: auto; left: -9999em; overflow: hidden; width: 1px; height: 1px; clip: rect(0 0 0 0); }
+
+/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
+/* Document ========================================================================== */
+/** 1. Correct the line height in all browsers. 2. Prevent adjustments of font size after orientation changes in iOS. */
+html { line-height: 1.15; /* 1 */ -webkit-text-size-adjust: 100%; /* 2 */ }
+
+/* Sections ========================================================================== */
+/** Remove the margin in all browsers. */
+body { margin: 0; }
+
+/** Correct the font size and margin on `h1` elements within `section` and `article` contexts in Chrome, Firefox, and Safari. */
+h1 { font-size: 2em; margin: 0.67em 0; }
+
+/* Grouping content ========================================================================== */
+/** 1. Add the correct box sizing in Firefox. 2. Show the overflow in Edge and IE. */
+hr { -webkit-box-sizing: content-box; box-sizing: content-box; /* 1 */ height: 0; /* 1 */ overflow: visible; /* 2 */ }
+
+/** 1. Correct the inheritance and scaling of font size in all browsers. 2. Correct the odd `em` font sizing in all browsers. */
+pre { font-family: monospace, monospace; /* 1 */ font-size: 1em; /* 2 */ }
+
+/* Text-level semantics ========================================================================== */
+/** Remove the gray background on active links in IE 10. */
+a { background-color: transparent; }
+
+/** 1. Remove the bottom border in Chrome 57- 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari. */
+abbr[title] { border-bottom: none; /* 1 */ text-decoration: underline; /* 2 */ -webkit-text-decoration: underline dotted; text-decoration: underline dotted; /* 2 */ }
+
+/** Add the correct font weight in Chrome, Edge, and Safari. */
+b, strong { font-weight: bolder; }
+
+/** 1. Correct the inheritance and scaling of font size in all browsers. 2. Correct the odd `em` font sizing in all browsers. */
+code, kbd, samp { font-family: monospace, monospace; /* 1 */ font-size: 1em; /* 2 */ }
+
+/** Add the correct font size in all browsers. */
+small { font-size: 80%; }
+
+/** Prevent `sub` and `sup` elements from affecting the line height in all browsers. */
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+
+sub { bottom: -0.25em; }
+
+sup { top: -0.5em; }
+
+/* Embedded content ========================================================================== */
+/** Remove the border on images inside links in IE 10. */
+img { border-style: none; }
+
+/* Forms ========================================================================== */
+/** 1. Change the font styles in all browsers. 2. Remove the margin in Firefox and Safari. */
+button, input, optgroup, select, textarea { font-family: inherit; /* 1 */ font-size: 100%; /* 1 */ line-height: 1.15; /* 1 */ margin: 0; /* 2 */ }
+
+/** Show the overflow in IE. 1. Show the overflow in Edge. */
+button, input { /* 1 */ overflow: visible; }
+
+/** Remove the inheritance of text transform in Edge, Firefox, and IE. 1. Remove the inheritance of text transform in Firefox. */
+button, select { /* 1 */ text-transform: none; }
+
+/** Correct the inability to style clickable types in iOS and Safari. */
+button, [type="button"], [type="reset"], [type="submit"] { -webkit-appearance: button; }
+
+/** Remove the inner border and padding in Firefox. */
+button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner { border-style: none; padding: 0; }
+
+/** Restore the focus styles unset by the previous rule. */
+button:-moz-focusring, [type="button"]:-moz-focusring, [type="reset"]:-moz-focusring, [type="submit"]:-moz-focusring { outline: 1px dotted ButtonText; }
+
+/** Correct the padding in Firefox. */
+fieldset { padding: 0.35em 0.75em 0.625em; }
+
+/** 1. Correct the text wrapping in Edge and IE. 2. Correct the color inheritance from `fieldset` elements in IE. 3. Remove the padding so developers are not caught out when they zero out `fieldset` elements in all browsers. */
+legend { -webkit-box-sizing: border-box; box-sizing: border-box; /* 1 */ color: inherit; /* 2 */ display: table; /* 1 */ max-width: 100%; /* 1 */ padding: 0; /* 3 */ white-space: normal; /* 1 */ }
+
+/** Add the correct vertical alignment in Chrome, Firefox, and Opera. */
+progress { vertical-align: baseline; }
+
+/** Remove the default vertical scrollbar in IE 10+. */
+textarea { overflow: auto; }
+
+/** 1. Add the correct box sizing in IE 10. 2. Remove the padding in IE 10. */
+[type="checkbox"], [type="radio"] { -webkit-box-sizing: border-box; box-sizing: border-box; /* 1 */ padding: 0; /* 2 */ }
+
+/** Correct the cursor style of increment and decrement buttons in Chrome. */
+[type="number"]::-webkit-inner-spin-button, [type="number"]::-webkit-outer-spin-button { height: auto; }
+
+/** 1. Correct the odd appearance in Chrome and Safari. 2. Correct the outline style in Safari. */
+[type="search"] { -webkit-appearance: textfield; /* 1 */ outline-offset: -2px; /* 2 */ }
+
+/** Remove the inner padding in Chrome and Safari on macOS. */
+[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+
+/** 1. Correct the inability to style clickable types in iOS and Safari. 2. Change font properties to `inherit` in Safari. */
+::-webkit-file-upload-button { -webkit-appearance: button; /* 1 */ font: inherit; /* 2 */ }
+
+/* Interactive ========================================================================== */
+/* Add the correct display in Edge, IE 10+, and Firefox. */
+details { display: block; }
+
+/* Add the correct display in all browsers. */
+summary { display: list-item; }
+
+/* Misc ========================================================================== */
+/** Add the correct display in IE 10+. */
+template { display: none; }
+
+/** Add the correct display in IE 10. */
+[hidden] { display: none; }
+
+/* Slider */
+.slick-slider { position: relative; display: block; -webkit-box-sizing: border-box; box-sizing: border-box; -webkit-touch-callout: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -ms-touch-action: pan-y; touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
+
+.slick-list { position: relative; overflow: hidden; display: block; margin: 0; padding: 0; }
+
+.slick-list:focus { outline: none; }
+
+.slick-list.dragging { cursor: pointer; cursor: hand; }
+
+.slick-slider .slick-track, .slick-slider .slick-list { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+
+.slick-track { position: relative; left: 0; top: 0; display: block; margin-left: auto; margin-right: auto; }
+
+.slick-track:before, .slick-track:after { content: ""; display: table; }
+
+.slick-track:after { clear: both; }
+
+.slick-loading .slick-track { visibility: hidden; }
+
+.slick-slide { float: left; height: 100%; min-height: 1px; display: none; }
+
+[dir="rtl"] .slick-slide { float: right; }
+
+.slick-slide img { display: block; }
+
+.slick-slide.slick-loading img { display: none; }
+
+.slick-slide.dragging img { pointer-events: none; }
+
+.slick-initialized .slick-slide { display: block; }
+
+.slick-loading .slick-slide { visibility: hidden; }
+
+.slick-vertical .slick-slide { display: block; height: auto; border: 1px solid transparent; }
+
+.slick-arrow.slick-hidden { display: none; }
+
+* { -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+li, p, span, a, input, select, option { font-family: 'Nanum Gothic', sans-serif; }
+
+button { padding: 0; background: none; border: none; cursor: pointer; font-size: 0; }
+
+button:focus { outline: none; }
+
+ul { padding: 0; margin: 0; }
+
+ul li { font-size: 0; list-style: none; }
+
+dl, dt, dd, p { padding: 0; margin: 0; }
+
+a { display: inline-block; width: 100%; height: 100%; font-size: 0; }
+
+.loading { position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: #000; opacity: .7; z-index: 9999; }
+
+.loading > img { width: 100px; height: 100px; position: absolute; top: 50%; left: 50%; margin: -50px 0 0 -50px; }
+
+label { display: inline-block; }
+
+label img { pointer-events: none; }
+
+h1, h2, h3, h4, h5 { font-size: 0; }
+
+select { -webkit-appearance: none; /* remove arrows for chrome */ -moz-appearance: none; /* remove arrows for firefox */ appearance: none; /* remove arrows common */ }
+
+select::-ms-expand { display: none; /* remove arrows for IE10, 11 */ }
+
+[v-cloak] { display: none; }
+
+.section__outer { position: relative; width: 100%; max-width: 1920px; min-width: 1200px; margin: 0 auto; }
+
+.section__inner { position: relative; width: 1200px; height: 100%; margin: 0 auto; font-size: 0; }
+
+.section__inner.height-auto { height: auto; }
+
+.babience__bi { position: absolute; top: 0; left: 0; z-index: 3; }
+
+nav { width: 907px; height: 54px; position: fixed; top: 10px; left: 50%; margin-left: -453px; background: rgba(0, 0, 0, 0.5); border-radius: 40px; border: 2px solid #fff; z-index: 1; overflow: hidden; }
+
+nav ul { font-size: 0; }
+
+nav li { position: relative; display: inline-block; width: 224px; height: 54px; font-size: 0; }
+
+nav li:nth-child(1) { background: url("/renewal/images/nav/w/bottom-gnb1.png") center 5px no-repeat; }
+
+nav li:nth-child(2) { background: url("/renewal/images/nav/w/bottom-gnb2.png") center 14px no-repeat; }
+
+nav li:nth-child(3) { background: url("/renewal/images/nav/w/bottom-gnb3.png") center 14px no-repeat; }
+
+nav li:nth-child(4) { background: url("/renewal/images/nav/w/bottom-gnb4.png") center 14px no-repeat; }
+
+nav li.on::before { content: ''; position: absolute; top: -2px; left: -16px; width: 115%; height: 54px; border-radius: 40px; background-color: #223f85; z-index: -1; border: 2px solid #fff; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+nav a { display: inline-block; }
+
+nav.active { opacity: 1; z-index: 1; }
+
+html, body { width: 100%; height: 100%; background: #f0f0ee; }
+
+.quiz-event-wrap { width: 100%; height: 100%; max-width: 1920px; margin: 0 auto; }
+
+#kabrita-nav { position: relative; z-index: 3; }
+
+.quiz-event { width: 100% !important; height: 100%; min-width: 1200px; position: relative; width: 1920px; margin: 0 auto; text-align: center; }
+
+.quiz-event *:focus { outline: none; }
+
+.quiz-event .kv { position: relative; height: 100%; min-height: 870px; background: #f0f0ee url("/renewal/images/ox-quiz/w/quiz-start-bg.jpg") no-repeat; background-size: 100%; z-index: 2; overflow: hidden; }
+
+.quiz-event .kv .section__inner { position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); max-height: 895px; }
+
+.quiz-event .kv .kv-title { padding-top: 7.3%; }
+
+.quiz-event .kv .kv-coupon { margin-top: 1%; }
+
+.quiz-event .btn { background: url("/renewal/images/ox-quiz/w/btns.png") no-repeat; }
+
+.quiz-event .btn__quiz-start { position: absolute; margin: 0 auto; width: 385px; height: 73px; left: 50%; bottom: 9.3%; margin-left: -192.5px; background-position: -393px -67px; }
+
+.quiz-event .btn__quiz-start:after { content: ''; position: absolute; top: -74px; left: 50%; margin-left: -77.5px; width: 155px; height: 74px; background: url("/renewal/images/ox-quiz/w/start-btn-thumb.png") no-repeat; }
+
+.quiz-event .btn__quiz-share { position: absolute; left: 50%; bottom: 2.4%; margin-left: -135.5px; width: 271px; height: 53px; background-position: -518px 0; }
+
+.quiz-event .btn__o { display: inline-block; width: 308px; height: 305px; margin-right: 52px; background-position: 0 -144px; -webkit-box-shadow: 0 15px 25px 10px #6a6f7b40; box-shadow: 0 15px 25px 10px #6a6f7b40; font-size: 0; cursor: pointer; }
+
+.quiz-event .btn__x { display: inline-block; width: 308px; height: 305px; background-position: -362px -144px; -webkit-box-shadow: 0 15px 25px 10px #6a6f7b40; box-shadow: 0 15px 25px 10px #6a6f7b40; font-size: 0; cursor: pointer; }
+
+.quiz-event .btn__next-quiz { width: 384px; height: 68px; margin-top: 3%; background-position: 0 -68px; }
+
+.quiz-event .btn__coupon-download { width: 384px; height: 67px; margin-top: 3%; background-position: 0 -458px; }
+
+.quiz-event .btn__product-link { display: inline-block; width: 210px; height: 54px; margin-right: 20px; font-size: 0; background-position: -68px 0; }
+
+.quiz-event .btn__reload-close { position: absolute; right: 53px; top: 123px; width: 58px; height: 58px; background-position: 0 0; z-index: 2; }
+
+.quiz-event .btn__reload { display: inline-block; width: 210px; height: 54px; vertical-align: bottom; font-size: 0; background-position: -300px 0; }
+
+.quiz-event .quiz-wrap { display: none; position: absolute; top: 0; width: 100%; height: 100%; min-height: 860px; text-align: center; }
+
+.quiz-event .quizSlider { min-height: 860px; }
+
+.quiz-event .quizSlider:before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 488px; background: url("/renewal/images/ox-quiz/w/quiz-bg-top.png") no-repeat; background-position: center; z-index: 1; }
+
+.quiz-event .quizSlider:after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 515px; background: url("/renewal/images/ox-quiz/w/quiz-bg-bottom.png") no-repeat; background-position: center; }
+
+.quiz-event .quiz-number { margin-top: 7.29%; text-align: center; }
+
+.quiz-event .quiz-number > img { display: inline; }
+
+.quiz-event .quiz-question { margin-top: 2.5%; }
+
+.quiz-event .quiz-question > img { display: inline-block; }
+
+.quiz-event .ox-btns { margin-top: 5.1%; }
+
+.quiz-event .quiz-answer-text { width: 640px; margin: 1.25% auto 0.78%; text-align: center; }
+
+.quiz-event .quiz-answer-text > img { display: inline; }
+
+.quiz-event .quizSlider { height: 100%; text-align: center; }
+
+.quiz-event .answer-wrap { width: 743px; height: 425px; padding: 25px; margin: 10px auto 0; -webkit-box-sizing: border-box; box-sizing: border-box; border-radius: 15px; overflow: hidden; background-color: #fff; }
+
+.quiz-event .answer-wrap .answer-inner { height: 100%; overflow-y: scroll; }
+
+.quiz-event .nav-dot { margin-top: 30px; font-size: 0; }
+
+.quiz-event .nav-dot span { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background-color: #223f85; }
+
+.quiz-event .nav-dot span.active { background-color: #c91e62; }
+
+.quiz-event .nav-dot span:nth-child(2) { margin: 0 17px; }
+
+.quiz-event .slick-list, .quiz-event .slick-track { height: 100%; z-index: 1; }
+
+.quiz-event .quiz-finish { position: absolute; display: none; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 1; }
+
+.quiz-event .quiz-finish .section__inner { width: 1000px; height: auto; max-height: 930px; min-width: 810px; margin: 0 auto; position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
+
+.quiz-event .quiz-finish .finish-title { padding-top: 7.3%; }
+
+.quiz-event .quiz-finish .finish-btns { margin-top: 4%; }
+
+.quiz-event .quiz-finish .finish-img { margin: 7% 0 0 137px; }
+
+.quiz-event .nav__bottom.active { z-index: 1; }
+
+@media all and (max-height: 980px) { .quiz-event .answer-wrap { height: 345px; } }
+
+@media all and (max-height: 900px) { .quiz-event .answer-wrap { height: 305px; } }
+
+.pop-personal input[type="text"], .pop-personal input[type="tel"], .pop-share .input__copy .fake__inputbox { height: 60px; padding: 0 20px; background-color: #efefef; border: none; font-size: 20px; line-height: 60px; }
+
+.test-btn { position: fixed; top: 0; left: 0; z-index: 999; }
+
+.test-btn button { background: red; font-size: 15px; color: #fff; }
+
+.dimmed { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; opacity: .7; z-index: 998; }
+
+.popup { display: none; position: absolute; top: 0; width: 640px; text-align: left; background-color: #fff; padding-bottom: 50px; z-index: 999; left: 50%; margin-left: -320px; }
+
+.popup__inner { width: 550px; margin: 0 auto; }
+
+.popup__header { width: 100%; height: 244px; background: url("/renewal/images/ox-quiz/popup/pop-header-bg.png") no-repeat; font-size: 0; text-align: center; line-height: 244px; }
+
+.popup__header img { vertical-align: middle; }
+
+.popup__content { width: 550px; margin: 35px auto 0; font-size: 0; }
+
+.popup .btn__close { position: absolute; top: 30px; right: 30px; width: 41px; height: 41px; background: url("/renewal/images/ox-quiz/popup/close-btn.png") no-repeat; }
+
+.btn__pop { display: block; width: 550px; height: 80px; background: url("/renewal/images/ox-quiz/popup/pop-btn.png") no-repeat; }
+
+.btn__confirm { margin: 0 auto; background-position: 0 -160px; }
+
+.pop__content-center { text-align: center; }
+
+.pop-personal input[type="text"], .pop-personal input[type="tel"] { width: 100%; }
+
+.pop-personal dl { display: inline-block; width: 100%; margin-top: 20px; font-size: 0; }
+
+.pop-personal dl:first-child { margin: 0; }
+
+.pop-personal dl:last-child { margin-bottom: 40px; }
+
+.pop-personal dt { display: inline-block; }
+
+.pop-personal dd { display: inline-block; width: calc(100% - 90px); margin: 0; vertical-align: top; }
+
+.pop-personal dd.full-address { width: 100%; margin-top: 15px; }
+
+.pop-personal dd .post-input { width: calc(100% - 165px); }
+
+.pop-personal .btn__post { float: right; width: 153px; height: 60px; background-position: 0 0; }
+
+.pop-personal input[type="checkbox"] { position: absolute; opacity: .01; }
+
+.pop-personal input[type="checkbox"] ~ span { display: inline-block; width: 50px; height: 50px; background: url("/renewal/images/ox-quiz/popup/check-btn.png") no-repeat; background-position: 0 top; cursor: pointer; }
+
+.pop-personal input[type="checkbox"]:checked ~ span { background-position: 0 bottom; }
+
+.pop-personal .agree-wrap { margin-top: 15px; }
+
+.pop-personal .agree-wrap.agree-warp-top { margin-top: 35px; }
+
+.pop-personal .agree-wrap label { cursor: pointer; }
+
+.pop-personal .btn__agree-detail { float: right; width: 163px; height: 50px; background-position: -324px 0; vertical-align: top; }
+
+.pop-personal .btn__entry { display: block; height: 80px; margin: 40px auto 0; background-position: 0 -70px; }
+
+.pop-personal .btn__confirm { margin-top: 60px; }
+
+.pop-share.pop-coupon-share .input__copy .fake__inputbox { background: #fff; }
+
+.pop-share .share-text { margin-bottom: 40px; }
+
+.pop-share .input__copy { width: 550px; overflow: hidden; margin-bottom: 50px; }
+
+.pop-share .input__copy .fake__inputbox { float: left; width: 399px; color: #a5a5a5; font-size: 18px; padding: 0; }
+
+.pop-share .input__copy .btn__copy-url { float: left; width: 150px; height: 60px; background-position: 0 -611px; }
+
+.pop-share .btn__pop { display: inline-block; width: 271px; height: 80px; background: url("/renewal/images/ox-quiz/popup/pop-btn.png") no-repeat; }
+
+.pop-share .btn__kakaotalk-share { margin-right: 5px; background-position: -280px -611px; }
+
+.pop-share .btn__pop-close { background-position: -280px -520px; }
+
+.pop-coupon-share { padding-bottom: 0; }
+
+.pop-coupon-share .popup__content { width: 100%; height: 919px; padding-top: 494px; margin: 0; background: url("/renewal/images/ox-quiz/popup/coupon-share-ir.jpg") no-repeat; text-align: center; }
+
+.pop-coupon-share .input__copy { margin: 134px auto 30px auto; }
+
+.pop-coupon-share .btn__register-coupon { display: inline-block; width: 550px; background-position: 0 -340px; }
+
+.pop-coupon-share .btn__kakaotalk-share { display: inline-block; width: 550px; background-position: 0 -430px; }
+
+.agree-text-inner { width: 554px; margin: 0 auto; }
+
+.agree-text-inner.marketing-text { height: 689px; background: url("/renewal/images/ox-quiz/popup/agree-marketing-text.png") no-repeat; }
+
+.agree-text-inner.marketing-text.v3show { background: url("/renewal/images/ox-quiz/popup/agree-marketing-text-v3.png") no-repeat; }
+
+.agree-text-inner.personal-text { height: 482px; background: url("/renewal/images/ox-quiz/popup/agree-personal-text.png") no-repeat; }
+
+.agree-text-inner.personal-text.v3show { height: 512px; background: url("/renewal/images/ox-quiz/popup/agree-personal-text-v3.png") no-repeat; }
+
+.agree-text-inner.gift-text { height: 484px; background: url("/renewal/images/ox-quiz/popup/agree-event-text.png") no-repeat; }
+
+.agree-text-inner.gift-text.v3show { height: 486px; background: url("/renewal/images/ox-quiz/popup/agree-event-text-v3.png") no-repeat; }
+
+.pop-winner .winner__sub-title { background-color: #2f3a6a; }
+
+.pop-winner .winner-wrap { border: 1px solid #ebedf5; margin-bottom: 28px; }
+
+.pop-winner .winner-txt { padding: 30px 20px; }
+
+.pop-winner .winner-txt li { display: inline-block; width: 25%; padding: 5px 0; text-align: center; font-size: 19px; }
+/*# sourceMappingURL=style.css.map */

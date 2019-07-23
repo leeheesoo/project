@@ -1,0 +1,54 @@
+//===================================
+// variable
+//===================================
+$location: '../../images/kabrita/main/m/';
+
+
+//===================================
+// reset
+//===================================
+html,body {
+    width:100%;
+    height:100%;
+}
+
+
+//===================================
+// page
+//===================================
+.kabrita {
+    position:relative;
+    width:100%;
+    max-width:$width-max;
+    min-width:$width-min;
+    height:844px;
+    margin:0 auto;
+    text-align:center;
+    @include background('main-bg.jpg', $repeat:no-repeat);
+    .babience__bi {
+        text-align:left;
+        padding:30px 17px 0 35px;
+    }
+    &__bi {
+        padding-top:20px;
+    }
+    &__title {
+        padding:15px 0 40px;
+    }
+    &__gnb {
+        margin-top:415px;
+        li {
+            position:relative;
+            font-size:0;
+        }
+        a {
+            display:inline-block;
+        }
+    }
+}
+
+
+
+
+
+

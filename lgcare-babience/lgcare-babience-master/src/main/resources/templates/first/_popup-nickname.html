@@ -1,0 +1,420 @@
+﻿<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>nickname popup</title>
+</head>
+<body>
+	<div th:fragment="nickname-popup">
+        <!--<div class="test-btn" style="display:none">
+            <p>테스트용 버튼(이벤트 오픈시 숨김처리) 이벤트</p>
+            <button onclick="openPopup('nickname-personal'); return false;">애칭짓기 : 개인정보입력 팝업</button><br>
+            <button onclick="openPopup('coupon-share'); return false;">애칭짓기 : 쿠폰등록 안내 및 공유</button><br>
+            <button onclick="openPopup('participate-record'); false;">쿠폰 등록하기 : 참여이력 팝업</button><br>
+            <button onclick="openPopup('coupon-guide'); return false;">쿠폰 등록하기 : 쿠폰등록 안내 팝업</button><br>
+            <button onclick="openPopup('event-share'); return false;">이벤트 소문내기 : 공유하기 팝업</button>
+        </div>-->
+
+        <!-- loading -->
+        <div class="loading" v-show="isLoading"><img src="/campaign/images/kabrita/loading.svg" alt="loading" /></div>
+
+        <!-- dimmed -->
+		<div class="dimmed"></div>
+
+        <!-- 애칭짓기 : 개인정보 팝업 -->
+        <div class="popup pop-personal pop-nickname-personal" id="pop-nickname-personal">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/nickname-event/popup/personal-title.png" alt="개인정보 입력" />
+                </div>
+            </div>
+            <div class="popup__content">
+                <form>
+                    <dl>
+                        <dt>
+                            <label for="nickname-personal-name"><img src="/campaign/images/kabrita/nickname-event/popup/personal-name.png" alt="성명" /></label>
+                        </dt>
+                        <dd><input type="text" name="name" id="nickname-personal-name" v-model="userModel.name" placeholder="홍길동"/></dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label for="nickname-personal-phone"><img src="/campaign/images/kabrita/nickname-event/popup/personal-phone.png" alt="휴대폰" /></label>
+                        </dt>
+                        <dd><input type="tel" name="phone" maxlength="11" id="nickname-personal-phone" placeholder="'-'기호없이 입력해주세요." v-model="userModel.phone" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label for="nickname-personal-address"><img src="/campaign/images/kabrita/nickname-event/popup/personal-address.png" alt="주소" /></label>
+                        </dt>
+                        <dd>
+                            <input type="text" class="post-input" name="zipcode" id="event-zipcode" readonly />
+                            <button type="button" class="btn__pop btn__post" @click="openPostCode('nickname-personal','event-zipcode','event-address')"></button>
+                        </dd>
+                        <dd class="full-address"><input type="text" name="address" id="event-address" readonly /></dd>
+                        <dd class="full-address"><input type="text" name="addressDetail" v-model="userModel.addressDetail" /></dd>
+                    </dl>
+                    <div class="agree-wrap">
+                        <label for="marketing-agree1">
+                            <input type="checkbox" id="marketing-agree1" name="agree1" v-model="userModel.agree1" />
+                            <span></span>
+                            <img src="/campaign/images/kabrita/nickname-event/popup/agree-text01.png" alt="개인정보 활용동의 (필수)" />
+                        </label>
+                        <button type="button" class="btn__pop btn__agree-detail" onclick="closePopup('nickname-personal', false); openPopup('agree-personal'); return false">확인</button>
+                    </div>
+                    <div class="agree-wrap">
+                        <label for="nickname-agree2">
+                            <input type="checkbox" id="nickname-agree2" name="agree2" v-model="userModel.agree2" />
+                            <span></span>
+                            <img class="agree__text-2line" src="/campaign/images/kabrita/nickname-event/popup/agree-text02.png" alt="경품 배송 및 이벤트 관련 위탁동의 (필수)" />
+                        </label>
+                        <button type="button" class="btn__pop btn__agree-detail" onclick="closePopup('nickname-personal', false); openPopup('agree-gift'); return false">자세히보기</button>
+                    </div>
+                    <div class="agree-wrap">
+                        <label for="nickname-agree3">
+                            <input type="checkbox" id="nickname-agree3" name="agreeMarketing" v-model="userModel.agreeMarketing" />
+                            <span></span>
+                            <img src="/campaign/images/kabrita/nickname-event/popup/agree-text03.png" alt="마케팅 활용 동의 (선택)" />
+                        </label>
+                        <button type="button" class="btn__pop btn__agree-detail" onclick="closePopup('nickname-personal', false); openPopup('agree-marketing'); return false">자세히보기</button>
+                    </div>
+                    <button type="submit" id="entry-complete-btn" class="btn__pop btn__entry" >응모완료</button>
+                </form>
+            </div>
+            <button type="button" class="btn__close" onclick="closePopup('nickname-personal'); return false;">닫기</button>
+        </div>
+
+        <!-- 애칭짓기 : 쿠폰등록 안내 및 공유하기 -->
+        <div class="popup pop-share pop-coupon-share" id="pop-coupon-share">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/nickname-event/popup/coupon-share-title.png" alt="쿠폰 안내 및 공유하기" />
+                </div>
+            </div>
+            <div class="popup__content pop__content-center">
+                <div class="a11y-hidden">
+                    <p><strong>애칭 짓기 이벤트에 참여해주셔사 감사합니다.</strong>2만원 이상 구매 시 15% 할인(100% 증정)</p>
+                    <p><strong>쿠폰등록 방법 안내</strong>쿠폰등록하기 버튼 > 베비언스 회원로그인 > 쿠폰 발급. 단, 베비언스 회원가입을 하지 않으신 고객님께서는 회원가입 후
+                    다시 버튼을 클릭하여 주세요</p>
+                </div>
+                <a class="btn__pop btn__register-coupon" :href="urlConponResit" id="coupon-share-coupon-btn" target="_blank">쿠폰 등록하기</a>
+                <p class="a11y-hidden">이벤트 공유하면 당첨확률 UP!</p>
+                <div class="input__copy">
+                    <div class="fake__inputbox">
+                        <span id="pageUrl01">https://www.kabrita.kr/kabrita_nickname</span>
+                    </div>
+                    <button  type="button" class="btn__pop btn__copy-url codecopy" id="copy__url" data-clipboard-action="copy" data-clipboard-target="#pageUrl01">url 복사</button>
+                </div>
+                <button type="button" class="btn__pop btn__kakaotalk-share" id="coupon-share-kakaotalk-btn" @click="kakaotalkShare(11156)">카카오톡 공유하기</button>
+            </div>
+
+            <button type="button" class="btn__close" onclick="closePopup('coupon-share'); return false;">닫기</button>
+        </div>    
+
+        <!-- 쿠폰 등록하기 : 참여이력 팝업 -->
+        <div class="popup pop-personal pop-participate-record" id="pop-participate-record">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/nickname-event/popup/participate-record-title.png" alt="참여이력" />
+                </div>
+            </div>
+            <div class="popup__content">
+                <form>
+                    <dl>
+                        <dt>
+                            <label for="record-personal-name"><img src="/campaign/images/kabrita/nickname-event/popup/personal-name.png" alt="성명" /></label>
+                        </dt>
+                        <dd><input type="text" name="name" id="record-personal-name" v-model="checkUser.name" placeholder="홍길동" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label for="record-personal-phone"><img src="/campaign/images/kabrita/nickname-event/popup/personal-phone.png" alt="휴대폰" /></label>
+                        </dt>
+                        <dd><input type="tel" maxlength="11" name="phone" id="record-personal-phone" placeholder="'-'기호없이 입력해주세요." v-model="checkUser.phone" /></dd>
+                    </dl>
+                    <button type="button" id="nickname-entrycheck-btn" class="btn__pop btn__confirm" @click="checkUserRecord('coupon')">확인</button>
+                </form>
+            </div>
+            <button type="button" class="btn__close" onclick="closePopup('participate-record'); return false;">닫기</button>
+        </div>
+
+        <!-- 쿠폰 등록하기 : 쿠폰등록 안내 팝업 -->
+        <div class="popup pop-coupon-guide" id="pop-coupon-guide">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/nickname-event/popup/coupon-guide-title.png" alt="쿠폰등록안내" />
+                </div>
+            </div>
+            <div class="popup__content pop__content-center">
+                <div class="a11y-hidden">
+                    <p><strong>베비언스 사이트 할인쿠폰이 발급 완료되었습니다.</strong>2만원 이상 구매 시 15% 할인(100% 증정)</p>
+                    <p><strong>쿠폰등록 방법 안내</strong>쿠폰등록하기 버튼 > 베비언스 회원로그인 > 쿠폰 발급. 단, 베비언스 회원가입을 하지 않으신 고객님께서는 회원가입 후
+                        다시 버튼을 클릭하여 주세요</p>
+                </div>
+                <a class="btn__pop btn__register-coupon" id="nickname-coupon-direct-btn"  :href="urlConponResit" target="_blank">쿠폰 바로 등록하기</a>
+            </div>
+
+            <button type="button" class="btn__close" onclick="closePopup('coupon-guide'); return false;">닫기</button>
+        </div>       
+
+        <!-- 이벤트 소문내기 : 공유하기 팝업 -->
+        <div class="popup pop-share pop-event-share" id="pop-event-share">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/nickname-event/popup/event-share-title.png" alt="공유하기" />
+                </div>
+            </div>
+            <div class="popup__content pop__content-center">
+                <div class="a11y-hidden">
+                    #카브리타 애칭작명소 이벤트를 친구들에게 알려주세요
+                </div>
+                <div class="input__copy">
+                    <div class="fake__inputbox">
+                        <span id="pageUrl02">https://www.kabrita.kr/kabrita_nickname</span>
+                    </div>
+                    <button type="button" class="btn__pop btn__copy-url codecopy" id="copy__url" data-clipboard-action="copy" data-clipboard-target="#pageUrl02">url 복사</button>
+                </div>
+                <button type="button" class="btn__pop btn__kakaotalk-share" id="share-kakaotalk-btn" @click="kakaotalkShare(11170)">카카오톡 공유하기</button>
+                <button type="button" class="btn__pop btn__pop-close" onclick="closePopup('event-share'); return false;">닫기</button>
+            </div>
+
+            <button type="button" class="btn__close" onclick="closePopup('event-share'); return false;">닫기</button>
+        </div>
+        
+        <!-- 경품 팝업 -->
+        <div class="popup pop-gift" id="pop-gift">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/nickname-event/popup/gift-title.png" alt="선물안내" />
+                </div>
+            </div>
+            <div class="popup__content">
+                <p class="a11y-hidden">북유럽 간편 육아패키지(에르고베이비 옴니360쿨에어 + 베비언스 산양액상분유 (6개입) 1명, 북유럽 휘게 육아 패키지(율그란 아기 블랭킷 + 베비언스 산양액상분유 (6개입) 10명, 북유럽 감성육아 패키지(율그란 기저귀 파우치 + 베비언스 산양액상분유 (6개입) 10명, 카브리타와 찰떡궁합 (베비언스 산양액상분유 (6개입) 30명</p>
+                <div class="pop__content-center">
+                    <button type="button" class="btn__pop btn__confirm" onclick="closePopup('gift'); return false;">확인</button>
+                </div>
+            </div>
+
+            <button type="button" class="btn__close" onclick="closePopup('gift'); return false;">닫기</button>
+        </div>    
+
+        <!--우편번호 팝업 -->
+        <div class="popup pop-post" id="pop-post">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/nickname-event/popup/post-title.png" alt="우편번호찾기" />
+                </div>
+            </div>
+            <div class="popup__content">
+            <!-- 우편번호 -->
+				<div id="searchPostCode"></div>
+            </div>
+
+            <button type="button" class="btn__close" onclick="closePopup('post', false); openPopup('nickname-personal', false); return false;">닫기</button>
+        </div>
+
+        <!-- 개인정보 활용동의 팝업 -->
+        <div class="popup pop-agree-personal" id="pop-agree-personal">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/nickname-event/popup/agree-personal-title.png" alt="개인정보 활용동의" />
+                </div>
+            </div>
+            <div class="agree-text-inner personal-text">
+                <div class="a11y-hidden">
+                    <h4>개인정보의 필수적 수집/이용 동의</h4>
+                    <p>
+                        본 이벤트 응모를 위해서는 아래 사항에 대한
+                        동의가 필요합니다. 아래 사항에 동의하지 않으실 수 있으나,
+                        동의하지 않으실 경우 이벤트 참여가 불가능함을 알려드립니다.
+
+                        본인은 귀사가 아래의 내용과 같이 본인의 개인정보를
+                        수집/이용하는 것에 동의합니다.
+
+                        · 개인정보 수집/이용목적 : 이벤트 진행 관련 업무
+                        · 수집/이용 할 개인정보의 내용 : 성명, 휴대전화번호, 주소
+                        · 개인정보의 보유 및 이용기간 : 경품 발송 즉시 폐기
+                    </p>
+                </div>
+            </div>
+            <div class="pop__content-center">
+                <button type="button" class="btn__pop btn__confirm" onclick="closePopup('agree-personal', false); openPopup('nickname-personal', false); return false;">확인</button>
+            </div>
+
+            <button type="button" class="btn__close" onclick="closePopup('agree-personal', false); openPopup('nickname-personal', false); return false;">닫기</button>
+        </div>
+
+        <!-- 경품배송 및 이벤트 위탁동의 -->
+        <div class="popup pop-agree-gift" id="pop-agree-gift">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img class="title-2line" src="/campaign/images/kabrita/nickname-event/popup/agree-gift-title.png" alt="경품배송 및 이벤트관련 위탁동의" />
+                </div>
+            </div>
+            <div class="agree-text-inner gift-text">
+                <div class="a11y-hidden">
+                    <h4>개인정보의 필수적 수집/ 이용 동의</h4>
+                    <p>
+                        본 이벤트 응모를 위해서는 아래 사항에 대한 동의가 필요합니다.
+                        아래 사항에 동의하지 않으실 수 있으나,
+                        동의하지 않으실 경우 이벤트 참여가 불가능함을 알려드립니다.
+
+                        본인은 귀사가 아래의 내용과 같이 본인의 개인정보를
+                        수집/이용하는 것에 동의합니다.
+
+                        · 개인정보 수집/이용목적 : 이벤트 진행 관련 업무
+                        · 수집/이용 할 개인정보의 내용 : 성명, 휴대전화번호, 주소
+                        · 개인정보의 보유 및 이용기간 : 경품 발송 즉시 폐기
+
+                        - 거래 목적 달성을 위해 고객님으로부터 수집한 정보를 위탁업체에
+                        전달 할 수 있습니다.
+                        - 거래 목적 달성을 위한 개인정보 위탁(업무처리 수탁업체 위탁 등)
+
+                        ·  개인정보를 위탁받는 자 : 메가존㈜
+                        ·  개인정보 위탁 목적:  이벤트 응모 정보 및 경품 발송 목적
+                        ·  발송위탁 대상 개인정보 : 성명, 휴대전화번호, 주소위탁
+                        ·  받는 자의 개인정보 보유 및 이용 기간 : 경품발송 즉시 폐기
+                    </p>
+                </div>
+            </div>
+            <div class="pop__content-center">
+                <button type="button" class="btn__pop btn__confirm" onclick="closePopup('agree-gift', false); openPopup('nickname-personal', false); return false;">확인</button>
+            </div>
+            <button type="button" class="btn__close" onclick="closePopup('agree-gift', false); openPopup('nickname-personal', false); return false;">닫기</button>
+        </div>
+
+        <!-- 마케팅 활용동의 팝업 -->
+        <div class="popup pop-agree-marketing" id="pop-agree-marketing">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/nickname-event/popup/agree-marketing-title.png" alt="마케팅 활용동의" />
+                </div>
+            </div>
+            <div class="agree-text-inner marketing-text">
+                <div class="a11y-hidden">
+                    <h4>개인정보 및 저작물 관련 마케팅 활용 동의 안내</h4>
+                    <p>
+                        LG생활건강 베비언스 브랜드에서 이벤트 및 귀하의
+                        저작물, 개인정보(이름/연락처)에 대한
+                        마케팅 활용을 위하여 아래와 같이 동의를 받고자 합니다.
+
+                        1) 마케팅 활용 목적
+
+                        - 이벤트 당첨자 발표 활용 목적
+                        - 베비언스 자사 할인 혜택 및 이벤트 소식 안내 목적
+                        - 베비언스 자사 채널 및 온라인 마케팅 활용 목적
+                        : 제품 판매 상세페이지, 체험단 모집 페이지 내 활용,
+                        온라인 제품 광고 등
+
+                        2) 활용기간 :  2년
+                        - 본인이 응모한 개인정보(이름/연락처) 및 저작물 등
+                        베비언스의 마케팅에 활용되는 것에 동의합니다.
+                    </p>
+                </div>
+            </div>
+            <div class="pop__content-center">
+                <button type="button" class="btn__pop btn__confirm" onclick="closePopup('agree-marketing', false); openPopup('nickname-personal', false); return false;">확인</button>
+            </div>
+
+            <button type="button" class="btn__close" onclick="closePopup('agree-marketing', false); openPopup('nickname-personal', false); return false;">닫기</button>
+        </div>
+
+		<!--당첨자 팝업 -->
+		<div class="popup pop-winner" id="pop-winner">
+			<div class="popup__header">
+				<div class="popup__inner">
+					<img src="/campaign/images/kabrita/nickname-event/popup/winner-title.png" alt="당첨안내" />
+				</div>
+			</div>
+			<div class="popup__content">
+				<p><img src="/campaign/images/kabrita/nickname-event/popup/winner-sub-title.png" alt="카브리타 애칭이벤트 당첨을 축하드립니다" /></p>
+				<div class="winner-wrap">
+					<h4 class="winner__sub-title"><img src="/campaign/images/kabrita/nickname-event/popup/winner-title01.png" alt="북유럽 간편 육아패키지(1명)" /></h4>
+					<div class="winner-txt">
+						<ul>
+							<li>류*영(5813)</li>
+						</ul>
+					</div>
+				</div>
+				<div class="winner-wrap">
+					<h4 class="winner__sub-title"><img src="/campaign/images/kabrita/nickname-event/popup/winner-title02.png" alt="북유럽 휘게 육아 패키지(10명)" /></h4>
+					<div class="winner-txt">
+						<ul>
+							<li>김*원(0064)</li>
+							<li>이*영(0729)</li>
+							<li>박*정(3171)</li>
+							<li>신*섭(6969)</li>
+							<li>황*현(1486)</li>
+							<li>이*희(5565)</li>
+							<li>홍*영(015)</li>
+							<li>윤*정(5308)</li>
+							<li>신*미(2649)</li>
+							<li>류*름(3183)</li>
+						</ul>
+					</div>
+				</div>
+				<div class="winner-wrap">
+					<h4 class="winner__sub-title"><img src="/campaign/images/kabrita/nickname-event/popup/winner-title03.png" alt="북유럽감성 육아패키지(10명)" /></h4>
+					<div class="winner-txt">
+						<ul>
+							<li>이*엽(0984)</li>
+							<li>허*윤(2552)</li>
+							<li>김*나(1917)</li>
+							<li>김*름(6557)</li>
+							<li>남*란(5326)</li>
+							<li>황*혜(2597)</li>
+							<li>정*미(2764)</li>
+							<li>이*지(1574)</li>
+							<li>최*름(4152)</li>
+							<li>김*은(8401)</li>
+						</ul>
+					</div>
+				</div>
+				<div class="winner-wrap">
+					<h4 class="winner__sub-title"><img src="/campaign/images/kabrita/nickname-event/popup/winner-title04.png" alt="카브리타와 찰떡궁합(30명)" /></h4>
+					<div class="winner-txt">
+						<ul>
+							<li>양*정(0623)</li>
+							<li>강*진(2778)</li>
+							<li>김*화(5130)</li>
+							<li>최*영(3748)</li>
+							<li>박*희(8328)</li>
+							<li>엄*영(9427)</li>
+							<li>함*진(6389)</li>
+							<li>이*준(1621)</li>
+							<li>문*운(8987)</li>
+							<li>지*정(6076)</li>
+							<li>안*랑(5140)</li>
+							<li>김*영(1833)</li>
+							<li>박*영(2466)</li>
+							<li>오*임(1460)</li>
+							<li>이*옥(4813)</li>
+							<li>문*염(2124)</li>
+							<li>한*영(6848)</li>
+							<li>황*령(3513)</li>
+							<li>서*젓(8945)</li>
+							<li>조*경(4009)</li>
+							<li>임*순(3130)</li>
+							<li>김*주(1950)</li>
+							<li>김*희(0503)</li>
+							<li>우*영(1163)</li>
+							<li>고*진(6733)</li>
+							<li>이*은(9658)</li>
+							<li>허*윤(0294)</li>
+							<li>최*리(3555)</li>
+							<li>배*영(8733)</li>
+							<li>오*혜(4787)</li>
+						</ul>
+					</div>
+				</div>
+				<div>
+					<img src="/campaign/images/kabrita/nickname-event/popup/winner-note.png" alt="유의사항" />
+				</div>
+			</div>
+
+			<button type="button" class="btn__close" onclick="closePopup('winner'); return false;">닫기</button>
+		</div>
+
+
+	</div>
+</body>
+</html>

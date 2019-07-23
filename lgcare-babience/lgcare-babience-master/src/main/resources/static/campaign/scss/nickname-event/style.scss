@@ -1,0 +1,36 @@
+﻿@charset 'utf-8';
+
+$device: 'w';
+
+//===================================
+// common
+//===================================
+@import '../../scssCommon/mixin/_background';
+@import "../../scssCommon/mixin/prefix";
+@import '../../scssCommon/util/_a11y-hidden';
+@import '../../scssCommon/vender/_normalize';
+@import "../../scssCommon/vender/_slick";
+
+// ===================================
+// reset
+// pc / mobile 공용
+// ===================================
+@import '../_reset';
+
+// ===================================
+// layout
+// pc / mobile 공용
+// $device에 따라 section__outer 값 변경
+// ===================================
+@import '../_layout';
+
+//===================================
+// page
+//===================================
+@import '../_nav';
+@import '_pc';
+
+//===================================
+// popup
+//===================================
+@import '_popup';

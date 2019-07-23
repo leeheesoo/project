@@ -1,0 +1,113 @@
+//===================================
+// variable
+//===================================
+$location: '../../images/kabrita/main/w/';
+$width-max: 1920px;
+$width-min: 1000px;
+
+
+//===================================
+// mixin
+//===================================
+
+// Keyframes
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+	    @content;
+    }
+	
+    @keyframes #{$name} {
+	    @content;
+    }
+}
+
+/*@include keyframes (rotate-center) {
+	0% {
+		@include prefix(transform, rotate(0));
+	}
+	50% {
+		@include prefix(transform, rotate(360deg));
+	}
+	100% {
+		@include prefix(transform, rotate(0));
+	}
+}*/
+
+@include keyframes (slide-top) {
+	0% {
+		@include prefix( transform, translateY(0) );
+	}
+	100% {
+		@include prefix( transform, translateY(-20px) );
+	}
+}
+
+
+
+//===================================
+// reset
+//===================================
+html,body {
+    width:100%;
+    height:100%;
+}
+
+
+//===================================
+// page
+//===================================
+.kabrita {
+    position:relative;
+    width:100%;
+    max-width:$width-max;
+    min-width:$width-min;
+    height:1080px;
+    margin:0 auto;
+    text-align:center;
+    @include background('main-bg.jpg', $repeat:no-repeat, $position:top center);
+    .babience__bi {
+        position:absolute;
+        right:55px;
+        top:35px;
+    }
+    &__bi {
+        position:absolute;
+        left:45px;
+        top:30px;
+    }
+    &__title {
+        padding:119px 0 20px;
+    }
+    &__gnb {
+        margin-top:380px;
+        ul {
+            width:855px;
+            margin:0 auto;
+        }
+        li {
+            position:relative;
+            float:left;
+            margin-left:33px;
+            font-size:0;
+            box-shadow:8px 15px 20px 0 #304f0c;
+            &:first-child {
+                margin:0;
+            }
+            /*&:hover {
+                .kabrita__gnb-icon {   
+                    //@include prefix(animation, rotate-center 0.5s ease-in-out);                                           
+                }    
+                @include prefix(animation, slide-top .45s cubic-bezier(.25,.46,.45,.94) both);  
+            }*/
+        }
+        a {
+            display:inline-block;
+        }
+    }
+}
+
+
+
+
+
+

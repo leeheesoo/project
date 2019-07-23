@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="shared/layout">
+<head>
+    <title>카브리타 애칭작명소</title>
+</head>
+
+<!-- 이벤트 Meta 태그 추가 -->
+<th:block layout:fragment="meta" th:remove="tag">
+    <meta property="og:title" content="눈꽃처럼 희고 부드러운 카브리타" />
+    <meta property="og:url" content="https://www.kabrita.kr/kabrita_nickname" />
+    <meta property="og:image" content="https://www.kabrita.kr/campaign/images/kabrita/sns/share_kabrita_nickname.jpg" />
+    <meta property="og:description" content="애칭 짓고 100% 선물 받으세요." />
+</th:block>
+
+<!-- 이벤트 CSS 파일 추가 -->
+<th:block layout:fragment="css" th:remove="tag">
+    <link rel="stylesheet" href="/campaign/css/nickname-event/style.min.css"></link>
+</th:block>
+
+<!-- 이벤트 JS 파일 추가 -->
+<th:block layout:fragment="script" th:remove="tag">
+</th:block>
+
+<body>
+	<div layout:fragment="content">
+		<div id="nicknameEvent">
+            <!-- nav : start -->
+            <div id="kabrita-nav" th:include="first/_nav :: kabrita-nav"></div>
+            <!-- nav : end -->
+
+	        <div class="nickname-event">
+	            <section class="visual">
+	                <div class="section__inner">
+	                    <div class="a11y-hidden">
+	                        <h2>카브리타 애칭작명소</h2>
+	                        <b>덩어리짐 없이 녹는 미세입자로 눈꽃처럼 희고 부드러운 카브리타</b>
+	                    </div>
+	                </div>
+	            </section>
+	            
+	            <section class="nickname">
+                    <div class="nickname__top">
+                        <div class="section__inner">
+                            <div class="a11y-hidden">
+                                <h2>#눈꽃처럼_사르륵 #덩어리없이_스르륵</h2>
+                                <b>눈꽃처럼 하얀 미세입자로 덩어리짐 없이 녹아 부드럽게 소화되는 카브리타에게 가장 잘 어울리는 애칭을 지어주세요</b>
+                                <p>이벤트 기간 : 2018. 7. 23(월) ~ 2018. 8. 26(일), 이벤트 당첨자발표 : 2018. 8. 30(목)</p>
+                                <h3>선물안내</h3>
+                                <p>이벤트를 참여해주신 분 중 추첨을 통해 선물을 드립니다. 북유럽 간편 육아패키지(에르고베이비 옴니360쿨에어 + 베비언스 산양액상분유 (6개입) 1명, 북유럽 휘게 육아 패키지(율그란 아기 블랭킷 + 베비언스 산양액상분유 (6개입) 10명, 북유럽 감성육아 패키지(율그란 기저귀 파우치 + 베비언스 산양액상분유 (6개입) 10명, 카브리타와 찰떡궁합 (베비언스 산양액상분유 (6개입) 30명, 참여해주신 모든 분께 베비언스 사이트 할인쿠폰을 100% 드립니다.</p>
+                            </div>
+                            <div class="kabrita__mov">
+                                <div id="eventMov" class="iframe__mov"></div>
+                                <div class="cover__mov" @click="startMov"><img src="/campaign/images/kabrita/nickname-event/w/img-mov-cover.jpg" alt="" /></div>
+                            </div>
+
+                            <button type="button" id="nickname-coupon-btn" class="btn__nickname btn__regist-coupon" @click="openPopup('participate-record')">쿠폰 등록하기</button>
+                            <button type="button" id="nickname-make-btn" class="btn__nickname btn__move-nickname">애칭 지어 볼래요!</button>
+                            <button type="button" id="nickname-share-btn" class="btn__nickname btn__event-share" @click="openPopup('event-share'); return false;">이벤트 소문 내기 공유하면 당첨확률 up!</button>
+                        </div>
+                    </div>
+
+	                <div class="nickname__galary">
+                        <div class="section__inner">
+                            <h2 class="a11y-hidden">카브리타 애칭 구경하기!</h2>
+                            <div class="nickname__galary-slide">
+                                <div class="nickname__galary-slide-item" v-show="items.size > 0" v-for="item in items">
+                                    <p class="slide__nickname" v-text="item.nickname"></p>
+                                    <!--<p class="slide__reason" v-text="item.reason"></p>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+	                <div class="nickname__write" id="writeNickname">
+                        <div class="section__inner">
+                            <h2 class="a11y-hidden">카브리타 애칭을 지어보세요!</h2>
+                            <form>
+                                <dl>
+                                    <dt>카브리타 애칭을 지어주세요</dt>
+                                    <dd>
+                                        <label>
+                                            <input type="text" name="nickname" placeholder="입력해주세요 (10자 내외)" v-model="userModel.nickname" maxlength="10">
+                                        </label>
+                                    </dd>
+                                    <dt>이유를 간단히 작성해주세요</dt>
+                                    <dd><input type="text" placeholder="입력해주세요 (20자 내외)" v-model="userModel.reason" maxlength="20"></dd>
+                                </dl>
+                            </form>
+                            <p class="a11y-hidden">* 비속어 또는 '분유' 등 제품광고 규정 상 사용 불가한 문구는 사전 고지 없이 미노출 처리될 수 있습니다.</p>
+                            <button type="button" id="nickname-check-btn" class="btn__nickname btn__nickname-participate" v-on:click="setMessage">애칭을 완성했어요!</button>
+                        </div>
+	                </div>
+	            </section>
+	            
+	            <footer class="notice">
+	                <div class="section__inner">
+	                    <div class="a11y-hidden">
+	                        <h3>유의사항</h3>
+	                        <ul>
+                                <li>이벤트 참여를 위해 개인정보 활용 동의 및 업무 위탁 동의가 필요합니다.</li>
+                                <li>‘카브리타 애칭짓기’이벤트를 통해 응모한 내역의 저작권은 ‘베비언스’에 귀속됩니다.</li>
+                                <li>응모한 애칭은 베비언스 및 카브리타의 마케팅에 활용될 수 있습니다.</li>
+                                <li>경품은 이미지와 다를 수 있으며, 당사의 사정에 의해 이벤트 내용 및 경품이 변경될 수 있습니다.</li>
+                                <li>이벤트 당첨 결과는 당첨자 발표일에 일괄 발표되며, 경품은 발표 이후 배송 됩니다.</li>
+                                <li>정확하지 않은 개인 정보 입력(이름/연락처/주소) 으로 경품을 못 받으신 경우 본인 과실로 재발송 되지 않으니 이점 유의하여 주시기 바랍니다.</li>
+                                <li>참여자 본인의 이름, 연락처가 아닌 정보로 참여했을 경우 및 부정적인 방법으로 참여한 경우 당첨취소 및 참여내역이 삭제 됩니다.</li>
+                                <li>본 이벤트는 ‘카브리타’ 제품 홍보를 위한 이벤트로 경품 배송 이외의 목적으로 고객님의 정보를 활용하지 않으며, 이벤트가 종료되어 경품이 발송이 완료된 이후에는 고객님의 정보가 파기됩니다.</li>
+                                <li>5만원 이상의 경품 제공 시 22% 제세공과금이 부가되며, 제세공과금은 베비언스측 부담합니다.</li>
+                                <li>이벤트 관련 문의 : kabrita_event@mz.co.kr</li>
+	                        </ul>
+	                    </div>
+	                </div>
+	            </footer>
+	        </div>
+
+		    <!-- popup group : start -->
+		    <div id="nickname-popup" th:include="first/_popup-nickname :: nickname-popup"></div>
+		    <!-- popup group : end -->
+		</div>
+	</div>
+
+    <!-- 이벤트 body영역 JS 파일 추가 -->
+    <th:block layout:fragment="body-script" th:remove="tag">
+    	<script>
+    		var deviceKind = "w";
+    	</script>
+      <script src="/vendor/slick/slick.min.js"></script>
+    	<script src="/campaign/js/youtubeApi.js"></script>
+    	<script src="/campaign/js/nickname-pub.js"></script>
+    </th:block>
+
+</body>
+</html>

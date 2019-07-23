@@ -1,0 +1,338 @@
+//===================================
+// variable
+//===================================\
+$nav-height: 80px;
+$location: '/renewal/images/nav/m/';
+
+%hamburger-bar {
+  position: absolute;
+  width: inherit;
+  height: 6px;
+  transition-timing-function: ease;
+  transition-duration: .15s;
+  transition-property: transform;
+  border-radius: 6px;
+  background-color: #121f54;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  // ------------------
+  /* S : nav__default */
+  // ------------------
+  .nav__default {
+    width: inherit;
+    height: $nav-height;
+    background: rgba(255, 255, 255, .7);
+  }
+
+  .nav__bi {
+    position: absolute;
+    top: 13px;
+    left: 50%;
+    width: 130px;
+    height: 51px;
+    @include background('nav-logo.png', $repeat: no-repeat);
+    font-size: 0;
+    transform: translateX(-50%);
+  }
+
+  .btn__hamburger {
+    position: absolute;
+    top: 20px;
+    right: 22px;
+    display: inline-block;
+    overflow: visible;
+    cursor: pointer;
+    z-index: 7;
+
+    &-box {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 38px;
+    }
+
+    &-inner {
+      top: 50%;
+      display: block;
+      @extend %hamburger-bar;
+      transform: translateY(-50%);
+
+      &:after,
+      &:before {
+        display: block;
+        content: "";
+        @extend %hamburger-bar;
+      }
+
+      &:before {
+        top: -16px;
+        transition: top .1s ease-in .25s, opacity .1s ease-in;
+      }
+
+      &:after {
+        bottom: -16px;
+        transition: bottom .1s ease-in .25s, transform .22s cubic-bezier(.55, .055, .675, .19);
+      }
+    }
+
+    // navigation 활성화
+    &.is-active {
+      .btn__hamburger-inner {
+        transition-delay: .1s;
+        transition-timing-function: cubic-bezier(.215, .61, .355, 1);
+        transform: rotate(225deg);
+
+        &:before {
+          top: 0;
+          transition: top .1s ease-out, transform .22s cubic-bezier(.215, .61, .355, 1) .12s;
+          transform: rotate(-90deg);
+        }
+
+        &:after {
+          bottom: 0;
+          transition: bottom .1s ease-out, opacity .1s ease-out .12s;
+        }
+      }
+    }
+
+  }
+
+  // E : nav__default
+
+
+  // ------------------
+  /* S : nav__active */
+  // ------------------
+  .nav__active {
+    position: fixed;
+    top: 0;
+    left: 640px;
+    width: $width-min;
+    height: 100%;
+    z-index: 5;
+    transition-delay: .8s;
+
+    &:after {
+      display: block;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, .3);
+      opacity: 0;
+      transition: opacity .6s ease-in .12s;
+    }
+
+    .nav__inner {
+      position: absolute;
+      top: 0;
+      right: -420px;
+      float: left;
+      width: 420px;
+      height: inherit;
+      background: rgba(255, 255, 255, .9);
+      text-align: center;
+      z-index: 6;
+      transition: .4s cubic-bezier(0.65, 0.05, 0.36, 1);
+    }
+
+    ul {
+      width: 320px;
+      margin: 106px auto 0 auto;
+    }
+
+    li {
+      position: relative;
+      width: inherit;
+      height: 122px;
+      font-size: 0;
+
+      &:nth-child(1) {
+        margin-bottom: 18px;
+      }
+
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4) {
+        border-top: 2px solid #c8ccd7;
+      }
+
+      &:nth-child(4) {
+        border-bottom: 2px solid #c8ccd7;
+      }
+
+      &:nth-child(5) {
+        margin-top: 42px;
+      }
+
+      a {
+        display: inline-block;
+        height: 100%;
+        @include background('nav-ir.png');
+      }
+
+      &:nth-child(1) a {
+        background-position-y: -30px;
+      }
+
+      &:nth-child(2) a {
+        background-position-y: -170px;
+      }
+
+      &:nth-child(3) a {
+        background-position-y: -290px;
+      }
+
+      &:nth-child(4) a {
+        background-position-y: -415px;
+      }
+
+      &:nth-child(5) a {
+        background-position-y: -590px;
+      }
+
+      // @for $i from 1 through 5 {
+      //     &:nth-child(#{$i}) a{
+      //         background-position-y: -( ($i - 1 ) * 135) + px ;
+      //     }
+      // }
+    }
+  }
+
+  .input__virtual {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 1px;
+    opacity: 0.01;
+  }
+
+  // navigation 활성화
+  .input__virtual:checked~.nav__active {
+    left: 0px;
+    transition-delay: 0s;
+
+    &:after {
+      opacity: 1;
+    }
+
+    .nav__inner {
+      right: 0;
+    }
+  }
+}
+
+// ------------------
+// 하단 네비게이션
+// ------------------
+
+.nav__bottom {
+  //display:none;
+  width: 605px;
+  height: 54px;
+  position: fixed;
+  bottom:7px;
+  left:50%;
+  margin-left:-302.5px;
+  background:rgba(0,0,0,.5);
+  border-radius:40px;
+  border:2px solid #fff;
+  opacity:0;
+  z-index: -1;
+  overflow:hidden;
+  -webkit-transition: .7s; /* Safari */
+    transition: .7s;
+  ul {
+    font-size: 0;
+  }
+  li {
+    position:relative;
+    display:inline-block;
+    height: 54px;
+    font-size:0;
+    @include background('bottom-gnb.png', $repeat: no-repeat);
+    &:nth-child(1) {
+      width: 101px;
+      background-position:29px 6px;
+    }
+    &:nth-child(2) {
+      width: 155px;
+      background-position:-74px 6px;
+    }
+    &:nth-child(3) {
+      width: 157px;
+      background-position:-230px 6px;
+
+    }
+    &:nth-child(4) {
+      width: 185px;
+      background-position:-391px 6px;
+    }
+    &.on {
+      // background-position:center bottom;
+      &::before {
+        content: '';
+        position: absolute;
+        top:-2px;
+        left: -10px;
+        width: 115%;
+        height: 54px;
+        border-radius: 40px;
+        background-color: #223f85;
+        z-index: -1;  
+        border: 2px solid #fff; 
+        box-sizing: border-box;    
+      }
+    }
+  } 
+  a {
+    display:inline-block;
+  }
+  &.active {
+    opacity:1;
+    z-index:1;
+  }
+}
+
+// ------------------
+// 공통 top버튼
+// ------------------
+
+.btn__top {
+  position: fixed;
+  display:none;
+  bottom:100px;
+  right:15px;
+  width: 66px;
+  height: 66px;
+  background:url('/renewal/images/btn-top.png');
+  box-shadow: 6px 7px 40px 10px #42424240;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+
+
+.bounce {
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}

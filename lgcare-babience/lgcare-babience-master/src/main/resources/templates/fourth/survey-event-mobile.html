@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="shared/layout-mobile">
+
+<head>
+  <title>카브리타 무료체험신청</title>
+</head>
+
+<!-- 이벤트 Meta 태그 추가 -->
+<th:block layout:fragment="meta" th:remove="tag">
+  <meta property="og:title" content="카브리타 산양조제식 정품 체험" />
+  <meta property="og:url" content="https://www.kabrita.kr/kabrita_try" />
+  <meta property="og:image" content="/fourth/images/sns/share-kabrita-try.jpg" />
+  <meta property="og:description" content="유럽에서 직수입한 프리미엄 산양조제식" />
+</th:block>
+
+<!-- 이벤트 CSS 파일 추가 -->
+<th:block layout:fragment="css" th:remove="tag">
+  <link rel="stylesheet" href="/fourth/survey-event/css/style_m.min.css">
+  </link>
+</th:block>
+
+<!-- 이벤트 JS 파일 추가 -->
+<th:block layout:fragment="script" th:remove="tag">
+</th:block>
+
+<body>
+  <div layout:fragment="content">
+    <div class="survey-event kabrita" id="surveyEvent">
+      <!-- nav : start -->
+      <div id="kabrita-nav" th:include="fourth/_nav-mobile :: kabrita-nav"></div>
+      <!-- nav : end -->
+
+      <section class="kv page">
+        <div class="section__inner">
+          <div class="a11y-hidden">
+            <h3>눈꽃처럼 사르르 덩어리없이 스르륵</h3>
+            <p>사르륵 잘 녹아 소화에 용이한 카브리타의 특별함을 영상으로 확인하세요.</p>
+          </div>
+          <div class="mov-wrap">
+            <div id="surveyMov"></div>
+            <img class="mov-cover" src="/renewal/images/m-mov-cover.jpg"
+              alt="영상 재생 버튼">
+          </div>
+          <button type="button" id="kabrita-kakaotalk-share-mov" @click="kakaotalkShare(false)" class="btn btn__kakao-share">영상 공유하기</button>
+
+          <span class="arrow bounce"><img src="/renewal/images/arrow.png" alt="하단으로 내리기 화살표"></span>
+        </div>
+      </section>
+
+
+      <!-- 체험신청 -->
+      <section id="survey" data-section-name="survey">
+        <ul class="survey-event__tab">
+          <li class="pagination-tab active"><a href="#survey" id="kabrita-survey-tab">상단 탭-체험 신청</a></li>
+          <li class="pagination-tab"><a href="#review" id="kabrita-quiz-tab">상단 탭-후기 등록</a></li>
+        </ul>
+        <section class="experience">
+          <div class="section__inner">
+            <div class="a11y-hidden">
+              <h4>새하얀 미세입자 부드러운 소화력</h4>
+              <p>미세입자로 덩어리짐 없이 부드럽게 소화되는 네덜란드 프리미엄 산양조제식 카브리타 <b>총 100명에게 800g정품 체험</b>기회를 드립니다.</p>
+            </div>
+            <span class="btn btn__link-history"><a id="servey-detail-landing-btn" href="http://www.babience.com/m/product/list.jsp?cate_seq=1306" target="_blank">제품 더보기</a></span>
+            <div class="experience__btns" th:if="${isProceedingExperience}">
+              <button type="button" id="open-advence-btn" class="btn btn__experience01" onclick="openPopup('survey02'); return false;">2단계 사전 신청</button>
+              <button type="button" id="open-experience-btn" class="btn btn__experience02" onclick="openPopup('survey01'); return false;">바로 체험 신청</button>
+            </div>
+            <div class="experience__btns" th:if="${!isProceedingExperience}">
+              <button type="button" id="open-advence-btn" class="btn btn__experience01" onclick="alert('이벤트 기간에 신청해주세요. ^^'); return false;">2단계 사전 신청</button>
+              <button type="button" id="open-experience-btn" class="btn btn__experience02" onclick="alert('이벤트 기간에 신청해주세요. ^^'); return false;">바로 체험 신청</button>
+            </div>
+          </div>
+        </section>
+      </section>
+
+
+      <!-- 후기등록 -->
+      <section id="review" data-section-name="review">
+        <section class="review">
+          <div class="section__inner">
+            <div class="a11y-hidden">
+              <h4>아기가 잘 먹었는지 궁금해요</h4>
+              <p>생생한 카브리타 체험후기를 본인의 sns계정 또는 맘카페에 올리고 링크를 남겨주세요</p>
+            </div>
+            <div class="review__input">
+              <form name="reviewForm" id="survey03Form">
+                <label>
+                  <input class="review-url" type="text" value="" placeholder="후기URL을 입력해주세요" v-model="reviewData.reviewUrl" maxlength="100" />
+                </label>
+              </form>
+              <button th:if="${isProceedingReview}" class="btn btn__review-ok" id="review-url-check-btn" type="button" @click="validURL">등록하기</button>
+              <button th:if="${!isProceedingReview}" class="btn btn__review-ok" id="review-url-check-btn" type="button" onclick="alert('이벤트 기간에 신청해주세요. ^^');">등록하기</button>
+            </div>
+            <div class="a11y-hidden">
+              <p>후기를 남겨주신 모든 분께 베비언스 할인 쿠폰을, 우수후기 선정 시 특별한 선물을 드립니다!</p>
+              <h5>우수후기 선물안내</h5>
+              <ul>              
+                <li>카브리타 정품(2/3단계 중 택 1) - 10명</li>
+                <li>베이비브레짜 포뮬라 프로 어드밴스드 분유제조기 - 1명</li>
+                <li>베비언스 몰 20%할인 쿠폰 - 전원</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="event-notice">
+          <div class="a11y-hidden">
+            <h4>이벤트 안내</h4>
+            <dl>
+              <dt>신청 기간</dt>
+              <dd>19.03.12(화) ~ 03.31(일)</dd>
+
+              <dt>당첨자 발표</dt>
+              <dd>19.04.03(수)</dd>
+
+              <dt>체험 제품</dt>
+              <dd>카브리타 산양조제식(100인) 2단계(6개월-12개월) or 3단계(12개월-24개월)</dd>
+
+              <dt>신청방법</dt>
+              <dd>
+                <ol>
+                  <li>필요 제품 단계 확인</li>
+                  <li>사전 신청 또는 바로체험</li>
+                  <li>간단한 설문 참여 시 응모 완료</li>
+                </ol>
+              </dd>
+            </dl>
+
+            <h4>후기 작성 안내</h4>
+            <dl>
+              <dt>후기 작성 기간</dt>
+              <dd>~19.04.14(일)</dd>
+
+              <dt>후기 작성 경품</dt>
+              <dd>베비언스 20% 할인쿠폰(베비언스 몰 사용 / 5만원 이상 구매시)</dd>
+
+              <dt>우수 후기 경품</dt>
+              <dd>베이비 프레짜 포뮬라 프로 어드밴스드 분유제조기(1명) / 카브리타 산양조제식 800g정품(1캔/10명)</dd>
+
+              <dt>쿠폰증정 및 우수 후기 발표</dt>
+              <dd>19.04.19(금)</dd>
+
+              <dt>유의사항</dt>
+              <dd>후기 내 베비언스로 부터 제품 지원 받았음 명시</dd>
+            </dl>
+          </div>
+          <button type="button" class="btn btn__prizewinner" onclick="openPopup('prizewinner'); return false;">당첨자 확인</button>
+        </section>
+      </section>
+
+      <footer>
+        <div class="a11y-hidden">
+          <h4>배송안내</h4>
+          <ul>
+            <li>바로 체험의 경우 당첨자 발표 후 1-2주 이내 아기 월령에 맞는 제품이 일괄 배송됩니다.</li>
+            <li>사전신청의 경우 당첨자 발표 후 경품이 바로 발송되지 않으며, 당첨자별 응모 내역을 기반으로 아기가 6개월이 되는 시점에 2단계 제품이 일괄 배송됩니다.</li>
+          </ul>
+
+          <h4>유의사항</h4>
+          <ul>
+            <li>이벤트 참여를 위해 개인정보 활용 및 마케팅 활용동의, 업무위탁 동의가 필요합니다.</li>
+            <li>본 이벤트는 중복 참여가 불가능하며, 중복으로 확인 될 경우 당첨에서 제외될 수 있습니다.</li>
+            <li>정확하지 않은 개인정보 입력(이름/연락처/주소)으로 경품을 못받으신 경우 본인 과실로 재발송 되지 않으니 이점 유의하여 주시기 바랍니다.</li>
+            <li>참여자 본인의 이름,연락처가 아닌 정보로 참여했을 경우 및 부정적인 방법으로 참여한 경우 당첨취소 및 참여내역이 삭제됩니다.</li>
+            <li>설문조사에 참여해주신 내용은 카브리타 브랜드 마케팅 / 홍보 활동에 활용될 수 있습니다.</li>
+            <li>후기이벤츠 참여 시 후기 내 모든 컨텐츠는 카브리타 홍보를 위해 자사 채널 상시페이지/판매/체험단 페이지 등 활용될 수 있습니다.</li>
+            <li>본 이벤트는 '카브리타'제품을 홍보하기 위한 이벤트로 경품 배송 이외의 목적으로 고객님의 개인정보를 활용하지 않으며, 수집된 정보는 이벤트 완료일로부터 3개월 후 파기됩니다.</li>
+            <li>5만원이상의 경품 제공 시 22% 제세공과금이 부과되며,제세공과금은 베비언스 측 부담합니다.</li>
+            <li>경품 이미지는 실제와 다를 수 있으며, 이벤트 내용 및 경품은 당사 사정에 의해 변동될 수 있습니다.</li>
+            <li>이벤트 관련 문의: kabrita_event@mz.co.kr</li>
+          </ul>
+        </div>
+      </footer>
+
+
+      <button type="button" class="btn__top" onclick="topBtn(); return false;">top</button>
+
+      <!-- popup group : start -->
+      <div id="survey-popup" th:include="fourth/_popup-survey :: survey-popup"></div>
+      <!-- popup group : end -->
+
+      <!-- nav : start -->
+      <div id="kabrita-nav-bottom" th:include="fourth/_nav-bottom-mobile :: kabrita-nav-bottom"></div>
+      <!-- nav : end -->
+    </div>
+  </div>
+
+  <th:block layout:fragment="body-script" th:remove="tag">
+    <script src="/vendor/slick/slick.min.js"></script>
+    <script src="/renewal/survey-event/js/youtubeApi.js"></script>
+    <script>
+      var deviceKind = "m";
+    </script>
+    <script src="/renewal/js/gnbControl.js"></script>
+    <script src="/fourth/survey-event/js/survey-data.js"></script>
+    <script src="/fourth/survey-event/js/survey-pub.js"></script>
+  </th:block>
+
+</body>
+
+</html>

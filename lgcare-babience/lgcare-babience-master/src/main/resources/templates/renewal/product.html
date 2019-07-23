@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="shared/layout">
+
+<head>
+  <title>카브리타 제품 정보</title>
+</head>
+
+<!-- 이벤트 Meta 태그 추가 -->
+<th:block layout:fragment="meta" th:remove="tag">
+</th:block>
+
+<!-- 이벤트 CSS 파일 추가 -->
+<th:block layout:fragment="css" th:remove="tag">
+  <link rel="stylesheet" href="/renewal/product/css/style.min.css">
+</th:block>
+
+<!-- 이벤트 JS 파일 추가 -->
+<th:block layout:fragment="script" th:remove="tag">
+</th:block>
+
+<body>
+  <div layout:fragment="content" id="product" class="product" v-cloak>
+      <h2 class="babience__bi">
+        <a href="http://www.babience.com/index.jsp" target="_blank"><img src="/renewal/images/event-bi.png"
+          id="babience-landing-btn" alt="베비언스" /></a>
+      </h2>
+    <!-- nav : start -->
+    <div id="kabrita-nav" th:include="renewal/_nav :: kabrita-nav"></div>
+    <!-- nav : end -->
+    <!-- loading -->
+    <div class="loading" v-show="loading">
+      <img src="/renewal/images/loading.svg" alt="loading" />
+    </div>
+    <div class="kabrita-product kabrita">
+      <section v-for="(section, idx) in sections" class="section__outer" :class="section.key">
+        <div class="a11y-hidden">
+          <h2>{{section.title}}</h2>
+          <strong>{{section.desc}}</strong>
+        </div>
+        <div class="section-content" :class="{contentSlide: section.content && section.content.type === 'slide'}">
+          <!-- <span class="arrow bounce" v-if="section.key === 'visual'">
+            <img src="/renewal/images/arrow.png" alt="스크롤">
+          </span> -->
+          <div class="product-movie" v-if="section.key === 'visual'">
+              <div id="productMov"></div>
+              <img class="mov-cover" onclick="startMov();" src="/renewal/images/product/w/mov-cover.jpg"
+                alt="">
+            </div>
+
+          <!-- content: slider -->
+          <div v-if="section.contentPc && section.contentPc.type === 'slide'" class="section-slider">
+            <div v-for="(slide, slideIdx) in section.contentPc.listNum" class="section-slider__item">
+              <img :src="imgUrlPrefix+'/s0'+(idx+1)+'-slide-0'+(slideIdx+1)+'.png'" alt="">
+            </div>
+          </div>
+        </div>
+
+        <a class="btn__free" v-if="section.key === 'kabrita-origin'" href="./kabrita_try">무료체험신청</a>
+
+      </section>
+      <!-- <button type="button" class="btn__top" onclick="topBtn(); return false;">top</button> -->
+
+    </div>
+  </div>
+
+  <!-- 이벤트 body영역 JS 파일 추가 -->
+  <th:block layout:fragment="body-script" th:remove="tag">
+      <script src="/renewal/js/jquery.scrollify.js"></script>     
+      <script src="/renewal/js/screenScroll.js"></script>   
+      <!-- <script src="/renewal/js/gnbControl.js"></script>    -->
+      <script src="/vendor/slick/slick-fixed.js"></script>
+
+      <script src="/vendor/vue/vue.min.js"></script>      
+      <script>
+        // 해당 페이만의 설정
+        var deviceKind = 'w';
+      </script>
+      <script src="/renewal/product/js/youtubeApi.js"></script>
+      <script src="/renewal/product/js/product-main.js"></script>
+  </th:block>
+
+</body>
+
+</html>

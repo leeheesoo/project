@@ -1,0 +1,81 @@
+//===================================
+// variable
+//===================================\
+$nav-height: 75px;
+$location: '../../images/kabrita/nav/w/';
+
+nav {
+    position:fixed;
+    width:100%;
+    max-width:1920px;
+    height:$nav-height;
+    top:0;
+    left: 50%;
+    background-color:rgba(255,255,255,.7);
+    z-index:1;
+    transform: translateX(-50%);
+    .nav__inner {
+        position:relative;
+        width:$width-min;
+        margin:0 auto;
+        overflow:hidden;
+        height:100%;
+    }
+    .nav__bi {
+        position:absolute;
+        top:0;
+        left:50%;
+        width:185px;
+        height:127px;
+        margin:0;
+        margin-left:-92.5px;
+        @include background('nav-logo.png', $repeat:no-repeat) ;
+        font-size:0;
+        z-index:1;
+    }
+    .nav__logo {
+        float:left;
+        width:203px;
+        height:$nav-height;
+        margin:0;
+        @include background('nav-bi.png', $repeat:no-repeat) ;
+        a {
+            display:inline-block;
+            height:100%;
+        }
+    }
+    ul {
+        position:absolute;
+        top:0;
+        left:203px;
+        float:left;  
+    }
+    li{
+        position:relative;
+        float:left;
+        width:203px;
+        height:$nav-height;
+        text-align:center;
+        &.nav__list1 {
+            margin-right:185px;
+        }
+        @for $i from 1 through 3 {
+            &.nav__list#{$i} {
+                background:url('../../images/kabrita/nav/w/nav-#{$i}.png') no-repeat 0 top;
+            }
+            a {
+                display:inline-block;
+                height:100%;
+            }
+        }
+        //È°¼ºÈ­
+        &.is-active {
+            a{
+                background-position:0 bottom;
+            }
+        }
+
+    } // li
+
+
+}

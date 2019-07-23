@@ -1,0 +1,131 @@
+//===================================
+// variable
+//===================================\
+$location: '../../images/kabrita/product/m/';
+
+//===================================
+// mixin
+//===================================
+
+
+//===================================
+// reset
+//===================================
+
+
+//===================================
+// helper
+//===================================
+
+
+//===================================
+// common
+//===================================
+
+
+
+//===================================
+// page
+//===================================
+
+.kabrita-product {
+    position: relative;
+    width: 100%;
+    min-width: $width-min;
+
+     .visual  {
+        height: 890px;
+        @include background('visual-bg.jpg', $position:top center);
+    }
+
+    .philosophy {
+        height: 662px;
+        text-align: center;
+        @include background('philosophy-bg.jpg', $position:top center);
+        .iframe__product {
+            width: 560px;
+            height: 330px;
+            margin: 252px auto 0 auto;
+        }
+    }
+
+    .nutrition {
+        height: 654px;
+        @include background('nutrition-bg.jpg', $position:top center);
+    }
+
+    .technology {
+        height: 1415px;
+        @include background('technology-bg.jpg', $position:top center);
+    }
+
+    .management-system {
+        height: 1245px;
+        @include background('management-system-bg.jpg', $position:top center);
+    }
+
+    .kabrita-goat {
+        height: 1305px;
+        @include background('kabrita-goat-bg.jpg', $position:top center);
+    }
+
+    .kabrita-origin {
+        height: 1324px;
+        padding-top: 824px;
+        @include background('kabrita-origin.jpg', $position:top center);
+        @for $i from 1 through 2 {
+            .kabrita-event#{$i}{
+                position: relative;
+                width: 560px;
+                height: 200px;
+                margin: 0 auto 20px auto;
+                @include background('kabrita-event#{$i}-bg.jpg' );
+            }
+        }
+    }
+
+    .kabrita-banner {
+        height: 520px;
+        @include background('kabrita-banner.jpg', $position:top center);
+    }
+
+    // btns
+    .btn__ {
+        &product {
+            position: absolute;
+            @include background('btns.png');
+        }
+
+       &go-nickname {
+            top: 135px;
+            left: 30px;
+            width: 170px;
+            height: 45px;
+            background-position: 0 0;
+        }
+
+        &go-experience {
+            top: 135px;
+            left: 30px;
+            width: 170px;
+            height: 45px;
+            background-position: 0 -55px;
+        }
+
+        &go-shop {
+            top: 400px;
+            left: 40px;
+            width: 270px;
+            height: 70px;
+            background-position: 0 -110px;
+        }
+
+        &go-info {
+            top: 400px;
+            right: 40px;
+            width: 270px;
+            height: 70px;
+            background-position: 0 -190px;
+        }
+    }
+}

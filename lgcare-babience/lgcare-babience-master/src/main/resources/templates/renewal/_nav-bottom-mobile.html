@@ -1,0 +1,22 @@
+﻿<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>kabrita-nav-bottom</title>
+</head>
+
+<body>
+  <div th:fragment="kabrita-nav-bottom">
+    <div class="nav__bottom" id="nav__bottom" :class="{active : navBottomShow}">
+      <ul>
+        <li><a href="/" id="nav-bottom-kabrita-main-landing">Why kabrita? 제품정보</a></li>
+        <li><a href="/kabrita_quality" id="nav-bottom-kabrita-quality-landing">Why kabrita? 제품정보</a></li>
+        <li><a href="/kabrita_try" id="nav-bottom-kabrita-try-landing">Event01 카브리타 무료 체험신청</a></li>
+        <li><a href="/kabrita_quiz" id="nav-bottom-kabrita-quiz-landing">Event02 카브리타 100% 쿠폰</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>

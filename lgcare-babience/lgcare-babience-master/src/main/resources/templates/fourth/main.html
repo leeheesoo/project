@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="shared/layout">
+
+<head>
+  <title>네덜란드 산양의 특별함, 카브리타</title>
+</head>
+
+<!-- 이벤트 Meta 태그 추가 -->
+<th:block layout:fragment="meta" th:remove="tag">
+  <meta property="og:title" content="베비언스 직수입" />
+  <meta property="og:url" content="https://www.kabrita.kr/" />
+  <meta property="og:image" content="/fourth/images/sns/share-kabrita-main.jpg" />
+  <meta property="og:description" content="유럽 프리미엄 산양조제식 카브리타 체험" />
+</th:block>
+
+<!-- 이벤트 CSS 파일 추가 -->
+<th:block layout:fragment="css" th:remove="tag">
+  <link rel="stylesheet" href="/fourth/main/css/style.min.css"></link>
+</th:block>
+
+<!-- 이벤트 JS 파일 추가 -->
+<th:block layout:fragment="script" th:remove="tag"></th:block>
+
+<body>
+  <div layout:fragment="content">
+    <div class="kabrita-main kabrita" id="main">
+      <!-- main kv -->
+      <div class="main-kv">
+        <h2 class="babience__bi">
+          <a href="http://www.babience.com/index.jsp" target="_blank"><img src="/fourth/images/main/w/bi-babience.png" id="babience-landing-btn" alt="베비언스" /></a>
+        </h2>
+
+        <div class="a11y-hidden">
+          <h3>네덜란드 산양의 특별함</h3>
+          <dl>
+            <dt>체험 신청 기간</dt>
+            <dd>03.14~03.31</dd>
+          </dl>
+          <p>유럽에서 온 산양 조제식 카브리타 퀄리고트 산양 원유의 특별함을 체험해보세요!</p>
+        </div> 
+      </div>
+
+      <!-- 하단 영역 -->
+      <div class="main-bottom">
+        <a class="try-landing-btn" href="./kabrita_try"><img src="/fourth/images/main/w/btn-main.png" alt="정품무료체험"></a>
+        <ul class="a11y-hidden">
+          <li>80년 역사 기술 노하우</li>
+          <li>국내는 물론 유럽 기준까지 맞춘 영양</li>
+          <li>퀄리고트 인증 라벨 획득</li>
+        </ul>
+      </div>
+      <!-- gnb : start -->
+      <div id="kabrita-nav" th:include="fourth/_nav :: kabrita-nav"></div>
+      <!-- gnb : end -->
+    </div>
+
+
+
+  </div>
+  <!-- 이벤트 body영역 JS 파일 추가 -->
+  <th:block layout:fragment="body-script" th:remove="tag">
+    <script src="/fourth/main/js/main-pub.js"></script>
+  </th:block>
+
+</body>
+
+</html>

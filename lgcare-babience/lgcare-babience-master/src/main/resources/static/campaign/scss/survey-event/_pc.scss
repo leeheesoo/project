@@ -1,0 +1,196 @@
+//===================================
+// variable
+//===================================\
+$location: '../../images/kabrita/survey-event/w/';
+
+//===================================
+// header
+//===================================
+.survey-event {
+    position:relative;
+    width:100%;
+    max-width: $width-max;
+    min-width: $width-min;
+    margin:0 auto;
+    /*h1 {
+        position:absolute;
+        top:40px;
+        left:45px;
+    }*/
+    .btn {
+        display:inline-block;
+        @include background('btns.png', $repeat:no-repeat) ;
+    }
+}
+
+
+section {
+    background-position:top center;
+}
+.section__inner {
+    width:$width-min;
+    height:100%;
+    margin:0 auto;
+    font-size:0;
+}
+
+.kv {
+    height:720px;
+    @include background('kv-bg.jpg', $repeat:no-repeat, $position:top center) ;
+    .section__inner {
+        @include background('kv-text.png', $repeat:no-repeat)
+    }
+}
+
+.winner {
+    position:relative;
+    height:1198px;
+    @include background('section01-bg.jpg', $repeat:no-repeat,$position:top center) ;
+    .section__inner {
+        @include background('section01-text.png', $repeat:no-repeat) ;
+    }
+    .btn__prizewinner-day {
+        position:absolute;
+        top:370px;
+        left:540px;
+        width:188px;
+        height:35px;
+        background-position:0 -464px;
+    }
+}
+
+.application { 
+    position:relative;
+    height:1523px;
+    @include background('section02-bg.jpg', $repeat:no-repeat,$position:top center) ;
+    .section__inner {
+        @include background('section02-text.png', $repeat:no-repeat) ;
+    }
+    /*.btn__product {
+        display:inline-block;
+        width:365px;
+        height:70px;
+        margin:570px 0 0 516px;
+        @include background('btns.png', $repeat:no-repeat, $position:0 -260px) ;
+    }*/
+    .btn__link-history {
+        position:absolute;
+        top:943px;
+        left:50%;
+        margin-left: -190px;
+        width:381px;
+        height:80px;
+        background-position: -351px 0px;
+    }
+    .experience__btn {
+        position:absolute;
+        bottom:57px;
+        button {
+            width:320px;
+            height:275px;
+            margin-left:20px;
+        }
+        .experience__btn-01{
+            margin-left:-10px;
+            background-position: 0 -90px;
+        }
+        .experience__btn-02 {
+            background-position: -340px -90px;
+        }
+        .experience__btn-share {
+            background-position: -678px -90px;
+        }
+    }
+
+}
+
+.rull {
+    height:688px;
+    @include background('section03-bg.jpg', $repeat:no-repeat,$position:top center) ;
+    .section__inner {
+        @include background('section03-text.png', $repeat:no-repeat) ;
+    }
+
+
+}
+
+
+.review {
+    position:relative;
+    height:1236px;
+    @include background('section04-bg.jpg', $repeat:no-repeat,$position:top center) ;
+    .section__inner {
+        @include background('section04-text.png', $repeat:no-repeat) ;
+    }
+    form {
+        display:inline-block;
+    }
+    &__input {
+        width:974px;
+        height:70px;
+        margin:0 auto;
+        padding-top:525px;
+        box-sizing: border-box;
+        input[type="text"] {
+            width:630px;
+            height:71px;
+            padding-left:20px;
+            font-size:20px;
+            border:1px solid #f6edf1;
+            border-radius:10px 0 0 10px;
+            box-sizing: border-box;            
+        }
+        > button {
+            width:343px;
+            height:71px;
+            vertical-align:bottom;
+            @include background('btns.png', $repeat:no-repeat, $position:0 0) ;
+        }
+    } 
+    .btn-warp {
+        position:absolute;
+        bottom:70px;
+        left:50%;
+        margin-left:-190px;
+        text-align:center;
+        .share__text {
+            display:block;
+            margin-bottom:17px;
+        }
+        .btn__share{
+            width:380px;
+            height:80px;
+            background-position:0 -374px;
+        }
+    }
+}
+
+.shop{
+    height:520px;
+    @include background('section05-bg.jpg', $repeat:no-repeat,$position:top center) ;
+    .section__inner {
+        @include background('section05-text.png', $repeat:no-repeat) ;
+    }
+    .wrap__btn {
+        text-align:center;
+        padding-top:343px;
+    }
+    .btn {
+        width:382px;
+        height:80px;
+        &__buy {
+            margin-right:42px;
+            background-position:-388px -374px;
+        }
+        &__product {
+            background-position:-778px -374px;
+        }
+    }
+}
+footer {
+    height:537px;
+    @include background('footer-bg.jpg', $repeat:no-repeat,$position:bottom center , $color:#F2F2F2)  ;
+    .section__inner {
+        @include background('footer-text.png', $repeat:no-repeat) ;
+    }
+}

@@ -1,0 +1,139 @@
+//===================================
+// variable
+//===================================\
+$location: '../../images/kabrita/survey-event/m/';
+
+//===================================
+// page
+//===================================
+
+.survey-event {
+    position:relative;
+    width:100%;
+    max-width: $width-max;
+    min-width: $width-min;
+    margin:0 auto;
+    
+
+    .btn {
+        display:inline-block;
+        @include background('btns.png', $repeat:no-repeat) ;
+    }
+
+    form {
+        display:inline-block;
+    }
+}
+
+.kv {
+    height:893px;
+    @include background('kv.jpg', $repeat:no-repeat, $position:top center) ;
+}
+
+.application { 
+    position:relative;
+    height:1865px;
+    @include background('section01.jpg', $repeat:no-repeat) ;
+    font-size:0;
+    .experience__btn {
+        position:absolute;
+        top:1123px;
+        text-align:center;
+        button {
+            width:290px;
+            height:200px;
+        }
+
+        .experience__btn-01{
+            width:293px;
+            height:200px;
+            margin-right:20px;
+            background-position: 0 0;
+        }
+        .experience__btn-02 {
+            width:293px;
+            height:200px;
+            background-position: -311px 0;
+        }
+        .experience__btn-03 {
+            width:603px;
+            height:79px;
+            margin-top:59px;
+            background-position: 0 -210px;
+        }
+        .btn__prizewinner {
+            width:230px;
+            height:60px;
+            margin-top:247px;
+            background-position: 0 -300px;
+        }
+    }
+
+}
+
+.rull {
+    height:487px;
+    @include background('section02.jpg', $repeat:no-repeat) ;
+}
+
+
+.review {
+    height:1025px;
+    @include background('section03.jpg', $repeat:no-repeat) ;
+    &__input {
+        width:560px;
+        height:72px;
+        margin:0 auto;
+        padding-top:507px;
+        box-sizing: border-box;
+        font-size:0;
+        input[type="text"] {
+            width:362px;
+            height:72px;
+            padding-left:20px;
+            font-size:20px;
+            border:1px solid #f6edf1;
+            border-radius:10px 0 0 10px;
+            box-sizing: border-box;            
+        }
+        .btn__ok {
+            width:195px;
+            height:71px;
+            vertical-align:bottom;
+            background-position: 0 -450px;
+        }
+        .btn__gift {
+            display:block;
+            width:257px;
+            height:62px;
+            margin:305px auto 0;
+            background-position:-240px -298px;
+        }
+    } 
+}
+
+.shop {
+    height:515px;
+    text-align:center;
+    font-size:0;
+    @include background('section04.jpg', $repeat:no-repeat) ;
+    .wrap__btn {
+        padding-top:400px;
+    }
+    .btn__buy {
+        width:270px;
+        height:70px;
+        margin-right:20px;
+        background-position: 0 -369px;
+    }
+    .btn__product {
+        width:270px;
+        height:70px;
+        background-position:-280px -369px;
+    }
+}
+
+footer {
+    height:849px;
+    @include background('footer.jpg', $repeat:no-repeat,$position:top center) ;
+}

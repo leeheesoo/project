@@ -1,0 +1,179 @@
+//===================================
+// variable
+//===================================\
+$location: '/renewal/images/product/m/';
+$locationV4: '/fourth/images/product/m/';
+$sliderBtnDist: 53px;
+
+//===================================
+// mixin
+//===================================
+
+
+//===================================
+// reset
+//===================================
+
+
+//===================================
+// helper
+//===================================
+
+
+//===================================
+// common
+//===================================
+
+
+
+//===================================
+// page
+//===================================
+nav {
+  z-index: 2;
+}
+.v-cloak{
+  display: none;
+}
+
+.kabrita-product {
+    position: relative;
+    width: 100%;
+    min-width: $width-min;
+    section{        
+      position: relative;
+      height: 1000px;
+      overflow: hidden;      
+    }
+    // background
+    @for $i from 1 through 7 {
+      section:nth-child(#{$i}){
+        @include background('s0#{$i}.jpg', $position:top center);
+      }
+    }
+    // visual
+    .visual {
+      .arrow {
+        position: absolute;
+        left: 50%;
+        bottom: 54px;
+        margin-left: -40.5px;
+        display: inline-block;
+      }
+    }
+    // 02
+    .philosophy {        
+      text-align: center;        
+      // .iframe__product {
+      //     width: 560px;
+      //     height: 330px;
+      //     margin: 395px auto 0 auto;
+      // }
+      .product-movie {
+        position: relative;
+        margin: 406px auto 0 auto;
+      }
+      #productMov {
+        width: 549px;
+        height: 294px;
+      }
+      .mov-cover {
+        position: absolute;
+        top: 1px;
+        left: 46px;
+      }
+    }
+
+    //07
+    .kabrita-origin {
+      height: 1054px;
+      text-align: center;
+      background: url($locationV4+'s07.jpg')no-repeat !important;
+      .product-btns {
+        margin-top:330px;
+      }
+      .btn {
+        width: 275px;
+        height: 95px;
+        background: url($locationV4+'btns.png')no-repeat;
+          &__free {
+            background-position: 0 0;
+            margin-right:8px;
+          }
+          &__product {
+            background-position: -284px 0;
+          }
+        }
+      }
+    }
+
+    // pager
+    .section-pager{
+      position: absolute;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%);    
+    
+      width: 100%;
+      text-align: center;            
+
+      &__item{
+        display: inline-block;
+        width: 15px; 
+        height: 15px;
+        background-color: #223f85;
+        border-radius: 50%;
+        &:not(:last-child){
+          margin-right: 14px;
+        }
+        &.on{
+          background-color: #c91e62;
+        }
+      }
+    }
+    // slider
+    .contentSlide{      
+        // outline: 3px dotted blue;
+        margin-top: 355px;   
+        height: 610px;        
+      // slider img
+      .slick-slide{
+        height: 630px;
+        transition: all .3s;
+        transform: scale(.6);  
+
+        &.slick-current,
+        &.slick-center,
+        &.slick-active,
+        &.slick-clone-current {
+          transform: scale(1);  
+ 
+        }
+      }         
+      img{        
+        margin: 20px auto 25px -26px;        
+        -webkit-box-shadow: 10px 10px 46px -17px rgba(0,0,0,0.7);
+        -moz-box-shadow: 10px 10px 46px -17px rgba(0,0,0,0.7);
+        box-shadow: 10px 10px 46px -17px rgba(0,0,0,0.7);    
+      }
+      // slider img: current
+      
+      // slider buttons
+      .slick-prev, .slick-next{
+        width: 21px; 
+        height: 37px;    
+        top:40%;            
+        &:before{
+          content: ''        
+        }
+      }
+      .slick-prev{
+        z-index: 100;
+        left: $sliderBtnDist;       
+        background: url($location+'slider-btn-prev.png') center center no-repeat;
+      }
+      .slick-next{
+        right: $sliderBtnDist;
+        background: url($location+'slider-btn-next.png') center center no-repeat;
+      }      
+    }

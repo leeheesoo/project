@@ -1,0 +1,383 @@
+//===================================
+// variable
+//===================================
+$location: '/renewal/images/ox-quiz/popup/';
+$width-max: 640px;
+$width-inner: 550px;
+$popColor: #192b66;
+
+%inputText {
+  height: 60px;
+  padding: 0 20px;
+  background-color: #efefef;
+  border: none;
+  font-size: 20px;
+  line-height: 60px;
+}
+
+
+//===================================
+// test btn
+//===================================
+.test-btn {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: 999;
+
+  button {
+    background: red;
+    font-size: 15px;
+    color: #fff;
+  }
+}
+
+
+.dimmed {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .7;
+  z-index: 998;
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: $width-max;
+  text-align: left;
+  background-color: #fff;
+  padding-bottom: 50px;
+  z-index: 999;
+
+  @if $device==w {
+    left: 50%;
+    margin-left: -320px;
+  }
+
+  @else {
+    left: 0;
+  }
+
+  &__inner {
+    width: $width-inner;
+    margin: 0 auto;
+  }
+
+  &__header {
+    width: 100%;
+    height: 244px;
+    @include background('pop-header-bg.png');
+    font-size: 0;
+    text-align: center;
+    line-height: 244px;
+
+    img {
+      vertical-align: middle;
+    }
+  }
+
+  &__content {
+    width: $width-inner;
+    margin: 35px auto 0;
+    font-size: 0;
+  }
+
+  .btn__close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 41px;
+    height: 41px;
+    @include background('close-btn.png');
+  }
+}
+
+
+//------------------
+// button
+//------------------
+.btn__pop {
+  display: block;
+  width: $width-inner;
+  height: 80px;
+  @include background('pop-btn.png')
+}
+
+.btn__confirm {
+  margin: 0 auto;
+  background-position: 0 -160px;
+}
+
+.pop__content-center {
+  text-align: center;
+}
+
+
+//------------------------
+// 개인정보 팝업 (공통)
+//------------------------
+.pop-personal {
+
+  input[type="text"],
+  input[type="tel"] {
+    @extend %inputText;
+    width: 100%;
+  }
+
+  dl {
+    display: inline-block;
+    width: 100%;
+    margin-top: 20px;
+
+    &:first-child {
+      margin: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 40px;
+    }
+
+    font-size: 0;
+  }
+
+  dt {
+    display: inline-block;
+  }
+
+  dd {
+    display: inline-block;
+    width: calc(100% - 90px);
+    margin: 0;
+    vertical-align: top;
+
+    &.full-address {
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .post-input {
+      width: calc(100% - 165px);
+    }
+  }
+
+  .btn__post {
+    float: right;
+    width: 153px;
+    height: 60px;
+    background-position: 0 0;
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: .01;
+
+    &~span {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      @include background('check-btn.png');
+      background-position: 0 top;
+      cursor: pointer;
+    }
+
+    &:checked~span {
+      background-position: 0 bottom;
+    }
+  }
+
+  .agree-wrap {
+    margin-top: 15px;
+
+    &.agree-warp-top {
+      margin-top: 35px;
+    }
+
+    label {
+      cursor: pointer;
+    }
+  }
+
+  .btn__agree-detail {
+    float: right;
+    width: 163px;
+    height: 50px;
+    background-position: -324px 0;
+    vertical-align: top;
+  }
+
+  .btn__entry {
+    display: block;
+    height: 80px;
+    margin: 40px auto 0;
+    background-position: 0 -70px;
+    //vertical-align: top;
+  }
+
+  // 참여이력 팝업
+  .btn__confirm {
+    margin-top: 60px;
+  }
+}
+
+
+//------------------------
+// 공유하기 팝업 공통
+//------------------------
+.pop-share {
+  &.pop-coupon-share {
+    .input__copy {
+      .fake__inputbox {
+        background: #fff;
+      }
+    }
+  }
+  .share-text {
+    margin-bottom:40px;
+  }
+  .input__copy {
+    width: $width-inner;
+    overflow: hidden;
+    margin-bottom:50px;
+
+    .fake__inputbox {
+      float: left;
+      width: 399px;
+      @extend %inputText;
+      color: #a5a5a5;
+      font-size: 18px;
+      padding: 0;
+    }
+
+    .btn__copy-url {
+      float: left;
+      width: 150px;
+      height: 60px;
+      background-position: 0 -611px;
+    }   
+  }
+  .btn__pop {
+    display:inline-block;
+    width: 271px;
+    height: 80px;
+    @include background('pop-btn.png');
+  }
+  .btn__kakaotalk-share {
+    margin-right:5px;
+    background-position: -280px -611px;
+  }
+
+  .btn__pop-close {
+    background-position: -280px -520px;
+  }
+}
+
+//------------------------
+//  쿠폰등록 안내 및 공유하기
+//------------------------
+.pop-coupon-share {
+  padding-bottom: 0;
+
+  .popup__content {
+    width: 100%;
+    height: 919px;
+    padding-top: 494px;
+    margin: 0;
+    @include background('coupon-share-ir.jpg');
+    text-align: center;
+  }
+
+  .input__copy {
+    margin: 134px auto 30px auto;
+  }
+
+  .btn__register-coupon {
+    display: inline-block;
+    width: 550px;
+    background-position: 0 -340px;
+  }
+
+  .btn__kakaotalk-share {
+    display: inline-block;
+    width: 550px;
+    background-position: 0 -430px;
+  }
+}
+
+
+
+
+//------------------------
+// 개인정보 활용 동의 팝업
+//------------------------
+.agree-text-inner {
+  width: 554px;
+  margin: 0 auto;
+
+	&.marketing-text {
+		height: 689px;
+    @include background('agree-marketing-text.png', $repeat:no-repeat);
+    &.v3show {
+      @include background('agree-marketing-text-v3.png', $repeat:no-repeat);
+    }
+	}
+
+	&.personal-text {
+		height: 482px;
+    @include background('agree-personal-text.png', $repeat:no-repeat);
+    &.v3show{
+      height: 512px;
+      @include background('agree-personal-text-v3.png', $repeat:no-repeat);
+    }
+	}
+
+	&.gift-text {
+		height: 484px;
+    @include background('agree-event-text.png', $repeat:no-repeat);
+    &.v3show{
+      height: 486px;
+      @include background('agree-event-text-v3.png', $repeat:no-repeat);
+    }
+	}
+}
+
+//------------------------
+// 당첨자팝업
+//------------------------
+.pop-winner {
+  .winner__sub-title {
+    background-color: #2f3a6a;
+  }
+
+  .winner-wrap {
+    border: 1px solid #ebedf5;
+    margin-bottom: 28px;
+  }
+
+  .winner-txt {
+    padding: 30px 20px;
+
+    li {
+      display: inline-block;
+      width: 25%;
+      padding: 5px 0;
+      text-align: center;
+      font-size: 19px;
+    }
+  }
+}
+
+//===================================
+// 모바일 스크롤바 항상 show
+//===================================
+// ::-webkit-scrollbar { -webkit-appearance: none; } 
+// ::-webkit-scrollbar:vertical { width: 12px; } 
+// ::-webkit-scrollbar:horizontal { height: 12px; } 
+// ::-webkit-scrollbar-thumb { background-color: rgba(0, 0, 0, .5); border-radius: 10px; border: 2px solid #ffffff; } 
+// ::-webkit-scrollbar-track { border-radius: 10px; background-color: #ffffff; }

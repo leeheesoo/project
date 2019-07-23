@@ -1,0 +1,184 @@
+//===================================
+// variable
+//===================================\
+$nav-height: 80px;
+$location: '../../images/kabrita/nav/m/';
+%hamburger-bar {
+    position: absolute;
+    width: inherit;
+    height: 6px;
+    transition-timing-function: ease;
+    transition-duration: .15s;
+    transition-property: transform;
+    border-radius: 6px;
+    background-color: #121f54;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+
+     // ------------------
+    /* S : nav__default */
+    // ------------------
+    .nav__default {
+        width: inherit;
+        height: $nav-height;
+        background: rgba(255,255,255,.7);
+    }
+    .nav__bi {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 242px;
+        height: 145px;
+        margin: 0;
+        @include background('nav-logo.png', $repeat: no-repeat) ;
+        font-size: 0;
+        transform: translateX(-50%);
+    }
+    .btn__hamburger {
+        position: absolute;
+        top: 20px;
+        right: 22px;
+        display: inline-block;
+        overflow: visible;
+        cursor: pointer;
+        z-index: 7;
+        &-box {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 38px;
+        }
+        &-inner{
+            top: 50%;
+            display: block;
+            @extend %hamburger-bar;
+            transform: translateY(-50%);
+            &:after,
+            &:before {
+                display: block;
+                content: "";
+                @extend %hamburger-bar;
+            }
+            &:before {
+                top: -16px;
+                transition: top .1s ease-in .25s,opacity .1s ease-in; 
+            }
+            &:after {
+                bottom: -16px;
+                transition: bottom .1s ease-in .25s,transform .22s cubic-bezier(.55,.055,.675,.19);
+            }
+        }
+
+        // navigation 활성화
+        &.is-active {
+            .btn__hamburger-inner{
+                transition-delay: .1s;
+                transition-timing-function: cubic-bezier(.215,.61,.355,1);
+                transform: rotate(225deg);
+                &:before {
+                    top: 0;
+                    transition: top .1s ease-out,transform .22s cubic-bezier(.215,.61,.355,1) .12s;
+                    transform: rotate(-90deg);
+                }
+                &:after {
+                    bottom: 0;
+                    transition: bottom .1s ease-out,opacity .1s ease-out .12s;
+                }
+            }
+        } 
+
+    } // E : nav__default
+
+
+    // ------------------
+    /* S : nav__active */
+    // ------------------
+    .nav__active {
+        position: fixed;
+        top: 0;
+        left: 640px;
+        width: $width-min;
+        height: 100%;
+        z-index: 5;
+        transition-delay: .8s;
+        &:after {
+            display: block;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.3);
+            opacity: 0;
+            transition: opacity .6s ease-in .12s;
+        }
+        .nav__inner {
+            position: absolute;
+            top: 0;
+            right: -420px;
+            float: left; 
+            width: 420px;
+            height: inherit; 
+            background: rgba(255,255,255,.9);
+            text-align: center;
+            z-index: 6;
+            transition: .4s cubic-bezier(0.65, 0.05, 0.36, 1); 
+        }
+        ul {
+            width: 320px;
+            margin: 106px auto 0 auto;
+        }
+        li{
+            position: relative;
+            width: inherit;
+            height: 122px;
+            font-size: 0;
+            &:nth-child(1) {
+                margin-bottom: 18px;
+            }
+            &:nth-child(2),
+            &:nth-child(3),
+            &:nth-child(4) {
+                border-top: 2px solid #c8ccd7;
+            }
+            &:nth-child(4) {
+                border-bottom: 2px solid #c8ccd7;
+            }
+            &:nth-child(5) {
+                margin-top: 42px;
+            }
+            a {
+                display: inline-block;
+                height: 100%;
+                @include background('nav-ir.png');
+            }
+            @for $i from 1 through 5 {
+                &:nth-child(#{$i}) a{
+                    background-position-y: -( ($i - 1 ) * 120) + px ;
+                }
+            }
+        } 
+    }
+    .input__virtual {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        height: 1px;
+        opacity: 0.01;
+    }
+    // navigation 활성화
+    .input__virtual:checked ~  .nav__active {
+        left: 0px;
+        transition-delay: 0s;
+        &:after {
+            opacity: 1;
+        }
+        .nav__inner {
+            right: 0;
+        }
+    }
+}

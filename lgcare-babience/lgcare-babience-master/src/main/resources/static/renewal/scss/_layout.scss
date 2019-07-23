@@ -1,0 +1,35 @@
+$width-max: '';
+$width-min: '';
+
+@if $device == 'w' {
+    $width-max: 1920px;
+    $width-min: 1200px;
+  
+    .section__outer {
+        position: relative;
+        width: 100%;
+        max-width: $width-max;
+        min-width: $width-min;
+        margin: 0 auto;
+    }
+    .section__inner {
+        position: relative;
+        width: $width-min;
+        height: 100%;
+        margin: 0 auto;
+        font-size: 0;
+        &.height-auto {
+          height:auto;
+        }
+    }
+} @else {
+    $width-max: 640px;
+    $width-min: 640px;
+  
+    .section__outer {
+        position: relative;
+        width: 640px;
+        margin: 0 auto;
+        font-size: 0;
+    }
+}

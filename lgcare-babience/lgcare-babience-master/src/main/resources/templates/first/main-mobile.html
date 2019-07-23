@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="shared/layout-mobile">
+<head>
+    <title>네덜란드 산양의 특별함,카브리타 모바일</title>
+</head>
+
+<!-- 이벤트 Meta 태그 추가 -->
+<th:block layout:fragment="meta" th:remove="tag">
+    <meta property="og:title" content="네덜란드 산양의 특별함" />
+    <meta property="og:url" content="https://www.kabrita.kr/" />
+    <meta property="og:image" content="https://www.kabrita.kr/images/kabrita/sns/share_kabrita_main.jpg" />
+    <meta property="og:description" content="베비언스X카브리타 산양조제식" />
+</th:block>
+
+<!-- 이벤트 CSS 파일 추가 -->
+<th:block layout:fragment="css" th:remove="tag">
+  <link rel="stylesheet" href="/campaign/css/main/style_m.min.css"></link>
+</th:block>
+
+<!-- 이벤트 JS 파일 추가 -->
+<th:block layout:fragment="script" th:remove="tag"></th:block>
+
+<body>
+    <div layout:fragment="content">
+        <div class="kabrita">
+
+            <h2 class="babience__bi">
+                <a href="http://www.babience.com/m/index.jsp" target="_blank"><img src="/campaign/images/kabrita/main/w/bi-babience.png" id="babience-landing-btn" alt="베비언스" /></a>
+            </h2>
+            <h1 class="kabrita__bi"><img src="/campaign/images/kabrita/main/m/bi.png" alt="카브리타" /></h1>
+
+            <h3 class="kabrita__title"><img src="/campaign/images/kabrita/main/m/main-title.png" alt="네덜란드 산양의 특별함" /></h3>
+            <span><img src="/campaign/images/kabrita/main/m/main-sub-text.png" alt="EU법적 규격에 맞춘 영양 설계로 28개국에서 사랑받는 유럽에서 온 산양조제식 카브리타" /></span>
+
+            <div class="kabrita__gnb">
+                <ul>
+                    <li>
+                        <a href="/kabrita_quality"><img src="/campaign/images/kabrita/main/m/nav01.jpg" id="kabrita-quality-landing-btn" alt="80년 역사의 글로벌프리미엄" /></a>
+                    </li>
+                    <li>
+                        <a href="/kabrita_nickname"><img src="/campaign/images/kabrita/main/m/nav02.jpg" id="kabrita-nickname-landing-btn" alt="카브리타 애칭작명소" /></a>
+                    </li>
+                    <li>
+                        <a href="/kabrita_try/v1"><img src="/campaign/images/kabrita/main/m/nav03.jpg" id="kabrita-try-landing-btn" alt="카브리타 체험신청" /></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 이벤트 body영역 JS 파일 추가 -->
+    <th:block layout:fragment="body-script" th:remove="tag">
+
+    </th:block>
+
+</body>
+</html>

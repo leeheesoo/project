@@ -1,0 +1,179 @@
+//===================================
+// variable
+//===================================\
+$location: '../../images/kabrita/nickname-event/m/';
+$width-center: 560px;
+
+//===================================
+// mixin
+//===================================
+
+
+//===================================
+// reset
+//===================================
+
+
+//===================================
+// helper
+//===================================
+
+
+//===================================
+// common
+//===================================
+
+
+//===================================
+// page
+//===================================
+.nickname-event {
+    position:relative;
+    width: $width-max;
+    margin:0 auto;
+    .visual {
+        height: 890px;
+        @include background('visual-bg.jpg');
+    }
+
+    .nickname {
+        &__top {
+            height: 2070px;
+            padding-top: 312px;
+            @include background('nickname-top-bg.jpg');
+            text-align: center;
+            .kabrita__mov {
+                position: relative;
+                width: $width-center;
+                height: 315px;
+                margin: 0 auto 281px auto;
+                .cover__mov {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+            }
+        }
+
+        &__galary {
+            height: 1145px;
+            text-align: left;
+            padding-top: 137px;
+            @include background('nickname-galary-bg.jpg');
+            &-slide {
+                width: $width-max;
+                padding: 0 60px;
+                font-size: 0;
+                .slick {
+                    &-arrow {
+                        position: absolute;
+                        top: 50%;
+                        width: 30px;
+                        height: 68px;
+                        @include background('arrows.png', $position: 0 0);
+                        transform: translateY(-50%);
+                    }
+                    &-prev {
+                        left: 20px;
+                    }
+                    &-next {
+                        right: 20px;
+                        background-position-x: -40px;
+                    }
+                }
+                &-item {
+                    position: relative;
+                    width: 260px !important;
+                    height: 240px;
+                    @include background('bg-galary-slide-nickname.png', $position: center 10px);
+                    cursor: pointer;
+                    p {
+                        position: absolute;
+                        top: 78px;
+                        left: 36px;
+                        width: 186px;
+                        color: #343839;
+                        font-size: 28px;
+                        font-weight: bold; 
+                        line-height: 33px;
+                    }
+                }
+            }
+        }
+        &__write {
+            height: 740px;
+            @include background('nickname-write-bg.jpg');
+            text-align: center;
+            dl {
+                width: 500px;
+                margin: 0 auto;
+                padding-top: 200px;
+                margin-bottom: 40px;
+                dt {
+                    width: inherit;
+                    height: 26px;
+                    margin-bottom: 14px;
+                    @include background('title-nickname-write-dt.png', $position: 10px 0);
+                    font-size: 0;
+                    &:nth-child(3){
+                        background-position-y: -36px;
+                    }
+                }
+                dd {
+                    margin-bottom: 25px;
+                    input[type="text"] {
+                        width: 500px;
+                        height: 70px;
+                        padding: 0 20px;
+                        border: 0;
+                        background: #f3f3f3;
+                        font-size: 20px;
+                        @include prefix('border-radius', 10px);
+                    }
+                }
+            }
+
+        }
+    }
+
+    .notice {
+        height: 635px;
+        @include background('notice-bg.jpg');
+    }
+
+    // btns
+    .btn__{
+        &nickname {
+            @include background('btns.png', $position: 0 0);
+        }
+        &move-nickname {
+            width: 270px;
+            height: 80px;
+            background-position-y: 0;
+            margin-right: 20px;
+        }
+        &event-share {
+            width: 270px;
+            height: 80px;
+            background-position-y: -90px;
+        }
+        &check-gift {
+            width: 200px;
+            height: 60px;
+            margin: 350px 0 0 242px;
+            background-position-y: -180px;
+        }
+        &regist-coupon {
+            width: 200px;
+            height: 60px;
+            margin: 138px 0 0 242px;
+            background-position: -210px -180px;
+        }
+
+        &nickname-participate {
+            width: 500px;
+            height: 80px;
+            background-position-y: -250px;
+        }
+    }
+}

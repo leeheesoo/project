@@ -1,0 +1,717 @@
+﻿<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>survey popup</title>
+</head>
+<body>
+    <div th:fragment="survey-popup">
+        <!-- loading -->
+        <div class="loading" v-show="loading">
+            <img src="/campaign/images/kabrita/loading.svg" alt="loading" />
+        </div>
+
+        
+
+        <!--<div class="test-btn" style="z-index:1">
+            <p>테스트용 버튼(이벤트 오픈시 숨김처리) 이벤트</p>
+            <button onclick="openPopup('survey01'); return false;">바로체험 : 설문 팝업</button>
+            <button onclick="openPopup('survey01-personal'); return false;">바로체험 : 개인정보 팝업</button>
+
+            <button onclick="openPopup('survey02'); return false;">사전체험 : 설문 팝업</button>
+            <button onclick="openPopup('survey02-personal'); return false;">사전체험 : 개인정보 팝업</button>
+
+            <button onclick="openPopup('review-personal'); return false;">후기이벤트 : 개인정보 팝업</button>
+
+            <button onclick="openPopup('share'); return false;">공유하기</button>
+            <button onclick="openPopup('prizewinner'); return false;">당첨자발표</button>
+            <button onclick="openPopup('gift'); return false;">선물안내</button>
+        </div>-->
+
+        <div class="dimmed"></div>
+
+
+        <!-- 바로체험 : 설문 팝업 -->
+        <div class="popup pop-survey01" id="pop-survey01">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img class="title-2line" src="/campaign/images/kabrita/survey-event/popup/title-survey01.png" alt="바로 체험 설문" />
+                </div>
+            </div>
+            <div class="popup__content">
+                <form name="survey01Form" id="survey01Form">
+                    <!-- 1번질문 -->
+                    <div class="question question01">
+                        <p><img alt="현재 수유방식은 어떻게 하고 계신가요?" src="/campaign/images/kabrita/survey-event/popup/survey01-q01.png" /></p>
+                        <ul>
+                            <li v-for="(question, idx) in QuestionList[2]">
+                                <label @click="experienceData.feedingType = question ">
+                                    <input :id="'survey01-q01-a0'+ getQuestioinClass(idx)" name="survey01-q01" type="radio" />
+                                    <span :class="'question-a0' + getQuestioinClass(idx)"></span>
+                                    <img :alt="question" :src="'/campaign/images/kabrita/survey-event/popup/survey01-q01-a0' + getQuestioinClass(idx) +'.png'" />
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- 2번질문 -->
+                    <div class="question question02">
+                        <p>
+                            <label for="survey01-q02"><img src="/campaign/images/kabrita/survey-event/popup/survey01-q02.png" alt="" /></label>
+                        </p>
+                        <input type="text" id="survey01-q02" placeholder="제품명을 입력해주세요." v-model="experienceData.usedProduct" maxlength="30" />
+                    </div>
+                    <!-- 3번질문 -->
+                    <div class="question question03">
+                        <p><img src="/campaign/images/kabrita/survey-event/popup/survey01-q03.png" alt="제품 선택 시 가장 중요하게 생각하는 점은 무엇인가요?" /></p>
+                        <ul>
+                            <li v-for="(question, idx) in QuestionList[1]" class="answer__width" >
+                                <label>
+                                    <input v-if="idx !=5" type="checkbox" name="survey01-q03" :id="'survey01-q03-a0'+ getQuestioinClass(idx)" :value="question.questionAlt" @click="checkOnly" />
+                                    <input v-else type="checkbox" name="survey01-q03" id="survey01-q03-a06" :value="question.inputString" @click="checkOnly" />
+
+
+                                    <span :class="'question-a0' + getQuestioinClass(idx)"></span>
+                                    <img v-if="idx !=5" :src="'/campaign/images/kabrita/survey-event/popup/survey01-q03-a0' + getQuestioinClass(idx) +'.png'" :alt="question.questionAlt"/>
+                                    <input v-else type="text" placeholder="기타" v-model="question.inputString" maxlength="30" class="cheack__only" readonly="readonly" />
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- 4번질문 -->
+                    <div class="question question04">
+                        <p>
+                            <label for="survey01-q04"><img src="/campaign/images/kabrita/survey-event/popup/survey01-q04.png" alt="육아하시면서 지금 가장 고민인 부부은?" /></label>
+                        </p>
+                        <input type="text" id="survey01-q02" placeholder="고민을 입력해주세요." v-model="experienceData.childcareWorry" maxlength="100" />
+                    </div>
+                    <button type="button" id="experience-question-check-btn" class="btn-survey-complete" @click="experienceQuestionCheck">설문참여 완료</button>
+                </form>
+                <button type="button" class="btn__close" onclick="closePopup('survey01'); return false;">닫기</button>
+            </div>
+        </div>
+
+        <!-- 바로체험 : 개인정보 팝업 -->
+        <div class="popup pop-survey01-personal pop-personal" id="pop-survey01-personal">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/survey-event/popup/title-personal.png" alt="개인정보 입력" />
+                </div>
+            </div>
+            <div class="popup__content">
+                <form name="survey01Form" id="survey01FormPersonal">
+                    <dl>
+                        <dt>
+                            <label for="survey01-personal-name"><img src="/campaign/images/kabrita/survey-event/popup/personal-name.png" alt="성명" /></label>
+                        </dt>
+                        <dd><input type="text" name="name" id="survey01-personal-name" placeholder="홍길동" v-model="experienceData.name" maxlength="10" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label for="survey01-personal-phone"><img src="/campaign/images/kabrita/survey-event/popup/personal-phone.png" alt="휴대폰" /></label>
+                        </dt>
+                        <dd><input type="tel" name="mobile" id="survey01-personal-phone" placeholder="'-'기호없이 입력해주세요." v-model="experienceData.mobile" maxlength="11" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label for="survey01-personal-address"><img src="/campaign/images/kabrita/survey-event/popup/personal-address.png" alt="주소" /></label>
+                        </dt>
+                        <dd>
+                            <input type="text" class="post-input" name="zipcode" id="event-one-zipcode" readonly="readonly" />
+                            <button type="button" class="btn__post" @click="openPostCode('survey01-personal','event-one-zipcode','event-one-address')"></button>
+                        </dd>
+                        <dd class="full-address"><input type="text" id="event-one-address" name="address" readonly="readonly" /></dd>
+                        <dd class="full-address"><input type="text" name="addressDetail" v-model="experienceData.addressDetail" maxlength="50" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label for="survey01-personal-phone"><img src="/campaign/images/kabrita/survey-event/popup/personal-age.png" alt="아기월령" /></label>
+                        </dt>
+                        <dd class="select-age">
+                            <select id="survey01-personal-age-years" class="" name="babyBirthYear" v-model="experienceData.babyBirthYear">
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                            </select>
+                            <img class="text__years" src="/campaign/images/kabrita/survey-event/popup/years.png" alt="년" />
+                            <select id="survey01-personal-age-month" name="babyBirthMonth" v-model="experienceData.babyBirthMonth">
+                                <option :value="month" v-for="month in 12">{{ month }}</option>
+                            </select>
+                            <img class="text__month" src="/campaign/images/kabrita/survey-event/popup/month.png" alt="개월" />
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label for="survey01-personal-step"><img src="/campaign/images/kabrita/survey-event/popup/personal-stage.png" alt="제품단계" /></label>
+                        </dt>
+                        <dd>
+                            <select id="survey01-personal-step" v-model="experienceData.proudctSteps" name="proudctSteps">
+                                <option value="step2 (6~12개월)"> 1) 2단계(6개월 ~ 12개월) </option>
+                                <option value="step3 (12~24개월)"> 2) 3단계(12개월 ~ 24개월) </option>
+                            </select>
+                        </dd>
+                    </dl>
+                    <div class="agree-wrap agree-wrap__border">
+                        <label for="survey01-agree1">
+                            <input type="checkbox" id="survey01-agree1" name="agree2" v-model="experienceData.agree2" />
+                            <span></span>
+                            <img src="/campaign/images/kabrita/survey-event/popup/agree-text01.png" alt="개인정보 활용동의 (필수)" />
+                        </label>
+                        <button type="button" class="btn-survey01-agree" @click="popBefore = 'survey01-personal' , openPopup('agree-personal') , closePopup(popBefore , false)">자세히보기</button>
+                    </div>
+                    <div class="agree-wrap">
+                        <label for="survey01-agree2">
+                            <input type="checkbox" id="survey01-agree2" name="agree3" v-model="experienceData.agree3" />
+                            <span></span>
+                            <img class="agree__text-2line" src="/campaign/images/kabrita/survey-event/popup/agree-text02.png" alt="경품 배송 및 이벤트 관련 위탁동의 (필수)" />
+                        </label>
+                        <button type="button" class="btn-survey01-agree" @click="popBefore = 'survey01-personal' , openPopup('agree-gift') , closePopup(popBefore , false)">자세히보기</button>
+                    </div>
+                    <div class="agree-wrap">
+                        <label for="survey01-agree3">
+                            <input type="checkbox" id="survey01-agree3" name="agree" v-model="experienceData.agree" />
+                            <span></span>
+                            <img src="/campaign/images/kabrita/survey-event/popup/agree-text03.png" alt="마케팅수신동의 (선택)" />
+                        </label>
+                        <button type="button" class="btn-survey01-agree" @click="popBefore = 'survey01-personal' , openPopup('agree-marketing') , closePopup(popBefore , false)">자세히보기</button>
+                    </div>
+                    <button type="submit" id="experience-entry-complete-btn" class="btn__entry">응모완료</button>
+                </form>
+            </div>
+            <button type="button" class="btn__close" onclick="closePopup('survey01-personal'); return false;">닫기</button>
+        </div>
+
+
+        <!-- 사전체험 : 설문 팝업 -->
+        <div class="popup pop-survey02" id="pop-survey02">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/survey-event/popup/title-survey02.png" alt="사전신청 설문" />
+                </div>
+            </div>
+            <div class="popup__content">
+                <form id="survey02Form" name="survey02Form">
+                    <!-- 1번질문 -->
+                    <div class="question question01">
+                        <p><img src="/campaign/images/kabrita/survey-event/popup/survey02-q01.png" alt="현재 아이의 연령은 어떻게 되나요?" /></p>
+                        <ul>
+                            <li v-for="(question, idx) in QuestionList[0]">
+                                <label @click="advanceApplicationSendData.babyAge = question ">
+                                    <input type="radio" name="survey01-q01" :id="'survey02-q01-a0'+ getQuestioinClass(idx)" />
+                                    <span :class="'question-a0' + getQuestioinClass(idx)"></span>
+                                    <img :src="'/campaign/images/kabrita/survey-event/popup/survey02-q01-a0' + getQuestioinClass(idx) +'.png'" :alt="question" />
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- 2번질문 -->
+                    <div class="question question02">
+                        <p>
+                            <label for="survey02-q02"><img src="/campaign/images/kabrita/survey-event/popup/survey02-q02.png" alt="현재 사용중인 제품은 무엇인가요? (임산부라면 희망하는 제품 또는 브랜드)" /></label>
+                        </p>
+                        <input type="text" id="survey02-q02" v-model="advanceApplicationSendData.usedProduct" placeholder="제품명을 입력해주세요." maxlength="30" />
+                    </div>
+                    <!-- 3번질문 -->
+                    <div class="question question03">
+                        <p><img src="/campaign/images/kabrita/survey-event/popup/survey02-q03.png" alt="현재 수유방식은 어떻게 하고계신가요?" /></p>
+                        <ul>
+                            <li v-for="(question, idx) in QuestionList[2]">
+                                <label @click="advanceApplicationSendData.feedingType = question ">
+                                    <input type="radio" name="survey02-q01" :id="'survey02-q01-a0'+ getQuestioinClass(idx)" />
+                                    <span :class="'question-a0' + getQuestioinClass(idx)"></span>
+                                    <img :src="'/campaign/images/kabrita/survey-event/popup/survey01-q01-a0' + getQuestioinClass(idx) +'.png'" :alt="question" />
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- 4번질문 -->
+                    <div class="question question04">
+                        <p>
+                            <label for="survey01-q04"><img src="/campaign/images/kabrita/survey-event/popup/survey01-q04.png" alt="육아하시면서 지금 가장 고민인 부분은?" /></label>
+                        </p>
+                        <input type="text" id="survey02-q04" placeholder="고민을 입력해주세요." v-model="advanceApplicationSendData.childcareWorry" maxlength="100" />
+                    </div>
+                    <button type="button" id="advance-question-check-btn" class="btn-survey-complete" @click="advanceQuestionCheck()">설문참여 완료</button>
+                </form>
+                <button type="button" class="btn__close" onclick="closePopup('survey02'); return false;">닫기</button>
+            </div>
+        </div>
+
+        <!-- 사전체험 : 개인정보 팝업 -->
+        <div class="popup pop-survey02-personal pop-personal" id="pop-survey02-personal">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/survey-event/popup/title-personal.png" alt="개인정보 입력" />
+                </div>
+            </div>
+            <div class="popup__content">
+                <form name="survey02Form" id="survey02FormPersonal">
+                    <dl>
+                        <dt>
+                            <label for="survey02-personal-name"><img src="/campaign/images/kabrita/survey-event/popup/personal-name.png" alt="성명" /></label>
+                        </dt>
+                        <dd><input type="text" name="name" id="survey02-personal-name" placeholder="홍길동" v-model="advanceApplicationSendData.name" maxlength="10" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label for="survey02-personal-phone"><img src="/campaign/images/kabrita/survey-event/popup/personal-phone.png" alt="휴대폰" /></label>
+                        </dt>
+                        <dd><input type="tel" name="mobile" id="survey02-personal-phone" v-model="advanceApplicationSendData.mobile" maxlength="11" placeholder="'-'기호 없이 입력해주세요." /></dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label for="survey02-personal-address"><img src="/campaign/images/kabrita/survey-event/popup/personal-address.png" alt="주소" /></label>
+                        </dt>
+                        <dd>
+                            <input type="text" class="post-input" name="zipcode" id="event-two-zipcode" readonly="readonly" />
+                            <button type="button" class="btn__post" @click="openPostCode('survey02-personal','event-two-zipcode','event-two-address')"></button>
+                        </dd>
+                        <dd class="full-address"><input type="text" name="address" id="event-two-address" readonly="readonly" /></dd>
+                        <dd class="full-address"><input type="text" name="addressDetail" v-model="advanceApplicationSendData.addressDetail" maxlength="50" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label for="survey02-personal-age"><img src="/campaign/images/kabrita/survey-event/popup/personal-age.png" alt="아기연령" /></label>
+                        </dt>
+                        <dd class="select-age">
+                            <select id="survey02-personal-age-years" name="babyBirthYear" v-model="advanceApplicationSendData.babyBirthYear">
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                            </select>
+                            <img class="text__years" src="/campaign/images/kabrita/survey-event/popup/years.png" alt="년" />
+                            <select id="survey02-personal-age-month" name="babyBirthMonth" v-model="advanceApplicationSendData.babyBirthMonth">
+                                <option :value="month" v-for="month in 12">{{month}}</option>
+                            </select>
+                            <img class="text__month" src="/campaign/images/kabrita/survey-event/popup/month.png" alt="월" />
+                        </dd>
+                    </dl>
+
+                    <div class="agree-wrap agree-wrap__border">
+                        <label for="survey02-agree1">
+                            <input type="checkbox" id="survey02-agree1" name="agree2" v-model="advanceApplicationSendData.agree2" />
+                            <span></span>
+                            <img src="/campaign/images/kabrita/survey-event/popup/agree-text01.png" alt="개인정보 활용동의 (필수)" />
+                        </label>
+                        <button type="button" class="btn-survey01-agree" @click="popBefore = 'survey02-personal' , openPopup('agree-personal') , closePopup(popBefore , false)">자세히보기</button>
+                    </div>
+                    <div class="agree-wrap">
+                        <label for="survey02-agree2">
+                            <input type="checkbox" id="survey02-agree2" name="agree3" v-model="advanceApplicationSendData.agree3" />
+                            <span></span>
+                            <img class="agree__text-2line" src="/campaign/images/kabrita/survey-event/popup/agree-text02.png" alt="경품 배송 및 이벤트 관련 위탁동의 (필수)" />
+                        </label>
+                        <button type="button" class="btn-survey01-agree" @click="popBefore = 'survey02-personal' , openPopup('agree-gift') , closePopup(popBefore , false)">자세히보기</button>
+                    </div>
+                    <div class="agree-wrap">
+                        <label for="survey02-agree3">
+                            <input type="checkbox" id="survey02-agree3" name="agree" v-model="advanceApplicationSendData.agree" />
+                            <span></span>
+                            <img src="/campaign/images/kabrita/survey-event/popup/agree-text03.png" alt="마케팅수신동의 (선택)" />
+                        </label>
+                        <button type="button" class="btn-survey01-agree" @click="popBefore = 'survey02-personal' , openPopup('agree-marketing') , closePopup(popBefore , false)">자세히보기</button>
+                    </div>
+                    <button type="submit" id="advance-entry-complete-btn" class="btn__entry">응모완료</button>
+                </form>
+            </div>
+            <button type="button" class="btn__close" onclick="closePopup('survey02-personal'); return false;">닫기</button>
+        </div>
+
+
+        <!-- 후기이벤트 : 개인정보 팝업 -->
+        <div class="popup pop-review-personal pop-personal" id="pop-review-personal">
+            <div class="popup__header">
+                <div class="popup__inner">
+
+                </div>
+            </div>
+            <div class="popup__content">
+                <form name="reviewForm" id="survey03FormPersonal">
+                    <dl>
+                        <dt>
+                            <label for="review-personal-name"><img src="/campaign/images/kabrita/survey-event/popup/personal-name.png" alt="성명" /></label>
+                        </dt>
+                        <dd><input type="text" name="name" id="review-personal-name" placeholder="홍길동" v-model="reviewData.name" maxlength="10" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label for="review-personal-phone"><img src="/campaign/images/kabrita/survey-event/popup/personal-phone.png" alt="휴대폰" /></label>
+                        </dt>
+                        <dd><input type="tel" name="mobile" id="review-personal-phone" v-model="reviewData.mobile" maxlength="11" placeholder="'-'기호없이 입력해주세요." /></dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label for="review-personal-address"><img src="/campaign/images/kabrita/survey-event/popup/personal-address.png" alt="주소" /></label>
+                        </dt>
+                        <dd>
+                            <input type="text" class="post-input" name="zipcode" id="event-review-zipcode" readonly="readonly" />
+                            <button type="button" class="btn__post" @click="openPostCode('review-personal','event-review-zipcode','event-review-address')"></button>
+                        </dd>
+                        <dd class="full-address"><input type="text" name="address" id="event-review-address" readonly="readonly" /></dd>
+                        <dd class="full-address"><input type="text" name="addressDetail" v-model="reviewData.addressDetail" maxlength="50" /></dd>
+                    </dl>
+
+                    <div class="agree-wrap agree-wrap__border">
+                        <label for="review-agree1">
+                            <input type="checkbox" id="review-agree1" name="agree2" v-model="reviewData.agree2" />
+                            <span></span>
+                            <img src="/campaign/images/kabrita/survey-event/popup/agree-text01.png" alt="개인정보 활용동의 (필수)" />
+                        </label>
+                        <button type="button" class="btn-survey01-agree" @click="popBefore = 'review-personal' , openPopup('agree-personal') , closePopup(popBefore , false)">자세히보기</button>
+                    </div>
+                    <div class="agree-wrap">
+                        <label for="review-agree2">
+                            <input type="checkbox" id="review-agree2" name="agree3" v-model="reviewData.agree3" />
+                            <span></span>
+                            <img class="agree__text-2line" src="/campaign/images/kabrita/survey-event/popup/agree-text02.png" alt="경품 배송 및 이벤트 관련 위탁동의 (필수)" />
+                        </label>
+                        <button type="button" class="btn-survey01-agree" @click="popBefore = 'review-personal' , openPopup('agree-gift') , closePopup(popBefore , false)">자세히보기</button>
+                    </div>
+                    <div class="agree-wrap">
+                        <label for="review-agree3">
+                            <input type="checkbox" id="review-agree3" name="agree" v-model="reviewData.agree" />
+                            <span></span>
+                            <img src="/campaign/images/kabrita/survey-event/popup/agree-text03.png" alt="마케팅수신동의 (선택)" />
+                        </label>
+                        <button type="button" class="btn-survey01-agree" @click="popBefore = 'review-personal' , openPopup('agree-marketing') , closePopup(popBefore , false)">자세히보기</button>
+                    </div>
+                    <button type="submit" id="review-entry-complete-btn" class="btn__entry">응모완료</button>
+                </form>
+            </div>
+            <button type="button" class="btn__close" onclick="closePopup('review-personal'); return false;">닫기</button>
+        </div>
+
+        <!-- 공유하기 팝업 -->
+        <div class="popup pop-share" id="pop-share">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/survey-event/popup/title-share.png" alt="공유하기" />
+                </div>
+            </div>
+            <div class="popup__content pop__content-center">                            
+                <img v-if="!sharePopupText" src="/campaign/images/kabrita/survey-event/popup/share-text.png" alt="카브리타 체험신청 이벤트를 공유하면 당첨확률이 up! 친구들에게도 공유해보세요">
+                <img v-else src="/campaign/images/kabrita/survey-event/popup/share-text2.png" alt="체험신청 이벤트에 참여해주셔서 감사합니다. 카브리타 체험신청 이벤트를 공유하면 당첨확률이 up! 친구들에게도 공유해보세요">
+                <div class="box__input">
+                    <div class="fake__inputbox">
+                        <span id="pageUrl">https://www.kabrita.kr/kabrita_try</span>
+                    </div>
+                    <button type="button" class="btn btn__copy codecopy" id="copy__url" data-clipboard-action="copy" v-bind:data-action="snsData.eventType" data-clipboard-target="#pageUrl">복사</button>
+                </div>
+                <span class="share__text">공유하면 당첨확률 up!</span>
+                <button type="button" class="btn btn__share" v-bind:data-action="snsData.eventType" @click='kakaotalkShare'>공유하기</button>
+                <button @click="closePopup('share') , sharePopupText=true" type="button" class="btn btn__close-big">닫기</button>
+            </div>
+            <button type="button" class="btn__close" @click="closePopup('share') , sharePopupText=true">닫기</button>
+        </div>
+
+        <!--우편번호 팝업 -->
+        <div class="popup pop-post" id="pop-post">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/survey-event/popup/title-post.png" alt="우편번호찾기" />
+                </div>
+            </div>
+            <!--  우편번호 -->
+            <div id="searchPostCode"></div>
+            <button type="button" class="btn__close" @click="closePopup('post', false), openPopup(popName)">닫기</button>
+        </div>
+
+        <!-- 마케팅 활용동의 팝업 -->
+        <div class="popup pop-agree-marketing" id="pop-agree-marketing">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/survey-event/popup/title-marketing.png" alt="마케팅 활용동의" />
+                </div>
+            </div>
+            <div class="agree-text-inner marketing-text">
+                <div class="a11y-hidden">
+                    <h4>후기컨텐츠 마케팅 활용 동의 안내</h4>
+
+                    LG생활건강 베비언스 브랜드에서 귀하의 저작물(카브리타 후기 컨텐츠)
+                    등에 대한 마케팅 활용을 위하여 아래와 같이 동의를 받고자 합니다.
+
+                    1) 마케팅 활용 목적 : 베비언스 자사 채널 및 온라인 마케팅 활용목적
+                    제품 판매 상세페이지,소셜 매체 홍보, 체험단 모집 이미지 삽입 등
+
+                    2) 활용의 범위 : 베비언스는 ‘저작물 등‘ 및 관련 정보를 귀하로부터
+                    제공받아 마케팅 등 당사 및 당사의 계열사, 관계회사의 사업 목적으로
+                    독점적으로 사용할 수 있습니다.
+
+                    3) 활용기간 :  2년
+
+                    본인은 위 내용과 같이 본인의 저작물을 활용하는 것에 동의합니다
+                </div>
+            </div>
+            <div class="pop__content-center">
+                <button type="button" class="btn btn__check-big btn__ok" @click="closePopup('agree-marketing', false), openPopup(popBefore)">확인</button>
+            </div>
+
+            <button type="button" class="btn__close" @click="closePopup('agree-marketing', false), openPopup(popBefore)">닫기</button>
+        </div>
+
+        <!-- 개인정보 활용동의 팝업 -->
+        <div class="popup pop-agree-personal" id="pop-agree-personal">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/survey-event/popup/title-agree-personal.png" alt="개인정보 활용동의" />
+                </div>
+            </div>
+            <div class="agree-text-inner personal-text">
+                <div class="a11y-hidden">
+                    <h4>개인정보의 필수적 수집/ 이용 동의</h4>
+
+                    본 이벤트 응모를 위해서는 아래 사항에 대한 동의가 필요합니다.
+                    아래 사항에 동의하지 않으실 수 있으나,
+                    동의하지 않으실 경우 이벤트 참여가 불가능함을 알려드립니다.
+
+                    본인은 귀사가 아래의 내용과 같이 본인의 개인정보를
+                    수집/이용하는 것에 동의합니다.
+
+                    · 개인정보 수집/이용목적 : 이벤트 진행 관련 업무
+                    · 수집/이용 할 개인정보의 내용 : 성명, 휴대전화번호, 주소
+                    · 개인정보의 보유 및 이용기간 : 경품 발송 즉시 폐기
+
+                    - 거래 목적 달성을 위해 고객님으로부터 수집한 정보를 위탁업체에
+                    전달 할 수 있습니다.
+                    - 거래 목적 달성을 위한 개인정보 위탁(업무처리 수탁업체 위탁 등)
+
+                    ·  개인정보를 위탁받는 자 : 메가존㈜
+                    ·  개인정보 위탁 목적:  이벤트 응모 정보 및 경품 발송 목적
+                    ·  발송위탁 대상 개인정보 : 성명, 휴대전화번호, 주소위탁
+                    ·  받는 자의 개인정보 보유 및 이용 기간 : 경품발송 즉시 폐기
+                </div>
+            </div>
+            <div class="pop__content-center">
+                <button type="button" class="btn btn__check-big btn__ok" @click="closePopup('agree-personal', false), openPopup(popBefore)">확인</button>
+            </div>
+
+            <button type="button" class="btn__close" @click="closePopup('agree-personal', false), openPopup(popBefore)">닫기</button>
+        </div>
+
+        <!-- 경품배송 및 이벤트 위탁동의 -->
+        <div class="popup pop-agree-gift" id="pop-agree-gift">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img class="title-2line" src="/campaign/images/kabrita/survey-event/popup/title-agree-event.png" alt="경품배송및 이벤트관련 위탁동의" />
+                </div>
+            </div>
+            <div class="agree-text-inner gift-text">
+                <div class="a11y-hidden">
+                    <h4>개인정보의 필수적 수집/ 이용 동의</h4>
+                    본 이벤트 응모를 위해서는 아래 사항에 대한 동의가 필요합니다.
+                    아래 사항에 동의하지 않으실 수 있으나,
+                    동의하지 않으실 경우 이벤트 참여가 불가능함을 알려드립니다.
+
+                    본인은 귀사가 아래의 내용과 같이 본인의 개인정보를
+                    수집/이용하는 것에 동의합니다.
+
+                    · 개인정보 수집/이용목적 : 이벤트 진행 관련 업무
+                    · 수집/이용 할 개인정보의 내용 : 성명, 휴대전화번호, 주소
+                    · 개인정보의 보유 및 이용기간 : 경품 발송 즉시 폐기
+
+                    - 거래 목적 달성을 위해 고객님으로부터 수집한 정보를 위탁업체에
+                    전달 할 수 있습니다.
+                    - 거래 목적 달성을 위한 개인정보 위탁(업무처리 수탁업체 위탁 등)
+
+                    ·  개인정보를 위탁받는 자 : 메가존㈜
+                    ·  개인정보 위탁 목적:  이벤트 응모 정보 및 경품 발송 목적
+                    ·  발송위탁 대상 개인정보 : 성명, 휴대전화번호, 주소위탁
+                    ·  받는 자의 개인정보 보유 및 이용 기간 : 경품발송 즉시 폐기
+                </div>
+            </div>
+            <div class="pop__content-center">
+                <button type="button" class="btn btn__check-big btn__ok" @click="closePopup('agree-gift', false), openPopup(popBefore)">확인</button>
+            </div>
+            <button type="button" class="btn__close" @click="closePopup('agree-gift', false), openPopup(popBefore)">닫기</button>
+        </div>
+
+        <!-- 당첨자발표일 안내 -->
+        <div class="popup pop-prizewinner-day" id="pop-prizewinner-day">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/survey-event/popup/title-prizewinner-day.png" alt="당첨자 발표일 안내" />
+                </div>
+            </div>
+            <div class="popup__content">
+                <img src="/campaign/images/kabrita/survey-event/popup/text-prizewinner-day.png" alt="당첨자 발표일 안내" />
+                <div class="a11y-hidden">
+                    <!--<h4>개인정보의 필수적 수집/ 이용 동의</h4>-->
+                    <ul>
+                        <li>
+                            1주차 : 2018.07.11(수) ~ 07.17(화)
+                        </li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+
+                </div>
+            </div>
+            <button type="button" class="btn__close" onclick="closePopup('prizewinner-day'); return false;">닫기</button>
+        </div>
+
+
+        <!-- 당첨자발표 -->
+        <div class="popup pop-prizewinner" id="pop-prizewinner">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/survey-event/popup/title-prizewinner.png" alt="당첨안내" />
+                </div>
+            </div>
+            <div class="popup__content">
+                <p class="win__text"><img src="/campaign/images/kabrita/survey-event/popup/prizewinner-text.png" alt="카브리타 체험 이벤트 당첨을 축하드립니다" /></p>
+                <ul class="prizewinner__tab">
+                    <li v-for="(tab, idx) in prizewinnerTab" :class="{ is__active : tab.active }" @click="idx < 5 ? winnerTab(tab) : alert('당첨자발표 기간이 아닙니다.')">{{ tab.tab }}</li>
+                </ul>
+                <div class="prizewinner-survey01 prizewinner__box">
+                    <h5 class="prizewinner-survey01__title">바로체험</h5>
+                    <p class="title__step"><b>2단계 (6개월~12개월)</b></p>
+                    <ul>
+                        <li v-for="win in prizWinner01Step02[prizewinnerTabNumber]">{{ win }}</li>
+                    </ul>
+
+                    <p class="title__step"><b>3단계 (12개월~24개월)</b></p>
+                    <ul>
+                        <li v-for="win in prizWinner01Step03[prizewinnerTabNumber]">{{ win }}</li>
+                    </ul>
+                </div>
+                <div class="prizewinner-survey02 prizewinner__box">
+                    <h5 class="prizewinner-survey02__title">사전신청</h5>
+                    <ul>
+                        <li v-for="win in prizWinner02[prizewinnerTabNumber]">{{ win }}</li>
+                    </ul>
+                </div>
+                <div class="prizewinner-note">
+                    <div class="a11y-hidden">
+                        <ul>
+                            <li>바로신청 이벤트의 경우 체험 제품은 당첨자 발표로부터 1~2주 내에 일괄 배송됩니다.</li>
+                            <li>사전체험 이벤트의 경우 당첨자 발표 이후 체험제품이 바로 발송되지 않습니다. 당첨자별 응모내역을 기반으로 아기가 6개월 되는 시점에 배송해드립니다.</li>
+                            <li>이벤트 전체기간 내 참여자 대상 매주 목요일 당첨자를 발표합니다.</li>
+                            <li>당첨자에게는 SMS개별 연락 안내 예정입니다.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="pop__content-center">
+                <button type="button" class="btn btn__check-big" onclick="closePopup('prizewinner'); return false;">확인</button>
+            </div>-->
+            <button type="button" class="btn__close" onclick="closePopup('prizewinner'); return false;">닫기</button>
+        </div>
+
+        <!-- 선물안내 -->
+        <div class="popup pop-gift" id="pop-gift">
+            <div class="popup__header">
+                <div class="popup__inner">
+                    <img src="/campaign/images/kabrita/survey-event/popup/title-gift.png" alt="선물안내" />
+                </div>
+            </div>
+            <div class="popup__content">
+                <img src="/campaign/images/kabrita/survey-event/popup/gift-list.png" alt="당첨자 발표일 안내" />
+                <div class="a11y-hidden">
+                    <ul>
+                        <li>
+                            1주차 : 2018.07.11(수) ~ 07.17(화)
+                        </li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+
+                </div>
+            </div>
+            <button type="button" class="btn__close" onclick="closePopup('gift'); return false;">닫기</button>
+        </div>
+
+			<!--당첨자 팝업 -->
+			<div class="popup pop-review-winner" id="pop-review-winner">
+				<div class="popup__header">
+					<div class="popup__inner">
+						<img src="/campaign/images/kabrita/survey-event/popup/title-prizewinner.png" alt="당첨안내" />
+					</div>
+				</div>
+				<div class="popup__content">
+					<p><img src="/campaign/images/kabrita/survey-event/popup/winner-sub-title.png" alt="카브리타 후기이벤트 당첨을 축하드립니다" /></p>
+					<div class="winner-wrap">
+						<h4 class="winner__sub-title"><img src="/campaign/images/kabrita/survey-event/popup/winner-title01.png" alt="" /></h4>
+						<div class="winner-txt">
+							<ul>
+								<li>박*주	(3845)</li>
+							</ul>
+						</div>
+					</div>
+					<div class="winner-wrap">
+						<h4 class="winner__sub-title"><img src="/campaign/images/kabrita/survey-event/popup/winner-title02.png" alt="" /></h4>
+						<div class="winner-txt">
+							<ul>
+								<li>정*우(2932)</li>
+								<li>김*현(8486)</li>
+								<li>최*규(1157)</li>
+								<li>최*민(2904)</li>
+								<li>이*원(5933)</li>
+								<li>윤*경(0970)</li>
+								<li>조*서(8756)</li>
+								<li>박*민(9331)</li>
+								<li>최*희(0167)</li>
+								<li>황*현(1486)</li>
+							</ul>
+						</div>
+					</div>
+					<div class="winner-wrap">
+						<h4 class="winner__sub-title"><img src="/campaign/images/kabrita/survey-event/popup/winner-title03.png" alt="" /></h4>
+						<div class="winner-txt">
+							<ul>
+								<li>유*미(0529)</li>
+								<li>임*미(8311)</li>
+								<li>박*남(5445)</li>
+								<li>김*선(5142)</li>
+								<li>김*현(8992)</li>
+								<li>박*영(1277)</li>
+								<li>권*래(2818)</li>
+								<li>이*현(2632)</li>
+								<li>최*름(4152)</li>
+								<li>권*아(2907)</li>
+								<li>이*나(4000)</li>
+								<li>유*혜(1384)</li>
+								<li>이*미(4581)</li>
+								<li>황*서(7735)</li>
+								<li>오*혜(4787)</li>
+								<li>권*선(5203)</li>
+								<li>최*랑(9521)</li>
+								<li>강*미(8200)</li>
+								<li>이*진(8269)</li>
+								<li>강*리(7304)</li>
+							</ul>
+						</div>
+					</div>
+					<div class="winner-wrap">
+						<h4 class="winner__sub-title"><img src="/campaign/images/kabrita/survey-event/popup/winner-title04.png" alt="" /></h4>
+						<div class="winner-txt">
+							<ul>
+								<li>류*름(3183)</li>
+								<li>박*의(1257)</li>
+								<li>백*연(3359)</li>
+								<li>박*주(8596)</li>
+								<li>박*현(6449)</li>
+								<li>윤*옥(6434)</li>
+								<li>박*영(2466)</li>
+								<li>최*정(8916)</li>
+								<li>이*경(9236)</li>
+								<li>박*실(3511)</li>
+								<li>정*희(4455)</li>
+								<li>주*희(8031)</li>
+								<li>이*진(7156)</li>
+								<li>조*선(9273)</li>
+								<li>이*미(7362)</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<img src="/campaign/images/kabrita/survey-event/popup/review-winner-note.png" alt="유의사항" />
+					</div>
+				</div>
+
+				<button type="button" class="btn__close" onclick="closePopup('review-winner'); return false;">닫기</button>
+			</div>
+    </div>
+</body>
+</html>
