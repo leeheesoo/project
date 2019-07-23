@@ -1,0 +1,66 @@
+.logo {
+    padding-left: 30px;
+}
+
+.event-visual {
+    padding-bottom: 50px;
+    .btn--download {
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+.event-desc {
+    padding-top: 70px;
+    background : #ff6600;
+
+    figure {
+        padding: 0;
+    }
+}
+
+.event-howto {
+    padding-top: 46px;
+    background : #ff8433;
+    &:before {
+        content: '';
+        display: block;
+        position: relative;
+        top: -46px;
+        width: 640px;
+        height: 57px;
+        background: url(../../Images/Nilririmanbo/deco1.png) center top;
+    }
+
+    .btn--participate {
+        margin-top: -60px;
+        margin-bottom: 50px;
+    }
+}
+
+.event-prizes {
+    position: relative;
+    background: #ff6600;
+    padding-bottom: 40px;
+    .btn--prize-details {
+        position: absolute;
+        top: 870px;
+        left: 276px;
+    }
+}
+
+.event-photo-list {
+    &:before {
+        content: '';
+        display: block;
+        position: relative;
+        width: 640px;
+        height: 57px;
+        background: url(../../Images/Nilririmanbo/deco2.png) center top;
+    }
+}
+
+.event-note {
+    background: #e4e4e4;
+    padding-bottom: 50px;
+}

@@ -1,0 +1,91 @@
+.slick {
+    &--desc {
+        padding: 0 110px;    
+        img {
+            margin: 0 auto;
+        }
+    }
+    &--photolist {
+        padding: 0 60px;
+    }
+}
+
+.slick--photolist {
+    .single-slider__item {
+        padding: 10px 5px;        
+        overflow: hidden;
+        a {
+            display: inline-block;
+            width: 260px;
+            height: 260px;
+            position: relative;
+            padding: 0;
+            margin: 0;
+            font-size: 0;
+            line-height: 0;
+            overflow: hidden;            
+            background: url('/Content/Images/Nilririmanbo/slider-init-img.png') no-repeat top left;
+        }
+        img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            vertical-align: top;
+        }
+    }
+}
+
+.single-slider {
+    margin: 54px 0 20px;
+
+    .event-photo-list & {
+        padding-bottom: 40px;
+    }
+}
+
+.event-howto__nav {
+    position: relative;
+    width: 100%;
+    top: -410px;
+
+    &:after {
+        content: '';
+        display: table;
+        /*clear: both;*/
+    }
+}
+
+.howto__btn {
+    width: 40px;
+    height: 87px;
+    background: url(../../Images/Nilririmanbo/btn-instruction-nav.png) left top;
+}
+
+.event-photo-list__nav {
+    position: relative;
+    width: 100%;
+    top: -500px;
+
+    &:after {
+        content: '';
+        display: table;
+        /*clear: both;*/
+    }
+}
+
+.photo-list__btn {
+    width: 51px;
+    height: 51px;
+    background: url(../../Images/Nilririmanbo/btn-insta-nav.png) left top;
+}
+
+.btn--prev {
+    margin-left: 30px;
+    float: left;
+}
+
+.btn--next {
+    margin-right: 30px;
+    float: right;
+    background-position: right top;
+}

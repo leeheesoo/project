@@ -1,0 +1,87 @@
+.wrap {
+  margin: 0 auto;
+  width: 720px;
+  padding-top: 130px;
+}
+
+.event-kv {
+  height: 1197px;
+  margin-top: -1px;
+  @include background-image($loc + 'bg-kv.png');
+  .logo {
+    @include size(109px, 57px);
+    padding-top: 30px;
+    margin: auto;
+  }
+}
+
+.event01 {
+  height: 1493px;
+  margin-top: -1px;
+  text-align: center;
+  @include background-image($loc + 'bg-ev1.png');
+}
+
+.event02 {
+  height: 2230px;
+  margin-top: -1px;
+  text-align: center;
+  @include background-image($loc + 'bg-ev2-v3.png');
+}
+
+.event03 {
+  height: 1929px;
+  margin-top: -1px;
+  text-align: center;
+  @include background-image($loc + 'bg-ev3-v2.png');
+}
+
+/* .event04 {
+  height: 1932px;
+  margin-top: -1px;
+  text-align: center;
+  @include background-image($loc + 'bg-ev4.png');
+} */
+
+.event-footer {
+  height: 274px;
+  @include background-image($loc + 'bg-footer.png');
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 0;
+  .anchors {
+    &__item {
+      display: inline-block;
+    }
+  }
+  
+  .anchor {
+    display: block;
+    @include size(144px, 130px);
+    @include background-image($loc + 'nav-v2.png', $pos: left top);
+
+    @for $i from 1 through 4 {
+      &-to-ev#{$i} {
+        font-size: 0;
+        background-position: (-144px * $i) top;
+      }
+    }
+
+    &.on {
+      background-position-y: bottom;
+    }
+
+  }
+
+  .btn-winner {
+    @include background-image($loc + 'btn-winner-pop-m.png', $pos: right bottom);
+    @include size(144px, 130px);
+    &.on {
+      background-position-y: top;
+    }
+  }
+}

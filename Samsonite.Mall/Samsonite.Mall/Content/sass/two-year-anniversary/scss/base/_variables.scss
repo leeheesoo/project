@@ -1,0 +1,15 @@
+//---------------------------------------------------
+// variables
+//---------------------------------------------------
+
+//location
+$location: '../../../Images/two-year-anniversary/';
+
+@if $device == web { 
+    $location: '../../../Images/two-year-anniversary/w/';
+    //$width: 1000px;
+
+} @else {
+    $location: '../../../Images/two-year-anniversary/m/';
+    //$width: 640px;
+}

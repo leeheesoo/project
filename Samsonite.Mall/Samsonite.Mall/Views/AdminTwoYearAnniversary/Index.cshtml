@@ -1,0 +1,79 @@
+﻿@model Samsonite.Mall.Models.TwoYearAnniversaryModels.TwoYearAnniversaryPageQueryOptions
+@{
+    ViewBag.Title = "2주년 룰렛 이벤트 > 참여자";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row" style="padding-left:30px; padding-right:30px" id="twoAnniversaryEntry">    
+    <div class="panel panel-primary filterable">
+        <div class="panel-heading">
+            <h3 class="panel-title">참여자 목록</h3>
+            <div class="text-right">
+                <span>{{ data.TotalItemCount }} 건</span>
+            </div>
+        </div>
+        <form name="test">
+            <table class="table table-bordered table-hover table-sortable" style="margin:10px;width:98.5%">
+                <thead>
+                    <tr>
+                        <th class="text-center" style="vertical-align:middle" colspan="7">
+                            <span>From : </span>@Html.TextBoxFor(x => x.FromDate, new { @class = "datepicker", v_model = "dataFilter.FromDate" })
+                            <span>To : </span>@Html.TextBoxFor(x => x.ToDate, new { @class = "datepicker", v_model = "dataFilter.ToDate" })
+                            <span>경품 : </span>@Html.EnumDropDownListFor(x => x.PrizeType, "전체", new { v_model = "dataFilter.PrizeType" })
+                            <span>계정 : </span>@Html.TextBoxFor(x => x.SamsoniteId, new { v_model = "dataFilter.SamsoniteId" })
+                            <span>채널 : </span>@Html.EnumDropDownListFor(x => x.Channel, "전체", new { v_model = "dataFilter.Channel" })
+                            <br /><span>ip : </span>@Html.TextBoxFor(x => x.IpAddress, new { v_model = "dataFilter.IpAddress" })
+                        </th>
+                        <th class="text-center" style="vertical-align:middle">
+                            <button type="button" class="btn btn-info" v-on:click="goToPage(1)"><i class="fa fa-search"></i> 검색</button>
+                            <button type="button" class="btn btn-success btn-sm" v-on:click="goToExcel()"><span class="glyphicon glyphicon-download-alt"></span> 엑셀다운</button>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="vert-middle text-center">순번</th>
+                        <th class="vert-middle text-center">샘소나이트 아이디(암호화)</th>
+                        <th class="vert-middle text-center">샘소나이트 아이디(복호화)</th>
+                        <th class="vert-middle text-center">참여일자</th>
+                        <th class="vert-middle text-center">당첨 경품</th>
+                        <th class="vert-middle text-center">참여경로</th>
+                        <th class="vert-middle text-center">ip주소</th>
+                        <th class="vert-middle text-center"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item, index) in data.Items">
+                        <td>{{ data.TotalItemCount - ((dataFilter.Page - 1) * (dataFilter.PageSize) + index) }}</td>
+                        <td class="vert-middle text-center">{{ item.SamsoniteId }}</td>
+                        <td class="vert-middle text-center">{{ item.SamsoniteEncryptionId }}</td>
+                        <td class="vert-middle text-center">{{ item.CreateDate | getDate }}</td>
+                        <td class="vert-middle text-center">{{ item.PrizeName }}</td>
+                        <td class="vert-middle text-center">{{ item.ChannelName }}</td>
+                        <td class="vert-middle text-center">{{ item.IpAddress }}</td>
+                        <td class="vert-middle text-center"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <div style="text-align:center">
+            <a href="#" v-show="!data.IsFirstPage" v-on:click="goToPage(1)">처음</a>
+            <a href="#" v-show="data.HasPreviousPage" v-on:click="goToPage(data.PageNumber - 1)">이전</a>
+            <a href="#" v-for="page in pages" v-on:click="goToPage(page)" v-bind:style="{ fontWeight : ( page === data.PageNumber) ? 'bold' : 'normal' }"> {{ page }} </a>
+            <a href="#" v-show="data.HasNextPage" v-on:click="goToPage(data.PageNumber + 1)">다음</a>
+            <a href="#" v-show="!data.IsLastPage" v-on:click="goToPage(data.PageCount)">마지막</a>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/js/common/vue.min.js"></script>
+    <script src="~/Content/js/two-year-anniversary/two-year-anniversary-admin.js"></script>
+    <script>
+        $('#FromDate').change(function () {
+            twoYearAnniversaryEntrygModel.dataFilter.FromDate = $('#FromDate').val();
+        });
+        $('#ToDate').change(function () {
+            twoYearAnniversaryEntrygModel.dataFilter.ToDate = $('#ToDate').val();
+        });
+        $(function () {
+            twoYearAnniversaryEntrygModel.goToPage();
+        })
+    </script>
+}

@@ -1,0 +1,8 @@
+@mixin size($w, $h: $w){
+  width: $w;
+  height: $h;
+}
+
+@mixin debug($color: red) {
+  outline: 1px solid $color;
+}

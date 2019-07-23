@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INGLife.Event", "INGLife.Event\INGLife.Event.csproj", "{AF62808B-AC5A-4791-B35B-0F19E13C47F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INGLife.Event.Domain", "INGLife.Event.Domain\INGLife.Event.Domain.csproj", "{F7AC11B0-44AA-4AEE-B0E9-99A923767C91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INGLife.Event.Test", "INGLife.Event.Test\INGLife.Event.Test.csproj", "{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INGLife.Event.Message", "INGLife.Event.Message\INGLife.Event.Message.csproj", "{A5F554EF-AD46-48EE-AAFD-42A364C386B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF62808B-AC5A-4791-B35B-0F19E13C47F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF62808B-AC5A-4791-B35B-0F19E13C47F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF62808B-AC5A-4791-B35B-0F19E13C47F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF62808B-AC5A-4791-B35B-0F19E13C47F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7AC11B0-44AA-4AEE-B0E9-99A923767C91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7AC11B0-44AA-4AEE-B0E9-99A923767C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7AC11B0-44AA-4AEE-B0E9-99A923767C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7AC11B0-44AA-4AEE-B0E9-99A923767C91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5F554EF-AD46-48EE-AAFD-42A364C386B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5F554EF-AD46-48EE-AAFD-42A364C386B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5F554EF-AD46-48EE-AAFD-42A364C386B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5F554EF-AD46-48EE-AAFD-42A364C386B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,17 @@
+﻿<div class="pop" id="shareSns">
+    <button type="button" class="pop_close" onclick="pop.close('shareSns'); pop.dimOff();"><img src="~/Images/MainStream/pop/btn_close.png" alt="팝업닫기"></button>
+    <div class="pop_head">
+        <img src="~/Images/MainStream/pop/txt_tit_sns.png" alt="친구에게 알려주기">
+    </div>
+    <div class="pop_body share_sns">
+        <div class="share_sns_btn">
+            <button type="button" class="share_fb GA" onclick="shareFacebook()" data-category="@ViewBag.Title" data-action="페이스북 공유"><span class="blind">페이스북</span></button>
+            <button type="button" class="share_ks GA" onclick="shareKakaoStory()" data-category="@ViewBag.Title" data-action="카카오스토리 공유"><span class="blind">카카오스토리</span></button>
+            <button type="button" class="share_kt GA" onclick="shareKakaoTalk()" data-category="@ViewBag.Title" data-action="카카오톡 공유"><span class="blind">카카오톡</span></button>
+        </div>
+        <p class="notice_share_sns"><img src="~/Images/MainStream/pop/txt_share_sns.png" alt="각 SNS별 1일 3회 공유 가능"></p>
+        <div class="pop_submit_area">
+            <button type="button" onclick="pop.close('shareSns'); pop.dimOff();"><img src="~/Images/MainStream/pop/btn_submit_sns.png" alt="공유완료"></button>
+        </div>
+    </div>
+</div>

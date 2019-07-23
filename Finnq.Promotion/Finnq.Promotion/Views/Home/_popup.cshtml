@@ -1,0 +1,92 @@
+﻿@model Finnq.Promotion.Models.TmapEventModels.TmapEventEntryModel
+<div class="dim"></div>
+
+<div class="popups pop-info" id="pop-info">
+    <div class="btn-close">
+        <a href="javascript:void(0);" onclick="closePop('pop-info');"><img src="~/Content/tmap/images/popup/btn_close.png" alt="닫기"/></a>
+    </div>
+    <div class="pop-header">
+        <h3><img src="~/Content/tmap/images/popup/popup_title.png" alt="당첨자 선정을 위한 개인정보를 입력해 주세요" /></h3>
+    </div>
+    <!-- pop-con -->
+    <div class="pop-con">
+        @using (Ajax.BeginRouteForm("CreateTmapEventEntry", new { httpRoute = true},
+            new AjaxOptions { HttpMethod = "post", OnBegin = "tmapEventEntryModel.beginEntry", OnComplete = "tmapEventEntryModel.completeEntry",
+                OnFailure = "tmapEventEntryModel.failEntry", OnSuccess = "tmapEventEntryModel.successEntry" }, 
+            new { id = "frmTmapEventEntry" })) {
+            <fieldset>
+                <legend class="blind">개인정보 입력</legend>
+                <div class="info-area">
+                    <dl class="info-name">
+                        <dt><label for="Name"><img src="~/Content/tmap/images/popup/text_name.png" alt="이름" /></label></dt>
+                        <dd>
+                            @Html.TextBoxFor(x=>x.Name, new { @class="ph_name", maxlength="10" })
+                        </dd>
+                    </dl>
+                    <dl class="info-phone">
+                        <dt><label for="PhoneA"><img src="~/Content/tmap/images/popup/text_phone.png" alt="휴대폰" /></label></dt>
+                        <dd>
+                            @Html.TextBoxFor(x => x.PhoneA, new { @class = "ph_phone", maxlength = "3", type = "tel", onkeyup = "nextBlank(3, this.id, 'PhoneB')" }) <img src="~/Content/tmap/images/popup/icon_hyphen.jpg" alt="하이픈" />
+                            @Html.TextBoxFor(x => x.PhoneB, new { @class = "ph_phone", maxlength = "4", type = "tel", onkeyup = "nextBlank(4, this.id, 'PhoneC')" }) <img src="~/Content/tmap/images/popup/icon_hyphen.jpg" alt="하이픈" />
+                            @Html.TextBoxFor(x => x.PhoneC, new { @class = "ph_phone", maxlength = "4", type = "tel" })
+                        </dd>
+                    </dl>
+
+                </div>
+                <!-- //info-area -->
+                <!-- policy-area -->
+                <div class="policy-area policy-box1">
+                    <p class="policy-check">
+                        <img src="~/Content/tmap/images/popup/agree_policy1.png" alt="개인정보 수집 이용 동의 안내" />
+                    </p>
+                    <div class="contents">
+                        <span>
+                            개인정보 수집 이용 동의 안내<br>
+                            1. 개인정보 수집범위 : 이름, 휴대전화번호<br>
+                            2. 개인정보 수집 및 이용 목적 : 이벤트 응모, 추첨, 경품 발송 등 이벤트 운영<br>
+                            3. 개인정보 보유 및 이용 기간 : 이벤트 종료 후 1개월 이내 파기<br>
+                            4. 개인정보 수집 이용에 동의하지 않을 수 있으나, 미동의 시 이벤트 참여가 불가능합니다.<br>
+                        </span>
+                    </div>
+                    <p class="policy-check">
+                        <label>
+                            @Html.CheckBoxFor(x=>x.Agree)
+                            <span></span>
+                        </label>
+                    </p>
+                </div>
+                <div class="policy-area policy-box2">
+                    <p class="policy-check">
+                        <img src="~/Content/tmap/images/popup/agree_policy2.png" alt="개인정보 취급 위탁 동의 안내" />
+                    </p>
+                    <div class="contents">
+                        <span>
+                            개인정보 취급 위탁 동의 안내<br>
+                            1. 개인정보 취급 위탁을 받는 자 : 메가존㈜<br>
+                            2. 개인정보 취급 위탁 목적 : 이벤트 운영 대행을 위한 개인정보 취급<br>
+                            3. 개인정보 취급 및 이용 기간 : 이벤트 종료 후 1개월 이내 파기<br>
+                            4. 개인정보 취급 위탁에 동의하지 않을 수 있으나, 미동의 시 이벤트 참여가 불가능합니다. 
+
+                        </span>
+                    </div>
+                    <p class="policy-check">
+                        <label>
+                            @Html.CheckBoxFor(x=>x.Agree2)
+                            <span></span>
+                        </label>
+                    </p>
+                </div>
+                <!-- //policy-area -->
+                <div class="btn">
+                    @* <input type="image" src="~/Content/tmap/images/popup/btn_finish.png" name="confirm" alt="완료">*@
+                    <input type="submit" value="finish" id="finish" data-delay="500" />
+                    <button for="finish"><img src="~/Content/tmap/images/popup/btn_finish.png" alt="완료" /></button>
+                    <div class="loading" v-show="showLoading"><img src="~/Content/tmap/images/popup/loading.gif" alt="loading"/></div>                       
+                </div>
+
+                <p class="next-text"><img src="~/Content/tmap/images/popup/text_nextpage.png" alt="완료 시 앱다운로드 페이지로 이동합니다" /></p>
+            </fieldset>
+        }
+    </div>
+    <!-- //pop-con -->
+</div>

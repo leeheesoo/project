@@ -1,0 +1,90 @@
+﻿@model INGLife.Event.Models.TumblerEventModels.TumblerEventModel
+@{
+	ViewBag.Title = "ORANGELIFE 텀블러 이벤트";
+	ViewBag.ViewPortWidth = 720;
+}
+
+@section styles {
+	<link href="~/Content/TumblerEvent/css/event.css" rel="stylesheet" />
+	@Scripts.Render("~/bundles/vuejs")
+}
+
+@section metas{
+    <meta property="og:image" content="@ViewBag.image" />
+    <meta property="og:url" content="@ViewBag.url" />
+}
+
+
+<div class="wrap" id="tumblerEvent">
+	<div class="event-inner">
+
+		<section class="kv">
+			<div class="a11y-hidden">
+				<h1>오렌지 텀블러 or 오렌지 때 박스 무료 증정</h1>
+				<p>신청만 하면 오렌지텀블러 or 오렌지 때 박스 혜택 늦기전에 지금바로 참여하세요!</p>
+
+				<dl>
+					<dt>이벤트기간</dt>
+					<dd>2018.11.15 ~ 소진시</dd>
+				</dl>
+			</div>
+		</section>
+
+		<!--오렌지텀블러 받기 -->
+		<section class="orange-tumbler">
+			<div class="a11y-hidden">
+				<h2>오렌지 텀블러 무료증정!</h2>
+
+				<h3>선착순 3000명</h3>
+			</div>
+			<button type="button" class="btn btn__tumbler ga-event" v-on:click="openEventPop('tumbler')" data-action="오렌지 텀블러 받기">오렌지 텀블러 받기</button>
+		</section>
+
+		<!--시크릿박스 받기 -->
+		<section class="secret-box">
+			<div class="a11y-hidden">
+				<h3>상담 신청만 해도 오렌지 때 박스 무료 증정!</h3>
+				<p>선착순 100명 참여 완료시 종료</p>
+
+				<p>오렌지 때 박스는 오렌지라이프 FC가 직접 방문하여 전달할 예정입니다.</p>
+			</div>
+			<button type="button" class="btn btn__secret-box ga-event" v-on:click="openEventPop('secret')" data-action="시크릿 박스 받기">시크릿 박스 받기</button>
+		</section>
+
+		<section class="event-notice">
+			<ul class="a11y-hidden">
+				<li>이벤트 기간 내에만 참여가 가능합니다</li>
+				<li>지정 인원 선착순 참여 완료 시 이벤트가 종료됩니다.</li>
+				<li>비정싱적인 방법으로 참여한 경우, 당첨이 취소 될 수 있습니다.</li>
+				<li>상기 이미지와 실제 상품에는 차이가 있을 수 있으며, 내부사정으로 인해 변경될 수 있습니다.</li>
+				<li>오렌지 때 박스는 오렌지라이프 fc가 직접 방문하여 전달드립니다.</li>
+				<li>텀블러 배송은 11월 말 입력하신 주소로 일괄 발송되며, 주소 오기입으로 인한 배송문제는 책임지지 않습니다.</li>
+			</ul>
+		</section>
+	</div>
+
+	@Html.Partial("_popup")
+	</div>
+
+	@section scripts {
+	<script src="~/Content/common/dev-common.js"></script>
+	<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+	<script src="~/Content/js/TumblerEvent/pub.js"></script>
+    <script src="~/Content/js/TumblerEvent/dev.js"></script>
+    <script type="text/javascript">
+        var googleAnalyticCategory = '@ViewBag.Title';
+        var eventOneClose = '@ViewBag.IsEvnetOneClose';
+        var eventTwoClose = '@ViewBag.IsEvnetTwoClose';
+
+        window.name = "kmcis_web_sample";
+        function openKMCISWindow() {
+            var KMCIS_window = window.open('', 'KMCISWindow', 'width=425, height=550, resizable=0, scrollbars=no, status=0, titlebar=0, toolbar=0, left=435, top=250');
+            if (KMCIS_window == null) {
+                alert(" ※ 윈도우 XP SP2 또는 인터넷 익스플로러 7 사용자일 경우에는 \n    화면 상단에 있는 팝업 차단 알림줄을 클릭하여 팝업을 허용해 주시기 바랍니다. \n\n※ MSN,야후,구글 팝업 차단 툴바가 설치된 경우 팝업허용을 해주시기 바랍니다.");
+            }
+            $('#KMCISForm')[0].target = 'KMCISWindow';
+            $('#KMCISForm')[0].action = 'https://www.kmcert.com/kmcis/web/kmcisReq.jsp';
+            $('#KMCISForm')[0].submit();
+        }
+    </script>
+	}

@@ -1,0 +1,131 @@
+﻿/*!
+ * particle effect
+ * kjh
+ * https://codepen.io/wisterra/pen/RLWEyg
+ */
+
+//---------------------------------------------------
+//  Config
+//---------------------------------------------------
+$color-bg-light: #423224;
+$color-bg-dark: #2d241c;
+$color-particle:#e7d524;
+$color-particle2:#fff;
+$spacing: 3000px;
+$time-1: 60s;
+$time-2: 120s;
+$time-3: 280s;
+$time-4: 600s;
+
+//---------------------------------------------------
+// wrap & background setting
+//---------------------------------------------------
+.page-bg{
+  position:fixed;
+  width:100%;
+  height:100%;
+    //background:$color-bg-light radial-gradient(ellipse at center,  $color-bg-light 0%,$color-bg-dark 80%);
+    overflow: hidden;
+    margin:0;
+  //z-index: -1;
+}
+.popup-bg{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:$color-bg-light radial-gradient(ellipse at center,  $color-bg-light 0%,$color-bg-dark 80%);
+    overflow: hidden;
+    margin:0;
+    z-index: -1;
+  //background-blend-mode: screen;
+  //filter: grayscale(100%);
+}
+
+ //---------------------------------------------------
+/* Pauls awesome mixin */
+//---------------------------------------------------
+@function particles($max) {
+   $val: 0px 0px $color-particle;
+   @for $i from 1 through $max {
+      $val: 
+        #{$val},
+        random($spacing)+px random($spacing)+px $color-particle,
+        random($spacing)+px random($spacing)+px $color-particle2;
+        //$varl: append(#{$val}, random($spacing)+px random($spacing)+px $color-particle, comma);
+   }
+   @return $val;
+}
+
+@mixin particles($max) {
+   box-shadow: particles($max);
+}
+
+.particle,
+.particle:after {
+  background: transparent;
+}
+
+.particle:after {
+  position: absolute;
+  content: "";
+  top: $spacing;
+}
+
+.particle-1 {
+  animation: animParticle $time-1 linear infinite;
+  @include particles(60);
+  height: 1px;
+  width: 1px;
+}
+
+.particle-1:after {
+  @include particles(60);
+  height: 1px;
+  width: 1px;
+}
+
+.particle-2 {
+  animation: animParticle $time-2 linear infinite;
+  @include particles(60);
+  height: 2px;
+  width: 2px;
+}
+
+.particle-2:after {
+  @include particles(60);
+  height: 2px;
+  width: 2px;
+}
+
+.particle-3 {
+  animation: animParticle $time-3 linear infinite;
+  @include particles(30);
+  height: 3px;
+  width: 3px;
+}
+
+.particle-3:after {
+  @include particles(30);
+  height: 3px;
+  width: 3px;
+}
+
+.particle-4 {
+  animation: animParticle $time-4 linear infinite;
+  @include particles(60);
+  height: 1px;
+  width: 1px;
+}
+
+.particle-4:after {
+  @include particles(60);
+  height: 1px;
+  width: 1px;
+}
+
+@keyframes animParticle {
+  from { transform: translateY(0px); }
+  to   { transform: translateY($spacing * -1); }
+}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+
+  <!-- 화보, 비디오 -->
+  <div th:fragment="page-age">
+    <div class="page__inner">
+      <div class="title">
+        <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/pc/page-age/title.png" alt="">
+      </div>
+      <div class="btn-join-event">
+        <button type="button" @click="showPop('age-checklist-intro')">이벤트_시작버튼</button>
+      </div>
+      <div class="event-duration">
+        <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/pc/page-age/event-duration.png" alt="">
+      </div>
+      <div class="event-notice">
+        <button type="button" class="btn-show-detail" @click="showPop('age-detail')">자세히보기</button>
+      </div>
+    </div>
+    <!-- || page__inner -->
+  </div>
+</body>
+
+</html>

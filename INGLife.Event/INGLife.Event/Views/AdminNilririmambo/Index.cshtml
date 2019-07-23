@@ -1,0 +1,58 @@
+﻿@model INGLife.Event.Models.GoogleApisModels.GoogleApisAnalyticsReportingRequestModel
+@using INGLife.Event.Domain.Entities.Abstract
+@using INGLife.Event.Domain.Entities.KidsNote
+@{
+    ViewBag.Title = "닐리리맘보 이벤트";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row" style="padding-left:30px; padding-right:30px">
+    <div class="panel panel-primary filterable" id="kids-note-entry">
+        <div class="panel-heading">
+            <h3 class="panel-title">@ViewBag.Title 참여자</h3>
+            <div class="text-right">
+                <span>{{ data.totalItemCount }} 건</span>
+                <button class="btn btn-success " v-on:click="excelDownload()"><span class="glyphicon glyphicon-download-alt"></span> excel</button>
+            </div>
+        </div>
+        <table class="table table-bordered table-hover table-sortable" style="margin:10px;width:98.5%">
+            <thead>
+                <tr>
+                    <th style="text-align:center;vertical-align:middle">번호</th>
+                    <th style="text-align:center;vertical-align:middle">이름</th>
+                    <th style="text-align:center;vertical-align:middle">핸드폰</th>
+                    <th style="text-align:center;vertical-align:middle">fc 코드</th>
+                    <th style="text-align:center;vertical-align:middle">인스타그램 계정</th>
+                    <th style="text-align:center;vertical-align:middle">관리</th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr v-for="(item, idx) in data.items">
+                    <td>{{ data.totalItemCount - ((dataFilters.Page - 1) * (dataFilters.PageSize) + idx) }}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.mobile}}</td>
+                    <td>{{item.fcCode}}</td>
+                    <td>{{item.instagramId}}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="text-align:center">
+            <div style="text-align:center">
+                <a href="#" v-show="!data.isFirstPage" v-on:click="goToPage(1)">처음</a>
+                <a href="#" v-show="data.hasPreviousPage" v-on:click="goToPage(data.pageNumber - 1)">이전</a>
+                <a href="#" v-for="page in pages" v-on:click="goToPage(page)" v-bind:style="{ fontWeight : ( page === data.pageNumber) ? 'bold' : 'normal' }"> {{ page }} </a>
+                <a href="#" v-show="data.hasNextPage" v-on:click="goToPage(data.pageNumber + 1)">다음</a>
+                <a href="#" v-show="!data.isLastPage" v-on:click="goToPage(data.pageCount)">마지막</a>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/js/kidsNote/admin.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            kidsNoteModel.goToPage(1);
+        });
+    </script>
+}

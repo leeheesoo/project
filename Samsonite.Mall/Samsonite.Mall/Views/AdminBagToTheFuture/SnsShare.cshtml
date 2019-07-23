@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "백투더퓨처 이벤트 > Event02 SNS공유";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row" style="padding-left:30px; padding-right:30px" id="bagtotheFutureSnsShare">
+    <div class="panel panel-primary filterable">
+        <div class="panel-heading">
+            <h3 class="panel-title">Event02 SNS공유</h3>
+            <div class="pull-right">
+                @*<a class="btn btn-info btn-xs" href="@Url.Action("ExcelDownload", "AdminOneYearAnniversary")"><span class="glyphicon glyphicon-download-alt"></span> excel</a>*@
+                <span>{{ data.TotalItemCount }} 건</span>
+            </div>
+        </div>
+        <table class="table table-bordered table-hover table-sortable" style="margin:10px;width:98.5%">
+            <thead>
+                <tr class="filters">
+                    <th class="text-center" style="vertical-align:middle" rowspan="2">No.</th>
+                    <th class="text-center" style="vertical-align:middle" rowspan="2">
+                        <input type="text" v-model="dataFilters.FromDate" class="form-control" placeholder="시작일" />
+                        <input type="text" v-model="dataFilters.ToDate" class="form-control" placeholder="종료일" />
+                    </th>
+                    <th class="text-center" style="vertical-align:middle" rowspan="2">@Html.DropDownList("Channel", new SelectList(new string[] { "web", "mobile" }), "채널", new { @class = "form-control", v_model = "dataFilters.Channel" })</th>
+                    <th class="text-center" style="vertical-align:middle" rowspan="2">@Html.TextBox("IpAddress", "", new { @class = "form-control", placeholder = "아이피주소", v_model = "dataFilters.IpAddress" })</th>
+                    <th class="text-center" style="vertical-align:middle" rowspan="2">@Html.TextBox("Name", "", new { @class = "form-control", placeholder = "이름", v_model = "dataFilters.Name" })</th>
+                    <th class="text-center" style="vertical-align:middle" rowspan="2">@Html.TextBox("Mobile", "", new { @class = "form-control", placeholder = "연락처", v_model = "dataFilters.Mobile" })</th>
+                    <th class="text-center" style="vertical-align:middle" colspan="3">SNS정보</th>
+                    <th class="text-center" style="vertical-align:middle" rowspan="2">
+                        <button type="button" class="btn btn-info btn-sm" v-on:click="goToPage(1)"><i class="fa fa-search"></i> 검색</button>
+                        <button class="btn btn-success btn-sm" v-on:click="excelDownload()"><span class="glyphicon glyphicon-download-alt"></span> 엑셀</button>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="text-align:center;vertical-align:middle">@Html.DropDownList("SnsType", new List<SelectListItem>() {
+                                                                               new SelectListItem { Text = "페이스북", Value = Samsonite.Mall.Domain.Entities.Abstract.SnsType.Facebook.ToString("D") },
+                                                                               new SelectListItem { Text = "카카오톡", Value = Samsonite.Mall.Domain.Entities.Abstract.SnsType.Kakaotalk.ToString("D") },
+                                                                               new SelectListItem { Text = "카카오스토리", Value = Samsonite.Mall.Domain.Entities.Abstract.SnsType.KakaoStory.ToString("D") }
+                                                                           }, "유형", new { v_model = "dataFilters.SnsType", @class = "form-control" })</th>
+                    <th style="text-align:center;vertical-align:middle;">닉네임</th>
+                    <th style="text-align:center;vertical-align:middle;">스크랩URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item, index) in data.Items">
+                    <td> {{ data.TotalItemCount - ((dataFilters.Page - 1) * (dataFilters.PageSize) + index) }}</td>
+                    <td>{{ item.CreateDate | getDate }}</td>
+                    <td>{{ item.User.Channel }}</td>
+                    <td>{{ item.User.IpAddress }}</td>
+                    <td>{{ item.User.Name }}</td>
+                    <td>{{ item.User.Mobile }}</td>
+                    <td>{{ item.SnsTypeDisplayName }}</td>
+                    <td>{{ item.SnsName }}</td>
+                    <td>{{ item.Post }}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tbody v-show="data.TotalItemCount === 0">
+                <tr>
+                    <td style="color:red;text-align:center" colspan="10">데이터가 없습니다.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="text-align:center">
+            <div style="text-align:center">
+                <a href="#" v-show="!data.IsLastPage" v-on:click="goToPage(1)">처음</a>
+                <a href="#" v-show="data.HasPreviousPage" v-on:click="goToPage(data.pageNumber - 1)">이전</a>
+                <a href="#" v-for="page in data.PageCount" v-on:click="goToPage(page)"> {{ page }} </a>
+                <a href="#" v-show="data.HasNextPage" v-on:click="goToPage(data.PageNumber + 1)">다음</a>
+                <a href="#" v-show="!data.IsLastPage" v-on:click="goToPage(data.PageCount)">마지막</a>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/js/common/vue.min.js"></script>
+    <script src="~/Content/js/bag-to-the-future/bag-to-the-future-admin.js"></script>
+    <script>
+        $(function () {
+            bagtoTheFutureSnsShareModel.goToPage(1);
+        });
+    </script>
+}

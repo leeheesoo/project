@@ -1,0 +1,41 @@
+@charset 'utf-8';
+//===================================
+// variable
+//===================================
+$loc-root: '../../';
+$loc-font: $loc-root+'../fonts/';
+//===================================
+// vender
+//===================================
+@import '../../scssCommon/vender/normalize';
+@import '../../scssCommon/mixin/background';
+@import '../../scssCommon/util/a11y-hidden';
+@import '../../scssCommon/util/clearfix';
+//===================================
+// font
+//===================================
+@font-face {
+    font-family: "KoreanBDG R";
+    src: url($loc-font + "KoreanBDG_R.eot");
+    src: url($loc-font + "KoreanBDG_R.eot?#iefix") format('embedded-opentype'), url($loc-font + "KoreanBDG_R.woff") format('woff'), url($loc-font + "KoreanBDG_R.ttf") format('truetype');
+    src: local(※), url($loc-font + "KoreanBDG_R.woff") format('woff');
+}
+
+//===================================
+// common
+// 2018.4.23
+// 한승철
+// debug, size mixin 추가
+// debug mixin: outline으로 레이아웃 디버깅
+// size mixin: width, height 설정을 mixin으로 만듦
+//===================================
+@import 'common/debug';
+@import 'common/size';
+@import 'common/reset';
+@import 'common/header';
+
+//===================================
+// pages
+//===================================
+@import 'pages/visual';
+@import 'pages/sub';

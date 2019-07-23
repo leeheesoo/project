@@ -1,0 +1,33 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <div th:fragment="page-gift">
+    <div class="page__inner">
+      <div class="title">
+        <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-gift/title.png" alt="">
+      </div>
+      <div class="visual">
+        <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-gift/visual.png" alt="">
+      </div>
+
+      <div class="event-btns">
+        <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-gift/event-join-txt.png" alt="">
+        <!-- <button type="button" class="btn-join" @click="notice('gift')"> -->
+        <button type="button" class="btn-join" @click="goBuy">
+          <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-gift/btn-join-event.png" alt="????">
+        </button>
+      </div>
+      <div class="event-notice">
+
+      </div>
+    </div>
+    <!-- || fragment -->
+
+</body>
+
+</html>

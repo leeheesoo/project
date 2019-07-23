@@ -1,0 +1,43 @@
+﻿/*!
+ * slick custom
+  * for slickslider center mode
+ * kjh
+ */
+
+//---------------------------------------------------
+// slick custom
+// for slick-center
+//---------------------------------------------------
+
+.slick-container-custom {
+  position: relative;
+  width: 1700px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.slick-container-custom .slick-slide {
+  
+  transition: all 300ms ease;
+  transform: scale(0.7);
+  opacity: 0.4;
+  @if $device == mob {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  img{
+     transform:translateX(-96px);
+     box-shadow: 7px 7px 30px -4px rgba(0,0,0,0.75);
+  }
+}
+
+.slick-container-custom .slick-slide.slick-center {
+  position: relative;
+  transition: all 300ms ease;
+  z-index: 1;
+  opacity: 1;
+  transform: scale(0.9);
+  @if $device == mob {
+    transform: scale(0.8);
+  }
+}

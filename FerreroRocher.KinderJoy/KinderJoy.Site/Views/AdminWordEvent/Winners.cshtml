@@ -1,0 +1,103 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<KinderJoy.Site.Models.Admin.WordEvent.WordWinners>
+@{
+    ViewBag.Title = "당첨자";
+    var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+    var action = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script>
+    $.validator.setDefaults({
+        onkeyup: false,
+        onclick: false,
+        onfocusout: false,
+        showErrors: function (errorMap, errorList) {
+            if (this.numberOfInvalids()) { // 에러가 있을 때만..
+                alert(errorList[0].message);
+                $(errorList[0].element).focus();
+            }
+        }
+    });
+</script>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="btn-group">
+                    <a class="btn btn-default @(action.Equals("Index") ? "active" : "")" href="@Url.Action("Index", "AdminWordEvent")">응모자</a>
+                    <a class="btn btn-default @(action.Equals("Share") ? "active" : "")" href="@Url.Action("Share", "AdminWordEvent")">공유</a>
+                    <a class="btn btn-default @(action.Equals("Stats") ? "active" : "")" href="@Url.Action("Stats", "AdminWordEvent")">통계</a>
+                    <a class="btn btn-default @(action.Equals("Winners") ? "active" : "")" href="@Url.Action("Winners", "AdminWordEvent")">당첨자</a>
+                    <a class="btn btn-default @(action.Equals("WinnersList") ? "active" : "")" href="@Url.Action("WinnersList", "AdminWordEvent")">당첨자업로드</a>
+                </div>
+            </div>
+        </div>
+        <div style="float:left">
+            <form name="frmSearch" action="@Url.Action("Winners")">
+                회차:
+                <select name="St">
+                    <option value="1">1</option>
+                    <option value="2" @(ViewBag.St == 2 ? "selected" : "")>2</option>
+                    <option value="3" @(ViewBag.St == 3 ? "selected" : "")>3</option>
+                    <option value="4" @(ViewBag.St == 4 ? "selected" : "")>4</option>
+                </select>
+                검색설정:
+                <select name="SearchType">
+                    <option value="">-검색-</option>
+                    <option value="Name" @(ViewBag.SearchType == "Name" ? "selected" : "")>이름</option>
+                    <option value="Mobile" @(ViewBag.SearchType == "Mobile" ? "selected" : "")>연락처</option>
+                    <option value="Age" @(ViewBag.SearchType == "Age" ? "selected" : "")>나이</option>
+                </select>
+                <input type="text" name="SearchValue" value="@ViewBag.SearchValue" />
+                <input type="submit" value="검색" />
+            </form>
+        </div>
+        <div style="float:right">
+            전체 <b style="color:red">@Model.TotalItemCount</b> 건
+            <a class="btn btn-default" href="@Url.Action("ExcelWinners", "AdminWordEvent")" id="btnExcel">엑셀다운로드</a>
+        </div>
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>연락처</th>
+                    <th>나이</th>
+                    <th>성별-남</th>
+                    <th>성별-여</th>
+                    <th>상품타입-남</th>
+                    <th>상품타입-여</th>
+                    <th>총응모</th>
+                    <th>총공유</th>
+                    <th>회차</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var num = @Model.TotalItemCount - (@Model.PageSize * (@Model.PageNumber - 1));
+                }
+                @foreach (var board in Model) {
+                    <tr>
+                        <td class="vertical-middle">@(num--)</td>
+                        <td class="vertical-middle">@board.Name</td>
+                        <td class="vertical-middle">@board.Mobile</td>
+                        <td class="vertical-middle">@board.Age</td>
+                        <td class="vertical-middle">@board.MaleCount</td>
+                        <td class="vertical-middle">@board.FemaleCount</td>
+                        <td class="vertical-middle">@board.MaleCount</td>
+                        <td class="vertical-middle">@board.GiftFemaleCount</td>
+                        <td class="vertical-middle">@board.TotalEntry</td>
+                        <td class="vertical-middle">@board.TotalShare</td>
+                        <td class="vertical-middle">@ViewBag.St</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <nav class="text-center">
+            @Html.PagedListPager(Model, page => Url.Action("Winners", new { Page = page, St = ViewBag.St, SearchType = ViewBag.SearchType, SearchValue = ViewBag.SearchValue }))
+        </nav>
+    </div>
+</div>
+<script type="text/javascript">
+</script>

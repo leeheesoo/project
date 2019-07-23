@@ -1,0 +1,147 @@
+﻿<div class="form-box">
+    <form>
+        <fieldset>
+            <!-- 이름 -->
+            <div class="form-group clearfix">
+                <label for="name" class="col-xs-3 control-label"><img src="~/Images/KittyJusticeLeague/pop/form/input-name.png" alt="이름"></label>
+                <div class="col-xs-9 no-space">
+                    <input type="text" class="form-control" name="name" id="name" title="이름을 입력하세요." value="" maxlength="10" placeholder="" />
+                </div>
+            </div>
+            <!-- // 이름 -->
+            <!-- 연락처 -->
+            <div class="form-group clearfix">
+                <label for="phone" class="col-xs-3 control-label"><img src="~/Images/KittyJusticeLeague/pop/form/input-phone.png" alt="연락처"></label>
+                <div class="col-xs-9 no-space">
+                    <input type="tel" class="form-control" name="phone" id="phone" title="연락처를 입력하세요." value="" placeholder=" - 기호 없이 입력해주세요" />
+                </div>
+            </div>
+            <!-- // 연락처 -->
+            <!-- 주소 검색 -->
+            <div class="form-group clearfix">
+                <label for="address" class="col-xs-3 control-label"><img src="~/Images/KittyJusticeLeague/pop/form/input-address.png" alt="주소"></label>
+                <div class="col-xs-9 no-space">
+                    <div class="row">
+                        <div class="col-xs-7" style="padding-right:5px;">
+                            <input type="text" class="form-control" name="address" id="address" title="우편번호를 입력하세요" value="" autocomplete="off" placeholder="우편번호" readonly="readonly" onclick="daumPostcode();">
+                        </div>
+                        <div class="col-xs-5" style="position:relative; left:15px;">
+                            <button type="button" class="btn-post" style="font-size:100%; margin-left:-20px;" onclick="openPostCode();"><img src="~/Images/KittyJusticeLeague/pop/form/btn-post.png" alt="우편번호"></button>
+                        </div>
+                        <div class="col-xs-12" style="margin-top:15px">
+                            <input type="text" class="form-control" name="address1" id="address1" title="" value="" autocomplete="off" placeholder="주소를 검색해주세요." readonly="readonly" onclick="openPostCode();">
+                        </div>
+                        <div class="col-xs-12" style="margin-top:15px">
+                            <input type="text" class="form-control" name="address2" id="address2" title="" value="" autocomplete="off" placeholder="나머지 주소를 입력해주세요.">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // 주소 검색 -->
+            <!-- 성별 -->
+            <div class="form-group clearfix">
+                <strong class="col-xs-3 control-label big-label"><img src="~/Images/KittyJusticeLeague/pop/form/input-gender.png" alt="성별"></strong>
+                <div class="col-xs-3">
+                    <label for="man" @*class="radio-inline"*@>
+                        <input type="radio" name="gender" id="man" value="man"> <strong class="big-label"><img src="~/Images/KittyJusticeLeague/pop/form/txt-gender-man.png" alt="남"></strong>
+                    </label>
+                </div>
+                <div class="col-xs-3">
+                    <label for="woman" @*class="radio-inline"*@>
+                        <input type="radio" name="gender" id="woman" value="woman"> <strong class="big-label"><img src="~/Images/KittyJusticeLeague/pop/form/txt-gender-woman.png" alt="여"></strong>
+                    </label>
+                </div>
+            </div>
+            <!-- // 성별 -->
+            <!-- 나이 -->
+            <div class="form-group clearfix">
+                <label for="age" class="col-xs-3 control-label"><img src="~/Images/KittyJusticeLeague/pop/form/input-age.png" alt="연령대"></label>
+                <div class="col-xs-9 no-space">
+                    <div class="select_box">
+                        <div class="label-style">선택</div>
+                        <select class="form-control" name="age" id="age" title="연령대를 선택하세요.">
+                            <option value="">선택</option>
+                            <option>20대</option>
+                            <option>30대</option>
+                            <option>40대</option>
+                            <option>50대</option>
+                            <option>60대</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- // 나이 -->
+            <!-- 메시지 -->
+            <div class="form-group clearfix">
+                <strong class="col-xs-3 control-label big-label"><img src="~/Images/KittyJusticeLeague/pop/form/input-message.png" alt="메시지"></strong>
+                <div class="col-xs-9 no-space">
+                    <div class="col-xs-12 no-space">
+                        <label for="message1" @*class="radio-inline"*@>
+                            <input type="radio" name="message" id="message1" value="message1"> <strong class="big-label"><img src="~/Images/KittyJusticeLeague/pop/form/txt-message1.png" alt="항상 응원해!"></strong>
+                        </label>
+                    </div>
+                    <div class="col-xs-12 no-space">
+                        <label for="message2" @*class="radio-inline"*@>
+                            <input type="radio" name="message" id="message2" value="message2"> <strong class="big-label"><img src="~/Images/KittyJusticeLeague/pop/form/txt-message2.png" alt="항상 응원해!"></strong>
+                        </label>
+                    </div>
+                    <div class="col-xs-12 no-space input-direct-message" style="padding-right:0;">
+                        <label for="message4" @*class="radio-inline"*@ style="width:100%;">
+                            <input type="radio" name="message" id="message4" value="message4" style="display:inline-block;">
+                            <input type="text" class="form-control" name="message4" id="message4" title="메시지를 입력해주세요" value="" maxlength="10" placeholder="직접입력 (최대 10자)" style="display:inline-block; width:89% !important; font-weight:normal; position:relative; top:4px;" />
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- // 메시지 -->
+            <!-- 이메일 -->
+            <div class="form-group clearfix">
+                <label for="email" class="col-xs-3 control-label">이메일</label>
+                <div class="col-xs-9  no-space">
+                    <div class="row">
+                        <div class="col-xs-6 form-email">
+                            <input type="text" value="" class="form-control" name="email" id="email" maxlength="20" title="이메일을 입력하세요." placeholder="">
+                        </div>
+                        <div class="col-xs-6">
+                            <input type="text" value="" class="form-control" name="emailDomain" id="emailDomain" title="이메일을 입력하세요." autocomplete="off" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:15px">
+                        <div class="col-xs-12 select-box">
+                            <div class="label-style">직접입력</div>
+                            <select class="form-control" id="selectEmailDomain" name="selectEmailDomain">
+                                <option value="">직접입력</option>
+                                <option value="naver.com">naver.com</option>
+                                <option value="daum.net">daum.net</option>
+                                <option value="nate.com">nate.com</option>
+                                <option value="hotmail.com">hotmail.com</option>
+                                <option value="yahoo.com">yahoo.com</option>
+                                <option value="empas.com">empas.com</option>
+                                <option value="korea.com">korea.com</option>
+                                <option value="dreamwiz.com">dreamwiz.com</option>
+                                <option value="gmail.com">gmail.com</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // 이메일 -->
+            <!-- 개인정보 취급방침 동의 -->
+            <div class="form-group privacy-policy clearfix">
+                <div class="row">
+                    <div class="col-xs-9 col-xs-push-3" style="padding-left:10px;">
+                        <label for="privacyCheckAgree">
+                            <input type="checkbox" name="privacyCheckAgree" id="privacyCheckAgree"> <strong class="big-label"><img src="~/Images/KittyJusticeLeague/pop/form/input-privacy.png" alt="개인정보 취급방침 동의"></strong>
+                        </label>
+                        <button type="button" data-toggle="modal" data-target="#pop-AccessTerms"><img src="~/Images/KittyJusticeLeague/pop/form/btn-privacy.png" alt="자세히보기"></button>
+                    </div>
+                </div>
+            </div>
+            <!-- // 개인정보 취급방침 동의 -->
+            <!-- // 개인정보 취급방침 동의 -->
+            <div class="btns">
+                <button type="submit" class="ga-event" data-action="개인정보 입력 - 다음"><img src="~/Images/KittyJusticeLeague/pop/btn-event-entry.png" alt="응모 완료"></button>
+            </div>
+        </fieldset>
+    </form>
+</div>

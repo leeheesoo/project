@@ -1,0 +1,75 @@
+﻿@using INGLife.Event.Infrastructures.Admin
+@model INGLife.Event.Models.ManagementModels.EventManagementCreateModel
+@{
+    ViewBag.Title = "이벤트 관리";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row" style="padding-left:30px; padding-right:30px">
+    <div class="panel panel-primary filterable" id="eventManagementElement" style="@(User.IsInAnyRole("Administrators", "Pentacle") ? "" : "display:none")">
+        <div class="panel panel-primary filterable">
+            @using (Ajax.BeginForm("Post", "EventManagement", new { httpRoute = true }, new AjaxOptions { HttpMethod = "Post", OnSuccess = "eventManagementViewModel.successSaveEventManagement", OnFailure = "eventManagementViewModel.failureSaveEventManagement" })) {
+                <table class="table table-bordered table-hover table-sortable" style="margin:10px;width:98.5%">
+                    <tr>
+                        <th class="text-center" style="vertical-align:middle">제휴사</th>
+                        <th class="text-center" style="vertical-align:middle">이벤트명</th>
+                        <th class="text-center" style="vertical-align:middle">Page Path</th>
+                        <th class="text-center" style="vertical-align:middle" rowspan="2">
+                            <button type="submit" class="btn btn-info"><i class="fa"></i> Add</button>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="text-center" style="vertical-align:middle">
+                            <select v-model="affiliates" class="form-control" id="AffiliatesId" name="AffiliatesId">
+                                <option v-for="option in options" v-bind:value="option.value">
+                                    {{ option.text }}
+                                </option>
+                            </select>
+                        </th>
+                        <th class="text-center" style="vertical-align:middle">
+                            @Html.TextBoxFor(x => x.EventName, new { @class = "form-control" })
+                        </th>
+                        <th class="text-center" style="vertical-align:middle">
+                            @Html.TextBoxFor(x => x.PagePath, new { @class = "form-control" })
+                        </th>
+                    </tr>
+                </table>
+            }
+        </div>
+        <div class="panel-heading">
+            <h3 class="panel-title">이벤트 관리</h3>
+        </div>
+        <table class="table table-bordered table-hover table-sortable" style="margin:10px;width:98.5%">
+            <tbody v-show="list.length > 0" style="display:none;">
+                <tr>
+                    <th>제휴사</th>
+                    <th>이벤트명</th>
+                    <th>Page Path</th>
+                </tr>
+                <tr v-for="(data, idx) in list">
+                    <td>{{data.affiliatesName}}</td>
+                    <td>{{data.eventName}}</td>
+                    <td>{{data.pagePath}}</td>
+                </tr>
+            </tbody>
+            <tbody v-show="list.length == 0">
+                <tr>
+                    <td style="color:red;text-align:center" colspan="11">데이터가 없습니다.</td>
+                </tr>
+            </tbody>
+        </table>
+        @*<div style="text-align:center">
+                <pagination boundary-links="true"
+                            max-size="maxSize"
+                            items-per-page="itemsPerPage"
+                            total-items="totalItemCount"
+                            ng-model="currentPage"
+                            ng-change="get1stAnniversaryList()"></pagination>
+            </div>*@
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/management/event-management-viewmodels.js"></script>
+    <script type="text/javascript">
+    </script>
+}

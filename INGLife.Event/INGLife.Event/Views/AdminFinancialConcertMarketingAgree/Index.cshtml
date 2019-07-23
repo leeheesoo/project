@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "재무콘서트 마케팅동의 이벤트";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row" style="padding-left:30px; padding-right:30px">
+    <div class="panel panel-primary filterable" id="admin-financial-concert-marketing-agree">
+        <div class="panel-heading">
+            <h3 class="panel-title">@ViewBag.Title 참여자</h3>
+            <div class="text-right">
+                <span>{{ data.totalItemCount }} 건</span>
+                <a class="btn btn-success" target="_blank" href="/manager/concert/excel-download"><span class="glyphicon glyphicon-download-alt"></span> excel</a>
+            </div>
+        </div>
+        <table class="table table-bordered table-hover table-sortable" style="margin:10px;width:98.5%">
+            <thead>
+                <tr>
+                    <th style="text-align:center;vertical-align:middle">번호</th>
+                    <th style="text-align:center;vertical-align:middle">본인인증등록일시</th>
+                    <th style="text-align:center;vertical-align:middle">채널</th>
+                    <th style="text-align:center;vertical-align:middle">IP</th>
+                    <th style="text-align:center;vertical-align:middle">이름</th>
+                    <th style="text-align:center;vertical-align:middle">연락처</th>
+                    <th style="text-align:center;vertical-align:middle">성별</th>
+                    <th style="text-align:center;vertical-align:middle">생년월일</th>
+                    <th style="text-align:center;vertical-align:middle">선택회차</th>
+                    <th style="text-align:center;vertical-align:middle">연락방식-전화</th>
+                    <th style="text-align:center;vertical-align:middle">연락방식-문자</th>
+                    <th style="text-align:center;vertical-align:middle">연락방식-이메일</th>
+                    <th style="text-align:center;vertical-align:middle">연락방식-우편</th>
+                    <th style="text-align:center;vertical-align:middle">보유기간</th>
+                    <th style="text-align:center;vertical-align:middle">이메일</th>
+                    <th style="text-align:center;vertical-align:middle">주소</th>
+                    <th style="text-align:center;vertical-align:middle">응모완료일시</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item, idx) in data.items">
+                    <td>{{ data.totalItemCount - ((dataFilters.Page - 1) * (dataFilters.PageSize) + idx) }}</td>
+                    <td>{{item.createDate | getDate}}</td>
+                    <td>{{item.channelDisplayName}}</td>
+                    <td>{{item.ipAddress}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.mobile}}</td>
+                    <td>{{item.gender}}</td>
+                    <td>{{item.birthDay}}</td>
+                    <td>{{item.applicationTurnDisplayName}}</td>
+                    <td>{{item.phoneCheck}}</td>
+                    <td>{{item.messageCheck}}</td>
+                    <td>{{item.emailCheck}}</td>
+                    <td>{{item.postCheck}}</td>
+                    <td>{{item.retentionPeriodTypeDisplayName}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.addressDisplayName}}</td>
+                    <td>{{item.completeDate | getDate}}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="text-align:center">
+            <div style="text-align:center">
+                <a href="#" v-show="!data.isFirstPage" v-on:click="goToPage(1)">처음</a>
+                <a href="#" v-show="data.hasPreviousPage" v-on:click="goToPage(data.pageNumber - 1)">이전</a>
+                <a href="#" v-for="page in pages" v-on:click="goToPage(page)" v-bind:style="{ fontWeight : ( page === data.pageNumber) ? 'bold' : 'normal' }"> {{ page }} </a>
+                <a href="#" v-show="data.hasNextPage" v-on:click="goToPage(data.pageNumber + 1)">다음</a>
+                <a href="#" v-show="!data.isLastPage" v-on:click="goToPage(data.pageCount)">마지막</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Content/js/financialConcertMarketingAgree/admin.js"></script>
+}
+

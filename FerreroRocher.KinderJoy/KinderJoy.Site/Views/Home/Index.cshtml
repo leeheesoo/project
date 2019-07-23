@@ -1,0 +1,121 @@
+﻿@{
+    ViewBag.Title = "킨더조이 공식 사이트";
+    ViewBag.GaTitle = "킨더조이메인";
+
+    var isClose = DateTime.Now >= new DateTime(2017, 7, 27);
+}
+<!-- parallax -->
+<div class="parallax js-parallax">
+
+    <!-- layer -->
+    <div class="parallax-layer">
+
+
+        <!-- cloud -->
+        <span class="clouds"></span>
+        <div class="visual-tit js-cloud">
+            <img src="~/Images/items/tit-visual.png" alt="세가지 즐거움이 하나에! 새로운 디즈니 커플 & 스타워즈 서프라이즈를 만나보세요! 열 때마다 100% 디즈니 커플과 스타워즈가 들어있어요!">
+            <span class="visual-float visual-float-left">
+                <a href="@Url.Action("Image")"><img src="~/Images/items/banner-visual-starwars.png" alt="스타워즈 아이템 바로가기"></a>
+                <button type="button">배너닫기</button>
+            </span>
+            <span class="visual-float visual-float-right">
+                <a href="@Url.Action("Image")">
+                    <img src="~/Images/items/banner-visual-couple.png" alt="디즈니 커플 아이템 바로가기">
+                </a>
+                <button type="button">배너닫기</button>
+            </span>
+        </div>
+        <!-- // cloud -->
+
+        <!-- motion wrap -->
+        <div class="motionWrap js-motionEgg">
+            <!-- balloon -->
+            <div class="balloon js-balloonUpDn">balloon</div>
+            <!-- // balloon -->
+            <!-- eggs -->
+            <div class="eggs js-eggs">
+
+                <span class="egg egg-flavor js-egg" data-name="flavor">
+                    <img class="egg-img GA" src="~/Images/motion/motion-flavor_ir.png" alt="맛있는 즐거움 바로가기" data-category="@ViewBag.GaTitle" data-action="[@ViewBag.GaTitle] 맛있는즐거움 바로가기">
+                </span>
+
+                <span class="egg egg-image js-egg" data-name="image">
+                    <img class="egg-img GA" src="~/Images/motion/motion-image_ir.png" alt="상상하는 즐거움 바로가기" data-category="@ViewBag.GaTitle" data-action="[@ViewBag.GaTitle] 상상하는즐거움 바로가기" />
+                </span>
+
+                <span class="egg egg-together js-egg" data-name="together">
+                    <img class="egg-img GA" src="~/Images/motion/motion-together_ir.png" alt="함께하는 즐거움 바로가기" data-name="together" data-category="@ViewBag.GaTitle" data-action="[@ViewBag.GaTitle] 함께하는즐거움 바로가기">
+                </span>
+
+            </div>
+            <!-- // eggs -->
+
+            <!-- gyrodrop -->
+            <div class="gyrodrop">
+                <span class="gyrodrop__circle"></span>
+                <span class="gyrodrop__vehicle js-drop">자이로드롭</span>
+            </div> <!-- // gyrodrop -->
+
+            <!-- castle -->
+            <span class="castle__egg"></span>
+            <div class="main castle"></div><!-- // castle -->
+
+            <!-- ferry wheel -->
+            <div class="ferry-wheel">
+                <span class="ferry-wheel__vehicle ferry-wheel__vehicle--1"></span>
+                <span class="ferry-wheel__vehicle ferry-wheel__vehicle--2"></span>
+                <span class="ferry-wheel__vehicle ferry-wheel__vehicle--3"></span>
+                <span class="ferry-wheel__vehicle ferry-wheel__vehicle--4"></span>
+                <span class="ferry-wheel__vehicle ferry-wheel__vehicle--5"></span>
+                <span class="ferry-wheel__vehicle ferry-wheel__vehicle--6"></span>
+                <span class="ferry-wheel__vehicle ferry-wheel__vehicle--7"></span>
+                <span class="ferry-wheel__vehicle ferry-wheel__vehicle--8"></span>
+                <span class="ferry-wheel__vehicle ferry-wheel__vehicle--9"></span>
+            </div><!-- ferry wheel -->
+
+
+        </div><!--  // motion wrap -->
+
+    </div>
+    <!-- //layer  -->
+    <div class="copyright">
+        <p><img src="~/Images/copy.png" alt="Copyright ⓒDespicable Me 3 is a trademark and copyright of a Universal studios. Licensed by Universal Studios Licensing LLC.,ALL rights Reserved. Copyrightⓒ2017 Disney. All rights reserved. ⓒ2017 Marvel. All rights reserved. ⓒFerrero Group. All Rights Reserved."></p>
+    </div>
+</div>
+<!-- // parallax -->
+<!-- popup -->
+<div class="popup" style="display:none">
+    <div class="dim"></div>
+    <div class="popup-wrap">
+        <!--<a class="close js-pop-close" href="#">close</a>-->
+        <!-- hide -->
+        <div class="hide">
+            <h1>부모님 여러분</h1>
+            <p>저희는 킨더조이 브랜드가 여러분과 여러분의 가족분들께 더욱 가까이 다가갈 수 있도록 본 사이트를 개발했습니다. 그러나 부모님들께서 안심할 수 있도록 부모님의 허락하에 자녀분들께서 접속할 수 있도록 설정되어 있습니다. <em>그 이유로 부모님의 생년월일을 입력하도록 되어 있습니다.</em></p>
+        </div>
+        <!-- // hide -->
+        <form action="" method="post" onsubmit="return checkAge();">
+            <div class="pop-form">
+                <input class="input input-year" type="text" name="year" id="year" maxlength="4"><label class="year" for="year">년</label>
+                <input class="input input-month" type="text" name="month" id="month" maxlength="2"><label class="month" for="month">월</label>
+                <input class="input input-day" type="text" name="day" id="day" maxlength="2"><label class="day" for="day">일</label>
+            </div>
+            <input type="submit" class="pop-btn" value="들어가기" class="GA" data-category="@ViewBag.GaTitle" data-action="[@ViewBag.GaTitle] 들어가기">
+        </form>
+    </div>
+</div>
+
+<!-- // popup -->
+
+<script src="~/Content/js/index.js"></script>
+@section scripts {
+    <script>
+        $(function() {
+            // #movie로 접근시 영상오픈
+            if (window.location.hash == '#movie') {
+                openMov();
+            }
+        });
+    </script>
+}

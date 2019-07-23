@@ -1,0 +1,260 @@
+﻿$img-loc : '../../Images/gate/';
+$width : 640px;
+
+@function getPercent($me, $parent) {
+   @return ($me / $parent) * 100%;
+}
+
+.nav_bar {
+    display: none; // 상단 header 숨김처리
+}
+
+body {
+    background: url($img-loc + 'bg_gate_m.png') top center no-repeat;
+}
+
+.container {
+    height: auto;
+}
+
+.gate-wrap {
+    position: relative;
+    width: $width;
+    margin: 0 auto;
+    overflow: hidden;
+    // reset csss
+    * {
+        box-sizing: border-box;
+        outline: none;
+        img {
+            max-width: 100%;
+        }
+        button,
+        a {
+            padding: 0;
+            border: none;
+            background: none;
+            font-size: 0;
+            cursor: pointer;
+        }
+    }
+
+
+    // bg-top
+    // * =============================
+    .bg-top {
+        width: inherit;
+        height: 344px;
+        text-align: center;
+
+        .btn-go-home {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: url($img-loc + 'btn_go_home_m.png') center center no-repeat;
+            z-index: 9;
+        }
+    }
+
+
+    // contents-wrap
+    // * =============================
+    .contents-wrap {
+            width: inherit;
+            .gate {
+                &-step {
+                    position: relative;
+                    height: 769px;
+                    .rino {
+                        position: absolute;
+                        left: 20px;
+                        transition: 2s cubic-bezier(0.4, 0, 1, 1);
+                        transform-origin: top center;
+                        animation-duration: 2s;
+                        z-index: 10;
+
+                    }
+                    .txt-box {
+                        position: absolute;
+                        right: 20px;
+                        animation-delay: 1.5s;
+                        z-index: 9;
+                        cursor: pointer;
+
+                    }
+                    &1 {
+                        .rino {
+                            top: 236px;
+                            &.bounce {
+                                transition: 2s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+                                animation-duration: 3s;
+                            }
+                            .motion-ele { //웹모바일동일
+                                position: absolute;
+                                top: getPercent(80, 550);
+                                left: 20%;
+                                width: getPercent(62, 538);
+                                transform-origin: right bottom;
+                                animation-duration: 5s;
+                                z-index: -1;
+                            }
+                        }
+                    }
+                    &2 {
+                        .rino {
+                            top: 236px;
+                            width: 353px;
+                            .motion-ele { //웹모바일동일
+                                position: absolute;
+                                top: getPercent(124, 562);
+                                left: 6%;
+                                width: getPercent(479, 511);
+                                animation-duration: 5s;
+                                transform-origin: center center;
+                            }
+                        }
+                    }
+                    &3 {
+                        .rino {
+                            left: 30px;
+                            .motion-ele {
+                                position: absolute;
+                                top: 130px;
+                                left: 180px;
+                                width: 75px;
+                                transform-origin: left center;
+                                animation-duration: 3s;
+                                z-index: 80;
+                            }
+                        }
+                    }
+                    &4 {
+                        height: auto;
+                        background: url($img-loc + 'bg-gate-step4-repeat.png') repeat-y center bottom;
+                        .rino {
+                            left: 20px;
+                             .motion-ele {
+                                position: absolute;
+                                top: 47%;
+                                left: 34%;
+                                width: getPercent(85, 382);
+                                transform-origin: left center;
+                                z-index: 1;
+                                animation-duration: 3s;
+                            }
+                            .txt-egg {
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                                width: 417px;
+                                height: 241px;
+                                background-position: center top;
+                                background-repeat: no-repeat;
+                                text-align: center;
+
+                                @for $i from 1 through 16 {
+                                    &#{$i} {
+                                        background-image: url($img-loc + 'toy-txt#{$i}-m.png');
+                                    }
+                                }
+                            } // txt egg
+                        }
+                    }
+
+
+                    // 3단계 : kinder-select slider
+                    // * =============================
+                    .kinder-select {
+                        &-box {
+                            width: 600px;
+                            margin: 0 auto;
+                            padding: 351px 0 100px 0;
+                        }
+
+                        &-slide {
+                            /*width: 480px;*/
+                            width: 560px;
+                            margin: 0 auto;
+                           .slide-item {
+                                /*width: 94px !important;*/
+                                width: 110px !important;
+                                /*margin: 20px 12px;*/
+                                margin: 0 15px;
+                                cursor: pointer;
+                                animation-duration: 8s;
+                            }
+                            .gap-adjust {
+                                margin-left: 13%;
+                            }
+
+                            // slick arrow 관련 css
+                            .slick {
+                                 &-arrow {
+                                    position: absolute;
+                                    top: 44%;
+                                    width: 33px;
+                                    height: 52px;
+                                    padding: 0;
+                                    font-size: 0;
+                                    background: url($img-loc + 'ir_slide_arrow.png') 0 0 / cover no-repeat;
+                                    border: none;
+                                    cursor: pointer;
+                                    z-index: 11;
+                                }
+                                &-prev {
+                                    left: -30px;
+                                    background-position-x: 0;
+                                }
+                                &-next {
+                                    right: -30px;
+                                    background-position-x: right;
+                                }
+                            }
+                        }
+                    }
+                    // E : kinder-select slider
+
+
+                    // 4단계 : kinder-item
+                    // * =============================
+                    .kinder-item {
+                        &-box {
+                            width: inherit;
+                            padding: 267px 0 100px 0;
+                            text-align: center;
+                            .btn-box {
+                                width: inherit;
+                                .gate-btn {
+                                    display: inline-block;
+                                    width: 417px;
+                                    height: 116px;
+                                    background: url($img-loc + 'ir-btn-m.png') 0 0 / cover no-repeat;
+                                    &.btn-retry {
+                                        background-position-y: bottom;
+                                        margin-top: 25px;
+                                    }
+                                    &.btn-show-detail {
+                                        background-position-y: top;
+                                    }
+                                }
+                            }
+                        }
+                        &-selected {
+                            height: 486px;
+                            opacity: 0;
+                            transition: 1s ease-out;
+                            transform-origin: center bottom;
+                            transform: scale(0);
+                            &.show{
+                                opacity: 1;
+                                transform: scale(1);
+                            }
+                        }
+                    }  // E : kinder-item slider
+
+                } // E : gate-step
+            }
+        } // E : contents-wrap
+}

@@ -1,0 +1,74 @@
+.page-contents{  
+  background: url( $imgPath + '/page-contents/bg.png') #e2d5c9 center top no-repeat;  
+
+  .page__inner{       
+    .btn-join-event{      
+      button{
+        width: 248px;
+        height: 240px;        
+        background: url($imgPath+'/page-contents/btn-event-join.png') center center no-repeat;        
+      }      
+    }  
+    .event-notice{
+      background: url($imgPath+'/page-contents/event-notice.png') 230px top no-repeat;        
+    }  
+
+    //=== 화보, 비디오 카드 
+    .cards{      
+      width: 100%;
+      height: 1080px;
+      top: 5px;
+      left: 0;
+      
+      perspective: 50px;
+      li{
+        width: 590px;   
+        overflow: hidden;     
+        border-radius: 48px;
+        
+        cursor: pointer;        
+        position: absolute;        
+        top: 0;
+
+        transform: translateZ(-5px);
+        transition: all .3s;
+
+        &:hover, &.on{
+          z-index: 100;          
+          transform: translateZ(0);         
+        }
+        
+        &.card-gallery{
+          height: 829px;
+          top: 60px;
+          left: 330px;
+          img:last-child{
+            top: 38px;
+            left: 13px;
+          }
+        }
+        &.card-video{
+          height: 740px;
+          right: -9px;
+          img:last-child{
+            top: 20px;
+            left: 13px;
+          }
+        }                
+      }
+      img{
+        position: absolute;
+        top: 0; 
+        left: 0;
+        display: inline-block;
+        opacity: 0;
+        transition: all .3s;
+        &.on{
+          opacity: 1;
+        }        
+      }
+    }
+
+  }
+}
+

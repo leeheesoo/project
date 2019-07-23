@@ -1,0 +1,858 @@
+//===================================
+// variable
+//===================================
+// $location: "../images/popup-m/"; // hanb: chage img url
+$location: $imgPathPop+'/';
+
+$width-max: 720px;
+$width-inner:620px;
+$sliderBorder:7px;
+
+
+%inputText {
+  float: right;
+  width: 450px;
+  height: 100%;
+  padding: 0 20px;
+  text-align: right;
+  vertical-align: top;
+  font-size: 20px;
+  background-color: #fff;
+  border: none;
+  box-sizing: border-box;
+}
+
+.popup__m {
+  position: absolute;
+  left:0;
+  top:0;
+  width: $width-max;
+  height:100%;
+  //border-radius: 50px;
+  transform: translateY(0);
+  overflow: hidden;
+
+  .popup__inner {
+    width: $width-inner;
+    margin: 0 auto;
+  }
+  .top-line {
+    display: block;
+    width: 100%;
+    border: 1px solid #e1e1e1;
+  }
+
+  .btn {
+    display: block;
+    margin: 0 auto;
+    @include background("btns.png", $repeat: no-repeat);
+
+    &__close {
+      position: absolute;
+      right: 40px;
+      top: 40px;
+      width: 50px;
+      height: 50px;
+      background-position: 0 0;
+      &.white {
+        background-position: -60px 0;
+      }
+    }
+
+
+    &__share {
+      margin-top: 340px;
+      width: 380px;
+      height: 100px;
+      background-position: 0 -230px;
+    }
+
+    &__share-insta {
+      display: inline-block;
+      width: 130px;
+      height: 130px;
+      margin-right: 26px;
+      background-position: -390px -201px;
+    }
+
+    &__share-facebook {
+      display: inline-block;
+      width: 130px;
+      height: 130px;
+      background-position: -550px -201px;
+    }
+
+    &__next {
+      width: 400px;
+      height: 100px;
+      margin-bottom:80px;
+      background-position: 0 -340px;
+    }
+
+    &__download {      
+      width: 81px;
+      height: 81px;
+      background-position: 0 -61px;
+    }
+
+    &__confirm {
+      width: 400px;
+      height: 100px;
+      background-position: 0 -561px;
+      margin-bottom: 80px;
+    }
+    &__photo-skip {
+      display:inline-block;
+      width: 296px;
+      height: 100px;
+      margin-right:20px;
+      background-position: 0 -451px;
+    }
+    &__photo-upload {
+      position: relative;
+      display:inline-block;
+      width: 300px;
+      height: 100px;
+      background-position: -321px -451px;
+
+      .file-upload-input{
+        position: absolute;
+        left: 0;
+        top: 0; // right: 0;
+        // bottom: 0;    
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+    }
+
+    &__down {
+      display:inline-block;
+      width: 120px;
+      height: 120px;   
+      vertical-align:middle;
+      background-position: -421px -561px;
+    }
+    &__down-close {
+      display:inline-block;
+      width: 120px;
+      height: 120px;
+      margin-right:20px;
+      background-position: -297px -61px;
+    }
+
+    &__photodown-popup {
+      width: 160px;
+      height: 160px;
+      background-position: 0 -61px;
+    }
+    &__photo-close {
+      display:inline-block;
+      width: 120px;
+      height: 120px;
+      margin-right:20px;
+      background-position: -297px -61px;
+    }
+    &__photo-mobile {
+      display:inline-block;
+      width: 120px;
+      height: 120px;
+      margin-right:20px;
+      background-position: -437px -61px;
+    }
+    &__photo-pc {
+      display:inline-block;
+      width: 120px;
+      height: 120px;
+      background-position: -577px -61px;
+    }
+
+    &__checklist-start {
+      display:inline-block;
+      width: 324px;
+      height: 300px;
+      background-position: 0 -681px;
+    }
+  }
+
+  //btns
+}
+
+//----------------------------
+// 메인 팝업
+//----------------------------
+.main-popup {
+  // height: 1794px;
+  &.popup-main-lotion {
+   @include background("main-lotion.png", $repeat: no-repeat);
+   &.popup{
+    border-radius: 0;
+  }
+  }
+  &.popup-main-wash {
+   @include background("main-wash.png", $repeat: no-repeat);
+   &.popup{
+     border-radius: 0;
+   }
+  }
+
+  .btn__close {
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    background-position: 0 0;
+  }
+}
+
+
+
+//----------------------------
+// 바디계산기 공통
+//----------------------------
+.common__calculator {
+  .popup__header {
+    height: 470px;
+    @include background("bg-body-calculator.png", $repeat: no-repeat);
+  }
+
+  .popup__title {
+    display: inline-block;
+    vertical-align: top;
+
+    &-sub {
+      display: inline-block;
+      margin: 140px 0 0 350px;
+    }
+  }
+}
+
+// 동안바디계산기
+.popup-calculator {
+  .calculator-list__title {
+    text-align:center;
+    margin-bottom: 35px;
+  }
+
+  .input-circle {
+    // input 공통
+    width: 130px;
+    height: 130px;
+    margin-top: 17px;
+    text-align: center;
+    border: none;
+    border-radius: 50%;
+    font-size: 60px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .label-title {
+    display: block;
+    margin: 0 auto;
+  }
+  ul {
+    font-size:0;
+  }
+  li {
+    display: inline-block;
+    margin-left: 33px;
+
+    &:first-child {
+      margin: 0;
+    }
+  }
+
+
+  .facial__wrap {
+    display: inline-block;
+    margin-top:60px;
+    .input-circle {
+      color: #85e4ff;
+      background-color: #019afa;
+    }
+  }
+
+  .body__wrap {
+    display: inline-block;
+    margin-top:50px;
+    .input-circle {
+      color: #fff;
+      background-color: #8ad2ce;
+    }
+  }
+
+  .caption {
+    margin: 45px 0 50px;
+    text-align:center;
+  }
+  
+}
+
+//바디 계산기 결과
+.popup-calculator-result {
+  .popup__title-sub {
+    margin: 245px 0 0 330px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 26px;
+    line-height: 39px;
+
+    span {
+      font-weight:bold;
+      color: #019afa;
+    }
+  }
+
+  .costs__wrap {
+    margin:60px 0 40px;
+  }
+  dl {
+    position: relative;
+    line-height:100px;
+  }
+  dt {
+    display:inline-block;
+  }
+  dd {
+    display:inline-block;
+    width: 480px;
+    text-align:right;
+    vertical-align:middle;
+    > img {
+      margin-left: 10px;
+    }
+    span {
+      font-weight: bold;
+      font-size: 100px;
+
+      &.text__gray {
+        color: #c3c3c3
+      }
+
+      &.text__blue {
+        color: #019afa;
+      }
+    }
+  }
+
+  .calculator-result {
+    position: relative;
+    margin-left:10px;
+  }
+
+  .percentage {
+    position: absolute;
+    top: 70px;
+    right: 5px;
+    display: inline-block;
+    width: 108px;
+    height: 108px;
+    line-height: 108px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 36px;
+    color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 50%;
+    background-color: #fe0000;
+
+    &-num {
+      margin-right:2px;
+      font-weight:bold;
+      font-size: 46px;
+    }
+  }
+}
+
+// 동안바디 공유이벤트
+.body-share-in {
+  height: 2580px;
+  font-size:0;
+  @include background("share-event-v2.png", $repeat: no-repeat);
+  .btn__share {
+    margin-top:1578px;
+  }
+  .btn__wrap {
+    text-align:center;
+    margin-top:597px;
+  }
+}
+
+//----------------------------
+// 동안바디계산기 이벤트 안내
+//----------------------------
+.calulator-detail {
+  height: 1830px; 
+  @include background("body-calculator-note.png", $repeat: no-repeat);
+}
+
+//----------------------------
+// 챌린지(후기) 이벤트 안내
+//----------------------------
+.challenge-detail {
+  height: 3445px;
+  @include background("text-review.png", $repeat: no-repeat);
+}
+
+//----------------------------
+// 동안바디체크 이벤트 안내
+//----------------------------
+.age-detail {
+  height: 1830px;
+  @include background("body-age-note.png", $repeat: no-repeat);
+}
+
+
+//----------------------------
+// 동안바디 체크 공통
+//----------------------------
+.popup-check {
+  .popup__header {
+    height: 470px;
+    @include background("bg-body-check.png", $repeat: no-repeat);
+  }
+
+  .title__sub {
+    margin: 180px 0 0 310px;
+  }
+
+}
+
+//intro
+.age-checklist-intro {
+  video{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+  }
+  &.popup{
+    border-radius: 0;
+  }
+  &.popup__pc {
+    width: 100%;
+    height: 100%;
+    left:0;
+    margin:0;
+    padding:0;    
+    background:none;
+  }
+  .mov-wrap {    
+    height: 100%;
+    font-size:0;
+    background: #fff;
+  }  
+  .btn-wrap {
+    margin:590px 40px 0 0;
+    text-align:right;
+  }
+  .age-btn-join{  
+    display: block;
+    position: absolute;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0,0);  
+  }  
+}
+
+//설문조사 step01
+.popup-checklist {
+
+  .list__wrap {
+    width:$width-inner;
+    margin: 0 auto;
+  }
+
+  li {
+    padding:40px 0;
+    border-top:1px solid #e1e1e1;
+    &:first-child {
+      border:none;
+    }
+    input {
+      position: absolute;
+      opacity: .000001;
+
+      &:checked~span {
+        background-color: #019afa;
+      }
+    }
+
+    .check {
+      display: inline-block;
+      width: 90px;
+      height: 90px;
+      background-image: url( $imgPathPop +"/btns.png");
+      background-color: #c1cbd2;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+      cursor: pointer;
+    }    
+  }
+  .checklist-text {
+    display:inline-block;
+    width: 410px;
+    vertical-align:middle;
+  }
+  label {
+    vertical-align:middle;
+  }
+  .check-o {
+    margin-right: 10px;
+    background-position: -133px 24px;
+  }
+
+  .check-x {
+    background-position: -220px 24px
+  }
+  .btn__next {
+    margin-top: 13px;
+    margin-bottom: 25px;
+  }
+}
+
+//사진 업로드 step02
+.body-photo {
+  .popup__body {
+    width:620px;
+    height:1090px;
+    margin:0 auto;
+    @include background("body-check-hand-text.png", $repeat: no-repeat);
+  }
+  .photo__wrap {
+    padding-top:190px;    
+  }
+  .photo-upload-bg {
+    position: relative;
+    width: 540px;
+    height:540px;
+    margin:0 auto;
+    border-radius:10px;
+    background-color:#e8e8e7;
+    .frame {
+      position: absolute;;
+      top:0;
+      width: 540px;
+      height: 540px;
+      @include background("frame.png", $repeat: no-repeat);
+    }
+    .frame-dim {
+      display:inline-block;
+      width: 100%;
+      height: 100%;
+      background:rgba(0,0,0,.1);
+    }
+      
+  }
+
+  .photo-loading {
+    position: absolute;
+    top:0;
+    left:0;
+    background:rgba(255,255,255,.1);
+    width: 100%;
+    height: 100%;    
+    display: none;
+    &.on{
+      display: block;
+    }
+  }
+  .loading-inner {
+    position: absolute;
+    top:650px;
+    left:80px;
+    width: 560px;
+    height:560px;
+    margin:0 auto;
+    border-radius:10px;
+    box-shadow: 5px 20px 55px #b9b7b7;
+    border-radius:15px;
+    overflow:hidden;
+    .frame {
+      position: absolute;;
+      top:0;
+      width: 559px;
+      height: 560px;
+      text-align:center;
+      @include background("loading-frame.png", $repeat: no-repeat);
+      > img {
+        position: absolute;
+        left:50%;
+        top:50%;
+        margin:-100px 0 0 -100px;
+      }
+    }  
+    .frame-dim {
+      display:inline-block;
+      width: 100%;
+      height: 100%;
+      background:rgba(0,0,0,.1);
+    }
+
+  }
+  
+  .btn-wrap {
+    margin:180px 0 80px;
+    button{
+      vertical-align: top;
+    }
+  }
+}
+
+//사진 업로드 결과 step03
+.body-result {
+  .result-age {
+    margin:150px 0 0 355px;
+  }
+  .title-sub {
+    margin-bottom:20px;
+    font-size:26px;
+    line-height:33px;
+    font-family: 'Noto Sans KR', sans-serif;
+    span {
+      color:#019afa;
+      font-weight:bold;
+    }
+  }
+
+  dt {
+    display:inline-block;
+    >img {
+      vertical-align:5px;
+    }
+  }
+  dd {
+    display:inline-block;
+    width: 145px;
+    padding-right:25px;
+    text-align:right;
+    > span {
+      margin-right:15px;
+      font-size:80px;   
+      font-weight:bold;   
+    }
+    .text__gary {
+      color:#c1cbd2;
+    }
+    .text__blue {
+      color:#019afa;
+    }
+  } 
+  
+  
+  .btn__confirm {
+    margin-top: 60px;
+    margin-bottom: 0;    
+  }
+
+  .popup__body {    
+    margin:0 auto;
+
+  }
+}
+
+//----------------------------
+// 화보 slider
+//----------------------------
+.gallery-popup {
+  background:#fff;
+}
+.popup-photo {
+  width: 100%;
+  max-width:$width-max;
+  background:none;
+  border-radius:0;
+}
+
+.slider-wrap {
+  position: relative;
+}
+
+.photo-slider {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  background:#fff;
+
+  li {
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.slick-arrow {
+  position: absolute;
+  top: 50%;
+  margin-left: -49px;
+  width: 59px;
+  height: 97px;
+  @include background("btns.png", $repeat: no-repeat);
+  z-index: 1;
+}
+
+.slick-prev {
+  left: 70px;
+  background-position: -175px -62px;
+}
+
+.slick-next {
+  right: 20px;
+  background-position: -236px -62px;
+}
+
+.slider-nav {
+  position: absolute;
+  bottom:40px;
+  left:40px;
+  font-family: robotoItalic;
+  color:#fff;
+  font-size:45px;
+  .slider-idx {
+    color:#019afa;
+    font-size:80px;
+  }
+  .slash {
+    font-size:40px;
+  }
+}
+
+.btn__photodown-popup {
+  position:absolute;
+  bottom:30px;
+  right:40px;
+  box-shadow: 10px 10px 70px #5252525c;
+  border-radius:50%;
+}
+
+.photo-down {
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,.5);
+  z-index: 1;
+  .down-bg {
+    position:absolute;
+    right:0;
+    top:537px;
+    z-index:1;
+  }
+  .down-btn-wrap {
+    position: absolute;
+    top:1115px;
+    right:40px;
+    z-index:1;
+    a {
+      vertical-align: middle;
+    }
+  }
+}
+
+//----------------------------
+// 화보 비디오
+//----------------------------
+.popup-mov {
+  border-radius:0;
+  @include background("mov-selecct-bg.jpg", $repeat: no-repeat);  
+  background-size:cover;
+  .mov-ele{
+    display: none;
+    &.on{
+      display: block;
+    }
+  }
+  
+}
+
+.mov-choice {
+  width: 100%;
+  //height: 100%;
+  
+
+  .selecct-wrap {
+    position: relative;
+    height: 1280px;    
+    @include background("mov-select-bg.png", $repeat: no-repeat);
+    background-size: cover;
+    
+    > button {
+      position: absolute;
+      background:rgba(0,0,0,.001);
+      // outline: 3px dotted red;
+    }
+
+  }
+  .mov-body {
+    top: 1047px;
+    left: 243px;
+    width: 234px;
+    height: 98px;
+  }
+  .mov-dance {
+    top:521px;
+    left:107px;
+    width: 233px;
+    height: 98px;
+  }
+  .mov-dance2 {
+    top:490px;
+    left:243px;
+    width: 234px;
+    height: 98px;
+  }
+}
+
+.mov-wrap {
+  position: relative;
+  width: 720px;
+  height:100vh;
+  background:rgba(0,0,0,.9);
+  > iframe {
+    position: absolute;
+    top:50%;
+    width: 720px;
+    height: 400px;
+    transform: translateY(-50%);
+  }
+}
+
+.mov-down {
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  bottom:0;
+  left:0;
+  background: rgba(0,0,0,.5);
+  //해당background 넣기
+  -webkit-transition: all 2s ease-in-out;
+  transition: all 2s ease-in-out;
+  .down-bg {
+    position: absolute;
+    right:0;
+    bottom:0;
+  }
+  .btn__body-down {
+    position: absolute;
+    bottom:0;
+    right:0;
+    font-size:0;
+    width: 33.6%;
+  }
+  .down-btn-wrap {
+    position: absolute;
+    bottom:40px;
+    right:40px;
+  }
+}
+
+
+
+

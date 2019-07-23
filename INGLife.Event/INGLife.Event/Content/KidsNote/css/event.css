@@ -1,0 +1,435 @@
+﻿@charset "UTF-8";
+/*!
+ * tag reset&base
+ * 2017.10.11
+ */
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: top; }
+
+img {
+  border: 0;
+  vertical-align: top;
+  line-height: 0;
+  font-size: 0;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none; }
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0; }
+
+/*a {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent; // For some Androids
+}*/
+/*a:hover, a:active {
+	text-decoration: none;
+	outline: 0;
+}*/
+/*a:link, a:visited {
+	text-decoration: none;
+}*/
+#dimmed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../../Images/dim.png") repeat center top; }
+
+/*!
+ * font set
+ * 2017.10.11
+ */
+body, input, textarea {
+  font-family: 'Myriad Pro', 'Malgun Gothic', dotum, sans-serif; }
+
+div[id^="pop-"] {
+  display: none;
+  position: absolute;
+  left: 50%;
+  width: 640px;
+  margin-left: -320px;
+  z-index: 99;
+  background-color: #fff; }
+
+.inner-pop {
+  width: 530px;
+  margin: 0 auto;
+  padding-bottom: 50px; }
+
+.header {
+  position: relative;
+  background-color: #f58126; }
+  .header button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-image: url(about:blank); }
+
+h1 {
+  height: 130px;
+  line-height: 130px;
+  text-align: center; }
+  h1 img {
+    vertical-align: middle; }
+
+label {
+  cursor: pointer; }
+
+img {
+  pointer-events: none; }
+
+input {
+  min-width: initial; }
+
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+select {
+  width: 528px;
+  height: 57px;
+  min-width: auto;
+  padding-left: 30px;
+  margin-bottom: 15px;
+  line-height: 57px;
+  border: 1px solid #cbcccd;
+  background: #fff;
+  color: #777;
+  font-family: "Noto Sans KR";
+  font-size: 24px;
+  box-sizing: border-box;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
+
+input[type="radio"],
+input[type="checkbox"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: .0001; }
+
+.pop-personal {
+  background: #fff; }
+  .pop-personal label {
+    position: relative;
+    display: inline-block;
+    width: 125px;
+    line-height: 40px; }
+    .pop-personal label span {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      margin-right: 13px;
+      background-image: url("../../Images/KidsNote/form/input-check.png");
+      background-position: center top; }
+      .pop-personal label span.em {
+        background-image: url("../../Images/KidsNote/form/input-check-em.png"); }
+    .pop-personal label span.radio {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      margin-right: 13px;
+      background-image: url("../../Images/KidsNote/form/input-radio.png");
+      background-position: center top; }
+      .pop-personal label span.radio.em {
+        background-image: url("../../Images/KidsNote/form/input-radio-em.png"); }
+    .pop-personal label .check-dimm {
+      position: absolute;
+      top: -7px;
+      left: -7px;
+      width: 95%;
+      height: 53px;
+      background: transparent;
+      opacity: .3; }
+    .pop-personal label input:checked ~ .check-dimm {
+      display: block; }
+    .pop-personal label input:checked ~ span {
+      background-position: center bottom; }
+    .pop-personal label img {
+      margin-right: 15px;
+      vertical-align: middle; }
+  .pop-personal h3 {
+    margin: 35px 0 15px; }
+  .pop-personal .text-19 {
+    margin: 30px 0 15px;
+    text-align: center; }
+  .pop-personal .btn-phoneconfirm {
+    margin: 25px 0;
+    text-align: center; }
+  .pop-personal .info-area {
+    position: relative;
+    text-align: left; }
+    .pop-personal .info-area .transparent-bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 530px;
+      height: 216px;
+      background: rgba(0, 0, 0, 1e-06); }
+      .pop-personal .info-area .transparent-bg a {
+        display: block;
+        height: 100%;
+        cursor: default; }
+    .pop-personal .info-area .name-line input[type="text"] {
+      float: left;
+      width: 333px;
+      margin-right: 10px; }
+    .pop-personal .info-area .name-line .gender {
+      float: left;
+      width: 185px;
+      height: 60px;
+      overflow: hidden;
+      font-size: 0; }
+      .pop-personal .info-area .name-line .gender label {
+        cursor: pointer; }
+      .pop-personal .info-area .name-line .gender label[for="male"] {
+        width: 93px; }
+        .pop-personal .info-area .name-line .gender label[for="male"] span {
+          width: 93px;
+          height: 60px;
+          background: url("../../Images/KidsNote/form/btn-man.png") no-repeat;
+          background-position: top center; }
+        .pop-personal .info-area .name-line .gender label[for="male"] input:checked ~ span {
+          background-position: center bottom; }
+      .pop-personal .info-area .name-line .gender label[for="female"] {
+        width: 92px; }
+        .pop-personal .info-area .name-line .gender label[for="female"] span {
+          width: 92px;
+          height: 60px;
+          background: url("../../Images/KidsNote/form/btn-woman.png") no-repeat;
+          background-position: top center; }
+        .pop-personal .info-area .name-line .gender label[for="female"] input:checked ~ span {
+          background-position: center bottom; }
+    .pop-personal .info-area input[type="text"] {
+      background-position: 30px center; }
+  .pop-personal .agree-text {
+    text-align: left; }
+    .pop-personal .agree-text p {
+      margin-top: 15px;
+      padding-top: 30px;
+      border-top: 1px solid #777; }
+      .pop-personal .agree-text p.agree-notice {
+        padding: 0;
+        padding-bottom: 42px;
+        margin: 26px 0 44px 0;
+        border: none;
+        border-bottom: 1px solid #777; }
+    .pop-personal .agree-text label[for="agree01"] {
+      width: 140px; }
+    .pop-personal .agree-text label[for="disagree01"],
+    .pop-personal .agree-text label[for="disagree02"] {
+      width: 220px; }
+    .pop-personal .agree-text.bottom-line {
+      padding-bottom: 30px;
+      border-bottom: 1px solid #cbcccd; }
+  .pop-personal .retention-period {
+    font-size: 0;
+    text-align: left; }
+    .pop-personal .retention-period label[for="year3"] {
+      width: 160px; }
+    .pop-personal .retention-period label[for="year2"],
+    .pop-personal .retention-period label[for="year1"] {
+      margin-top: 15px; }
+  .pop-personal .contact-check {
+    font-size: 0;
+    text-align: left; }
+    .pop-personal .contact-check p {
+      margin-bottom: 20px; }
+    .pop-personal .contact-check label[for="sms"] {
+      width: 220px; }
+    .pop-personal .contact-check label[for="email"] {
+      width: 220px;
+      margin-top: 15px; }
+    .pop-personal .contact-check label[for="post"] {
+      margin-top: 15px; }
+  .pop-personal .email-wrap {
+    display: none;
+    text-align: left; }
+    .pop-personal .email-wrap .info-name {
+      margin-top: 33px; }
+      .pop-personal .email-wrap .info-name input {
+        width: 240px; }
+      .pop-personal .email-wrap .info-name .email-icon {
+        display: inline-block;
+        font-size: 0;
+        padding: 0 9px;
+        vertical-align: -4px; }
+      .pop-personal .email-wrap .info-name select {
+        width: 380px;
+        -webkit-appearance: none;
+        /* 화살표 없애기 for chrome*/
+        -moz-appearance: none;
+        /* 화살표 없애기 for firefox*/
+        appearance: none;
+        /* 화살표 없애기 공통*/
+        background: url("../../Images/KidsNote/form/select-icon.png") no-repeat 95% 50%;
+        /* 화살표 아이콘 추가 */ }
+      .pop-personal .email-wrap .info-name select::-ms-expand {
+        display: none;
+        /* 화살표 없애기 for IE10, 11*/ }
+  .pop-personal .essential-point-title {
+    padding-top: 45px;
+    margin-top: 45px;
+    border-top: 1px solid #777; }
+  .pop-personal .post-wrap {
+    text-align: left; }
+    .pop-personal .post-wrap .post-box {
+      display: inline-block;
+      width: 345px;
+      margin-right: 9px; }
+    .pop-personal .post-wrap span img {
+      vertical-align: -23px; }
+  .pop-personal .children-wrap {
+    margin-top: 25px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #cbcccd; }
+    .pop-personal .children-wrap label {
+      width: 258px; }
+      .pop-personal .children-wrap label:first-child {
+        margin-right: 8px; }
+      .pop-personal .children-wrap label input {
+        width: 100%; }
+  .pop-personal .btn-complete-box {
+    position: relative;
+    margin-top: 34px;
+    padding-top: 44px;
+    border-top: 1px solid #777; }
+    .pop-personal .btn-complete-box .loading {
+      position: absolute;
+      top: 44px;
+      left: 0;
+      width: 100%;
+      height: 96px;
+      text-align: center;
+      filter: alpha(opacity=60);
+      opacity: 0.60;
+      background-color: #000;
+      overflow: hidden; }
+      .pop-personal .btn-complete-box .loading img {
+        padding-top: 25px; }
+
+.agree-pop {
+  text-align: center;
+  padding: 85px 0 50px; }
+  .agree-pop .btn-close {
+    position: absolute;
+    top: 28px;
+    right: 32px; }
+  .agree-pop p {
+    width: 530px;
+    margin: 0 auto; }
+  .agree-pop .btn-agree {
+    margin-top: 62px; }
+
+.pop-post {
+  padding: 0; }
+  .pop-post .btn-close {
+    top: 0px;
+    right: 0px; }
+  .pop-post .pop-inner {
+    width: 560px;
+    margin: 0 auto;
+    margin: 50px auto; }
+
+body {
+  padding: 0;
+  margin: 0; }
+
+.blind {
+  position: absolute;
+  top: -1000em;
+  left: 0;
+  width: 0;
+  height: 0;
+  font-size: 0; }
+
+.wrap {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden; }
+  .wrap .event-inner {
+    position: relative;
+    width: 640px;
+    margin: 0 auto; }
+    .wrap .event-inner .tab-area {
+      position: relative;
+      background-color: #f7f3e7;
+      padding-top: 46px;
+      padding-bottom: 50px;
+      text-align: center; }
+      .wrap .event-inner .tab-area .tab-btns {
+        width: 540px;
+        margin: 0 auto;
+        margin-top: 30px; }
+        .wrap .event-inner .tab-area .tab-btns a {
+          display: inline-block;
+          float: left;
+          width: 180px;
+          height: 70px;
+          font-size: 0;
+          text-indent: -9999em;
+          background: url("../../Images/KidsNote/form/kidsnote-orange-tab-btns.jpg") 0 bottom no-repeat; }
+          .wrap .event-inner .tab-area .tab-btns a.on {
+            background-position-y: top; }
+          .wrap .event-inner .tab-area .tab-btns a:nth-child(1) {
+            background-position-x: left; }
+          .wrap .event-inner .tab-area .tab-btns a:nth-child(2) {
+            background-position-x: center; }
+          .wrap .event-inner .tab-area .tab-btns a:nth-child(3) {
+            background-position-x: right; }
+      .wrap .event-inner .tab-area .tab-view {
+        clear: both; }
+        .wrap .event-inner .tab-area .tab-view div {
+          display: none;
+          width: 540px;
+          height: 170px;
+          margin: 0 auto;
+          font-size: 0;
+          text-indent: -9999em;
+          overflow: hidden; }
+          .wrap .event-inner .tab-area .tab-view div:nth-child(1) {
+            background: url("../../Images/KidsNote/form/kidsnote-orange-tab1-view.jpg") 0 0 no-repeat; }
+          .wrap .event-inner .tab-area .tab-view div:nth-child(2) {
+            background: url("../../Images/KidsNote/form/kidsnote-orange-tab2-view.jpg") 0 0 no-repeat; }
+          .wrap .event-inner .tab-area .tab-view div:nth-child(3) {
+            background: url("../../Images/KidsNote/form/kidsnote-orange-tab3-view.jpg") 0 0 no-repeat; }
+    .wrap .event-inner .btn-area {
+      position: relative;
+      background-color: #f7f3e7;
+      padding-bottom: 33px;
+      text-align: center; }
+
+.policy-area {
+  height: 238px;
+  border: 1px solid #cccccc;
+  color: #656565;
+  border-radius: 5px;
+  line-height: 1.5;
+  font-family: 'Malgun Gothic', Dotum, sans-serif; }
+  .policy-area .policy-txt {
+    margin: 10px 3px 10px 10px;
+    height: 218px;
+    overflow-y: auto; }
+  .policy-area h3 {
+    color: #424651;
+    margin: 10px 0 20px 0;
+    font-weight: 800;
+    font-size: 110%; }
+  .policy-area h4 {
+    font-weight: bold; }
+  .policy-area span {
+    font-weight: bold; }
+  .policy-area a {
+    text-decoration: none; }

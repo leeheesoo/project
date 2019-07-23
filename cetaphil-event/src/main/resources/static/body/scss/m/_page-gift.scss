@@ -1,0 +1,14 @@
+.page.page-gift{    
+  background-image: url( $imgPath + '/page-gift/bg.jpg');
+  background-repeat: repeat-x;  
+  background-color: #cdcee4;
+
+  height: 1720px;
+  
+  .event-notice{    
+    background-image: url($imgPath + '/page-gift/event-notice-v2.png');    
+    height: 390px; 
+    margin-top: 60px;
+  } 
+}
+

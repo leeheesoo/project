@@ -1,0 +1,23 @@
+.page.page-challenge{      
+  background-color: #dadbde;  
+  //height: 2000px;
+
+  .visual {
+    position: relative;
+  }
+  .event-btns {
+    position: absolute;
+    bottom:0;
+  }
+  .event-notice{
+    background-image: url($imgPath + '/page-challenge/event-notice.png');
+    height: 571px;
+    margin-top: 85px;
+
+    .btn-show-detail{
+      top: 246px;
+      left: 362px;
+    }
+  }  
+}
+

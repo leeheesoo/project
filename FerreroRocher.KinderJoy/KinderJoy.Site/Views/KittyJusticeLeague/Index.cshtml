@@ -1,0 +1,148 @@
+﻿@{
+    ViewBag.Title = "킨더조이 : 헬로키티&저스티스리그 이벤트";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var isClose = DateTime.Now >= new DateTime(2017, 12, 18);
+}
+@section styles {
+    @*<link href="~/Content/vendor/slick.css" rel="stylesheet" />*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/vendor/csshake.min.css" rel="stylesheet">
+    <link href="~/Content/KittyJusticeLeague/css/event.min.css" rel="stylesheet">
+}
+<!-- background -->
+<div class="bacgkround-wrap">
+    <div class="bg1"></div>
+    <div class="bg2">
+        <div class="section-deco-top-snow"></div>
+        <div class="section-deco-center"></div>
+        <div class="section-deco-center-snow snow"></div>
+        <div class="section-deco-center-snow-b snow-b"></div>
+    </div>
+</div>
+<!-- // background -->
+<!-- page -->
+<div class="event-container" id="kitty-justiceleague">
+    <h1>헬로키티 & 저스티스리그 장난감 출시 이벤트</h1>
+    <!-- 상단영역 -->
+    <section class="event-intro" id="eventIntro">
+        <div class="heading">
+            <div class="a11y-hidden">
+                <h2>NEW! 아이와 함께 새로운 킨더조이 장난감을 만나보세요!</h2>
+                <p>열 때마다 100% 라이선스 장난감이 들어있어요!</p>
+            </div>
+            <div class="deco"></div>
+        </div>
+        <div class="toyview-container">
+            <!-- 저스티스 -->
+            <div class="toyview jt" id="jtContainer">
+                <div class="item back"></div>
+                <div class="item snowhill"></div>
+                <div class="item sky twinkle "></div>
+                <div class="item top"></div>
+                <div class="item toy bgbg"></div>
+                <div class="item logo"></div>
+                <div class="item center dongdong"></div>
+            </div>
+            <!-- 키티 -->
+            <div class="toyview kt" id="ktConatainer">
+                <div class="item snowhill"></div>
+                <div class="item sky twinkle"></div>
+                <div class="item top"></div>
+                <div class="item toy bgbg"></div>
+                <div class="item logo"></div>
+                <div class="item center kitikiti"></div>
+            </div>
+            <!-- 메인 -->
+            <div class="toyview main" id="mainContainer">
+                <div class="item back"></div>
+                <div class="item snowhill"></div>
+                <div class="item sky twinkle"></div>
+                <div class="item top"></div>
+                <div class="item toy bgbg"></div>
+                <div class="item center heartbeat"></div>
+            </div>
+            <div class="paging">
+                <div class="btn-prev grow">
+                    <div><button type="button"><img src="~/Images/KittyJusticeLeague/w/btn-prev.png" alt="이전" /></button></div>
+                   </div>
+                <div class="btn-next grow">
+                    <div><button type="button"><img src="~/Images/KittyJusticeLeague/w/btn-next.png" alt="다음" /></button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- // 상단영역 -->
+    <!-- 하단영역 -->
+    <section class="event-area" id="eventArea">
+        <div class="heading">
+            <div class="a11y-hidden">
+                <h2>킨더조이 크리스마스 즉석당첨 검색 이벤트</h2>
+                <p>네이버 검색창에서 킨더조이 크리스마스를 검색하고 즉석당첨을 확인하세요!</p>
+            </div>
+        </div>
+        <div class="naver-search-go">
+            <div class="search-deco"></div>
+            <div class="search-deco-click shake-slow shake-constant"></div>
+            <a href="@(isClose ? "javascript:alert('이벤트가 종료되었습니다.');":Url.Action("InstantLotteryLanding", "KittyJusticeLeague"))" target="_blank"><img src="~/Images/KittyJusticeLeague/w/naver-search.png" id="btn-naver-landing" alt="네이버에 킨더조이 크리스마스 검색하러 가기" /></a>
+            <div class="text-flow animate-flow"></div>
+        </div>
+        <div class="event-info">
+            <div class="a11y-hidden">
+                <p>이벤트 기간 : 2017년 11월 13일 (월) ~ 12월 10일(일)</p>
+                <p>참여방법</p>
+                <ol>
+                    <li>01. 네이버에서 '킨더조이 크리스마스' 검색!</li>
+                    <li>02. 즉석당첨 버튼 클릭!</li>
+                    <li>03 킨더조이 TVCF 시청</li>
+                    <li>04 즉석당첨 결과 확인!</li>
+                </ol>
+                <p>경품 안내</p>
+                <ul>
+                    <li>저스티스리그&amp;헬로키티 킨더조이 기프티콘 (랜덤발송) 1,000명</li>
+                    <li>헬로키티 나노블럭 15명, 저스티스리그 나노블럭 (랜덤발송) 15명</li>
+                    <li>미니 크리스마스 트리 15명</li>
+                    <li>크리스마스 카드 DIY 키트 15명</li>
+                </ul>
+            </div>
+        </div>
+        <div class="btns">
+            <button onclick="openPop('winner'); return false;"><img src="~/Images/KittyJusticeLeague/w/btn-dang-view.png" id="btn-win-check" alt="당첨자 확인" /></button>
+        </div>
+    </section>
+    <section class="event-note">
+        <div><img src="~/Images/KittyJusticeLeague/w/event-note.png" alt="이벤트 유의사항" /></div>
+    </section>
+    <!-- // 하단영역 -->
+
+    @Html.Partial("./_Popup")
+    @Html.Partial("./_PopupZipCode")
+    @Html.Partial("_PopupInApp")
+    @Html.Partial("./_PopupPrizeWinner")
+    @Html.Partial("./_YoutubeAPI")
+</div>
+
+<!-- // page -->
+@section scripts {
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+    <script src="~/Scripts/KittyJusticeLeague/pub-deviceCheck.js" type="text/javascript"></script>
+    <script src="~/Scripts/KittyJusticeLeague/pub-common.js" type="text/javascript"></script>
+    <script src="~/Scripts/KittyJusticeLeague/pub-event.js" type="text/javascript"></script>
+    <script src="~/Scripts/KittyJusticeLeague/pub-effect.js" type="text/javascript"></script>
+    <script type="text/javascript" src="~/Scripts/Common/devCommon.js"></script>
+    <script type="text/javascript" src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
+    <script src="~/Scripts/vue.min.js"></script>
+    <script type="text/javascript">
+        if ('@ViewBag.IsShowInstantLottery' == 'True') {
+            popAutoPlayMode = true;
+        } else {
+            popAutoPlayMode = false;
+        }
+        $(window).load(function () {
+            if (popAutoPlayMode) openPop('mov-view');
+        });
+    </script>
+    <script src="~/Scripts/KittyJusticeLeague/dev.js"></script>
+}

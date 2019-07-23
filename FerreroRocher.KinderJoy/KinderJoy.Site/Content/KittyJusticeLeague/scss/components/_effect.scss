@@ -1,0 +1,188 @@
+﻿//---------------------------------------------------
+// 네이버검색
+//---------------------------------------------------
+// 네이버검색 - 텍스트 효과
+.animate-flow{
+	@include prefix (animation, flow 3s infinite);
+}
+@include keyframes (flow) { 
+ 0% {
+    @if $device == web {
+      width:490px;
+    }
+    @else {
+      width:276px;
+    }
+  }
+  80% {
+    width:0;
+  }
+}
+
+//---------------------------------------------------
+// 효과: 마우스오버 효과
+//---------------------------------------------------
+.grow {
+	@include prefix(transition, all .1s ease-in-out);
+	&:hover {
+		@include prefix(transform, scale(.9));
+	}
+}
+
+//---------------------------------------------------
+// 효과 : 깜빡임
+//---------------------------------------------------
+// 은은하게
+.twinkle{
+	@include prefix (animation, twinkle 1.5s infinite);
+}
+@include keyframes (twinkle) { 
+  0% {
+    opacity:1;
+  }
+  50% {
+    opacity:.5;
+  }
+  100% {
+    opacity:1;
+  }
+}
+// 깜빡임
+.flash{
+	@include prefix(animation, flash 1s infinite);
+}
+@include keyframes (flash) { 
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+} 
+
+//---------------------------------------------------
+// 효과: 눈내리는 모션
+//---------------------------------------------------
+.snow-b{
+	@include prefix (animation, snow 140s infinite);
+  @include prefix ( animation-timing-function, linear);
+}
+.snow{
+	@include prefix (animation, snow 80s infinite);
+  @include prefix ( animation-timing-function, linear);
+}
+
+@include keyframes (snow) { 
+  0% {
+    background-position-y:0%;
+  }
+  50% {
+    background-position-x:15%;
+    background-position-y:50%;
+  }
+  100% {
+    background-position-x:-15%;
+    background-position-y:100%;
+    //transition: all 300ms ease;
+    transition: all;
+  }
+}
+
+//---------------------------------------------------
+// 효과: 시간 딜레이
+//---------------------------------------------------
+.showDelay{
+	opacity:0;
+  @include prefix(animation-delay, .5s);
+	@include prefix(animation-fill-mode, both);
+}
+
+// 말풍선이 나타나는 효과
+.speechBubble{
+	@include prefix(animation, speechBubble 1s);
+}
+@include keyframes (speechBubble) { 
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+//---------------------------------------------------
+// 효과: 모션 
+//---------------------------------------------------
+.dongdong{
+	@include prefix(animation, dongdong 1s infinite);
+}
+
+.heartbeat{
+	@include prefix(animation, heartbeat 3s infinite);
+}
+
+.bgbg{
+	@include prefix(animation, bgbg 8s infinite);
+}
+.kitikiti{
+  @include prefix(animation, kitikiti 4s infinite);
+  //@include prefix(animation, bgbg 8s infinite);
+}
+
+// 동동거림
+@include keyframes (dongdong) {
+	0% {
+		@include prefix(transform, translateY(0));
+	}
+	50% {
+		@include prefix(transform, translateY(-5px));
+	}
+	100% {
+		@include prefix(transform, translateY(0));
+	}
+}
+// 키티
+@include keyframes (kitikiti) {
+	0% {
+		@include prefix(transform, translateX(20px));
+	}
+	50% {
+		@include prefix(transform, translateX(-20px));
+	}
+	100% {
+		@include prefix(transform, translateX(20px));
+	}
+}
+// 좌우회전
+@include keyframes (heartbeat) {
+	10% {
+		@include prefix(transform, translateY(-6px));
+	}
+	15% {
+		@include prefix(transform, translateY(0));
+	}
+	20% {
+		@include prefix(transform, translateY(-6px));
+	}
+	25% {
+		@include prefix(transform, translateY(0));
+	}
+	to {
+		//@include prefix(transform, rotateY(8deg));
+	}
+}
+
+// 토이들
+@include keyframes (bgbg) {
+	0% {
+		@include prefix(transform, translateX(5px));
+	}
+	50% {
+		@include prefix(transform, translateX(-5px));
+	}
+	to {
+		@include prefix(transform, translateX(5px));
+	}
+}
+

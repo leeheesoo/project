@@ -1,0 +1,330 @@
+$img-loc : '../../Images/gate/';
+$min-width : 1000;
+
+$break-point-wide: 1921px;
+$length-toy-txt: 16;
+
+@function getPercent($me, $parent) {
+   @return ($me / $parent) * 100%;
+}
+
+body {
+    background: url($img-loc + 'bg-gate-repeat.jpg') top center repeat-y;
+}
+
+.header {
+    display: none; // 상단 header 숨김처리
+}
+
+.container {
+    position: relative;
+    height: auto;
+}
+
+.gate-wrap {
+    position: relative;
+    width: 100%;
+    min-width: $min-width + px;
+    max-width: 2560px;
+    margin: 0 auto;
+    overflow: hidden;
+    // reset csss
+    * {
+        box-sizing: border-box;
+        outline: none;
+        img {
+            min-width: 100%;
+        }
+        button,
+        a {
+            padding: 0;
+            border: none;
+            background: none;
+            font-size: 0;
+            cursor: pointer;
+            vertical-align: top;
+        }
+    }
+
+
+    // bg-top
+    // * =============================
+    .bg-top {
+        width: 100%;
+        background: url($img-loc + 'bg_top.jpg') top center no-repeat;
+        text-align: center;
+        font-size: 0;
+        .btn-go-home {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: #43b3e4;
+            z-index: 9;
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                background: url($img-loc + 'btn_go_home.png') center center no-repeat;
+            }
+
+        }
+    }
+
+
+    // contents-wrap
+    // * =============================
+    .contents-wrap {
+            width: 100%;
+            background: url($img-loc + 'bg_gate.jpg') top center no-repeat;
+            .gate {
+                &-step {
+                    // outline: 1px dashed red;
+                    position: relative;
+                    // width: 52.084%;
+                    width: 1000px;
+
+                    @media (min-width: $break-point-wide) {
+                        width: 1330px;
+                    }
+                    // min-width: $min-width + px;
+                    margin: 0 auto;
+                    .rino {
+                        position: absolute;
+                        left: getPercent(30, $min-width);
+                        transition: 2s cubic-bezier(0.4, 0, 1, 1);
+                        transform-origin: top center;
+                        animation-duration: 2s;
+                        z-index: 10;
+
+                    }
+                    .txt-box,
+                    .slide-box {
+                        position: absolute;
+                        right: getPercent(30, $min-width);
+                        animation-delay: 1.5s;
+                        z-index: 9;
+                        cursor: pointer;
+
+                    }
+                    &1 {
+                        .rino {
+                            width: getPercent(538, $min-width);
+                            top: 1%;
+                            &.bounce {
+                                transition: 2s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+                                animation-duration: 3s;
+                            }
+                            .motion-ele { //웹모바일동일
+                                position: absolute;
+                                top: getPercent(80, 550);
+                                left: 20%;
+                                width: getPercent(62, 538);
+                                transform-origin: right bottom;
+                                animation-duration: 5s;
+                                z-index: -1;
+                            }
+                        }
+                        .txt-box {
+                            width: getPercent(495, $min-width);
+                            top: getPercent(122, 786);
+                        }
+                    }
+                    &2 {
+                        .rino {
+                            width: getPercent(511, $min-width);
+                        }
+                         .txt-box {
+                            width: getPercent(467, $min-width);
+                            top: getPercent(101, 786);
+                            cursor: pointer;
+                        }
+                    }
+                    &3 {
+                        .rino {
+                            width: getPercent(283, $min-width);
+                            .motion-ele {
+                                position: absolute;
+                                top: getPercent(330, 570);
+                                right: 1%;
+                                width: getPercent(71, 283);
+                                transform-origin: left center;
+                                animation-duration: 3s;
+                                z-index: -1;
+
+                            }
+
+                        }
+                    }
+                    &4 {
+                        .rino {
+                            width: getPercent(378, $min-width);
+                             .motion-ele {
+                                position: absolute;
+                                top: 420px;
+                                right: 21px;
+                                width: getPercent(85, 382);
+                                transform-origin: left center;
+                                z-index: -1;
+                                animation-duration: 3s;
+
+                                @media (min-width: $break-point-wide) {
+                                    top: 460px;
+                                    right: 31px;
+                                }
+                            } // hand
+
+                            &-body {
+                                position: relative;
+                                top: 220px;
+                            }
+
+                            .txt-egg {
+                                position: absolute;
+                                top: 42px;
+                                left: 64px;
+                                transform: scale(1.3);
+                                width: 379px;
+                                height: 205px;
+                                background: {
+                                    repeat: no-repeat;
+                                    position: center top;
+                                }
+
+                                @for $i from 1 through $length-toy-txt {
+                                    &#{$i} {
+                                        background-image: url($img-loc + 'toy-txt#{$i}.png');
+                                    }
+                                }
+                            } // txt egg
+                        } // rino
+                    }
+
+                    // 3단계 : kinder-select slider
+                    // * =============================
+                    .kinder-select {
+                        &-box {
+                            position: absolute;
+                            /*top: 0;*/
+                            top: 50px;
+                            right: getPercent(100, $min-width);
+                            /*width: getPercent(472, $min-width);*/
+                            width: getPercent(566, $min-width);
+                            padding-top: 2%;
+                        }
+
+                        &-slide {
+                           .slide-item {
+                                width: 17% !important;
+                                margin: 2% 2.5%;
+                                cursor: pointer;
+                                animation-duration: 8s;
+                            }
+                            .gap-adjust {
+                                margin-left: 13%;
+                            }
+
+                            // slick arrow 관련 css
+                            .slick {
+                                &-slide:nth-child(3) {
+                                }
+                                 &-arrow {
+                                    position: absolute;
+                                    top: 46%;
+                                    width: 2.97%;
+                                    height: 4.26%;
+                                    padding: 0;
+                                    font-size: 0;
+                                    background: url($img-loc + 'ir_slide_arrow.png') 0 0 / cover no-repeat;
+                                    border: none;
+                                    cursor: pointer;
+                                    z-index: 11;
+                                }
+                                &-prev {
+                                    left: -9%;
+                                    background-position-x: 0;
+                                }
+                                &-next {
+                                    right: -9%;
+                                    background-position-x: right;
+                                }
+                            }
+                        }
+                    }
+                    // E : kinder-select slider
+
+
+                    // 4단계 : kinder-item
+                    // * =============================
+                    .kinder-item {
+                        &-box {
+                            position: absolute;
+                            top: 0;
+                            right: getPercent(90, $min-width);
+                            width: getPercent(510, $min-width);
+                            height: 100%;
+                            padding-top: 2%;
+                            .btn-box {
+                                // outline: 1px dashed red;
+                                width: 100%;
+                                height: getPercent(64, 768);
+
+                                &::after {
+                                    display: block;
+                                    clear: both;
+                                    content: '';
+                                }
+
+                                .gate-btn {
+                                    float: left;
+                                    height: 64px;
+
+                                    background: url($img-loc + 'ir-btn.png') 0 0 no-repeat;
+                                    &.btn-retry {
+                                        margin-right: 30px;
+                                        width: 272px;
+                                        // width: percentage(272px / 490px);
+                                        // background-position-y: top;
+
+                                        @media (max-width: $break-point-wide) {
+                                            margin-right: 8px;
+                                        }
+                                    }
+                                    &.btn-show-detail {
+                                        width: 230px;
+                                        // width: 44.5%;
+                                        background-position: right top;
+                                    }
+                                }
+                            }
+                        }
+                        &-selected {
+                            width: getPercent(426, 490);
+                            margin: 0 auto;
+                            padding: 6% 0 8.5%;
+                            opacity: 0;
+                            transition: 1s ease-out;
+                            transform-origin: center bottom;
+                            transform: scale(0);
+                            &.show{
+                                opacity: 1;
+                                transform: scale(1);
+                            }
+                        }
+                    }  // E : kinder-item slider
+
+                    // contents 높이값 잡는 용도
+                    .vr-contents {
+                        width: getPercent(10, $min-width);
+                    }
+                } // E : gate-step
+            }
+        } // E : contents-wrap
+
+        .copyright {
+            > img {
+                min-width:auto;
+            }
+        }
+}

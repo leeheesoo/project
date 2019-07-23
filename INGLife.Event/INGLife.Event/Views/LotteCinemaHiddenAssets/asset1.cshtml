@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "ING생명 숨은자산찾기";
+}
+
+@section styles {
+    <link href="~/Content/HiddenAssets/style.css" rel="stylesheet" />
+    <link href="~/Content/HiddenAssets/slider-pro.min.css" rel="stylesheet" />
+    <style>
+        .asset2._motion .stageList ul {
+            padding-top: 0;
+        }
+
+        .asset2._motion .stageList ul li {
+            opacity: 1;
+        }
+
+        .stageList {
+            width: 90vw;
+            margin: 2vw auto 0;
+        }
+
+        .stageList ul {
+            overflow: hidden;
+            padding-top: 5px;
+            transition: all .5s ease;
+        }
+
+        .stageList ul li {
+            position: relative;
+            float: left;
+            background-image: url('/Content/Images/HiddenAssets/bg_stage_box_m.png');
+            width: 50%;
+            height: 44vw;
+            background-size: 95vw auto;
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+        .stageList ul li.type1 {
+            background-position: -3vw -7vw;
+        }
+
+        .stageList ul li.type2 {
+            background-position: -48vw -7vw;
+            transition-delay: .1s;
+        }
+
+        .stageList ul li.type3 {
+            background-position: -3vw -55vw;
+            transition-delay: .2s;
+        }
+
+        .stageList ul li.type4 {
+            background-position: -48vw -55vw;
+            transition-delay: .3s;
+        }
+
+        .stageList ul li.type5 {
+            background-position: -3vw -100vw;
+            transition-delay: .4s;
+        }
+
+        .stageList ul li.type6 {
+            background-position: -48vw -100vw;
+            transition-delay: .5s;
+        }
+    </style>
+}
+
+<div id="wrap">
+    <!-- statistics -->
+    <div class="asset2">
+        <div class="txtArea">
+            <strong>당신은 누구신가요?</strong>
+        </div>
+        <div class="stageList">
+            <ul>
+                <li class="type1"><span><!-- 커피 --></span></li>
+                <li class="type2"><span><!-- 택시비 --></span></li>
+                <li class="type3"><span><!-- 피부관리 --></span></li>
+                <li class="type4"><span><!-- 문화생활 --></span></li>
+                <li class="type5"><span><!-- 외식 --></span></li>
+                <li class="type6"><span><!-- 술 --></span></li>
+            </ul>
+        </div>
+    </div>
+    <!--// statistics -->
+</div>
+
+
+@section scripts {
+    <script src="~/Content/js/HiddenAssets/jquery.sliderPro.min.js"></script>
+    <script src="~/Content/js/HiddenAssets/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.asset2').addClass('_motion');
+
+            var _step = false;
+            $(".stageList li").click(function () {
+                if (_step == false) {
+                    if ($(this).css('opacity') == 1) {
+                        $('.stageList li').removeClass('_active');
+                        $(this).addClass('_active');
+                        _step = true;
+                        var idx = $(this).index() + 1;
+                        setTimeout(function () {
+                            $(location).attr('href', '/lotte-cinema/asset2_' + idx);
+                        }, 0);
+                    }
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,351 @@
+﻿@model KinderJoy.Site.Models.Word.WordEntry
+@{
+    Layout = "~/Views/Shared/_Layout.Word.cshtml";
+    var isMobile = (HttpContext.Current.Request.Browser.IsMobileDevice);
+    string userAgent = HttpContext.Current.Request.UserAgent.ToLower();
+    bool isIOS = userAgent.Contains("ipad") || userAgent.Contains("iphone") || userAgent.Contains("ipod");
+
+    bool isFbApp = userAgent.Contains("fb") || userAgent.Contains("facebook");
+    bool iskakaoApp = userAgent.Contains("kakao");
+    bool isKakaostory = userAgent.Contains("kakaostory") || userAgent.Contains("wv");
+    bool isKakaotalk = userAgent.Contains("kakaotalk");
+    bool isTwitter = userAgent.Contains("twitter");
+    bool isNaver = userAgent.Contains("naver");
+    bool isDaum = userAgent.Contains("daum");
+    bool isChromeForiOS = userAgent.Contains("crios");
+    bool isInApp = isFbApp || iskakaoApp || isKakaostory || isKakaotalk || isTwitter || isNaver || isDaum || isChromeForiOS;
+
+    ViewBag.Title = "킨더조이 빈칸 이벤트";
+}
+<script>
+
+    alert("종료된 이벤트 입니다.");
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '@System.Configuration.ConfigurationManager.AppSettings["sns.facebook.apikey"]',
+            xfbml      : true,
+            version    : 'v2.0'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/ko_KR/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<div class="event">
+    <!-- header -->
+    <div class="event-header">
+        <div class="event-header_mv">
+            <div class="mvDim"></div>
+			<div id="player"></div>
+		</div>
+    </div>
+    <!-- // header -->
+
+    <!-- body -->
+    <div class="event-body">
+        <a href="javascript:openMov();" class="event-body_btn GA" data-category="퀴즈이벤트 Web" data-action="[퀴즈이벤트 Web] 영상보기"><img src="~/Images/event/btn_egg_movie.png" alt="세가지 즐거움이 하나에! 영상보기" /></a>
+        <!-- wrap -->
+        <div class="event-content-wrap">
+				<h2><img src="~/Images/event/title_event.png" alt="신제품 출시 킨더조이 TVCF 퀴즈 이벤트!" /></h2>
+				<p class="event-body_txt"><img src="~/Images/event/txt_event.png" alt="TV CF 보고 빈칸에 들어갈 단어를 입력해주세요! 추첨을 통해, 세가지 즐거움이 가득한 킨더조이를 드립니다!" /></p>
+				<div><img class="event-body_img" src="~/Images/event/img_egg.png" alt="KINDERJOY 제품 이미지" /></div>
+        </div>
+        <!-- //wrap -->
+    </div>
+    <!-- // body -->
+
+    <!-- bottom -->
+    <div class="event-bottom">
+        <!-- wrap -->
+        <div class="event-content-wrap">
+            <h2 class="event-bottom_title"><img src="~/Images/event/img_quiz.png" alt="QUIZ" /></h2>
+            <p class="event-bottom_txt1"><img src="~/Images/event/txt_quiz1.png" alt="세가지 즐거움이 하나에! 새로 나온○○○○" /></p>
+            <p class="event-bottom_txt2"><img src="~/Images/event/txt_quiz2.png" alt="“OOOO”에 들어갈 말은 무엇일까요? 빈칸에 정답을 입력한 후 응모하기 버튼을 눌러주세요!" /></p>
+            <a class="event-bottom_btn-hint GA" href="javascript:goAbout();" data-category="퀴즈이벤트 Web" data-action="[퀴즈이벤트 Web] 힌트보기"><img src="~/Images/event/btn_hint.png" alt="힌트보기" /></a>
+            <div class="quiz_area">
+					<form action="" class="event-quiz">
+        			 <fieldset>
+        				 <legend>퀴즈</legend>
+							  <input type="text" class="event-quiz_input" maxlength="1" id="Word1" />
+							  <input type="text" class="event-quiz_input" maxlength="1" id="Word2"/>
+							  <input type="text" class="event-quiz_input" maxlength="1" id="Word3"/>
+							  <input type="text" class="event-quiz_input" maxlength="1" id="Word4"/>
+							  <button class="event-quiz_btn GA" type="button" id="btnEntry" data-category="퀴즈이벤트 Web" data-action="[퀴즈이벤트 Web] 퀴즈응모하기"><span class="skip">퀴즈 응모하기</span></button>
+        			 </fieldset>
+					</form>
+					<p><img src="~/Images/event/txt_quiz_info.png" alt="" /></p>
+				</div>
+            <!-- 이벤트 기간 -->
+            <div class="event-way">
+				<div><img src="~/Images/event/txt_event_info.png" alt="이벤트 정보" /></div>
+				<div class="btn_check"><a href="#" id="btnWinnerResult" class="GA" data-category="퀴즈이벤트 Web" data-action="[퀴즈이벤트 Web] 당첨자확인하기"><img src="~/Images/event/btn_event_check.png" alt="당첨자 확인하기" /></a></div>
+            </div>
+            <!-- // 이벤트 기간 -->
+            <p class="event-copyright"><img src="~/Images/copy.png" alt="CopyrightⓒFerrero 2015 all rights reserved."></p>
+        </div>
+        <!-- // wrap -->
+    </div>
+    <!-- // bottom -->
+</div>
+
+<!-- 개인 정보 -->
+<div class="popup-userInfo">
+    <div class="dim"></div>
+    <div class="popup-userInfo_wrap">
+        <button class="event-pop_close js-eventClose"><span class="skip">닫기</span></button>
+        <!-- header -->
+        <div class="popup-userInfo_header">
+            <h1><img src="~/Images/event/title_popupInfo.png" alt="정답입니다" /></h1>
+            <p class="popup-userInfo_header--txt"><img src="~/Images/event/txt_popupInfo.png" alt="당첨자 발표 후 경품 발송을 위한개인정보를 입력해주세요!" /></p>
+        </div>
+        <!-- // header -->
+        <!-- body -->
+        @using (Html.BeginForm("Entry", "Word", FormMethod.Post, new { name = "frm", id = "frm",@class="popup-userInfo_form" }))
+        {
+            <fieldset>
+                <legend>사용자 정보</legend>
+                <div class="input-wrap">
+                    <label class="label label_name" for="Name"><span class="skip">이름</span></label>
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { maxlength = "20", @class="info_input" } })
+                </div>
+                <div class="input-wrap input-wrap_radio js-radio-wrap">
+                    <span class="label label_gender"><span class="skip">성별</span></span>
+                    <span class="radio-wrap">
+                        @Html.RadioButtonFor(Model => Model.Genger, "M", new { @class="radio", @id="GenderM" } )
+                        <label class="label_radio label_radio--m" for="GenderM"><span class="skip">남성</span></label>
+                    </span>
+                    <span class="radio-wrap radio-right">
+                        @Html.RadioButtonFor(Model => Model.Genger, "F", new { @class="radio", @id="GenderF" } )
+                        <label class="label_radio label_radio--w" for="GenderF"><span class="skip">여성</span></label>
+                    </span>
+                </div>
+                <div class="input-wrap js-inputCell">
+                    <label class="label label_age" for="Age"><span class="skip">나이</span></label>
+                    <span class="placeholder placeholder-age">신청자 본인의 나이를 입력해주세요!</span>
+                    @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class="info_input" } })
+                </div>
+                <div class="input-wrap js-inputCell">
+                    <label class="label label_phone" for="Mobile"><span class="skip">휴대폰번호</span></label>
+                    <span class="placeholder">'-'없이 입력해 주세요.</span>
+                    @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class="info_input", @maxlength="14" } })
+                </div>
+                <div class="input-wrap input-wrap_radio js-radio-wrap">
+                    <span class="label label_gender-gift"><span class="skip">경품선택</span></span>
+                    <span class="radio-wrap">
+                        @Html.RadioButtonFor(Model => Model.GiftType, "M", new { @class="radio", @id="GiftTypeM" } )
+                        <label class="label_radio label_radio--giftM" for="GiftTypeM"><span class="skip">남아용</span></label>
+                    </span>
+                    <span class="radio-wrap radio-right">
+                        @Html.RadioButtonFor(Model => Model.GiftType, "F", new { @class="radio", @id="GiftTypeF" } )
+                        <label class="label_radio label_radio--giftW" for="GiftTypeF"><span class="skip">여아용</span></label>
+                    </span>
+                </div>
+                <p class="label label_article"><span class="skip">개인정보보호를 위한 이용자 동의사항</span></p>
+                <div class="info-article">
+						[개인정보 수집 및 활용 동의]<br /><br />
+						고객님이 입력한 개인정보는 ‘정보통신망 이용촉진 및 정보보호 등에 관한 법률’에 따라 주) <span>페레로 아시아 리미티드 한국지사</span>가 수집, 활용 및 취급 위탁 시 본인의 동의를 얻어 야 하는 정보입니다.<br />
+						입력하신 개인정보는 아래의 목적으로 프로모션 대행사에만 제공되며, 이외의 용도로는 활용되지 않습니다.<br />
+						1) 개인정보 수집 및 이용목적 - 참여자 본인 확인<br />
+						2) 수집하는 개인정보 항목 - 이름, 휴대폰 번호<br />
+						3) 개인정보 보유 및 이용기간 - 이벤트 종료 후 3개월 이내 파기 (단, 관계법령의 규정에 의하여 보존할 필요가 있는 경우 관련 법령에 따라 보관)<br />
+						4) 본 이벤트 참여 고객은 개인정보 수집, 활용에 대하여 동의를 거부할 권리가 있으며, 개인정보 수집, 활용에 대한 미동의 시 서비스에 참여하실 수 없습니다.<br />
+						5) <span>페레로 아시아 리미티드 한국지사</span>는 서비스 향상과 원활한 진행을 위하여 개인 정보 처리 업무를 외부 전문 업체에 위탁하여 처리하고 있습니다.<br />
+						* 이벤트 운영 및 경품 배송 : <span>메가존 ㈜</span><br />
+                </div>
+                <div class="wrap-chk">
+                    @Html.EditorFor(model => model.Agree, new {@class="info-chk" })
+                    <label class="agree-label" for="Agree">
+                        <span class="skip">위 내용에 동의 합니다</span>
+                    </label>
+                </div>
+                
+                <div class="btn-area">
+                    <input type="image" src="~/Images/event/btn_subcription.png" alt="응모완료" class="GA" data-category="퀴즈이벤트 Web" data-action="[퀴즈이벤트 Web] 개인정보입력"/>
+                </div>
+            </fieldset>
+        }
+        <!-- // body -->
+    </div>
+</div>
+<!-- // 개인 정보 -->
+
+<!-- sns -->
+<div class="popup-sns">
+    <div class="dim"></div>
+    <!-- wrap -->
+    <div class="popup-sns_wrap">
+        <button class="event-pop_close js-eventClose"><span class="skip">닫기</span></button>
+        <h1><img src="~/Images/event/title_popupSns.png" alt="SNS공유 및 참여 완료 당첨자 발표는 매주 금요일 이벤트 페이지에서 확인 가능합니다!" /></h1>
+        <div class="popup-sns_body">
+            <ul class="popup-sns_btns">
+                <li><a href="#" id="btnFacebook" class="GA" data-category="퀴즈이벤트 Web" data-action="[퀴즈이벤트 Web] 페이스북공유"><img src="~/Images/event/facebook.png" alt="facebook" /></a></li>
+                <li><a href="#" id="btnTwitter" class="GA" data-category="퀴즈이벤트 Web" data-action="[퀴즈이벤트 Web] 트위터공유"><img src="~/Images/event/tweet.png" alt="tweet" /></a></li>
+                <li><a href="#" id="btnKakaostory" class="GA" data-category="퀴즈이벤트 Web" data-action="[퀴즈이벤트 Web] 카카오스토리공유"><img src="~/Images/event/kakao.png" alt="kakao story" /></a></li>
+                <li><a href="#" id="btnKakaoTalk" class="GA" data-category="퀴즈이벤트 Web" data-action="[퀴즈이벤트 Web] 카카오톡공유"><img src="~/Images/event/kakao_talk.png" alt="kakao talk" /></a></li>
+            </ul>
+            <p class="popup-sns_txt"><img src="~/Images/event/txt_sns.png" alt="킨더조이 TVCF 퀴즈 이벤트를 sns 소문내면, 당첨확률이 up! 3개다 공유하면 당첨확율 up! up! " /></p>
+            <button class="popup-sns_ok js-popInBtnClose" type="button" data-popname="sns"><img src="~/Images/event/btn_sns.png" alt="참여완료"></button>
+        </div>
+    </div>
+    <!-- // wrap -->
+</div>
+<!-- // sns -->
+
+<!-- 당첨자 발표 -->
+<div class="popup-winner">
+    <div class="dim"></div>
+    <!-- wrap -->
+    <div class="popup-winner_wrap">
+        <button class="event-pop_close js-eventClose"><span class="skip">닫기</span></button>
+        <h1><img src="~/Images/event/title_popup_winner.png" alt="당첨자 발표 이벤트 당첨을 진심으로 축하드립니다!" /></h1>
+        <div class="popup-winner_body">
+            <div class="dang_selector">
+					<a href="1" class="dang_selector btnDang"><img src="~/Images/event/dang/dang_selector1.png" alt="1주차" /></a>
+					<a href="2" class="dang_selector btnDang"><img src="~/Images/event/dang/dang_selector2.png" alt="2주차" /></a>
+					<a href="3" class="dang_selector btnDang"><img src="~/Images/event/dang/dang_selector3.png" alt="3주차" /></a>
+					<a href="4" class="dang_selector btnDang"><img src="~/Images/event/dang/dang_selector4.png" alt="4주차" /></a>
+            </div>
+				<div class="winner_info">
+                        <!-- 
+                            1주차 ,2주차 탭 누를 때마다 아래에 있는 .dang_2~dang_4까지 해당 주차에 맞게 보여 져야 합니다.
+                            마지막 4주차때에는 .dang_1 안에 
+                            giftTitle_popup_winner1.png -> giftTitle_popup_winner1_1.png로 바뀌어야 하고
+                            giftTitle_popup_winner2.png -> giftTitle_popup_winner2_1.png 로 바뀌어야 합니다
+                            이미지는 업로드 되어 있습니다.
+                         -->
+					<div class="dang_1" id="dang_1"><img src="~/Images/event/list_popup_winner1.png" alt="" /></div>
+					<div class="dang_2" id="dang_2" style="display:none;"><img src="~/Images/event/list_popup_winner2.png" alt="" /></div>
+					<div class="dang_3" id="dang_3" style="display:none;"><img src="~/Images/event/list_popup_winner3.png" alt="" /></div>
+					<div class="dang_4" id="dang_4" style="display:none;"><img src="~/Images/event/list_popup_winner4.png" alt="" /></div>
+				</div>
+			  <div class="dang_1">
+	            <dl class="popup-winner_name--list">
+                <dt><img src="~/Images/event/giftTitle_popup_winner1_1.png" alt="킨더조이 여아용 기프티콘 (100명)" id="dang_txt_1"/></dt>
+                <dd class="popup-winner_name--txts" id="WinnerListF"></dd>
+                <dt class="popup-winner_gift--bottom"><img src="~/Images/event/giftTitle_popup_winner2_1.png" alt="킨더조이 남아용 기프티콘 (100명)" id="dang_txt_2"/></dt>
+                <dd class="popup-winner_name--txts" id="WinnerListM"></dd>
+            </dl>
+			  </div>
+			  <div class="dang_2" style="display:none;">
+	            발표전입니다.
+			  </div>
+			  <div class="dang_3" style="display:none;">
+	            발표전입니다.
+			  </div>
+			  <div class="dang_4" style="display:none;">
+	            발표전입니다.
+			  </div>
+            <div class="popup-winner_btns">
+                <button class="popup-winner_btn js-popInBtnClose" type="button" data-popname="winner"><img src="~/Images/event/btn_popup_winner.png" alt="확인"></button>
+            </div>
+        </div><!-- // body -->
+    </div>
+    <!-- // wrap -->
+</div>
+<!-- // 당첨자 발표 -->
+<script src="~/content/js/youtubePlayer.js"></script>
+<script src="~/content/js/youtube.js"></script>
+<script>
+  
+	// 팝업 여닫기(외부에서 사용할수 있도록 함수 처리)
+	function openPop(flag) {
+		var name='.popup-'+flag;
+		$(name).addClass('on');
+		goPosition(0);
+	}
+
+	// 동영상 팝업 여닫기
+	function openMov() {
+		openPop('mov');
+		$('.mov_cont iframe').attr('src','https://www.youtube.com/embed/gKCBtpYnpYk?autoplay=1&rel=0&showinfo=0&wmode=opaque');
+		
+	}
+	function closeMov() {
+		$('.mov_cont iframe').attr('src','');
+		playVideo();
+	}
+
+	// 힌트보기
+	function goAbout() {
+		var pop=window.open('/About','about','width=1100, height=800, scrollbars=yes');
+		pop.focus();
+	}
+
+	// 당첨자발표 팝업 제어
+	function dangView(param) {
+		if(param!=1) {
+			//alert('이벤트 진행중입니다.');
+		}
+		return;
+		$('.dang_selector1, .dang_selector2, .dang_selector3, .dang_selector4').removeClass('on');
+		$('.dang_selector'+param).addClass('on');
+		$('.dang_1, .dang_2, .dang_3, .dang_4').hide();
+		$('.dang_'+param).show();
+	}
+
+$(function() {
+    /* 팝업 닫기 */
+    $('.js-eventClose').on('click', function () {
+        $(this).parent().parent().removeClass('on');
+    });
+
+    // 팝업 안쪽 버튼
+    $('.js-popInBtnClose').on('click', function () {
+        var name = '.popup-' + $(this).data('popname');
+        $(name).removeClass('on');
+    });
+
+    // 플레이스 홀더
+    $('.js-inputCell').on({
+        click: function(){
+            $(this).find('.placeholder').hide().next().focus();
+        }
+    });
+
+    $('.js-inputCell').on('focus','.info_input',function(){
+        var $this = $(this);
+        $this.find('.placeholder').hide();
+    });
+
+    $('.js-inputCell').on('blur','.info_input',function(){
+        var $this = $(this);
+
+        if ( !$this.val() ) {
+            $this.parent().find('.placeholder').show();
+        } // if
+    });
+
+});
+</script>
+
+@Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/expressive.annotations.validate.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.form.js"></script>
+<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script>
+    $.validator.setDefaults({
+        onkeyup: false,
+        onclick: false,
+        onfocusout: false,
+        showErrors: function (errorMap, errorList) {
+            if (this.numberOfInvalids()) { // 에러가 있을 때만..
+                alert(errorList[0].message);
+                $(errorList[0].element).focus();
+            }
+        }
+    });
+    var contentUrl = "@Url.Content("~/")";
+    var channel = "Web";
+    Kakao.init('@System.Configuration.ConfigurationManager.AppSettings["sns.kakao.key"]');
+    var isEventDay = @ViewBag.isEventDay.ToString().ToLower();
+    var isIOS = @isIOS.ToString().ToLower();
+    var winnerLastSt = @ViewBag.WinnerLastSt;
+</script>
+<script src="~/Scripts/Word/func.js?@((new Random()).Next())"></script>
+<script src="~/Scripts/Word/controller.js?@((new Random()).Next())"></script>

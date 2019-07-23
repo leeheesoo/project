@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "ING생명 숨은자산찾기";
+}
+
+@section styles {
+    <link href="~/Content/HiddenAssets/style.css" rel="stylesheet" />
+    <link href="~/Content/HiddenAssets/slider-pro.min.css" rel="stylesheet" />
+}
+
+<div id="wrap">
+    <!-- statistics -->
+    <div class="asset1">
+        <div class="txtArea">
+            <em>숨은 자산은 이미 있어요,</em>
+            <p>단지 당신이 찾지 않을 뿐!</p>
+            <span>10초만 투자해 보세요</span>
+        </div>
+        <div class="posButton">
+            <button type="button" id="btnStart" class="btn bgOrg next">꽁꽁 숨은자산찾기</button>
+        </div>
+    </div>
+    <!--// statistics -->
+</div>
+
+@section scripts {
+    <script src="~/Content/js/HiddenAssets/jquery.sliderPro.min.js"></script>
+    <script src="~/Content/js/HiddenAssets/common.js"></script>
+    <script src="~/Content/js/HiddenAssets/hiiden-assets-ga.js"></script>
+
+    <script type="text/javascript">
+    $(function(){
+	    $('.asset1').addClass('_motion');
+
+	    $('#btnStart').click(function () {
+	        var self = $(this);
+	        gaHiddenAsset('@ViewBag.Title', '꽁꽁 숨은자산찾기', function () {
+	            if (self.parent().css('opacity') == 1) {
+	                setTimeout(function () {
+	                    $(location).attr('href', '/lotte-cinema/asset1');
+	                }, 500);
+	            }
+	        });
+	    });
+    });
+    </script>
+}

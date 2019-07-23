@@ -1,0 +1,15 @@
+﻿//---------------------------------------------------
+// variables
+//---------------------------------------------------
+
+//location
+$location: '../../../Images/Pororo2018/';
+
+@if $device == web { 
+    $location: '../../../Images/Pororo2018/w/';
+    $width: 1000px;
+
+} @else {
+    $location: '../../../Images/Pororo2018/m/';
+    $width: 640px;
+}

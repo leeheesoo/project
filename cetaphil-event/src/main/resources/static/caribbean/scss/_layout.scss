@@ -1,0 +1,44 @@
+.restoraderm-event-wrap {
+    position : relative;
+    max-width: 1920px;
+    min-width: 1200px;
+    margin   : 0 auto;
+    // padding-bottom: 500px;
+    overflow: hidden;
+}
+
+.logo {
+    position: absolute;
+    left    : 60px;
+    top     : 50px;
+}
+
+.visual {
+    background: url(../images/pc/key-visual.png) no-repeat center top;
+    height    : 1130px;
+}
+
+.video {
+    position  : relative;
+    overflow  : hidden;
+    background: url(../images/pc/sec1-bg.png) no-repeat center top;
+    height    : 1295px;
+}
+
+.main-event {
+    background: url(../images/pc/sec2-bg.png) no-repeat center top;
+    overflow  : hidden;
+    height    : 2293px;
+}
+
+.reservation-event {
+    position  : relative;
+    background: url(../images/pc/sec3-bg.png) no-repeat center top;
+    height    : 1432px;
+}
+
+.event-note {
+    background: url(../images/pc/event-note.png) no-repeat center top;
+    height    : 270px;
+}
+

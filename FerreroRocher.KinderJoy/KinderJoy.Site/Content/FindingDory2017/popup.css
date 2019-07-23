@@ -1,0 +1,538 @@
+﻿@charset "UTF-8";
+/* reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  background: #fff;
+}
+
+ol, ul, dl {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: top;
+}
+
+img {
+  border: 0;
+  vertical-align: top;
+  line-height: 0;
+  font-size: 0;
+  /* double click prevent */
+  -webkit-user-select: none;
+  /* Chrome/Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+ */
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+  /* browser ghost img prevent */
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+a, span {
+  vertical-align: top;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #797979;
+}
+
+/* a 태그 터치영역 안보이게 처리 */
+a {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+  /* For some Androids */
+}
+
+a:hover, a:active {
+  color: #797979;
+  text-decoration: none;
+  outline: 0;
+}
+
+a:link, a:visited {
+  color: #797979;
+  text-decoration: none;
+}
+
+input, textarea, select {
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+}
+
+/**
+ * mixin
+ */
+/*
+$dt-width: $form_box * 0.30;
+$dd-width: $form_box * 0.70;
+$input-width: $dd-width - ($input-padding + $border-width) * 2;
+$addr1-width: $input-width - $searchButton-width - $searchButton-left-space;
+*/
+/* form */
+.form_box {
+  position: relative;
+  width: 420px;
+  height: auto;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.form_box legend {
+  display: none;
+}
+
+.form_box dl {
+  height: 48px;
+  vertical-align: top;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+}
+
+.form_box dt {
+  float: left;
+  width: 30%;
+  height: 48px;
+  line-height: 38px;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.form_box dt img {
+  vertical-align: middle;
+}
+
+.form_box dd {
+  float: left;
+  width: 70%;
+  height: 48px;
+  line-height: 48px;
+  color: #555;
+}
+
+.form_box a {
+  display: inline-block;
+}
+
+.form_box input[type=text],
+.form_box input[type=button],
+.form_box input[type=checkbox],
+.form_box input[type=textarea] {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+.form_box input[type=text],
+.form_box input[type=tel],
+.form_box select,
+.form_box textarea {
+  width: 96%;
+  padding-left: 4px;
+  padding-right: 4px;
+  height: 38px;
+  line-height: 38px;
+  border: 1px solid #c3d7e5;
+  background-color: #fff;
+  color: #555;
+  font-size: 20px;
+  font-family: 'Malgun Gothic', Dotum;
+  vertical-align: top;
+}
+
+.form_box .input_address1 {
+  position: relative;
+}
+
+.form_box .input_address1 input {
+  width: 157px;
+  margin-right: 8px;
+}
+
+.form_box .input_address1 dd img {
+  position: relative;
+  top: -1px;
+}
+
+.form_box .input_address2 {
+  height: 96px;
+}
+
+.form_box .input_address2 dt {
+  display: none;
+}
+
+.form_box .input_address2 dd {
+  padding-left: 30%;
+}
+
+.agree_policy {
+  height: auto;
+  margin-top: 10px;
+  text-align: center;
+  vertical-align: top;
+}
+
+.agree_policy .text {
+  vertical-align: top;
+  display: inline-block;
+}
+
+.agree_policy .btn_agree {
+  vertical-align: top;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.agree_policy label {
+  vertical-align: top;
+  display: inline-block;
+  line-height: auto;
+}
+
+.agree_policy label img {
+  /* for label img check */
+  pointer-events: none;
+}
+
+.agree_policy label input[type=checkbox] {
+  width: 14px;
+  height: 14px;
+  line-height: 100%;
+  vertical-align: top;
+  margin: 0 18px 0 0;
+  -webkit-transform: scale(1.4);
+  -moz-transform: scale(1.4);
+  -ms-transform: scale(1.4);
+  -o-transform: scale(1.4);
+  transform: scale(1.4);
+  -webkit-transform-origin: 15% 15%;
+  -moz-transform-origin: 15% 15%;
+  -ms-transform-origin: 15% 15%;
+  -o-transform-origin: 15% 15%;
+  transform-origin: 15% 15%;
+}
+
+.agree_policy + * button {
+  background: none;
+  border: 0;
+}
+
+/* 팝업 - 공통 */
+.popup_dimmed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: alpha(opacity=80);
+  opacity: 0.80;
+  background-color: #000;
+  z-index: 50;
+}
+
+.page_loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: alpha(opacity=40);
+  opacity: 0.40;
+  background: #fff url("../images/FaceOfKinder/popup/loading.gif") center center no-repeat;
+  z-index: 250;
+}
+
+.popup {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  margin-left: -320px;
+  width: 640px;
+  height: auto;
+  text-align: center;
+  z-index: 100;
+  background: #fff;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+  border-radius: 50px;
+}
+
+.popup .logo {
+  display: none;
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  z-index: 110;
+}
+
+.popup .btn_close {
+  position: absolute;
+  top: -52px;
+  right: 0;
+  margin-right: 0;
+  z-index: 110;
+}
+
+.popup .pop_header {
+  height: 138px;
+  background: #08a0dd;
+  overflow: hidden;
+  -webkit-border-top-left-radius: 50px;
+  -moz-border-top-left-radius: 50px;
+  -ms-border-top-left-radius: 50px;
+  -o-border-top-left-radius: 50px;
+  border-top-left-radius: 50px;
+  -webkit-border-top-right-radius: 50px;
+  -moz-border-top-right-radius: 50px;
+  -ms-border-top-right-radius: 50px;
+  -o-border-top-right-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+.popup .pop_header .header-tl {
+  padding-top: 54px;
+}
+
+/* 우편번호 팝업 */
+#pop_post .pop_header {
+  background: #08a0dd;
+}
+
+#pop_post .header-tl {
+  height: auto;
+  padding-top: 50px;
+}
+
+#pop_post .pop_con {
+  /*padding-top: 50px;*/
+}
+
+/* inapp */
+#pop_inapp {
+  background: none;
+}
+
+#pop_inapp .pop_cont {
+  background: none;
+}
+
+/*팝업 : 당첨자발표 팝업*/
+#pop_dang .dang_group {
+  width: 540px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+#pop_dang .dang_group p {
+  padding-bottom: 20px;
+  text-align: left;
+}
+
+#pop_dang .dang_group .dang_box {
+  width: 100%;
+  height: 190px;
+  border: 1px solid #dedede;
+  background: #f4f4f4;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+#pop_dang .dang_group .dang_box ul {
+  padding: 18px 0 0 30px;
+}
+
+#pop_dang .dang_group .dang_box li {
+  float: left;
+  width: 33%;
+  font-family: 'Malgun Gothic', Dotum;
+  line-height: 34px;
+  font-size: 18px;
+}
+
+#pop_dang .dang_note {
+  background: #08a0dd;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  -webkit-border-bottom-left-radius: 50px;
+  -moz-border-bottom-left-radius: 50px;
+  -ms-border-bottom-left-radius: 50px;
+  -o-border-bottom-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  -webkit-border-bottom-right-radius: 50px;
+  -moz-border-bottom-right-radius: 50px;
+  -ms-border-bottom-right-radius: 50px;
+  -o-border-bottom-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+/*======================================
+  common
+======================================*/
+/*======================================
+  popup
+======================================*/
+/* dim */
+/*.dim {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+    background: #000;
+    opacity: .7;
+    filter: alpha(opacity=70);
+    z-index: 10;
+
+    &.on {
+        display: block;
+    }
+}*/
+/* temp */
+.temp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.temp button {
+  background: #ddd;
+  padding: 10px;
+  color: #fff;
+}
+
+/* 경품안내 */
+#pop_gift .pop_con .gift_img {
+  padding-top: 50px;
+  padding-bottom: 80px;
+}
+
+/* 우편번호 */
+/* 개인정보 입력*/
+#pop_event_info {
+  position: absolute;
+  top: 20px;
+  left: 70px;
+  width: 500px;
+  height: auto;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+  background: #fff;
+}
+
+#pop_event_info .pop_con .con-tl {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  background: #e8f8ff;
+  -webkit-border-top-left-radius: 20px;
+  -moz-border-top-left-radius: 20px;
+  -ms-border-top-left-radius: 20px;
+  -o-border-top-left-radius: 20px;
+  border-top-left-radius: 20px;
+  -webkit-border-top-right-radius: 20px;
+  -moz-border-top-right-radius: 20px;
+  -ms-border-top-right-radius: 20px;
+  -o-border-top-right-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+#pop_event_info .pop_con .input_name {
+  width: auto;
+  display: inline-block;
+}
+
+#pop_event_info .pop_con .input_name dt {
+  width: 126px;
+}
+
+#pop_event_info .pop_con .input_name dd {
+  width: 110px;
+}
+
+#pop_event_info .pop_con .input_age {
+  margin-left: 15px;
+  width: auto;
+  display: inline-block;
+}
+
+#pop_event_info .pop_con .input_age dt {
+  width: 70px;
+}
+
+#pop_event_info .pop_con .input_age dd {
+  width: 85px;
+}
+
+#pop_event_info .pop_con .btn {
+  padding-top: 20px;
+  padding-bottom: 15px;
+}
+

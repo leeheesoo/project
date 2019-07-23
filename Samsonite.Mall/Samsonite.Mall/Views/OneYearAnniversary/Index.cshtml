@@ -1,0 +1,99 @@
+﻿@model Samsonite.Mall.Models.OneYearAnniversaryModels.OneYearAnniversaryCreateModel
+@{
+    ViewBag.Title = "쌤소나이트 1주년";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var IsClosed = false;
+    if (DateTime.Now >= new DateTime(2017, 4, 24)) {
+        IsClosed = true;
+    }
+}
+@section styles{
+<link href="~/Content/css/one-year-anniversary/event.min.css" rel="stylesheet" />
+}
+<div class="wrap" id="event-1st-div">
+@Html.Partial("_PersonalInfoPopup")
+<div class="event-top">
+<img src="~/Content/images/one-year-anniversary/bg-event02.jpg" alt="쌤소나이트 오행시"/>
+    <div class="btn-register">
+        <a href="javascript:;" data-bind="click:function(){openEntry('@IsClosed');}">
+        <img src="~/Content/images/one-year-anniversary/btn-main.jpg" alt="축하메세지, 오행시등록하기"/>
+    </a>
+    </div>
+</div>
+
+@* 오행시 목록 *@
+<div class="text-wrap">
+    <ul class="list-box" data-bind="visible: Items().length > 0, foreach: Items">
+        <li class="ex-img" data-bind="visible: $index() === 0"><img src="~/Content/images/one-year-anniversary/text-ex.jpg" alt="오행시예시"/></li>
+        <li>
+            <div class="text-number" data-bind="text: 'no. ' + $root.getListIndex($index())"></div>
+            <div class="text-congratulation" data-bind="text: $data.CongratulationMessage"></div>
+            <div class="text-5line">
+                <ul>
+                    <li><strong>쌤</strong>&nbsp;<span data-bind="text: $data.AcrosticPoemFirst"></span></li>
+                    <li><strong>소</strong>&nbsp;<span data-bind="text: $data.AcrosticPoemSecond"></span></li>
+                    <li><strong>나</strong>&nbsp;<span data-bind="text: $data.AcrosticPoemThird"></span></li>
+                    <li><strong>이</strong>&nbsp;<span data-bind="text: $data.AcrosticPoemFourth"></span></li>
+                    <li><strong>트</strong>&nbsp;<span data-bind="text: $data.AcrosticPoemFifth"></span></li>
+                </ul>
+            </div>
+            <div class="day-id">
+                <span class="day" data-bind="text: $root.convertToDate($data.CreateDate())" >2017-04-10</span>
+                <span class="id" data-bind="text: $data.MaskingSamsoniteId">ggogo</span>
+            </div>
+        </li>
+    </ul>
+    <ul class="list-box" style="display:none" data-bind="visible: Items().length == 0">
+        <li class="ex-img"><img src="~/Content/images/one-year-anniversary/text-ex.jpg" alt="오행시예시" /></li>
+    </ul>
+</div>
+
+@*페이지번호*@
+<div class="page-number">
+<div class="prev-wrap">
+    <span data-bind="click: function () { getData(1); }"><img src="~/Content/images/one-year-anniversary/btn-double-prev.gif" alt=""/></span>
+    <span data-bind="click: function () { getData(PageNumber() - 1); }"><img src="~/Content/images/one-year-anniversary/btn-prev.gif" alt=""/></span>
+</div>
+
+<ol>
+    <!-- ko foreach: pages -->
+    <li data-bind="click: function () { $root.getData($data) }, text: $data, css:{'on' : $root.PageNumber() == $data} "></li>
+    <!-- /ko -->
+    <li style="display:none" class="on" data-bind="visible: Items().length === 0">1</li>
+</ol>
+<div class="next-wrap">
+    <span data-bind="click: function () { getData(PageNumber()+1); }"><img src="~/Content/images/one-year-anniversary/btn-next.gif" /></span>
+    <span data-bind="click: function () { getData(PageCount()); }"><img src="~/Content/images/one-year-anniversary/btn-double-next.gif" /></span>
+</div>
+</div>
+
+    @*유의사항*@
+    <div class="event-note">
+        <img src="~/Content/images/one-year-anniversary/event-note.png" alt="이벤트유의사항"/>
+    </div>
+
+    <div class="end-wrap">
+        <div class="end-text">
+            <img src="~/Content/images/one-year-anniversary/event_end.png" alt="기획전이 종료되었습니다." />
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/knockoutjs")
+    <script src="~/Content/js/one-year-anniversary/event.js"></script>
+    <script src="~/Content/js/one-year-anniversary/one-year-anniversary-event-dev.js"></script>
+    <script type="text/javascript">
+        /*
+        // all content including images has been loaded
+        window.onload = function () {
+            //console.log('#onload:' + $('.wrap').height());
+            // post our message to the parent
+            window.parent.postMessage($('.wrap').height(), "*");
+        };
+        */
+        var oneYearAnniversaryViewModel = new make1stAnniversaryViewModel();
+        ko.applyBindings(oneYearAnniversaryViewModel, $('#event-1st-div')[0]);
+    </script>
+}
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>

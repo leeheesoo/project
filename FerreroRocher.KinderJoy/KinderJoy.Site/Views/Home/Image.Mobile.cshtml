@@ -1,0 +1,383 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.Mobile.cshtml";
+    ViewBag.Title = "상상하는즐거움";
+    ViewBag.GaTitle = "상상하는즐거움";
+
+    string trackingURLSNSFlag = Request.QueryString.Get("utm_medium");
+    string trackingURLScrapFlag = Request.QueryString.Get("utm_content");
+
+    ViewBag.ogTitle = "우리아이에게 필요한 서프라이즈는 무엇일까요?";
+    ViewBag.ogDescription = "킨더조이 NEW 서프라이즈 출시!";
+    ViewBag.ogImgae = "http://" + HttpContext.Current.Request["HTTP_HOST"] + "/Images/toy/thumbnail/facebook/facebook_boys.jpg";
+
+    if (trackingURLSNSFlag != null && trackingURLScrapFlag != null)
+    {
+        if (trackingURLSNSFlag.Equals("facebook"))
+        {
+            ViewBag.ogSnsURL = "http://" + HttpContext.Current.Request["HTTP_HOST"] + "/ Image/Track/toyPage/facebook/" + trackingURLScrapFlag;
+            ViewBag.ogImage = "http://" + HttpContext.Current.Request["HTTP_HOST"] + "/Images/toy/thumbnail/facebook/facebook_" + trackingURLScrapFlag + ".jpg";
+        }
+        else
+        {
+            ViewBag.ogSnsURL = "http://" + HttpContext.Current.Request["HTTP_HOST"] + "/Image/Track/toyPage/kakaostory/" + trackingURLScrapFlag;
+            ViewBag.ogImage = "http://" + HttpContext.Current.Request["HTTP_HOST"] + "/Images/toy/thumbnail/kakaostory/kakaostory_" + trackingURLScrapFlag + ".jpg";
+        }
+    }
+
+    var isMobile = (HttpContext.Current.Request.Browser.IsMobileDevice);
+    string userAgent = HttpContext.Current.Request.UserAgent.ToLower();
+    bool isFbApp = userAgent.Contains("fb") || userAgent.Contains("facebook");
+    bool iskakaoApp = userAgent.Contains("kakao");
+    bool isKakaostory = userAgent.Contains("kakaostory");
+    bool isWV = userAgent.Contains("wv");   // 안드로이드 inapp브라우저
+    bool isKakaotalk = userAgent.Contains("kakaotalk");
+    bool isTwitter = userAgent.Contains("twitter");
+    bool isNaver = userAgent.Contains("naver");
+    bool isDaum = userAgent.Contains("daum");
+    bool isInApp = isFbApp || iskakaoApp || isKakaostory || isKakaotalk || isTwitter;
+
+}
+@section metas{
+    <meta property="og:title" content="@ViewBag.ogTitle" />
+    <meta property="og:url" content="@ViewBag.ogSnsURL" />
+    <meta property="og:image" content="@ViewBag.ogImage" />
+    <meta property="og:description" content="@ViewBag.ogDescription" />
+}
+<link rel="stylesheet" type="text/css" href="~/Content/css/m_toy_motion.css">
+<script type="text/javascript" src="~/Content/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="~/Content/js/jQueryRotate.js"></script>
+<script type="text/javascript" src="~/Content/js/m.toy.page.js"></script>
+<script>
+    var isMobile =  @isMobile.ToString().ToLower();
+    var isInApp = @isInApp.ToString().ToLower();
+</script>
+<script src="~/Scripts/Common/toyController.js"></script>
+<div class="mobile_wrap">
+	<div class="content-image">
+		<div class="top_sec">
+      <h3><img src="~/Images/m/toy/main/tit_toy.png" alt="킨더조이의 상상하는 즐거움 헬로키티 & 저스티스리그 출시!"></h3>
+
+      <div class="top_toy" id="go-event">
+          <img src="~/images/m/toy/main/top_toy.png" alt="NEW SURPRISE!">
+          @*<a class="elec-sign elec-sign-go-event" role="button" onclick="alert('5월 10일 새로운 이벤트로 만나요!');">*@
+          <a class="electronic-sign electronic-sign-go-event" href="@Url.Action("Index", "DisneyStarWars2018")" target="_blank">
+              <span class="a11y-hidden">이벤트 참여하러가기</span>
+          </a>
+      </div>
+		</div>
+		<div class="main_sec">
+
+			<!-- 플로팅 네비게이션 -->
+			<div class="toy-stick clearfix" id="stickNav">
+				<a class="toy-stick-go-top" href="#go-menu">
+					<span class="a11y-hidden">킨더조이 메뉴 바로가기</span>
+				</a>
+
+				<ul class="toy-stick-list clearfix">
+					<li class="toy-stick-item">
+						<a class="toy-stick-link toy-stick-link-event" href="#go-event" class="GA" data-category="상상하는즐거움" data-action="[상상하는즐거움] [퀵] 킨더조이 도리를 찾아서 장난감">
+							<span class="a11y-hidden">이벤트 참여하기</span>
+						</a>
+					</li>
+					<li class="toy-stick-item">
+						<a class="toy-stick-link toy-stick-link-starwas" href="#go-boys" class="GA" data-category="상상하는즐거움" data-action="[상상하는즐거움] [퀵] 남아용 장난감">
+							<span class="a11y-hidden">남자용 장난감</span>
+						</a>
+					</li>
+					<li class="toy-stick-item">
+						<a class="toy-stick-link toy-stick-link-couple" href="#go-girls" class="GA" data-category="상상하는즐거움" data-action="[상상하는즐거움] [퀵] 여아용 장난감">
+							<span class="a11y-hidden">여아용 장난감</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+
+      <!-- # 남아용 장난감 -->
+      <figure class="toy-boys" id="go-boys">
+          <figcaption>
+          	<button class="elec-sign elec-sign-starwas" onclick="showToyDetailPop('boys')" class="GA" data-category="상상하는즐거움" data-action="남아용 장난감">
+          		<span class="a11y-hidden">남아용 장난감</span>
+          	</but>
+          </figcaption>
+      </figure>
+
+			<!-- # 여아용 장난감 -->
+			<figure class="toy-girls" id="go-girls">
+				<figcaption>
+					<button class="elec-sign elec-sign-couple" onclick="showToyDetailPop('girls')" class="GA" data-category="상상하는즐거움" data-action="[상상하는즐거움] 여아용 장난감">
+						<span class="a11y-hidden">여아용 장난감</span>
+					</button>
+				</figcaption>
+			</figure>
+
+				<p class="copyright">
+					<span class="a11y-hidden">Copyright &copy; 1976, 2017 SANRIO CO., LTD.(Appl.No.SK17048)  JUSTICE LEAGUE and all related characters and elements &copy; &amp; ™ DC Comics. (s17)  &copy;Ferrero Group. All Rights Reserved.</span>
+				</p>
+		</div><!-- //main_sec -->
+
+
+		<!-- ***** 장난감 팝업 시작 **** -->
+		<!-- 디즈니 장난감 팝업 -->
+		<div id="png_bg"></div>
+
+		<div class="popup_toys">
+			<h3 class="a11y-hidden">디즈니 커플 &amp; 스타워즈 장난감</h3>
+
+			<div class="popup_toys-thumb">
+				<ul class="js-thumb"></ul>
+			</div>
+
+			<!-- detail -->
+      <figure class="popup_toys-detail js-toy-detail">
+      	<img src="~/Images/toy/bn/items/girls/thumb-0.png" alt="">
+      </figure><!-- // detail -->
+
+			<p class="a11y-hidden">친구들에게 킨더조이 속 숨겨진 장난감을 소개해보세요!</p>
+
+			<ul class="popup_toys-sns js-sns">
+				<li>
+					<button type="button" onclick="toyKakaoStoryScrap();">
+        		<img src="~/Images/m/toy/bn/btn_ks.png" alt="카카오스토리">
+        	</button>
+				</li>
+				<li>
+        	<button type="button" onclick="toyFacebookScrap();">
+        		<img src="~/Images/m/toy/bn/btn_fs.png" alt="facebook">
+        	</button>
+				</li>
+				<li>
+					<button type="button" onclick="toyKakaoTalkScrap();">
+						<img src="~/Images/m/toy/bn/btn_kt.png" alt="카카오톡">
+					</button>
+				</li>
+			</ul>
+
+			<button onclick="closePop();" class="popup_toys-close">
+				<span class="a11y-hidden">팝업닫기</span>
+			</button>
+		</div.><!-- ***** 장난감 팝업 **** -->
+
+
+
+	@*
+		<div class="popup_toys" style="display:none" id="girls">
+			<a href="#none" class="btn_close" onclick="closePop('girls')"><img src="~/Images/m/toy/bn/close_poup_toys.png" alt="팝업닫기"></a>
+			<div class="wrap_toys item-couple">
+				<h4>디즈니 커플 장난감</h4>
+				<div class="list_sec">
+					<!-- 썸네일 -->
+					<div class="thumb_wrap">
+						<div class="thumb">
+							<ul id="slider01">
+                <li><a href="javascript:itemShow('1','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thumb-1.png" alt=""></a></li>
+                <li><a href="javascript:itemShow('2','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thumb-2.png" alt=""></a></li>
+                <li><a href="javascript:itemShow('3','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thumb-3.png" alt=""></a></li>
+                <li><a href="javascript:itemShow('4','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thumb-4.png" alt=""></a></li>
+                <li><a href="javascript:itemShow('5','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thumb-5.png" alt=""></a></li>
+                <li><a href="javascript:itemShow('6','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thumb-6.png" alt=""></a></li>
+                <li><a href="javascript:itemShow('7','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thumb-7.png" alt=""></a></li>
+                <li><a href="javascript:itemShow('8','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thumb-8.png" alt=""></a></li>
+              </ul>
+						</div>
+						<a href="#none" class="btn_prev" id="btn1_Prev"><img src="~/Images/m/toy/bn/btn_prev.png" alt="이전"></a> <a href="#none" class="btn_next" id="btn1_Next"><img src="~/Images/m/toy/bn/btn_next.png" alt="다음"></a>
+					</div>
+					<!-- 아이템 메인 -->
+					<div class="show_box">
+						<img src="~/Images/m/toy/bn/items/boys/item_0.png" alt="">
+					</div>
+				</div><!-- //list_sec -->
+				<div class="sns_sec">
+					<p><img src="~/Images/toy/bn/txt01_sns.png" alt="친구들에게 킨더조이 속 숨겨진 장난감을 소개해보세요!"></p>
+					<ul>
+						<li><a href="javascript:toyKakaoStoryScrap('girls');"><img src="~/Images/m/toy/bn/btn_ks.png" alt="카카오스토리"></a></li>
+						<li><a href="javascript:toyFacebookScrap('girls');"><img src="~/Images/m/toy/bn/btn_fs.png" alt="페이스북"></a></li>
+						<li><a href="javascript:toyKakaoTalkScrap('girls');"><img src="~/Images/m/toy/bn/btn_kt.png" alt="카카오톡"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div><!-- //디즈니 장난감 팝업 끝-->
+		<!-- 여아용 장난감 팝업 -->
+		<div class="popup_toys" style="display:none" id="girls-bak">
+			<a href="#none" class="btn_close" onclick="closePop('girls')"><img src="~/Images/m/toy/bn/close_poup_toys.png" alt="팝업닫기"></a>
+			<div class="wrap_toys items_girls">
+				<h4>여아용 장난감</h4>
+				<div class="list_sec">
+					<!-- 썸네일 -->
+					<div class="thumb_wrap">
+						<div class="thumb">
+							<ul id="slider02">
+                                <li><a href="javascript:itemShow('29','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_29.png" alt=""></a></li>
+                                <li><a href="javascript:itemShow('30','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_30.png" alt=""></a></li>
+                                <li><a href="javascript:itemShow('31','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_31.png" alt=""></a></li>
+                                <li><a href="javascript:itemShow('32','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_32.png" alt=""></a></li>
+                                <li><a href="javascript:itemShow('33','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_33.png" alt=""></a></li>
+                                <li><a href="javascript:itemShow('34','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_34.png" alt=""></a></li>
+                                <li><a href="javascript:itemShow('35','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_35.png" alt=""></a></li>
+                                <li><a href="javascript:itemShow('36','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_36.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('1','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_1.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('2','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_2.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('3','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_3.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('4','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_4.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('5','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_5.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('6','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_6.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('7','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_7.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('8','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_8.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('9','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_9.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('10','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_10.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('11','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_11.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('12','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_12.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('13','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_13.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('14','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_14.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('15','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_15.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('16','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_16.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('17','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_17.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('18','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_18.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('19','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_19.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('20','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_20.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('21','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_21.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('22','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_22.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('23','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_23.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('24','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_24.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('25','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_25.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('26','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_26.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('27','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_27.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('28','girls');"><img src="~/Images/m/toy/bn/thumb/girls/thum_28.png" alt=""></a></li>
+                            </ul>
+						</div>
+						<a href="#none" class="btn_prev" id="btn2_Prev"><img src="~/Images/m/toy/bn/btn_prev2.png" alt="이전"></a> <a href="#none" class="btn_next" id="btn2_Next"><img src="~/Images/m/toy/bn/btn_next2.png" alt="다음"></a>
+					</div>
+					<!-- 아이템 메인 -->
+					<div class="show_box">
+						<img src="~/Images/toy/bn/items/girls/item_0.png" alt="">
+					</div>
+				</div><!-- //list_sec -->
+				<div class="sns_sec">
+					<p><img src="~/Images/m/toy/bn/txt02_sns.png" alt="친구들에게 킨더조이 속 숨겨진 장난감을 소개해보세요!"></p>
+					<ul>
+						<li><a href="javascript:toyKakaoStoryScrap('girls');"><img src="~/Images/m/toy/bn/btn_ks.png" alt="카카오스토리"></a></li>
+						<li><a href="javascript:toyFacebookScrap('girls');" ><img src="~/Images/m/toy/bn/btn_fs.png" alt="페이스북"></a></li>
+						<li><a href="javascript:toyKakaoTalkScrap('girls');" ><img src="~/Images/m/toy/bn/btn_kt.png" alt="카카오톡"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div><!-- //여아용 장난감 팝업 끝-->
+		<!-- 남여공용 장난감 팝업 -->
+		<div class="popup_toys" style="display:none" id="comm">
+			<a href="#none" class="btn_close" onclick="closePop('comm')"><img src="~/Images/m/toy/bn/close_poup_toys.png" alt="팝업닫기"></a>
+			<div class="wrap_toys items_comm">
+				<h4>남여공용 장난감</h4>
+				<div class="list_sec">
+					<!-- 썸네일 -->
+					<div class="thumb_wrap">
+						<div class="thumb">
+							<ul id="slider03">
+								<li><a href="javascript:itemShow('1','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_1.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('2','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_2.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('3','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_3.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('4','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_4.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('5','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_5.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('6','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_6.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('7','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_7.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('8','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_8.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('9','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_9.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('10','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_10.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('11','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_11.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('12','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_12.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('13','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_13.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('14','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_14.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('15','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_15.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('16','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_16.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('17','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_17.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('18','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_18.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('19','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_19.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('20','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_20.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('21','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_21.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('22','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_22.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('23','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_23.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('24','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_24.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('25','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_25.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('26','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_26.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('27','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_27.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('28','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_28.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('29','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_29.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('30','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_30.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('31','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_31.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('32','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_32.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('33','comm');"><img src="~/Images/m/toy/bn/thumb/comm/thum_33.png" alt=""></a></li>
+							</ul>
+						</div>
+						<a href="#none" class="btn_prev" id="btn3_Prev"><img src="~/Images/m/toy/bn/btn_prev3.png" alt="이전"></a> <a href="#none" class="btn_next" id="btn3_Next"><img src="~/Images/m/toy/bn/btn_next3.png" alt="다음"></a>
+					</div>
+					<!-- 아이템 메인 -->
+					<div class="show_box">
+						<img src="~/Images/m/toy/bn/items/comm/item_0.png" alt="">
+					</div>
+				</div><!-- //list_sec -->
+				<div class="sns_sec">
+					<p><img src="~/Images/toy/bn/txt03_sns.png" alt="친구들에게 킨더조이 속 숨겨진 장난감을 소개해보세요!"></p>
+					<ul>
+						<li><a href="javascript:toyKakaoStoryScrap('comm');" class="GA" data-category="상상하는즐거움" data-action="[상상하는즐거움] [공용] 카카오스토리"><img src="~/Images/m/toy/bn/btn_ks.png" alt="카카오스토리"></a></li>
+						<li><a href="javascript:toyFacebookScrap('comm');" class="GA" data-category="상상하는즐거움" data-action="[상상하는즐거움] [공용] 페이스북"><img src="~/Images/m/toy/bn/btn_fs.png" alt="페이스북"></a></li>
+						@*<li><a href="javascript:toyTwitterScrap('comm');" class="GA" data-category="상상하는즐거움" data-action="[상상하는즐거움] [공용] 트위터"><img src="~/Images/m/toy/bn/btn_tw.png" alt="트위터"></a></li>*@
+						@*<li><a href="javascript:toyKakaoTalkScrap('comm');" class="GA" data-category="상상하는즐거움" data-action="[상상하는즐거움] [공용] 카카오톡"><img src="~/Images/m/toy/bn/btn_kt.png" alt="카카오톡"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+        <!-- //남여아용 장난감 팝업 끝-->
+		<!-- 스타워즈 장난감 팝업 -->
+		<div class="popup_toys" style="display:none" id="boys">
+			<a href="#none" class="btn_close" onclick="closePop('boys')"><img src="~/Images/m/toy/bn/close_poup_toys.png" alt="팝업닫기"></a>
+			<div class="wrap_toys item-starwas">
+				<h4>스타워즈 장난감</h4>
+				<div class="list_sec">
+					<!-- 썸네일 -->
+					<div class="thumb_wrap">
+						<div class="thumb">
+							<ul id="slider04">
+								<li><a href="javascript:itemShow('1','boys');"><img src="~/Images/m/toy/bn/thumb/boys/thumb-1.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('2','boys');"><img src="~/Images/m/toy/bn/thumb/boys/thumb-2.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('3','boys');"><img src="~/Images/m/toy/bn/thumb/boys/thumb-3.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('4','boys');"><img src="~/Images/m/toy/bn/thumb/boys/thumb-4.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('5','boys');"><img src="~/Images/m/toy/bn/thumb/boys/thumb-5.png" alt=""></a></li>
+								<li><a href="javascript:itemShow('6','boys');"><img src="~/Images/m/toy/bn/thumb/boys/thumb-6.png" alt=""></a></li>
+                <li><a href="javascript:itemShow('7','boys');"><img src="~/Images/m/toy/bn/thumb/boys/thumb-7.png" alt=""></a></li>
+                <li><a href="javascript:itemShow('8','boys');"><img src="~/Images/m/toy/bn/thumb/boys/thumb-8.png" alt=""></a></li>
+							</ul>
+						</div>
+						<a href="#none" class="btn_prev" id="btn4_Prev"><img src="~/Images/m/toy/bn/btn_prev4.png" alt="이전"></a> <a href="#none" class="btn_next" id="btn4_Next"><img src="~/Images/m/toy/bn/btn_next4.png" alt="다음"></a>
+					</div>
+					<!-- 아이템 메인 -->
+					<div class="show_box">
+						<img src="~/Images/m/toy/bn/items/new/item_0.png" alt="">
+					</div>
+				</div><!-- //list_sec -->
+				<div class="sns_sec">
+					<p><img src="~/Images/m/toy/bn/txt04_sns.png" alt="친구들에게 킨더조이 속 숨겨진 장난감을 소개해보세요!"></p>
+					<ul>
+						<li><a href="javascript:toyKakaoStoryScrap('boys');"><img src="~/Images/m/toy/bn/btn_ks.png" alt="카카오스토리"></a></li>
+						<li><a href="javascript:toyFacebookScrap('boys');"><img src="~/Images/m/toy/bn/btn_fs.png" alt="페이스북"></a></li>
+						<li><a href="javascript:toyKakaoTalkScrap('boys');" ><img src="~/Images/m/toy/bn/btn_kt.png" alt="카카오톡"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div><!-- //스타워즈 장난감 팝업 끝-->
+
+*@
+		<!-- 인앱 팝업 -->
+		<div class="pop_inapp" id="popInapp" style="display:none;">
+			<button type="button" onclick="closePop('popInapp')"><img src="~/Images/m/toy/bn/close_poup_toys.png" alt="팝업닫기"></button>
+			<h4><img src="~/Images/m/toy/bn/tit_inapp.png" alt="다른 부라우저에서 참여해주세요"></h4>
+			<p class="m_con"><img src="~/Images/m/toy/bn/inapp_txt.png" alt="상단의 버튼을 눌러 다른 브라우저 열기를 눌러주세요. 아이폰6기종은 하단 바를 확인하세요"></p>
+			<p><img src="~/Images/m/toy/bn/inapp_use.png" alt="본 이벤트는 어플리케이션(페이스북,네이버,다음,카카오)내에서 참여가 원할하지 않을 수 있습니다. 일반 브라우저에서 참여 부탁드립니다"></p>
+		</div>
+
+	</div> <!-- //content-image -->
+
+</div><!-- //mobile_wrap -->
+<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script>
+	// kakao api setting
+	Kakao.init('@System.Configuration.ConfigurationManager.AppSettings["sns.kakao.key"]');
+</script>

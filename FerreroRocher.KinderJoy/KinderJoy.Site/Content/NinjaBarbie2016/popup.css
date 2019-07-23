@@ -1,0 +1,51 @@
+﻿@charset "UTF-8";
+
+/* 팝업 - 공통 */
+.popup_dimmed{position:absolute; top:0; left:0; width:100%; height:100%; filter:alpha(opacity=80); opacity:0.80; background-color:#000; z-index:50;}
+
+.page_loading{position:fixed; top:0; left:0; width:100%; height:100%; filter:alpha(opacity=40); opacity:0.40; background:#000 url('../../images/NinjaBarbie2016/popup/loading.gif') center center no-repeat; z-index:250;}
+
+.popup {position:absolute; top:90px; left:50%; margin-left:-320px; width:640px; height:auto; text-align:center; z-index:100; background:#fff;}
+.popup .logo {position:absolute; top:13px; left:13px; z-index:110;}
+.popup .btn_close {position:absolute; top:-60px; right:5px; z-index:110;}
+.popup .pop_header {background:#198de8; padding:50px 0;}
+.popup .pop_header .tl {}
+.popup .pop_header .txt {}
+.popup .pop_cont {background:#fff;}
+
+/* 우편번호 팝업 */
+#pop_post{}
+#pop_post .pop_cont {padding:50px 0;}
+#pop_post .pop_cont .api_con {}
+
+/*팝업 : 경품안내/당첨자발표 팝업*/
+#pop_benefit{}
+#pop_benefit .pop_cont {}
+#pop_benefit .pop_cont .pop_tab {height:125px;}
+#pop_benefit .pop_cont .pop_tab a {position:relative; display:inline-block; float:left; width:50%; height:108px; line-height:108px; vertical-align:middle; background:#adadad;}
+#pop_benefit .pop_cont .pop_tab a span{display:none;}
+#pop_benefit .pop_cont .pop_tab a.active {background:#198de8;}
+#pop_benefit .pop_cont .pop_tab a.active span{display:block; position:absolute; bottom:-17px; left:0; width:100%;}
+#pop_benefit .pop_cont .pop_tab a.active span img {vertical-align:bottom;}
+
+
+#pop_benefit .pop_cont .pop_tab a img {vertical-align:middle;}
+
+#pop_benefit .pop_cont .gift_group {padding:50px 0;}
+#pop_benefit .pop_cont .dang_group {text-align:left;}
+#pop_benefit .pop_cont .dang_group .dang_group_inner{padding:50px 0 40px 50px;}
+#pop_benefit .pop_cont .dang_group p {padding-bottom:20px;}
+#pop_benefit .pop_cont .dang_group .dang_box {width:540px; height:190px; border:1px solid #dedede; background:#f4f4f4; overflow-x:hidden; overflow-y:auto; margin-bottom:40px;}
+#pop_benefit .pop_cont .dang_group .dang_box ul {padding:24px 0 0 40px;}
+#pop_benefit .pop_cont .dang_group .dang_box ul li {float:left; width:33%; font-family:'Malgun Gothic', Dotum; line-height:50px; font-size:18px;}
+#pop_benefit .pop_cont .dang_group .dang_bottom{background:#198de8; padding:50px 0 50px 0; text-align:center;}
+
+#pop_xmas {}
+#pop_xmas .pop_header{background:#fff; margin:0; padding:0;}
+#pop_xmas .pop_cont{}
+#pop_xmas .pop_cont .img1{padding:37px 0 24px 0;}
+#pop_xmas .pop_cont .img2{height:775px; background:#fff url('../../images/NinjaBarbie2016/popup/xmas_bottom_bg.jpg') center center no-repeat; overflow:hidden;}
+#pop_xmas .pop_cont .img2 img{margin:106px auto 0 auto;}
+
+#pop_inapp {background:none;}
+#pop_inapp .pop_cont{background:none;}

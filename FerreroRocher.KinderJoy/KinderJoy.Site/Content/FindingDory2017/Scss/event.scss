@@ -1,0 +1,411 @@
+﻿@charset 'UTF-8';
+
+@import 'Import/_base.scss';
+@import 'Import/_mixins.scss';
+
+//variable
+$location: '/Images/FindingDory2017/';
+$width-min: 1020px;
+$width-max: 4000px;
+
+//extend
+%clearfix {
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+    *zoom: 1;
+}
+
+%btn a{
+	padding:30px 0;
+}
+
+body {height:auto; font-size: 75%; line-height: 1.4; }
+
+/*======================================
+  site common
+======================================*/
+
+.screen-out {
+    position: absolute;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    top: -99999em;
+    left: -9999em;
+}
+
+/*======================================
+  vendor
+======================================*/
+
+/* bubble.js */
+.bubbles {
+position: relative;
+}
+.individual-bubble {
+position: absolute;
+@include prefix(border-radius, 100%);
+bottom: 100px;
+line-height:0;
+opacity:.6;
+background-color: #fff;
+z-index: 1;
+}
+
+/*======================================
+  wrap & event common
+======================================*/
+
+%section-inner{
+	position:relative;
+	width:$width-min;
+	margin:0 auto;
+}
+
+.dory-wrap {
+	padding-top:70px;
+    min-width: $width-min;
+    max-width: $width-max;
+    margin: 0 auto;
+	overflow:hidden;
+	text-align:center;
+	& a{
+		display:inline-block;
+	}
+	& h2{
+		display:none;
+	}
+}
+
+/*======================================
+  page detail
+======================================*/
+
+/* 상단 */
+.page_visual {
+	position:relative;
+	height:1426px;
+    @include background('w/header_visual_bg.jpg', $color:#3ad1f3);
+	.page_visual_obj {
+		position:relative;
+		top:0;
+		width:$width-min;
+		margin:0 auto;
+		.obj{
+			position:absolute;
+			top:-15px;
+			left:40%;
+			width:1105px;
+			height:708px;
+			@include background('w/page_visual_obj3.png');
+			overflow:hidden;
+			z-index:0;
+		}
+		.header_bg{
+			position:absolute;
+			top:-100px;
+			right:0;
+			width:500px;
+			height:100px;
+			z-index:1;
+			background:#fff;
+		}
+	}
+    .page_visual_obj2 {
+		position:absolute;
+		top:0px;
+		left:50%;
+		margin-left:-510px;
+		width:1020px;
+		z-index:0;
+		.obj1{
+			padding-top:445px;
+			margin-left:-650px;
+		}
+		.obj2{
+			padding-top:195px;
+			margin-left:-300px;
+		}
+    }
+    .tl {
+		position:relative;
+		padding-top:180px;
+		padding-bottom:75px;
+		z-index:1;
+    }
+	.deco{
+		position:absolute;
+		top:180px;
+		left:50%;
+		margin-left:95px;
+		z-index:1;
+	}
+}
+/* 제품 보기 영역 */
+.page_visual .toy_group {
+	position:relative;
+	width:$width-min;
+	height:650px;
+	margin:0 auto;
+	font-size:0;
+	a {
+		position:relative;
+		top:0;
+		display:inline-block;
+		margin:5px;
+		padding:0;
+		width:285px;
+		height:285px;
+        cursor:default;
+		img {
+			position:relative;
+			width:100%;
+		}
+		.bg {
+			position:absolute;
+			top:0;
+			left:0;
+			@include background('w/bubble_bg.png');
+			background-size:cover;
+			width:100%;
+			height:100%;
+		}
+		&:hover {
+			margin:5px;
+			padding:0;
+			width:370px;
+			height:370px;
+		}
+	}
+}
+
+/* 하단 */
+.event_visual {
+	height:1564px;
+	@include background('w/event_visual_bg.jpg', $color:#0270ab);
+	.inner{
+		@extend %section-inner;
+	}
+    .tl {
+		padding-top:79px;
+		padding-bottom:20px;
+    }
+    .date {
+		padding-bottom:34px;
+    }
+    .con {
+		padding-bottom:20px;
+    }
+    .btns {
+		padding-top:10px;
+		padding-bottom:50px;
+		img{
+			margin:0 5px;
+		}
+    }
+
+}
+/* 게임영역 */
+.event_visual .event_play_wrap {
+	.play_area {
+		position:relative;
+		width:$width-min;
+		height:540px;
+		border: 10px solid #d7f6fd;
+		@include prefix(border-radius, 60px);
+		overflow:hidden;
+		.stage {
+			height:100%;
+		}
+		.stage0 {
+			@include background('w/stage0/bg.jpg', $y: center);
+			.bg{
+				width:1380px;
+				height:760px;
+				margin-left:-150px;
+				margin-top:-100px;
+				@include background('w/stage0/bg.jpg', $y: center);
+			}
+		}
+		.stage1 {
+			@include background('w/stage1/bg.jpg', $y: center);
+			.bg{
+				width:1380px;
+				height:620px;
+				margin-left:-180px;
+				margin-top:-40px;
+				@include background('w/stage1/bg.jpg', $y: center);
+			}
+			.obj1{
+				margin-left:40px;
+			}
+			.obj2{
+				margin-left:40px;
+			}
+		}
+		.stage2 {
+			@include background('w/stage2/bg.jpg', $y: center);
+			.bg{
+				width:1404px;
+				height:704px;
+				margin-left:-190px;
+				margin-top:-90px;
+				@include background('w/stage2/bg.jpg', $y: center);
+			}
+		}
+		.stage3 {
+			@include background('w/stage3/bg.jpg', $y: center);
+			.bg{
+				width:1020px;
+				height:540px;
+				@include background('w/stage3/bg.jpg', $y: center);
+			}
+		}
+		.stage4 {
+			@include background('w/stage4/bg.jpg', $y: center);
+			.bg{
+				width:1020px;
+				height:540px;
+				@include background('w/stage4/bg.jpg', $y: center);
+			}
+			.bg2{
+				width:1020px;
+				height:540px;
+				@include background('w/stage4/bg_on.jpg', $y: center);
+			}
+		}
+		.stage5 {
+			@include background('w/stage5/bg.jpg', $y: center);
+			.obj1{
+				margin-left:60px;
+				margin-top:-60px;
+			}
+			.obj2{
+				margin-left:40px;
+                margin-top:-20px;
+			}
+			.bg{
+				width:1224px;
+				height:540px;
+				margin-left:-0px;
+				margin-top:-10px;
+				@include background('w/stage5/bg.jpg', $y: center);
+			}
+		}
+		.stage6 {
+			@include background('w/stage6/bg.jpg', $y: center);
+			.bg{
+				width:1224px;
+				height:610px;
+				margin-top:-50px;
+				margin-left:-100px;
+				@include background('w/stage6/bg.jpg', $y: center);
+			}
+			.share_grouop{
+				position:absolute;
+				top:180px;
+				left:0;
+				width:100%;
+				text-align:center;
+				div{
+					padding-bottom:20px;
+				}
+				img{
+					margin:0 10px;
+				}
+			}
+		}
+		.char_selector{
+			position:absolute;
+			bottom:-120px;
+			left:50%;
+			margin-left:-425px;
+			width:850px;
+			height:120px;
+			font-size:0;
+			text-align:left;
+			@include background('w/stage/char_bg.png', $y:bottom );
+			.txt{
+				position:absolute;
+				top:25px;
+				left:79px;
+				width:120px;
+				height:22px;
+				overflow:hidden;
+				@include background('w/stage/txt_choose.png', $y:bottom );
+				text-align:center;
+			}
+			>div{
+				position:absolute;
+				display:inline-block;
+				img{
+					opacity:0;
+					transition: all .2s ease-in-out;
+				}
+				a:hover img{
+					opacity:1;
+				}
+				&.on img{
+					opacity:1;
+				}
+			}
+			.nemo{
+				top:11px;
+                left:269px;
+			}
+			.destiny{
+				top:14px;
+                left:378px;
+			}
+			.malin{
+				top:12px;
+                left:507px;
+			}
+			.hank{
+				top:16px;
+                left:605px;
+			}
+			.otter{
+				top:14px;
+                left:745px;
+			}
+		}
+	}
+	.play_navi {
+		position:relative;
+		width:1040px;
+		height:100px;
+		overflow:hidden;
+		margin-top:20px;
+		@include background('w/stage/play_navi_bg_all.png', $y:top );
+		.indi_box {
+			position:absolute;
+			top:0;
+			left:60px;
+			width:895px;
+		}
+		.indi {
+			position:absolute;
+			top:0;
+			left:0;
+			width:25px;
+			height:33px;
+			@include background('w/stage/play_navi_indi.png');
+		}
+	}
+}
+
+/* 이벤트 유의사항 */
+.event_note {
+	background:#005d9b;
+	.inner{
+		@extend %section-inner;
+	}
+    .txt {
+		padding-top:65px;
+		padding-bottom:65px;
+    }
+}

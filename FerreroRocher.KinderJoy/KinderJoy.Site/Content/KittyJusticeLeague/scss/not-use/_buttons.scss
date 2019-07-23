@@ -1,0 +1,57 @@
+﻿$btn-info : null;
+
+@if $device == web {
+    .eve-btn {
+        $btn-info: (
+            notice: (197px, 58px, 0 0),
+            winner: (102px, 30px, -198px 0),
+            praise: (526px, 80px, 0 -32px),
+            history: (358px, 68px, 0 -112px),
+            gallery: (358px, 68px, 0 -181px),
+            more-txt: (30px, 30px, -497px 0),
+            facebook: (52px, 57px, 0 -251px),
+            kakostory: (52px, 57px, -54px -251px),
+            kakaotalk: (52px, 57px, -108px -251px)
+          ) !default;
+    }
+}@else {
+    .eve-btn {
+        $btn-info: (
+            notice: (249px, 38px, 0 0),
+            winner: (130px, 38px, -252px 0),
+            praise: (426px, 80px, 0 -40px),
+            history: (291px, 68px, 0 -121px),
+            gallery: (291px, 68px, 0 -190px),
+            more-txt: (30px, 30px, -397px 0),
+            facebook: (38px, 43px, 0 -260px),
+            kakostory: (38px, 43px, -50px -260px),
+            kakaotalk: (38px, 43px, -98px -260px)
+          ) !default;
+    }
+ }
+ 
+@mixin btn($info) {
+  @each $el,
+  $vals in $info {
+    &-#{$el} {
+      width: nth($vals, 1);
+      height: nth($vals, 2);
+      background-position: nth($vals, 3);
+      background: url('/Images/GoldenBell/pop/form/btn-privacy.png');
+    }
+  }
+}
+
+.eve-btn{
+    @include background('/Images/GoldenBell/pop/form/btn-privacy.png');
+    @include btn($btn-info);
+    border:0;
+    display: inline-block;
+    font-size:0;
+    text-indent: -9999em;
+    overflow: hidden;
+
+    @if $device == web {
+        cursor: pointer;
+    }
+}

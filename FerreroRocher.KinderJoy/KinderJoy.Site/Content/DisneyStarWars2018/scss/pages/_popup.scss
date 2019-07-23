@@ -1,0 +1,419 @@
+﻿$location: '/Images/DisneyStarWars2018/pop/';
+
+//---------------------------------------------------
+// for this microsite
+//---------------------------------------------------
+.popup .btns{
+  left:0 !important;
+  margin:0 auto !important;
+  text-align:center !important;
+  //padding-bottom:50px;
+  a{
+    display:inline-block;
+  }
+}
+
+img {
+    vertical-align: top;
+}
+//---------------------------------------------------
+// 팝업 : 공통
+// dimmed, loading
+//---------------------------------------------------
+.debuging {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  padding: 10px;
+  border: 1px dotted gray;
+  text-align: left;
+  font-size: 90%;
+  color: #fff;
+  z-index: 999;
+  p{
+    color:#000;
+    background:yellow;
+  }
+  button {
+    background: black !important;
+    padding: 3px;
+  }
+}
+/*.popup:focus{
+  outline:none;
+}*/
+
+#dimmed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  @include background('dim.png', $repeat: repeat);
+  z-index: 99;
+}
+
+#loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  @include background('dim.png', $repeat: repeat);
+  z-index: 110;
+  text-align: center;
+
+  .loading-img{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    @include background('loading.gif', $y: center);
+  }
+
+  /*.img-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 278px;
+    height: 327px;
+    @include background('bg_loading.png');
+    transform: translate(-50%, -50%);
+    animation-duration: 1s;
+
+    &1 {
+      background-position-y: 0;
+    }
+
+    &2 {
+      background-position-y: -327px;
+      opacity: 0;
+    }
+
+    &3 {
+      background-position-y: -656px;
+      opacity: 0;
+    }
+  }*/
+}
+
+//---------------------------------------------------
+// 팝업 : 공통
+// popup layout
+//---------------------------------------------------
+.popup {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 640px;
+  height:auto;
+  //margin-top:100px;
+  //background: #fff
+  z-index: 99;
+  //overflow: hidden;
+  text-align: left;
+  outline: none;
+  @include prefix(box-sizing, border-box);
+  @if $device == web {
+    left: 50%;
+    margin-left: -320px;
+  }
+  @else {
+    left: 0;
+  }
+
+  h3 {
+    text-align: center;
+    padding: 0 0 40px;
+    margin: 0;
+  }
+
+  .btns{
+    position:relative;
+    margin-left:-30px;
+    left:15px;
+  }
+  .btn-close {
+    position: absolute;
+    top: 150px;
+    right: 0px;
+    width:51px;
+    height:50px;
+    border: none;
+    color:transparent;
+    @include background('button-close.png');  
+    span{
+      @extend %a11y-hidden;
+    }
+  }
+  
+
+  .pop-header {
+    position:relative;
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    @include background('popup-header.png', $color:#fe531f);
+    /*&:after{
+      content:'';
+      display:block;
+      width:100%;
+      height:100%;
+      @include background('pop-header.png', $y:center);
+    }*/
+  }
+
+  .pop-con {
+    padding: 40px 40px;
+    padding-bottom: 70px;
+    margin: 0 auto;
+    background-color: #fff;
+
+    h2 {
+      margin-bottom: 42px;
+      text-align: center;
+    }
+
+    .loading {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      filter: alpha(opacity=60);
+      opacity: 0.60;
+      background-color: #000;
+      overflow: hidden;
+
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -24px 0 0 -24px;
+      }
+    }
+  }
+}
+
+//---------------------------------------------------
+// 팝업 : 개인정보 활용동의
+//---------------------------------------------------
+.pop-entry {
+  .result-view{
+    text-align:center;
+    padding-top:20px;
+    padding-bottom:10px;
+  }
+  .pop-con {
+    padding-top: 30px;
+  }
+}
+
+//---------------------------------------------------
+// 팝업 : 유의사항
+//---------------------------------------------------
+.pop-notice {
+  .pop-header {
+    height: 240px;
+    @include background('pop-header-notice.png');
+
+    h3 {
+      @extend %a11y-hidden;
+    }
+  }
+
+  .pop-con {
+    position:relative;
+    padding-top: 0;
+  }
+}
+
+//---------------------------------------------------
+// 팝업 : 개인정보 활용동의
+//---------------------------------------------------
+.pop-policy {
+  .pop-header {
+    height: 290px;
+    @include background('pop-header-policy.png');
+
+    h3 {
+      @extend %a11y-hidden;
+    }
+  }
+
+  .pop-con {
+    padding-top: 0;
+  }
+}
+
+//---------------------------------------------------
+// 팝업 : 영상보기
+//---------------------------------------------------
+.pop-mov-view {
+  .mov-box {
+    position: relative;
+    width: 100%;
+    
+
+    /*iframe {
+      width: 560px;
+      height: 315px;
+    }*/
+
+    .mov-cover {
+      position:absolute;
+      top: 0;
+      left: 0;
+      display:none;
+    }
+        
+  }
+
+  .mov-box-text {
+      text-align: center;
+  }
+
+  .btn-right{
+    text-align: right;
+  }
+
+  .btn-center {
+    text-align: center;
+    display: none;
+  }
+
+  .btn-cover{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100px;
+  }
+}
+//---------------------------------------------------
+// 팝업 : 공유하기
+//---------------------------------------------------
+.pop-share {
+  .pop-con {
+    text-align: center;
+
+    p{
+      padding-top:40px;
+      padding-bottom:0;
+    }
+    .share-box {
+      button {
+        margin: 0 15px;
+      }
+    }
+      .btns{
+        margin-top:50px;
+      }
+  }
+}
+
+//---------------------------------------------------
+// 팝업 : 공유완료
+//---------------------------------------------------
+.pop-complete {
+  .pop-con {
+    .product-img{
+      margin-top:-30px;
+    }
+  }
+}
+
+//---------------------------------------------------
+// 팝업 : 지마켓 카운트다운
+//---------------------------------------------------
+.pop-gmarket {
+  text-align:center;
+  .pop-header{
+    height:148px;
+    overflow:hidden;
+  }
+  .pop-con {
+    .dday-box{
+      padding-top:40px;
+      padding-bottom:40px;
+      }
+  }
+}
+
+//---------------------------------------------------
+// 팝업 : 우편번호
+//---------------------------------------------------
+.pop-post {
+  z-index: 100;
+  //padding-bottom: 65px;
+  h3{
+    width:100%;
+    height:50px;
+    line-height:50px;
+    font-size:2em;
+    font-weight:bold;
+    //margin-top:30px;
+    margin-bottom:30px;
+    //@include background('form/post-tl.png', $y:center);  
+    span{
+      //@extend %a11y-hidden;
+    }
+  }
+  .pop-con{
+    padding:0;
+  }
+}
+
+//---------------------------------------------------
+// 팝업 : 인앱
+//---------------------------------------------------
+
+.pop-inapp{
+  background:none;
+  text-align:center;
+  .btn-close{
+      top: 0px;
+  }
+  /*.inapp-img{
+    width:640px;
+    height:932px;
+    @include background('inapp-img.png');
+  }*/
+
+  /*.popup-bg{
+    display:none;
+  }*/
+}
+
+//---------------------------------------------------
+// dday(웹/모바일)
+//---------------------------------------------------
+.dday-box{
+  &>div{
+    vertical-align:top;
+    display:inline-block;
+  }
+    .deco{
+      padding-right:5px;
+    }
+  .number{
+    @include background('dday-num.png');
+    width:60px;
+    height:80px;
+    @for $i from 0 through 9 {
+        &#{$i} {
+            background-position-x: -126 * $i + px;
+        }
+    }
+
+  }
+}
+
+.text-box {
+    display: none;
+    color: black;
+    height: 150px;
+    overflow-y: scroll;
+}

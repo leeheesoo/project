@@ -1,0 +1,81 @@
+﻿$location: '../../Images/TumblerEvent/';
+$wrapWidth: 720px;
+
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+button:focus {
+	outline: 0;
+}
+
+.blind {
+	position: absolute;
+	top: -1000em;
+	left: 0;
+	width: 0;
+	height: 0;
+	font-size: 0;
+}
+
+.wrap {
+	width: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+
+	.event-inner {
+		position: relative;
+		width: $wrapWidth;
+		margin: 0 auto;
+		text-align: center;
+	}
+}
+
+.kv {
+	height: 1460px;
+	@include background('kv.jpg', $repeat:no-repeat);
+}
+
+.orange-tumbler {
+	height: 1186px;
+	@include background('orange-tumbler.jpg', $repeat:no-repeat);
+}
+
+.secret-box {
+	height: 1304px;
+	@include background('secret-box.jpg', $repeat:no-repeat, $color:#f26825);
+}
+
+.event-notice {
+	height: 500px;
+	@include background('event-notice.jpg', $repeat:no-repeat);
+
+	.sns-btn-wrap {
+		padding-top: 247px;
+	}
+}
+
+
+
+.btn {
+	width: 640px;
+	height: 109px;
+	font-size: 0;
+	//@include background('btns.png', $repeat:no-repeat);
+
+	&__tumbler {
+		position:relative;
+		margin-top: 1007px;
+		//background-position: 0 -230px;
+	}
+
+	&__secret-box {
+		position:relative;
+		margin-top: 1124px;
+		//background-position: 0 -115px;
+	}
+
+}
+	

@@ -1,0 +1,186 @@
+
+.btn {
+  border-radius: 10px;
+  @include background-image($loc + 'btn-ir.png', $pos: left top);
+  
+  &--application-detail {
+    margin-top: 310px; 
+    background-position: -208px -360px;
+    @include size(132px, 32px);
+  }
+
+  &--apply {
+    margin-top: 80px;
+    background-position: left -664px;
+    @include size(309px, 80px);
+  }
+  
+  &--share {
+    margin-top: 705px;
+    background-position: left -574px;
+    @include size(309px, 80px);
+  }
+}
+
+.link {
+  display: inline-block;
+  @include background-image($loc + 'btn-ir.png');
+  
+  &-to-purchase {
+    margin: 755px 0 0 60px;
+    background-position: -382px -180px;
+    border-radius: 50%;
+    @include size(107px);
+  }
+
+  &-naver-search {
+    background-position: left -754px;
+    @include size(252px, 90px);
+  }
+
+  &-to-youtube {
+    display: block;
+    margin: 1040px auto 0;
+    @include size(309px, 80px);
+    // outline: 1px solid red;
+    border-radius: 10px;
+    @include background-image($loc + 'btn-video.png', $pos: left top);
+  }
+}
+
+
+/* 네이버 검색 */
+.naver-search-go {
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  top: 395px;
+  font-size: 0;
+
+  & > a[href] {
+    display: inline-block;
+  }
+
+  .text-flow {
+    position: absolute;
+    top: 25px;
+    right: 300px;
+    width: 0px;
+    height: 50px;
+    background: #fff;
+  }
+
+  .animate-flow {
+    -webkit-animation: flow 3s infinite;
+    animation: flow 3s infinite;
+  }
+
+  .deco-arrow {
+    position: absolute;
+    top: 65px;
+    left: 565px;
+  }
+}
+
+/* 유튜브 플레이어 */
+.player-wrap{
+  margin: 35px auto 0 ;
+  display: inline-block;
+  position: relative;
+
+  .deco {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+@-webkit-keyframes flow {
+  0% {
+    width: 280px;
+  }
+  80% {
+    width: 0;
+  }
+}
+
+@keyframes flow {
+  0% {
+    width: 280px;
+  }
+  80% {
+    width: 0;
+  }
+}
+
+/* 이미지 슬라이더 */
+.img-slider {
+  padding-top: 415px;
+}
+
+/* 그림자 */
+.has-shadow {
+  -webkit-box-shadow: 30px 30px 55px -5px rgba(0,15,90, 0.2);
+  -moz-box-shadow   : 30px 30px 55px -5px rgba(0,15,90, 0.2);
+  box-shadow        : 30px 30px 55px -5px rgba(0,15,90, 0.2);
+  &--naver {
+    -webkit-box-shadow: 30px 30px 55px -5px rgba(0,15,90, 0.2);
+    -moz-box-shadow   : 30px 30px 55px -5px rgba(0,15,90, 0.2);
+    box-shadow        : 30px 30px 55px -5px rgba(0,15,90, 0.2);
+  }
+}
+
+.img-slider {
+  // outline: 1px solid salmon;
+  margin: 0 auto;
+  width: 690px;
+  
+  .slick-dots {
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .slick-dots li button:before {
+    color: #fff;
+    opacity: 1;
+    font-size: 60px;
+    line-height: 0;
+  }
+
+  .slick-dots li.slick-active button:before {
+    color: #a9adae;
+  }
+
+  .slick-arrow {
+    width: 29px;
+    height: 55px;
+    // outline: 1px solid red;
+    top: 65%;
+    left: -6%;
+    @include background-image($loc + "btn-ir.png", $pos: -428px -575px);
+    &.slick-next {
+      background-position: -459px -575px;
+      left: auto;
+      right: -6%;
+    }
+  }
+
+  .slick-prev:before,
+  .slick-next:before {
+    content: "";
+  }
+
+  .slide {
+    font-size: 0;
+    margin: 0 auto 40px;
+    outline: 1px dashed green;
+    &__cell{
+      @include size(290px);
+      display: inline-block;
+      margin: 10px;
+      &>img {
+        width: 100%;
+      }
+    } 
+  }
+}

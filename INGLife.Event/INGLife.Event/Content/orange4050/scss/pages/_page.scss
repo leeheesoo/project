@@ -1,0 +1,123 @@
+﻿$location: '../../Images/orange4050/';
+$wrapWidth: 720px;
+//손가락 icon
+%icon-pointer {
+	content:'';
+	position:absolute;
+	right:25px;
+	top:35px;
+	display:inline-block;
+	width:68px;
+	height:105px;
+	@include background('icon-click.png', $repeat:no-repeat);
+}
+
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+button:focus {
+	outline: 0;
+}
+
+.blind {
+	position: absolute;
+	top: -1000em;
+	left: 0;
+	width: 0;
+	height: 0;
+	font-size: 0;
+}
+
+.wrap {
+	width: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+
+	.event-inner {
+		position: relative;
+		width: $wrapWidth;
+		margin: 0 auto;
+		text-align: center;
+	}
+}
+
+.kv {
+	height: 873px;
+	@include background('bg-kv.jpg', $repeat:no-repeat);
+}
+
+.emoticon-step01 {
+	height: 1082px;
+	@include background('bg-step1.jpg', $repeat:no-repeat);
+}
+
+.emoticon-step02 {
+	height: 918px;
+	@include background('bg-step2.jpg', $repeat:no-repeat, $color:#f26825);
+}
+
+.sns-share {
+	height: 458px;
+	@include background('bg-share.jpg', $repeat:no-repeat);
+
+	.sns-btn-wrap {
+		padding-top: 247px;
+	}
+}
+
+footer {
+	height: 399px;
+	@include background('bg-footer.jpg', $repeat:no-repeat);
+}
+
+.btn {
+	width: 640px;
+	height: 106px;
+	font-size: 0;
+	@include background('btns.png', $repeat:no-repeat);
+
+	&-plus {
+		position:relative;
+		margin-top: 976px;
+		background-position: 0 -230px;
+		&:after {
+			@extend %icon-pointer
+		}
+	}
+
+	&-marketing {
+		position:relative;
+		margin-top: 510px;
+		background-position: 0 -115px;
+
+		&.on {
+			background-position: 0 0;
+		}
+
+		&:after {
+			@extend %icon-pointer
+		}
+	}
+	//sns
+	&-kakao {
+		background-position: 0 -345px;
+	}
+
+	&-naver {
+		margin-left: 35px;
+		background-position: -165px -345px;
+	}
+
+	&-facebook {
+		margin-left: 35px;
+		background-position: -330px -345px;
+	}
+}
+
+.btn-share {
+	width: 130px;
+	height: 130px;
+}

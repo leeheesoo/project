@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div th:fragment="body-popup">
+      <!-- 개인정보 입력 -->
+      <div class="popup-wrap" :class="{on: onPop('user-info')}">
+        <div class="popup popup-personal popup__common">
+          <div class="popup__header">
+            <div class="popup__inner">
+              <h4 class="popup__title">
+                <img
+                  src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/title-personal.png"
+                  alt="개인정보 입력"
+                />
+              </h4>
+              <p class="popup__title-sub">
+                <img
+                  src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/sub-title-personal.png"
+                  alt="이벤트 참여 및 경품 수령을 위한 개인정보를 입력해주세요"
+                />
+              </p>
+            </div>
+          </div>
+          <div class="popup__body">
+            <div class="popup__inner">
+              <form @submit.prevent="sendUserInfo()">
+                <div class="info">
+                  <label for="info-name"
+                    ><img
+                      src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/name-label.png"
+                      alt="이름 입력"
+                  /></label>
+                  <input
+                    type="text"
+                    id="info-name"
+                    maxlength="10"
+                    v-model="userInfo.name"
+                  />
+                </div>
+                <div class="info">
+                  <label for="info-phone"
+                    ><img
+                      src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/phone-label.png"
+                      alt="휴대폰번호 입력"
+                  /></label>
+                  <input
+                    type="tel"
+                    id="info-phone"
+                    maxlength="11"
+                    placeholder="-기호 없이 입력해주세요"
+                    v-model="userInfo.phone"
+                  />
+                </div>
+                <div class="info">
+                  <label for="info-age"
+                    ><img
+                      src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/age-label.png"
+                      alt="생년월일 입력"
+                  /></label>
+                  <input
+                    type="tel"
+                    id="info-age"
+                    maxlength="6"
+                    placeholder="Ex. 810212"
+                    v-model="userInfo.birth"
+                  />
+                </div>
+                <div class="info snsinfo" v-if="page.current === 'challenge'">
+                  <input
+                    type="text"
+                    id="info-link"
+                    placeholder="구매후기를 등록하신 sns 주소를 등록해 주세요."
+                    v-model="userInfo.link"
+                  />
+                </div>
+                <!-- sns 공유 -->
+                <div class="sns-wrap" v-if="page.current === 'challenge'">
+                  <p class="sns-note">
+                    <img
+                      src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/share-note.png"
+                      alt="등록하신 후기 속 이미지의 경우 마이크로사이트에 노출될 수 있습니다."
+                    />
+                  </p>
+
+                  <span class="btn btn__naver_s btn__small-sns"
+                    >네이버 공유하기</span
+                  >
+                  <span class="btn btn__kakao_s btn__small-sns"
+                    >카카오스토리 공유하기</span
+                  >
+                  <span class="btn btn__insta_s btn__small-sns"
+                    >인스타그램 공유하기</span
+                  >
+                  <span class="btn btn__face_s btn__small-sns"
+                    >페이스북 공유하기</span
+                  >
+                </div>
+
+                <div class="agree info">
+                  <label for="agree">
+                    <input
+                      type="checkbox"
+                      id="agree"
+                      v-model="userInfo.agree"
+                    />
+                    <span>개인정보 수집 방침에 동의하기(필수)</span>
+                  </label>
+                  <button
+                    type="button"
+                    class="btn btn__hint"
+                    @click="showPop('info-clause')"
+                  >
+                    약관 자세히 보기
+                  </button>
+                </div>
+                <p>
+                  <img
+                    src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/personal-note.png"
+                    alt="등록하신 개인정보는 이벤트 경품 수령을 위한 정보 및 구매 안내 정보 제공을 위해 사용되며 이벤트 종료 3개월 후에 자동 폐기됩니다."
+                  />
+                </p>
+
+                <button class="btn btn__event-join">개인정보입력</button>
+                <!--
+                  <button class="btn btn__next">이벤트_개인정보입력</button>
+                -->
+              </form>
+            </div>
+          </div>
+          <button class="btn btn__close" @click="closePop('user-info')">
+            닫기
+          </button>
+        </div>
+      </div>
+      <!-- || 개인정보 -->
+
+      <!-- 개인정보 약관 -->
+      <div class="popup-wrap" :class="{on: onPop('info-clause')}">
+        <div class="popup popup-clause popup__common">
+          <div class="popup__header">
+            <div class="popup__inner">
+              <h4 class="popup__title">
+                <img
+                  src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/title-clause.png"
+                  alt="세타필 이벤트 이용약관"
+                />
+              </h4>
+            </div>
+          </div>
+          <div class="popup__body">
+            <div class="text-box">
+              <b>갈더마 코리아 ㈜ 귀하</b> <br />
+              본 이벤트 응모 관련하여 귀사가 본인의 개인(신용)정보를 수집 •
+              이용하고자 하는 경우에는 「신용정보의 이용 및 보호에 관한 법률」
+              제32조 및 제33조, 제34조, 「정보통신망 이용촉진 및 정보보호 등에
+              관한 법률」 제22조, 「개인정보보호법」 제15조 및 제22조, 제24조에
+              따라 본인의 동의를 얻어야 합니다. 이에 본인은 귀사가 아래와 같이
+              본인의 개인(신용)정보를 수집 • 이용하는 것에 대하여 동의합니다. 이
+              동의서는 계약의 갱신 등으로 변경되는 경우에도 유효합니다.<br />
+              <br />
+              <b>1. 개인(신용)정보 수집 • 이용 목적</b> <br />
+              - 이벤트 참여여부 확인, 이벤트 당첨 시 경품 발송, 유선 업무를 통한
+              당첨자 확인, 이벤트 관리, 입력한 통계자료 및 설문조사 마케팅 및
+              제품 마케팅 알림 활용, 등록한 후기 텍스트 및 이미지에 대한 마케팅
+              활용, 제세공과금 대납을 위한 고객정보 제공 <br /><br />
+              <b>2. 수집하는 개인(신용)정보의 항목</b> <br />
+              - 성명, 휴대폰번호, 나이, 경품배송주소, 이벤트 입력 항목
+              (얼굴/바디 제품 사용 수, 피부 관련 설문조사 응답 문항), 후기
+              이벤트 링크 URL (제품 후기 텍스트, 이미지) <br /><br />
+              <b>3. 개인정보의 보유 및 이용기간</b> <br />
+              회원의 개인정보(성명, 휴대폰번호, 나이, 경품배송주소)는 개인정보의
+              수집/이용 목적이 달성되면 지체 없이 파기됩니다. 단, 이벤트 입력
+              항목(얼굴/바디 제품 사용 수, 피부 관련 설문조사 응답 문항) 및 후기
+              이벤트 링크 URL(제품 후기 텍스트, 이미지)에 대한 자료는 마케팅
+              요소로 활용되어 일정기간 보유합니다 <br />
+              <br />
+              • 후기 이벤트 콘텐츠를 마이크로사이트 외부의 마케팅 요소로 활용 시
+              원작자와 별도 협의 후 활용됩니다.<br />
+              <br />
+              <b
+                >4. 귀하는 개인(신용)정보의 수집 및 이용에 대한 동의를 거부할 수
+                있으나, 미 동의 시 이벤트 당첨이 불가능합니다.</b
+              >
+              <br />
+              <br />
+              <b
+                >5. 연락처 오기입, 변경으로 인한 경품 미수령에 대한 책임은
+                참여자 본인에게 있습니다.</b
+              >
+            </div>
+            <button
+              class="btn btn__clause-close"
+              @click="closePop('info-clause')"
+            >
+              약관닫기
+            </button>
+          </div>
+          <button class="btn btn__close" @click="closePop('info-clause')">
+            닫기
+          </button>
+        </div>
+      </div>
+
+      <!-- 이벤트 공유(화보) -->
+      <div
+        class="popup-wrap common-share01"
+        :class="{on: onPop('contents-share-sns')}"
+      >
+        <div class="popup popup-common-share01 common-share popup__common">
+          <div class="popup__header">
+            <div class="popup__inner">
+              <h4 class="popup__title">
+                <img
+                  src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/title-share.png"
+                  alt="이벤트 공유"
+                />
+              </h4>
+              <p class="popup__title-sub">
+                <img
+                  src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/sub-title-share.png"
+                  alt="친구들에게 동안바디 공유이벤트를 알려주세요"
+                />
+              </p>
+            </div>
+          </div>
+          <div class="popup__body">
+            <div class="popup__inner">
+              <div class="sns__wrap">
+                <button
+                  v-for="sns in snsType"
+                  class="btn"
+                  :class="sns.class"
+                  @click="shareSns(sns.key)"
+                >
+                  {{ sns.label }}
+                </button>
+              </div>
+              <!-- sns 공유완료시 보임 -->
+              <button
+                type="button"
+                class="btn btn__join-finish"
+                v-if="eventsInfo[page.current].joined"
+                @click="showPop('complete')"
+              >
+                이벤트 참여 완료
+              </button>
+            </div>
+          </div>
+          <button class="btn btn__close" @click="closePop()">닫기</button>
+        </div>
+      </div>
+
+      <!-- 이벤트 공유 -->
+      <div class="popup-wrap common-share02" :class="{on: onPop('share-sns')}">
+        <div class="popup popup-common-share02 common-share popup__common">
+          <div class="popup__header">
+            <div class="popup__inner">
+              <h4 class="popup__title">
+                <img
+                  src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/title-share.png"
+                  alt="이벤트 공유"
+                />
+              </h4>
+              <p class="popup__title-sub">
+                <img
+                  src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/sub-title-share-end.png"
+                  alt="친구들에게 동안바디 공유이벤트를 알려주세요"
+                />
+              </p>
+            </div>
+          </div>
+          <div class="popup__body">
+            <div class="popup__inner">
+              <div class="sns__wrap">
+                <!--
+                  <button class="btn btn__kakao">카카오톡 공유하기</button>
+                  <button class="btn btn__kakaostory">카카오스토리 공유하기</button>
+                  <button class="btn btn__facebook">페이스북 공유하기</button>
+                -->
+                <button
+                  v-for="sns in snsType"
+                  class="btn"
+                  :class="sns.class"
+                  @click="shareSns(sns.key)"
+                >
+                  {{ sns.label }}
+                </button>
+              </div>
+
+              <div class="button__wrap">
+                <span class="button__inner">
+                  <img
+                    class="img__cetaphil"
+                    src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/btn-buy.png"
+                    alt=""
+                  />
+                  <a class="btn btn__buy" :href="urlProductBuy" target="_blank"
+                    >이벤트_구매 이동</a
+                  >
+                </span>
+                <span class="button__inner">
+                  <img
+                    class="img__shop"
+                    src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/btn-shop.png"
+                    alt=""
+                  />
+                  <button
+                    type="button"
+                    class="btn btn__shop"
+                    @click="showPop('store')"
+                  >
+                    이벤트_매장 지도
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn__close" @click="closePop()">닫기</button>
+        </div>
+      </div>
+
+      <!-- 매장약도 -->
+      <div class="popup-wrap dimmed-none" :class="{on: onPop('store')}">
+        <div class="popup popup-map popup__common">
+          <div class="popup__header">
+            <div class="popup__inner">
+              <h4 class="popup__title">
+                <img
+                  src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/store-pop-title.png"
+                  alt="이벤트 완료"
+                />
+              </h4>
+            </div>
+          </div>
+          <div class="popup__body">
+            <div class="popup__inner">
+              <!-- 매장 리스트 -->
+              <ul class="store-tabs">
+                <li
+                  v-for="(store, idx) in stores.list"
+                  class="store-tab"
+                  :class="{on: stores.currentIdx === idx}"
+                  @click="stores.currentIdx = idx"
+                >
+                  <button></button>
+                </li>
+              </ul>
+              <ul class="stores">
+                <li
+                  v-for="(store, idx) in stores.list"
+                  class="store"
+                  :class="{on: stores.currentIdx === idx}"
+                >
+                  <img
+                    :src="'https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/store-'+idx + '.jpg'"
+                    alt=""
+                  />
+                </li>
+              </ul>
+            </div>
+          </div>
+          <button class="btn btn__close" @click="closePop('store')">
+            닫기
+          </button>
+        </div>
+      </div>
+
+      <!-- 이벤트 완료 메시지 -->
+      <div class="popup-wrap" :class="{on: onPop('complete')}">
+        <div class="popup popup-complete popup__common">
+          <div class="popup__header">
+            <div class="popup__inner">
+              <h4 class="popup__title">
+                <img
+                  src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/title-complete.png"
+                  alt="이벤트 완료"
+                />
+              </h4>
+            </div>
+          </div>
+          <div class="popup__body">
+            <button class="btn btn__confirm" @click="closePop()">
+              이벤트1_완료
+            </button>
+          </div>
+          <div class="popup__footer"></div>
+          <button class="btn btn__close" @click="closePop()">닫기</button>
+        </div>
+      </div>
+
+      <!-- 동안바디이벤트 당첨자 발표 -->
+      <div class="popup-wrap" :class="{on: onPop('contents-winners')}">
+        <div class="popup popup-contents-winners popup__common">
+          <div class="popup__body">
+            <img
+              src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/contents-winners-month12.png"
+              alt=""
+            />
+          </div>
+
+          <button class="btn btn__close" @click="closePop('contents-winners')">
+            닫기
+          </button>
+        </div>
+      </div>
+
+      <!-- 당첨자팝: 계산기 -->
+      <div class="popup-wrap" :class="{on: onPop('calculator-winners')}">
+        <div
+          class="popup popup-contents-winners popup__common pop-winners pop-winners__calculator"
+        >
+          <div class="popup__header"></div>
+          <div class="popup__body">
+            <div
+              v-for="(winners, winnersIdx) in winnersInfo.calculator"
+              class="winners-wrap"
+              :class="[{line1: winners.length <= 3},{line3: winners.length >= 7 }]"
+            >
+              <h3 class="winners-title"></h3>
+              <div class="scroll-view">
+                <ul class="winners">
+                  <li v-for="(name, nameIdx) in winners" class="winner">
+                    {{ name }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <button
+            class="btn btn__close"
+            @click="closePop('calculator-winners')"
+          >
+            닫기
+          </button>
+        </div>
+      </div>
+      <!-- 당첨자팝: 나이 -->
+      <div class="popup-wrap" :class="{on: onPop('age-winners')}">
+        <div
+          class="popup popup-contents-winners popup__common pop-winners pop-winners__age"
+        >
+          <div class="popup__header"></div>
+
+          <div class="popup__body">
+            <div
+              v-for="(winners, winnersIdx) in winnersInfo.age"
+              class="winners-wrap"
+              :class="[{line1: winners.length <= 3},{line3: winners.length >= 7 }]"
+            >
+              <h3 class="winners-title"></h3>
+              <div class="scroll-view">
+                <ul class="winners">
+                  <li v-for="(name, nameIdx) in winners" class="winner">
+                    {{ name }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn__close" @click="closePop('age-winners')">
+            닫기
+          </button>
+        </div>
+      </div>
+      <!-- 당첨자팝: 챌린지 -->
+      <div class="popup-wrap" :class="{on: onPop('challenge-winners')}">
+        <div
+          class="popup popup-contents-winners popup__common pop-winners pop-winners__challenge"
+        >
+          <div class="popup__header"></div>
+          <div class="popup__body">
+            <div
+              v-for="(winners, winnersIdx) in winnersInfo.challenge"
+              class="winners-wrap"
+              :class="[{line1: winners.length <= 3},{line3: winners.length >= 7 }]"
+            >
+              <h3 class="winners-title"></h3>
+              <div class="scroll-view">
+                <ul class="winners">
+                  <li v-for="(name, nameIdx) in winners" class="winner">
+                    {{ name }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn__close" @click="closePop('challenge-winners')">
+            닫기
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

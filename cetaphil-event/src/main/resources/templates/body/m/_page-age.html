@@ -1,0 +1,39 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <!-- 화보, 비디오 -->
+  <div th:fragment="page-age">
+    <div class="page__inner">
+      <div class="title">
+        <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-age/title.png" alt="">
+      </div>
+      <div class="event-duration">
+        <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-age/event-duration.png" alt="">
+      </div>
+
+      <div class="visual">
+        <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-age/visual.png" alt="">
+      </div>
+
+      <div class="event-btns">
+        <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-age/event-join-txt.png" alt="">
+        <button type="button" class="btn-join" @click="showPop('age-checklist-intro')">
+          <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-age/btn-join-event.png" alt="이벤트_시작버튼">
+        </button>
+      </div>
+      <div class="event-notice">
+        <button type="button" class="btn-show-detail" @click="showPop('age-detail')">
+          <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-age/btn-show-detail.png" alt="자세히보기">
+        </button>
+      </div>
+    </div>
+    <!-- || page__inner -->
+  </div>
+</body>
+
+</html>

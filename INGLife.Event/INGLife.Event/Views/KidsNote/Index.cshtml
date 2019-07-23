@@ -1,0 +1,311 @@
+﻿@model INGLife.Event.Models.KidsNoteModels.KidsNoteModels
+@using INGLife.Event.Domain.Entities.KidsNote
+@{
+    ViewBag.Title = "ING생명 키즈노트 캠페인";
+}
+
+@section styles {
+    <link href="~/Content/KidsNote/css/event.min.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/vuejs")
+}
+
+<div class="wrap" id="kids-note-event">
+    <div class="event-inner">
+        <div>
+            <img src="~/Content/Images/KidsNote/form/kidsnote-visual.jpg" alt="" />
+        </div>
+        <div class="tab-area">
+            <img src="~/Content/Images/KidsNote/form/kidsnote-orange-tab-tl.png" alt="숫자로 보는 미아 관련 통계" />
+            <div class="tab-btns">
+                <a href="javascript:;" class="on">35초</a>
+                <a href="javascript:;">80여명</a>
+                <a href="javascript:;">30%</a>
+            </div>
+            <div class="tab-view">
+                <div style="display: block;">아이가 사라지는데 걸리는 시간은 겨우 35초</div>
+                <div>하루 평균 실종되는 아동 수는 80명</div>
+                <div>30%의 부모가 아이를 실종한 경험이 있습니다!</div>
+            </div>
+        </div>
+        <div>
+            <img src="~/Content/Images/KidsNote/form/kidsnote-orange-kit.jpg" alt="오렌지 아이키트란? 글로벌 아동복지전문기관인 '초록우산 어린이 재단'과 ING생명이 공동으로 제작한 미아방지용 미트입니다." />
+        </div>
+        <div>
+            <img src="~/Content/Images/KidsNote/form/kidsnote-orange-info.jpg" alt="신청/수령방법 안내" />
+        </div>
+        <div class="btn-area">
+            <button v-on:click="openEntry()" class="ga-event" data-action="신청하기"><img src="~/Content/Images/KidsNote/form/btn-request.png" alt="신청하기" /></button>
+        </div>
+        <div>
+            <img src="~/Content/Images/KidsNote/form/kidsnote-note.jpg" alt="" />
+        </div>
+    </div>
+    <!-- 팝업 : 개인정보 -->
+    <div id="pop-personal" class="pop-personal">
+        <div class="header">
+            <h1><img src="~/Content/Images/KidsNote/form/personal-tit.png" alt="오렌지 아이키트 신청하기" /></h1>
+            <button onclick="closePop('personal'); return false;"><img src="~/Content/Images/KidsNote/form/btn-close.png" alt="닫기" /></button>
+        </div>
+
+        <div class="inner-pop">
+            @*<p class="text-19"><img src="~/Content/Images/KidsNote/form/text-19.png" alt="만 19세 이상 성인만 참여가능" /></p>*@
+            <div class="btn-phoneconfirm">
+                <form id="reqKMCISForm" method="post" action="#">
+                    <input type="hidden" name="tr_cert" value="@Model.RequestKMCModel.Enc_Tr_Cert">
+                    <input type="hidden" name="tr_url" value="@Model.RequestKMCModel.Tr_Url">
+                    <input type="hidden" name="tr_add" value="@Model.RequestKMCModel.Tr_Add">
+                    <button type="submit" onclick="javascript:openKMCISWindow();" class="ga-event" data-action="휴대폰 인증">
+                        <img src="~/Content/Images/KidsNote/form/btn-phoneconfirm.png" alt="휴대폰 인증" />
+                    </button>
+                </form>
+                @*<a href="#" target="_blank"></a>*@
+            </div>
+            @using (Ajax.BeginForm("CreateKidsNoteEntry", new { }, new AjaxOptions
+            {
+                HttpMethod = "post",
+                OnBegin = "kidsNoteEventView.beginEntry",
+                OnComplete = "kidsNoteEventView.completeEntry",
+                OnSuccess = "kidsNoteEventView.saveEntry",
+                OnFailure = "kidsNoteEventView.failureEntry"
+            }, new { id = "frmKidsNoteEntry" }))
+            {
+                @Html.AntiForgeryToken()
+                <legend class="blind">개인정보 입력</legend>
+                <!--info-area-->
+                <div class="info-area">
+                    <div class="name-line">                        
+                        @Html.TextBoxFor(x => x.KidsNoteModel.Name, new { placeholder = "이름", @readonly = "readonly" })
+                        <!-- 성별에 class on  -->
+                        <div class="gender">
+                            <label for="male">
+                                @Html.RadioButtonFor(x => x.KidsNoteModel.Gender, "0", new { id = "male" })
+                                <span></span>
+                            </label>
+                            <label for="female">
+                                @Html.RadioButtonFor(x => x.KidsNoteModel.Gender, "1", new { id = "female" })
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="phone">
+                        @Html.TextBoxFor(x => x.KidsNoteModel.Mobile, new { placeholder = "휴대폰번호(-없이 입력)", @readonly = "readonly" })
+                    </div>
+                    <div class="birth">
+                        @Html.TextBoxFor(x => x.KidsNoteModel.BirthDay, new { placeholder = "생년월일(8자리)", @readonly = "readonly" })
+                    </div>
+                    <div class="transparent-bg">
+                        <a id="kmcArea" href="javascript:close()"></a>
+                    </div>
+                </div>
+                <!--//info-area-->
+                <!--개인정보 수집 이용-->
+                <div class="agree-text">
+                    <p class="agree-notice"><img src="~/Content/Images/KidsNote/form/notice-agree.png" alt="본 동의는 선택사항입니다. 다만, 이에 동의를 하시지 않을 경우에는 미아방지용 키트를 포함한 다양한 편의제공 및 신상품 안내 등에 일부 제한이 있을 수 있습니다.  " /></p>
+                    @*<p><img src="~/Content/Images/KidsNote/form/agree-text1.png" alt="개인정보의 수집 이용에 관한 사항" /></p>*@
+                    <div class="policy-area">
+                        <div class="policy-txt">
+                            <img src="~/Content/Images/KidsNote/form/agree-inner-text-all.png" alt="개인정보의 수집 이용에 관한 사항" />
+                        </div>
+                    </div>
+                    <h3>
+                        <img src="~/Content/Images/KidsNote/form/agree-tit1.png" alt="개인정보의 수집 이용동의" />
+                    </h3>
+                    <label for="agree01">
+                        @Html.RadioButtonFor(x => x.KidsNoteModel.Agree, 1, new { id = "agree01" })
+                        <span class="em"></span>
+                        <img src="~/Content/Images/KidsNote/form/agree.png" alt="동의" />
+                        <span class="check-dimm"></span>
+                    </label>
+                    <label for="disagree01">
+                        @Html.RadioButtonFor(x => x.KidsNoteModel.Agree, 2, new { id = "disagree01" })
+                        <span></span>
+                        <img src="~/Content/Images/KidsNote/form/disagree.png" alt="동의하지 않음" />
+                    </label>
+                </div>
+                <!--//개인정보 수집 이용-->
+                <!--보유 이용기간-->
+                <div class="retention-period">
+                    <h3>
+                        <img src="~/Content/Images/KidsNote/form/retention-tit.png" alt="보유 이용기간" />
+                    </h3>
+                    <label for="year5">
+                        @Html.RadioButtonFor(x => x.KidsNoteModel.RetentionPeriodType, RetentionPeriodType.FiveYears, new { id = "year5" })
+                        <span class="radio em"></span>
+                        <img src="~/Content/Images/KidsNote/form/5year.png" alt="5년" />
+                        <span class="check-dimm"></span>
+                    </label>
+                    <label for="year4">
+                        @Html.RadioButtonFor(x => x.KidsNoteModel.RetentionPeriodType, RetentionPeriodType.FourYears, new { id = "year4" })
+                        <span class="radio"></span>
+                        <img src="~/Content/Images/KidsNote/form/4year.png" alt="4년" />
+                    </label>
+                    <label for="year3">
+                        @Html.RadioButtonFor(x => x.KidsNoteModel.RetentionPeriodType, RetentionPeriodType.ThreeYears, new { id = "year3" })
+                        <span class="radio"></span>
+                        <img src="~/Content/Images/KidsNote/form/3year.png" alt="3년" />
+                    </label>
+                    <label for="year2">
+                        @Html.RadioButtonFor(x => x.KidsNoteModel.RetentionPeriodType, RetentionPeriodType.TwoYears, new { id = "year2" })
+                        <span class="radio"></span>
+                        <img src="~/Content/Images/KidsNote/form/2year.png" alt="2년" />
+                    </label>
+                    <label for="year1">
+                        @Html.RadioButtonFor(x => x.KidsNoteModel.RetentionPeriodType, RetentionPeriodType.OneYear, new { id = "year1" })
+                        <span class="radio"></span>
+                        <img src="~/Content/Images/KidsNote/form/1year.png" alt="1년" />
+                    </label>
+                </div>
+                <!--//보유 이용기간-->
+                <!-- 연락방식 선택 -->
+                <div class="contact-check">
+                    <h3>
+                        <img src="~/Content/Images/KidsNote/form/contact-tit.png" alt="연락방식 선택" />
+                    </h3>
+                    <p><img src="~/Content/Images/KidsNote/form/contact-note-event2.png" alt="전화 수신 동의를 하셔야 미아방지 키트의 전달이 가능합니다." /></p>
+                    <label for="all">
+                        @Html.CheckBoxFor(x => x.KidsNoteModel.AllCheck, new { id = "all" })
+                        <span class="em"></span>
+                        <img src="~/Content/Images/KidsNote/form/all.png" alt="전체" />
+                        <span class="check-dimm"></span>
+                    </label>
+                    <label for="phone">
+                        @Html.CheckBoxFor(x => x.KidsNoteModel.PhoneCheck, new { id = "phone", @class = "chkbox" })
+                        <span></span>
+                        <img src="~/Content/Images/KidsNote/form/phone.png" alt="전화" />
+                    </label>
+                    <label for="sms">
+                        @Html.CheckBoxFor(x => x.KidsNoteModel.MessageCheck, new { id = "sms", @class = "chkbox" })
+                        <span></span>
+                        <img src="~/Content/Images/KidsNote/form/sms.png" alt="문자메세지" />
+                    </label>
+                    <label for="post">
+                        @Html.CheckBoxFor(x => x.KidsNoteModel.PostCheck, new { id = "post", @class = "chkbox" })
+                        <span></span>
+                        <img src="~/Content/Images/KidsNote/form/post.png" alt="우편" />
+                    </label>
+                    <label for="email">
+                        @Html.CheckBoxFor(x => x.KidsNoteModel.EmailCheck, new { id = "email",@class = "chkbox" })
+                        <span></span>
+                        <img src="~/Content/Images/KidsNote/form/email.png" alt="이메일" />
+                    </label>
+                </div>
+                <!-- //연락방식 선택 -->
+                <!-- 이메일 -->
+                <div class="email-wrap">
+                    <dl class="info-name">
+                        <dt>
+                            <label for="email1"><img src="~/Content/Images/KidsNote/form/tit-email.png" alt="이메일" /></label>
+                        </dt>
+                        <dd>
+                            @Html.TextBoxFor(x => x.KidsNoteModel.Email1, new { id = "email1", @class = "email-box", maxlength=25 })
+                            <img class="email-icon" src="~/Content/Images/KidsNote/form/email-thum.png" alt="골뱅이" />
+                            @Html.TextBoxFor(x => x.KidsNoteModel.Email2, new { id = "email2", @class = "email-box", maxlength=25 })
+                        </dd>
+                        <dd>
+                            <select name="emailSelect" class="email-box" id="emailSelect">
+                                <option value="1">직접입력</option>
+                                <option value="naver.com">naver.com</option>
+                                <option value="hotmail.com">hotmail.com</option>
+                                <option value="hanmail.net">hanmail.net</option>
+                                <option value="yahoo.co.kr">yahoo.co.kr</option>
+                                <option value="paran.com">paran.com</option>
+                                <option value="nate.com">nate.com</option>
+                                <option value="empal.com">empal.com</option>
+                                <option value="dreamwiz.com">dreamwiz.com</option>
+                                <option value="hanafos.com">hanafos.com</option>
+                                <option value="korea.com">korea.com</option>
+                                <option value="chol.com">chol.com</option>
+                                <option value="gmail.com">gmail.com</option>
+                                <option value="lycos.co.kr">lycos.co.kr</option>
+                                <option value="netian.com">netian.com</option>
+                                <option value="hanmir.com">hanmir.com</option>
+                                <option value="sayclub.com">sayclub.com</option>
+                            </select>
+                        </dd>
+                    </dl>
+                </div>
+                <!-- //이메일 -->
+
+                <!--개인정보의 제공-->
+                <!--<div class="agree-text bottom-line" style="display:none">
+                    <p><img src="~/Content/Images/KidsNote/form/agree-text2.png" alt="개인정보의 수집 이용에 관한 사항" /></p>
+                    <h3>
+                        <img src="~/Content/Images/KidsNote/form/agree-tit2.png" alt="개인정보의 수집 이용동의" />
+                    </h3>
+                    <label for="agree02">
+                        @Html.RadioButtonFor(x => x.KidsNoteModel.Agree2, true, new { id = "agree02" })
+                        <span></span>
+                        <img src="~/Content/Images/KidsNote/form/agree.png" alt="동의" />
+                        <span class="check-dimm"></span>
+                    </label>
+                    <label for="disagree02">
+                        @Html.RadioButtonFor(x => x.KidsNoteModel.Agree2, false, new { id = "disagree02" })
+                        <span></span>
+                        <img src="~/Content/Images/KidsNote/form/disagree.png" alt="동의하지 않음" />
+                    </label>
+                </div>-->
+                <!--//개개인정보의 제공-->
+
+                <!-- 필수입력사항  -->
+                <!-- 주소  -->
+                <h3 class="essential-point-title"><img src="~/Content/Images/KidsNote/form/essential-point.png" alt="필수입력사항" /></h3>
+                <div class="post-wrap">
+                    <h3><img src="~/Content/Images/KidsNote/form/tit-address.png" alt="주소" /></h3>
+                    @Html.TextBoxFor(x => x.KidsNoteModel.ZipCode, new { @readonly = "readonly", @class = "post-box" })
+                    <span>
+                        <button type="button" v-on:click="openPostCode()"><img src="~/Content/Images/KidsNote/form/btn-post.png" alt="우편번호" /></button>
+                    </span>
+                    @Html.TextBoxFor(x => x.KidsNoteModel.Address, new { @readonly = "readonly" })
+                    @Html.TextBoxFor(x => x.KidsNoteModel.AddressDetail, new { placeholder = "나머지 주소를 입력해주세요.", maxlength=200 })
+                </div>
+                <!-- //주소  -->
+                <!-- 자녀이름,나이  2018 03 05 입력항목 간소화 처리 :::LHS-->
+                <div class="children-wrap" style="display:none">
+                    <label for="KidsNoteModel_ChildName">
+                        <img src="~/Content/Images/KidsNote/form/children-name.png" alt="자녀이름" />
+                        @Html.TextBoxFor(x => x.KidsNoteModel.ChildName, new { maxlength = "8"})
+                    </label>
+                    <label for="KidsNoteModel_ChildAge">
+                        <img src="~/Content/Images/KidsNote/form/children-age.png" alt="자녀나이" />
+                        @Html.TextBoxFor(x => x.KidsNoteModel.ChildAge, new { type = "tel",maxlength=2 })
+                    </label>
+                </div>
+                
+                <div class="btn-complete-box">
+                    <button class="complete ga-event" data-action="입력완료" type="submit" >
+                        <img src="~/Content/Images/KidsNote/form/btn-complete.png" alt="입력완료" />
+                    </button>
+                    <div class="loading" style="display:none;"><img src="~/Content/Images/KidsNote/form/loading.gif" alt="loading"></div>
+                </div>
+
+            }
+        </div>
+
+    </div>
+    <!-- 팝업 : 우편번호 -->
+
+    @Html.Partial("_popup")
+</div>
+<!-- //wrap  -->
+@section scripts {
+    <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+    <script src="~/Content/common/dev-common.js"></script>
+    <script src="~/Content/js/kidsNote/pub.js"></script>
+    <script src="~/Content/js/kidsNote/dev.js"></script>
+    <script type="text/javascript">  
+        var googleAnalyticCategory = '@ViewBag.Title';
+        var eventClose = '@ViewBag.IsClose';
+
+        window.name = "kmcis_web_sample";
+        function openKMCISWindow(){
+        var KMCIS_window = window.open('', 'KMCISWindow', 'width=425, height=550, resizable=0, scrollbars=no, status=0, titlebar=0, toolbar=0, left=435, top=250');
+        if (KMCIS_window == null) {
+            alert(" ※ 윈도우 XP SP2 또는 인터넷 익스플로러 7 사용자일 경우에는 \n    화면 상단에 있는 팝업 차단 알림줄을 클릭하여 팝업을 허용해 주시기 바랍니다. \n\n※ MSN,야후,구글 팝업 차단 툴바가 설치된 경우 팝업허용을 해주시기 바랍니다.");
+        }
+        $('#reqKMCISForm')[0].target = 'KMCISWindow';
+        $('#reqKMCISForm')[0].action = 'https://www.kmcert.com/kmcis/web/kmcisReq.jsp';
+        $('#reqKMCISForm')[0].submit();
+        }
+    </script>
+}
+

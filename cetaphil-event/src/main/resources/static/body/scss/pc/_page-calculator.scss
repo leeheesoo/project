@@ -1,0 +1,34 @@
+.page-calculator{    
+  background: url($imgPath + '/page-calculator/bg.png') #cde4e3 center top no-repeat;
+  .page__inner{
+    background: url($imgPath+'/page-calculator/visual.png') right top no-repeat; 
+
+    .btn-join-event{  
+      top: 533px; 
+      left: 819px;
+      
+      button{
+        background: url( $imgPath + '/page-calculator/btn-join-event.png') center center no-repeat;
+        width: 271px; 
+        height: 271px;
+      }      
+    }
+    .event-duration{
+      top: 517px;      
+    }
+    .event-notice{
+      top: 835px;
+      background: url( $imgPath + '/page-calculator/event-notice.png') center top no-repeat;            
+      height: 420px;
+      button{
+        width: 201px; 
+        height: 45px;
+        position: absolute;
+        top: 128px;
+        right: 100px;
+        border-radius: 3rem;
+      }
+    }      
+  }  
+}
+

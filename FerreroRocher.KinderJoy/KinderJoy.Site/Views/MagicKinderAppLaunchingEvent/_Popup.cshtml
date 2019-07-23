@@ -1,0 +1,675 @@
+﻿@using KinderJoy.Domain.Entities.MagicKinderAppLaunchingEvent
+@model KinderJoy.Site.Models.MagicKinderAppLaunchingEvent.MagicKinderAppLaunchingEventModel
+<!-- 팝업:딤드처리 -->
+<div id="png-bg"></div>
+
+<!-- 팝업:개인정보입력 -->
+<div class="popups" id="pop-entry" style="display:none;">
+    <div class="btn-close"><a href="javascript:;" onclick="closePop('entry'); return false;"><img src="~/Images/MagicKinderAppLaunchingEvent/pop/btn_close.png" alt="닫기"></a></div>
+    <div class="pop-con">
+         @using (Html.BeginForm("CreateMagicKinderAppLaunching", "MagicKinderAppLaunchingEvent", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm" }))
+         {
+            <fieldset>
+                <legend style="display:none">스크린샷 등록 및 개인정보 입력</legend>
+                <div class="reg-area">
+                    <h3><img src="~/Images/MagicKinderAppLaunchingEvent/pop/tl_screenshot_reg.png" alt="스크린샷 등록"></h3>
+                    <div class="reg-img">
+                        <p><img src="~/Images/MagicKinderAppLaunchingEvent/pop/txt_reg_img.png" alt="우리 아이가 가장 좋아하는 콘텐츠의 스크린샷을 등록해주세요."></p>
+                        <div class="img-upload-box">
+                            @Html.TextBoxFor(e => e.ScreenShotFile, new { type = "file", @class = "inputfile" })
+                            @*<input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple>*@
+                            <label for="ScreenShotFile"><span></span><img src="~/Images/MagicKinderAppLaunchingEvent/pop/btn_upload.png" alt="업로드"></label>
+                        </div>
+                        <p class="notice"><img src="~/Images/MagicKinderAppLaunchingEvent/pop/notice_reg_img.png" alt="※(필수) 이미지 1장 10MB 이하의 사진만 등록 가능합니다."></p>
+                    </div>
+                    <div class="select-category">
+                        @Html.DropDownListFor(e => e.ScreenShotType, new List<SelectListItem>() {
+                                                                               new SelectListItem { Text = "밑그림 그리고 칠하기", Value = MagicKinderScreenShotTypes.Coloring.ToString("D") },
+                                                                               new SelectListItem { Text = "비디오 시청", Value = MagicKinderScreenShotTypes.Video.ToString("D") },
+                                                                               new SelectListItem { Text = "놀면서 배워요", Value = MagicKinderScreenShotTypes.Playing.ToString("D") },
+                                                                               new SelectListItem { Text = "동화", Value = MagicKinderScreenShotTypes.Story.ToString("D") },
+                                                                               new SelectListItem { Text = "우리 별 체험", Value = MagicKinderScreenShotTypes.EarthTrip.ToString("D") },
+                                                                               new SelectListItem { Text = "기타", Value = MagicKinderScreenShotTypes.Etc.ToString("D") }
+                                                                           }, "카테고리 선택")
+                    </div>
+                    <div class="reg-comment">
+                        <p><img src="~/Images/MagicKinderAppLaunchingEvent/pop/txt_reg_comment.png" alt="콘텐츠에 대한 한 줄 평을 작성해주세요 (띄어쓰기 포함 최대 20자)"></p>
+                        @Html.TextAreaFor(e => e.Comment, new { maxlength = 20 })
+                    </div>
+                </div>
+
+                <div class="info-area">
+                    <h3><img src="~/Images/MagicKinderAppLaunchingEvent/pop/tl_info_reg.png" alt="개인 정보 입력"></h3>
+                    <p><img src="~/Images/MagicKinderAppLaunchingEvent/pop/txt_info_reg.png" alt="당첨자 발표 후 경품 발송을 위한 개인 정보를 입력해주세요."></p>
+                     <dl class="info-name">
+                        <dt><img src="~/Images/MagicKinderAppLaunchingEvent/pop/input_name.png" alt="이름"></dt>
+                        <dd>
+                            @Html.TextBoxFor(e => e.Name, new { maxlength = 20 })
+                        </dd>
+                    </dl>
+                    <dl class="info-phone">
+                        <dt><img src="~/Images/MagicKinderAppLaunchingEvent/pop/input_phone.png" alt="휴대폰 번호"></dt>
+                        <dd>
+                            @Html.TextBoxFor(e => e.Mobile, new { type = "tel", maxlength = 11 })
+                        </dd>
+                    </dl>
+                    <dl class="info-address">
+                        <dt><img src="~/Images/MagicKinderAppLaunchingEvent/pop/input_address.png" alt="주소"></dt>
+                        <dd class="post-box">
+                            @Html.TextBoxFor(e => e.ZipCode, new { @readonly = "readonly" })<img class="btn_search GA" src="~/Images/MagicKinderAppLaunchingEvent/pop/btn_post_search.png" style="cursor:pointer" data-bind="click:function(){ openPostCode(); }" data-category="@ViewBag.Title" data-action="우편번호" alt="검색">
+                        </dd>
+                        <dd class="address-box">
+                            @Html.TextBoxFor(e => e.Address, new { @readonly = "readonly" })
+                            <br>
+                            @Html.TextBoxFor(e => e.AddressDetail, new { maxlength = 200 })
+                        </dd>
+                    </dl>
+                    <dl class="info-age">
+                        <dt><img src="~/Images/MagicKinderAppLaunchingEvent/pop/input_age.png" alt="나이"></dt>
+                        <dd>
+                            @Html.TextBoxFor(e => e.Age, new { type = "tel", maxlength = 2 })
+                        </dd>
+                    </dl>
+                </div>
+                <!-- //form_box -->
+                <!-- agreement_box -->
+                <div class="policy-area">
+                    <p class="policy-check">
+                        @Html.CheckBoxFor(e => e.Agree)
+                        @*<input type="checkbox" name="Agree" id="agreePolicy">*@
+                        <label for="Agree"><img src="~/Images/MagicKinderAppLaunchingEvent/pop/txt_agree_policy.png" alt="개인정보 보호를 위한 이용자 동의"></label>
+                    </p>
+                    <div class="contents">
+                        <span><strong>[개인정보 수집 및 활용 동의]</strong></span><br><br>
+                        고객님이 입력한 개인정보는 ‘정보통신망 이용촉진 및 정보보호 등에 관한 법률’에 따라 주) 페레로 아시아 리미티드 한국지사가 수집, 활용 및 취급 위탁 시 본인의 동의를 얻어 야 하는 정보입니다. 입력하신 개인정보는 아래의 목적으로 프로모션 대행사에만 제공되며, 이외의 용도로는 활용되지 않습니다.<br><br>
+                        • 1) 개인정보 수집 및 이용목적 - 참여자 본인 확인 및 경품 발송<br>
+                        • 2) 수집하는 개인정보 항목 - 이름, 연락처, 나이, 주소<br>
+                        • 3) 개인정보 보유 및 이용기간 - 이벤트 종료 후 3개월 이내 파기 (단, 관계법령의 규정에 의하여 보존할 필요가 있는 경우 관련 법령에 따라 보관)<br>
+                        • 4) 본 이벤트 참여 고객은 개인정보 수집, 활용에 대하여 동의를 거부할 권리가 있으며, 개인정보 수집, 활용에 대한 미동의 시 서비스에 참여하실 수 없습니다.<br>
+                        • 5) 페레로 아시아 리미티드 한국지사는 서비스 향상과 원활한 진행을 위하여 개인 정보 처리 업무를 외부 전문 업체에 위탁하여 처리하고 있습니다.* 이벤트 운영 및 경품 배송 : 메가존 ㈜<br><br>
+                    </div>
+                    <p class="notice"><img src="~/Images/MagicKinderAppLaunchingEvent/pop/notice_gifts.png" alt="※경품은 이벤트 종료 후 2주 이내 입력한 주소로 일괄 배송 됩니다."></p>
+                </div>
+                <!-- //agreement_box -->
+                <div class="btn">
+                    <button type="submit"><img src="~/Images/MagicKinderAppLaunchingEvent/pop/btn_reg_confirm.png" class="GA" data-category="@ViewBag.Title" data-action="입력 완료" alt="입력 완료"/></button>
+                    <div class="loading" style="display:none;"><img src="~/Images/MagicKinderAppLaunchingEvent/pop/loading.gif" alt="loading"></div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+
+<!-- 팝업:우편번호 -->
+<div class="popups" id="pop-post" style="display:none;">
+    <div class="btn-close"><a href="javascript:;" onclick="closePop('post'); return false;"><img src="~/Images/MagicKinderAppLaunchingEvent/pop/btn_close.png" alt="닫기"></a></div>
+    <div class="pop-header">
+        <h3><img src="~/Images/MagicKinderAppLaunchingEvent/pop/tl_pop_post.png" alt="우편번호 찾기"></h3>
+    </div>
+    <div class="pop-con" id="searchPostCode"></div>
+</div>
+
+<!-- 팝업:앱자세히 알아보기 -->
+<div class="popups" id="pop-app-detail" style="display:none;">
+    <div class="btn-close"><a href="javascript:;" onclick="closePop('app-detail'); return false;"><img src="~/Images/MagicKinderAppLaunchingEvent/pop/btn_close.png" alt="닫기"></a></div>
+    <div class="pop-header">
+        <h3><img src="~/Images/MagicKinderAppLaunchingEvent/pop/tl_pop_app_detail.png" alt="매직킨더 앱 소개"></h3>
+    </div>
+    <div class="pop-con">
+        <div class="tab-area">
+            <ul>
+                <li class="active GA"  data-category="@ViewBag.Title" data-action="밑그림 그리고 칠하기">밑그림 그리고 칠하기</li>
+                <li class="GA" data-category="@ViewBag.Title" data-action="비디오 시청">비디오 시청</li>
+                <li class="GA" data-category="@ViewBag.Title" data-action="놀면서 배워요">놀면서 배워요</li>
+                <li class="GA" data-category="@ViewBag.Title" data-action="동화">동화</li>
+                <li class="GA" data-category="@ViewBag.Title" data-action="우리 별 체험">우리 별 체험</li>
+            </ul>
+        </div>
+        <div class="contents-area">
+            <ul>
+                <li class="active"><img src="~/Images/MagicKinderAppLaunchingEvent/pop/img_app_detail1.png" alt="그림도 그리고 색칠 공부도 해요!"></li>
+                <li><img src="~/Images/MagicKinderAppLaunchingEvent/pop/img_app_detail2.png" alt="가족과 함께 따라 해봐요!"></li>
+                <li><img src="~/Images/MagicKinderAppLaunchingEvent/pop/img_app_detail3.png" alt="게임과 학습을 한 번에!"></li>
+                <li><img src="~/Images/MagicKinderAppLaunchingEvent/pop/img_app_detail4.png" alt="읽고, 듣고 가족과 함게 즐겨요!"></li>
+                <li><img src="~/Images/MagicKinderAppLaunchingEvent/pop/img_app_detail5.png" alt="지구의 여러 나라에 대해 배워요!"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 팝업:당첨자 발표 -->
+<div class="popups" id="pop-winners">
+    <div class="btn-close"><a href="javascript:;" onclick="closePop('winners'); return false;"><img src="~/Images/MagicKinderAppLaunchingEvent/pop/btn_close.png" alt="닫기"></a></div>
+    <div class="pop-header">
+        <h3><img src="~/Images/MagicKinderAppLaunchingEvent/pop/tl_pop_winners.png" alt="매직킨더 앱 런칭 이벤트 당첨자"></h3>
+    </div>
+    <div class="pop-con">
+       <div class="winner-box">
+           <div class="winner-prize">아이패드 미니 4 128GB Wifi (실버)</div>
+           <ul class="winner-list">
+               <li>이*희 (0142)</li>
+               <li>하*희 (8344)</li>
+           </ul>
+       </div>
+
+        <div class="winner-box">
+            <div class="winner-prize">신세계 모바일 상품권 5만원권</div>
+            <ul class="winner-list">
+                <li>권*경 (7630)</li>
+                <li>김*숙 (9931)</li>
+                <li>김*주 (0290)</li>
+                <li>김*아 (7697)</li>
+                <li>김*희 (0085)</li>
+                <li>김*혜 (1099)</li>
+                <li>박*이 (1044)</li>
+                <li>신*원 (3892)</li>
+                <li>심*정 (3136)</li>
+                <li>심*주 (2996)</li>
+                <li>유*상 (7697)</li>
+                <li>이*영 (1044)</li>
+                <li>이*열 (2995)</li>
+                <li>이*직 (1044)</li>
+                <li>임*영 (6435)</li>
+                <li>정*영 (3979)</li>
+                <li>최*주 (4199)</li>
+                <li>최*주 (2525)</li>
+                <li>한*민 (8738)</li>
+                <li>홍*녀 (5510)</li>
+            </ul>
+        </div>
+
+        <div class="winner-box">
+            <div class="winner-prize">젤리켓 토끼M</div>
+            <ul class="winner-list">
+                <li>강*희 (0422)</li>
+                <li>고*영 (5042)</li>
+                <li>곽*용 (1565)</li>
+                <li>곽*영 (2493)</li>
+                <li>금*쁨 (5236)</li>
+                <li>김*솜 (4614)</li>
+                <li>김*연 (2548)</li>
+                <li>김*수 (1350)</li>
+                <li>김*지 (4032)</li>
+                <li>김*경 (5744)</li>
+                <li>김*수 (2023)</li>
+                <li>김*정 (3712)</li>
+                <li>김*윤 (7748)</li>
+                <li>민*찬 (7938)</li>
+                <li>박*미 (1790)</li>
+                <li>백*나 (4007)</li>
+                <li>심*영 (3136)</li>
+                <li>양*진 (9584)</li>
+                <li>엄*진 (9828)</li>
+                <li>윤*기 (3361)</li>
+                <li>이*주 (9336)</li>
+                <li>이*진 (5621)</li>
+                <li>이*수 (1044)</li>
+                <li>임*은 (5940)</li>
+                <li>장*화 (7671)</li>
+                <li>전*경 (2963)</li>
+                <li>지*영 (4556)</li>
+                <li>진*제 (4053)</li>
+                <li>최*희 (0104)</li>
+                <li>한*옥 (7913)</li>
+            </ul>
+        </div>
+        
+        <div class="winner-box">
+            <div class="winner-prize">킨더조이 기프티콘</div>
+            <ul class="winner-list">
+                <li>강*윤 (5087)</li>
+                <li>강*윤 (5057)</li>
+                <li>강*정 (7755)</li>
+                <li>강*숙 (6970)</li>
+                <li>강*현 (0042)</li>
+                <li>강*아 (7892)</li>
+                <li>강*분 (2430)</li>
+                <li>강*진 (7442)</li>
+                <li>강*구 (8638)</li>
+                <li>강*희 (0418)</li>
+                <li>강*원 (0093)</li>
+                <li>강*희 (0668)</li>
+                <li>강*미 (1659)</li>
+                <li>강*정 (8402)</li>
+                <li>강*정 (3461)</li>
+                <li>고*미 (8339)</li>
+                <li>고*영 (1334)</li>
+                <li>공*난 (6365)</li>
+                <li>곽*재 (0676)</li>
+                <li>곽*규 (1697)</li>
+                <li>곽*창 (1697)</li>
+                <li>곽*희 (1694)</li>
+                <li>곽*지 (1694)</li>
+                <li>곽*희 (1694)</li>
+                <li>구*영 (3033)</li>
+                <li>권*지 (3220)</li>
+                <li>권*광 (5552)</li>
+                <li>권*순 (4106)</li>
+                <li>권*훈 (5411)</li>
+                <li>권*서 (3391)</li>
+                <li>권*나 (5272)</li>
+                <li>권*주 (2430)</li>
+                <li>권*지 (7911)</li>
+                <li>김*정 (8113)</li>
+                <li>김*명 (1324)</li>
+                <li>김*애 (3739)</li>
+                <li>김*태 (5244)</li>
+                <li>김*태 (2464)</li>
+                <li>김*순 (8240)</li>
+                <li>김*원 (0956)</li>
+                <li>김*호 (3112)</li>
+                <li>김*래 (2820)</li>
+                <li>김*정 (7409)</li>
+                <li>김*광 (4801)</li>
+                <li>김*영 (1026)</li>
+                <li>김*현 (3205)</li>
+                <li>김*생 (2809)</li>
+                <li>김*희 (9647)</li>
+                <li>김*선 (0610)</li>
+                <li>김*선 (7292)</li>
+                <li>김*숙 (1586)</li>
+                <li>김*연 (8658)</li>
+                <li>김*영 (3302)</li>
+                <li>김*정 (5111)</li>
+                <li>김*진 (9293)</li>
+                <li>김*정 (7035)</li>
+                <li>김*석 (6497)</li>
+                <li>김*미 (4268)</li>
+                <li>김*훈 (2848)</li>
+                <li>김*영 (1154)</li>
+                <li>김*중 (7639)</li>
+                <li>김*희 (3144)</li>
+                <li>김*희 (0074)</li>
+                <li>김*희 (0752)</li>
+                <li>김*례 (7911)</li>
+                <li>김*희 (4025)</li>
+                <li>김*림 (8425)</li>
+                <li>김*옥 (7760)</li>
+                <li>김*연 (0943)</li>
+                <li>김*정 (8618)</li>
+                <li>김*현 (4464)</li>
+                <li>김*수 (4159)</li>
+                <li>김*철 (3107)</li>
+                <li>김*욱 (6274)</li>
+                <li>김*태 (7633)</li>
+                <li>김*슬 (0110)</li>
+                <li>김*수 (6000)</li>
+                <li>김*수 (2920)</li>
+                <li>김*수 (2282)</li>
+                <li>김*수 (1022)</li>
+                <li>김*용 (6715)</li>
+                <li>김*호 (8385)</li>
+                <li>김*진 (1694)</li>
+                <li>김*수 (1055)</li>
+                <li>김*실 (5860)</li>
+                <li>김*정 (6124)</li>
+                <li>김*주 (6322)</li>
+                <li>김*혜 (2367)</li>
+                <li>김*자 (1102)</li>
+                <li>김*남 (4135)</li>
+                <li>김*규 (4004)</li>
+                <li>김*미 (3951)</li>
+                <li>김*아 (7286)</li>
+                <li>김*은 (2262)</li>
+                <li>김*은 (3390)</li>
+                <li>김*은 (8867)</li>
+                <li>김*연 (9736)</li>
+                <li>김*석 (7777)</li>
+                <li>김*선 (9624)</li>
+                <li>김*선 (3573)</li>
+                <li>김*연 (7512)</li>
+                <li>김*윤 (2239)</li>
+                <li>김*은 (0908)</li>
+                <li>김*현 (2899)</li>
+                <li>김*혜 (7110)</li>
+                <li>김*혜 (6404)</li>
+                <li>김*혜 (7110)</li>
+                <li>김*덕 (7639)</li>
+                <li>김*선 (1554)</li>
+                <li>김*선 (0409)</li>
+                <li>김*아 (4888)</li>
+                <li>김*수 (5972)</li>
+                <li>김*호 (3986)</li>
+                <li>김*호 (0041)</li>
+                <li>김*환 (8244)</li>
+                <li>김*현 (6109)</li>
+                <li>김*나 (2083)</li>
+                <li>김*수 (7915)</li>
+                <li>김*숙 (7632)</li>
+                <li>김*욱 (3712)</li>
+                <li>김*정 (3712)</li>
+                <li>김*정 (3986)</li>
+                <li>김*진 (2051)</li>
+                <li>김*진 (6161)</li>
+                <li>김*진 (1133)</li>
+                <li>김*진 (4879)</li>
+                <li>김*진 (8521)</li>
+                <li>김*정 (8625)</li>
+                <li>나*나 (7858)</li>
+                <li>남*희 (1071)</li>
+                <li>남*란 (7176)</li>
+                <li>남*현 (1849)</li>
+                <li>노*운 (4415)</li>
+                <li>노*희 (1055)</li>
+                <li>노*지 (4694)</li>
+                <li>동*일 (8810)</li>
+                <li>류*아 (9155)</li>
+                <li>마*진 (3375)</li>
+                <li>문*영 (1656)</li>
+                <li>문*철 (2333)</li>
+                <li>문*민 (0416)</li>
+                <li>문*경 (1444)</li>
+                <li>문*주 (4725)</li>
+                <li>문*호 (1230)</li>
+                <li>문*영 (4934)</li>
+                <li>민*신 (8566)</li>
+                <li>민*진 (8566)</li>
+                <li>민*민 (8566)</li>
+                <li>민*혜 (8566)</li>
+                <li>민*준 (8566)</li>
+                <li>민*성 (8566)</li>
+                <li>민*오 (8566)</li>
+                <li>민*우 (8566)</li>
+                <li>민*일 (8564)</li>
+                <li>민*호 (8566)</li>
+                <li>민*진 (8566)</li>
+                <li>민*관 (0980)</li>
+                <li>민*희 (9985)</li>
+                <li>민*령 (0113)</li>
+                <li>박*미 (2946)</li>
+                <li>박*화 (3881)</li>
+                <li>박*주 (6848)</li>
+                <li>박*주 (1694)</li>
+                <li>박*미 (7805)</li>
+                <li>박*아 (1332)</li>
+                <li>박*해 (3589)</li>
+                <li>박*민 (8876)</li>
+                <li>박*례 (6541)</li>
+                <li>박*숙 (5002)</li>
+                <li>박*환 (4444)</li>
+                <li>박*정 (5202)</li>
+                <li>박*정 (8850)</li>
+                <li>박*순 (9498)</li>
+                <li>박*영 (2444)</li>
+                <li>박*순 (5522)</li>
+                <li>박*영 (6848)</li>
+                <li>박*은 (1596)</li>
+                <li>박*홍 (5977)</li>
+                <li>박*수 (9601)</li>
+                <li>박*진 (5998)</li>
+                <li>박*민 (4599)</li>
+                <li>박*현 (9349)</li>
+                <li>박*현 (5343)</li>
+                <li>박*경 (2122)</li>
+                <li>박*희 (7272)</li>
+                <li>박*준 (8713)</li>
+                <li>박*준 (5955)</li>
+                <li>박*진 (1045)</li>
+                <li>방*화 (7663)</li>
+                <li>배*천 (9349)</li>
+                <li>배*영 (5064)</li>
+                <li>백*하 (2042)</li>
+                <li>백*숙 (3385)</li>
+                <li>서*영 (3292)</li>
+                <li>서*연 (6947)</li>
+                <li>서*경 (3351)</li>
+                <li>석*옥 (7230)</li>
+                <li>석*옥 (7230)</li>
+                <li>석*옥 (7230)</li>
+                <li>선*숙 (4995)</li>
+                <li>성*경 (1964)</li>
+                <li>소*옥 (5126)</li>
+                <li>손*아 (7517)</li>
+                <li>손*지 (5615)</li>
+                <li>손*민 (1053)</li>
+                <li>손*숙 (4104)</li>
+                <li>송*영 (1640)</li>
+                <li>송*녀 (7671)</li>
+                <li>송*아 (9393)</li>
+                <li>송*순 (3390)</li>
+                <li>송*순 (0644)</li>
+                <li>송*순 (2262)</li>
+                <li>송*순 (5521)</li>
+                <li>심*수 (7488)</li>
+                <li>심*혜 (5889)</li>
+                <li>심*주 (2987)</li>
+                <li>심*선 (5887)</li>
+                <li>안*우 (3770)</li>
+                <li>안*은 (0709)</li>
+                <li>안*라 (2437)</li>
+                <li>안*빈 (2684)</li>
+                <li>안*석 (3837)</li>
+                <li>안*희 (6012)</li>
+                <li>안*희 (1325)</li>
+                <li>안*진 (8677)</li>
+                <li>안*주 (6825)</li>
+                <li>안*라 (8218)</li>
+                <li>양*지 (0754)</li>
+                <li>양*성 (7427)</li>
+                <li>양*옥 (8293)</li>
+                <li>양*연 (9803)</li>
+                <li>엄*란 (1422)</li>
+                <li>엄*희 (0814)</li>
+                <li>여*길 (5574)</li>
+                <li>오*제 (2524)</li>
+                <li>오*석 (3909)</li>
+                <li>왕*량 (3009)</li>
+                <li>왕*영 (5244)</li>
+                <li>원*신 (0178)</li>
+                <li>원*길 (8118)</li>
+                <li>원*호 (9739)</li>
+                <li>원*신 (0109)</li>
+                <li>원*정 (1105)</li>
+                <li>유*지 (4449)</li>
+                <li>유*희 (4106)</li>
+                <li>유*지 (7703)</li>
+                <li>유*희 (3162)</li>
+                <li>유*희 (1913)</li>
+                <li>유*선 (4489)</li>
+                <li>유*상 (6602)</li>
+                <li>유*영 (2958)</li>
+                <li>유*식 (1175)</li>
+                <li>유*영 (2599)</li>
+                <li>윤*연 (5939)</li>
+                <li>윤*현 (0074)</li>
+                <li>윤*식 (4556)</li>
+                <li>윤*식 (1976)</li>
+                <li>윤*식 (1102)</li>
+                <li>윤*식 (8965)</li>
+                <li>윤*식 (5816)</li>
+                <li>윤*구 (8424)</li>
+                <li>윤*연 (2719)</li>
+                <li>윤*선 (9458)</li>
+                <li>윤*재 (3627)</li>
+                <li>윤*경 (1646)</li>
+                <li>윤*승 (1580)</li>
+                <li>윤*승 (1922)</li>
+                <li>윤*승 (1988)</li>
+                <li>윤*승 (6220)</li>
+                <li>윤*기 (4499)</li>
+                <li>이*영 (2225)</li>
+                <li>이*미 (6947)</li>
+                <li>이*아 (9631)</li>
+                <li>이*선 (4501)</li>
+                <li>이*순 (1571)</li>
+                <li>이*원 (5556)</li>
+                <li>이*옥 (5045)</li>
+                <li>이*희 (4169)</li>
+                <li>이*정 (5936)</li>
+                <li>이*라 (6818)</li>
+                <li>이*혜 (7909)</li>
+                <li>이*연 (1348)</li>
+                <li>이*진 (0227)</li>
+                <li>이*규 (3688)</li>
+                <li>이*기 (5418)</li>
+                <li>이*비 (5061)</li>
+                <li>이*구 (5828)</li>
+                <li>이*연 (3308)</li>
+                <li>이*호 (4655)</li>
+                <li>이*미 (6419)</li>
+                <li>이*재 (1944)</li>
+                <li>이*주 (1297)</li>
+                <li>이*미 (0500)</li>
+                <li>이*주 (0314)</li>
+                <li>이*희 (7838)</li>
+                <li>이*은 (9618)</li>
+                <li>이*리 (7742)</li>
+                <li>이*영 (2348)</li>
+                <li>이*진 (0405)</li>
+                <li>이*주 (2737)</li>
+                <li>이*숙 (7261)</li>
+                <li>이*용 (6844)</li>
+                <li>이*은 (6457)</li>
+                <li>이*은 (3546)</li>
+                <li>이*화 (6621)</li>
+                <li>이*벙 (6278)</li>
+                <li>이*랑 (4549)</li>
+                <li>이*연 (8911)</li>
+                <li>이*윤 (4284)</li>
+                <li>이*은 (5275)</li>
+                <li>이*희 (1565)</li>
+                <li>이*수 (8098)</li>
+                <li>이*연 (4028)</li>
+                <li>이*연 (2775)</li>
+                <li>이*은 (9324)</li>
+                <li>이*혜 (6219)</li>
+                <li>이*후 (7728)</li>
+                <li>이*경 (1694)</li>
+                <li>이*미 (3637)</li>
+                <li>이*권 (8330)</li>
+                <li>이*선 (1945)</li>
+                <li>이*순 (5457)</li>
+                <li>이*린 (9584)</li>
+                <li>이*애 (5985)</li>
+                <li>임*미 (9205)</li>
+                <li>임*채 (5050)</li>
+                <li>임*죽 (1697)</li>
+                <li>임*영 (5515)</li>
+                <li>임*용 (5917)</li>
+                <li>장*홍 (6457)</li>
+                <li>장*래 (1615)</li>
+                <li>장*봐 (7671)</li>
+                <li>장*길 (6041)</li>
+                <li>장*라 (0402)</li>
+                <li>장*영 (0513)</li>
+                <li>장*석 (7671)</li>
+                <li>장*진 (6457)</li>
+                <li>장*진 (3779)</li>
+                <li>장*미 (8971)</li>
+                <li>장*정 (6979)</li>
+                <li>장*희 (5645)</li>
+                <li>전*금 (1587)</li>
+                <li>전*근 (4061)</li>
+                <li>전*아 (5116)</li>
+                <li>전*희 (9317)</li>
+                <li>전*빈 (5825)</li>
+                <li>전*은 (6390)</li>
+                <li>전*빈 (5825)</li>
+                <li>전*혜 (6328)</li>
+                <li>전*원 (0423)</li>
+                <li>전*련 (4499)</li>
+                <li>전*정 (7218)</li>
+                <li>정*관 (2386)</li>
+                <li>정*엽 (0493)</li>
+                <li>정*진 (8303)</li>
+                <li>정*철 (5505)</li>
+                <li>정*철 (0220)</li>
+                <li>정*철 (0990)</li>
+                <li>정*철 (2099)</li>
+                <li>정*철 (0090)</li>
+                <li>정*화 (0860)</li>
+                <li>정*운 (1605)</li>
+                <li>정*영 (3033)</li>
+                <li>정*영 (0505)</li>
+                <li>정*영 (0070)</li>
+                <li>정*영 (4400)</li>
+                <li>정*영 (4927)</li>
+                <li>정*은 (6612)</li>
+                <li>정*진 (9642)</li>
+                <li>정*숙 (2812)</li>
+                <li>정*구 (2062)</li>
+                <li>정*상 (0643)</li>
+                <li>정*예 (4888)</li>
+                <li>정*우 (8884)</li>
+                <li>정*현 (7022)</li>
+                <li>정*후 (4992)</li>
+                <li>정*숙 (8030)</li>
+                <li>정*수 (3940)</li>
+                <li>정*숙 (9632)</li>
+                <li>정*수 (3812)</li>
+                <li>제*선 (7400)</li>
+                <li>조*아 (6781)</li>
+                <li>조*성 (1492)</li>
+                <li>조*승 (7943)</li>
+                <li>조*훈 (6753)</li>
+                <li>조*기 (1351)</li>
+                <li>조*아 (4184)</li>
+                <li>조*희 (7850)</li>
+                <li>조*라 (4065)</li>
+                <li>조*정 (8372)</li>
+                <li>조*우 (6828)</li>
+                <li>조*철 (3690)</li>
+                <li>조*철 (3690)</li>
+                <li>조*지 (9171)</li>
+                <li>주*산 (7858)</li>
+                <li>주*산 (7858)</li>
+                <li>주*석 (4137)</li>
+                <li>주*석 (9990)</li>
+                <li>주*수 (4137)</li>
+                <li>지*진 (7999)</li>
+                <li>지*정 (9621)</li>
+                <li>최*임 (6457)</li>
+                <li>최*란 (2116)</li>
+                <li>최*기 (4557)</li>
+                <li>최*영 (0614)</li>
+                <li>최*민 (5790)</li>
+                <li>최*라 (7391)</li>
+                <li>최*우 (8831)</li>
+                <li>최*원 (1352)</li>
+                <li>최*선 (4388)</li>
+                <li>최*경 (4280)</li>
+                <li>최*솔 (8906)</li>
+                <li>최*순 (4859)</li>
+                <li>최*아 (7382)</li>
+                <li>최*정 (2451)</li>
+                <li>최*혜 (5609)</li>
+                <li>최*든 (5565)</li>
+                <li>최*혁 (9608)</li>
+                <li>최*영 (7350)</li>
+                <li>최*혁 (9396)</li>
+                <li>최*연 (1697)</li>
+                <li>최*윤 (1937)</li>
+                <li>최*락 (8005)</li>
+                <li>최*선 (1673)</li>
+                <li>최*희 (0098)</li>
+                <li>최*숙 (7137)</li>
+                <li>최*규 (2125)</li>
+                <li>태*주 (6289)</li>
+                <li>표*홍 (0118)</li>
+                <li>한*경 (7137)</li>
+                <li>한*연 (0548)</li>
+                <li>한*운 (4231)</li>
+                <li>한*덕 (4215)</li>
+                <li>한*명 (3309)</li>
+                <li>한*란 (6848)</li>
+                <li>한*주 (0201)</li>
+                <li>허*욱 (4995)</li>
+                <li>허*욱 (7137)</li>
+                <li>허*숙 (3292)</li>
+                <li>허*민 (6166)</li>
+                <li>허*수 (0773)</li>
+                <li>현*자 (8200)</li>
+                <li>현*정 (0050)</li>
+                <li>홍*희 (9081)</li>
+                <li>홍*미 (4522)</li>
+                <li>홍*덕 (9646)</li>
+                <li>홍*우 (1298)</li>
+                <li>홍*숙 (0888)</li>
+                <li>황*아 (7229)</li>
+                <li>황*진 (8592)</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+

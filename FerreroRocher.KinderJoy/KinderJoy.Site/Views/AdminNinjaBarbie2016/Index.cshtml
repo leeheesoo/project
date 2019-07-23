@@ -1,0 +1,123 @@
+﻿@using KinderJoy.Site.Infrastructure
+@{
+    ViewBag.Title = "킨더조이 관리자 : 2016 닌자바비 이벤트";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@section scripts {
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-resource.min.js"></script>
+    <script src="~/Scripts/Admin/admin-ninjabarbie-2016.js"></script>
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewBag.Title</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row" ng-app="user" ng-controller="List">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-video-camera fa-fw"></i> @ViewBag.Title
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div class="row" style="padding-bottom:10px">
+                        <div class="col-xs-6">
+                            전체 <span style="color:red">{{ data.totalItemCount }}</span>건
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover table-condensed" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th class="vert-middle text-center" rowspan="2">No.</th>
+                                            <th class="vert-middle text-center" rowspan="2">참여일</th>
+                                            <th class="vert-middle text-center" rowspan="2">디바이스</th>
+                                            <th class="vert-middle text-center" rowspan="2">IP</th>
+                                            <th class="vert-middle text-center" rowspan="2">이름</th>
+                                            <th class="vert-middle text-center" rowspan="2">연락처</th>
+                                            <th class="vert-middle text-center" rowspan="2">주소</th>
+                                            <th class="vert-middle text-center" rowspan="2">우편번호</th>
+                                            <th class="vert-middle text-center" rowspan="2">나이</th>
+                                            <th class="vert-middle text-center" rowspan="2">선택장난감</th>
+                                            <th class="vert-middle text-center" colspan="3">합성이미지</th>
+                                            <th class="vert-middle text-center" rowspan="2">관리</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="vert-middle text-center">페이스북</th>
+                                            <th class="vert-middle text-center">카카오톡</th>
+                                            <th class="vert-middle text-center">카카오스토리</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="vert-middle text-center">@Html.TextBox("id", "", new { @ng_model = "params.id", @class = "form-control" })</th>
+                                            <th class="vert-middle text-center">
+                                                <div class="row">
+                                                    <div class="col-xs-6" style="padding-right:3px;">@Html.TextBox("fromDate", "", new { @ng_model = "params.fromDate", @class = "form-control input-sm datepicker", placeholder = "시작" })</div>
+                                                    <div class="col-xs-6" style="padding-left:3px;">@Html.TextBox("toDate", "", new { @ng_model = "params.toDate", @class = "form-control input-sm datepicker", placeholder = "종료" })</div>
+                                                </div>
+                                            </th>
+                                            <th class="vert-middle text-center">@Html.DropDownList("channel", new SelectList(new string[] { "PC", "Mobile" }), "전체", new { @ng_model = "params.channel", @class = "form-control" }) </th>
+                                            <th class="vert-middle text-center">@Html.TextBox("ipAddress", "", new { @ng_model = "params.ipAddress", @class = "form-control" })</th>
+                                            <th class="vert-middle text-center">@Html.TextBox("name", "", new { @ng_model = "params.name", @class = "form-control" })</th>
+                                            <th class="vert-middle text-center">@Html.TextBox("mobile", "", new { @ng_model = "params.mobile", @class = "form-control" })</th>
+                                            <th class="vert-middle text-center">@Html.TextBox("address", "", new { @ng_model = "params.address", @class = "form-control" })</th>
+                                            <th class="vert-middle text-center">@Html.TextBox("zipcode", "", new { @ng_model = "params.zipcode", @class = "form-control" })</th>
+                                            <th class="vert-middle text-center">@Html.TextBox("age", "", new { @ng_model = "params.age", @class = "form-control" })</th>
+                                            <th class="vert-middle text-center">
+                                                @Html.DropDownList("surprizeType", new List<SelectListItem>() {
+                                                                               new SelectListItem { Text = "바비", Value = KinderJoy.Domain.Entities.NinjaBarbie2016.NinjaBarbieSurprizeType.BARBIE.ToString("D") },
+                                                                               new SelectListItem { Text = "닌자", Value = KinderJoy.Domain.Entities.NinjaBarbie2016.NinjaBarbieSurprizeType.NINJA.ToString("D") }
+                                                                           }, "전체", new { @ng_model = "params.surprizeType", @class = "form-control" })
+                                        </th>
+                                        <th class="vert-middle text-center"></th>
+                                        <th class="vert-middle text-center"></th>
+                                        <th class="vert-middle text-center"></th>
+                                        <th class="vert-middle text-center">
+                                            <button type="button" class="btn btn-info btn-block btn-xs" ng-click="goToPage(1)"><i class="fa fa-search fa-fw"></i>검색</button>
+                                            <button type="button" class="btn btn-primary btn-xs" ng-click="excelDownload()"><i class="fa fa-download fa-fw"></i>엑셀다운로드</button>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in data.items">
+                                        <td class="vert-middle text-center">{{ item.id }}</td>
+                                        <td class="vert-middle text-center">{{ item.createDate | date : 'yyyy-MM-dd HH:mm:ss' }}</td>
+                                        <td class="vert-middle text-center">{{ item.channel }}</td>
+                                        <td class="vert-middle text-center">{{ item.ipAddress }}</td>
+                                        <td class="vert-middle text-center">{{ item.name }}</td>
+                                        <td class="vert-middle text-center">{{ item.mobile }}</td>
+                                        <td class="vert-middle text-center">{{ item.address + ' ' +item.addressDetail }}</td>
+                                        <td class="vert-middle text-center">{{ item.zipCode }}</td>
+                                        <td class="vert-middle text-center">{{ item.age }}</td>
+                                        <td class="vert-middle text-center">{{ item.surprizeTypeDisplayName }}</td>
+                                        <td class="vert-middle text-center"><img src="~/Images/NinjaBarbie2016/m/blank.gif" ng-src="{{ item.facebookImage }}" width="200" /></td>
+                                        <td class="vert-middle text-center"><img src="~/Images/NinjaBarbie2016/m/blank.gif" ng-src="{{ item.kakaotalkImage }}" width="200" /></td>
+                                        <td class="vert-middle text-center"><img src="~/Images/NinjaBarbie2016/m/blank.gif" ng-src="{{ item.kakaostoryImage }}" width="200" /></td>
+                                        <td class="vert-middle text-center"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <nav class="text-center">
+                            <a href="#" ng-show="!data.isFirstPage" ng-click="goToPage(1)">처음</a>
+                            <a href="#" ng-show="data.hasPreviousPage" ng-click="goToPage(data.pageNumber - 1)">이전</a>
+                            <a href="#" ng-repeat="page in [] | pages:data.pageCount" ng-click="goToPage(page)">{{ page }}</a>
+                            <a href="#" ng-show="data.hasNextPage" ng-click="goToPage(data.pageNumber + 1)">다음</a>
+                            <a href="#" ng-show="!data.isLastPage" ng-click="goToPage(data.pageCount)">마지막</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+<!-- /.col-lg-12 -->
+</div>
+

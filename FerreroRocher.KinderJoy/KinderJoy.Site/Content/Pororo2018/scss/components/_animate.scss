@@ -1,0 +1,76 @@
+﻿ @import "/Content/vendor/animate.min.css";
+
+// Animation Variables
+$animation-speed: .5s;
+$animation-delay: .5s;
+$animation-timing: ease-in;
+$animation-fill: both;
+$animation-direction: alternate;
+$animation-slide-distance: 30px;
+
+// Animation Mixin
+@mixin animation($name, $properties: null, $name2: nullh) {
+	@if $properties {
+	  animation: $name $properties;
+	} 
+	
+	@else if $name2 {
+	  animation-name: $name, $name2;
+	}
+	
+	@else {
+	  animation-name: $name $name2;
+	}
+}
+
+
+// Animation Properties Mixin
+@mixin animationBase($speed, $timing, $fill, $direction, $iterate: null, $delay:null) {
+  .animated {
+    animation-duration: $speed;
+    animation-timing-function: $timing;
+    animation-fill-mode: $fill;
+    animation-direction: $direction;
+    animation-delay: $delay;
+    
+    @if $iterate {
+      animation-iteration-count: $iterate;
+    }
+  }
+}
+
+// Base Call
+@include animationBase($animation-speed, $animation-timing, $animation-fill, $animation-direction);
+
+@mixin animate() {
+    .animate-scale-rotate {
+        @include animation(floating, 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite);
+    }
+}
+
+// Call Animations
+@include animate();
+
+// Keyframes
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+	    @content;
+    }
+	
+    @keyframes #{$name} {
+	    @content;
+    }
+}
+
+
+@include keyframes(floating) {
+  from {
+    transform: scale(0.9) rotate(0deg);
+  }
+  50% {
+    transform: scale(1) rotate(10deg);
+  }
+  to {
+    transform: scale(0.9) rotate(0deg);
+  }
+}

@@ -1,0 +1,163 @@
+﻿/* 현재 이벤트 페이지 공용 */
+form {
+    input {
+        padding: 4px;
+        height: 30px;
+        border: 1px solid #8fceda;
+        border-radius: 3px;
+    }
+}
+// button reset outline
+button:focus {outline:0;}
+
+.private-info {
+    width: 460px;
+    height: auto;
+    margin: 20px auto 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+
+    .title {
+        padding: 35px 0 24px 0;
+        background: #ebf9fe;
+        text-align: center;
+    }
+
+    form {
+        margin-top: 25px;
+        padding-left: 40px;
+        
+        p {
+            line-height: 30px;
+            margin-bottom: 9px;            
+            /*border: 1px solid red;*/
+            text-align: left;           
+            img {
+                vertical-align: middle;
+            }
+        }
+
+        label {
+            display: inline-block;
+            width: 84px;
+            text-align: left;
+        }
+
+        label.short {
+            width: 35px;
+        }
+        .info-age input.short{
+            width: 110px;
+        }
+        .info-phone input{
+            width: 287px;
+        }        
+
+        input[type="text"] {
+            width: 287px;
+
+            &.short {
+                width: 110px;
+            }
+
+            &.short2 {
+                width: 189px;
+            }
+        }
+        .info-name {
+            text-align: left;
+            padding-right: 27px;
+            
+        }
+
+        .info-adress {            
+            padding: 0; 
+            margin: 0;
+            overflow: hidden;            
+            .short2 {
+                margin-right: 3px;
+            }
+            .right {
+                display: inline-block;
+                margin-left: 84px;
+            }
+        }
+
+        .info-sex {
+            margin-top: 10px;
+            line-height: 30px;
+            text-align: left;           
+
+            img.label {
+                display: inline-block;  
+                padding-right: 27px;
+            }
+
+            input[type="radio"] {
+                display: none;
+            }
+
+            input[type="radio"] + label {
+                width: 76px;                
+            }
+
+            input[type="radio"] + label span {
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background-color: #fff;
+                border: 1px solid #d4d4d4;
+                margin-right: 7px;
+                vertical-align: middle;
+                cursor: pointer;
+            }
+
+            input[type="radio"]:checked + label span {
+                background-color: #06a3f4;
+            }
+        }
+
+        .agree-policy {
+            height: 30px;
+            vertical-align: middle;
+            text-align: left;
+            input, a {
+                vertical-align: middle;
+            }
+            input[type="checkbox"] {
+                width: 19px;
+                height: 19px;
+                display: inline-block;
+                margin: 0 8px 0 0;
+            }
+            label {
+                width: auto;
+                margin-right: 5px;
+            }
+            .btn-info-detail{
+                display: inline-block;
+                margin-top: -5px;
+            }
+        }
+
+        .inline {
+            display: inline-block;
+        }
+
+        button[type="submit"] {
+            background: none;
+            border: 0;
+            padding: 0;
+            display: inline-block;
+            margin: 10px auto 20px auto;
+                text-align:center;
+                padding-left: 88px; 
+            /*margin-left: 80px;*/
+            img {
+                cursor: pointer;
+            }
+        }
+    }
+}

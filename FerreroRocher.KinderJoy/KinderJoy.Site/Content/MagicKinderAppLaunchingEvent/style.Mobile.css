@@ -1,0 +1,802 @@
+﻿@charset "UTF-8";
+button[type="submit"] {
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer; }
+
+#png-bg {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.8); }
+
+.popups {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  width: 640px;
+  margin-left: -320px;
+  background: #fff;
+  overflow: hidden;
+  z-index: 99;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+  border-radius: 50px; }
+  .popups .btn-close {
+    position: absolute;
+    top: 17px;
+    right: 19px; }
+  .popups .pop-header {
+    width: 640px; }
+  .popups .pop-con {
+    width: 540px;
+    margin: 0 auto; }
+
+#pop-entry {
+  height: 1729px;
+  background: url("/Images/MagicKinderAppLaunchingEvent/pop/bg_pop_entry.png") 0 0 no-repeat;
+  font-family: 'KoreanBDG R', sans-serif; }
+  #pop-entry .reg-area h3 {
+    padding: 58px 0 120px 0; }
+  #pop-entry .reg-area .reg-img .img-upload-box {
+    padding: 20px 0 17px 0; }
+    #pop-entry .reg-area .reg-img .img-upload-box .inputfile {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1; }
+    #pop-entry .reg-area .reg-img .img-upload-box .inputfile + label {
+      display: inline-block;
+      height: 50px;
+      padding: 0;
+      color: #404040;
+      font-size: 20px;
+      cursor: pointer;
+      overflow: hidden; }
+    #pop-entry .reg-area .reg-img .img-upload-box .inputfile + label span {
+      display: inline-block;
+      width: 383px;
+      height: 48px;
+      margin-right: 5px;
+      border: 1px solid #bdbdbd;
+      line-height: 48px;
+      overflow: hidden;
+      vertical-align: top;
+      font-family: inherit; }
+  #pop-entry .reg-area .select-category {
+    padding: 38px 0 51px 0; }
+    #pop-entry .reg-area .select-category select {
+      width: 540px;
+      height: 50px;
+      padding: 10px;
+      border-radius: 0px;
+      border: 1px solid #bdbdbd;
+      color: #404040;
+      font-size: 20px;
+      font-family: inherit; }
+  #pop-entry .reg-area .reg-comment textarea {
+    width: 518px;
+    height: 78px;
+    padding: 10px;
+    margin-top: 19px;
+    border: 1px solid #bdbdbd;
+    color: #404040;
+    font-size: 20px;
+    line-height: 25px;
+    resize: none;
+    font-family: inherit;
+    border-radius: 0;
+    -webkit-appearance: none; }
+  #pop-entry .info-area h3 {
+    padding: 115px 0 120px 0; }
+  #pop-entry .info-area p {
+    margin-bottom: 5px; }
+  #pop-entry .info-area dl {
+    width: 540px;
+    margin: 0 auto;
+    margin-top: 18px;
+    overflow: hidden; }
+    #pop-entry .info-area dl dt {
+      float: left;
+      width: 156px;
+      padding-right: 10px;
+      font-size: 0; }
+    #pop-entry .info-area dl dd {
+      float: left;
+      width: 374px; }
+      #pop-entry .info-area dl dd input[type="text"],
+      #pop-entry .info-area dl dd input[type="tel"] {
+        width: 352px;
+        height: 48px;
+        padding: 0 10px;
+        border: 1px solid #bdbdbd;
+        color: #404040;
+        font-size: 20px;
+        line-height: 48px;
+        vertical-align: top;
+        font-family: inherit;
+        border-radius: 0;
+        -webkit-appearance: none; }
+      #pop-entry .info-area dl dd.post-box input {
+        width: 205px;
+        margin: 0 8px 6px 0; }
+      #pop-entry .info-area dl dd.address-box {
+        padding-left: 166px; }
+        #pop-entry .info-area dl dd.address-box #Address {
+          margin-bottom: 6px; }
+      #pop-entry .info-area dl dd img.btn_search {
+        cursor: pointer; }
+  #pop-entry .policy-area .policy-check {
+    height: 28px;
+    text-align: left;
+    line-height: 28px;
+    padding: 30px 0 10px 0; }
+    #pop-entry .policy-area .policy-check input {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin: 0 12px 0 7px;
+      vertical-align: middle;
+      transform: scale(2);
+      -ms-transform: scale(2);
+      -moz-transform: scale(2);
+      -webkit-transform: scale(2);
+      -o-transform: scale(2); }
+    #pop-entry .policy-area .policy-check label {
+      cursor: pointer; }
+      #pop-entry .policy-area .policy-check label img {
+        vertical-align: middle; }
+  #pop-entry .policy-area .contents {
+    width: 518px;
+    height: 78px;
+    padding: 10px;
+    border: 1px solid #999999;
+    color: #5e5e5e;
+    font-size: 12px;
+    text-align: left;
+    line-height: 18px;
+    resize: none;
+    font-family: 'Malgun Gothic', sans-serif;
+    overflow-y: scroll; }
+  #pop-entry .policy-area p.notice {
+    padding: 16px 0 42px 0; }
+  #pop-entry .btn {
+    position: relative;
+    width: 272px;
+    margin: 0 auto; }
+    #pop-entry .btn .loading {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      filter: alpha(opacity=60);
+      opacity: 0.60;
+      background-color: #000;
+      overflow: hidden; }
+      #pop-entry .btn .loading img {
+        padding-top: 15px; }
+
+#pop-post {
+  background: url("/Images/MagicKinderAppLaunchingEvent/pop/bg_pop_entry.png") 0 0 no-repeat; }
+  #pop-post .pop-header h3 {
+    padding: 58px 0 120px 0; }
+  #pop-post .pop-con {
+    width: 640px;
+    height: 590px;
+    background: #fff;
+    -webkit-overflow-scrolling: touch; }
+
+#pop-app-detail {
+  height: 980px;
+  background: url("/Images/MagicKinderAppLaunchingEvent/pop/bg_app_detail.png") 0 0 no-repeat; }
+  #pop-app-detail .pop-header h3 {
+    padding: 51px 0 39px 0; }
+  #pop-app-detail .pop-con {
+    width: 640px;
+    background: #ffc600; }
+    #pop-app-detail .pop-con .tab-area {
+      width: 616px;
+      padding: 14px 0 0 0;
+      margin: 0 auto; }
+      #pop-app-detail .pop-con .tab-area ul {
+        width: inherit;
+        overflow: hidden; }
+        #pop-app-detail .pop-con .tab-area ul li {
+          float: left;
+          width: 116px;
+          height: 64px;
+          margin-right: 9px;
+          background: url("/Images/MagicKinderAppLaunchingEvent/pop/bg_tab_app_detail.png") no-repeat;
+          background-position-y: 0;
+          text-indent: -999em;
+          cursor: pointer; }
+          #pop-app-detail .pop-con .tab-area ul li:last-child {
+            margin: 0; }
+          #pop-app-detail .pop-con .tab-area ul li:hover, #pop-app-detail .pop-con .tab-area ul li.active {
+            background-position-y: -64px; }
+          #pop-app-detail .pop-con .tab-area ul li:nth-child(1) {
+            background-position-x: 0px; }
+          #pop-app-detail .pop-con .tab-area ul li:nth-child(2) {
+            background-position-x: -125px; }
+          #pop-app-detail .pop-con .tab-area ul li:nth-child(3) {
+            background-position-x: -250px; }
+          #pop-app-detail .pop-con .tab-area ul li:nth-child(4) {
+            background-position-x: -375px; }
+          #pop-app-detail .pop-con .tab-area ul li:nth-child(5) {
+            background-position-x: -500px; }
+    #pop-app-detail .pop-con .contents-area {
+      width: 565px;
+      margin: 0 auto; }
+      #pop-app-detail .pop-con .contents-area ul {
+        width: inherit; }
+        #pop-app-detail .pop-con .contents-area ul li {
+          display: none; }
+          #pop-app-detail .pop-con .contents-area ul li.active {
+            display: block; }
+
+#pop-winners {
+  height: 916px;
+  background: url("/Images/MagicKinderAppLaunchingEvent/pop/bg_pop_winners.png") 0 0 no-repeat; }
+  #pop-winners .pop-header h3 {
+    padding: 58px 0 68px 0; }
+  #pop-winners .pop-con {
+    padding: 20px 0; }
+    #pop-winners .pop-con .winner-box {
+      width: inherit;
+      padding: 20px 0; }
+      #pop-winners .pop-con .winner-box .winner-prize {
+        margin-bottom: 10px;
+        color: #404040;
+        font-size: 23px;
+        font-family: 'KoreanBDG R', sans-serif;
+        text-align: center; }
+      #pop-winners .pop-con .winner-box .winner-list {
+        width: inherit;
+        max-height: 70px;
+        padding: 5px 0;
+        font-size: 0;
+        text-align: center;
+        border: 1px solid #bdbdbd;
+        overflow-y: scroll; }
+        #pop-winners .pop-con .winner-box .winner-list li {
+          display: inline-block;
+          width: 125px;
+          height: 35px;
+          color: #404040;
+          font-size: 18px;
+          font-family: 'Malgun Gothic', sans-serif;
+          line-height: 35px; }
+      #pop-winners .pop-con .winner-box:first-child .winner-list {
+        overflow-y: hidden; }
+
+.animated {
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: both;
+  animation-direction: alternate; }
+
+/*.animate-with-delay {
+        -webkit-animation-delay: $animation-delay;
+    }*/
+.animate-fade-in {
+  animation-name: fadeIn, nullh; }
+
+.animate-fade-out {
+  animation-name: fadeOut, nullh; }
+
+.animate-slide-up {
+  animation-name: slideUp, nullh; }
+
+.animate-slide-right {
+  animation-name: slideRight, nullh; }
+
+.animate-slide-down {
+  animation-name: slideDown, nullh; }
+
+.animate-slide-left {
+  animation-name: slideLeft, nullh; }
+
+.animate-fade-in-slide-up {
+  animation-name: fadeIn, slideUp; }
+
+.animate-fade-in-slide-right {
+  animation-name: fadeIn, slideRight; }
+
+.animate-fade-in-slide-left {
+  animation-name: fadeIn, slideLeft; }
+
+.animate-floating {
+  animation: floatingUpDn2 4s ease-in-out infinite; }
+
+.animate-floating2 {
+  animation: floatingUpDn 6s ease-in-out infinite; }
+
+.animate-floating3 {
+  animation: floatingDnUp 2s ease-in-out infinite; }
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+@-webkit-keyframes slideUp {
+  0% {
+    transform: translateY(30px); }
+  100% {
+    transform: translateY(0); } }
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(30px); }
+  100% {
+    transform: translateY(0); } }
+
+@-webkit-keyframes slideRight {
+  0% {
+    transform: translateX(30px); }
+  100% {
+    transform: translateY(0); } }
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(30px); }
+  100% {
+    transform: translateY(0); } }
+
+@-webkit-keyframes slideDown {
+  0% {
+    transform: translateY(-30px); }
+  100% {
+    transform: translateY(0); } }
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-30px); }
+  100% {
+    transform: translateY(0); } }
+
+@-webkit-keyframes slideLeft {
+  0% {
+    transform: translateX(-30px); }
+  100% {
+    transform: translateY(0); } }
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(-30px); }
+  100% {
+    transform: translateY(0); } }
+
+@-webkit-keyframes floatingUpDn {
+  from {
+    opacity: 1;
+    transform: translate(0, 0px); }
+  65% {
+    transform: translate(0, 8px); }
+  to {
+    opacity: 1;
+    transform: translate(0, 0px); } }
+
+@keyframes floatingUpDn {
+  from {
+    opacity: 1;
+    transform: translate(0, 0px); }
+  65% {
+    transform: translate(0, 8px); }
+  to {
+    opacity: 1;
+    transform: translate(0, 0px); } }
+
+@-webkit-keyframes floatingUpDn2 {
+  from {
+    opacity: 1;
+    transform: translate(0, 0px); }
+  65% {
+    transform: translate(0, 13px); }
+  to {
+    opacity: 1;
+    transform: translate(0, 0px); } }
+
+@keyframes floatingUpDn2 {
+  from {
+    opacity: 1;
+    transform: translate(0, 0px); }
+  65% {
+    transform: translate(0, 13px); }
+  to {
+    opacity: 1;
+    transform: translate(0, 0px); } }
+
+@-webkit-keyframes floatingDnUp {
+  from {
+    opacity: 1;
+    transform: translate(0, -6px); }
+  65% {
+    transform: translate(0, 0px); }
+  to {
+    opacity: 1;
+    transform: translate(0, -6px); } }
+
+@keyframes floatingDnUp {
+  from {
+    opacity: 1;
+    transform: translate(0, -6px); }
+  65% {
+    transform: translate(0, 0px); }
+  to {
+    opacity: 1;
+    transform: translate(0, -6px); } }
+
+@font-face {
+  font-family: "KoreanBDG R";
+  src: url("../../fonts/KoreanBDG_R.eot");
+  src: url("../../fonts/KoreanBDG_R.eot?#iefix") format("embedded-opentype"), url("../../fonts/KoreanBDG_R.woff") format("woff"), url("../../fonts/KoreanBDG_R.ttf") format("truetype");
+  src: local(※), url("../../fonts/KoreanBDG_R.woff") format("woff"); }
+
+.mobile_wrap {
+  position: relative;
+  width: 640px;
+  text-align: center;
+  overflow: hidden;
+  /* S : event-visual */
+  /* E : event-visual */
+  /* S : event-announce-con  */
+  /* E : event-announce-con */
+  /* S : event-participation-con */
+  /* E : event-participation-con */ }
+  .mobile_wrap h2, .mobile_wrap h3, .mobile_wrap p {
+    font-size: 0; }
+  .mobile_wrap .event-con {
+    position: relative;
+    width: 640px; }
+  .mobile_wrap .event-visual {
+    height: 903px;
+    margin-top: 80px;
+    background: url("/Images/MagicKinderAppLaunchingEvent/m/bg_event_visual.jpg") top center no-repeat; }
+    .mobile_wrap .event-visual h2 {
+      position: absolute;
+      top: 110px;
+      left: 65px;
+      z-index: 10; }
+    .mobile_wrap .event-visual .island-left {
+      position: absolute;
+      top: 309px;
+      left: 0px;
+      z-index: 8; }
+    .mobile_wrap .event-visual .island-right {
+      position: absolute;
+      top: 323px;
+      right: 0px;
+      z-index: 8; }
+      .mobile_wrap .event-visual .island-right .ferris-wheel-box {
+        position: absolute;
+        top: 45px;
+        left: 150px;
+        width: 120px;
+        height: 120px; }
+        .mobile_wrap .event-visual .island-right .ferris-wheel-box .ferris-wheel-line {
+          position: absolute;
+          top: 13px;
+          left: 13px;
+          z-index: 9; }
+        .mobile_wrap .event-visual .island-right .ferris-wheel-box .capsule-box {
+          position: absolute;
+          top: 0px;
+          left: 0;
+          width: 120px;
+          height: 120px;
+          z-index: 10; }
+          .mobile_wrap .event-visual .island-right .ferris-wheel-box .capsule-box #capsule1 {
+            position: absolute;
+            top: 48px;
+            left: 0px; }
+          .mobile_wrap .event-visual .island-right .ferris-wheel-box .capsule-box #capsule2 {
+            position: absolute;
+            top: 14px;
+            left: 17px; }
+          .mobile_wrap .event-visual .island-right .ferris-wheel-box .capsule-box #capsule3 {
+            position: absolute;
+            top: 0px;
+            left: 52px; }
+          .mobile_wrap .event-visual .island-right .ferris-wheel-box .capsule-box #capsule4 {
+            position: absolute;
+            top: 14px;
+            right: 17px; }
+          .mobile_wrap .event-visual .island-right .ferris-wheel-box .capsule-box #capsule5 {
+            position: absolute;
+            top: 48px;
+            right: 0px; }
+          .mobile_wrap .event-visual .island-right .ferris-wheel-box .capsule-box #capsule6 {
+            position: absolute;
+            bottom: 14px;
+            right: 17px; }
+          .mobile_wrap .event-visual .island-right .ferris-wheel-box .capsule-box #capsule7 {
+            position: absolute;
+            bottom: 0px;
+            left: 52px; }
+          .mobile_wrap .event-visual .island-right .ferris-wheel-box .capsule-box #capsule8 {
+            position: absolute;
+            bottom: 14px;
+            left: 17px; }
+    .mobile_wrap .event-visual .island-center {
+      position: absolute;
+      top: 291px;
+      left: 72px;
+      width: 490px;
+      height: 355px;
+      background: url("/Images/MagicKinderAppLaunchingEvent/m/img_island_center.png") bottom center no-repeat;
+      z-index: 9; }
+      .mobile_wrap .event-visual .island-center .charater-motion {
+        position: absolute;
+        top: 10px;
+        left: 100px;
+        width: 266px;
+        height: 263px;
+        overflow: hidden;
+        background: url("/Images/MagicKinderAppLaunchingEvent/m/character_motion1.png") bottom center no-repeat; }
+    .mobile_wrap .event-visual .speech-bubble {
+      position: absolute;
+      top: 661px;
+      left: 0px;
+      width: 640px;
+      height: 226px;
+      background: url("/Images/MagicKinderAppLaunchingEvent/m/bg_speech_bubble.png") 0 0 no-repeat; }
+      .mobile_wrap .event-visual .speech-bubble dl {
+        width: inherit;
+        text-align: center; }
+        .mobile_wrap .event-visual .speech-bubble dl dt {
+          padding: 73px 0 14px 0; }
+    .mobile_wrap .event-visual ul.visual-cloud li {
+      position: absolute;
+      z-index: 5; }
+      .mobile_wrap .event-visual ul.visual-cloud li:nth-child(1) {
+        top: 61px;
+        left: 993px; }
+      .mobile_wrap .event-visual ul.visual-cloud li:nth-child(2) {
+        top: 218px;
+        left: -176px; }
+      .mobile_wrap .event-visual ul.visual-cloud li:nth-child(3) {
+        top: 610px;
+        left: 1210px; }
+      .mobile_wrap .event-visual ul.visual-cloud li:nth-child(4) {
+        top: 150px;
+        left: -500px; }
+      .mobile_wrap .event-visual ul.visual-cloud li:nth-child(5) {
+        top: 300px;
+        left: 1400px; }
+  .mobile_wrap .event-announce-con {
+    height: 963px;
+    background: url("/Images/MagicKinderAppLaunchingEvent/m/bg_event_announce_con.jpg") top center no-repeat; }
+    .mobile_wrap .event-announce-con h3 {
+      padding: 20px 0 29px 0; }
+    .mobile_wrap .event-announce-con .announce-box {
+      padding: 33px 0 469px 0; }
+      .mobile_wrap .event-announce-con .announce-box ul {
+        width: 611px;
+        margin-left: 29px;
+        overflow: hidden; }
+        .mobile_wrap .event-announce-con .announce-box ul li {
+          float: left;
+          font-size: 0; }
+          .mobile_wrap .event-announce-con .announce-box ul li:first-child {
+            margin-right: 15px; }
+          .mobile_wrap .event-announce-con .announce-box ul li:last-child {
+            margin-top: 6px; }
+    .mobile_wrap .event-announce-con .btn-box ul {
+      width: 591px;
+      margin: 0 auto;
+      overflow: hidden; }
+      .mobile_wrap .event-announce-con .btn-box ul li {
+        float: left;
+        font-size: 0;
+        margin: 0 5px;
+        transition: all 0.1s ease 0s;
+        -webkit-transition: all 0.1s ease 0s; }
+    .mobile_wrap .event-announce-con .store-box {
+      position: absolute;
+      bottom: 264px;
+      right: 23px;
+      width: 238px;
+      height: 160px; }
+      .mobile_wrap .event-announce-con .store-box ul {
+        position: absolute;
+        width: inherit;
+        top: 60px;
+        left: 0;
+        text-align: left; }
+        .mobile_wrap .event-announce-con .store-box ul:after {
+          content: "";
+          display: block;
+          clear: both; }
+        .mobile_wrap .event-announce-con .store-box ul li {
+          z-index: 8; }
+          .mobile_wrap .event-announce-con .store-box ul li.animate-app-store {
+            margin-right: 5px;
+            -webkit-animation-duration: 8s;
+            /* Safari 4.0 - 8.0 */
+            animation-duration: 8s; }
+          .mobile_wrap .event-announce-con .store-box ul li.animate-google-play {
+            -webkit-animation-duration: 13s;
+            /* Safari 4.0 - 8.0 */
+            animation-duration: 13s; }
+      .mobile_wrap .event-announce-con .store-box .cover-cloud {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        z-index: 9; }
+      .mobile_wrap .event-announce-con .store-box .animate-cursor {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 84px;
+        height: 91px;
+        background: url("/Images/MagicKinderAppLaunchingEvent/m/pointer_motion.png") 0 0 no-repeat;
+        z-index: 9; }
+  .mobile_wrap .event-participation-con {
+    height: 1759px;
+    background: url("/Images/MagicKinderAppLaunchingEvent/m/bg_event_participation_con.jpg") bottom center no-repeat; }
+    .mobile_wrap .event-participation-con .participation-method h3 {
+      padding: 20px 0 47px 0; }
+    .mobile_wrap .event-participation-con .participation-method .participation-step {
+      position: relative;
+      padding-left: 11px; }
+      .mobile_wrap .event-participation-con .participation-method .participation-step .store-box {
+        position: absolute;
+        top: 25px;
+        left: 173px; }
+        .mobile_wrap .event-participation-con .participation-method .participation-step .store-box ul {
+          width: 86px; }
+          .mobile_wrap .event-participation-con .participation-method .participation-step .store-box ul li {
+            margin-bottom: 4px; }
+        .mobile_wrap .event-participation-con .participation-method .participation-step .store-box .animate-cursor {
+          position: absolute;
+          top: -41px;
+          left: 67px;
+          width: 84px;
+          height: 91px;
+          background: url("/Images/MagicKinderAppLaunchingEvent/m/pointer_motion.png") 0 0 no-repeat; }
+    .mobile_wrap .event-participation-con .participation-status h3 {
+      padding: 134px 0 73px 0; }
+    .mobile_wrap .event-participation-con .participation-status .slide-area {
+      position: relative;
+      width: 524px;
+      margin: 0 auto;
+      /* bxslider bx-controls custom */ }
+      .mobile_wrap .event-participation-con .participation-status .slide-area ul#participationSlider li > ul {
+        width: inherit;
+        margin-bottom: 10px;
+        overflow: hidden; }
+        .mobile_wrap .event-participation-con .participation-status .slide-area ul#participationSlider li > ul li {
+          float: left;
+          width: 256px;
+          margin-right: 10px;
+          font-size: 0; }
+          .mobile_wrap .event-participation-con .participation-status .slide-area ul#participationSlider li > ul li:last-child {
+            margin: 0; }
+      .mobile_wrap .event-participation-con .participation-status .slide-area .bx-controls {
+        position: relative;
+        width: 275px;
+        margin: 0 auto;
+        margin-top: 20px; }
+        .mobile_wrap .event-participation-con .participation-status .slide-area .bx-controls a {
+          position: absolute;
+          top: 0;
+          height: 54px;
+          margin: 0;
+          background: url("/Images/MagicKinderAppLaunchingEvent/m/bg_slider_controls.png") no-repeat;
+          text-indent: -999em;
+          transition: all 0.1s ease 0s;
+          -webkit-transition: all 0.1s ease 0s; }
+        .mobile_wrap .event-participation-con .participation-status .slide-area .bx-controls .bx-prev {
+          left: 0;
+          width: 60px;
+          background-position: 0 0; }
+        .mobile_wrap .event-participation-con .participation-status .slide-area .bx-controls .bx-next {
+          right: 0;
+          width: 60px;
+          background-position: -215px 0; }
+        .mobile_wrap .event-participation-con .participation-status .slide-area .bx-controls .bx-controls-auto {
+          top: 0; }
+        .mobile_wrap .event-participation-con .participation-status .slide-area .bx-controls .bx-stop {
+          left: 80px;
+          width: 52px;
+          background-position: -80px 0; }
+        .mobile_wrap .event-participation-con .participation-status .slide-area .bx-controls .bx-start {
+          left: 143px;
+          width: 52px;
+          background-position: -143px 0; }
+      .mobile_wrap .event-participation-con .participation-status .slide-area #pop-review {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 301px;
+        z-index: 10;
+        background: #bdbdbd; }
+        .mobile_wrap .event-participation-con .participation-status .slide-area #pop-review .btn-close {
+          position: absolute;
+          top: -26px;
+          right: -2px;
+          z-index: 12; }
+        .mobile_wrap .event-participation-con .participation-status .slide-area #pop-review .review-img-box {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: inherit;
+          height: inherit;
+          z-index: 11; }
+          .mobile_wrap .event-participation-con .participation-status .slide-area #pop-review .review-img-box img {
+            width: inherit;
+            height: inherit; }
+        .mobile_wrap .event-participation-con .participation-status .slide-area #pop-review .review-box {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 496px;
+          height: 52px;
+          margin: -36px 0 0 -248px;
+          background: #000;
+          z-index: 12; }
+          .mobile_wrap .event-participation-con .participation-status .slide-area #pop-review .review-box p {
+            line-height: 52px;
+            color: #fff;
+            font-size: 24px;
+            font-family: 'KoreanBDG R', sans-serif;
+            letter-spacing: -0.6px; }
+    .mobile_wrap .event-participation-con .animate-island1 {
+      position: absolute;
+      top: 665px;
+      left: -305px; }
+    .mobile_wrap .event-participation-con .animate-island2 {
+      position: absolute;
+      top: 949px;
+      right: -367px; }
+  .mobile_wrap .event-bottom {
+    height: 384px;
+    padding-top: 76px;
+    background: url("/Images/MagicKinderAppLaunchingEvent/m/bg_event_bottom.jpg") top center no-repeat;
+    text-align: left; }
+    .mobile_wrap .event-bottom .tl-event-notice {
+      margin: 0 0 20px 31px;
+      font-size: 30px;
+      background: url("/Images/MagicKinderAppLaunchingEvent/m/tl_event_notice.png") 0 0 no-repeat;
+      text-indent: -999em; }
+    .mobile_wrap .event-bottom .txt-event-notice {
+      width: 572px;
+      height: 299px;
+      margin-left: 30px;
+      font-size: 19px;
+      line-height: 29px;
+      background: url("/Images/MagicKinderAppLaunchingEvent/m/txt_event_notice.png") 0 0 no-repeat;
+      text-indent: -999em; }
+

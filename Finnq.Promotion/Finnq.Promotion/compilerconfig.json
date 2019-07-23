@@ -1,0 +1,34 @@
+﻿[
+  {
+    "outputFile": "Content/tmap/css/popup.css",
+    "inputFile": "Content/tmap/scss/popup.scss"
+  },
+  {
+    "outputFile": "Content/tmap/css/style.css",
+    "inputFile": "Content/tmap/scss/style.scss"
+  },
+  {
+    "outputFile": "Content/tmap/css/reset.css",
+    "inputFile": "Content/tmap/scss/reset.scss"
+  },
+  {
+    "outputFile": "Content/roulette/css/style.css",
+    "inputFile": "Content/roulette/scss/style.scss"
+  },
+  {
+    "outputFile": "Content/t-roulette/css/style.css",
+    "inputFile": "Content/t-roulette/scss/style.scss"
+  },
+  {
+    "outputFile": "Content/t-roulette/scss/_reset.css",
+    "inputFile": "Content/t-roulette/scss/_reset.scss"
+  },
+  {
+    "outputFile": "Content/tworld-roulette/css/style.css",
+    "inputFile": "Content/tworld-roulette/scss/style.scss"
+  },
+  {
+    "outputFile": "Content/roulette/scss/popup.css",
+    "inputFile": "Content/roulette/scss/popup.scss"
+  }
+]

@@ -1,0 +1,132 @@
+﻿@model KinderJoy.Site.Models.KittyJusticeleage.KittyJusticeLeagueModel
+@*<div class="debuging">
+    <p>테스트용 버튼(이벤트 오픈시 숨김처리)</p>
+    <button tabindex="-1" onclick="openPop('mov-view'); return false;">팝업: 브검을 통해서 들어왔을때 영상팝업</button><br>
+    <button tabindex="-1" onclick="openPop('entry'); return false;">팝업: 당첨+개인정보입력</button><br>
+    <button tabindex="-1" onclick="openPop('fail'); return false;">팝업: 꽝</button><br>
+    <button tabindex="-1" onclick="openPop('post'); return false;">팝업: 우편번호 검색</button><br>
+    <button tabindex="-1" onclick="openPop('inapp'); return false;">팝업: 인앱</button><br>
+    <button tabindex="-1" onclick="openPop('winner'); return false;">팝업: 당첨자발표</button><br>
+</div>*@
+
+<!-- 팝업 : dimmed -->
+<div id="dimmed" style="display:none;"></div>
+
+<!-- 팝업 : loading -->
+@*<div id="loading" v-bind:style="{display: isLoading}">
+        <div class="img-loader img-loader1"></div>
+        <div class="img-loader img-loader2"></div>
+        <div class="img-loader img-loader3"></div>
+    </div>*@
+
+<div id="loading" v-show="isLoading" style="display:none;">
+    <div class="loading-img"></div>
+</div>
+
+<!-- 팝업 : 영상시청 -->
+<div class="popup pop-mov-view" id="pop-mov-view" tabindex="0" role="dialog">
+    <div class="pop-header"></div>
+    <div class="pop-con">
+        <h3><img src="~/Images/KittyJusticeLeague/pop/mov-view-tl.png" alt="영상을 시청하면 즉석당첨 결과가 공개됩니다!"></h3>
+        <div class="mov-box">
+            <div id="popPlayer"></div>
+            <div class="mov-cover"></div>
+        </div>
+        <div class="btn-right">
+            <button type="button" v-on:click="createInstantLottery()"><img src="~/Images/KittyJusticeLeague/pop/btn-skip.png" id="btn-skip" alt="SKIP"></button>
+        </div>
+    </div>
+    <button type="button" class="btn-close" onclick="closePop('mov-view'); return false;"><span>팝업 닫기</span></button>
+</div>
+
+<!-- 팝업 : 당첨+ 개인정보입력 -->
+<div class="popup pop-entry" id="pop-entry" tabindex="0" role="dialog">
+    <div class="pop-header"></div>
+    <div class="pop-con">
+        <div class="result-view">
+            <p><img src="~/Images/KittyJusticeLeague/pop/waqpwpelre.png" v-bind:src="'/Images/KittyJusticeLeague/pop/'+instantPrize+'.png'" alt="축하합니다!"></p>
+        </div>
+        <h3 id="hk-jl-address-position"><img src="~/Images/KittyJusticeLeague/pop/form/form-txt.png" alt="경품 수령을 위한 개인정보를 입력해주세요."></h3>
+        <div class="form-box">
+            @using (Ajax.BeginRouteForm("KittyJusticeLeagueUpdateWinner", new { httpRoute=true},new AjaxOptions { HttpMethod="POST",
+                OnBegin = "kittyJusticeLeagueModel.beginEntry",
+                OnComplete = "kittyJusticeLeagueModel.completeEntry",
+                OnSuccess = "kittyJusticeLeagueModel.successEntry",
+                OnFailure = "kittyJusticeLeagueModel.failEntry"
+            }, new { id = "frmInstantLotteryEntry" })) {
+                @Html.HiddenFor(e => e.Id,new {v_model = "instantEntry.id" })
+                @Html.HiddenFor(e => e.PrizeType, new { v_model = "instantEntry.prizeType" })
+                <fieldset>
+                    <!-- 이름 -->
+                    <div class="form-group clearfix">
+                        <label for="Name" class="col-xs-3 control-label"><img src="~/Images/KittyJusticeLeague/pop/form/input-name.png" alt="이름"></label>
+                        <div class="col-xs-9 no-space">
+                            @Html.TextBoxFor(e => e.Name, new { @class = "form-control", maxlength = 10 })
+                        </div>
+                    </div>
+                    <!-- // 이름 -->
+                    <!-- 연락처 -->
+                    <div class="form-group clearfix">
+                        <label for="Mobile" class="col-xs-3 control-label"><img src="~/Images/KittyJusticeLeague/pop/form/input-phone.png" alt="연락처"></label>
+                        <div class="col-xs-9 no-space">
+                            @Html.TextBoxFor(e => e.Mobile,new{ type="tel", @class="form-control",maxlength=11, placeholder= " - 기호 없이 입력해주세요" })
+                        </div>
+                    </div>
+                    <!-- // 연락처 -->
+                    <!-- 개인정보 취급방침 동의 -->
+                    <div class="form-group privacy-policy clearfix">
+                        <div class="row">
+                            <div class="col-xs-9 col-xs-push-3" style="padding-left:10px;">
+                                <label for="Agree">
+                                    @Html.CheckBoxFor(e => e.Agree)
+                                    <strong class="big-label"><img src="~/Images/KittyJusticeLeague/pop/form/input-privacy.png" alt="개인정보 취급방침 동의"></strong>
+                                </label>
+                                <a href="@Url.Action("PrivacyPolicy")" target="_blank" class="btn-agree"><img src="~/Images/KittyJusticeLeague/pop/form/btn-privacy.png" alt="자세히보기"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // 개인정보 취급방침 동의 -->
+                    <!-- 주소 검색 -->
+                    <div class="form-group clearfix" v-show="instantEntry.prizeType != 1">
+                        <label for="address" class="col-xs-3 control-label"><img src="~/Images/KittyJusticeLeague/pop/form/input-address.png" alt="주소"></label>
+                        <div class="col-xs-9 no-space">
+                            <div class="row">
+                                <div class="col-xs-7" style="width:60%; padding-right:5px;">
+                                    @Html.TextBoxFor(e => e.ZipCode,new { @class="form-control", @readonly="readonly",placeholder="우편번호"})
+                                </div>
+                                <div class="col-xs-5" style="width:40%;">
+                                    <button type="button" class="btn-post" style="font-size:100%; margin-left:-5px;" v-on:click="openPostCode()"><img src="~/Images/KittyJusticeLeague/pop/form/btn-post.png" alt="우편번호"></button>
+                                </div>
+                                <div class="col-xs-12" style="margin-top:15px">
+                                    @Html.TextBoxFor(e => e.Address,new { @class="form-control", @readonly ="readonly",placeholder="주소를 검색해주세요."})
+                                </div>
+                                <div class="col-xs-12" style="margin-top:15px">
+                                    @Html.TextBoxFor(e => e.AddressDetail,new { @class="form-control", maxlength=200 , placeholder = "나머지 주소를 입력해주세요." })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // 주소 검색 -->
+                    <div class="btns">
+                        <button id="btn-entry-complete" type="submit"><img src="~/Images/KittyJusticeLeague/pop/btn-event-entry.png" alt="응모 완료"></button>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+    <button type="button" class="btn-close" onclick="closePop('entry'); return false;"><span>팝업 닫기</span></button>
+</div>
+
+<!-- 팝업 : 꽝 -->
+<div class="popup pop-fail" id="pop-fail" tabindex="0" role="dialog">
+    <div class="pop-header"></div>
+    <div class="pop-con">
+        <h3><img src="~/Images/KittyJusticeLeague/pop/result-lose-txt.png" alt="아쉽게도 꽝! 다시 킨더조이 크리스마스를 검색하여 즉석당첨에 재도전 해보세요!"></h3>
+        <div class="btns">
+            <a href="@Url.Action("InstantLotteryLanding", "KittyJusticeLeague")" target="_blank"><img src="~/Images/KittyJusticeLeague/pop/btn-retry.png" id="btn-retry" alt="재도전 하기"></a>
+        </div>
+    </div>
+    <button type="button" class="btn-close" onclick="closePop('fail'); return false;"><span>팝업 닫기</span></button>
+</div>
+
+

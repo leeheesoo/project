@@ -1,0 +1,514 @@
+//===================================
+// variable
+//===================================
+
+$location: 'https://cetaphil-event.s3.amazonaws.com/static/core/popup/';
+$width-max: 720px;
+$width-inner:580px;
+
+%inputText {
+  height: 64px;
+  //border:1px solid #d6d4d4;
+  border: none;
+  padding: 0 20px;
+  background-color: #fff;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="number"] {
+  @extend %inputText;
+  width: 100%;
+}
+
+//===================================
+// test btn
+//===================================
+.test-btn {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  button {
+    background: red;
+    font-size: 15px;
+    color: #fff;
+  }
+}
+
+
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .7;
+  z-index: 9999;
+}
+
+.dimmed {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .7;
+  z-index: 999;
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: $width-max;
+  text-align: left;
+  background-color: #e6eaee;
+  padding-bottom: 70px;
+  z-index: 999;
+
+  @if $device==pc {
+    left: 50%;
+    margin-left: -360px;
+  }
+
+  @else {
+    left: 0;
+  }
+
+  &__inner {
+    width: $width-inner;
+    margin: 0 auto;
+  }
+
+  &__header {
+    width: 100%;
+    height: 232px;
+    @include background('pop-header-bg.png', $repeat: no-repeat);
+    font-size: 0;
+
+    >h4 {
+      text-align: center;
+      padding-top: 79px;
+    }
+    
+  }
+
+  &__content {
+    width: $width-inner;
+    margin: 0 auto;
+    &.pop__content-center {
+      text-align: center;
+    }
+    >h5 {
+      margin: 0;
+    }
+  }
+
+  .inner__title {
+    text-align: center;
+    padding-bottom: 30px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #c0c3c7;
+  }
+
+}
+
+
+//------------------
+// personal
+//------------------
+.pop-personal {
+  .popup__content {
+    margin: 30px auto 0;
+  }
+
+  label {
+    display:inline-block;
+  }
+  
+  dl {
+    margin: 10px 0;
+    font-size: 0;
+  }
+
+  dt {
+    display: inline-block;
+  }
+
+  dd {
+    display: inline-block;
+    width: calc(100% - 136px);
+    margin: 0;
+    vertical-align: top;
+
+    &.full-address {
+      margin: 10px 0 0 127px;
+    }
+
+    .post-input {
+      width: calc(100% - 200px);
+    }
+  }
+
+  .personal__note {
+    margin-bottom: 30px;
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: .01;
+
+    &~span {
+      display: inline-block;
+      width: 282px;
+      height: 26px;
+      @include background('personal-agree.png', $repeat: no-repeat);
+      background-position: 0 top;
+      cursor: pointer;
+    }
+
+    &:checked~span {
+      background-position: 0 bottom;
+    }
+  }
+
+  .agree-wrap {
+    margin-top: 40px;
+    position: relative;
+    &.agree-wrap__border {
+      margin: 40px 0 50px;
+      padding-top: 40px;
+      border-top: 1px solid #c0c3c7;
+    }
+  }
+
+}
+
+//------------------
+// post
+//------------------
+#searchPostCode {
+  margin-top: 40px;
+}
+
+//------------------
+// share
+//------------------
+.pop-share {
+  .popup__content {
+    >p {
+      margin-top:36px;
+    }
+  }
+  .btn-wrap {
+    padding:30px 0;
+    margin-top:40px;
+    border-top:1px solid #c0c3c7;
+    border-bottom:1px solid #c0c3c7;
+  }
+}
+
+
+//------------------
+// button
+//------------------
+.popup {
+  .btn {
+    display: block;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 0;
+    @include background('btns.png', $repeat: no-repeat);
+
+    &__close {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      width: 38px;
+      height: 38px;
+      background-position: -198px 0;
+    }
+    &__entry {
+      width: 322px;
+      height: 85px;
+      background-position: 0 -75px;
+      margin:0 auto;
+    }
+    &__complete {
+      margin-left: 15px;
+      display: inline-block;
+      width: 300px;
+      height: 85px;
+      background-position: -341px -408px;
+    }
+    &__prev {
+      margin-left: 50px;
+      display: inline-block;
+      width: 300px;
+      height: 85px;
+      background-position: -517px -313px;
+    }
+
+    &__agree-hint {
+      position: absolute;;
+      bottom:0;
+      left:295px;
+      width: 118px;
+      height: 30px;
+      background-position: 0 -365px;
+    }
+    &__post {
+      float: right;
+      width: 189px;
+      height: 65px;
+      vertical-align: -21px;
+      background-position: 0 0;
+    }
+
+    &__next {
+      width: 320px;
+      height: 85px;
+      margin: 30px auto 0;
+      background-position: 0 -408px;
+    }
+
+    &__kakaotalk {
+      display: inline-block;
+      width: 154px;
+      height: 187px;
+      margin-right:29px;
+      background-position: 0 -169px;
+    }
+
+    &__kakaostory {
+      display: inline-block;
+      width: 154px;
+      height: 187px;
+      margin-right:29px;
+      background-position: -182px -169px;
+    }
+
+    &__facebook {
+      display: inline-block;
+      width: 154px;
+      height: 187px;
+      background-position: -364px -169px;
+    }
+
+    &__another-event {
+      display: inline-block;
+      width: 322px;
+      height: 85px;
+      background-position: 0 -503px;
+    }
+
+    &__again {
+      display: inline-block;
+      width: 282px;
+      height: 85px;
+      margin-left:10px;
+      background-position: -340px -503px;
+      vertical-align: top;
+    }
+
+    &__receive-goods {
+      width: 323px;
+      height: 85px;
+      margin:0 auto;
+      background-position: -331px -75px;
+    }
+
+    &--tab {
+      width: 290px;
+      height: 95px;
+      @include background('btn-winner-tab.png', $position:left bottom);
+
+      &01{
+        &.on{
+          background-position-y: top;
+        }
+      }
+
+      &02{
+        background-position-x: right;
+        &.on{
+          background-position-y: top;
+        }
+      }
+    }
+  }
+}
+
+
+//------------------
+// 팬덤지원서
+//------------------
+.pop-fandom-support {
+  label {
+    display: inline-block;
+    cursor: pointer;
+  img {
+    pointer-events: none;
+    }
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: .01;
+
+    &~span {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      @include background('fandom-checkbox.png', $repeat: no-repeat);
+      background-position: 0 top;
+      cursor: pointer;
+      margin-right:10px;
+    }
+
+    &:checked~span {
+      background-position: 0 bottom;
+    }
+  }
+
+  input[type="radio"] {
+    position: absolute;
+    opacity: .01;
+
+    &~span {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      @include background('fandom-radio.png', $repeat: no-repeat);
+      background-position: 0 top;
+      cursor: pointer;
+    }
+
+    &:checked~span {
+      background-position: 0 bottom;
+    }
+  }
+}
+
+.question-wrap {
+  &:nth-child(1) {
+    margin-top:40px;
+  }
+  &:nth-child(5) {
+    input {
+      margin-bottom:12px;
+    }
+  }
+  > p {
+    margin:43px 0 20px;
+  }
+  .answer-wrap {
+    margin-left:40px;
+  }
+  label {
+    margin-right:44px;
+    &.line-2 {
+      display:inline-block;
+      margin-top:12px;
+    }
+  }
+}
+
+
+//------------------
+// 즉당(검색이벤트)
+//------------------
+.pop-search-fail {
+  .popup__content {
+    width: 622px;
+  }
+}
+
+.is-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .7;
+  z-index: 9999;
+  @include background-image('/images/loading.svg', $pos: center center, $color: black);
+}
+
+/* 당첨자 팝업 */
+.pop-winner {
+  font-family: 'Noto Sans KR', 'Malgun Gothic', dotum, sans-serif;
+  
+  .winner-list__tabs{
+    font-size: 0;
+  }
+  .winner-list__tab {
+    display: inline-block;
+  }
+
+  .winner-list {
+    margin-top: -10px;
+    background: white;
+    padding-bottom: 50px;
+    display: none;
+
+    &__title {
+      text-align: center;
+      padding: 40px 0;
+    }
+    
+    .table-wrap {
+      padding: 0 30px;
+      &>p {
+        font-size: 15px;
+        padding: 10px 0 10px;
+        &.paragraph {
+          padding: 50px 15px 10px;
+          text-align: left;
+          line-height: 1.5;
+          word-break: keep-all;
+        }
+      }
+      &:nth-child(2) {
+        padding: 0 30px 30px;
+      }
+    }
+
+    &__table {
+      text-align: left;
+      &.isScrollable {
+        height: 130px;
+        overflow-y : auto;
+      }
+      
+    }
+
+    .table__item {
+      display: inline-block;
+      width: 105px;
+      height: 24px;
+      margin: 0 9px 10px;
+      font-size: 19px;
+    }
+
+    &--share {
+      &.on {
+        display: block;
+      }
+    }
+
+    &--fandom {
+      &.on {
+        display: block;
+      }
+    }
+  }
+}

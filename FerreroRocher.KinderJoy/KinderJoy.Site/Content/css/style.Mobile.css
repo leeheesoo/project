@@ -1,0 +1,298 @@
+﻿@charset "UTF-8";
+
+/* add / heeok / 2017.04.12 / event marvelfrozen에서 사용 */
+@font-face {
+	font-family: "KoreanBDG R";
+	src: url('../../fonts/KoreanBDG_R.eot');
+	src: url('../../fonts/KoreanBDG_R.eot?#iefix') format('embedded-opentype'),
+	url('../../fonts/KoreanBDG_R.woff') format('woff'),
+	url('../../fonts/KoreanBDG_R.ttf') format('truetype');
+	src: local(※), url('../../fonts/KoreanBDG_R.woff') format('woff');
+}  
+
+body{position:relative; width:100%;}
+
+.header .menu-list:after { content: ''; display: block; height: 0; clear: both; *overflow: hidden; }
+
+html, body, .container, .container .parallax { height: 100%; }
+
+.content-flavor,
+.content-image,
+.content-together { min-height: 1040px;  height: 100%; position: relative; }
+
+.content-flavor-img,
+.content-image-img,
+.content-together-img {}
+
+.content-about .close,
+.content-flavor .close,
+.content-image .close,
+.content-toyView .close,
+.content-together .close,
+.popup .popup-wrap .close { position: absolute; top: 60px; right: 60px; display: inline-block; background: url(../../Images/m/items/close.png) no-repeat 0 0; width: 51px; height: 50px; }
+
+.header .menu-list:after { content: ''; display: block; height: 0; clear: both; *overflow: hidden; }
+
+/* position */
+
+a { display: block; /*text-indent: -9999px;*/ }
+
+.skip { position: absolute; top: 0; left: 0; text-indent: -9999px; }
+
+.hide { position: absolute; width: 0; height: 0; visibility: hidden; top: -9999px; left: -9999px; }
+
+.dim { z-index: 100; position: fixed; top: 0; left: 0; background: url(../../Images/dim.png) no-repeat 0 0; width: 100%; height: 100%; background-repeat: repeat; }
+
+.debug-red { outline: 1px dashed red; }
+
+/*---------------------------- header ----------------------------*/
+.nav_bar{position:absolute; top:0; left:50%; width:640px; height:80px; margin-left:-320px; background:#fff; z-index:10; text-align:center;}
+.nav_bar a { display:inline; text-indent:0; }
+.nav_bar .icon_menu{position:absolute; top:20px; right:20px;}
+
+.cont_navi{position:absolute; top:0; left:50%; width:640px; height:auto; margin-left:-320px; overflow:hidden; z-index:20;}
+.cont_navi .btn_close{position:absolute; top:20px; right:20px; z-index:30;}
+.cont_navi .btn_close a { display:inline; text-indent:0; }
+
+.header { position: absolute; top:0; right:-418px; width:418px; height:100%; background:#1e2225;}
+.header a { display: block; text-indent: -9999px; }
+.header-title {margin:39px 0 0 80px;}
+.header-title a {background: url(../../Images/m/logo/nav_logo.png) no-repeat 0 0; width: 129px; height: 178px; }
+
+.header .menu {margin:44px 0 0 80px; padding:0 0 0 0; border-top:2px solid #303336;}/*  width: 1000px; margin: 0 auto;  */
+.header .menu-item {border-bottom:2px solid #303336;}
+.header .menu-item:first-child {}
+.header .menu-item.on a { background-position: 0 -104px; }
+.header .menu-item-intro a { background: url(../../Images/m/menu/menu-about.png) no-repeat 0 0; width: 209px; height: 104px; }
+.header .menu-item-intro a:hover { background-position: 0 -104px; }
+.header .menu-item-cf a { background: url(../../Images/m/menu/menu-cf.png) no-repeat 0 0; width: 209px; height: 104px; }
+.header .menu-item-cf a:hover { background-position: 0 -104px; }
+.header .menu-item-event a { background: url(../../Images/m/menu/menu-event.png) no-repeat 0 0; width: 209px; height: 104px;}
+.header .menu-item-event a:hover { background-position: 0 -104px; }
+.header .menu-item-flavor {}
+.header .menu-item-flavor a { background: url(../../Images/m/menu/menu-flavor.png) no-repeat 0 0; width: 209px; height: 104px; }
+.header .menu-item-flavor a:hover { background-position: 0 -104px; }
+.header .menu-item-image a { background: url(../../Images/m/menu/menu-image.png) no-repeat 0 0; width: 209px; height: 104px; }
+.header .menu-item-image a:hover { background-position: 0 -104px; }
+.header .menu-item-togather a { background: url(../../Images/m/menu/menu-togather.png) no-repeat 0 0; width: 209px; height: 104px; }
+.header .menu-item-togather a:hover { background-position: 0 -104px; }
+.header .menu-item-magickinder a { background: url(../../Images/m/menu/menu-magickinder.png) no-repeat 0 0; width: 101px; height: 104px; }
+.header .menu-item-magickinder a:hover { background-position: 0 -104px; }
+
+/* 모바일 공통 */
+.mobile_wrap{position:relative; width:640px; height:auto; margin:0 auto; overflow:hidden;}
+/* ? */
+.container { min-height: 900px; }
+.container .copyright { position: absolute; width: 100%; text-align: center; bottom: 27px; }
+.container .content-about .copyright {position:relative; margin-top:90px; } 
+
+/*---------------------------- index ----------------------------*/
+
+.content-main{position:relative; margin:0 0 0 0; width:100%; height:1340px; background:#7f5333 url(../../Images/m/main/main_bg.png) 0 0 no-repeat; text-align:center;}
+.content-main .main_tl{padding:190px 0 0 0;}
+/* 공지사항 */
+.icon_notice{position:absolute; top:130px; right:35px; z-index:10;} 
+/* 플로팅 메뉴 */
+.bn-main {position:absolute; top:337px; z-index:1;}
+.bn-main > a {text-indent:0;}
+.bn-man {left:28px;}
+.bn-main > button {position: absolute; width:16px; height:16px; background:url(../../Images/m/items/btn_close_bn.png) no-repeat 0 0; text-indent: -9999px; border:0; cursor:pointer;}
+.bn-man > button {top:70px; right:12px;}
+.bn-woman {top:335px; height:144px; background:url(../../Images/m/items/bn_main_w.png) no-repeat 0 0; right:25px;}
+.bn-woman > button {bottom:5px; left:35px;}
+.content-main .eggs{height:1000px; overflow:hidden;}
+.content-main .eggs .egg{padding:170px 0 0 0; }
+.content-main .eggs .egg img {margin:0 0 0 95px;}
+/* bx-wrapper */
+.content-main .bx-wrapper {margin-top:32px;}
+.content-main .bx-wrapper .bx-pager { position:absolute; top:830px;}
+.content-main .bx-wrapper .bx-pager.bx-default-pager a {background:none; border:2px solid #e5ddd6;}
+.content-main .bx-wrapper .bx-pager.bx-default-pager a:hover{background:none; border:2px solid #e5ddd6;}
+.content-main .bx-wrapper .bx-pager.bx-default-pager a.active {background:#fff200; border:3px solid #fff200;}
+.content-main .bx-wrapper .bx-pager.bx-default-pager a.active:hover {background:#fff200; border:3px solid #fff200;}
+
+/*---------------------------- about ----------------------------*/
+.content-about{width:100%; padding:170px 0 0 0; margin:0 auto; background: url(../../Images/m/items/about-bg.png) repeat-y; text-align:center;}
+.content-about div{padding:0 0 34px 0;}
+/*
+.content-about .close { top: 0; left: 884px;  }
+.content-about .copyright { position: relative; bottom: 0; margin-top: 54px;}
+*/
+/*---------------------------- tvcf ----------------------------*/
+.content-tvcf{position:relative; width:100%; height:1225px; background:#805334 url(../../Images/m/mov/mov-bg.jpg) 0 0 no-repeat; text-align:center;}
+.content-tvcf .tvcf_tl{padding:200px 0 48px 0;}
+/*---------------------------- flavor ----------------------------*/
+.content-flavor {padding:200px 0 0 0; background: #60ccfb url(../../Images/m/items/flavor-bg.png) repeat 0 0;}
+.content-flavor .content-flavor-img {position:relative;}
+.content-flavor .content-flavor-img img { vertical-align: top; }
+/*
+.content-flavor .close { background: url(../../Images/m/items/close.png) no-repeat 0 0;}
+*/
+/*---------------------------- image ----------------------------*/
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.content-image a {text-indent:0;}
+.content-image {background: #fff;}
+.content-image .top_sec {position:relative; height:522px; background:#58ceed url(../../Images/m/toy/main/bg_top.jpg) no-repeat center bottom;}
+.content-image .top_sec h3 {padding:179px 0 14px; text-align:center;}
+.content-image .top_sec p {text-align:center;}
+.content-image .top_sec .top_toy {position:absolute; left:0px; top:388px; z-index:6;}
+.content-image .top_sec .btn_go_event {position:absolute; bottom:-26px; left:127px; width:387px; margin:0px auto 30px; z-index:6;}
+.content-image .top_sec .btn_go_event a {width:387px; height:115px; background:url(../../Images/toy/main/bg_tit_toys.png) no-repeat 0 -418px; font-size:0; z-index:3;}
+
+.content-image .main_sec {position:relative; height:3306px; background:transparent url(../../Images/m/toy/main/bg_road.jpg) no-repeat center top;}
+
+/* 플로팅 메뉴 */
+.content-image .main_sec .floating_menu { position:absolute; left:25px; top:405px; z-index:9; overflow:hidden; width:600px;}
+.content-image .main_sec .floating_menu > span {float:left;}
+.content-image .main_sec .floating_menu ul {float:left; margin-top:5px;}
+.content-image .main_sec .floating_menu ul li {float:left;}
+.content-image .main_sec .floating_menu ul li a {display:block; height:117px; background:url(../../Images/m/toy/main/bg_floating_menu.png) no-repeat 0 0;}
+.content-image .main_sec .floating_menu ul li:nth-of-type(1) a {background-position:0 0; width:139px;}
+.content-image .main_sec .floating_menu ul li:nth-of-type(1) a.on {background-position:0 -118px; }
+.content-image .main_sec .floating_menu ul li:nth-of-type(2) a {background-position:-139px 0; width:104px;}
+.content-image .main_sec .floating_menu ul li:nth-of-type(2) a.on {background-position:-139px -118px;}
+.content-image .main_sec .floating_menu ul li:nth-of-type(3) a {background-position:-254px 0; width:168px;}
+.content-image .main_sec .floating_menu ul li:nth-of-type(3) a.on {background-position:-254px -118px;}
+.content-image .pos_loc {position:absolute; bottom:720px; left:47px;}
+.content-image .play_ground {left:0px; top:253px; width:640px; height:1212px;} 
+.content-image .play_ground h3 {width:522px; margin:220px auto 0;}
+.content-image .play_ground .explain_area {width:640px; margin:38px 0 0 0; background:url('../../Images/m/toy/main/bg_explain_area.png') 0 0 no-repeat;}
+.content-image .play_ground .explain_area ul {width:640px; overflow:hidden;}
+.content-image .play_ground .explain_area ul li {float:left; width:320px; height:374px; text-align:center;}
+.content-image .play_ground .explain_area ul li.top_box {height:394px;}
+.content-image .play_ground .explain_area ul li .btn{margin-top:17px;}
+.content-image .play_ground .txt{width:567px; margin:0 auto; padding:51px 0 31px 0;}
+.content-image .play_ground .btn_go_event {width:387px; margin:0 auto;}
+.content-image .play_ground .btn_go_event a {width:387px; height:115px; background:url(../../Images/toy/main/bg_tit_toys.png) no-repeat 0 -418px; font-size:0; z-index:3;}
+.content-image .new_toy {left:11px; top:590px; width:619px; height:808px; background:url(../../Images/m/toy/main/new_toy.png) no-repeat 0 0;}
+.content-image .new_toy h3 a {position:absolute; right:30px; bottom:11px; width:308px; height:102px; background:url(../../Images/toy/main/bg_tit_toys.png) no-repeat 0 -540px; font-size:0; z-index:3;}
+.content-image .boy_toy {left:0; top:1509px; width:630px; height:627px; background:url(../../Images/m/toy/main/boy_toy.png) no-repeat 0 0;}
+.content-image .boy_toy h3 a {position:absolute; left:32px; bottom:12px; width:308px; height:103px; background:url(../../Images/toy/main/bg_tit_toys.png) no-repeat 0 -315px; font-size:0; z-index:3;}
+.content-image .common_toy {left:0; top:2346px; width:640px; height:464px;}
+.content-image .common_toy_con {position:absolute; left:0; top:0; width:640px; height:480px; background:url(../../Images/m/toy/main/common_toy.png) no-repeat 0 0; z-index:4;}
+.content-image .common_toy .monorail_area {width:458px; height:96px; position:absolute; left:0; top:184px; }
+.content-image .common_toy .monorail_area .mono_rail {position:absolute; left:0; top:0; width:458px; height:96px; background:url(../../Images/m/toy/motion_img/monorail.png) no-repeat left bottom; z-index:3;}
+.content-image .common_toy .monorail_area .mono_train {position:absolute; top:0; left:0; z-index:2;}
+.content-image .common_toy h3 a {position:absolute; right:17px; bottom:19px; width:347px; height:102px; background:url(../../Images/toy/main/bg_tit_toys.png) no-repeat 0 -105px; font-size:0; z-index:5;}
+.content-image .girl_toy {left:0px; top:2244px; width:640px; height:847px; background:url(../../Images/m/toy/main/girl_toy.png) no-repeat center 0;}
+.content-image .girl_toy h3 a {position:absolute; right:30px; bottom:127px; width:308px; height:102px; background:url(../../Images/toy/main/bg_tit_toys.png) no-repeat 0 -210px; font-size:0; z-index:4;}
+.content-image .mov_tvcf {right:28px; top:614px; text-indent:0;}
+.content-image .mov_toys {left:16px; bottom:710px; text-indent:0;}
+.content-image .mov_tvcf > a , .content-image .mov_toys > a {}
+.main_sec .img_tree01 {top:2070px; left:85px;}
+.main_sec .fountain {top:1492px; left:42px;}
+.content-image .tvcf_cont {position:absolute; left:20px; top:200px; display:none; z-index:1001;}
+.content-image .tvcf_cont .btn_close_mov {position:absolute; right:0; top:-60px;}
+.content-image .copyright {position:absolute; left:0; bottom:0px; font-size:0;}
+.content-image .pop_inapp {position:absolute; left:0; top:0; width:640px; text-align:center; padding:120px 0 65px; z-index:1001;}
+.content-image .pop_inapp > button {background:none; position:absolute; right:20px; top:20px; border:0;}
+.content-image .pop_inapp .m_con {margin:45px 0 60px;}
+
+
+/* 장난감 팝업 */
+.popup_toys {position:absolute; left:2px; top:100px; z-index:10001;}
+.popup_toys > .btn_close {position:absolute; top:105px; right:35px;}
+.items_boys {background:url(../../Images/m/toy/bn/bg_pop_boy.png) no-repeat 0 0;}
+.items_girls {background:url(../../Images/m/toy/bn/bg_pop_girl.png) no-repeat 0 0;} 
+.items_comm {background:url(../../Images/m/toy/bn/bg_pop_comm.png) no-repeat 0 0;}
+.items_new {background:url(../../Images/m/toy/bn/bg_pop_new.png) no-repeat 0 0;}
+.wrap_toys {width:635px; height:1289px; }
+.wrap_toys h4 {font-size:0;}
+.list_sec {width:100%; height:635px; margin-top:313px; position:relative;}
+.list_sec .thumb_wrap {width:419px; height:113px; position:absolute; left:108px; top:77px;}
+.list_sec .thumb { position:absolute; top:0px;  left:15px;  /*outline:1px solid red;*/}
+.items_new .thumb {top:21px;}
+.items_boys .thumb {top:6px;}
+.items_comm .thumb {top:6px;}
+.items_girls .thumb {top:6px;}
+.thumb .bx-wrapper .bx-loading {background:transparent;}
+.list_sec .thumb ul {font-size:0; overflow:hidden;}
+.list_sec .thumb ul li {float:none !important; display:inline-block !important; text-align:center; vertical-align:bottom; /*outline:1px solid red;*/}
+.list_sec .thumb ul li a {display:inline-block;}
+.list_sec .thumb_wrap .btn_prev {position:absolute; left:-47px; top:55px; }
+.list_sec .thumb_wrap .btn_next {position:absolute; right:-47px; top:55px; }
+
+.items_boys .show_box,
+.items_girls .show_box,
+.items_comm .show_box {position:absolute; bottom:9px; left:97px;}
+.items_new .show_box {position:absolute; bottom:9px; left:134px;}
+
+.sns_sec p {text-align:center; margin:80px 0 30px;} 
+.sns_sec ul {text-align:center;}
+.sns_sec ul li {display:inline-block; margin:0 4px;}
+
+/* 새로운 장난감 팝업 */
+
+
+#png_bg{ position: fixed; top: 0; left: 0; display: none; width: 100%; height: 100%; background:#000; opacity: 0.6; filter: alpha(opacity=60); z-index: 1000; }
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/*
+.content-image .close { left: 920px; top: 374px; }
+*/
+/*---------------------------- toyView ----------------------------*/
+.content-toyView {}
+.content-toyView .close { top:100px; right:20px; z-index:10;}
+.content-toyView .toy_selector{position:absolute; top:200px; left:0; width:100%; text-align:center; z-index:10;}
+.content-toyView .toy_selector a{position:relative; margin:0 5px; display:inline-block; height:75px; overflow:hidden; display:inline-block; text-indent:0;}
+.content-toyView .toy_selector a img { position:relative;}
+.content-toyView .toy_selector a.on img {top:-75px;}
+.content-toyView .content-toyView-img {position:relative; text-align:center;}
+.content-toyView .content-toyView-img .group_boy {padding:300px 0 50px 0; background:#60ccfb;}
+.content-toyView .content-toyView-img .group_girl {padding:300px 0 50px 0; background:#fa85c9;}
+.content-toyView .content-toyView-img .group_child {padding:300px 0 50px 0; background:#ffb61e;}
+.content-toyView .content-toyView-img img { vertical-align: top; }
+.content-toyView .content-toyView-img p {text-align:center; padding:40px 0 60px;}
+
+/*---------------------------- together ----------------------------*/
+.content-together {padding:200px 0 0 0; background: #fa85c9 url(../../Images/m/items/together-bg.png) repeat 0 0;}
+.content-together-img {position:relative; text-align:right;}
+.content-together-img img { vertical-align: top }
+/*
+.content-together-img .close { left: 783px; }
+*/
+
+/*---------------------------- popup ----------------------------*/
+.popup { width: 100%; height: 100%; position:absolute; top: 0; left: 0; }
+.popup .dim { position: absolute; top: 0; left: 0; background: url(../../Images/dim.png) no-repeat 0 0; width: 100%; height: 100%; background-repeat: repeat; }
+.popup .popup-wrap { text-align: center; position: absolute; top: 200px; left: 50%; background: url(../../Images/m/items/popup.png) no-repeat 0 0; width: 603px; height: 565px; margin-left:-301px; z-index:100;}
+.popup .popup-wrap .close { top: -30px; left: 610px; }
+.popup .popup-wrap .pop-form { margin-top: 350px; font-size:20px;}
+.popup .popup-wrap label { display: inline-block; text-indent: -9999px; margin-left: 5px; background: url(../../Images/m/items/pop-txt.png) no-repeat 0 0; width: 19px; height: 22px; }
+.popup .popup-wrap .year { background-position: 0 0; }
+.popup .popup-wrap .month { background-position: 0 -22px; }
+.popup .popup-wrap .day { background-position: 0 -44px; }
+.popup .popup-wrap .input { background: #ededed; height: 34px; margin-left: 20px; padding: 0 10px; border-color:#ededed; font-size:20px;}
+.popup .popup-wrap .input-year { width: 76px; margin-left: 0; }
+.popup .popup-wrap .input-month { width: 36px; }
+.popup .popup-wrap .input-day { width: 36px; }
+.popup .pop-btn { margin-top: 20px; background: url(../../Images/m/items/pop-btn.png) no-repeat 0 0; width: 290px; height: 77px; cursor: pointer; border: none; }
+
+/*---------------------------- popup_main ----------------------------*/
+.popup-main {position:absolute; top:0px; left: 50%; width:640px; margin-left:-320px; z-index:105;}
+.popup-main .close {position:absolute; top:13px; right:13px; z-index:106;}
+.popup-main .content{position:absolute; top:0; left:0; width:640px;  height:2075px; z-index:105; background:url(../../Images/m/items/bg_pop_main.jpg) no-repeat 0 0;  font-size:0;}
+.popup-main .content .align-center {text-align:center;}
+.popup-main .content h2 {padding: 96px 0 61px 0;}
+.popup-main .content .txt1 {margin-top:34px;}
+.popup-main .content .toy-box {margin: 26px 0 64px 0;}
+
+/* 장난감 배너 */
+.item_popup {position:absolute; top:493px; display:block; height:500px; width:100%;} A
+.item_popup > img {position:absolute; bottom:0; left:0;}
+.item_popup.item_man {left:0;}
+.item_popup.item_woman {left:339px; top:489px;}
+.banner_wrap {position:relative; width:598px; height:136px; background:url(../../Images/m/toy/bn/bg_bn.png) no-repeat 0 0; padding-top:16px; margin:100px auto 30px;}
+.banner_wrap .bx-wrapper img {display:inline;}
+.banner_wrap a {text-indent: 0;}
+.banner_wrap > a {position:absolute; top:35px;}
+.banner_wrap ul {font-size:0; overflow:hidden; background:#F2A02C;}
+.banner_wrap ul li {float:none !important; display:inline-block !important; text-align:center; vertical-align:middle;}
+.banner_wrap ul li > a {}
+.banner_wrap .btn_prev {left:20px;}
+.banner_wrap .btn_next {right:20px;}
+
+
+
+

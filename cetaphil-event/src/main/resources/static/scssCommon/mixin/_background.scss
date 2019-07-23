@@ -1,0 +1,16 @@
+// background
+@mixin background($file, $position:top center, $repeat: no-repeat, $color:null) {
+    background: $color url($location + $file) $position $repeat;
+}
+
+// ==================================
+// 2018.5.25
+// 한승철
+// @param 
+// $name: location + imgname ( location은 지역변수로 선언 할것 )
+// $pos: bg position (default: center top)
+// $repeat: bg repeat (default: no-repeat)
+// $color: bg color (default: null)
+@mixin background-image($name, $pos: center top, $repeat: no-repeat, $color:null) {
+    background: $color url($name) $pos $repeat;
+}

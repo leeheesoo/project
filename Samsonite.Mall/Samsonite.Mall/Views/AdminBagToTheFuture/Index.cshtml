@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "백투더퓨처 이벤트 > Event01 참여자";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row" style="padding-left:30px; padding-right:30px" id="bagtotheFutureEntry">
+    <div class="panel panel-primary filterable">
+        <div class="panel-heading">
+            <h3 class="panel-title">Event01 참여자</h3>
+            <div class="pull-right">
+                @*<a class="btn btn-info btn-xs" href="@Url.Action("ExcelDownload", "AdminOneYearAnniversary")"><span class="glyphicon glyphicon-download-alt"></span> excel</a>*@
+                <span>{{ data.TotalItemCount }} 건</span>
+            </div>
+        </div>
+        <table class="table table-bordered table-hover table-sortable" style="margin:10px;width:98.5%">
+            <thead>
+                <tr class="filters">
+                    <th class="text-center" style="vertical-align:middle">No.</th>
+                    <th style="vertical-align:middle">
+                        <input type="text" v-model="dataFilters.FromDate" class="form-control" placeholder="시작일" />
+                        <input type="text" v-model="dataFilters.ToDate" class="form-control" placeholder="종료일" />
+                    </th>
+                    <th style="vertical-align:middle;width:100px">@Html.DropDownList("Channel", new SelectList(new string[] { "web", "mobile" }), "채널", new { @class = "form-control", v_model="dataFilters.Channel" })</th>
+                    <th style="vertical-align:middle">@Html.TextBox("IpAddress", "", new { @class = "form-control", placeholder = "아이피주소", v_model = "dataFilters.IpAddress" })</th>
+                    <th style="vertical-align:middle">@Html.TextBox("Name", "", new { @class = "form-control", placeholder = "이름", v_model = "dataFilters.Name" })</th>
+                    <th style="vertical-align:middle">@Html.TextBox("Mobile", "", new { @class = "form-control", placeholder = "연락처", v_model = "dataFilters.Mobile" })</th>
+                    <th style="vertical-align:middle;text-align:center">이메일</th>
+                    <th style="vertical-align:middle">@Html.TextBox("IdeaName", "", new { @class = "form-control", placeholder = "아이디어명", v_model = "dataFilters.IdeaName" })</th>
+                    <th style="vertical-align:middle;width:500px">@Html.TextBox("IdeaDescription", "", new { @class = "form-control", placeholder = "아이디어설명", v_model = "dataFilters.IdeaDescription" })</th>
+                    <th style="vertical-align:middle;text-align:center">첨부파일</th>
+                    <th class="text-center" style="vertical-align:middle">
+                        <button type="button" class="btn btn-info btn-sm" v-on:click="goToPage(1)"><i class="fa fa-search"></i> 검색</button>
+                        <button class="btn btn-success btn-sm"  v-on:click="excelDownload()"><span class="glyphicon glyphicon-download-alt"></span> 엑셀</button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item, index) in data.Items">
+                    <td> {{ data.TotalItemCount - ((dataFilters.Page - 1) * (dataFilters.PageSize) + index) }}</td>
+                    <td>{{ item.CreateDate | getDate }}</td>
+                    <td>{{ item.Channel }}</td>
+                    <td>{{ item.IpAddress }}</td>
+                    <td>{{ item.Name }}</td>
+                    <td>{{ item.Mobile }}</td>
+                    <td>{{ item.Email }}</td>
+                    <td>{{ item.IdeaName }}</td>
+                    <td>{{ item.IdeaDescription }}</td>
+                    <td>{{ item.File }}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tbody v-show="data.TotalItemCount === 0">
+                <tr>
+                    <td style="color:red;text-align:center" colspan="10">데이터가 없습니다.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="text-align:center">
+            <div style="text-align:center">
+                <a href="#" v-show="!data.IsLastPage" v-on:click="goToPage(1)">처음</a>
+                <a href="#" v-show="data.HasPreviousPage" v-on:click="goToPage(data.pageNumber - 1)">이전</a>
+                <a href="#" v-for="page in data.PageCount" v-on:click="goToPage(page)" v-bind:style="{ fontWeight : ( page === data.PageNumber) ? 'bold' : 'normal' }"> {{ page }} </a>
+                <a href="#" v-show="data.HasNextPage" v-on:click="goToPage(data.PageNumber + 1)">다음</a>
+                <a href="#" v-show="!data.IsLastPage" v-on:click="goToPage(data.PageCount)">마지막</a>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/js/common/vue.min.js"></script>
+    <script src="~/Content/js/bag-to-the-future/bag-to-the-future-admin.js"></script>
+    <script>
+            $(function () {
+                bagtoTheFutureModel.goToPage(1);
+            });
+    </script>
+}

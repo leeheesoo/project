@@ -1,0 +1,104 @@
+﻿@model Samsonite.Mall.Models.TwoYearAnniversaryModels.TwoYearAnniversaryPrizeSettingModel
+@{
+    ViewBag.Title = "2주년 이벤트 > 경품세팅";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row" style="padding-left:30px; padding-right:30px" id="twoYearAnniversary">
+    <div class="panel panel-primary filterable">
+        @using (Ajax.BeginRouteForm("CreateTwoYearAnniversaryPrizeSetting", new { httpRoute = true },
+                    new AjaxOptions
+                    {
+                        HttpMethod = "post",
+                        OnBegin = "twoYearAnniversaryPrizeSettingModel.beginEntry",
+                        OnComplete = "twoYearAnniversaryPrizeSettingModel.completeEntry",
+                        OnSuccess = "twoYearAnniversaryPrizeSettingModel.successEntry",
+                        OnFailure = "twoYearAnniversaryPrizeSettingModel.failEntry"
+                    },
+                    new { id = "frmPrizeSetting" }))
+        {
+
+            <table class="table table-bordered table-hover table-sortable" style="margin:10px;width:98.5%">
+                <tr>
+                    <th class="text-center" style="vertical-align:middle" rowspan="2">경품 세팅</th>
+                    <th class="text-center" style="vertical-align:middle">날짜</th>
+                    <th class="text-center" style="vertical-align:middle">경품번호</th>
+                    <th class="text-center" style="vertical-align:middle">총경품수량</th>
+                    <th class="text-center" style="vertical-align:middle">당첨시작시간</th>
+                    <th class="text-center" style="vertical-align:middle">확률(0~1)</th>                  
+                    <th class="text-center" style="vertical-align:middle" rowspan="2">
+                        <button type="submit" class="btn btn-info"><i class="fa"></i> 경품생성</button>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="text-center" style="vertical-align:middle">@Html.TextBoxFor(x => x.Date, new { @class = "datepicker" })</th>
+                    <th class="text-center" style="vertical-align:middle">@Html.EnumDropDownListFor(x => x.PrizeType)</th>
+                    <th class="text-center" style="vertical-align:middle">@Html.TextBoxFor(x => x.TotalCount)</th>
+                    <th class="text-center" style="vertical-align:middle">@Html.TextBoxFor(x => x.StartTime)</th>
+                    <th class="text-center" style="vertical-align:middle">@Html.TextBoxFor(x => x.Rate)</th>
+                </tr>
+            </table>
+        }
+       
+    </div>
+    <div  class="panel panel-primary filterable">
+        <dl style="font-weight:bold">※ 경품 당첨 현황</dl>
+        <ul>
+            <li>스타벅스 키프티콘 <span>&nbsp;&nbsp;<strong style="color:red">{{prizeTotalCount.StarBucksCount}}</strong>/100</span></li>
+        </ul>
+        <ul>
+            <li>키즈백팩 <span >&nbsp;&nbsp;<strong style="color:red">{{prizeTotalCount.AtKidsBagPackCount}}</strong>/3</span></li>
+        </ul>
+        <ul>
+            <li>쌤소나이트 정품가방 <span >&nbsp;&nbsp;<strong style="color:red">{{prizeTotalCount.OriginalBagCount}}</strong>/20</span></li>
+        </ul>
+        <ul>
+            <li>20만원 쿠폰 <span >&nbsp;&nbsp;<strong style="color:red">{{prizeTotalCount.Coupon_20Count}}</strong>/10</span></li>
+        </ul>
+        <ul>
+            <li>라인프렌즈 콜라보 캐리어 <span >&nbsp;&nbsp;<strong style="color:red">{{prizeTotalCount.LineFriendsCarrierCount}}</strong>/2</span></li>
+        </ul>
+    </div>
+    <div class="panel panel-primary filterable">
+        <div class="panel-heading">
+            <h3 class="panel-title">경품세팅</h3>
+            <div class="text-right">
+                <span>{{ data.length }} 건</span>
+            </div>
+        </div>
+        <table class="table table-bordered table-hover table-sortable" style="margin:10px;width:98.5%">
+            <thead>
+                <tr>
+                    <th class="vert-middle text-center">날짜</th>
+                    <th class="vert-middle text-center">경품명</th>
+                    <th class="vert-middle text-center">총경품수량</th>
+                    <th class="vert-middle text-center">총당첨수량</th>
+                    <th class="vert-middle text-center">당첨시작시간(0~23)</th>
+                    <th class="vert-middle text-center">확률(0~1)</th>                    
+                    <th class="vert-middle text-center">관리</th>
+                </tr>
+            </thead>
+            <tbody>                 
+                <tr v-for="(item, index) in data">                                                       
+                    <td class="vert-middle text-center">{{ item.Date | getDate }}</td>
+                    <td class="vert-middle text-center">{{ item.PrizeName }}</td>
+                    <td class="vert-middle text-center"><input type="tel" v-model="item.TotalCount"></td>
+                    <td class="vert-middle text-center">{{ item.WinnerCount }}</td>
+                    <td class="vert-middle text-center"><input type="tel" v-model="item.StartTime"></td>
+                    <td class="vert-middle text-center"><input type="tel" v-model="item.Rate"></td>                    
+                    <td class="vert-middle text-center"><button type="button" class="btn btn-block btn-warning" v-on:click="updatePrizeSetting(item)">수정</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/js/common/vue.min.js"></script>
+    <script src="~/Content/js/two-year-anniversary/two-year-anniversary-admin.js"></script>
+    <script>
+        $(function () {
+            twoYearAnniversaryPrizeSettingModel.goToPage();
+        })
+    </script>
+}
+

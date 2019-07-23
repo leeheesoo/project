@@ -1,0 +1,38 @@
+﻿@charset 'UTF-8'; 
+
+$device: 'web';
+
+//---------------------------------------------------
+// base
+//---------------------------------------------------
+@import "base/base";
+@import "base/font";
+@import "base/loop-class";
+//---------------------------------------------------
+// utils
+//---------------------------------------------------
+@import "utils/variables";
+@import "utils/mixin";
+@import "utils/prefix";
+@import "utils/a11y-hidden";
+//---------------------------------------------------
+// components
+//---------------------------------------------------
+@import "components/animate";
+//@import "components/effect-shine";
+//@import "components/effect-particle";
+@import "components/effect";
+//---------------------------------------------------
+// layout
+//---------------------------------------------------
+//@import "layout/event-comm";
+//@import "layout/slickslider-custom";
+@import "layout/form-group";
+//@import "layout/popup-winner";
+@import "layout/prizeWinner";
+//---------------------------------------------------
+// pages
+//---------------------------------------------------
+@import "pages/page-common";
+@import "pages/page";
+@import "pages/popup";

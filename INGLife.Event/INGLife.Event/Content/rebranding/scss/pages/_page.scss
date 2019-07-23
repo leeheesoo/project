@@ -1,0 +1,74 @@
+﻿$eventWidth :750px;
+$location: '../../Images/rebranding/';
+
+body,html {
+  padding:0;
+  margin:0;
+}
+
+.blind {
+  position: absolute;
+  top: -1000em;
+  left: 0;
+  width:0;
+  height:0;
+  font-size:0;
+}
+
+.wrap {
+	width:100%;
+	max-width:$eventWidth;
+	margin:0 auto;
+	overflow:hidden;
+	.event-inner {
+		position:relative;
+		width:$eventWidth;
+		margin:0 auto;
+	}
+	section {
+		width:100%;
+		text-align:center;
+		background-position:top center;
+	}
+}
+
+
+
+.kv {
+	height:1064px;
+	@include background('bg-kv.jpg', $repeat:no-repeat);   
+}
+
+.orange-event {
+	height:1284px;
+	@include background('bg-orange.jpg', $repeat:no-repeat);   
+}
+
+.bottle-event {
+	height:1309px;
+	@include background('bg-bottle.jpg', $repeat:no-repeat);   
+}
+
+footer {
+	height:811px;
+	@include background('bg-footer.png', $repeat:no-repeat, $color:#7b6e61);   
+}
+
+
+
+
+
+.btn {
+	width:570px;
+	height:110px;
+	font-size:0;
+	@include background('btn.png', $repeat:no-repeat);   
+	&__join {
+		margin-top:1103px;
+		background-position:0 0;
+	}
+	&__advice {
+		margin-top:1130px;
+		background-position:0 -120px;
+	}
+}

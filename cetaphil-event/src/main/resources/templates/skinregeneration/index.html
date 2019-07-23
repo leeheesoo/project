@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="share/layout">
+<head>
+    <title>세타필 #피부리턴 이벤트</title>
+</head>
+
+<!-- 이벤트 Meta 태그 추가 -->
+<th:block layout:fragment="meta" th:remove="tag">
+	<meta property="og:title" content="세타필 #피부리턴 이벤트!" />
+	<meta property="og:url" content="https://cetaphil.pentacle.co.kr/return?utm_campaign=return&utm_medium=sharing&utm_source=facebook" />
+	<meta property="og:description" content="지금 세타필 레스토라덤 영상보고 세타필 레스토라덤(AD) 정품 받으세요! " />
+	<meta property="og:image" content="https://cetaphil.pentacle.co.kr/skinregeneration/images/cetaphil_facebook_600x315.jpg" />
+</th:block>
+
+<!-- 이벤트 CSS 파일 추가 -->
+<th:block layout:fragment="css" th:remove="tag">
+    <link rel="stylesheet" href="/skinregeneration/css/style.min.css">
+    <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
+</th:block>
+
+<!-- 이벤트 JS 파일 추가 -->
+<th:block layout:fragment="script" th:remove="tag">
+  
+</th:block>
+
+<body>
+	<div layout:fragment="content">
+        <div id="skinEvent" class="skin-event">
+            <!--floating nav  -->
+            <nav class="floating__nav pc-nav">
+                <ul>
+                    <li v-for="list in navList" :class="list.class"><a :href="list.herf">{{ list.text }}</a></li>
+                </ul>
+            </nav>
+
+            <h1 class="logo"><img src="/skinregeneration/images/w/logo.png" alt="Cetaphil"></h1>
+            
+            <section class="kv">
+                <div class="inner-wrap">
+                    <div class="a11y-hidden">
+                        <h2>#피부리턴 여름이벤트!</h2>
+                        <p>세타필 피부리턴 RESTORADERM</p>
+                    </div>
+                    <span class="btn btn__ad-hint"><a href="https://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=A000000114543&dispCatNo=1000001000300050001" target="_blank">레스토라덤(AD)제품 자세히 보기</a></span>
+                </div>
+            </section>
+
+            <!-- 키트증정 이벤트 -->
+            <!-- <section class="event01 gift-event" id="event01">
+                <div class="inner-wrap">
+                    <h3 class="a11y-hidden">event01 // #피부리턴 키트 100% 증정이벤트</h3>
+                    //youtube
+                    <div class="movie-wrap">
+                        <div id="eventMovKit"></div>
+                    </div>
+                    <p class="a11y-hidden">위의 영상을 보고 피부리턴 키트(세타필 레스토라덤(AD)워시,모이스춰라이줘 샘플 2종) 받으세요!</p>
+                    <button type="button">피부리턴 키트 받기</button>
+                </div>
+            </section> -->
+            
+            <!-- 즉당이벤트 -->
+            <section class="event02 lottery-event" id="event02">
+                <div class="inner-wrap">
+                    <div class="a11y-hidden">
+                        <h3>event02 // #피부리턴 즉석당첨 이벤트</h3>
+                        <p>피부가 속상해졌다면 지금 네이버에 세타필 레스토라덤AD를 검색하고 즉석당첨 여부를 확인하세요!</p>
+                    </div>
+                    <!-- naver -->
+                    <div class="naver-search-go">
+                        <div class="search-deco-click slide-tl"></div>
+                        <a th:if="${!isPcOpen}" href="javascript:alert('모바일에서 참여 가능합니다.')">
+                        	<img src="/skinregeneration/images/w/naver-search.png" class="naver-landing" alt="세타필 레스토라덤 AD">
+                            <button type="button" class="btn btn__naver-search">검색하러가기</button>
+                        </a>
+                        <a th:if="${isPcOpen}" th:href="@{/return/naver-landing}" target="_blank">
+                            <img src="/skinregeneration/images/w/naver-search.png" class="naver-landing" alt="세타필 레스토라덤 AD">
+                            <button type="button" class="btn btn__naver-search">검색하러가기</button>
+                        </a>                   
+                        <div class="text-flow animate-flow"></div>
+                    </div>
+
+                    <div class="a11y-hidden">
+                        <dl>
+                            <dt>이벤트기간</dt>
+                            <dd>2018년 8월 20일~ 9월 26일</dd>
+            
+                            <dt>이벤트경품</dt>
+                            <dd>세타필 레스토라덤(AD) 본품50명 / 아메리카노 기프티콘 200명</dd>
+    
+                            <dt>이벤트경품배송</dt>
+                            <dd>매주 수요일 일괄발송 됩니다 (8월 22일, 9월 26일은 차주에 배송됩니다.)</dd>
+                            
+                            <dt>참여방법</dt>
+                            <dd>네이버에서 세타필레스토라덤 검색 > 브랜드검색 내 즉석당첨버튼클릭 > 결과확인</dd>
+                        </dl>
+                    </div>
+                    <button type="button" onclick="openPopup('gift'); return false;" class="btn btn__hint">자세히보기</button>
+                </div>               
+            </section>
+
+            <!-- 영상공유 이벤트 -->
+            <section class="event03 share-event" id="event03">
+                <div class="inner-wrap">
+                    <h3 class="a11y-hidden">event03// #피부리턴 런칭파티 영상 공유 이벤트</h3>
+                    <!-- youtube -->
+                    <div class="wrap__movie">
+                        <div id="eventMovShare"></div>
+                    </div>
+                    <div class="wrap__sharebtn">
+                        <span class="btn btn__share-facebook btn__share"><a href="https://www.facebook.com/Cetaphil.Korea/videos/320136315214626/" target="_blank">페이스북 영상공유 바로가기</a></span>
+                        <span class="btn btn__share-insta btn__share"><a href="https://instagram.com/p/BmkzrH8ACRh/" target="_blank">인스타그램 영상공유 바로가기</a></span>
+                    </div>
+                    <div class="a11y-hidden">
+                        <p>6,000명의 속! 상한 그들이 경험한 #피부리턴 이야기를 만나보세요</p>
+                        <ul>
+                            <li>34세 가정주부 한X희 : 아토피로 고생하는 아들에게 딱인 것 같아요</li>
+                            <li>25세 대학생 김X정 : 건조한 여름에 사용하기 좋은 것 같아요.</li>
+                            <li>27세 직장인 고X수 : 수분감이 가득해서 피부에 좋은 게 느껴져요</li>
+                        </ul>
+
+                        <p>이벤트 체험방법</p>
+                        <dl>
+                            <dt>이벤트기간</dt>
+                            <dd>2018년 8월 20일~ 9월 26일</dd>
+            
+                            <dt>이벤트경품</dt>
+                            <dd>세타필 럭키박스 (20만원 상당) (10명) 페이스북6명 / 인스타그램4명</dd>
+
+                            <dt>당첨자 발표</dt>
+                            <dd>1차 2018년 09월 10일 / 2차 2018년 9월 28일</dd>
+                            
+                            <dt>참여방법</dt>
+                            <dd>1,세타필 SNS로 이동 > 2. 영상 시청 후 좋아요, 공유 > 3.댓글 통해 친구 소환 > 4. 당첨 시, 친구와 함께 세타필 럭키박스 1+! 증정!</dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 스페셜 기프트 세트 -->
+            <section class="event04 set-event" id="event04">
+                <div class="inner-wrap">
+                    <h3 class="a11y-hidden">evnet04//#피부리턴 스페셜 기프트 세트</h3>
+                    <span class="btn btn__buy">
+                        <a href="http://www.lotte.com/goods/viewGoodsDetail.lotte?goods_no=452273196" target="_blank">스페셜 기프트 세트 보러가기</a>
+                    </span>
+                </div>
+            </section>
+
+            <!-- footer -->
+            <footer class="footer">
+                <div class="a11y-hidden">
+                    <h3>이벤트 관련 유의사항</h3>
+                    <ul>
+                        <li>·허위정보 및 부적절한 형태로 이벤트에 참여 시 당첨에서 제외 됩니다.</li> 
+                        <li>·개인정보 입력을 하지 않은 경우에는 경품이 지급되지 않습니다.</li>
+                        <li>·잘못된 개인정보(휴대전화번호/경품 수령 주소) 입력으로 연락이 불가능하거나, 경품이 반송될 경우 재발송 되지 않습니다.</li>
+                        <li>·회사 내부사정에 의하여 경품이 변경되거나 이벤트가 조기종료 될 수 있습니다</li>
+                        <li>·이벤트 관련 문의 사항 : cetaphilrestoradermad@gmail.com</li>
+                    </ul>
+                </div>
+            </footer>
+
+            <!-- popup group : start -->
+            <div th:include="skinregeneration/_popup :: skinregeneration-popup"></div>
+            <!-- popup group : end -->
+        </div> 
+        <!-- //summerEvent -->
+
+    </div>
+
+    <!-- 이벤트 body영역 JS 파일 추가 -->
+    <th:block layout:fragment="body-script" th:remove="tag">  
+        <script src="/skinregeneration/js/deviceCheck.js"></script>  
+        <script src="/skinregeneration/js/pub.js"></script>
+        <script th:inline="javascript">
+            var lottery = /*[[${instantLottery}]]*/ '';
+        </script>
+        <script src="/skinregeneration/js/pub-vue.js"></script>
+        <script src="/skinregeneration/js/youtubeApi.js"></script>       
+    </th:block>
+</body>
+</html>

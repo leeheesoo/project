@@ -1,0 +1,245 @@
+﻿<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>popup</title>
+</head>
+
+<body>
+  <div th:fragment="skinregeneration-popup">
+    <!-- loading -->
+    <div class="loading" v-show="loading">
+      <img src="/images/loading.svg" alt="loading" />
+    </div>
+
+    <!-- test -->
+    <!-- <div class="test-btn" style="z-index:1">
+            <p>테스트용 버튼(이벤트 오픈시 숨김처리) 이벤트</p>
+            <button onclick="openPopup('fail'); return false;">즉당:꽝</button>
+            <button onclick="openPopup('win'); return false;">즉당:당첨</button>
+
+            <button onclick="openPopup('quiz'); return false;">퀴즈참여:개인정보</button>
+            <button onclick="openPopup('share'); return false;">공유하기</button>
+            <button onclick="openPopup('sampling'); return false;">경품안내</button>
+            <button onclick="openPopup('post'); return false;">우편번호</button>
+        </div>
+
+        <pre style="position:fixed; top:50px;left:0;background-color:blue; color:#fff; font-size:11px">
+            {{$data}}
+        </pre> -->
+    <!--// test -->
+
+
+
+    <div class="dimmed"></div>
+    <!--///// 즉당 /////-->
+    <!-- 꽝 : 재도전 팝업 -->
+    <div class="popup pop-fail" id="pop-fail">
+      <div class="popup__header">
+        <h4>세타필 #피부리턴 이벤트</h4>
+      </div>
+      <div class="popup__content">
+        <p><img src="/skinregeneration/images/popup/fail-text.png" alt="아쉽게도 꽝!" /></p>
+        <button type="submit" class="btn btn__check" onclick="closePopup('fail'); return false;">아쉽게도 꽝! - 확인</button>
+
+      </div>
+      <button type="button" class="btn btn__close" onclick="closePopup('fail'); return false;">닫기</button>
+    </div>
+
+    <!-- 당첨 : 개인정보 팝업 -->
+    <div class="popup pop-win pop-personal" id="pop-win">
+      <div class="popup__header">
+        <h4>세타필 #피부리턴 이벤트</h4>
+      </div>
+      <div class="popup__gift">
+        <span><img v-if="giftSetting != ''" :src="'/skinregeneration/images/popup/'+giftSetting+'.jpg'" alt="축하합니다!" /></span>
+      </div>
+      <div class="popup__content">
+        <p class="inner__title"><img src="/skinregeneration/images/popup/quiz-personal-title.png" alt="개인정보입력" /></p>
+        <form action="" method="POST" name="searchForm" id="searchForm">
+          <dl>
+            <dt>
+              <label for="search-personal-name"><img src="/skinregeneration/images/popup/personal-name.png" alt="성명" /></label>
+            </dt>
+            <dd><input type="text" name="name" id="search-personal-name" v-model="lotteryData.name" maxlength="10" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <label for="search-personal-phone"><img src="/skinregeneration/images/popup/personal-phone.png" alt="휴대폰" /></label>
+            </dt>
+            <dd><input type="tel" name="phone" id="search-personal-phone" v-model="lotteryData.phone" maxlength="11"
+                placeholder="'-'기호없이 입력해주세요." /></dd>
+          </dl>
+          <!-- 레스토라덤 -->
+          <div v-if="giftSetting !== 'gsitfatr'">
+            <dl>
+              <dt>
+                <label for="review-personal-address"><img src="/skinregeneration/images/popup/personal-address.png" alt="주소" /></label>
+              </dt>
+              <dd>
+                <input type="text" class="post-input" name="post" id="event-search-zipcode" v-model="lotteryData.zipcode"
+                  readonly="readonly" />
+                <button type="button" class="btn btn__post" @click="openPostCode('win','event-search-zipcode','event-search-address')">우편번호</button>
+              </dd>
+              <dd class="full-address"><input type="text" name="address01" id="event-search-address" v-model="lotteryData.address"
+                  readonly="readonly" /></dd>
+              <dd class="full-address"><input type="text" name="address02" v-model="lotteryData.addressDetail"
+                  placeholder="상세주소를 입력해주세요" maxlength="50" /></dd>
+            </dl>
+          </div>
+          <!-- // 레스토라덤-->
+          <dl>
+            <dt>
+              <label for="search-personal-birth"><img src="/skinregeneration/images/popup/personal-age.png" alt="생년월일" /></label>
+            </dt>
+            <dd><input type="tel" name="birth" id="search-personal-birth" v-model="lotteryData.birth" maxlength="6"
+                placeholder="Ex) 800808" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <label for="search-personal-email"><img src="/skinregeneration/images/popup/personal-email.png" alt="이메일" /></label>
+            </dt>
+            <dd><input type="email" name="email" id="search-personal-email" v-model="lotteryData.email" /></dd>
+          </dl>
+          <div class="agree-wrap agree-wrap__border">
+            <p class="personal__note"><img src="/skinregeneration/images/popup/personal-note.png" alt="등록하신 개인정보는 이벤트경품 수령을 위한 정보 및 사전 예약 이벤트 정보 제공을위해 사용되며 이벤트 종료 3개월후에 자동 폐기됩니다." /></p>
+            <label for="search-agree">
+              <input type="checkbox" id="search-agree" name="agree" v-model="lotteryData.agree" />
+              <span></span>
+            </label>
+          </div>
+          <button type="button" class="btn btn__check" @click="lotteryEventUserInfo">축하합니다! - 확인</button>
+        </form>
+      </div>
+      <button type="button" class="btn btn__close" onclick="closePopup('win'); return false;">축하합니다! - 닫기</button>
+    </div>
+
+
+
+
+
+
+    <!-- 공유하기 팝업 -->
+    <div class="popup pop-share" id="pop-share">
+      <div class="popup__header">
+        <div class="popup__inner">
+          <h4>세타필 #피부리턴 이벤트</h4>
+        </div>
+      </div>
+      <div class="popup__content pop__content-center">
+        <img src="/skinregeneration/images/popup/share-text.png" alt="카브리타 체험신청 이벤트를 공유하면 당첨확률이 up! 친구들에게도 공유해보세요">
+
+        <button type="button" class="btn btn__kakao" @click="samplingEventShare('kakaotalk')">샘플 - 카카오톡 공유하기</button>
+        <button type="button" class="btn btn__facebook" @click="samplingEventShare('facebook')">샘플 - 페이스북 공유하기</button>
+      </div>
+      <button type="button" class="btn btn__close" onclick="closePopup('share'); return false;">닫기</button>
+    </div>
+
+    <!--우편번호 팝업 -->
+    <div class="popup pop-post" id="pop-post">
+      <div class="popup__header">
+        <h4>세타필 #피부리턴 이벤트</h4>
+      </div>
+      <!--  우편번호 -->
+      <div id="searchPostCode"></div>
+      <button type="button" class="btn btn__close" onclick="closePopup('post'); openPopup(popName)">닫기</button>
+    </div>
+
+
+    <!-- 경품안내 -->
+    <div class="popup pop-gift" id="pop-gift">
+      <div class="popup__header">
+        <div class="popup__inner">
+          <h4>세타필 #피부리턴 이벤트</h4>
+        </div>
+      </div>
+      <div class="popup__content pop__content-center">
+        <img src="/skinregeneration/images/popup/gift.png" alt="죽석당첨 이벤트 경품">
+
+      </div>
+      <button type="button" class="btn btn__close" onclick="closePopup('gift'); return false;">닫기</button>
+    </div>
+
+    <!-- 샘플링 : 개인정보 팝업 -->
+    <div class="popup pop-sampling pop-personal" id="pop-sampling">
+      <div class="popup__header">
+        <h4>세타필 #피부리턴 이벤트</h4>
+      </div>
+      <div class="popup__content">
+        <p class="inner__title"><img src="/skinregeneration/images/popup/quiz-personal-title.png" alt="개인정보입력" /></p>
+        <form action="" method="POST" name="quizForm" id="quizForm">
+          <dl>
+            <dt>
+              <label for="quiz-personal-name"><img src="/skinregeneration/images/popup/personal-name.png" alt="성명" /></label>
+            </dt>
+            <dd><input type="text" name="name" id="quiz-personal-name" v-model="samplingData.name" maxlength="10" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <label for="quiz-personal-phone"><img src="/skinregeneration/images/popup/personal-phone.png" alt="휴대폰" /></label>
+            </dt>
+            <dd><input type="tel" name="phone" id="quiz-personal-phone" v-model="samplingData.phone" maxlength="11"
+                placeholder="'-'기호없이 입력해주세요." /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <label for="quiz-personal-address"><img src="/skinregeneration/images/popup/personal-address.png" alt="주소" /></label>
+            </dt>
+            <dd>
+              <input type="text" class="post-input" name="post" id="event-quiz-zipcode" v-model="samplingData.zipcode"
+                readonly="readonly" />
+              <button type="button" class="btn btn__post" @click="openPostCode('sampling','event-quiz-zipcode','event-quiz-address')">우편번호</button>
+            </dd>
+            <dd class="full-address"><input type="text" name="address01" id="event-quiz-address" v-model="samplingData.address"
+                readonly="readonly" /></dd>
+            <dd class="full-address"><input type="text" name="address02" v-model="samplingData.addressDetail"
+                placeholder="상세주소를 입력해주세요" maxlength="50" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <label for="quiz-personal-birth"><img src="/skinregeneration/images/popup/personal-age.png" alt="생년월일" /></label>
+            </dt>
+            <dd><input type="tel" name="birth" id="quiz-personal-birth" v-model="samplingData.birth" maxlength="6"
+                placeholder="Ex) 800808" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <label for="quiz-personal-email"><img src="/skinregeneration/images/popup/personal-email.png" alt="이메일" /></label>
+            </dt>
+            <dd><input type="email" name="email" id="quiz-personal-email" v-model="samplingData.email" /></dd>
+          </dl>
+          <div class="agree-wrap agree-wrap__border">
+            <p class="personal__note"><img src="/skinregeneration/images/popup/personal-note.png" alt="등록하신 개인정보는 이벤트경품 수령을 위한 정보 및 사전 예약 이벤트 정보 제공을위해 사용되며 이벤트 종료 3개월후에 자동 폐기됩니다." /></p>
+            <label for="quiz-agree">
+              <input type="checkbox" id="quiz-agree" name="agree" v-model="samplingData.agree" />
+              <span></span>
+            </label>
+          </div>
+          <button type="button" class="btn btn__entry" @click="samplingEventUserInfo">이벤트 참여하기</button>
+        </form>
+      </div>
+      <button type="button" class="btn btn__close" onclick="closePopup('sampling'); return false;">닫기</button>
+    </div>
+
+    <!--///// 당첨자발표 /////-->
+
+    <div class="popup pop-winner" id="pop-winner">
+      <div class="winner-box winner01">
+        <ul>
+          <li>이*진(7125)</li><li>정*주(6810)</li><li>황*미(9777)</li><li>김*남(5413)</li><li>안*현(9115)</li><li>이*수(1044)</li><li>유*순(0092)</li><li>조*미(6885)</li><li>채*현(8917)</li><li>임*희(2534)</li><li>박*세(6700)</li><li>김*혜(7065)</li><li>하*옥(5811)</li><li>김*선(9005)</li><li>이*영(1326)</li><li>권*정(2342)</li><li>한*라(6871)</li><li>박*영(7340)</li><li>김*정(5891)</li><li>노*미(5702)</li><li>김*인(4561)</li><li>김*환(4701)</li><li>정*은(1228)</li><li>김*옥(3807)</li><li>천*석(0409)</li><li>노*은(6635)</li><li>한*민(9931)</li><li>이*나(6602)</li><li>김*숙(7616)</li><li>이*경(3491)</li>
+        </ul>
+      </div>
+
+      <div class="winner-box winner02">
+        <ul>
+          <li>박*정(2505)</li><li>노*곤(5651)</li><li>이*화(5624)</li><li>나*경(8479)</li><li>최*희(3208)</li><li>배*수(7811)</li><li>백*화(5469)</li><li>하*미(5062)</li><li>김*영(3061)</li><li>안*림(8238)</li><li>김*희(8385)</li><li>고*평(0519)</li><li>심*수(3711)</li><li>박*현(3711)</li><li>임*아(0438)</li><li>김*형(1232)</li><li>이*혜(8577)</li><li>이*진(1637)</li><li>최*주(1416)</li><li>이*명(6013)</li><li>김*연(2777)</li><li>정*임(1015)</li><li>기*영(7813)</li><li>조*실(4521)</li><li>이*현(9424)</li><li>이*실(0119)</li><li>홍*정(1326)</li><li>곽*금(1714)</li><li>문*영(2729)</li><li>김*필(5551)</li>
+        </ul>
+      </div>
+      <button type="button" class="btn btn__close" onclick="closePopup('winner'); return false;">닫기</button>
+    </div>
+
+  </div>
+</body>
+
+</html>

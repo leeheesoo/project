@@ -1,0 +1,204 @@
+//===================================
+// variable
+//===================================\
+$location: '../images/m/';
+
+//===================================
+// page
+//===================================
+
+.skin-event {
+    position:relative;
+    width:100%;
+    max-width: $width-max;
+    min-width: $width-min;
+    margin:0 auto;
+    h1 {
+        position:absolute;
+        top:168px;
+        left:45px;
+        z-index:1;
+    }
+    section {
+        position: relative;
+        width:100%;
+        max-width:$width-max;
+        min-width:$width-min;
+        margin-top:-1px;
+        text-align:center;
+        background-position:top center;
+        background-repeat:no-repeat;
+    }
+}
+
+//===================================
+// nav
+//===================================
+.floating__nav {
+    position: fixed;
+    top:0;
+    left:0;  
+    width:$width-max; 
+    height: 120px;
+    z-index:10;
+    ul {
+        width: 100%;      
+        box-shadow: 30px 30px 50px -8px rgba(3, 59, 171, 0.35);
+        overflow: hidden;
+    }
+    li {
+        float: left;
+        width:33.33333%;
+        height:120px;
+        background-image:url($location+'btns.png')
+    }
+    &-02 {
+        background-position:0 -400px;
+    }
+    &-03 {
+        background-position:-240px -400px;
+    }
+    &-04 {
+        background-position:-480px -400px;
+    }    
+}
+
+//===================================
+// kv
+//===================================
+.kv {
+    height:1444px;
+    @include background('bg-kv.jpg') ;
+}
+
+//===================================
+// 즉당이벤트
+//===================================
+.lottery-event {
+    height: 1187px;
+    @include background('bg-lottery-event.jpg') ;
+}
+.naver-search-go {
+    position: relative;
+    top:363px;
+    width: 680px;
+    margin:0 auto;
+    .naver-landing{
+        box-shadow: 20px 30px 50px #033bab30;
+        border-radius:10px;
+    }
+    .text-flow {
+        position: absolute;
+        top:30px;
+        right:180px;
+        width: 0px;
+        height: 50px;
+        background: #fff;
+        z-index: 1;
+    }
+}
+
+
+//===================================
+// 영상공유이벤트
+//===================================
+.share-event {
+    .share-event-top {
+        height:824px;
+        @include background('bg-share-event01.jpg') ;   
+    }
+    .share-event-bottom {
+        height:2261px;
+        @include background('bg-share-event02.jpg') ;   
+    }    
+}
+.wrap {
+    &__movie{
+        position: relative;
+        top:348px;
+        width: 640px;
+        height:362px;
+        margin:0 auto;
+    }
+    &__sharebtn{
+        margin-top:374px;
+        font-size:0;
+    }
+}
+
+
+//===================================
+// 스페셜기프트이벤트
+//===================================
+.set-event {
+    height:931px;
+    @include background('bg-set-event.jpg') ;   
+}
+
+//===================================
+// footer
+//===================================
+.footer {
+    height:325px;
+    @include background('bg-footer.jpg');   
+}
+
+//===================================
+// button
+//===================================
+.btn {
+    display:inline-block;
+    font-size:0;
+    box-shadow: 20px 30px 50px #033bab30;
+    border-radius:10px;
+    @include background('btns.png', $repeat:no-repeat) ;
+
+    &__ad-hint {
+        width: 500px;
+        height: 90px;
+        margin-top:1245px;
+        background-position:0 0;
+    }
+    &__hint {
+        position: absolute;
+        top:717px;
+        left:457px;
+        width: 111px;
+        height:32px;
+        background-position:0 -626px;
+        box-shadow:none;
+    }
+    &__naver-search{
+        width: 500px;
+        height: 90px;
+        margin-top:20px;
+        background-position:0 -100px;
+        vertical-align:top;
+    }
+    &__quiz-join {
+        position: absolute;
+        top:140px;
+        left:-140px;
+        width: 500px;
+        height:90px;
+        background-position:0 -200px;
+    }
+    &__share{
+        width: 312px;
+        height:87px;
+        box-shadow: 0 10px 60px #c1cccc;
+    }
+    &__share-facebook {
+        margin-right:16px;
+        background-position:0 -530px;       
+    }
+    &__share-insta{
+        background-position:-328px -530px;
+    }
+    &__buy {
+        width: 500px;
+        height: 90px;
+        background-position:0 -300px;
+        margin-top:792px;
+    }
+}

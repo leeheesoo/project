@@ -1,0 +1,36 @@
+﻿@model INGLife.Event.Models.KMCModels.ResponseKMCModel
+@{
+    ViewBag.Title = "ING생명 본인확인 서비스 - 재무콘서트 마케팅동의";
+    ViewBag.ViewPortWidth = 750;
+}
+
+@section scripts{
+    <script src="~/Content/common/dev-common.js"></script>
+    <script type="text/javascript">
+        function resultKMC() {
+            var data = $('#frmFinancialConcertMarketingAgreeKMC').serialize();
+            $.post('/concert/kmc/response', data, function (res) {
+                if (res.Result) {
+                    opener.setFinancialConcertMarketingKmcData(res.Data);
+                }
+                alert(res.Message);
+                self.close();
+            }).error(function (xhr, err) {
+                alert('본인인증 실패되었습니다.');
+                self.close();
+            });
+        }
+    $(function () {
+        $('#frmFinancialConcertMarketingAgreeKMC').target = opener.window.name;
+        resultKMC();
+    })
+    </script>
+}
+@using( Ajax.BeginRouteForm("ResponseFinancialConcertMarketingAgreeKMC", new { }, new AjaxOptions { HttpMethod = "post" }, new { id = "frmFinancialConcertMarketingAgreeKMC" }) ) {
+    @Html.HiddenFor(x => x.Rec_Cert)
+    @Html.HiddenFor(x => x.CertNum)
+}
+
+
+
+

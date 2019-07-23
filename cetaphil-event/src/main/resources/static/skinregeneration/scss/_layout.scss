@@ -1,0 +1,18 @@
+$width-max: '';
+$width-min: '';
+
+@if $device == 'w' {
+  $width-max: 1920px;
+  $width-min: 1100px;
+  
+} @else {
+  $width-max:720px;
+  $width-min:720px; 
+}
+
+.inner-wrap {
+    position: relative;
+    width: $width-min;
+    height:100%;
+    margin:0 auto;
+}

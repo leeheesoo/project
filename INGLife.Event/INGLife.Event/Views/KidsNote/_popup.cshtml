@@ -1,0 +1,36 @@
+﻿<!-- 팝업 : dimmed -->
+<div id="dimmed" style="display:none;"></div>
+
+<!-- 팝업 : 개인정보의수집.이용목적 -->
+<div id="pop-agree01" class="agree-pop pop-agree01">
+    <button class="btn-close" v-on:click="closeAgreePop">
+        <img src="~/Content/Images/KidsNote/form/btn-close.png" alt="닫기" />
+    </button>
+    <p>
+        <img src="~/Content/Images/KidsNote/form/agree-inner-text1.png" alt="개인정보 수집 이용 목적" />
+    </p>
+    <button class="btn-agree ga-event" data-action="개인정의수집이용 동의" onclick="closePop('agree01', false);"><img src="~/Content/Images/KidsNote/form/btn-agree.png" alt="동의함" /></button>
+</div>
+
+<!-- 팝업 :개인정보제공 -->
+<div id="pop-agree02" class="agree-pop pop-agree02">
+    <button class="btn-close" v-on:click="closeAgree2Pop">
+        <img src="~/Content/Images/KidsNote/form/btn-close.png" alt="닫기" />
+    </button>
+    <p><img src="~/Content/Images/KidsNote/form/agree-inner-text2.png" alt="개인정보 제공" /></p>
+    <button class="btn-agree ga-event" data-action="개인정보의제공 동의" onclick="closePop('agree02', false);"><img src="~/Content/Images/KidsNote/form/btn-agree.png" alt="동의함" /></button>
+</div>
+
+<!-- 팝업 : 우편번호 -->
+<div id="pop-post" class="agree-pop pop-post">
+
+    <div class="header">
+        <h1><img src="~/Content/Images/KidsNote/form/post-tit.png" alt="우편번호 검색" /></h1>
+        <button class="btn-close" onclick="closePop('post', false); return false;">
+            <img src="~/Content/Images/KidsNote/form/btn-close.png" alt="닫기" />
+        </button>
+    </div>
+
+    <div class="pop-inner" id="searchPostCode">
+    </div>
+</div>

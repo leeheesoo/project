@@ -1,0 +1,102 @@
+﻿@model KinderJoy.Site.Models.DisneyStarWars2018.DisneyStarWars2018PrizeSettingModel
+@{
+    ViewBag.Title = "[디즈니 커플&스타워즈 캠페인 이벤트] 경품세팅";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewBag.Title</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row" id="disney-starwars-2018-prize-setting">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-video-camera fa-fw"></i> @ViewBag.Title
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div >                        
+                            @using (Ajax.BeginRouteForm("CreateDisneyStarWars2018PrizeSetting", new { httpRoute = true },
+                            new AjaxOptions
+                            {
+                                HttpMethod = "post",
+                                OnBegin = "disneyStarWras2018PrizeSettingModel.beginEntry",
+                                OnComplete = "disneyStarWras2018PrizeSettingModel.completeEntry",
+                                OnFailure = "disneyStarWras2018PrizeSettingModel.failEntry",
+                                OnSuccess = "disneyStarWras2018PrizeSettingModel.successEntry"
+                            },
+                            new { id = "frmPrizeSetting" }))
+                            {
+                                <div class="col-xs-6">
+                                    <span>날짜 : </span> @Html.TextBoxFor(x => x.Date, new { @class = "form-control datepicker" })<br />
+                                    <span>경품번호 : </span>@Html.EnumDropDownListFor(x => x.PrizeType, new { @class = "form-control" })<br />
+                                    <span>총경품수량 : </span>@Html.TextBoxFor(x => x.TotalCount, new { @class = "form-control" })<br />
+                                    <span>당첨시작시간 : </span>@Html.TextBoxFor(x => x.StartTime, new { @class = "form-control" })<br />
+                                    <span>확률(0~1) : </span>@Html.TextBoxFor(x => x.Rate, new { @class = "form-control" })<br />
+                                </div>
+
+                                <div class="text-center" >
+                                    <button type="submit" class="btn btn-info btn-block btn-sm" style="font-size:18px;width:98%;margin:auto">경품생성</button>
+                                </div>
+                            }    
+                        <div style="float:left;padding-bottom:10px;padding-top:50px">
+                            <div>킨더조이 기프티콘 :<span style="color:red">{{ prizeTotalCount.KinderJoyGifty }}</span>건</div>
+                            <div>디즈니공주거울 :<span style="color:red">{{ prizeTotalCount.DisneyQuenMirror }}</span>건</div>
+                            <div>스타워즈 컵세트 :<span style="color:red">{{ prizeTotalCount.StarWarsCupSet }}</span>건</div>                            
+                        </div>                            
+                        <div style="float:right;padding-bottom:10px;padding-top:50px">
+                            전체 <span style="color:red">{{ data.length }}</span>건
+                        </div>
+                    </div>
+                    <div >
+                        <div class="col-lg-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover table-condensed" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th class="vert-middle text-center">날짜</th>
+                                            <th class="vert-middle text-center">경품명</th>
+                                            <th class="vert-middle text-center">총경품수량</th>
+                                            <th class="vert-middle text-center">총당첨수량</th>
+                                            <th class="vert-middle text-center">당첨시작시간(0~23)</th>
+                                            <th class="vert-middle text-center">확률(0~1)</th>
+                                            <th class="vert-middle text-center">관리</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="(index,item) in data">
+                                            <td class="vert-middle text-center">{{ item.date | getDate }}</td>
+                                            <td class="vert-middle text-center">{{ item.prizeName }}</td>
+                                            <td class="vert-middle text-center"><input type="tel" v-model="item.totalCount" class="form-control"></td>
+                                            <td class="vert-middle text-center">{{ item.winnerCount }}</td>
+                                            <td class="vert-middle text-center"><input type="tel" v-model="item.startTime" class="form-control"></td>
+                                            <td class="vert-middle text-center"><input type="tel" v-model="item.rate" class="form-control"></td>
+                                            <td class="vert-middle text-center"><button type="button" class="btn btn-block btn-warning" v-on:click="updateRoulettePrizeSetting(item)">수정</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+@section scripts {
+    <script src="~/Scripts/vue.min.js"></script>
+    <script src="~/Scripts/DisneyStarWars2018/disney-starwars-admin.js"></script>
+    <script>
+        $(function () {
+            disneyStarWras2018PrizeSettingModel.goToPage();            
+        });
+    </script>
+}
+

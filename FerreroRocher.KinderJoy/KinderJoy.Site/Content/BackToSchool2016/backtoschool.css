@@ -1,0 +1,222 @@
+﻿@charset 'UTF-8';
+
+
+/* common ============================ */
+.blind{display:block; overflow:hidden; position:absolute; top:-1000em; left:0;}
+/* ====================================== */
+
+#wrap{position:relative; width:100%;}
+
+#event_wrap {width:100%; max-width:2000px; margin:0 auto; padding-top:70px; background:#ffd630;}
+#event_wrap ul#navi{position:fixed; top:115px; right:30px; width:159px; height:464px; overflow:hidden; text-align:center; z-index:95;}
+#event_wrap ul#navi li{float:left; width:159px;}
+
+
+
+#event_wrap .visual_wrap{width:100%; background:url('/Images/BackToSchool2016/bg_visual_wrap.jpg') top center no-repeat;}
+#event_wrap .visual_wrap .visual{position:relative; width:1000px; height:900px; margin:0 auto;}
+#event_wrap .visual_wrap .visual h2 {width:721px; margin:0 auto; padding-top:101px;}
+
+
+
+#event_wrap .toy_detail_wrap{width:100%; background:#ffd630 url('/Images/BackToSchool2016/bg_toy_detail_wrap.jpg') top center no-repeat;}
+#event_wrap .toy_detail_wrap .toy_detail{position:relative; width:1000px; height:1083px; margin:0 auto;}
+#event_wrap .toy_detail_wrap .toy_detail .flag {width:233px; margin:0 auto;}
+#event_wrap .toy_detail_wrap .toy_detail h3 {width:750px; margin:0 auto; padding:21px 0 16px 0;;}
+#event_wrap .toy_detail_wrap .toy_detail .subtl {width:543px; margin:0 auto;}
+#event_wrap .toy_detail_wrap .toy_detail .txt{width:633px; margin:0 auto; padding-top:81px}
+#event_wrap .toy_detail_wrap .toy_detail .btn {width:398px; margin:0 auto; margin-top:518px;}
+
+
+#event_wrap .notice_wrap{width:100%;  background:#a5da44 url('/Images/BackToSchool2016/bg_notice_wrap.jpg') top center no-repeat;}
+#event_wrap .notice_wrap .notice{position:relative; width:1000px; height:668px; margin:0 auto;}
+#event_wrap .notice_wrap .notice .flag {width:256px; margin:0 auto;}
+#event_wrap .notice_wrap .notice h3 {width:709px; margin:0 auto; padding:42px 0 14px 0;}
+#event_wrap .notice_wrap .notice p {width:570px; margin:0 auto;}
+
+#event_wrap .notice_wrap .notice ul {width:797px; margin:0 auto; padding:46px 0 0 0; overflow:hidden;}
+#event_wrap .notice_wrap .notice ul li {float:left;}
+#event_wrap .notice_wrap .notice ul li dl {overflow:hidden;}
+#event_wrap .notice_wrap .notice ul li dl dt {float:left; height:34px; margin-right:11px;}
+#event_wrap .notice_wrap .notice ul li dl dd {float:left; padding:7px 0 0 0;}
+
+#event_wrap .notice_wrap .notice ul li.cont1_list1 {margin:0 101px 0 0;}
+#event_wrap .notice_wrap .notice ul li.cont1_list3 {width:797px; margin:12px 0 0 0;}
+#event_wrap .notice_wrap .notice ul li.cont1_list3 dl dt{margin:0;}
+#event_wrap .notice_wrap .notice ul li.cont1_list3 dl dd{margin-left:-17px; padding:0 26px 0 0;}
+
+
+
+#event_wrap .bingo_wrap{width:100%; background:url('/Images/BackToSchool2016/bg_bingo_wrap.jpg') top center no-repeat;}
+#event_wrap .bingo_wrap .bingo{position:relative; width:1000px; height:1490px; margin:0 auto;}
+#event_wrap .bingo_wrap .bingo h3 {width:584px; margin:0 auto; padding:73px 0 34px 0;}
+
+#event_wrap .bingo_wrap .bingo .quiz_area{width:800px; margin:0 auto; }
+#event_wrap .bingo_wrap .bingo .quiz_area .quiz-select{position:relative; width:800px; overflow:hidden; text-align:center; padding-top:77px;}
+#event_wrap .bingo_wrap .bingo .quiz_area .quiz-select .select-area{float:left; width:160px;}
+#event_wrap .bingo_wrap .bingo .quiz_area .quiz-select .select-area .js-rd-area{cursor:pointer;}
+#event_wrap .bingo_wrap .bingo .quiz_area .quiz-select .select-area .js-rd-area label.js-agree {display:block; cursor:pointer;}
+#event_wrap .bingo_wrap .bingo .quiz_area .quiz-select .select-area .js-rd-area input{position:absolute; top:68px; left:0; width:0; height:0; border:0; visibility:hidden; margin:0; padding:0;}
+
+#event_wrap .bingo_wrap .bingo .btn_area{padding-top:171px;}
+#event_wrap .bingo_wrap .bingo .btn_area ul {width:935px; margin:0 auto; overflow:hidden;}
+#event_wrap .bingo_wrap .bingo .btn_area ul li {float:left; margin:0 11px;}
+
+
+#event_wrap .bottom_wrap{width:100%; background:#fff url('/Images/BackToSchool2016/bg_bottom_wrap.jpg') bottom center repeat-x;}
+#event_wrap .bottom_wrap .bottom{position:relative; width:1000px; height:442px; margin:0 auto;  overflow:hidden;}
+#event_wrap .bottom_wrap .bottom dl {width:906px; margin:0 auto; padding:51px 0 31px 0;}
+#event_wrap .bottom_wrap .bottom dl dt {padding:0 0 24px 0;}
+
+
+
+/* 팝업:딤드처리*/
+#png_bg{position:absolute; top:0; left:0; width:100%; height:100%; filter:alpha(opacity=70); opacity:0.70; background-color:#000; z-index:98;}
+
+
+
+/* 팝업:패키지 자세히보기*/
+#pop_package {position:absolute; top:0; left:50%; margin-left:-320px; width:674px; height:1619px; z-index:99; background:url('/Images/BackToSchool2016/pop/bg_pop_package.png') 0 0 no-repeat;}
+#pop_package .btn_close{position:absolute; top:238px; right:55px; z-index:999;}
+#pop_package .pop_header {width:640px; padding-top:356px; }
+#pop_package .pop_header h3{padding-left:47px;}
+#pop_package .pop_cont{width:640px; padding:55px 0 0 0;}
+#pop_package .pop_cont div {padding-left:105px;}
+#pop_package .pop_cont ul{width:514px; margin:0 auto; overflow:hidden; padding-top:12px;}
+#pop_package .pop_cont ul li{width:145px; float:left; padding:0 13px 30px 13px;}
+#pop_package .pop_bottom{width:640px; padding:7px 0 0 0;}
+#pop_package .pop_bottom .notice{width:524px; margin:0 auto;}
+
+
+
+/* 팝업:개인정보입력*/
+#pop_entry{position:absolute; top:0; left:50%; margin-left:-320px; width:674px; height:1335px; z-index:99; background:url('/Images/BackToSchool2016/pop/bg_pop_entry.png') 0 0 no-repeat;}
+#pop_entry .btn_close{position:absolute; top:238px; right:55px; z-index:999;}
+#pop_entry .pop_header {width:640px; padding-top:398px; text-align:center;}
+#pop_entry .pop_header p {padding-top:18px;}
+
+#pop_entry .pop_cont{width:640px; padding-top:60px;}
+#pop_entry .pop_cont .form_box{width:522px; margin:0 auto;}
+#pop_entry .pop_cont .form_box dl{width:522px; margin:0 auto; padding-bottom:14px; overflow:hidden;}
+#pop_entry .pop_cont .form_box dl dt{float:left; width:126px;}
+#pop_entry .pop_cont .form_box dl dt img{padding-top:16px;}
+#pop_entry .pop_cont .form_box dl dd{float:left; width:396px;}
+#pop_entry .pop_cont .form_box dl dd input{font-size:18px; height:50px; line-height:50px; font-weight:bold; border:none; background:#fff; color:#5c371e; vertical-align:top;
+-webkit-border-radius:5px;
+-moz-border-radius:5px;
+-ms-border-radius:5px;
+-o-border-radius:5px;
+border-radius:5px;
+}
+
+#pop_entry .pop_cont .form_box dl.input_name dd input{width:376px; padding:0 10px;}
+
+#pop_entry .pop_cont .form_box dl.input_age dd input{width:218px; padding:0 10px; margin-right:6px;}
+#pop_entry .pop_cont .form_box dl.input_age dd img{cursor:pointer;}
+
+#pop_entry .pop_cont .form_box dl.input_phone dd input{width:376px; padding:0 10px;}
+
+#pop_entry .pop_cont .form_box dl.input_address{}
+#pop_entry .pop_cont .form_box dl.input_address dd {padding-left:126px;}
+#pop_entry .pop_cont .form_box dl.input_address dd input{width:376px; margin:0 0 7px 0; padding:0 10px;}
+
+#pop_entry .pop_cont .form_box dl.input_address dd.input_post {height:50px; padding-left:0; margin:0 0 7px 0;}
+#pop_entry .pop_cont .form_box dl.input_address dd.input_post input{width:218px; margin:0 6px 0 0; padding:0 10px;}
+#pop_entry .pop_cont .form_box dl.input_address dd.input_post img{cursor:pointer;}
+
+#pop_entry .pop_cont .form_box dl.input_address dd.notice{width:106px; padding:6px 0 0 106px;}
+
+
+
+#pop_entry .pop_cont .agree_area{width:522px; margin:0 auto; padding-top:34px;}
+#pop_entry .pop_cont .agree_area .agree_check {width:522px;height:29px; line-height:29px;}
+#pop_entry .pop_cont .agree_area .agree_check input{float:left; display:inline; width:29px; height:29px; margin:0; padding:0; line-height:29px; vertical-align:middle;
+transform:scale(1); 
+-ms-transform:scale(1); 
+-webkit-transform:scale(1); 
+-o-transform:scale(1); 
+-moz-transform:scale(1); 
+transform-origin:top left; 
+-ms-transform-origin:top left; 
+-webkit-transform-origin:top left; 
+-moz-transform-origin:top left; 
+-webkit-transform-origin:top left;}
+#pop_entry .pop_cont .agree_area .agree_check label {margin-left:10px; line-height:33px;}
+
+
+#pop_entry .pop_cont .agree_area .agree_txt {width:358px; height:97px; overflow-x:hidden; overflow-y:auto; padding:10px; margin-top:16px;	line-height:1.4;	text-align:left;}
+#pop_entry .pop_cont .agree_area .agree_txt dt {font-weight:bold; font-size:0.9em;}
+#pop_entry .pop_cont .agree_area .agree_txt dd {font-size:0.8em; margin-top:15px;}
+#pop_entry .pop_cont .agree_area .agree_txt dd ul {margin-top:10px;}
+#pop_entry .pop_cont .agree_area .agree_txt dd ul li {margin-top:5px;}
+#pop_entry .pop_cont .agree_area .agree_txt dd ul li p {margin-top:15px;}
+
+#pop_entry .btn{position:relative; text-align:center; padding:40px 0 0 0;}
+#pop_entry .btn .loading{position:absolute; top:30px; left:215px; width:211px; height:68px; text-align:center; filter:alpha(opacity=60); opacity:0.60; background-color:#000; overflow:hidden;}
+#pop_entry .btn .loading img{padding-top:11px;}
+
+
+
+
+/* 팝업:우편번호*/
+#pop_post {position:absolute; top:0; left:50%; margin-left:-320px; width:640px; height:1175px; z-index:99; background:url('/Images/BackToSchool2016/pop/bg_pop_post.png') 0 0 no-repeat;}
+#pop_post .btn_close{position:absolute; top:238px; right:20px; z-index:999;}
+#pop_post .pop_header {width:640px; padding-top:398px; text-align:center;}
+#pop_post .pop_header h3 {}
+#pop_post .pop_cont {width:536px; margin:0 auto; padding-top:35px;}
+
+
+/* 팝업:sns공유*/
+#pop_sns {position:absolute; top:0; left:50%; margin-left:-320px; width:674px; height:1169px; z-index:99; background:url('/Images/BackToSchool2016/pop/bg_pop_sns.png') 0 0 no-repeat;}
+#pop_sns .btn_close{position:absolute; top:238px; right:55px; z-index:999;}
+#pop_sns .pop_header {width:640px; padding-top:398px; text-align:center;}
+#pop_sns .pop_header p {padding-top:18px;}
+#pop_sns .pop_cont{width:640px; padding:64px 0 0 0;}
+#pop_sns .pop_cont .share {width:640px; position:relative;}
+#pop_sns .pop_cont .share ul{width:438px; margin:0 auto; overflow:hidden;}
+#pop_sns .pop_cont .share ul li{float:left; margin:0 14px;}
+#pop_sns .pop_cont .share .loading{position:absolute; top:0; left:101px; width:438px; height:119px; text-align:center; filter:alpha(opacity=60); opacity:0.60; background-color:#000; overflow:hidden;}
+#pop_sns .pop_cont .share .loading img{padding-top:36px;}
+/*#pop_sns .pop_cont .share p {width:235px; margin:0 auto; padding:24px 0 25px 0;}*/
+#pop_sns .pop_cont .btn {width:640px; padding-top:30px;}
+#pop_sns .pop_cont .btn ul{width:531px; margin:0 auto; overflow:hidden;}
+#pop_sns .pop_cont .btn ul li{float:left; margin:0 2px;}
+#pop_sns .pop_bottom{width:640px; padding:73px 0 0 0;}
+#pop_sns .pop_bottom dl {width:523px; margin:0 auto;}
+#pop_sns .pop_bottom dl dt {margin-bottom:21px;}
+#pop_sns .pop_bottom dl dd {}
+
+
+
+/* 팝업:경품 및 당첨자*/
+#pop_gift {position:absolute; top:0; left:50%; margin-left:-320px; width:640px; z-index:99; background:url('/Images/BackToSchool2016/pop/bg_pop_gift.png') 0 0 no-repeat;}
+#pop_gift .btn_close{position:absolute; top:238px; right:20px; z-index:999;}
+#pop_gift .pop_header {width:640px; padding:410px 0 53px 0;}
+
+#pop_gift .pop_header .tab_area{width:640px; margin:0 auto;}
+
+#pop_gift .pop_header .tab_area ul{width:446px; margin:0 auto; overflow:hidden;}
+#pop_gift .pop_header .tab_area ul li{float:left; width:213px; height:52px; text-align:center; font-size:30px; margin:0 5px;}
+#pop_gift .pop_header .tab_area ul li a{display:block; width:213px; height:52px; font-size:20px; color:#fff; line-height:48px;}
+
+#pop_gift .pop_cont{width:640px;}
+#pop_gift .pop_cont .gift_area {height:500px; background:url('/Images/BackToSchool2016/pop/bg_gift_area.png') 0 0 no-repeat;}
+#pop_gift .pop_cont .gift_area h4{padding:0 0 38px 137px;}
+#pop_gift .pop_cont .gift_area ul{width:596px; margin:0 auto; overflow:hidden;}
+#pop_gift .pop_cont .gift_area ul li {float:left;}
+
+#pop_gift .pop_cont .dang_area {position:relative; height:867px; background:url('/Images/BackToSchool2016/pop/bg_dang_area.png') 0 0 no-repeat;}
+#pop_gift .pop_cont .dang_area .dang1{position:absolute; top:146px; left:236px; width:335px; height:116px;}
+#pop_gift .pop_cont .dang_area .dang1 ul{width:335px; height:116px; overflow-y:auto;}
+#pop_gift .pop_cont .dang_area .dang1 ul li{float:left; width:105px; text-align:center; height:29px; line-height:29px; font-size:16px; font-weight:bold; color:#5c371e;}
+#pop_gift .pop_cont .dang_area .dang2{position:absolute; top:374px; left:236px; width:335px; height:116px;}
+#pop_gift .pop_cont .dang_area .dang2 ul{width:335px; height:116px; overflow-y:auto;}
+#pop_gift .pop_cont .dang_area .dang2 ul li{float:left; width:105px; text-align:center; height:29px; line-height:29px; font-size:16px; font-weight:bold; color:#5c371e;}
+#pop_gift .pop_cont .dang_area .dang3{position:absolute; top:625px; left:236px; width:335px; height:116px;}
+#pop_gift .pop_cont .dang_area .dang3 ul{width:335px; height:116px; overflow-y:auto;}
+#pop_gift .pop_cont .dang_area .dang3 ul li{float:left; width:105px; text-align:center; height:29px; line-height:29px; font-size:16px; font-weight:bold; color:#5c371e;}
+
+#pop_gift .pop_bottom{width:640px; padding:7px 30px 0 0;}
+#pop_gift .pop_bottom .notice{width:524px; margin:0 auto;}
+
+

@@ -1,0 +1,72 @@
+
+.page-main{      
+  background: url($imgPath+'/main/bg-one.jpg') center top no-repeat;
+  background-size: cover;  
+
+  .page__inner{
+    min-width: 1200px;
+    width: 100%;
+    overflow: hidden;
+    // height: 100%;    
+    // margin: 0 auto;  
+    position: relative;        
+  }
+
+  .main-title{
+    position: absolute; 
+    top: 26%;
+    left: 3%;
+    z-index: 1;   
+  }
+  // 메인에서 바로가기버튼: 화보집, 영상선택화면
+  .btns-direct{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    line-height: 0;
+    button{
+      position: absolute;
+      top: 0; 
+      left: 44px; 
+      width: 184px;
+      height: 30px;    
+      background:rgba(0,0,0,.0001);  
+    }
+    .btn-gallery{
+      top: 228px;      
+    }
+    .btn-videoStage{
+      top: 274px;      
+    }
+  }
+  .main-product{
+    position: absolute;
+    top: 10%;  
+    right: 12%;
+    z-index: 1;
+    // transform: translateX(-50%);
+    button{
+      position: absolute;
+      display: inline-block;
+      width: 50px;
+      height: 50px;      
+      border-radius: 50%;   
+      background:rgba(0,0,0,.0001);  
+      &.btn-detail-wash{
+        top: 319px;
+        left: 74px;
+      }
+      &.btn-detail-lotion{
+        bottom: 216px;
+        right: 157px;
+      }
+      }      
+    }
+    
+    .bg-corner {
+      position: fixed;
+      bottom:0;
+      right:0;
+    }
+  }  
+

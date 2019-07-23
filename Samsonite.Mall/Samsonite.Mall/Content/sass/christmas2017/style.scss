@@ -1,0 +1,427 @@
+﻿@charset 'utf-8';
+
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import "../helpers/mixins";
+@import "../helpers/functions";
+
+// variables
+$minWidth: 320;
+$maxWidth: 980;
+$popMaxWidth: 693;
+$popConWidth: 492;
+$font-style:'Noto Sans KR', sans-serif;
+$ImgLoc: '~/Content/images/christmas2017/';
+
+html,body { 
+    position:relative;
+    width:100%;
+    min-width:$minWidth + px;
+    max-width:$maxWidth + px;
+    padding:0;
+    margin:0;
+}
+
+.event-container {
+    position: relative;
+    width: 100%;
+    //================================
+    // reset
+    //================================
+    * {
+        @include prefix((
+		   box-sizing: border-box,
+	    ), webkit moz);
+        >img {
+            width:100%;
+            height: auto;
+            vertical-align: top;
+        }
+        h2 {
+            font-size: 0;
+            margin: 0;
+        }
+        p {
+            margin: 0;
+        }
+        button {
+            width: 100%;
+            margin:0;
+            padding:0;
+            background: none;
+            border: none;
+        }
+        ul{
+            margin: 0;
+            font-size:0;
+            &:after {
+                content:""; 
+                display:block; 
+                clear:both;
+            }
+            li {
+                float: left;
+            
+            }
+        }
+        .input-ir {
+            position:absolute;
+            top:0;
+            left:0;
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            opacity: 0.001;
+            -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
+            z-index: 9;
+            cursor: pointer;
+        }
+    }
+
+    //================================
+    // 이벤트2
+    //================================
+    .dibs-area {
+        width: 100%;
+        @include background('/../Content/images/christmas2017/bg_event2.jpg', $color:#23794d, $position: bottom center);
+        .choose-product {
+            width: getPercent(928, $maxWidth);
+            margin:0 auto;
+            text-align: center;
+            overflow: hidden;
+            &-box {
+                float:left;
+                width: 50%;
+                .progress-box {
+                    position:relative;
+                    width: 100%;
+                    height: 100%;
+                    @include background('/../Content/images/christmas2017/w/bg_progress_box.png');
+                    background-size:cover;
+                    overflow:hidden;
+                    .progress-head {
+                        float:left;
+                        width: getPercent(135, 464);
+                    }
+                    .progress-body {
+                        float:left;
+                        width: getPercent(290, 464);
+                        height: 14px;
+                        margin-top: 15%;
+                        background: #86b19b;
+                        border-radius: 0 20px 20px 0;
+                        overflow: hidden;
+                        .dibs-progress-bar {
+                            width: 0%;
+                            font-size:0;
+                            overflow: hidden;
+                            transition: all 2s ease;
+                            img {
+                                width: auto;
+                                height: 14px;
+                            }
+
+                        }
+                    }
+                    p {
+                        position:absolute;
+                        bottom: 40%;
+                        left: 13%;
+                        font-family: $font-style;
+                        @include fluid-type(320px, 693px, 15px, 20.7px);
+                        color: #f4e396;
+                        text-align: center;
+
+                         // media screen and (max-width: 693px)
+                        @media screen and (max-width: 693px) {
+                            left: 12.5%;
+		                    bottom: 37.5%;
+                            @include fluid-type(320px, 693px, 11px, 20.7px);
+	                    }
+
+
+                        .total-num {
+                            @include fluid-type(320px, 980px, 15px, 36.8px);
+                            font-weight: bold;
+
+                             // media screen and (max-width: 693px)
+                            @media screen and (max-width: 693px) {
+                                @include fluid-type(320px, 693px, 18px, 36.8px);
+	                        }
+                        }
+                    }
+                    
+                } // E : progress-box
+
+                // product-box
+                .product-box{
+                    label {
+                       position: relative;
+                       width: 100%;
+                       height:100%;
+                       cursor: pointer;
+                        .product-img{
+                            display:block;
+                            position:relative;
+                            .dimm-dibs {
+                                display: none;
+                                position:absolute;
+                                top:0;
+                                left: getPercent(7, 464);
+                                width: getPercent(450, 464);
+
+                                // media screen and (max-width: 693px)
+                                @media screen and (max-width: 693px) {
+                                    width: getPercent(550, 640);
+                                    left: getPercent(45, 640);
+	                            }
+                            }
+                        }
+                        .rd-img {
+                            display:inline-block;
+                            @include background('/../Content/images/christmas2017/bg_rd_off.png');
+                            background-size:cover;
+
+                            // media screen and (max-width: 693px)
+                            @media screen and (max-width: 693px) {
+                                width: getPercent(41, $popMaxWidth);
+	                        }
+                        }
+                        input:checked ~ .rd-img {
+                            @include background('/../Content/images/christmas2017/bg_rd_on.png');
+                            background-size:cover;
+                        }
+                        input:checked ~ .product-img>.dimm-dibs {
+                            display: block;
+
+                        }
+                    }
+                }
+            }
+
+            // choose-product 
+            @media screen and (max-width: 800px) {
+                &-box {
+                    .progress-box {
+                        .progress-body {
+                            height: 10px;
+                        }
+                    }
+                }
+	        }
+            // media screen and (max-width: 693px)
+            @media screen and (max-width: 693px) {
+                width: 100%;
+                 &-box {
+                    width: 100%;
+                    .progress-box {
+                        width: getPercent(450, $popMaxWidth);
+                        margin:0 auto;
+                        @include background('/../Content/images/christmas2017/m/bg_progress_box.png');
+                        background-size: cover;
+                        .progress-head {
+                            width: getPercent(128, 450);
+                        }
+                        .progress-body {
+                            width: getPercent(292, 450);
+                            height: 13px;
+                            margin-top: 17%;
+                        }
+                    }
+                }
+            }
+            @media screen and (max-width: 500px) {
+                &-box {
+                    .progress-box {
+                        .progress-body {
+                            height: 10px;
+                        }
+                    }
+                }
+	        }
+            @media screen and (max-width: 400px) {
+                &-box {
+                    .progress-box {
+                        .progress-body {
+                            height: 8px;
+                        }
+                    }
+                }
+	        }
+        }
+
+
+         .btn-box {
+            width: getPercent(778, $maxWidth);
+            margin:0 auto;
+            padding: 8.5% 0;
+            li {
+                width: getPercent(375, 778);
+                margin: 0 getPercent(7, 778);
+            }
+
+            @media screen and (max-width: 693px) {
+                width: getPercent(580, $popMaxWidth);
+                li {
+                    width: 100%;
+                    margin-bottom: 4%;
+                }
+            }
+        }
+    }
+
+    .banner-area {
+        background: #1c497b;
+        ul li {
+            width: 100%;
+        }
+    }
+
+
+
+    //================================
+    // 팝업
+    //================================
+    #dimmed {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @include background('/../Content/images/christmas2017/dim.png', $repeat:repeat);
+        z-index: 99;
+    }
+    #pop-entry {
+        display: none;
+        position: absolute;
+        top: 28%;
+        @media screen and (max-width: 693px) {
+            top: 50%;
+        }
+        left: 50%;
+        width: 100%;
+        min-width: $minWidth + px;
+        max-width: 640px;
+        transform: translateX(-50%);
+        @include background('/../Content/images/christmas2017/bg_pop.jpg', $position: bottom center, $color:#bb4445);
+        z-index: 99;
+        font-family: $font-style;
+        .pop-con {
+            width: getPercent(600, $popMaxWidth);
+            margin: 0 auto;
+            background: #fff;
+            // S: reg-con 
+            .reg-con {
+                width: getPercent($popConWidth, 600);
+                margin: 0 auto;
+                padding: 6.35% 0 5.7% 0;
+                dl {
+                    width: 100%;
+                    margin:0;
+                    overflow:hidden;
+                    dt {
+                        float: left;
+                        width: getPercent(142, $popConWidth);
+                        height: 100%;
+                        font-size: 0;
+                        img {
+                            width: auto;
+                            @media screen and (max-width: 600px) {
+		                        width: 120px;
+	                        }
+                            @media screen and (max-width: 500px) {
+		                        width: 100px;
+	                        }
+                            @media screen and (max-width: 400px) {
+		                        width: 80px;
+	                        }
+                        }
+                    }
+                    dd {
+                        float: left;
+                        width: getPercent(350, $popConWidth);
+                        font-size: 0;
+                        input[type="text"],
+                        input[type="tel"] {
+                            width: 100%;
+                            max-width: 100%;
+                            height: 66px;
+                            margin: 2% 0 0 0;
+                            padding: 0 3%;
+                            color: #884444;
+                            font-size: 20px;
+                            line-height: 65px;
+                            vertical-align: top;
+		                    border: 1px solid #e1e8ee;
+                            @media screen and (max-width: 600px) {
+		                        height: 60px;
+                                margin-top: 1%;
+                                line-height: 60px;
+	                        }
+                            @media screen and (max-width: 500px) {
+		                        height: 50px;
+                                margin-top: 1%;
+                                line-height: 50px;
+	                        }
+                            @media screen and (max-width: 400px) {
+		                        height: 40px;
+                                line-height: 40px;
+	                        }
+                        }
+
+                        &.phone-box input {
+                            background-size: contain;
+                        }
+                    }
+                }   
+            } // E : reg-con 
+
+            .policy-area {
+                width: getPercent($popConWidth, 600);
+                margin:0 auto;
+                .policy-check{
+                    position:relative;
+                    width: 100%;
+                    label {
+                        cursor: pointer;
+                    }
+                }
+                .policy-box {
+                    background: #fff;
+                    border: 1px solid #e1e8ee;
+                    .contents {
+                        padding: 3%;
+                        height: 173px;
+                        font-size: 14px;
+                        line-height: 23px;
+                        overflow-y: scroll;
+                        @media screen and (max-width: 500px) {
+                            height: 130px;
+                            font-size: 12px;
+                            line-height: 18px;
+	                    }
+                    }
+                }
+            }
+            .btn-complete {
+                position: relative;
+                width: getPercent(318, 600);
+                margin: 0 auto;
+                padding: 4.7% 0 6.7% 0;
+                font-size: 0;
+            }   
+
+        }
+
+        .btn-close {
+            position: absolute;
+            top: 2%;
+            right: 2%;
+            width: auto;
+            background: none;
+            border: none;
+        }
+    }
+
+}
+

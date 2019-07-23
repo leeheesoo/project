@@ -1,0 +1,218 @@
+
+
+.btn {
+  border-radius: 10px;
+  @include background-image($loc + 'btn-ir.png', $pos: left top);
+  
+  &--application-detail {
+    margin-left: 670px;
+    background-position: -208px -360px;
+    @include size(132px, 32px);
+  }
+
+  &--apply {
+    margin-top: 80px;
+    background-position: left -180px;
+    @include size(349px, 80px);
+  }
+
+  &--share {
+    margin: 344px 0 0 153px;
+    background-position: left -91px;
+    @include size(349px, 80px);
+  }
+
+}
+
+.link {
+  display: inline-block;
+  @include background-image($loc + 'btn-ir.png');
+  
+  &-to-purchase {
+    margin: 650px 0 0 390px;
+    background-position: left top;
+    border-radius: 10px;
+
+    @include size(232px, 64px);
+  } 
+
+  &-naver-search {
+    background-position: left -402px;
+    @include size(319px, 120px);
+  }
+
+  &-to-youtube {
+    display: block;
+    margin-top: 587px;
+    margin-left: 696px;
+    @include size(250px, 60px);
+    // outline: 1px solid red;
+    border-radius: 10px;
+    @include background-image($loc + 'btn-video.png', $pos: left bottom);
+
+  }
+}
+
+/* .reviews {
+  outline: 1px solid red;
+  padding-top: 100px;
+  font-size: 0;
+  // text-align: left;
+
+  .review {
+    outline: 1px solid blue;
+    display: inline-block;
+    width: 350px;
+    height: 400px;
+    margin-right: 25px;
+    &:nth-last-child(1) {
+      margin-right: 0;
+    }
+
+    & > a[href] {
+      display: block;
+      height: 100%;
+    }
+  }
+} */
+
+/* 네이버 검색 */
+.naver-search-go {
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  top: 282px;
+  font-size: 0;
+
+  & > a[href] {
+    display: inline-block;
+  }
+
+  .text-flow {
+    position: absolute;
+    top: 35px;
+    right: 480px;
+    width: 0px;
+    height: 50px;
+    background: #fff;
+    z-index: 1;
+  }
+
+  .animate-flow {
+    -webkit-animation: flow 3s infinite;
+    animation: flow 3s infinite;
+  }
+  
+  .deco-arrow {
+    position: absolute;
+    top: 80px;
+    left: 957px;
+  }
+}
+
+/* 유튜브 플레이어 */
+.player-wrap{
+  margin: 39px 0 0 1px;
+  display: inline-block;
+  position: relative;
+
+  .deco {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+@-webkit-keyframes flow {
+  0% {
+    width: 500px;
+  }
+  80% {
+    width: 0;
+  }
+}
+
+@keyframes flow {
+  0% {
+    width: 500px;
+  }
+  80% {
+    width: 0;
+  }
+}
+
+.has-shadow {
+  -webkit-box-shadow: 30px 30px 55px -5px rgba(31,63,0, 0.2);
+  -moz-box-shadow   : 30px 30px 55px -5px rgba(31,63,0, 0.2);
+  box-shadow        : 30px 30px 55px -5px rgba(31,63,0, 0.2);
+  &--naver {
+    -webkit-box-shadow: 30px 30px 55px -5px rgba(0,15,90, 0.2);
+    -moz-box-shadow   : 30px 30px 55px -5px rgba(0,15,90, 0.2);
+    box-shadow        : 30px 30px 55px -5px rgba(0,15,90, 0.2);
+  }
+}
+
+/* .img-slider {
+  padding: 262px 0 0 116px;
+} */
+
+.img-slider {
+  // outline: 1px solid salmon;
+  margin: 0 auto;
+  width: 1000px;
+  /* .web-hashsnap-net-iframe {
+    height: 396px;
+  } */
+
+  .slick-dots {
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .slick-dots li button:before {
+    color: #fff;
+    opacity: 1;
+    font-size: 50px;
+    line-height: 0;
+  }
+
+  .slick-dots li.slick-active button:before {
+    color: #a9adae;
+  }
+
+  .slick-arrow {
+    width: 40px;
+    height: 72px;
+    // outline: 1px solid red;
+    left: -7%;
+    @include background-image($loc + "btn-ir.png", $pos: -406px -92px);
+    &.slick-next {
+      background-position: -449px -92px;
+      left: auto;
+      right: -7%;
+    }
+  }
+
+  .slick-prev:before,
+  .slick-next:before {
+    content: "";
+  }
+
+  .slide {
+    font-size: 0;
+    margin: 0 auto 40px;
+    padding: 0 5px;
+    outline: 1px dashed green;
+    &__cell{
+      @include size(170px);
+      display: inline-block;
+      margin: 0 5px 5px 0;
+      &:nth-child(5n){
+        margin: 0 0 5px 0;
+      }
+    }
+  }
+}
+
+
+

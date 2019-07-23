@@ -1,0 +1,109 @@
+﻿@model INGLife.Event.Models.KMCModels.RequestKMCModel
+@{
+    ViewBag.Title = "Index2";
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>본인인증서비스 Sample 화면</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+    <meta name="robots" content="noindex">
+    <style>
+        <!--
+        body, p, ol, ul, td {
+            font-family: 굴림;
+            font-size: 12px;
+        }
+
+        a:link {
+            size: 9px;
+            color: #000000;
+            text-decoration: none;
+            line-height: 12px;
+        }
+
+        a:visited {
+            size: 9px;
+            color: #555555;
+            text-decoration: none;
+            line-height: 12px;
+        }
+
+        a:hover {
+            color: #ff9900;
+            text-decoration: none;
+            line-height: 12px;
+        }
+
+        .style1 {
+            color: #6b902a;
+            font-weight: bold;
+        }
+
+        .style2 {
+            color: #666666;
+        }
+
+        .style3 {
+            color: #3b5d00;
+            font-weight: bold;
+        }
+        -->
+    </style>
+
+    <script type="text/javascript">
+  window.name = "kmcis_web_sample";
+
+  var KMCIS_window;
+
+  function openKMCISWindow(){
+    var UserAgent = navigator.userAgent;
+
+    /* 모바일 접근 체크*/
+    // 모바일일 경우 (변동사항 있을경우 추가 필요)
+    if (UserAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || UserAgent.match(/LG|SAMSUNG|Samsung/) != null) {
+ 		  document.reqKMCISForm.target = '';
+    }
+
+    // 모바일이 아닐 경우
+    else {
+ 		  KMCIS_window = window.open('', 'KMCISWindow', 'width=425, height=550, resizable=0, scrollbars=no, status=0, titlebar=0, toolbar=0, left=435, top=250' );
+
+ 		  if(KMCIS_window == null){
+			  alert(" ※ 윈도우 XP SP2 또는 인터넷 익스플로러 7 사용자일 경우에는 \n    화면 상단에 있는 팝업 차단 알림줄을 클릭하여 팝업을 허용해 주시기 바랍니다. \n\n※ MSN,야후,구글 팝업 차단 툴바가 설치된 경우 팝업허용을 해주시기 바랍니다.");
+      }
+
+ 		  document.reqKMCISForm.target = 'KMCISWindow';
+    }
+
+    document.reqKMCISForm.action = 'https://www.kmcert.com/kmcis/web/kmcisReq.jsp';
+    document.reqKMCISForm.submit();
+  }
+
+//-->
+    </script>
+
+</head>
+
+<body bgcolor="#FFFFFF" topmargin=0 leftmargin=0 marginheight=0 marginwidth=0>
+    <center>
+        <!-- 본인인증서비스 요청 form --------------------------->
+        <form name="reqKMCISForm" method="post" action="#">
+            <input type="hidden" name="tr_cert" value="@Model.Enc_Tr_Cert">
+            <input type="hidden" name="tr_url" value="@Model.Tr_Url">
+            <input type="hidden" name="tr_add" value="@Model.Tr_Add">
+            <input type="submit" value="본인인증서비스 요청" onclick="javascript:openKMCISWindow();">
+        </form>
+        <BR>
+        <BR>
+        <!--End 본인인증서비스 요청 form ----------------------->
+
+        <br>
+        <br>
+        이 Sample화면은 본인인증서비스 요청화면 개발시 참고가 되도록 제공하고 있는 화면입니다.<br>
+        <br>
+    </center>
+</body>
+</html>
+

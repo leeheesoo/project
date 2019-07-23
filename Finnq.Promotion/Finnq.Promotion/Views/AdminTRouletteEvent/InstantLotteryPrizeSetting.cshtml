@@ -1,0 +1,87 @@
+﻿@model Finnq.Promotion.Models.RouletteEventModels.TRouletteEventPrizeSettingModel
+@{
+    ViewBag.Title = "즉석당첨 경품 관리";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row" id="t-roulette-prize-setting">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            @using (Ajax.BeginRouteForm("CreateTRoulettePrizeSetting", new { httpRoute = true },
+                new AjaxOptions {
+                    HttpMethod = "post",
+                    OnBegin = "tRoulettePrizeSettingModel.beginEntry",
+                    OnComplete = "tRoulettePrizeSettingModel.completeEntry",
+                    OnFailure = "tRoulettePrizeSettingModel.failEntry",
+                    OnSuccess = "tRoulettePrizeSettingModel.successEntry"
+                },
+                new { id = "frmTRoulettePrizeSetting" })) {
+                                <span>날짜 : </span> @Html.TextBoxFor(x => x.Date, new { @class = "datepicker" })<br />
+                                <span>경품번호 : </span>@Html.EnumDropDownListFor(x => x.PrizeType)<br />
+                                <span>총경품수량 : </span>@Html.TextBoxFor(x => x.TotalCount)<br />
+                                <span>당첨시작시간 : </span>@Html.TextBoxFor(x => x.StartTime)<br />
+                                <span>확률(0~1) : </span>@Html.TextBoxFor(x => x.Rate)<br />
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-info btn-block btn-sm"><i class="fa fa-add fa-fw"></i>경품생성</button>
+                                </div>
+                            }
+                        </div>
+                        <div style="float:right;padding-bottom:10px">
+                            전체 <span style="color:red">{{ data.length }}</span>건
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover table-condensed" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th class="vert-middle text-center">날짜</th>
+                                            <th class="vert-middle text-center">경품명</th>
+                                            <th class="vert-middle text-center">총경품수량</th>
+                                            <th class="vert-middle text-center">총당첨수량</th>
+                                            <th class="vert-middle text-center">당첨시작시간(0~23)</th>
+                                            <th class="vert-middle text-center">확률(0~1)</th>
+                                            <th class="vert-middle text-center">관리</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="(index,item) in data">
+                                            <td class="vert-middle text-center">{{ item.Date | getDate }}</td>
+                                            <td class="vert-middle text-center">{{ item.PrizeName }}</td>
+                                            <td class="vert-middle text-center"><input type="tel" v-model="item.TotalCount"></td>
+                                            <td class="vert-middle text-center">{{ item.WinnerCount }}</td>
+                                            <td class="vert-middle text-center"><input type="tel" v-model="item.StartTime"></td>
+                                            <td class="vert-middle text-center"><input type="tel" v-model="item.Rate"></td>
+                                            <td class="vert-middle text-center"><button type="button" class="btn btn-block btn-warning" v-on:click="updateRoulettePrizeSetting(item)">수정</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+@section scripts {
+    <script src="~/Scripts/vue.min.js"></script>
+    <script src="~/Content/t-roulette/js/admin.js"></script>
+    <script>
+        $(function () {
+            tRoulettePrizeSettingModel.goToPage();
+        });
+    </script>
+}
+
+

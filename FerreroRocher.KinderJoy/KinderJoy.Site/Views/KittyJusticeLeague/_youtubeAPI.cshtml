@@ -1,0 +1,65 @@
+﻿<script type="text/javascript">
+    // This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "//www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var popAutoPlayMode = false; //  열리면서 시작하는 모드
+
+       var popP;
+       //var onReady = false;
+       function onYouTubeIframeAPIReady() {
+           popP = new YT.Player('popPlayer', {
+               height: 315,
+               width: 560,
+               videoId: 'S_av-wDN9iw',
+               //videoId:'IxFaSvAVklI',
+               playerVars: {
+                   controls: 0,
+                   rel: 0,
+                   showinfo: 0
+               },
+               events: {
+                   'onReady': fnPlay,
+                   'onStateChange': fnReplay
+               }
+           });
+
+       }
+       function fnPlay(e) {
+           //console.log('>>>> ready>> ');
+
+           fnPlayOption();
+
+           //player.addEventListener('onStateChange', function (e) {
+           //    console.log('State is:', e.data);
+           //});
+       }
+
+       function fnPlayOption() {
+           if (popAutoPlayMode) popP.playVideo();
+       }
+
+       function fnReplay(e) {
+
+           //console.log('e>> ' + e.data);
+           //console.log(popP.getCurrentTime());
+
+           if (e.data == YT.PlayerState.PLAYING) {
+               setTimeout(function () {
+                   $('.popup .btn-right').show();
+               }, 3000);
+           }
+
+           if (e.data === YT.PlayerState.ENDED) {
+               //console.log('end');
+               //if (deviceOs == 'ios') event.target.webkitExitFullScreen();
+               $('.popup .btn-right').show();
+               setTimeout(function () {
+                    kittyJusticeLeagueModel.createInstantLottery();
+               },500);
+
+           }
+       }
+</script>

@@ -1,0 +1,412 @@
+﻿@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@charset 'utf-8';
+$fontStyle: 'Noto Sans KR';
+$inputBorder: 1px solid #ac9988;
+$inputBg: #fff;
+$inputTextColor: #777;
+$location: '../../Images/orange4050/form/';
+$popWidth: 720px;
+$popInnerWidth: 600px;
+
+// form - input border-radius
+@mixin form-input-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	border-radius: $radius;
+}
+
+
+//-----------------------------
+// 팝업공통
+//-----------------------------
+div[id^="pop-"] {
+	display: none;
+	position: absolute;
+	left: 50%;
+	width: $popWidth;
+	margin-left: -($popWidth/2);
+	z-index: 99;
+	background-color: #fff;
+}
+
+.inner-pop {
+	width: $popInnerWidth;
+	margin: 0 auto;
+	padding-bottom: 50px;
+}
+
+.header {
+	position: relative;
+	background-color: #e2703a;
+
+	button {
+		position: absolute;
+		right: 15px;
+		top: 15px;
+		background-image: url(about:blank);
+	}
+}
+
+.pop-title {
+	height: 160px;
+	line-height: 160px;
+	text-align: center;
+
+	img {
+		vertical-align: middle;
+	}
+}
+
+label {
+	cursor: pointer;
+}
+
+img {
+	pointer-events: none;
+}
+
+input {
+	min-width: initial;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+select {
+	width: $popInnerWidth;
+	height: 70px;
+	min-width: auto;
+	padding-left: 30px;
+	margin-bottom: 15px;
+	line-height: 57px;
+	border: $inputBorder;
+	background: $inputBg;
+	color: $inputTextColor;
+	font-family: $fontStyle;
+	font-size: 24px;
+	box-sizing: border-box;
+	@include form-input-radius(5px);
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: .0001;
+}
+
+
+
+
+//-----------------------------
+// 개인정보팝업
+//-----------------------------
+.pop-personal {
+	background: #fff;
+
+	.top-note {
+		margin-top: 60px;
+		text-align: center;
+	}
+
+	.btn-phoneconfirm {
+		margin: 30px 0 70px;
+		;
+		text-align: center;
+
+		button {
+			@include form-input-radius(5px);
+			background-color: #524840;
+		}
+	}
+	//input style
+	label {
+		position: relative;
+		display: inline-block;
+		width: 190px;
+		line-height: 45px;
+		font-size: 0;
+
+		&.width-auto {
+			width: auto;
+		}
+
+		span {
+			display: inline-block;
+			width: 45px;
+			height: 45px;
+			margin-right: 13px;
+			@include background('input-check.png', $repeat:no-repeat, $position:center top);
+
+			&.em {
+				@include background('input-check-em.png', $position:center top);
+			}
+		}
+
+		span.radio {
+			display: inline-block;
+			width: 45px;
+			height: 45px;
+			margin-right: 13px;
+			@include background('input-radio.png', $repeat:no-repeat, $position:center top);
+
+			&.em {
+				@include background('input-radio-em.png',$position:center top);
+			}
+		}
+
+		.check-dimm {
+			position: absolute;
+			top: -7px;
+			left: -7px;
+			width: 95%;
+			height: 53px;
+			background: transparent;
+			opacity: .3;
+		}
+
+		input:checked ~ .check-dimm {
+			display: block;
+		}
+
+		input:checked ~ span {
+			background-position: center bottom !important;
+		}
+
+		img {
+			margin-right: 15px;
+			vertical-align: middle;
+		}
+	}
+
+	.select-title {
+		display: block;
+		margin: 40px 0 20px;
+	}
+	//info-area
+	.info-area {
+		position: relative;
+		text-align: left;
+
+		.transparent-bg {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: $popInnerWidth;
+			height: 240px;
+			background: rgba(0,0,0,0.000001);
+
+			a {
+				display: block;
+				height: 100%;
+				cursor: default;
+			}
+		}
+
+		.name-line {
+			input[type="text"] {
+				float: left;
+				width: 380px;
+				margin-right: 10px;
+			}
+
+			.gender {
+				float: left;
+				width: 210px;
+				height: 70px;
+				overflow: hidden;
+				font-size: 0;
+
+				label {
+					cursor: pointer;
+				}
+
+				.info-male {
+					width: 106px;
+
+					span {
+						width: 106px;
+						height: 70px;
+						@include background('btn-man.png', $repeat:no-repeat, $position:top center);
+					}
+
+					input:checked ~ span {
+						background-position: center bottom;
+					}
+				}
+
+				.info-female {
+					width: 104px;
+
+					span {
+						width: 104px;
+						height: 70px;
+						margin: 0;
+						@include background('btn-woman.png', $repeat:no-repeat, $position:top center);
+					}
+
+					input:checked ~ span {
+						background-position: center bottom;
+					}
+				}
+			}
+		}
+
+		input[type="text"] {
+			background-position: 30px center;
+		}
+	}
+
+	.agree-notice {
+		padding: 0;
+		padding-bottom: 42px;
+		margin: 26px 0 44px 0;
+		border: none;
+		border-bottom: 2px solid #777;
+	}
+	//개인정보 수집이용,개인정보의 제공
+	.agree-text {
+		margin-bottom: 38px;
+		text-align: left;
+
+		p {
+			margin-top: 15px;
+			padding-top: 30px;
+			border-top: 1px solid #777;
+		}
+
+		.label-agree {
+			width: 175px;
+
+			&.disagree {
+				width: 240px;
+			}
+		}
+
+		&.bottom-line {
+			padding-bottom: 30px;
+			border-bottom: 1px solid #cbcccd;
+		}
+	}
+	//보유 이용기간
+	.retention-period {
+		font-size: 0;
+		text-align: left;
+
+		label[for="year2"],
+		label[for="year1"] {
+			margin-top: 15px;
+		}
+	}
+	//연락방식 선택
+	.contact-check {
+		font-size: 0;
+		text-align: left;
+
+		p {
+			margin-bottom: 20px;
+		}
+	}
+	//-----------------------------
+	// 이모티콘영역 추가
+	//-----------------------------
+	.emoticon-view {
+		margin-top: 20px;
+
+		> img {
+			display: none;
+		}
+
+		.emoticon-note {
+			margin: 30px 0 70px;
+		}
+	}
+	//-----------------------------
+	// 입력완료 button
+	//-----------------------------
+	.btn-complete-box {
+		position: relative;
+		margin-top: 34px;
+		padding-top: 44px;
+		border-top: 1px solid #ac9988;
+
+		.loading {
+			position: absolute;
+			top: 44px;
+			left: 0;
+			width: 100%;
+			height: 112px;
+			text-align: center;
+			filter: alpha(opacity=60);
+			opacity: 0.60;
+			background-color: #000;
+			overflow: hidden;
+
+			img {
+				padding-top: 25px;
+			}
+		}
+	}
+}
+
+//-----------------------------
+// 동의문구 팝업
+//-----------------------------
+.agree-pop {
+	text-align: center;
+	padding-bottom: 80px;
+	z-index: 999 !important;
+
+	.header {
+		height: 160px;
+
+		.pop-title {
+			line-height: 160px;
+		}
+	}
+
+	.inner-pop {
+		width: 600px;
+		padding: 60px 0 80px;
+		margin: 0 auto;
+		text-align: left;
+	}
+}
+
+
+//-----------------------------
+// 우편번호 팝업
+//-----------------------------
+/*.pop-post {
+    padding: 0;
+    .btn-close {
+        top: 0px;
+        right: 0px;
+    }
+}*/
+
+//-----------------------------
+// 필수확인사항 팝업 추가
+//-----------------------------
+.pop-confirm {
+	height: 850px;
+	@include background('pop-confirm.png', $repeat:no-repeat);
+	background-color: #f7f3e7 !important;
+
+	.btn-close {
+		position: absolute;
+		right: 14px;
+		top: 14px;
+	}
+
+	.btn-ok {
+		a {
+			display: block;
+			width: 488px;
+			height: 80px;
+			margin: 710px auto 0;
+			@include background('btn-agree.png', $repeat:no-repeat);
+		}
+	}
+}

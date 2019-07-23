@@ -1,0 +1,376 @@
+﻿$innerW: 920px;//popup inner W
+$inputBorder:2px solid #dedede;
+$inputColor:#eee;
+$font:'Noto Sans KR', sans-serif;
+$locationPop: '../images/popup/';
+
+@mixin form-input-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin border-box() {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+//input 숨기기
+.input-none {
+    position:absolute;
+    width:1px;
+    height:1px;
+    opacity:.01;
+}
+
+button {
+    background:none;
+    border:none;
+}
+
+.dim {
+    display:none;;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+    background: #000;
+    opacity: .7;
+    filter: alpha(opacity=80);
+    z-index: 10;
+}
+
+
+/*
+==============================================
+popup 공통
+==============================================
+*/
+.popups {
+    display:none;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    width: 1040px;
+    margin-left: -520px;
+    padding-bottom:100px;
+    background: #fff;
+    overflow: hidden;
+    z-index: 99;
+    .btn-close {
+        position: absolute;
+        top: 60px;
+        right: 60px;
+    }
+    .pop-header{
+        width: inherit;
+        height: 297px;
+        background: url($locationPop + 'popup_bg.jpg') no-repeat #fb9a40;
+        background-size:cover;
+        h3 {
+            padding-top:80px;
+            text-align: center;
+        }
+    }
+    .pop-con {
+        width: $innerW;
+        margin: 0 auto;
+    }
+}
+
+
+/*
+==============================================
+pop-info
+==============================================
+*/
+.pop-info {
+    legend{
+        display:none;
+    }
+    fieldset {
+       padding:0;
+    }
+    .pop-con {
+        
+        /* info-area */
+        .info-area {
+            width: $innerW;
+            margin: 0 auto;
+            dl {
+                width: $innerW;
+                margin: 0 auto;
+                padding-bottom: 10px;
+                overflow: hidden;
+                &:last-child {
+                    padding:0;
+                }
+                dt {
+                    padding:60px 0 30px;
+                }
+                dd {
+                    line-height:96px;
+                    >img {
+                       vertical-align: middle;
+                    }
+                    input {
+                        width: 285px;
+                        max-width:$innerW;
+                        height: 96px;
+                        padding: 0 10px;
+                        background:$inputColor;
+                        border: $inputBorder;
+                        color: #231f1f;
+                        font-size: 40px;
+                        vertical-align: top;
+                        line-height: 96px;
+                        font-family: $font;
+                        @include border-box();
+                        @include form-input-radius(3px);
+                        }
+                     input[type="text"] {
+                         width: $innerW;
+                         &.ph_phone {
+                             width:285px;
+                         }
+                      }
+                }
+            }
+        }
+        /* policy-area */
+        .policy-area {
+            width: $innerW;
+            margin: 30px auto 0;           
+            // 개인정보 체크영역
+            p.policy-check {
+                width: $innerW;
+                padding:30px 0 0;
+                margin-bottom: 28px;
+                input {
+                    @extend .input-none;
+                }
+                input ~ span {
+                    display: inline-block;
+                    width: 228px;
+                    height:65px;
+                    background:url($locationPop + 'agree_check.png');
+                    background-repeat: no-repeat;
+                    background-position: 0 0;
+                    cursor: pointer;
+                }
+                input:checked ~ span {
+                   background-position: 0 -78px;
+                }
+            }
+            .contents {
+                width:$innerW;;
+                height: 240px;
+                padding: 35px 30px;
+                border: 1px solid #999;
+                background: $inputColor;
+                color: #5e5e5e;
+                border:$inputBorder;
+                font-size: 25px;
+                text-align: left;
+                line-height: 44px;
+                resize: none;
+                font-family: $font;
+                overflow-y: scroll;
+            }
+            .policy-box2 { padding-top:0; }
+
+            // 나이동의
+                .age-check {
+                    margin:75px 0 40px; 
+                    input {
+                        @extend .input-none;
+                    }
+                    input ~ span {
+                        display: inline-block;
+                        width:451px;
+                        height:65px;                  
+                        background:url($locationPop + 'age_agree_check.png');
+                        background-repeat: no-repeat;
+                        background-position: 0 0;
+                        cursor: pointer;
+                    }
+                    input:checked ~ span {
+                        background-position: 0 -78px;
+                    }
+                }
+                .age-note {
+                    margin-bottom:80px;
+                }
+        }
+
+        .btn {
+            display:block;
+            position: relative;
+            margin: 0 auto;
+            padding:0;
+            .loading {
+                position: absolute;
+                top: 0;
+                left:50%;
+                width: 506px;
+                height: 128px;
+                margin-left:-253px;
+                text-align: center;
+                line-height: 120px;
+                opacity: .6;
+                background: #000;
+                overflow: hidden;
+                @include form-input-radius(65px);
+                img {
+                   vertical-align: middle;
+                }
+            }
+            input[type="submit"] {
+                @extend .input-none;
+            }
+
+        }
+           .next-text {
+               padding:50px 0 80px;
+               text-align:center;            
+            }
+    }
+}
+
+
+/*
+==============================================
+ roulette01
+==============================================
+*/
+.roulette01 {
+    .pop-con {
+        position:relative;
+        text-align:center;
+        .the_wheel {
+            margin:88px 0 60px;
+        }
+        .pointer {
+            position:absolute;
+            left:50%;
+            top:-27px;
+            margin-left:-30px;            
+        }
+        .rolette-logo {
+            position:absolute;
+            left:50%;          
+            top:285px;
+            margin-left:-109px;
+        }
+        .finger-img {
+            position:absolute;
+            right:120px;
+            bottom:-100px;
+            
+        }
+        .btn-start {
+            cursor:pointer;
+            }
+        }
+    
+
+}
+
+/*
+==============================================
+ roulette02
+==============================================
+*/
+.roulette02 {
+    h3 {
+        &>img {
+            display:block;
+            margin:0 auto;
+        }
+        span {
+            display:block;
+            margin-top:15px;
+        }
+    }
+    .pop-con {
+        position:relative;
+        text-align:center;
+        .rolette-img {
+            margin-top:60px;
+        }
+        button {
+            margin:60px 0 50px;
+        }
+    }
+
+}
+
+
+/*
+==============================================
+ friend
+==============================================
+*/
+.friend {
+    .pop-con {
+        text-align:center;
+        h4 {
+            padding:95px 0 60px;
+        }
+        button {
+            padding:0;
+            margin:0 6px;
+        }
+    }
+}
+
+
+
+
+
+
+
+/*
+==============================================
+floating
+==============================================
+*/
+
+.floating{
+	animation-name: floating;
+	-webkit-animation-name: floating;
+
+	animation-duration: 1.8s;	
+	-webkit-animation-duration: 1.8s;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@keyframes floating {
+	0% {
+		transform: translateY(0%);	
+	}
+	50% {
+		transform: translateY(8%);	
+	}	
+	100% {
+		transform: translateY(0%);
+	}			
+}
+
+@-webkit-keyframes floating {
+	0% {
+		-webkit-transform: translateY(0%);	
+	}
+	50% {
+		-webkit-transform: translateY(8%);	
+	}	
+	100% {
+		-webkit-transform: translateY(0%);
+	}			
+}
+

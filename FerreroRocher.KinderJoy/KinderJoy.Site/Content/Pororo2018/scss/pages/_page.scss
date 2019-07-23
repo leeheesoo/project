@@ -1,0 +1,244 @@
+﻿//---------------------------------------------------
+// for this site
+//---------------------------------------------------
+.header {
+   min-width:1300px;
+}
+
+.header-title {
+  font-size: 0;
+}
+
+.container {
+  min-width: unset;
+  max-width: unset;
+  width: auto;
+  padding: 0;
+}
+
+
+//---------------------------------------------------
+// event 영역 스타일
+//---------------------------------------------------
+body {
+  position: relative;
+ // background: #f4e3c8;
+}
+
+
+
+.event-container {
+  position: relative;
+  min-width: 1300px;
+  padding-top: 70px;
+  margin:0 auto;
+
+ 
+ //kv
+ .event-kv {
+     position:relative;
+     min-width: 1300px;
+     height:1319px;
+     overflow:hidden;
+     @include background('kv_bg.jpg', $repeat:no-repeat);
+     .kv-inner {
+         position:relative;
+         width:100%x;
+         max-width:2000px;
+         margin:0 auto;
+         h2 {
+             position:absolute;
+             left:40px;
+             top:40px;
+             margin:0;
+             font-size:0;
+         }
+         h3 {
+             padding:85px 0 0 0;
+             margin:0;
+         }
+     }
+
+     .rino-wrap {
+        position:relative;
+        width:1300px;
+        height:900px;
+        margin:0 auto;
+         
+         .rino {
+             position:relative;
+             width:684px;
+               >span {
+                 position:absolute;
+                 top:-6px;
+                 left:8px;
+             }
+         }
+         .pororo-friend {
+             position:absolute;
+             top:70px;
+             right:150px;
+         }
+
+     }
+
+     .small-toy-bg {
+         position:absolute;
+         top:0;
+         width:100%;
+         height:1308px;
+         @include background('kv_small_toy.png', $repeat:no-repeat);
+     }
+ }
+
+
+  
+  // 이벤트 참여영역
+  .event-area {
+    position: relative;
+    height:3675px;
+    @include background('content_bg.jpg', $repeat:no-repeat);
+    overflow: hidden;
+    h4 {
+        margin:160px 0 67px 0;
+    }
+
+    // 네이버 검색 유도 영역
+    .naver-search-go {
+      position: relative;
+      width: 920px;
+      margin: 0 auto;
+      height: 440px;
+      padding-top: 230px;
+
+      a {
+        position: absolute;
+        bottom:2px;
+        left:8px;
+        display: inline-block;
+        z-index: 1;
+      }
+
+      .search-deco {
+        position: absolute;
+        top: 0;
+        left: 93px;
+        width: 750px;
+        height: 315px;
+        @include background('naver_search_deco.png', $y: 0);
+      }
+
+      .search-deco-click {
+        position: absolute;
+        bottom:-75px;
+        right: 0;
+        width: 152px;
+        height: 112px;
+        @include background('click.png', $y: 0);
+        z-index:10;
+      }
+
+      .text-flow {
+        position: absolute;
+        top: 330px;
+        right: 440px;
+        width: 0px;
+        height: 50px;
+        background: #fff;
+        z-index: 1;
+      }
+    }
+   
+
+    //이벤트기간,방법
+    .event-period {
+        width:890px;
+        height:486px;
+        margin:50px auto 65px;
+        @include background('event_rule.png', $repeat:no-repeat);
+    }
+    .event-give {
+        width:922px;
+        height:521px;
+        margin:0 auto 65px;
+        @include background('event_give.png', $repeat:no-repeat);
+    }
+  }
+
+  //video
+  .video-wrap {
+      position:relative;
+      width:944px;
+      height:728px;
+      margin:0 auto;
+      @include background('video_bg.png', $repeat:no-repeat);
+      //영상준비전 이미지
+      .video-pororo-img {
+          overflow:hidden;         
+        >img {
+            margin-top:120px;
+            border-radius:20px;
+            cursor:pointer;
+        }
+      }
+      //영상
+      .video-inner {
+          position:relative;
+          #eventPlayer {
+              margin:125px 0 0 25px;
+          }
+          .play-cover {
+              position:absolute;
+              top:125px;
+              left:94px;
+              width:780px;
+              height:430px;
+              line-height:430px;
+              background:rgba(0,0,0,.7);
+              cursor:pointer;
+              > img {
+                  vertical-align:middle;
+              }
+          }
+        #eventPlayer {
+            width:780px;
+            height:430px;
+            margin-bottom:24px;
+        }
+      }
+      >span {
+          position:absolute;
+          &.deco-rino {
+              left:-190px;
+              bottom:-10px;
+          }
+          &.deco-book {
+              right:-80px;
+              bottom:-20px;
+          }
+      }
+  }
+
+
+}
+  // 하단 유의사항
+  .event-note {
+    position: relative;
+    background: #514337;
+    .event-note-inner {
+    width:100%;
+    height:360px;
+    @include background('footer.png', $repeat:no-repeat);
+    }
+  }
+
+  //copyright
+  .pororo-event-copyright {
+      height:50px;
+      line-height:50px;
+      background-color:#ececec;
+      text-align:center;
+      img {
+          vertical-align:middle;
+      }
+  }

@@ -1,0 +1,117 @@
+﻿@using KinderJoy.Site.Infrastructure.Admin
+@model KinderJoy.Site.Models.Admin.Christmas2015.WinEntry
+@{
+    ViewBag.Title = "[2015크리스마스이벤트] 즉석당첨 당첨로직";
+    var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+    var action = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    ViewBag.returnMsg = (HttpContext.Current.Request.QueryString["returnMsg"] == null ? "" : HttpContext.Current.Request.QueryString["returnMsg"].ToString());
+}
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <h1>@ViewBag.Title</h1>
+        </div>
+        @if (User.IsInAnyRole("Administrators")) {
+            <div class="row" style="float:left;width:100%;padding-top:20px;padding-bottom:30px">
+                @using (Ajax.BeginForm("ExcelUpload", "Admin2015Christmas", new AjaxOptions { HttpMethod = "post" }, new { enctype = "multipart/form-data", id = "frmExcelUpload" })) {
+                    <table>
+                        <tr>
+                            <td style="padding-left:10px;">
+                                @Html.TextBoxFor(e => e.Data, new { type = "file" })
+                            </td>
+                            <td style="padding-left:10px">
+                                <button type="submit" class="btn btn-primary btn-sm">엑셀 업로드</button>
+                            </td>
+                        </tr>
+                    </table>
+            }
+            </div>
+            }
+            <div style="float:right;padding-bottom:10px">
+                전체 <b style="color:red" data-bind="text: totalItemCount"></b> 건
+                <a class="btn btn-default" href="@Url.Action("ExcelDownload", "Admin2015Christmas", new { Type = action })">엑셀다운로드</a>
+            </div>
+            <table class="table table-striped table-bordered table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th style="text-align:center;vertical-align:middle">No.</th>
+                        <th style="text-align:center;vertical-align:middle;">날짜</th>
+                        <th style="text-align:center;vertical-align:middle;">경품유형</th>
+                        <th style="text-align:center;vertical-align:middle;">총 수량</th>
+                        <th style="text-align:center;vertical-align:middle;">당첨 수량</th>
+                        <th style="text-align:center;vertical-align:middle;">시작시간</th>
+                        <th style="text-align:center;vertical-align:middle;">확률</th>
+                    </tr>
+                </thead>
+                <tbody style="text-align:center" data-bind="foreach: items">
+                    <tr>
+                        <td data-bind="text: $index() + 1"></td>
+                        <td data-bind="text: $root.convertToDateFormat(date)"></td>
+                        <td style="text-align:left" data-bind="text: prizeName"></td>
+                        <td style=""><input type="text" class="form-control input-sm" data-bind="attr:{'id':'TC_'+$index()+1}, value:totalCount" style="float:left;width:150px" /><button type="submit" class="btn btn-warning btn-xs" style="float:left" data-bind="click: function() { $root.updateSettings('TC','TC_'+$index()+1,date,prizeType) }">수정</button></td>
+                        <td data-bind="text:winnerCount"></td>
+                        <td style="" data-bind=""><input type="text" class="form-control input-sm" data-bind="attr:{'id':'ST_'+$index()+1}, value:startTime" style="float:left;width:150px" /><button type="submit" class="btn btn-warning btn-xs" style="float:left" data-bind="click: function() { $root.updateSettings('ST','ST_'+$index()+1,date,prizeType) }">수정</button></td>
+                        <td style="" data-bind=""><input type="text" class="form-control input-sm" data-bind="attr:{'id':'RT_'+$index()+1}, value:rate" style="float:left;width:150px" /><button type="submit" class="btn btn-warning btn-xs" style="float:left" data-bind="click: function() { $root.updateSettings('RT','RT_'+$index()+1,date,prizeType) }">수정</button></td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            if ('@ViewBag.returnMsg' != '') {
+                alert('@ViewBag.returnMsg');
+            }
+
+            function ListViewModel() {
+                var self = this;
+                self.totalItemCount = ko.observable();
+                self.items = ko.observableArray();
+
+                /* 날짜 convert */
+                self.convertToDateFormat = function (date) {
+                    return moment(date).format('YYYY-MM-DD');
+                }
+
+                self.loadData = function () {
+                    var startDate = $("#fromDateFilter").val();
+                    var endDate = $("#toDateFilter").val();
+                    $.post('/api/2015-christmas/win-settings', {
+                    }, function (data) {
+                        self.items(data);
+                        self.totalItemCount(data.length);
+                    });
+                }
+                self.loadData();
+                self.updateSettings = function (type, id, date, prizeType) {
+                    var convertDate = self.convertToDateFormat(date);
+                    value = $('#' + id).val();
+                    $.ajax({
+                        type: 'post',
+                        cache: false,
+                        async: false,
+                        dataType: 'json',
+                        url: '/api/2015-christmas/update-win-settings',
+                        data: {
+                            date: convertDate,
+                            prizeType: prizeType,
+                            key: type,
+                            value: value
+                        },
+                        success: function () {
+                            alert('수정되었습니다.');
+                        }, error: function (req) {
+                            alert(req.responseJSON.message);
+                        }
+                    });
+
+                }
+            }
+
+            
+            var viewModel = new ListViewModel();
+            ko.applyBindings(viewModel);
+        });
+    </script>

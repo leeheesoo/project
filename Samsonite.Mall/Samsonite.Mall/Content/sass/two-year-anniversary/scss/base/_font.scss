@@ -1,0 +1,17 @@
+/*!
+ * font set
+ * 2017.10.11
+ */
+
+//---------------------------------------------------
+// import
+//---------------------------------------------------
+// 'Noto Sans KR'
+@import url(https://cdn.rawgit.com/theeluwin/NotoSansKR-Hestia/master/stylesheets/NotoSansKR-Hestia.css);
+
+//---------------------------------------------------
+// setting
+//---------------------------------------------------
+body, input, textarea {
+    font-family:'Noto Sans Korean';
+}

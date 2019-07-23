@@ -1,0 +1,30 @@
+﻿@model KinderJoy.Site.Models.Admin.AdminLoginModel
+@{
+    Layout = null;
+    ViewBag.Title = "킨더조이-[로그인]";   
+}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>@ViewBag.Title</title>
+</head>
+<body style="padding-top:5px">
+    @using (Html.BeginForm("Login", "Manager", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post)) {
+        <div class="container">
+        <h2 class="form-signin-heading">관리자 로그인</h2>
+        <br />
+            @Html.LabelFor(m=>m.ID)
+            @Html.TextBoxFor(m=>m.ID, new { @class = "form-control input-sm", @autocomplete = "off", placeholder = "아이디를 입력해주세요" })
+
+            @Html.LabelFor(m=>m.Password)
+            @Html.PasswordFor(m=>m.Password, new { @class = "form-control input-sm", @autocomplete = "off", placeholder = "패스워드를 입력해주세요" })         
+        <br />
+        @Html.ValidationSummary("",new { style="color:red"})
+        <button class="btn btn-lg" style="width:360px;background-color:#f4eddb;color:#9c0e2c;font-weight:bold" type="submit">로그인</button>
+        </div> <!-- /container -->
+    }
+</body>
+</html>

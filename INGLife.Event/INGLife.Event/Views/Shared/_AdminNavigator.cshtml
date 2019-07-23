@@ -1,0 +1,23 @@
+﻿@using INGLife.Event.Infrastructures.Admin
+@{
+    var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+    var action = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+
+}
+<li>
+    <a href="@Url.Action("Index","AdminHome")" class="@(controller == "AdminHome" && action == "Index"? "active" : "")"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+</li>
+<li>
+    <a href="@Url.Action("Index","AdminGoogleAnalytics")" class="@(controller == "AdminGoogleAnalytics" && action == "Index"? "active" : "")"><i class="fa fa-area-chart"></i> GA 관리</a>
+</li>
+@if (User.IsInRole("Administrators")) {
+    <li>
+        <a href="@Url.Action("Index","AdminEventManagement")" class="@(controller == "AdminEventManagement" && action == "Index"? "active" : "")"><i class="fa fa-dashboard fa-fw"></i> 이벤트 관리</a>
+    </li>
+}
+<li>
+    <a href="#" class="@(controller != "AdminGoogleAnalytics" && (controller != "AdminHome" && controller != "AdminEventManagement") ? "active" : "")"><i class="fa fa-list"></i> 이벤트 별 참여자DB관리</a>
+    <ul class="nav nav-second-level"> 
+     
+    </ul>
+</li>

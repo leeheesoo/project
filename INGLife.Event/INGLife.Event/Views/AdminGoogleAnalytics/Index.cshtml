@@ -1,0 +1,74 @@
+﻿@model INGLife.Event.Models.GoogleApisModels.GoogleApisAnalyticsReportingRequestModel
+@{
+    ViewBag.Title = "GA 관리";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row" style="padding-left:30px; padding-right:30px">
+    <div class="panel panel-primary filterable" id="gaElement">
+        <div class="panel panel-primary filterable">
+            @*@using (Ajax.BeginForm("Get", "GoogleApisAnalyticsReporting",new { httpRoute = true }, new AjaxOptions { HttpMethod="Get", OnSuccess = "gaViewModels.setGAList" })) {*@
+                <table class="table table-bordered table-hover table-sortable" style="margin:10px;width:98.5%">
+                    <tr>
+                        <th class="text-center" style="vertical-align:middle">이벤트</th>
+                        <th class="text-center" style="vertical-align:middle" colspan="2">기간</th>
+                        <th class="text-center" style="vertical-align:middle" rowspan="2">
+                            <button class="btn btn-info" v-on:click="getGAList()"><i class="fa"></i> Search</button>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="text-center" style="vertical-align:middle">
+                            <select v-model="filters.pagePath" class="form-control" id="PagePath" name="PagePath">
+                                <option v-for="option in options" v-bind:value="option.value">
+                                    {{ option.text }}
+                                </option>
+                            </select>
+                        </th>
+                        <th class="text-center" style="vertical-align:middle">                            
+                            @Html.TextBoxFor(x => x.StartDate, new { v_model = "filters.startDate", @class = "form-control datepicker", style = "cursor:pointer", placeholder = "시작일" })
+                        </th>
+                        <th class="text-center" style="vertical-align:middle">@Html.TextBoxFor(x => x.EndDate, new { v_model = "filters.endDate", v_bind = "filters.endDate", @class = "form-control datepicker", style = "cursor:pointer", placeholder = "종료일" })</th>
+                    </tr>
+                </table>
+            @*}*@
+        </div>
+        <div>
+            <span style="float:right;margin:5px"><button v-show="list.length > 0" v-on:click="excelDownload()" style="display:none;" class="btn btn-success btn-sm"><i class="fa fa-file-excel-o"></i>  excel</button></span>
+        </div>
+        <div class="panel-heading">
+            <h3 class="panel-title">기간별 PV / UV</h3>
+        </div>
+        <table class="table table-bordered table-hover table-sortable" style="margin:10px;width:98.5%">
+            <tbody v-show="list.length > 0" style="display:none;">
+                <tr>
+                    <th>날짜</th>
+                    <th>PV</th>
+                    <th>UV</th>
+                </tr>
+                <tr v-for="(data, idx) in list">
+                    <td>{{data.date | formatDate}}</td>
+                    <td>{{data.pageViews}}</td>
+                    <td>{{data.uniquePageviews}}</td>
+                </tr>              
+            </tbody>
+            <tbody v-show="list.length == 0">
+                <tr>
+                    <td style="color:red;text-align:center" colspan="11">데이터가 없습니다.</td>
+                </tr>
+            </tbody>
+        </table>
+        @*<div style="text-align:center">
+            <pagination boundary-links="true"
+                        max-size="maxSize"
+                        items-per-page="itemsPerPage"
+                        total-items="totalItemCount"
+                        ng-model="currentPage"
+                        ng-change="get1stAnniversaryList()"></pagination>
+        </div>*@
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/google-analytics/admin-google-analytics-viewmodels.js"></script>
+    <script type="text/javascript">
+    </script>
+}

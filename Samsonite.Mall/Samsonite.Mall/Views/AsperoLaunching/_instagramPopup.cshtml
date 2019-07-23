@@ -1,0 +1,22 @@
+﻿
+<!-- 팝업 dimmed -->
+<div class="pop-dim"></div>
+
+@*인스타그램 팝업*@
+<div class="popup-insta" id="popup-insta">
+    <div class="popup-close">
+        <a href="javascript:void(0);" onclick="closePop('popup-insta');">
+            <img src="~/Content/images/aspero-launching/popup-close.png" alt="팝업닫기" />
+        </a>
+    </div>
+    
+    <div class="insta-img"><img src="https://placehold.it/535x537" v-bind:src="detail.DisplaySrc"></div>
+    <div class="insta-text-wrap">
+        <div class="insta-tit">{{detail.UserName}}</div>
+        <div class="insta-like">좋아요 <span>{{detail.LikeCount}}</span>개</div>
+        @*<div class="insta-hashtag">#퍼펙트쌤소나이트 #캐리어</div>*@
+        <div class="insta-wrap">
+            {{decodeURIComponent(detail.ShowCaption)}}
+        </div>
+    </div>
+</div><!-- //글등록 팝업 -->

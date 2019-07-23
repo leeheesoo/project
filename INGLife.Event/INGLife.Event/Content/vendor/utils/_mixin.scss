@@ -1,0 +1,8 @@
+﻿//---------------------------------------------------
+// mixin
+//---------------------------------------------------
+
+// background
+@mixin background($name, $repeat: no-repeat, $x: center, $y: top, $color: null) {
+    background: $color url($location+$name) $repeat $x $y;
+}

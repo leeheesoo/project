@@ -1,0 +1,72 @@
+﻿<script type="text/javascript">
+    // This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "//www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    
+    var popP, eventPlayer;
+
+    //영상
+    //팝업 영상
+    function onYouTubeIframeAPIReady() {
+        popP = new YT.Player('popPlayer', {
+            height: 315,
+            width: 560,
+            videoId: 'j2muzjpnMh4',
+            playerVars: {
+                controls: 0,
+                rel: 0,
+                showinfo: 0,
+                playsinline: 1 //ios에서 영상 전체화면 여부 - 0 : 전체화면
+            },
+            events: {
+                'onReady': fnPlay,
+                'onStateChange': fnReplay
+            }
+        });
+        // 이벤트 메인 영상
+        eventPlayer = new YT.Player('eventPlayer', {
+            videoId: 'j2muzjpnMh4',
+            playerVars: {
+                controls: 1,
+                rel: 0,
+                showinfo: 0,
+                playsinline: 1
+            },
+            events: {
+                'onReady': function (event) {
+                    event.target.setPlaybackQuality('hd1080');
+                    document.querySelector('.video-cover').style.display = 'block';
+                }
+            }
+
+        });
+
+    }
+
+
+    function fnPlay(e) {
+        if (popAutoPlayMode) popP.playVideo();        
+    }
+   
+
+    function fnReplay(e) {
+
+
+        if (e.data == YT.PlayerState.PLAYING) {
+            setTimeout(function () {
+                $('.popup .btn-center').show();
+            }, 5000);
+        }
+
+        if (e.data === YT.PlayerState.ENDED) {
+            $('.popup .btn-center').show();
+            setTimeout(function () {
+                disneyStarWars2018Model.createInstantLottery();
+            }, 500);
+        }
+    }
+              
+</script>

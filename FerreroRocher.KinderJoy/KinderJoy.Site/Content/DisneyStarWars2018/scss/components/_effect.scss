@@ -1,0 +1,262 @@
+﻿//---------------------------------------------------
+// 네이버검색
+//---------------------------------------------------
+// 네이버검색 - 텍스트 효과
+.animate-flow{
+	@include prefix (animation, flow 3s infinite);
+}
+@include keyframes (flow) { 
+ 0% {
+    @if $device == web {
+      width:450px;
+    }
+    @else {
+      width:276px;
+    }
+  }
+  80% {
+    width:0;
+  }
+}
+
+
+//---------------------------------------------------
+// 효과: 모션 
+//---------------------------------------------------
+.dongdong{
+	@include prefix(animation, dongdong 1s infinite);
+}
+
+.heartbeat{
+	@include prefix(animation, heartbeat 3s infinite);
+}
+
+.pororo{
+  @include prefix(animation, pororo 8s infinite);
+}
+
+.animate-rotate-right {
+    @include animation(shakeR, 4.5s ease-out infinite);
+    transform-origin: bottom right;
+	-ms-transform-origin: bottom right;
+	-webkit-transform-origin: bottom right; 
+}
+
+.bounce{
+     @include animation(bounce, 1.6s ease);
+	transform-origin: 50% 100%;
+	-ms-transform-origin: 50% 100%;
+	-webkit-transform-origin: 50% 100%; 	
+}
+
+.slide-tl {
+    @include animation(slide-tl, 1.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite);
+}
+
+.title-scale {
+    @include animation(title-scale, 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both);
+}
+
+.scale-in-hor-center {
+    @include animation(scale-in-hor-center, 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both);
+}
+
+// 동동거림
+@include keyframes (dongdong) {
+	0% {
+		@include prefix(transform, translateY(0));
+	}
+	50% {
+		@include prefix(transform, translateY(-5px));
+	}
+	100% {
+		@include prefix(transform, translateY(0));
+	}
+}
+
+// 좌우 
+@include keyframes (pororo) {
+	0% {
+		@include prefix(transform, translateX(20px));
+	}
+	50% {
+		@include prefix(transform, translateX(-20px));
+	}
+	100% {
+		@include prefix(transform, translateX(20px));
+	}
+}
+
+// 콩콩뛰기
+@include keyframes (heartbeat) {
+	10% {
+		@include prefix(transform, translateY(-20px));
+	}
+	15% {
+		@include prefix(transform, translateY(5px));
+	}
+	20% {
+		@include prefix(transform, translateY(-20px));
+	}
+	25% {
+		@include prefix(transform, translateY(0));
+	}
+	to {
+		//@include prefix(transform, rotateY(8deg));
+	}
+}
+
+//왼쪽팔
+@include keyframes(shakeR) {
+    from {
+        transform: rotate(-10deg);
+    }
+    25% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-10deg);
+    }
+}
+
+//kv 리노
+@include keyframes(bounce) {
+	0% {
+		transform: translateY(0%) scaleY(0.8);
+	}
+	60%{
+		transform: translateY(-20%) scaleY(1);
+	}
+	70%{
+		transform: translateY(0%) scaleY(0.95) scaleX(1.05);
+	}
+	80%{
+		transform: translateY(0%) scaleY(1.05) scaleX(1);
+	}	
+	90%{
+		transform: translateY(0%) scaleY(0.95) scaleX(1);
+	}				
+	100%{
+		transform: translateY(0%) scaleY(1) scaleX(1);
+	}
+}
+
+//검색click
+@include keyframes(slide-tl) {
+  0% {
+       transform: translateY(0) translateX(0);
+  }
+  100% {
+       transform: translateY(-20px) translateX(-40px);
+  }
+}
+
+//title
+@include keyframes(scale-in-hor-center) {
+  0% {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+//---------------------------------------------------
+// 효과: 모션 
+//---------------------------------------------------
+
+.bgbg{
+	@include prefix(animation, bgbg 5s infinite);
+}
+
+.kitikiti{
+  @include prefix(animation, kitikiti 18s infinite);
+  //@include prefix(animation, bgbg 8s infinite);
+}
+
+
+// 키티
+@include keyframes (kitikiti) {
+	0% {
+		@include prefix(transform, translateX(70px));
+	}
+	50% {
+		@include prefix(transform, translateX(-70px));
+	}
+	100% {
+		@include prefix(transform, translateX(70px));
+	}
+}
+
+
+// 토이들
+@include keyframes (bgbg) {
+	0% {
+		@include prefix(transform, translateX(15px));
+	}
+	50% {
+		@include prefix(transform, translateX(-25px));
+        @include prefix(transform, translateY(25px));
+	}
+	to {
+		@include prefix(transform, translateX(15px));
+	}
+}
+
+// 깜빡임
+.flash{
+	@include prefix(animation, flash .06s infinite);
+}
+
+@include keyframes (flash) { 
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+} 
+
+.dancing {
+    @include prefix(animation, dancing 6s infinite);
+}
+
+@include keyframes (dancing) {
+    0%, 100% {
+    transform: translate(0, 0);
+    }
+    15% {
+    transform: translate(0, -30px);
+    }
+    45% {
+    transform: translate(-30px, -15px);
+    }
+    67% {
+    transform: translate(-10px, -5px);
+    }
+}
+
+.twinkle{
+	@include prefix (animation, twinkle 1.5s infinite);
+}
+@include keyframes (twinkle) { 
+  0% {
+    opacity:1;
+  }
+  50% {
+    opacity:.4;
+  }
+  100% {
+    opacity:1;
+  }
+}

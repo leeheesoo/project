@@ -1,0 +1,103 @@
+﻿.cloud1 {
+    position: absolute;
+    top: 122px;
+    left: 96px;
+}
+.cloud2 {
+    position: absolute;
+    top: 200px;
+    left: 25px;
+}
+.cloud3 {
+    position: absolute;
+    top: 175px;
+    left: 500px;
+}
+.cloud4 {
+    position: absolute;
+    top: 210px;
+    left: 570px;
+}
+.top_adballoon{
+    position: absolute;
+    top: 339px;
+    left: 27px;
+    
+}
+
+/* 남아용 풍선 */
+.car_balloon {
+   position: absolute;
+    top: -54px;
+    left: 312px;
+    width: 290px;
+    height: 310px;
+}
+.car_balloon .car_balloon_img {
+    position: absolute;
+    top: 0px;
+    left: 38px;
+    width: 230px;
+    height: 616px;
+}
+.car_balloon .car_balloon_green {
+    position: absolute;
+    top: 122px;
+    left: 73px;
+	width: 109px;
+    height: 368px;
+}
+.car_balloon .car_balloon_blue {
+    position: absolute;
+    top: 140px;
+    left: 169px;
+    width: 86px;
+    height: 344px;
+}
+
+/* 여아용 장난감 풍선 */
+.girl_balloon {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    width: 153px;
+    height: 453px;
+	z-index:2;
+}
+
+.girl_balloon .girl_balloon_bg {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 153px;
+    height: 453px;
+    background: url('../../images/m/toy/motion_img/girl_balloon_bg.png') center bottom no-repeat;
+}
+
+.girl_balloon .girl_balloon_bg .girl_balloon_img {
+    position: absolute;
+    top: 4px;
+    left:-48px;
+    width: 153px;
+    height: 784px;
+}
+
+.kungfu_area {
+    position: absolute;
+    top: 125px;
+    left:-20px;
+    width: 570px;
+    height: 300px;
+}
+
+.kungfu_area .kungfu_tiger {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.kungfu_area .kungfu_panda {
+    position: absolute;
+    top: 35px;
+    left: 220px;
+}

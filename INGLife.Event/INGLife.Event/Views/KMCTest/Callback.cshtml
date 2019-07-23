@@ -1,0 +1,46 @@
+﻿@model INGLife.Event.Models.KMCModels.ResponseKMCModel
+@{
+    ViewBag.Title = "ING생명 본인확인 서비스 Callback 테스트";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section scripts{
+    <script src="~/Content/common/dev-common.js"></script>
+    <script type="text/javascript">
+    function resultKMC() {
+        $('#frmCallbackKMC').ajaxSubmit({
+            cache: false,
+            dataType: 'json',
+            success: function successKMC(data) {
+                if (data.result === true) {
+                    alert(data.message);
+                    self.close();
+                } else {
+                    alert('본인인증 실패되었습니다. [' + data.message + ']');
+                    self.close();
+                }
+            },
+            error: function failureKMC(xhr, err) {
+                alert('본인인증 실패되었습니다.');
+                self.close();
+            }
+        });
+    }
+    //$(function () {
+    //  if (isMobile) {
+    //      resultKMC();
+    //  } else {
+    //    $('#frmCallbackKMC').target = opener.window.name;
+    //    resultKMC();
+    //    self.close();
+    //  }
+    //})
+    $(function () {
+        $('#frmCallbackKMC').target = opener.window.name;
+        resultKMC();
+    })
+    </script>
+}
+@using (Ajax.BeginForm("Post", "KMC", new { httpRoute = true }, new AjaxOptions { HttpMethod = "post" }, new { id = "frmCallbackKMC" })) {
+    @Html.HiddenFor(x => x.Rec_Cert)
+    @Html.HiddenFor(x => x.CertNum)
+}

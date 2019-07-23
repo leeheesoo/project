@@ -1,0 +1,393 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <div th:fragment="body-popup-m">
+
+    <!-- main -->
+    <!-- 메인팝업 : 로션 -->
+    <div class="popup-wrap main-lotion" :class="{on: pops[0] === 'item-lotion'}">
+      <div class="popup popup-main-lotion main-popup popup__m">
+        <button class="btn btn__close" @click="closePop()">닫기</button>
+      </div>
+    </div>
+    <!-- 메인팝업 : 로션 -->
+    <div class="popup-wrap main-wash" :class="{on: pops[0] === 'item-wash'}">
+      <div class="popup popup-main-wash main-popup popup__m">
+        <button class="btn btn__close" @click="closePop()">닫기</button>
+      </div>
+    </div>
+
+    <!-- cotents -->
+    <!-- 동안바디 공유이벤트 -->
+    <div class="popup-wrap body-share" :class="{on: pops[0] === 'contents-event'}">
+      <div class="popup body-share-in popup__m">
+        <div class="popup__header">
+          <div class="popup__inner">
+            <h4 class="popup__title">서리나의 동안바디 공유이벤트</h4>
+            <dl>
+              <dt>이벤트 기간</dt>
+              <dd>2018.10.08 ~ 10.31</dd>
+
+              <dt>당첨자 발표</dt>
+              <dd>2018.11.02</dd>
+
+              <dt>이벤트 경품</dt>
+              <dd>세타필 럭키박스(20만원 상당)</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="popup__body">
+          <div class="popup__inner">
+            <div class="share-event01">
+              <h5>event01.친구들에게 이벤트 소문내기</h5>
+              <ul>
+                <li>하단에 이벤트 공유버튼 클릭</li>
+                <li>친구들에게 이벤트 공유완료</li>
+              </ul>
+              <button class="btn btn__share" @click="showPop('user-info')">이벤트1_팝업 시작</button>
+            </div>
+            <div class="share-event02">
+              <h5>event02.sns에서 영상 공유하기</h5>
+              <ul>
+                <li>하단에 sns 바로가기 버튼 클릭</li>
+                <li>sns에서 이벤트 참여하기</li>
+              </ul>
+              <div class="btn__wrap">
+                <a class="btn btn__share-insta" :href="urls.insta" target="_blank">이벤트2_인스타그램</a>
+                <a class="btn btn__share-facebook" :href="urls.facebook" target="_blank">이벤트2_페이스북</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn__close" @click="closePop()">닫기</button>
+      </div>
+    </div>
+
+    <!-- 동안바디 화보 -->
+    <div class="popup-wrap gallery-popup" :class="{on: pops[0] === 'contents-gallery'}">
+      <div class="popup popup-photo popup__m">
+        <div class="slider-wrap">
+          <ul class="slider photo-slider">
+            <li><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/photo01.jpg" alt=""></li>
+            <li><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/photo02.jpg" alt=""></li>
+            <li><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/photo03.jpg" alt=""></li>
+            <li><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/photo04.jpg" alt=""></li>
+            <li><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/photo05.jpg" alt=""></li>
+            <li><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/photo06.jpg" alt=""></li>
+            <li><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/photo07.jpg" alt=""></li>
+            <li><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/photo08.jpg" alt=""></li>
+          </ul>
+          <div class="slider-nav">
+            <span class="slider-idx">1</span><span class="slash">/</span> 8
+          </div>
+          <!-- <button class="btn btn__photodown-popup" @click="contents.kindsInfo.gallery.onNav = true">갤러리_다운로드 이동</button> -->
+          <a id="btn-down-gallery" class="btn btn__photodown-popup" href="" download>갤러리_다운로드
+            이동</a>
+        </div>
+
+        <!-- 화보 다운로드 -->
+        <!-- <div class="photo-down download-btns-wrap" :class="{on: contents.kindsInfo.gallery.onNav}">
+          <div class="down-wrap">
+            <img class="down-bg" src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/bg-photo-download.png" alt="" />
+            <div class="down-btn-wrap">
+              <button class="btn btn__photo-close" @click="contents.kindsInfo.gallery.onNav = false">닫기</button>
+              <a class="btn btn__photo-mobile" href="https://s3.ap-northeast-2.amazonaws.com/cetaphil-event/static/body/gallery-m.zip" download>갤러리_모바일 다운로드</a>
+              <a class="btn btn__photo-pc" href="https://s3.ap-northeast-2.amazonaws.com/cetaphil-event/static/body/gallery-pc.zip" download>갤러리_PC 다운로드</a>
+            </div>
+          </div>
+        </div> -->
+
+        <button class="btn btn__close" @click="closePop()">닫기</button>
+      </div>
+    </div>
+
+    <!-- 동안바디 영상 선택: body video selecct -->
+    <div class="popup-wrap" :class="{on: pops[0] === 'contents-video-select'}">
+      <div class="popup popup-mov popup__m">
+        <div class="mov-choice step01">
+          <div class="selecct-wrap">
+            <button v-for="(videoObj, idx) in contents.kindsInfo.video.list" :class="'mov-'+ videoObj.key" @click="showVideoContents(idx)">{{videoObj.desc}}</button>
+          </div>
+        </div>
+        <button class="btn btn__close" @click="closePop()">닫기</button>
+      </div>
+    </div>
+
+    <!-- 동안바디 영상: body video -->
+    <div class="popup-wrap" :class="{on: pops[0] === 'contents-video'}">
+      <div class="popup popup-mov popup__m">
+        <div class="mov-wrap step02">
+          <div id="contentsMovPlayer"></div>
+        </div>
+        <button class="btn btn__close" @click="closePop('contents-video')">닫기</button>
+      </div>
+    </div>
+
+    <!-- calculrator -->
+    <!-- 바디계산기: 이벤트 안내-->
+    <div class="popup-wrap " :class="{on: pops[0] === 'calculator-detail'}">
+      <div class="popup calulator-detail popup__m">
+        <div class="popup__header">
+          <div class="popup__inner">
+            <h4 class="popup__title">동안바디 챌린지 이벤트</h4>
+          </div>
+        </div>
+
+        <div class="popup__body">
+        </div>
+        <button class="btn btn__close" @click="closePop()">닫기</button>
+      </div>
+    </div>
+    <!-- 바디계산기 -->
+    <div class="popup-wrap calculator" :class="{on: pops[0] === 'calculator'}">
+      <div class="popup common__calculator popup-calculator popup__m">
+        <div class="popup__header">
+          <div class="popup__inner">
+            <h4 class="popup__title">동안바디 계산기</h4>
+            <p class="popup__title-sub"><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/text-calculator-directions.png"
+                alt="동안바디 계산기 사용법" /></p>
+          </div>
+        </div>
+        <div class="popup__body">
+          <div class="popup__inner">
+            <form @submit.prevent="sendCalcInfo()">
+              <!-- 페이셜, 바디 용품 -->
+              <div v-for="kind in calculator.kinds" :class="kind.key + '__wrap'">
+                <h5 class="calculator-list__title"><img :src="'https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/text-' + kind.key + '.png'"
+                    :alt="kind.desc" /></h5>
+                <ul>
+                  <li v-for="field in kind.info">
+                    <label :for="field.for">
+                      <img class="label-title" :src="'https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/'+field.img"
+                        :alt="field.alt" />
+                      <input class="input-circle" type="number" :id="field.for" maxlength="2" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        placeholder="0" v-model="eventsInfo.calculator.scoreInfo[field.key]">
+                    </label>
+                  </li>
+                </ul>
+              </div>
+              <p class="caption"><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/text-calculator-caption.png"
+                  alt="카테고리별 평균 가격으로 측정" /></p>
+              <button type="submit" class="btn btn__next">이벤트_계산기 입력</button>
+            </form>
+
+          </div>
+        </div>
+        <button class="btn btn__close" @click="closePop()">닫기</button>
+      </div>
+    </div>
+    <!-- 바디계산기 결과 -->
+    <div class="popup-wrap calculator-result" :class="{on: pops[0] === 'calculator-result'}">
+      <div class="popup popup-calculator-result common__calculator popup__m">
+        <div class="popup__header">
+          <div class="popup__inner">
+            <h4 class="popup__title">동안바디 계산기</h4>
+            <p class="popup__title-sub">한달 평균 <span>{{userInfo.name}}</span> 님의<br>동안바디 투자금액은...</p>
+          </div>
+        </div>
+        <div class="popup__body">
+          <div class="popup__inner">
+            <div class="costs__wrap">
+              <!-- 바디 투자비용 > 얼굴 투자비용 -->
+              <dl>
+                <dt><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/text-body-costs.png"
+                    alt="바디 투자비용" /></dt>
+                <dd><span class="text__blue">{{eventsInfo.calculator.bodyTotal | commaNum}}</span> <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/text-won.png"
+                    alt="원" /></dd>
+              </dl>
+              <!-- 바디 투자비용 == 얼굴 투자비용 -->
+              <dl>
+                <dt><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/text-face-costs.png"
+                    alt="얼굴 투자비용" /></dt>
+                <dd><span class="text__gray">{{eventsInfo.calculator.facialTotal | commaNum}}</span> <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/text-won.png"
+                    alt="원" /></dd>
+              </dl>
+            </div>
+            <span class="top-line"></span>
+            <div class="calculator-result">
+              <!-- 결과값  calculator-result01~03-->
+              <img :src="'https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/calculator-result-'+ eventsInfo.calculator.highPrice +'.png'"
+                alt="동안바디의 중요성을 알고계신 당신!" />
+              <span class="percentage" v-if="eventsInfo.calculator.highPrice === 'facial'">
+                <!-- <span class="percentage-num">{{ Number(eventsInfo.calculator.multiple).toFixed(1) }}</span>배</span> -->
+                <span class="percentage-num">{{ eventsInfo.calculator.multiple }}</span>배</span>
+            </div>
+
+            <button class="btn btn__confirm" @click="showPop('share-sns')">이벤트_결과페이지</button>
+
+          </div>
+        </div>
+        <button class="btn btn__close" @click="closePop()">닫기</button>
+      </div>
+    </div>
+
+    <!-- age: 측정기 -->
+    <!-- age 동안바디측정 intro : 영상 -->
+    <div class="popup-wrap popup-full" :class="{on: pops[0] === 'age-checklist-intro'}">
+      <div class="popup age-checklist-intro popup__m">
+        <button class="mov-wrap">
+          <video id="ageVideo" class="age-video" src="https://s3.ap-northeast-2.amazonaws.com/cetaphil-event/static/body/m_video-age-intro.mp4"
+            playsinline></video>
+          <!-- 영상 끝난 후 start페이지 class:on = show -->
+          <button class="age-btn-join" v-if="ageVideoEnd" @click="showPop('user-info')">이벤트_영상 팝업</button>
+      </div>
+      <button class="btn btn__close" @click="closePop('age-checklist-intro')">닫기</button>
+    </div>
+    <!-- age: 측정기:  이벤트 안내-->
+    <div class="popup-wrap" :class="{on: pops[0] === 'age-detail'}">
+      <div class="popup age-detail popup__m">
+        <div class="popup__header">
+          <div class="popup__inner">
+            <h4 class="popup__title">동안바디 챌린지 이벤트</h4>
+          </div>
+        </div>
+        <div class="popup__body"></div>
+        <button class="btn btn__close" @click="closePop()">닫기</button>
+      </div>
+    </div>
+    <!-- 동안바디 체크리스트(설문) -->
+    <div class="popup-wrap age-checklist" :class="{on: pops[0] === 'age-checklist'}">
+      <div class="popup popup-checklist popup-check popup__m">
+        <div class="popup__header">
+          <div class="popup__inner">
+            <h4 class="popup__title">동안바디 측정기</h4>
+            <p class="title__sub"><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/body-check-step01.png"
+                alt="동안바디 체크리스트 step01" /></p>
+
+          </div>
+        </div>
+        <div class="popup__body">
+          <div class="list__wrap">
+            <ol>
+              <li v-for="(check, idx) in ageE.checklist">
+                <span class="checklist-text"><img :src="'https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/body-check0'+(idx+1)+'.png'"
+                    alt=""></span>
+                <label><input type="radio" :name="'body-check0'+ (idx+1)" value="true" v-model="check.checked"><span
+                    class="check-o check"></span></label>
+                <label><input type="radio" :name="'body-check0'+ (idx+1)" value="false" v-model="check.checked"><span
+                    class="check-x check"></span></label>
+              </li>
+            </ol>
+            <button class="btn btn__next" @click="sendAgeInfo()">이벤트_체크리스트</button>
+            <p class="txt-refer"><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/age-checklist-txt-refer.png"
+                alt=""></p>
+          </div>
+        </div>
+        <button class="btn btn__close" @click="closePop()">닫기</button>
+      </div>
+    </div>
+
+    <!-- age: 동안바디 사진업로드 -->
+    <div class="popup-wrap" :class="{on: pops[0] === 'age-skin-test'}">
+      <div class="popup body-photo popup-check popup__m">
+        <div class="popup__header">
+          <div class="popup__inner">
+            <h4 class="popup__title">동안바디 측정기</h4>
+            <p class="title__sub"><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/body-check-step02.png"
+                alt="동안바디 체크리스트 step01" /></p>
+          </div>
+        </div>
+        <div class="popup__body">
+          <div class="photo__wrap">
+            <div class="photo-upload-bg">
+              <div class="hand"><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/ex-hand.jpg"
+                  alt=""></div>
+              <div class="frame"></div>
+            </div>
+
+            <!-- 사진 분석중 -->
+            <div class="photo-loading" :class="{on: ageE.onLoading }">
+              <div class="loading-inner">
+                <div class="hand-wrap">
+                  <div class="hand">
+                    <img class="hand__default" src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/ex-hand.jpg"
+                      alt="">
+                  </div>
+                  <div class="hand" v-if="ageE.userImg.length != 0">
+                    <img class="hand__user" :src="ageE.userImg" alt="">
+                  </div>
+                </div>
+                <div class="frame">
+                  <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/loading.svg" alt="">
+                  <span class="frame-dim"></span>
+                </div>
+              </div>
+            </div>
+            <!-- // 사진 분석중 -->
+            <!-- 사진 로드하기 -->
+            <div class="btn-wrap">
+              <button class="btn btn__photo-skip" @click="showPop('age-result')">이벤트_사진스킵</button>
+              <div class="btn btn__photo-upload">
+                <input id="user-img-file" class="file-upload-input" type="file" name="user-photo-upload" accept="image/*"
+                  ref="fileupload" @change="loadImg" v-if="uploadReady" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn__close" @click="closePop()">닫기</button>
+      </div>
+    </div>
+
+    <!-- 동안바디 사진업로드 결과 -->
+    <div class="popup-wrap" :class="{on: pops[0] === 'age-result'}">
+      <div class="popup body-result popup-check popup__m">
+        <div class="popup__header">
+          <div class="popup__inner">
+            <h4 class="popup__title">동안바디 측정기</h4>
+
+            <div class="result-age">
+              <p class="title-sub"><span>{{userInfo.name}}</span> 님의<br>바디 나이는...</p>
+              <dl>
+                <dt><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/real-age.png" alt="실제나이" /></dt>
+                <dd>
+                  <span class="text__gary">{{ageE.userAge}}</span><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/text-age.png"
+                    alt="세" />
+                </dd>
+              </dl>
+              <dl>
+                <dt><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/body-age.png" alt="바디나이" /></dt>
+                <dd><span class="text__blue">{{ageE.bodyAge}}</span><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/text-age.png"
+                    alt="세" /></dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="popup__body">
+          <!-- body-check-result01~03 -->
+          <!-- <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/body-check-result01.png" alt="" /> -->
+          <img :src="'https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/body-check-result0'+ ageE.bodyAgeLevel +'.png'"
+            alt="" />
+          <button class="btn btn__confirm" @click="showPop('share-sns')">이벤트_결과페이지</button>
+        </div>
+
+        <button class="btn btn__close" @click="closePop()">닫기</button>
+      </div>
+    </div>
+
+    <!-- 동안바디 챌린지 이벤트: 이벤트 안내-->
+    <div class="popup-wrap" :class="{on: pops[0] === 'challenge-detail'}">
+      <div class="popup challenge-detail popup__m">
+        <div class="popup__header">
+          <div class="popup__inner">
+            <h4 class="popup__title">동안바디 챌린지 이벤트</h4>
+          </div>
+        </div>
+
+        <div class="popup__body">
+
+        </div>
+        <button class="btn btn__close" @click="closePop()">닫기</button>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+﻿@model INGLife.Event.Models.KMCModels.ResponseKMCModel
+@{
+    ViewBag.Title = "오렌지라이프 본인확인 서비스 - 마케팅동의";
+    ViewBag.ViewPortWidth = 720;
+}
+
+@section scripts{
+    <script src="~/Content/common/dev-common.js"></script>
+    <script type="text/javascript">
+    function resultKMC() {
+        $('#KMCFrom').ajaxSubmit({
+            cache: false,
+            dataType: 'json',
+            success: function successKMC(res) {
+                if (res.Result) {
+                    opener.setTumblerKmcData(res.Data);
+                } else {
+                    opener.setTumblerKmcData(null);
+                }
+      
+                alert(res.Message);
+                self.close();
+            },
+            error: function failureKMC(xhr, err) {
+                console.log(xhr);
+                alert('본인인증 실패되었습니다.');
+                //self.close();
+            }
+        });
+    }
+    $(function () {
+        $('#KMCFrom').target = opener.window.name;
+        resultKMC();
+    })
+    </script>
+}
+@using( Ajax.BeginRouteForm("ResponseTumblerEventAgreeKMC", new { }, new AjaxOptions { HttpMethod = "post" }, new { id = "KMCFrom" }) ) {
+    @Html.HiddenFor(x => x.Rec_Cert)
+    @Html.HiddenFor(x => x.CertNum)
+    @Html.HiddenFor(x => x.PlusInfo)
+}
+
+
+
+

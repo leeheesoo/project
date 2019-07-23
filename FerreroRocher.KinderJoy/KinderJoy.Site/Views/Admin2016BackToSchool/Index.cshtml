@@ -1,0 +1,147 @@
+﻿@{
+    ViewBag.Title = "[2016 새학기 이벤트] 참여자";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+    var action = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+}
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <h1>@ViewBag.Title</h1>
+        </div>
+        <div class="row" style="padding-top:20px">
+            <div class="col-xs-12">
+                <table>
+                    <tr>
+                        <th style="padding-right:10px;padding-left:10px">참여일</th>
+                        <td>@Html.TextBox("fromDateFilter", "", new { @class = "form-control input-sm datepicker", placeholder = "시작일", style = "cursor:pointer;width:100px" })</td>
+                        <td>~</td>
+                        <td>@Html.TextBox("toDateFilter", "", new { @class = "form-control input-sm datepicker", placeholder = "종료일", style = "cursor:pointer;width:100px" })</td>
+                        <th style="padding-right:10px;padding-left:10px">디바이스</th>
+                        <td>
+                            @Html.DropDownList("channelFilter"
+                                , new List<SelectListItem>(){
+                                    new SelectListItem(){ Text = "-----", Value="" }
+                                    ,new SelectListItem() { Text = "웹", Value="web" }
+                                    ,new SelectListItem() { Text = "모바일", Value ="mobile" }
+                                })
+                        </td>
+                        
+                        <th style="padding-right:10px;padding-left:10px">이름</th>
+                        <td>@Html.TextBox("nameFilter")</td>
+                        <th style="padding-right:10px;padding-left:10px">연락처</th>
+                        <td>@Html.TextBox("mobileFilter")</td>
+                        <td style="padding-left:10px"><button class="btn btn-primary btn-sm" data-bind="click: goSearch">검색</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div style="float:right;padding-bottom:10px">
+            전체 <b style="color:red" data-bind="text: totalItemCount"></b> 건
+            <a class="btn btn-default" href="@Url.Action("ExcelDownload", "Admin2016BackToSchool", new { Type = action })">엑셀다운로드</a>
+        </div>
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th style="text-align:center;vertical-align:middle">No.</th>
+                    <th style="text-align:center;vertical-align:middle;">참여일</th>
+                    <th style="text-align:center;vertical-align:middle;">디바이스</th>
+                    <th style="text-align:center;vertical-align:middle;">IP</th>
+                    <th style="text-align:center;vertical-align:middle;">이름</th>
+                    <th style="text-align:center;vertical-align:middle;">나이</th>
+                    <th style="text-align:center;vertical-align:middle;">연락처</th>
+                    <th style="text-align:center;vertical-align:middle;">주소</th>
+                </tr>
+            </thead>
+            <tbody style="text-align:center" data-bind="foreach: items">
+                <tr>
+                    <td data-bind="text: ($root.pageSize() * ($root.pageNumber() - 1)) + $index() + 1"></td>
+                    <td data-bind="text: $root.convertToDateFormat(createDate())"></td>
+                    <td data-bind="text: channel"></td>
+                    <td data-bind="text: ipAddress"></td>
+                    <td data-bind="text: name"></td>
+                    <td data-bind="text: age"></td>
+                    <td data-bind="text: mobile"></td>
+                    <td style="text-align:left;padding-left:10px" data-bind="text: address"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="paging" style="text-align:center">
+            <a href="#" data-bind="visible: !isFirstPage(), click: function () { goToPage(1); }">처음</a>
+            <a href="#" data-bind="visible: hasPreviousPage(), click: function () { goToPage(pageNumber() - 1); }">이전</a>
+            <!-- ko foreach: pages -->
+            <a href="#" data-bind="click: function () { $root.goToPage($data) }, text: $data, style: { color: ($root.pageNumber() == $data) ? 'black' : '', fontWeight: ($root.pageNumber() == $data) ? 'bold' : 'normal' } "></a>
+            <!-- /ko -->
+            <a href="#" data-bind="visible: hasNextPage(), click: function () { goToPage(pageNumber() + 1); }">다음</a>
+            <a href="#" data-bind="visible: !isLastPage(), click: function () { goToPage(pageCount()); }">마지막</a>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        function ListViewModel(page) {
+            var self = this;
+            self.totalItemCount = ko.observable();
+            self.pageNumber = ko.observable();
+            self.items = ko.observableArray();
+            self.count = ko.observable();
+            self.pageCount = ko.observable();
+            self.pageSize = ko.observable();
+            self.hasPreviousPage = ko.observable();
+            self.hasNextPage = ko.observable();
+            self.isFirstPage = ko.observable();
+            self.isLastPage = ko.observable();
+            self.firstItemOnPage = ko.observable();
+            self.lastItemOnPage = ko.observable();
+
+            self.pageSlide = 10;
+            self.pages = ko.computed(function () {
+                var pageCount = self.pageCount();
+                var pageFrom = Math.max(1, self.pageNumber() - self.pageSlide);
+                var pageTo = Math.min(pageCount, self.pageNumber() + self.pageSlide);
+                pageFrom = Math.max(1, Math.min(pageTo - 2 * self.pageSlide, pageFrom));
+                pageTo = Math.min(pageCount, Math.max(pageFrom + 2 * self.pageSlide, pageTo));
+
+                var result = [];
+                for (var i = pageFrom; i <= pageTo; i++) {
+                    result.push(i);
+                }
+                return result;
+            });
+
+            self.goToPage = function (pageNumber) {
+                var channel = $('#channelFilter').val();
+                var mobile = $('#mobileFilter').val();
+                var name = $('#nameFilter').val();
+                var fromDate = $("#fromDateFilter").val();
+                var toDate = $("#toDateFilter").val();
+
+                $.post('/api/2016-backtoschool/list', {
+                    page: (pageNumber > 0 ? pageNumber : 1),
+                    pageSize: 30,
+                    channel: channel,
+                    mobile: mobile,
+                    name: name,
+                    fromDate: fromDate,
+                    toDate: toDate
+                }, function (data) {
+                    ko.mapping.fromJS(data, {}, viewModel);
+                });
+            }
+            self.goToPage(1);
+
+            /* 날짜 convert */
+            self.convertToDateFormat = function (date) {
+                return moment(date).format('YYYY-MM-DD');
+            }
+            self.goSearch = function () {
+                self.goToPage(1);
+            }
+        };
+        var page = 1;
+        var viewModel = new ListViewModel(page);
+        ko.applyBindings(viewModel);
+    });
+</script>

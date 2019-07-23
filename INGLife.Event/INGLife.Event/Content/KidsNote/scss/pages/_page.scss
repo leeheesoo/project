@@ -1,0 +1,113 @@
+﻿body {
+   padding:0;
+   margin:0;
+}
+
+.blind {
+    position: absolute;
+    top: -1000em;
+    left: 0;
+    width:0;
+    height:0;
+    font-size:0;
+}
+
+.wrap {
+    width:100%;
+    margin:0 auto;
+    overflow:hidden;
+    .event-inner {
+        position:relative;
+        width:640px;
+        margin:0 auto;
+        .tab-area{
+          position: relative;
+          background-color: #f7f3e7;
+          padding-top: 46px;
+          padding-bottom: 50px;
+          text-align: center;
+          .tab-btns {
+            width: 540px;
+            margin: 0 auto;
+            margin-top: 30px;
+            a {
+              display: inline-block;
+              float: left;
+              width: 180px;
+              height: 70px;
+              font-size: 0;
+              text-indent: -9999em;
+              background: url("../../Images/KidsNote/form/kidsnote-orange-tab-btns.jpg") 0 bottom no-repeat;
+              &.on {
+                background-position-y: top;
+              }
+              &:nth-child(1) {
+                background-position-x: left;
+              }
+              &:nth-child(2) {
+                background-position-x: center;
+              }
+              &:nth-child(3) {
+                background-position-x: right;
+              }
+            }
+          }
+          .tab-view {
+            clear: both;
+            div{
+              display: none;
+              width: 540px;
+              height: 170px;
+              margin: 0 auto;
+              font-size: 0;
+              text-indent: -9999em;
+              overflow: hidden;
+              &:nth-child(1) {
+                background: url("../../Images/KidsNote/form/kidsnote-orange-tab1-view.jpg") 0 0 no-repeat;
+              }
+              &:nth-child(2) {
+                background: url("../../Images/KidsNote/form/kidsnote-orange-tab2-view.jpg") 0 0 no-repeat;
+              }
+              &:nth-child(3) {
+                background: url("../../Images/KidsNote/form/kidsnote-orange-tab3-view.jpg") 0 0 no-repeat;
+              }
+            }
+          }
+        }
+        .btn-area{
+          position: relative;
+          background-color: #f7f3e7;
+          padding-bottom: 33px;
+          text-align: center;
+        }
+    }
+}
+
+.policy-area {
+  height: 238px;
+  border: 1px solid #cccccc;
+  color: #656565;
+  border-radius: 5px;
+  line-height:1.5;
+  font-family: 'Malgun Gothic', Dotum, sans-serif;
+  .policy-txt {
+    margin: 10px 3px 10px 10px;
+    height: 218px;
+    overflow-y: auto;
+  }
+  h3 {
+    color: #424651;
+    margin: 10px 0 20px 0;
+    font-weight: 800;
+    font-size: 110%;
+  }
+  h4 {
+    font-weight: bold;
+  }
+  span {
+    font-weight: bold;
+  }
+  a {
+    text-decoration: none;
+  }
+}

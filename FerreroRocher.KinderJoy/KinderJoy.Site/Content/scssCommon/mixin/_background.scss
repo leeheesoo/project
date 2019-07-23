@@ -1,0 +1,18 @@
+// background
+@mixin background($file, $position:top center, $repeat: no-repeat, $color:null) {
+    background: $color url($location + $file) $position $repeat;
+}
+
+// =====================================================
+// 2018.4.23
+// ÇÑ½ÂÃ¶
+// @params
+// $name: location + filename
+// $repeat: no-repeat(default)
+// $pos: center top(default) - position x, position y
+// $color: null(default)
+// =====================================================
+
+@mixin background-image($name, $repeat: no-repeat, $pos: center top, $color: null) {
+    background: $color url($name) $repeat $pos;
+}

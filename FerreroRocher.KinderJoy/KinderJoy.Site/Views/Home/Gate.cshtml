@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "킨더조이";
+}
+@section styles{
+    <link href="~/Content/Gate/gate.css" rel="stylesheet">
+    <link href="~/Content/css/toy_animate.css" rel="stylesheet">
+    <link href="~/Content/vendor/slick.css" rel="stylesheet">
+    <link href="~/Content/vendor/animate.min.css" rel="stylesheet">
+    <link href="~/Content/vendor/csshake.min.css" rel="stylesheet">
+}
+<section class="gate-wrap">
+    <div class="bg-top">
+        <img src="~/Images/gate/vr_bg_top.png" alt="">
+        <div class="btn-go-home">
+            <a href="@Url.Action("Index", "Home",new { type="main"})">킨더조이 홈페이지에 가려면 현재 창을 닫아주세요.</a>
+        </div>
+    </div>
+    <div class="contents-wrap">
+        <div class="gate-step gate-step1" style="display:none">
+            <div class="rino animated">
+                <img src="~/Images/gate/rino1.png" alt="">
+                <span class="motion-ele animated animate-rotate-right"><img src="~/Images/gate/motion_item_step1.png" alt=""></span>
+            </div>
+            <button class="txt-box animated"><img src="~/Images/gate/txt_box1.png" alt="안녕! 난 킨더리노라고 해~! 장난감 보러가기"></button>
+            <div class="vr-contents"><img src="~/Images/gate/vr_contents.png" alt=""></div>
+        </div>
+
+        <div class="gate-step gate-step2" style="display:none">
+            <div class="rino animated">
+                <img src="~/Images/gate/rino2.png" alt="">
+
+            </div>
+            <button class="txt-box animated"><img src="~/Images/gate/txt_box2.png" alt="새로 나온 저스티스리그와 헬로키티 장난감을 소개할게!"></button>
+            <div class="vr-contents"><img src="~/Images/gate/vr_contents.png" alt=""></div>
+        </div>
+
+        <div class="gate-step gate-step3" style="display:none">
+            <div class="rino animated">
+                <img src="~/Images/gate/rino3.png" alt="열어 보고 싶은 킨더조이를 선택해 줘">
+                <span class="motion-ele animated animate-rotate-right"><img src="~/Images/gate/motion_item_step3.png" alt=""></span>
+            </div>
+            <div class="kinder-select-box slide-box">
+                <div class="kinder-select-slide">
+                    <div class="slide-item shake-slow" onclick="selectItem(1)"><img src="/Images/gate/egg-boy.png"></div>
+                    <div class="slide-item shake-slow" onclick="selectItem(2)"><img src="/Images/gate/egg-girl.png"></div>
+                    <div class="slide-item shake-slow" onclick="selectItem(3)"><img src="/Images/gate/egg-boy.png"></div>
+                    <div class="slide-item shake-slow" onclick="selectItem(4)"><img src="/Images/gate/egg-girl.png"></div>
+                    <div class="slide-item shake-slow" onclick="selectItem(5)"><img src="/Images/gate/egg-boy.png"></div>
+                    <div class="slide-item shake-slow" onclick="selectItem(6)"><img src="/Images/gate/egg-girl.png"></div>
+                    <div class="slide-item shake-slow" onclick="selectItem(7)"><img src="/Images/gate/egg-boy.png"></div>
+                    <div class="slide-item shake-slow" onclick="selectItem(8)"><img src="/Images/gate/egg-girl.png"></div>
+                    <div class="slide-item shake-slow" onclick="selectItem(9)"><img src="/Images/gate/egg-boy.png"></div>
+                    <div class="slide-item shake-slow" onclick="selectItem(10)"><img src="/Images/gate/egg-girl.png"></div>
+                    <div class="slide-item shake-slow" onclick="selectItem(11)"><img src="/Images/gate/egg-boy.png"></div>
+                    <div class="slide-item shake-slow" onclick="selectItem(12)"><img src="/Images/gate/egg-girl.png"></div>
+                    <div class="slide-item shake-slow" onclick="selectItem(13)"><img src="/Images/gate/egg-boy.png"></div>
+                    <div class="slide-item shake-slow" onclick="selectItem(14)"><img src="/Images/gate/egg-girl.png"></div>
+                    <div class="slide-item shake-slow" onclick="selectItem(15)"><img src="/Images/gate/egg-boy.png"></div>
+                    <div class="slide-item shake-slow" onclick="selectItem(16)"><img src="/Images/gate/egg-girl.png"></div>
+                </div>
+            </div>
+            <div class="vr-contents"><img src="~/Images/gate/vr_contents.png" alt=""></div>
+        </div>
+
+        <div class="gate-step gate-step4" style="display:none">
+            <div class="rino animated">
+                <p class="txt-egg txt-egg1"></p>
+                <img class="rino-body" src="~/Images/gate/rino4_w.png" alt="">
+                <span class="motion-ele animated tada infinite">
+                    <img src="~/Images/gate/motion_item_step4.png" alt="">
+                </span>
+            </div>
+            <div class="kinder-item-box slide-box">
+                <div class="kinder-item-selected">
+                    <img src="~/Images/gate/toy1.png" alt="">
+                </div>
+                <div class="btn-box">
+                    <button class="gate-btn btn-retry" type="button">
+                    <span class="a11y-hidden">장난감 다시 뽑기</span>
+                    </button>
+                    <a class="gate-btn btn-show-detail" href="@Url.Action("Image", "Home")">자세히보기</a>
+                </div>
+            </div>
+            <div class="vr-contents"><img src="~/Images/gate/vr_contents.png" alt=""></div>
+
+        </div>
+    </div>
+    <div class="copyright">
+        <img src="~/Images/gate/copy.png" alt="copyright" />
+    </div>
+
+</section>
+@section scripts{
+    <script src="~/Content/js/slick.min.js"></script>
+    <script src="~/Scripts/Gate/gate.js"></script>
+}

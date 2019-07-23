@@ -1,0 +1,369 @@
+﻿//===================================
+// variable
+//===================================
+$loc-item: $loc-img-site + 'items/';
+$loc-bn: $loc-img-site + 'toy/bn/';
+
+// about
+// ======================================================
+.content-about{
+	@include background-image($loc-item + 'about-bg.png', $repeat: repeat-y);
+	width:100%;
+	padding-top:170px;
+	margin:0 auto;
+	text-align:center;
+
+	div{
+		padding-bottom: 34px;
+	}
+}
+
+// tvcf
+// ======================================================
+.content-tvcf{
+	@include size(null, 100%);
+	@include background-image($loc-img-site + 'mov/mov-bg.jpg', $color: #805334 );
+
+	position:relative;
+	text-align:center;
+
+	.tvcf_tl{
+		padding:200px 0 48px 0;
+	}
+}
+
+// flavor
+// ======================================================
+.content-flavor {
+	@include background-image($loc-item + 'flavor-bg.png', $color: #60ccfb);
+
+	padding-top: 200px;
+}
+
+// ==========================================================================
+// toy page
+// ==========================================================================
+
+.content-image {
+	@include background-image($loc-img-site + 'toy/main/bg_road.jpg', $repeat: repeat-y);
+
+	.top_sec {
+		@include size(null, 658px);
+		@include background-image($loc-img-site + 'toy/main/bg_top.jpg', $color: #58ceed);
+		position:relative;
+
+		h3 {
+			padding:179px 0 14px;
+			text-align:center;
+		} // h3
+
+		p {
+			text-align: center;
+		}
+	} // top sec
+
+	.top_toy {
+		position: relative;
+		left: 0px;
+		top: 0;
+		z-index:6;
+	} // top toy
+
+	.main_sec {
+		@include background-image($loc-img-site + 'toy/main/bg_road.jpg');
+		position:relative;
+		height: 2412px;
+		padding-top: 502px;
+	} // main_sec
+}
+
+// stick
+// ==========================================================
+.toy-stick {
+	position:absolute;
+	left:25px;
+	top:405px;
+	z-index:9;
+	width: 589px;
+
+	&-go-top {
+		@include size(111px, 119px);
+		@include background-image($loc-img-site + 'toy/main/floating-egg.png');
+
+		float: left;
+		margin-top: -5px;
+	}
+
+	&-list,
+	&-item {
+		float: left;
+	} // list
+
+	&-link {
+		@include background-image($loc-img-site + 'toy/main/floating-menu.png');
+		display: block;
+		height: 116px;
+
+		&-event {
+			width: 157px;
+			background-position: left top;
+
+			&.on {
+				background-position: left bottom;
+			}
+		}
+
+		&-starwas {
+			width: 160px;
+			background-position: -157px top;
+
+			&.on {
+				background-position: -157px bottom;
+			}
+		}
+
+		&-couple {
+			width: 161px;
+			background-position: -317px top;
+
+			&.on {
+				background-position: -317px bottom;
+			}
+		}
+	} // link
+}
+
+
+// 전광판
+// ==================================================================
+
+.elec-sign {
+	// @include debug;
+	@include background-image($loc-img-site + 'toy/main/bg-tit-toys.png');
+	position: absolute;
+	padding: 0;
+	border: 0;
+
+	&-go-event {
+		@include size(387px, 115px);
+		bottom: 2px;
+		left: 50%;
+		transform: translateX(-50%);
+		background-position: left top;
+	}
+
+	&-starwas {
+		@include size(308px, 116px);
+		bottom: 61px;
+		right: 48px;
+		background-position: left -115px;
+	}
+
+	&-couple {
+		@include size(347px, 119px);
+		background-position: left -233px;
+		bottom: 64px;
+		left: 31px;
+	}
+}
+
+// 장난감 영역
+// ===================================================================
+.toy-boys {
+	// @include debug;
+	@include size(617px, 654px);
+	@include background-image($loc-img-site + 'toy/main/starwars-toy.png');
+
+	position: relative;
+	margin-left: 22px;
+	margin-bottom: 264px;
+} // starwars-toy
+
+.toy-girls {
+	// @include debug;
+	@include size(640px, 779px);
+	@include background-image($loc-img-site + 'toy/main/couple-toy.png');
+
+	position: relative;
+}
+
+// copyright
+// ========================================================================
+.content-image .copyright {
+	@include size(372px, 49px);
+	@include background-image($loc-img-site + 'toy/main/copy-right.png');
+	position: absolute;
+	left: 50%;
+	bottom: 35px;
+	transform: translateX(-50%);
+}
+
+
+// inapp
+// ==========================================================================
+.content-image .pop_inapp {
+	@include size($width-mobile, null);
+
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:1001;
+	padding:120px 0 65px;
+	text-align:center;
+
+	button {
+		position:absolute;
+		right:20px;
+		top:20px;
+		border:0;
+		background:none;
+	}
+
+	.m_con {
+		margin:45px 0 60px;
+	}
+}
+
+
+// 장난감 팝업
+// =================================================================
+.popup_toys {
+	// @include debug;
+	@include size(635px, 1289px);
+
+	position:absolute;
+	left:2px;
+	top:100px;
+	z-index:10001;
+	display: none;
+	text-align: center;
+
+	button {
+		padding: 0;
+		border: 0;
+		background-color: transparent;
+	}
+
+	&-close {
+		@include size(52px, 50px);
+		@include background-image($loc-bn + 'close_poup_toys.png');
+
+		position:absolute;
+		top:105px;
+		right:35px;
+	}
+
+	&-thumb {
+		$thumb-width: 419px;
+
+		// @include debug;
+		@include size($thumb-width, null);
+
+		margin: 391px auto 0;
+
+		li {
+			// @include debug;
+			float: left;
+			width: $thumb-width / 3;
+		}
+
+		.bx-wrapper .bx-prev,
+		.bx-wrapper .bx-next {
+			@include size(26px, 43px);
+			@include background-image($loc-bn + 'ir-arrows.png');
+		}
+
+		.bx-wrapper .bx-prev {
+			left: -47px;
+			background-position: 0 -45px;
+		}
+
+		.bx-wrapper .bx-next {
+			right: -47px;
+
+			&,
+			&:hover {
+				background-position: -49px -45px;
+			}
+		}
+	} // thumb
+
+	&-detail {
+		// @include debug;
+		position: absolute;
+		bottom: 325px;
+		left: 50%;
+		transform: translateX(-50%) scale(.9);
+	} // detail
+
+	&-sns {
+		// @include debug;
+		margin-top: 572px;
+		display: inline-block;
+
+		li {
+			float: left;
+			margin-left: 17px;
+
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+	} // sns
+
+	&.is-active {
+		display: block;
+	}
+
+	// 장난감별 배경 이미지 교체
+	// 장난감 카테고리 추가 될 때마다 카테고리명 추가 할 것
+	@each $type in ('boys', 'girls') {
+		&-#{$type} {
+			@include background-image($loc-bn + 'bg-pop-#{$type}.png');
+
+			@if $type == 'boys' {
+				& .popup_toys-thumb {
+					padding-top: 6px;
+				}
+
+				.bx-wrapper .bx-prev {
+					background-position: 0 0;
+				}
+
+				.bx-wrapper .bx-next,
+				.bx-wrapper .bx-next:hover {
+					background-position: -49px 0;
+				}
+			}
+		}
+	}
+
+} // 장난감 디테일 팝업
+
+
+#png_bg{ position: fixed; top: 0; left: 0; display: none; width: 100%; height: 100%; background:#000; opacity: 0.6; filter: alpha(opacity=60); z-index: 1000; }
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/*
+.content-image .close { left: 920px; top: 374px; }
+*/
+/*---------------------------- toyView ----------------------------*/
+.content-toyView {}
+.content-toyView .close { top:100px; right:20px; z-index:10;}
+.content-toyView .toy_selector{position:absolute; top:200px; left:0; width:100%; text-align:center; z-index:10;}
+.content-toyView .toy_selector a{position:relative; margin:0 5px; display:inline-block; height:75px; overflow:hidden; display:inline-block; text-indent:0;}
+.content-toyView .toy_selector a img { position:relative;}
+.content-toyView .toy_selector a.on img {top:-75px;}
+.content-toyView .content-toyView-img {position:relative; text-align:center;}
+.content-toyView .content-toyView-img .group_boy {padding:300px 0 50px 0; background:#60ccfb;}
+.content-toyView .content-toyView-img .group_girl {padding:300px 0 50px 0; background:#fa85c9;}
+.content-toyView .content-toyView-img .group_child {padding:300px 0 50px 0; background:#ffb61e;}
+.content-toyView .content-toyView-img img { vertical-align: top; }
+.content-toyView .content-toyView-img p {text-align:center; padding:40px 0 60px;}
+
+// together
+// ==========================================================
+.content-together {
+	@include background-image($loc-item + 'together-bg.png', $color: #fa85c9);
+	padding-top: 200px;
+}

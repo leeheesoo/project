@@ -1,0 +1,42 @@
+﻿@using Finnq.Promotion.Infrastructures.Admin
+@{
+    var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+    var action = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+
+}
+<li>
+    <a href="@Url.Action("Index","Admin")"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+</li>
+<li>
+    <a href="#"><i class="fa fa-files-o fa-fw"></i> T map 이벤트 <span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li><a href="@Url.Action("Index","AdminTmap")">참여자</a></li>
+    </ul>
+</li>
+<li>
+    <a href="#"><i class="fa fa-files-o fa-fw"></i> 룰렛 이벤트 <span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li><a href="@Url.Action("Index", "AdminRouletteEvent")">참여자</a></li>
+    </ul>
+    <ul class="nav nav-second-level">
+        <li><a href="@Url.Action("InstantLotteryPrizeSetting", "AdminRouletteEvent")"> 즉석당첨 경품관리</a></li>
+    </ul>
+</li>
+<li>
+    <a href="#"><i class="fa fa-files-o fa-fw"></i> T-룰렛 이벤트 <span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li><a href="@Url.Action("Index", "AdminTRouletteEvent")">참여자</a></li>
+    </ul>
+    <ul class="nav nav-second-level">
+        <li><a href="@Url.Action("InstantLotteryPrizeSetting", "AdminTRouletteEvent")"> 즉석당첨 경품관리</a></li>
+    </ul>
+</li>
+<li>
+    <a href="#"><i class="fa fa-files-o fa-fw"></i> TWorld-룰렛 이벤트 <span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li><a href="@Url.Action("Index", "AdminTWorldRouletteEvent")">참여자</a></li>
+    </ul>
+    <ul class="nav nav-second-level">
+        <li><a href="@Url.Action("InstantLotteryPrizeSetting", "AdminTWorldRouletteEvent")"> 즉석당첨 경품관리</a></li>
+    </ul>
+</li>

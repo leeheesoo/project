@@ -1,0 +1,145 @@
+.popup {
+    display   : none;
+    position  : absolute;
+    top       : 0;
+    left      : 0;
+    width     : 100%;
+    background: #ff6600;
+    text-align: center;
+    z-index   : 100;
+    padding-bottom: 38px;
+    margin-top: 100px;
+    /*@include debug();*/
+}
+
+.dimmed {
+    position        : fixed;
+    top             : 0;
+    right           : 0;
+    bottom          : 0;
+    left            : 0;
+    display         : none;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.pop-input-form form {
+    text-align: left;
+    padding   : 38px 38px 0;
+
+    dl {
+        margin: 12px 0;
+    }
+    
+    dt,dd {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    dt {
+        width: 145px;        
+    }
+
+    input[type] {
+        width    : 413px;
+        height   : 64px;
+        font-size: 25px;
+        border   : none;
+        padding  : 0 20px;
+    }
+    
+    .checkbox{
+        margin-top: 34px;
+
+        &__image {
+        display   : inline-block;
+        width     : 51px;
+        height    : 51px;
+        background: url(../../images/Nilririmanbo/pop/checkbox-on-off.png) left top;
+        }
+
+        input[type="checkbox"] {
+            position: absolute;
+            width   : 1px;
+            height  : 1px;
+            opacity : .01;
+        }
+        
+        input[type="checkbox"]:checked ~ span {
+            background-position: left bottom;
+        }
+
+    }
+           
+    button[type="button"]:nth-last-child(1) {
+        margin-left: 15px;
+    }
+
+    div:nth-last-child(1){
+        text-align: center;
+        margin-top: 50px;
+    }
+
+}//form
+
+ .pop-second-prize-details {
+     margin-top: 100px;
+ }
+
+.popup-content {
+    margin: 34px 0;
+}
+
+.btn--close {
+    position: absolute;
+    top: -65px;
+    right: 30px;
+}
+
+.pop-insta-post {
+    background: transparent;
+    margin-top: 80px;
+    padding: 0 30px 30px;
+    text-align: left;
+}
+
+.insta {
+    &__image {
+    width: 100%;
+    }
+
+    &__content {
+    background-color: white;
+    padding: 30px 30px 60px;
+    }
+       
+    &__id {
+    font-size: 24px;
+    font-weight: 800;
+    }
+
+    &__hashtag {
+    color: blue;
+    font-size: 30px;
+    line-height: 1.5;
+    }
+
+    &__time {
+    font-size: 18px;
+    line-height: 1.5;
+    }
+
+    &__text {
+    margin-top: 30px;
+    font-size: 23px;
+    line-height: 1.5;
+    }
+    
+    &__icon {
+    display: inline-block;  
+    }
+}
+
+.insta-id-wrap {
+    display: inline-block;
+    padding-left: 5px;
+}

@@ -1,0 +1,68 @@
+﻿@charset "UTF-8";
+
+/* 팝업 - 공통 */
+.popup_dimmed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	filter: alpha(opacity=80);
+	opacity: 0.80;
+	background-color: #000;
+	z-index: 50;
+}
+
+.page_loading {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	filter: alpha(opacity=40);
+	opacity: 0.40;
+	background: #fff url('../../images/FaceOfKinder/popup/loading.gif') center center no-repeat;
+	z-index: 250;
+}
+
+.popup {
+	position: absolute;
+	top: 100px;
+	left: 50%;
+	margin-left: -320px;
+	width: 640px;
+	height: auto;
+	text-align: center;
+	z-index: 100;
+	background: #fff;
+	@include prefix(border-radius, 50px);
+	& .logo {
+		display:none;
+		position: absolute;
+		top: 13px;
+		left: 13px;
+		z-index: 110;
+	}
+	& .btn_close {
+		position: absolute;
+		top: -52px;
+		right: 0;
+		margin-right: 0;
+		z-index: 110;
+	}
+	& .pop_header {
+		height: 138px;
+		background: #08a0dd;
+		overflow: hidden;
+		@include prefix(border-top-left-radius, 50px);
+		@include prefix(border-top-right-radius, 50px);
+		& .header-tl {
+			padding-top: 54px;
+		}
+		& .header-txt {
+		}
+	}
+	& .pop_con {
+		
+	}
+}

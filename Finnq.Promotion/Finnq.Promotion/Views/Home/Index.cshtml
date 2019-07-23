@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "T map 이벤트";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/Content/tmap/css/reset.min.css" rel="stylesheet" />
+    <link href="~/Content/tmap/css/style.min.css" rel="stylesheet" />
+}
+
+
+<div class="wrap" id="tmapEventEntry">
+    <div class="kv">
+        <div class="kv-inner">
+            <h2><img src="~/Content/tmap/images/main_title.png" alt="다시돌아온 전국민 대상 이벤트 니전화번호는 얼마니? 2"></h2>
+            <div class="sub-title"><img src="~/Content/tmap/images/period.png" alt="2017.09.18~09.20"></div>
+        </div>
+    </div>
+    <!-- 계산영역 -->
+    <div class="reckoning-wrap">
+        <div class="text-phonnumber"><img src="~/Content/tmap/images/text_phonnumber.png" alt="당신의 전화번호는 얼마인지 전화번호 입력 후 확인해보세요"></div>
+        <!--<form action="">-->
+        <span class="text-benefit"><img src="~/Content/tmap/images/text_benefit.png" alt="전고객 혜택"></span>
+        <div class="first-num">
+            <span><img src="~/Content/tmap/images/num_010.png" alt="010"></span>
+            <input class="number-input num1 line1" type="tel" maxlength="1">
+            <input class="number-input num2 line1" type="tel" maxlength="1">
+            <input class="number-input num3 line1" type="tel" maxlength="1">
+            <input class="number-input num4 line1" type="tel" maxlength="1">
+        </div>
+        <div class="second-num">
+            <span><img src="~/Content/tmap/images/icon_plus.png" alt="더하기"></span>
+            <input class="number-input num5" type="tel" maxlength="1">
+            <input class="number-input num6" type="tel" maxlength="1">
+            <input class="number-input num7" type="tel" maxlength="1">
+            <input class="number-input num8" type="tel" maxlength="1">
+        </div>
+        <!-- 결과값 -->
+        <div class="first-result" id="first-result">
+            <span class="first-result-num"></span>
+        </div>
+        <button type="button" v-on:click="openEntry" class="ga" data-action="이벤트 참여하기 클릭"><img src="~/Content/tmap/images/btn_join.png" alt="이벤트 참여하기"/></button>
+    </div>
+    <!-- //계산영역 -->
+
+    <!-- 이벤트안내 -->
+    <div class="note-wrap">
+        <div class="note-inner">
+            <h3><img src="~/Content/tmap/images/guide_title.png" alt="이벤트안내"></h3>
+            <p class="note1"><img src="~/Content/tmap/images/guide_text.png" alt="대상,기간,혜택 및 지급일"></p>
+            <p class="note2"><img src="~/Content/tmap/images/tmap_benefit.jpg" alt="tmap 고객대상 추가혜택" /></p>
+            <p class="note3"><img src="~/Content/tmap/images/benefit_text.png" alt="혜택확인"/></p>
+            <p class="note4"><img src="~/Content/tmap/images/note_text.png" alt="유의사항"/></p>
+        </div>
+    </div>
+
+    @Html.Partial("_popup")
+</div><!-- wrap -->
+
+@section scripts {
+    @Scripts.Render("~/bundles/vuejs")
+    <script src="~/Content/js/jquery.shy4blue.placeholder.js"></script>
+    <script src="~/Content/tmap/js/jquery.splendid.textchange.js"></script>
+    <script src="~/Content/tmap/js/event-pub.js"></script>
+    <script src="~/Content/tmap/js/event-dev.js"></script>
+}

@@ -1,0 +1,17 @@
+﻿<!-- 팝업 : 공유하기 -->
+<div class="popup pop-share" id="pop-share" tabindex="0" role="dialog">
+    <div class="pop-header"></div>
+    <div class="pop-con">
+        <h3><img src="~/Images/KittyJusticeLeague/pop/share-tl.png" alt="영상을 공유하고 황금빛 마음을 나눠보세요."></h3>
+        <div class="share-box">
+            <button v-on:click="shareKakaotalk()" type="button"><img src="~/Images/KittyJusticeLeague/pop/icon-kt.png" class="ga-event" data-action="카카오톡 공유" alt="카카오톡"></button>
+            <button v-on:click="shareFacebook()" type="button"><img src="~/Images/KittyJusticeLeague/pop/icon-f.png" class="ga-event" data-action="페이스북 공유" alt="페이스북"></button>
+            <button v-on:click="shareKakaostory()" type="button"><img src="~/Images/KittyJusticeLeague/pop/icon-ks.png" class="ga-event" data-action="카카오스토리 공유" alt="카카오 스토리"></button>
+        </div>
+        <div class="btns">
+            <button type="button" onclick="closePop('share'); return false;" class="ga-event" data-action="공유완료"><img src="~/Images/KittyJusticeLeague/pop/btn-share-complete.png" alt="공유완료"></button>
+        </div>
+        <p><img src="~/Images/KittyJusticeLeague/pop/share-txt.png" alt=""></p>
+    </div>
+    <button type="button" class="btn-close" onclick="closePop('share'); return false;"><span>팝업 닫기</span></button>
+</div>

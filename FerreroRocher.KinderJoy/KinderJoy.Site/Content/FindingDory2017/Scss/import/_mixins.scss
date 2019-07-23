@@ -1,0 +1,54 @@
+﻿@charset "UTF-8";
+
+/**
+ * mixin
+ */
+
+// test용
+@mixin debug($color: red) {
+    outline: 1px dashed $color;
+}
+
+// margin 정렬(left:50% 된 요소를 중앙으로)
+@mixin margin-left($width) {
+	margin-left: $width / 2 * -1;
+}
+@mixin margin-top($height) {
+	margin-top: $height / 2 * -1;
+}
+
+// vendor frefix
+@mixin prefix($property, $value:(), $prefixes:()) {
+	$prefixes:(webkit moz ms o);
+	@each $prefix in $prefixes {
+		#{'-' + $prefix + '-' + $property}: $value;
+	}
+	#{$property}: $value;
+}
+// vendor frefix - usage
+//.selector {
+//	@include prefix(transform, rotate(45deg));
+//}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+// usage
+//@include keyframes ($animationName) {}
+
+
+// background
+@mixin background($file, $repeat: no-repeat, $x: center, $y: top, $color: transparent) {
+    background: $color url($location + $file) $repeat $x $y;
+}

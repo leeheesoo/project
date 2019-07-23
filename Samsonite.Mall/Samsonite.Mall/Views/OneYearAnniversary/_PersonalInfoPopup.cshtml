@@ -1,0 +1,126 @@
+﻿@model Samsonite.Mall.Models.OneYearAnniversaryModels.OneYearAnniversaryModel
+@{
+
+}
+
+<!-- 팝업 dimmed -->
+<div class="pop-dim"></div>
+
+@*글등록팝업*@
+<div class="popup2" id="pop-textbox">
+    <div class="pop-tit">
+        <div class="btn-close">
+            <a href="javascript:void(0);" onclick="closePop('pop-textbox');">
+                <img src="~/Content/images/one-year-anniversary/pop-close.png" />
+            </a>
+        </div>
+        <img src="~/Content/images/one-year-anniversary/pop-tit.jpg" alt="축하메세지와함께 오행시를 등록해주세요" />
+    </div>
+
+    <div class="pop-text-box">
+        @using (Ajax.BeginRouteForm("CreateOneYearAnniversaryEntry", new { httpRoute = true }, new AjaxOptions { HttpMethod = "post", OnBegin = "oneYearAnniversaryViewModel.begin1stAnniversary", OnComplete = "oneYearAnniversaryViewModel.complete1stAnniversary", OnSuccess = "oneYearAnniversaryViewModel.success1stAnniversary", OnFailure = "oneYearAnniversaryViewModel.failure1stAnniversary" }, new { id = "frmCreateOneYearAnniversaryEntry" })) {
+            <fieldset>
+                @Html.TextAreaFor(x => x.OneYearAnniversaryCreateModel.CongratulationMessage, new { data_bind = "event:{ keyup: oneYearAnniversaryViewModel.checkMessageLength }", cols = "40", rows = "3", placeholder = "쌤소나이트 공식 온라인몰 1주년 축하 메세지를 남겨주세요(100자 이내)" })
+                <legend>오행시 등록</legend>
+                <div class="samsonite-box">
+                    <dl class="text01">
+                        <dt><img src="~/Content/images/one-year-anniversary/tex01.jpg" alt="쌤" /></dt>
+                        <dd>@Html.TextBoxFor(x => x.OneYearAnniversaryCreateModel.AcrosticPoemFirst, new { maxlength = 20, placeholder = "'쌤소나이트'오행시를 적어주세요 (20자 이내)" })</dd>
+                    </dl>
+                    <dl class="text02">
+                        <dt><img src="~/Content/images/one-year-anniversary/tex02.jpg" alt="소" /></dt>
+                        <dd>@Html.TextBoxFor(x => x.OneYearAnniversaryCreateModel.AcrosticPoemSecond, new { maxlength = 20 })</dd>
+                    </dl>
+                    <dl class="text03">
+                        <dt><img src="~/Content/images/one-year-anniversary/tex03.jpg" alt="나" /></dt>
+                        <dd>@Html.TextBoxFor(x => x.OneYearAnniversaryCreateModel.AcrosticPoemThird, new { maxlength = 20 })</dd>
+                    </dl>
+                    <dl class="text03">
+                        <dt><img src="~/Content/images/one-year-anniversary/tex04.jpg" alt="이" /></dt>
+                        <dd>@Html.TextBoxFor(x => x.OneYearAnniversaryCreateModel.AcrosticPoemFourth, new { maxlength = 20 })</dd>
+                    </dl>
+                    <dl class="text03">
+                        <dt><img src="~/Content/images/one-year-anniversary/tex05.jpg" alt="트" /></dt>
+                        <dd>@Html.TextBoxFor(x => x.OneYearAnniversaryCreateModel.AcrosticPoemFifth, new { maxlength = 20 })</dd>
+                    </dl>
+                </div>
+                <div class="finish-btn">
+                    <div class="submit">
+                        <button type="submit" data-bind="enable: isLoading">
+                            <img src="~/Content/images/one-year-anniversary/btn-register.jpg" alt="등록하기" />
+                        </button>
+                     </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div><!-- //글등록 팝업 -->
+
+
+
+<!-- 개인정보 팝업 -->
+<div class="popup" id="pop-Information">
+    <div class="pop-tit">
+        <div class="btn-close">
+            <a href="javascript:void(0);" onclick="closePop('pop-Information');">
+                <img src="~/Content/images/one-year-anniversary/pop-close.png" alt="닫기" />
+            </a>
+        </div>
+        <img src="~/Content/images/one-year-anniversary/pop-personal-tit.jpg" alt="" />
+    </div>
+    <form id="frmUpdateOneYearAnniversaryEntry">
+        @Html.HiddenFor(x => x.OneYearAnniversaryUpdateModel.Id,new { data_bind = "value: entryId"})
+        <fieldset>
+            <legend>개인정보입력</legend>
+            <div class="form-box">
+               
+                <dl class="input-name">
+                    <dt><img class="text-name" src="~/Content/images/one-year-anniversary/pop-name.png" alt="이름"/></dt>
+                    <dd>@Html.TextBoxFor(x => x.OneYearAnniversaryUpdateModel.Name, new { maxlength = 20 })</dd>
+                </dl>
+                <dl class="input-id">
+                    <dt><img class="text-id" src="~/Content/images/one-year-anniversary/pop-id.png" alt="아이디"/></dt>
+                    <dd>@Html.TextBoxFor(x => x.OneYearAnniversaryUpdateModel.SamsoniteId, new { maxlength = 15 })</dd>
+                </dl>
+                <dl class="input-number">
+                    <dt><img class="text-num" src="~/Content/images/one-year-anniversary/pop-number.png" alt="연락처"/></dt>
+                    <dd>@Html.TextBoxFor(x => x.OneYearAnniversaryUpdateModel.Mobile, new { maxlength = 11, type = "tel", placeholder = "'-'기호 없이 입력해주세요" })</dd>
+                </dl>
+                <p>
+                    <img src="~/Content/images/one-year-anniversary/pop-form-text01.png" alt="쿠폰발행을위해고객정보를정확히 입력해주시기 바랍니다." />
+                </p>
+            </div>
+            <div class="agree-box">
+                <div class="agree-policy1">
+                    <label>
+                        @Html.CheckBoxFor(x => x.OneYearAnniversaryUpdateModel.Agree)
+                        <img src="~/Content/images/one-year-anniversary/pop-form-text02.png" alt="개인정보수집및이용동의" />
+                    </label>
+                    <div class="text-box">
+                        <span>[개인정보 수집 및 활용 동의]</span><br><br>
+                        고객님이 입력한 개인정보는 ‘정보통신망 이용촉진 및 정보보호 등에 관한 법률’에 따라 쌤소나이트코리아(주)가 수집, 활용 및 취급 위탁 시 본인의 동의를 얻어야 하는 정보입니다. 입력하신 개인정보는 아래의 목적으로 프로모션 대행사에만 제공되며, 이외의 용도로는 활용되지 않습니다.<br><br>
+                        1) 개인정보 수집 및 이용목적 - 참여자 본인 확인 및 경품 발송<br>
+                        2) 수집하는 개인정보 항목 - 이름, 연락처, 사이트 아이디<br>
+                        3) 개인정보 보유 및 이용기간 - 이벤트 종료 후 3개월 이내 파기 (단, 관계 법령 규정에 의하여 보존할 필요가 있는 경우 관련 법령에 따라 보관)<br>
+                        4) 본 이벤트 참여 고객은 개인정보 수집, 활용에 대하여 동의를 거부할 권리가 있으며, 개인정보 수집, 활용에 대한 미동의 시 해당 이벤트 참여하실 수 없습니다.<br>
+                        5) 쌤소나이트코리아(주)는 서비스 향상과 원활한 진행을 위하여 개인 정보 처리 업무를 외부 전문 업체에 위탁하여 처리하고 있습니다.<br><br>
+                    </div>
+                </div>
+                @*<div class="agree-policy2">
+                    <label>
+                        @Html.CheckBoxFor(x => x.OneYearAnniversaryUpdateModel.Agree2)
+                        <img src="~/Content/images/one-year-anniversary/pop-form-text03.png" alt="개인정보 제 3자 제공동의" />
+                    </label>
+                    <div class="text-box">
+                       
+                    </div>
+                </div>*@
+            </div>
+            <div class="finish-btn">
+                <button type="submit" data-bind="click: function() { return oneYearAnniversaryViewModel.updateOneYearAnniversaryEntry(); }">
+                    <img src="~/Content/images/one-year-anniversary/btn-join.jpg" />
+                </button>
+            </div>
+        </fieldset>
+    </form>
+</div><!-- //개인정보 팝업 -->

@@ -1,0 +1,227 @@
+﻿@using KinderJoy.Domain.Entities.MavelFrozen
+@model KinderJoy.Site.Models.MavelFrozen.MarvelFrozenUserModel
+@{
+    ViewBag.Title = "2017 마블 & 겨울왕국 이벤트";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var isOpen = DateTime.Now > new DateTime(2017, 4, 24,9,0,0);
+    var isClose = DateTime.Now >= new DateTime(2017, 5, 20);
+}
+@section metas {
+    <meta property="og:title" content="이벤트 참여하고 킨더조이 받자!" />
+    <meta property="og:description" content="킨더조이 1,020개 증정!">
+    <meta property="og:image" content="http://@HttpContext.Current.Request["HTTP_HOST"]/Images/MarvelFrozen/sns/kakaostory.jpg">
+    <meta property="og:url" content="http://@HttpContext.Current.Request["HTTP_HOST"]/event/2017-Marvel_frozen?utm_source=kakaostory&utm_medium=sharing&utm_campaign=marvel-frozen">
+}
+@section styles {
+    <link rel="styleSheet" href="~/Content/MarvelFrozen_/csshake.min.css" />
+    <link rel="styleSheet" href="~/Content/MarvelFrozen_/style.min.css" />
+}
+@*<div class="guide"></div>*@
+<div class="event-container" ng-app="app-marvel-frozen" ng-controller="ctrl-marvel-frozen">
+    <!-- main-visual -->
+    <div class="visual-wrap">
+        <div class="visual">
+            <div class="marvel shake-little">
+                <img class="thur" src="~/Images/MarvelFrozen/w/visual-characters-marvel.png" alt="" />                
+            </div>
+            <div class="frozen sizeup">
+                <img class="mar" src="~/Images/MarvelFrozen/w/visual-characters-frozen.png" alt="" />                
+            </div>
+            <div class="olaf"><img src="~/Images/MarvelFrozen/w/frozen-olaf.png" alt="Alternate Text" /></div>
+            <div class="bg"><img src="~/Images/MarvelFrozen/w/main-visual-bg-front.png" alt="" /></div>
+            <div class="disney sizeup">
+                <img class="mar" src="~/Images/MarvelFrozen/w/visual-characters-disney.png" alt="" />
+            </div>            
+        </div>
+        <img class="title" src="~/Images/MarvelFrozen/w/main-title.png" alt="Alternate Text" />
+        <img class="title-img" src="~/Images/MarvelFrozen/w/character.png" alt="AlternateText" />
+    </div>
+    <!-- // main-visual -->
+
+    <!-- event-guide -->
+    <div class="event-guide">
+        <p class="title"><img src="~/Images/MarvelFrozen/w/event-title.png" alt="Alternate Text" /></p>
+        <p class="desc"><img src="~/Images/MarvelFrozen/w/event-desc.png" alt="Alternate Text" /></p>
+        <div class="contents">
+            <div class="how"><img src="~/Images/MarvelFrozen/w/event-how.png" alt="Alternate Text" /></div>
+            <div class="given">
+                <img src="~/Images/MarvelFrozen/w/event-given.png" alt="Alternate Text" />
+                <a href="" class="btn-check-win"><img src="~/Images/MarvelFrozen/w/event-btn-check.png" class="GA" data-category="@ViewBag.Title" data-action="당첨 확인" alt="Alternate Text" /></a>
+            </div>
+        </div>
+    </div>
+    <!-- // event-guide -->
+
+    <!-- game -->
+    <div class="game" id="cardGame">
+        <div class="steps">
+            <div class="pointer"><img src="~/Images/MarvelFrozen/w/game/step-pointer.png" alt="Alternate Text" /></div>
+        </div>
+        <ol class="stage">
+            <!-- step1 -->
+            <li class="bg1">
+                <img class="baloon" src="~/Images/MarvelFrozen/w/game/step1-baloon.png" alt="" />
+                <a class="btn-game-start" href=""><img src="~/Images/MarvelFrozen/w/game/btn-start.png" class="GA" data-category="@ViewBag.Title" data-action="게임 START" ng-click="openMarvelFrozen()" alt="Alternate Text" /></a>
+            </li>
+            <!-- step2 -->
+            <li class="bg1" style="display:none;">
+                <!-- 개인정보 입력창 -->
+                <div class="private-info">
+                    <div class="title">
+                        <img src="~/Images/MarvelFrozen/common/private-info-title.png" alt="" />
+                    </div>
+                    <form id="frmMarvelFrozen" ng-submit="saveMarvelFrozenUser()">
+                        <legend>개인정보 입력</legend>
+                        <p class="info-name inline">
+                            <label for="name"><img src="~/Images/MarvelFrozen/common/label-name.png" alt="이름 라벨"></label>@Html.TextBoxFor(x => x.Name, new { ng_model = "marvelFrozenUser.name", maxlength = 10, kr_input = "",@class="short" })
+                        </p>
+                        <p class="info-age inline">
+                            <label class="short" for="age"><img src="~/Images/MarvelFrozen/common/label-age.png" alt="나이 라벨"></label>@Html.TextBoxFor(x => x.Age, new { type = "tel", ng_model = "marvelFrozenUser.age", maxlength = 3,@class= "short" })
+                        </p>
+                        <p class="info-phone">
+                            <label for="Mobile"><img src="~/Images/MarvelFrozen/common/label-phone.png" alt="전화번호 라벨"></label>@Html.TextBoxFor(x => x.Mobile, new { type = "tel", ng_model = "marvelFrozenUser.mobile", maxlength = 11 })
+                        </p>
+                        <p class="info-adress">
+                            <label for="adress"><img src="~/Images/MarvelFrozen/common/label-adress.png" alt="주소 라벨"></label>@Html.TextBoxFor(x => x.ZipCode, new { ng_model = "marvelFrozenUser.zipCode", maxlength = 7, @readonly = "readonly",@class="short2" })<img src="~/Images/MarvelFrozen/common/btn-search-zip.png" class="GA" data-category="@ViewBag.Title" data-action="우편번호" style="cursor:pointer" ng-click="openPostCode()" alt="Alternate Text" />@Html.TextBoxFor(x => x.Address, new { ng_model = "marvelFrozenUser.address", maxlength = 150, @readonly = "readonly",@class="right" })@Html.TextBoxFor(x => x.AddressDetail, new { ng_model = "marvelFrozenUser.addressDetail", maxlength = 150, @class = "right", kr_input = "" })
+                        </p>
+                        <p class="info-sex">
+                            <img class="label" src="~/Images/MarvelFrozen/common/label-child-sex.png" alt="성별 라벨">@Html.RadioButtonFor(x => x.ChildGender,GenderType.Boy.ToString("D"),new { @id="boy", ng_model = "marvelFrozenUser.childGender" })<label for="boy" style="cursor:pointer"><span></span><img src="~/Images/MarvelFrozen/common/label-male.png" alt="Alternate Text" /></label>@Html.RadioButtonFor(x => x.ChildGender, GenderType.Girl.ToString("D"), new { @id = "girl", ng_model = "marvelFrozenUser.childGender" })<label for="girl" style="cursor:pointer"><span></span><img src="~/Images/MarvelFrozen/common/label-female.png" alt="Alternate Text" /></label>
+                        </p>
+                        <p class="agree-policy">
+                            <!-- label의 for와 input의 id를 동일하게 맞춰주세요~ -->
+                            @Html.CheckBoxFor(x => x.Agree , new { ng_model = "marvelFrozenUser.agree" })<label for="Agree" style="cursor:pointer"><span></span><img src="~/Images/MarvelFrozen/common/private-info-txt-agree.png" alt="Alternate Text" /></label><a class="btn-info-detail" href="/event/2017-Marvel_frozen/privacy-policy" target="_blank"><img src="~/Images/MarvelFrozen/common/private-info-txt-see-detail.png" alt="Alternate Text" /></a>
+                        </p>
+                        <button class="btn-userInfoComp" ng-disabled="isLoading" type="submit"><img src="~/Images/MarvelFrozen/common/btn_confirm.png" class="GA" data-category="@ViewBag.Title" data-action="입력완료" alt="입력완료"></button>
+                    </form>
+
+                </div>
+                <!-- // 개인정보 입력창 -->
+            </li>
+            <!-- step3 -->
+            <li class="bg2" style="display:none;">
+                <!-- 게임시작 -->
+                <p class="txt-start"><img src="~/Images/MarvelFrozen/w/game/txt-start.png" alt="Alternate Text" /></p>
+            </li>
+            <!-- step4 -->
+            <li class="bg2" style="display:none;">
+                <div class="state">
+                    <p class="timer">00:00:00</p>
+                    <div class="bar-wrap">
+                        <div class="bar"></div>
+                    </div>
+                    <button class="btn-hint"><img src="~/Images/MarvelFrozen/w/game/btn-hint.png" class="GA" data-category="@ViewBag.Title" data-action="힌트 보기" alt="Alternate Text" /></button>
+                </div>
+            </li>
+
+            <!-- step5 -->
+            <li class="bg3" style="display:none;">
+                <div class="score">
+                    <p class="txt"><img src="~/Images/MarvelFrozen/w/game/core-txt.png" alt="Alternate Text" /></p>
+                    <p class="score-num">00:00:00</p>
+                    <button class="btn-retry"><img src="~/Images/MarvelFrozen/w/game/btn-retry.png" class="GA" data-category="@ViewBag.Title" data-action="다시 참여하기" alt="Alternate Text" /></button>
+                </div>
+                <div class="sns">
+                    <p class="txt"><img src="~/Images/MarvelFrozen/w/game/sns-trxt.png" alt="Alternate Text" /></p>
+                    <img src="~/Images/MarvelFrozen/w/game/icon-sns-facebook.png" ng-click="isLoading ? '' : snsShare('@KinderJoy.Domain.Abstract.SnsType.Facebook')" style="cursor:pointer" class="GA" data-category="@ViewBag.Title" data-action="페이스북 공유" alt="" />
+                    <img src="~/Images/MarvelFrozen/w/game/icon-sns-kakao.png" ng-click="isLoading ? '' : snsShare('@KinderJoy.Domain.Abstract.SnsType.Kakaotalk')" style="cursor:pointer" class="GA" data-category="@ViewBag.Title" data-action="카카오톡 공유" alt="" />
+                    <img src="~/Images/MarvelFrozen/w/game/icon-sns-kakaoS.png" ng-click="isLoading ? '' : snsShare('@KinderJoy.Domain.Abstract.SnsType.Kakaostory')" style="cursor:pointer" class="GA" data-category="@ViewBag.Title" data-action="카카오스토리 공유" alt="" />
+                </div>
+
+            </li>
+        </ol>
+
+        <!-- 카드그룹 -->
+        <ul id="cards" class="" style="display: none;"></ul>
+        <!-- #cards -->
+    </div>
+    <!-- // game -->
+
+    <!-- detail -->
+    <div class="detail">
+        <p class="title"><img src="~/Images/MarvelFrozen/w/detail-title.png" alt="Alternate Text" /></p>
+        <ul class="list-imgs">
+            <li><img src="~/Images/MarvelFrozen/w/detail-marvel.png" alt="Alternate Text" /></li>
+            <li><img src="~/Images/MarvelFrozen/w/detail-disney.png" alt="Alternate Text" /></li>
+            <li class="last"><img src="~/Images/MarvelFrozen/w/detail-frozen.png" alt="Alternate Text" /></li>
+        </ul>
+        <div class="btns">
+            <!-- 자세히 보러가기 -->
+            <a class="btn-go-detail" href="/Image" target="_blink" ><img src="~/Images/MarvelFrozen/w/detail-btn-go-detail.png" alt="Alternate Text" /></a>
+            <!-- 구매히기 -->
+            @*<a class="btn-go-buy" href="http://item2.gmarket.co.kr/Item/DetailView/Item.aspx?goodscode=894651595" target="_blank">*@
+            <a class="btn-go-buy" onclick="goBuySite();">
+                <img src="~/Images/MarvelFrozen/w/detail-btn-go-buy.png" class="GA" data-category="@ViewBag.Title" data-action="구매하기" alt="Alternate Text" />
+            </a>
+        </div>
+
+    </div>
+    <!-- // detail -->
+    <!-- notice -->
+    <div class="notice">
+        <p class="title"><img src="~/Images/MarvelFrozen/w/notice-title.png" alt="Alternate Text" /></p>
+        <p class="txt"><img src="~/Images/MarvelFrozen/w/notice-txt.png" alt="Alternate Text" /></p>
+    </div>
+    <!-- // notice -->
+    <!-- 팝업 -->
+    @Html.Partial("_Popup")
+    @Html.Partial("_PopupZipCode")
+    @Html.Partial("_PopupPrizeWinner")
+</div>
+
+@section scripts {
+    <script src="~/Scripts/uderscore-min.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/kakako-1.8.0.min.js"></script>
+    <script type="text/javascript" src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
+    <script type="text/javascript" src="~/Scripts/Common/devCommon.js"></script>
+    <script type="text/javascript" src="~/Scripts/Common/snsCommon.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-resource.min.js"></script>
+    <script type="text/javascript">
+        var isOpen = "@isOpen";
+        var isClose = "@isClose";
+
+        //카카오 javascript key
+        Kakao.init('@System.Configuration.ConfigurationManager.AppSettings["sns.kakao.key"]');
+        //페이스북
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '@System.Configuration.ConfigurationManager.AppSettings["sns.facebook.apikey"]', // App ID
+                channelUrl: '//@HttpContext.Current.Request["HTTP_HOST"]/facebook-channel.php', // Channel File
+                status: true, // check login status
+                xfbml: true  // parse XFBML
+            });
+            //팝업방지..
+            FB.getLoginStatus(function (response) { });
+        };
+        (function (d, debug) {
+            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement('script'); js.id = id; js.async = true;
+            js.src = "//connect.facebook.net/ko_KR/all" + (debug ? "/debug" : "") + ".js";
+            ref.parentNode.insertBefore(js, ref);
+        }(document, /*debug*/false));
+
+        // page 개별 data 정의
+        var cardImgUrl = '/Images/MarvelFrozen/w/game/';
+        var gameBarWidth = 636;
+        var cardActiveDelay = 500;
+        var device = 'w';        
+        var stepPointPosList = [90, 300, 510, 718, 925];
+        var stReady = '            카드 매칭 게임 참여를 위해 각 장난감의 위치를\n                    5초 동안 먼저 보여드리니, 집중해주세요!';
+    </script>
+
+    <script src="~/Scripts/jquery.shy4blue.placeholder.js"></script>
+    <script src="~/Scripts/MarvelFrozen/cardGame.js"></script>
+    <script src="~/Scripts/MarvelFrozen/pub.js"></script>
+    <script src="~/Scripts/MarvelFrozen/dev.js"></script>
+}
+
+
+
+
+
+
+
+
+

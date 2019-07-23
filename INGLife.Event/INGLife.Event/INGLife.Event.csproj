@@ -1,0 +1,1303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AF62808B-AC5A-4791-B35B-0F19E13C47F1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>INGLife.Event</RootNamespace>
+    <AssemblyName>INGLife.Event</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ExpressiveAnnotations, Version=2.7.4.0, Culture=neutral, PublicKeyToken=d3e372f3c1e83cec, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExpressiveAnnotations.2.9.6\lib\net45\ExpressiveAnnotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ExpressiveAnnotations.MvcUnobtrusive, Version=2.5.4.0, Culture=neutral, PublicKeyToken=d3e372f3c1e83cec, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExpressiveAnnotations.2.9.6\lib\net45\ExpressiveAnnotations.MvcUnobtrusive.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis, Version=1.32.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.32.0\lib\net45\Google.Apis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.AnalyticsReporting.v4, Version=1.32.0.1042, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.AnalyticsReporting.v4.1.32.0.1042\lib\net45\Google.Apis.AnalyticsReporting.v4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.32.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.32.0\lib\net45\Google.Apis.Auth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.32.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.32.0\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.32.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.32.0\lib\net45\Google.Apis.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.32.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.32.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NWebsec, Version=4.3.0.0, Culture=neutral, PublicKeyToken=3613da5f958908a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NWebsec.4.3.0\lib\45\NWebsec.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NWebsec.Core, Version=1.6.0.0, Culture=neutral, PublicKeyToken=3613da5f958908a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NWebsec.Core.1.6.0\lib\45\NWebsec.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NWebsec.Mvc, Version=4.3.0.0, Culture=neutral, PublicKeyToken=3613da5f958908a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NWebsec.Mvc.4.3.0\lib\45\NWebsec.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.AppContext.4.3.0\lib\net46\System.AppContext.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.3.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Globalization.Calendars, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Globalization.Calendars.4.3.0\lib\net46\System.Globalization.Calendars.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.1\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net46\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net46\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="X.PagedList, Version=7.2.0.0, Culture=neutral, PublicKeyToken=00b6c4f97602e5e8, processorArchitecture=MSIL">
+      <HintPath>..\packages\X.PagedList.7.2.0\lib\netstandard1.2\X.PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="X.PagedList.Mvc, Version=7.2.0.0, Culture=neutral, PublicKeyToken=c6e0b5b21f916f4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\X.PagedList.Mvc.7.2.0\lib\net452\X.PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="X.PagedList.Mvc.Common, Version=7.2.0.0, Culture=neutral, PublicKeyToken=00b6c4f97602e5e8, processorArchitecture=MSIL">
+      <HintPath>..\packages\X.PagedList.Mvc.7.2.0\lib\net452\X.PagedList.Mvc.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-datepicker.css" />
+    <Content Include="Content\bootstrap-datepicker.min.css" />
+    <Content Include="Content\bootstrap-datepicker.standalone.css" />
+    <Content Include="Content\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="Content\bootstrap-datepicker3.css" />
+    <Content Include="Content\bootstrap-datepicker3.min.css" />
+    <Content Include="Content\bootstrap-datepicker3.standalone.css" />
+    <Content Include="Content\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\common\dev-common.js" />
+    <Content Include="Content\financialConcertMarketingAgree\css\event.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\google-analytics\admin-google-analytics-viewmodels.js" />
+    <Content Include="Content\HiddenAssets\slider-pro.min.css" />
+    <Content Include="Content\HiddenAssets\style.css" />
+    <Content Include="Content\Images\dim.png" />
+    <Content Include="Content\Images\FcEvent\btns.png" />
+    <Content Include="Content\Images\FcEvent\event-rule.jpg" />
+    <Content Include="Content\Images\FcEvent\event-notice.jpg" />
+    <Content Include="Content\Images\FcEvent\form\agree-inner-marketing01.png" />
+    <Content Include="Content\Images\FcEvent\form\agree-inner-marketing02.png" />
+    <Content Include="Content\Images\FcEvent\form\btn-post.png" />
+    <Content Include="Content\Images\FcEvent\form\btns.png" />
+    <Content Include="Content\Images\FcEvent\form\confirm-text.png" />
+    <Content Include="Content\Images\FcEvent\form\email.png" />
+    <Content Include="Content\Images\FcEvent\form\fccode-btn.png" />
+    <Content Include="Content\Images\FcEvent\form\fccode-note.png" />
+    <Content Include="Content\Images\FcEvent\form\fccode-tit.png" />
+    <Content Include="Content\Images\FcEvent\form\post.png" />
+    <Content Include="Content\Images\FcEvent\form\recommender-tit.png" />
+    <Content Include="Content\Images\FcEvent\event-kv.jpg" />
+    <Content Include="Content\Images\FcEvent\form\tit-address.png" />
+    <Content Include="Content\Images\FcEvent\form\_btn-close.png" />
+    <Content Include="Content\Images\FcEvent\new-kv.jpg" />
+    <Content Include="Content\Images\FcEvent\new-notice.jpg" />
+    <Content Include="Content\Images\FcEvent\new-rule.jpg" />
+    <Content Include="Content\Images\FcEvent\share-text.png" />
+    <Content Include="Content\Images\FcEvent\sns\kakao.jpg" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\1year.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\2year.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\3year.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\4year.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\5year.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\agree-inner-consult01.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\agree-inner-consult02.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\agree-inner-marketing01.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\agree-inner-marketing02.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\agree-text1.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\agree-text2.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\agree-tit1.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\agree-tit2.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\agree.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\all.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\btn-agree.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\btn-close.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\btn-complete.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\btn-man.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\btn-phoneconfirm.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\btn-post.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\btn-request.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\btn-woman.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\contact-note-event.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\contact-tit.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\disagree.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\email-thum.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\email.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\end.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\essential-point.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\etc.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\health.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\ico-arrow-down.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\img-footer1.jpg" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\img-footer2.jpg" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\img-footer3.jpg" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\img-footer4.jpg" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\img-footer5.jpg" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\img-visual.jpg" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\input-check-em.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\input-check.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\input-radio-em.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\input-radio.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\interest-tit.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\loading.gif" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\notice-agree.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\notice-consult.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\notice-marketing.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\personal-tit.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\phone.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\post-tit.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\post.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\reserve.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\retention-tit.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\salary.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\saving.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\select-icon.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\sms.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\tit-address.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\tit-email.png" />
+    <Content Include="Content\Images\financialConcertMarketingAgree\tit-select-term.png" />
+    <Content Include="Content\Images\HiddenAssets\apply_top.png" />
+    <Content Include="Content\Images\HiddenAssets\bg_asset.png" />
+    <Content Include="Content\Images\HiddenAssets\bg_asset1.png" />
+    <Content Include="Content\Images\HiddenAssets\bg_asset2.png" />
+    <Content Include="Content\Images\HiddenAssets\bg_asset3.png" />
+    <Content Include="Content\Images\HiddenAssets\bg_asset_m.png" />
+    <Content Include="Content\Images\HiddenAssets\bg_intro.jpg" />
+    <Content Include="Content\Images\HiddenAssets\bg_stage_box.png" />
+    <Content Include="Content\Images\HiddenAssets\bg_stage_box_m.png" />
+    <Content Include="Content\Images\HiddenAssets\bg_style.png" />
+    <Content Include="Content\Images\HiddenAssets\bg_style_m.png" />
+    <Content Include="Content\Images\HiddenAssets\bg_style_m_on.png" />
+    <Content Include="Content\Images\HiddenAssets\bg_style_on.png" />
+    <Content Include="Content\Images\HiddenAssets\btn_close.jpg" />
+    <Content Include="Content\Images\HiddenAssets\btn_close.png" />
+    <Content Include="Content\Images\HiddenAssets\btn_stage_m01.png" />
+    <Content Include="Content\Images\HiddenAssets\btn_stage_m02.png" />
+    <Content Include="Content\Images\HiddenAssets\btn_stage_m03.png" />
+    <Content Include="Content\Images\HiddenAssets\btn_stage_m04.png" />
+    <Content Include="Content\Images\HiddenAssets\btn_stage_m05.png" />
+    <Content Include="Content\Images\HiddenAssets\btn_stage_m06.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info1.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info10.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info11.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info12.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info13.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info14.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info15.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info16.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info17.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info18.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info19.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info2.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info3.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info4.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info5.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info6.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info7.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info8.png" />
+    <Content Include="Content\Images\HiddenAssets\card_info9.png" />
+    <Content Include="Content\Images\HiddenAssets\ico_card_list.png" />
+    <Content Include="Content\Images\HiddenAssets\pop_coupon.jpg" />
+    <Content Include="Content\Images\TumblerEvent\event-notice.jpg" />
+    <Content Include="Content\Images\TumblerEvent\form\1year.png" />
+    <Content Include="Content\Images\TumblerEvent\form\2year.png" />
+    <Content Include="Content\Images\TumblerEvent\form\3year.png" />
+    <Content Include="Content\Images\TumblerEvent\form\4year.png" />
+    <Content Include="Content\Images\TumblerEvent\form\5year.png" />
+    <Content Include="Content\Images\TumblerEvent\form\agree-inner-marketing01.png" />
+    <Content Include="Content\Images\TumblerEvent\form\agree-inner-marketing02.png" />
+    <Content Include="Content\Images\TumblerEvent\form\agree-tit1.png" />
+    <Content Include="Content\Images\TumblerEvent\form\agree-tit2.png" />
+    <Content Include="Content\Images\TumblerEvent\form\agree.png" />
+    <Content Include="Content\Images\TumblerEvent\form\all.png" />
+    <Content Include="Content\Images\TumblerEvent\form\btn-close.png" />
+    <Content Include="Content\Images\TumblerEvent\form\btn-close2.png" />
+    <Content Include="Content\Images\TumblerEvent\form\btn-complete.png" />
+    <Content Include="Content\Images\TumblerEvent\form\btn-man.png" />
+    <Content Include="Content\Images\TumblerEvent\form\btn-phoneconfirm.png" />
+    <Content Include="Content\Images\TumblerEvent\form\btn-woman.png" />
+    <Content Include="Content\Images\TumblerEvent\form\contact-note-event.png" />
+    <Content Include="Content\Images\TumblerEvent\form\contact-tit.png" />
+    <Content Include="Content\Images\TumblerEvent\form\disagree.png" />
+    <Content Include="Content\Images\TumblerEvent\form\email.png" />
+    <Content Include="Content\Images\TumblerEvent\form\emoticon-note.png" />
+    <Content Include="Content\Images\TumblerEvent\form\emoticon-tit.png" />
+    <Content Include="Content\Images\TumblerEvent\form\etc.png" />
+    <Content Include="Content\Images\TumblerEvent\form\health.png" />
+    <Content Include="Content\Images\TumblerEvent\form\input-check-em.png" />
+    <Content Include="Content\Images\TumblerEvent\form\input-check.png" />
+    <Content Include="Content\Images\TumblerEvent\form\input-radio-em.png" />
+    <Content Include="Content\Images\TumblerEvent\form\input-radio.png" />
+    <Content Include="Content\Images\TumblerEvent\form\interest-tit.png" />
+    <Content Include="Content\Images\TumblerEvent\form\loading.gif" />
+    <Content Include="Content\Images\TumblerEvent\form\notice-agree.png" />
+    <Content Include="Content\Images\TumblerEvent\form\personal-tit.png" />
+    <Content Include="Content\Images\TumblerEvent\form\phone.png" />
+    <Content Include="Content\Images\TumblerEvent\form\post-tit.png" />
+    <Content Include="Content\Images\TumblerEvent\form\post.png" />
+    <Content Include="Content\Images\TumblerEvent\form\reserved-fund.png" />
+    <Content Include="Content\Images\TumblerEvent\form\retention-tit.png" />
+    <Content Include="Content\Images\TumblerEvent\form\salary.png" />
+    <Content Include="Content\Images\TumblerEvent\form\savings.png" />
+    <Content Include="Content\Images\TumblerEvent\form\sms.png" />
+    <Content Include="Content\Images\FcEvent\form\1year.png" />
+    <Content Include="Content\Images\FcEvent\form\2year.png" />
+    <Content Include="Content\Images\FcEvent\form\3year.png" />
+    <Content Include="Content\Images\FcEvent\form\4year.png" />
+    <Content Include="Content\Images\FcEvent\form\5year.png" />
+    <Content Include="Content\Images\FcEvent\form\agree-inner-text-all.png" />
+    <Content Include="Content\Images\FcEvent\form\agree-inner-text1.png" />
+    <Content Include="Content\Images\FcEvent\form\agree-inner-text2.png" />
+    <Content Include="Content\Images\FcEvent\form\agree-text1.png" />
+    <Content Include="Content\Images\FcEvent\form\agree-text2.png" />
+    <Content Include="Content\Images\FcEvent\form\agree-tit1.png" />
+    <Content Include="Content\Images\FcEvent\form\agree-tit2.png" />
+    <Content Include="Content\Images\FcEvent\form\agree.png" />
+    <Content Include="Content\Images\FcEvent\form\agree01-tit.png" />
+    <Content Include="Content\Images\FcEvent\form\agree01-txt.png" />
+    <Content Include="Content\Images\FcEvent\form\agree02-tit.png" />
+    <Content Include="Content\Images\FcEvent\form\agree02-txt.png" />
+    <Content Include="Content\Images\FcEvent\form\all.png" />
+    <Content Include="Content\Images\FcEvent\form\btn-agree.png" />
+    <Content Include="Content\Images\FcEvent\form\btn-close.png" />
+    <Content Include="Content\Images\FcEvent\form\btn-close2.png" />
+    <Content Include="Content\Images\FcEvent\form\btn-complete.png" />
+    <Content Include="Content\Images\FcEvent\form\btn-man.png" />
+    <Content Include="Content\Images\FcEvent\form\btn-phoneconfirm.png" />
+    <Content Include="Content\Images\FcEvent\form\btn-woman.png" />
+    <Content Include="Content\Images\FcEvent\form\contact-note-event.png" />
+    <Content Include="Content\Images\FcEvent\form\contact-tit.png" />
+    <Content Include="Content\Images\FcEvent\form\disagree.png" />
+    <Content Include="Content\Images\FcEvent\form\emoticon-note.png" />
+    <Content Include="Content\Images\FcEvent\form\emoticon-tit.png" />
+    <Content Include="Content\Images\FcEvent\form\input-check-em.png" />
+    <Content Include="Content\Images\FcEvent\form\input-check.png" />
+    <Content Include="Content\Images\FcEvent\form\input-radio-em.png" />
+    <Content Include="Content\Images\FcEvent\form\input-radio.png" />
+    <Content Include="Content\Images\FcEvent\form\loading.gif" />
+    <Content Include="Content\Images\FcEvent\form\notice-agree.png" />
+    <Content Include="Content\Images\FcEvent\form\personal-tit.png" />
+    <Content Include="Content\Images\FcEvent\form\phone.png" />
+    <Content Include="Content\Images\FcEvent\form\post-tit.png" />
+    <Content Include="Content\Images\FcEvent\form\retention-tit.png" />
+    <Content Include="Content\Images\FcEvent\form\sms.png" />
+    <Content Include="Content\Images\FcEvent\form\top-note.png" />
+    <Content Include="Content\Images\loading.svg" />
+    <Content Include="Content\Images\orange4050\bg-footer.jpg" />
+    <Content Include="Content\Images\orange4050\bg-kv.jpg" />
+    <Content Include="Content\Images\orange4050\bg-share.jpg" />
+    <Content Include="Content\Images\orange4050\bg-step1.jpg" />
+    <Content Include="Content\Images\orange4050\bg-step2.jpg" />
+    <Content Include="Content\Images\orange4050\btns.png" />
+    <Content Include="Content\Images\orange4050\form\1year.png" />
+    <Content Include="Content\Images\orange4050\form\2year.png" />
+    <Content Include="Content\Images\orange4050\form\3year.png" />
+    <Content Include="Content\Images\orange4050\form\4year.png" />
+    <Content Include="Content\Images\orange4050\form\5year.png" />
+    <Content Include="Content\Images\orange4050\form\agree-inner-text-all.png" />
+    <Content Include="Content\Images\orange4050\form\agree-inner-text1.png" />
+    <Content Include="Content\Images\orange4050\form\agree-inner-text2.png" />
+    <Content Include="Content\Images\orange4050\form\agree-text1.png" />
+    <Content Include="Content\Images\orange4050\form\agree-text2.png" />
+    <Content Include="Content\Images\orange4050\form\agree-tit1.png" />
+    <Content Include="Content\Images\orange4050\form\agree-tit2.png" />
+    <Content Include="Content\Images\orange4050\form\agree.png" />
+    <Content Include="Content\Images\orange4050\form\agree01-tit.png" />
+    <Content Include="Content\Images\orange4050\form\agree01-txt.png" />
+    <Content Include="Content\Images\orange4050\form\agree02-tit.png" />
+    <Content Include="Content\Images\orange4050\form\agree02-txt.png" />
+    <Content Include="Content\Images\orange4050\form\all.png" />
+    <Content Include="Content\Images\orange4050\form\btn-agree.png" />
+    <Content Include="Content\Images\orange4050\form\btn-close.png" />
+    <Content Include="Content\Images\orange4050\form\btn-close2.png" />
+    <Content Include="Content\Images\orange4050\form\btn-complete.png" />
+    <Content Include="Content\Images\orange4050\form\btn-man.png" />
+    <Content Include="Content\Images\orange4050\form\btn-phoneconfirm.png" />
+    <Content Include="Content\Images\orange4050\form\btn-woman.png" />
+    <Content Include="Content\Images\orange4050\form\contact-note-event.png" />
+    <Content Include="Content\Images\orange4050\form\contact-tit.png" />
+    <Content Include="Content\Images\orange4050\form\disagree.png" />
+    <Content Include="Content\Images\orange4050\form\emoticon-note.png" />
+    <Content Include="Content\Images\orange4050\form\emoticon-tit.png" />
+    <Content Include="Content\Images\orange4050\form\emoticon01-ex.png" />
+    <Content Include="Content\Images\orange4050\form\emoticon01.png" />
+    <Content Include="Content\Images\orange4050\form\emoticon02-ex.png" />
+    <Content Include="Content\Images\orange4050\form\emoticon02.png" />
+    <Content Include="Content\Images\orange4050\form\emoticon03-ex.png" />
+    <Content Include="Content\Images\orange4050\form\emoticon03.png" />
+    <Content Include="Content\Images\orange4050\form\input-check-em.png" />
+    <Content Include="Content\Images\orange4050\form\input-check.png" />
+    <Content Include="Content\Images\orange4050\form\input-radio-em.png" />
+    <Content Include="Content\Images\orange4050\form\input-radio.png" />
+    <Content Include="Content\Images\orange4050\form\loading.gif" />
+    <Content Include="Content\Images\orange4050\form\notice-agree.png" />
+    <Content Include="Content\Images\orange4050\form\personal-tit.png" />
+    <Content Include="Content\Images\orange4050\form\phone.png" />
+    <Content Include="Content\Images\orange4050\form\pop-confirm.png" />
+    <Content Include="Content\Images\orange4050\form\post-tit.png" />
+    <Content Include="Content\Images\orange4050\form\retention-tit.png" />
+    <Content Include="Content\Images\orange4050\form\sms.png" />
+    <Content Include="Content\Images\orange4050\form\top-note.png" />
+    <Content Include="Content\Images\rebranding\bg-bottle.jpg" />
+    <Content Include="Content\Images\rebranding\bg-footer.png" />
+    <Content Include="Content\Images\rebranding\bg-kv.jpg" />
+    <Content Include="Content\Images\rebranding\bg-orange.jpg" />
+    <Content Include="Content\Images\rebranding\btn.png" />
+    <Content Include="Content\Images\rebranding\form\1year.png" />
+    <Content Include="Content\Images\rebranding\form\2year.png" />
+    <Content Include="Content\Images\rebranding\form\3year.png" />
+    <Content Include="Content\Images\rebranding\form\4year.png" />
+    <Content Include="Content\Images\rebranding\form\5year.png" />
+    <Content Include="Content\Images\rebranding\form\agree-inner-consult01.png" />
+    <Content Include="Content\Images\rebranding\form\agree-inner-consult02.png" />
+    <Content Include="Content\Images\rebranding\form\agree-inner-marketing01.png" />
+    <Content Include="Content\Images\rebranding\form\agree-inner-marketing02.png" />
+    <Content Include="Content\Images\rebranding\form\agree-text1.png" />
+    <Content Include="Content\Images\rebranding\form\agree-text2.png" />
+    <Content Include="Content\Images\rebranding\form\agree-tit1.png" />
+    <Content Include="Content\Images\rebranding\form\agree-tit2.png" />
+    <Content Include="Content\Images\rebranding\form\agree.png" />
+    <Content Include="Content\Images\rebranding\form\all.png" />
+    <Content Include="Content\Images\rebranding\form\btn-agree.png" />
+    <Content Include="Content\Images\rebranding\form\btn-close.png" />
+    <Content Include="Content\Images\rebranding\form\btn-complete.png" />
+    <Content Include="Content\Images\rebranding\form\btn-man.png" />
+    <Content Include="Content\Images\rebranding\form\btn-phoneconfirm.png" />
+    <Content Include="Content\Images\rebranding\form\btn-post.png" />
+    <Content Include="Content\Images\rebranding\form\btn-request.png" />
+    <Content Include="Content\Images\rebranding\form\btn-woman.png" />
+    <Content Include="Content\Images\rebranding\form\contact-note-event.png" />
+    <Content Include="Content\Images\rebranding\form\contact-tit.png" />
+    <Content Include="Content\Images\rebranding\form\disagree.png" />
+    <Content Include="Content\Images\rebranding\form\email-thum.png" />
+    <Content Include="Content\Images\rebranding\form\email.png" />
+    <Content Include="Content\Images\rebranding\form\end.png" />
+    <Content Include="Content\Images\rebranding\form\essential-point.png" />
+    <Content Include="Content\Images\rebranding\form\etc.png" />
+    <Content Include="Content\Images\rebranding\form\health.png" />
+    <Content Include="Content\Images\rebranding\form\input-check-em.png" />
+    <Content Include="Content\Images\rebranding\form\input-check.png" />
+    <Content Include="Content\Images\rebranding\form\input-radio-em.png" />
+    <Content Include="Content\Images\rebranding\form\input-radio.png" />
+    <Content Include="Content\Images\rebranding\form\interest-tit.png" />
+    <Content Include="Content\Images\rebranding\form\loading.gif" />
+    <Content Include="Content\Images\rebranding\form\notice-agree.png" />
+    <Content Include="Content\Images\rebranding\form\notice-consult.png" />
+    <Content Include="Content\Images\rebranding\form\notice-marketing.png" />
+    <Content Include="Content\Images\rebranding\form\open-time.png" />
+    <Content Include="Content\Images\rebranding\form\personal-tit.png" />
+    <Content Include="Content\Images\rebranding\form\phone.png" />
+    <Content Include="Content\Images\rebranding\form\post-tit.png" />
+    <Content Include="Content\Images\rebranding\form\post.png" />
+    <Content Include="Content\Images\rebranding\form\reserve.png" />
+    <Content Include="Content\Images\rebranding\form\retention-tit.png" />
+    <Content Include="Content\Images\rebranding\form\salary.png" />
+    <Content Include="Content\Images\rebranding\form\saving.png" />
+    <Content Include="Content\Images\rebranding\form\select-icon.png" />
+    <Content Include="Content\Images\rebranding\form\sms.png" />
+    <Content Include="Content\Images\rebranding\form\tit-address.png" />
+    <Content Include="Content\Images\rebranding\form\tit-email.png" />
+    <Content Include="Content\Images\KidsNote\form\1year.png" />
+    <Content Include="Content\Images\KidsNote\form\2year.png" />
+    <Content Include="Content\Images\KidsNote\form\3year.png" />
+    <Content Include="Content\Images\KidsNote\form\4year.png" />
+    <Content Include="Content\Images\KidsNote\form\5year.png" />
+    <Content Include="Content\Images\KidsNote\form\agree-inner-text-all.png" />
+    <Content Include="Content\Images\KidsNote\form\agree-inner-text1.png" />
+    <Content Include="Content\Images\KidsNote\form\agree-inner-text2.png" />
+    <Content Include="Content\Images\KidsNote\form\agree-text1.png" />
+    <Content Include="Content\Images\KidsNote\form\agree-text2.png" />
+    <Content Include="Content\Images\KidsNote\form\agree-tit1.png" />
+    <Content Include="Content\Images\KidsNote\form\agree-tit2.png" />
+    <Content Include="Content\Images\KidsNote\form\agree.png" />
+    <Content Include="Content\Images\KidsNote\form\all.png" />
+    <Content Include="Content\Images\KidsNote\form\bg-birth.png" />
+    <Content Include="Content\Images\KidsNote\form\bg-name.png" />
+    <Content Include="Content\Images\KidsNote\form\bg-phone.png" />
+    <Content Include="Content\Images\KidsNote\form\btn-agree.png" />
+    <Content Include="Content\Images\KidsNote\form\btn-close.png" />
+    <Content Include="Content\Images\KidsNote\form\btn-complete.png" />
+    <Content Include="Content\Images\KidsNote\form\btn-man.png" />
+    <Content Include="Content\Images\KidsNote\form\btn-phoneconfirm.png" />
+    <Content Include="Content\Images\KidsNote\form\btn-post.png" />
+    <Content Include="Content\Images\KidsNote\form\btn-request.png" />
+    <Content Include="Content\Images\KidsNote\form\btn-woman.png" />
+    <Content Include="Content\Images\KidsNote\form\children-age.png" />
+    <Content Include="Content\Images\KidsNote\form\children-name.png" />
+    <Content Include="Content\Images\KidsNote\form\contact-note-event1.png" />
+    <Content Include="Content\Images\KidsNote\form\contact-note-event2.png" />
+    <Content Include="Content\Images\KidsNote\form\contact-note-event3.png" />
+    <Content Include="Content\Images\KidsNote\form\contact-tit.png" />
+    <Content Include="Content\Images\KidsNote\form\disagree.png" />
+    <Content Include="Content\Images\KidsNote\form\email-thum.png" />
+    <Content Include="Content\Images\KidsNote\form\email.png" />
+    <Content Include="Content\Images\KidsNote\form\essential-point.png" />
+    <Content Include="Content\Images\KidsNote\form\input-check-em.png" />
+    <Content Include="Content\Images\KidsNote\form\input-check.png" />
+    <Content Include="Content\Images\KidsNote\form\input-radio-em.png" />
+    <Content Include="Content\Images\KidsNote\form\input-radio.png" />
+    <Content Include="Content\Images\KidsNote\form\kidsnote-explain.jpg" />
+    <Content Include="Content\Images\KidsNote\form\kidsnote-note.jpg" />
+    <Content Include="Content\Images\KidsNote\form\kidsnote-orange-info.jpg" />
+    <Content Include="Content\Images\KidsNote\form\kidsnote-orange-kit.jpg" />
+    <Content Include="Content\Images\KidsNote\form\kidsnote-orange-tab-btns.jpg" />
+    <Content Include="Content\Images\KidsNote\form\kidsnote-orange-tab-tl.png" />
+    <Content Include="Content\Images\KidsNote\form\kidsnote-orange-tab1-view.jpg" />
+    <Content Include="Content\Images\KidsNote\form\kidsnote-orange-tab2-view.jpg" />
+    <Content Include="Content\Images\KidsNote\form\kidsnote-orange-tab3-view.jpg" />
+    <Content Include="Content\Images\KidsNote\form\kidsnote-request1.jpg" />
+    <Content Include="Content\Images\KidsNote\form\kidsnote-request2.jpg" />
+    <Content Include="Content\Images\KidsNote\form\kidsnote-visual.jpg" />
+    <Content Include="Content\Images\KidsNote\form\loading.gif" />
+    <Content Include="Content\Images\KidsNote\form\notice-agree.png" />
+    <Content Include="Content\Images\KidsNote\form\personal-tit.png" />
+    <Content Include="Content\Images\KidsNote\form\phone.png" />
+    <Content Include="Content\Images\KidsNote\form\post-tit.png" />
+    <Content Include="Content\Images\KidsNote\form\post.png" />
+    <Content Include="Content\Images\KidsNote\form\retention-tit.png" />
+    <Content Include="Content\Images\KidsNote\form\select-icon.png" />
+    <Content Include="Content\Images\KidsNote\form\sms.png" />
+    <Content Include="Content\Images\KidsNote\form\text-19.png" />
+    <Content Include="Content\Images\KidsNote\form\tit-address.png" />
+    <Content Include="Content\Images\KidsNote\form\tit-email.png" />
+    <Content Include="Content\Images\MarketingAgree\1year.png" />
+    <Content Include="Content\Images\MarketingAgree\2year.png" />
+    <Content Include="Content\Images\MarketingAgree\3year.png" />
+    <Content Include="Content\Images\MarketingAgree\4year.png" />
+    <Content Include="Content\Images\MarketingAgree\5year.png" />
+    <Content Include="Content\Images\MarketingAgree\agree.png" />
+    <Content Include="Content\Images\MarketingAgree\all.png" />
+    <Content Include="Content\Images\MarketingAgree\btns.png" />
+    <Content Include="Content\Images\MarketingAgree\disagree.png" />
+    <Content Include="Content\Images\MarketingAgree\loading.gif" />
+    <Content Include="Content\Images\MarketingAgree\notice-agree.jpg" />
+    <Content Include="Content\Images\MarketingAgree\phone.png" />
+    <Content Include="Content\Images\MarketingAgree\sms.png" />
+    <Content Include="Content\Images\MarketingAgree\tit-contact-method.jpg" />
+    <Content Include="Content\Images\MarketingAgree\tit-event.jpg" />
+    <Content Include="Content\Images\MarketingAgree\tit-policy-agree1.jpg" />
+    <Content Include="Content\Images\MarketingAgree\tit-policy-agree2.jpg" />
+    <Content Include="Content\Images\MarketingAgree\tit-retention.jpg" />
+    <Content Include="Content\Images\MarketingAgree\txt-event-alert.jpg" />
+    <Content Include="Content\Images\MarketingAgree\txt-policy-agree1.png" />
+    <Content Include="Content\Images\MarketingAgree\txt-policy-agree2.png" />
+    <Content Include="Content\Images\Nilririmanbo\btn-complete-participation.png" />
+    <Content Include="Content\Images\Nilririmanbo\btn-download-appstore.png" />
+    <Content Include="Content\Images\Nilririmanbo\btn-download-appstore_backup.png" />
+    <Content Include="Content\Images\Nilririmanbo\btn-download-googleplay.png" />
+    <Content Include="Content\Images\Nilririmanbo\btn-download-googleplay_backup.png" />
+    <Content Include="Content\Images\Nilririmanbo\btn-insta-nav.png" />
+    <Content Include="Content\Images\Nilririmanbo\btn-instruction-nav.png" />
+    <Content Include="Content\Images\Nilririmanbo\btn-second-prize-detail.png" />
+    <Content Include="Content\Images\Nilririmanbo\deco1.png" />
+    <Content Include="Content\Images\Nilririmanbo\deco2.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-desc-header.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-desc-visual.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-desc-visual_backup.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-desc.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-desc_backup.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-header.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-header_backup.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-howto-header.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-howto-header_backup.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-howto.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-howto_backup.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-note.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-note_backup.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-note_backup2.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-photo-list-header.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-prizes-header.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-prizes-header_backup.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-prizes-note.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-prizes.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-prizes_backup.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-visual.png" />
+    <Content Include="Content\Images\Nilririmanbo\event-visual_backup.png" />
+    <Content Include="Content\Images\Nilririmanbo\insta01.jpg" />
+    <Content Include="Content\Images\Nilririmanbo\insta02.jpg" />
+    <Content Include="Content\Images\Nilririmanbo\insta03.jpg" />
+    <Content Include="Content\Images\Nilririmanbo\logo.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\btn-close.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\btn-popup-close.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\btn-register.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\btn-show-details.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\btn-yes.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\checkbox-on-off.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\checkbox-text.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\icon-insta.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\insta-post-example.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\label-fc-code.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\label-insta-id.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\label-name.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\label-tel.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\pop-guideline.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\pop-input-form-header.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\pop-privacy-header.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\pop-privacy.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\pop-promote-header.png" />
+    <Content Include="Content\Images\Nilririmanbo\pop\pop-promote.png" />
+    <Content Include="Content\Images\Nilririmanbo\slider-init-img.png" />
+    <Content Include="Content\Images\Nilririmanbo\slider-init.png" />
+    <Content Include="Content\Images\orange4050\sns\band.jpg" />
+    <Content Include="Content\Images\orange4050\sns\facebook.jpg" />
+    <Content Include="Content\Images\orange4050\sns\kakao.jpg" />
+    <Content Include="Content\Images\orange4050\sns\logo.jpg" />
+    <Content Include="Content\Images\TumblerEvent\kv.jpg" />
+    <Content Include="Content\Images\TumblerEvent\orange-tumbler.jpg" />
+    <Content Include="Content\Images\TumblerEvent\secret-box.jpg" />
+    <Content Include="Content\js\FcEvent\original-admin.js" />
+    <Content Include="Content\js\FcEvent\new-admin.js" />
+    <Content Include="Content\js\FcEvent\new-dev.js" />
+    <Content Include="Content\js\FcEvent\original-dev.js" />
+    <Content Include="Content\js\financialConcertMarketingAgree\admin.js" />
+    <Content Include="Content\js\financialConcertMarketingAgree\dev.js" />
+    <Content Include="Content\js\financialConcertMarketingAgree\pub.js" />
+    <Content Include="Content\js\HiddenAssets\common.js" />
+    <Content Include="Content\js\HiddenAssets\hiiden-assets-ga.js" />
+    <Content Include="Content\js\HiddenAssets\jquery.easypiechart.js" />
+    <Content Include="Content\js\HiddenAssets\jquery.sliderPro.min.js" />
+    <Content Include="Content\js\TumblerEvent\tumbler-admin.js" />
+    <Content Include="Content\js\TumblerEvent\secret-admin.js" />
+    <Content Include="Content\js\TumblerEvent\pub.js" />
+    <Content Include="Content\js\TumblerEvent\dev.js" />
+    <Content Include="Content\js\FcEvent\pub.js" />
+    <Content Include="Content\js\rebranding\admin.js" />
+    <Content Include="Content\js\rebranding\consulting-dev.js" />
+    <Content Include="Content\js\rebranding\marketing-dev.js" />
+    <Content Include="Content\js\rebranding\pub.js" />
+    <Content Include="Content\js\orange4050\admin.js" />
+    <Content Include="Content\js\orange4050\dev.js" />
+    <Content Include="Content\js\orange4050\pub.js" />
+    <Content Include="Content\js\kidsNote\admin.js" />
+    <Content Include="Content\js\kidsNote\pub.js" />
+    <Content Include="Content\js\kidsNote\dev.js" />
+    <Content Include="Content\js\MarketingAgree\admin.js" />
+    <Content Include="Content\js\MarketingAgree\dev.js" />
+    <Content Include="Content\js\MarketingAgree\pub.js" />
+    <Content Include="Content\js\Nilririmanbo\admin.js" />
+    <Content Include="Content\js\Nilririmanbo\dev.js" />
+    <Content Include="Content\js\Nilririmanbo\pub.js" />
+    <Content Include="Content\FcEvent\css\event.css" />
+    <Content Include="Content\FcEvent\css\event.min.css">
+      <DependentUpon>event.css</DependentUpon>
+    </Content>
+    <Content Include="Content\orange4050\css\event.css" />
+    <Content Include="Content\orange4050\css\event.min.css">
+      <DependentUpon>event.css</DependentUpon>
+    </Content>
+    <Content Include="Content\KidsNote\css\event.css" />
+    <Content Include="Content\KidsNote\css\event.min.css">
+      <DependentUpon>event.css</DependentUpon>
+    </Content>
+    <Content Include="Content\management\event-management-viewmodels.js" />
+    <Content Include="Content\MarketingAgree\css\style.css" />
+    <Content Include="Content\MarketingAgree\css\style.min.css" />
+    <Content Include="Content\metisMenu.css" />
+    <Content Include="Content\metisMenu.min.css" />
+    <Content Include="Content\Nilririmanbo\css\style.css" />
+    <Content Include="Content\Nilririmanbo\css\style.min.css">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
+    <Content Include="Content\normalize.css" />
+    <Content Include="Content\rebranding\css\event.css" />
+    <Content Include="Content\rebranding\css\event.min.css">
+      <DependentUpon>event.css</DependentUpon>
+    </Content>
+    <Content Include="Content\sb-admin-2.css" />
+    <Content Include="Content\reset.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\TumblerEvent\css\event.css" />
+    <Content Include="Content\TumblerEvent\css\event.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-datepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\expressive.annotations.validate.js" />
+    <Content Include="Scripts\expressive.annotations.validate.min.js" />
+    <Content Include="Content\bootstrap-datepicker3.standalone.css.map" />
+    <Content Include="Content\bootstrap-datepicker3.css.map" />
+    <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
+    <Content Include="Content\bootstrap-datepicker.css.map" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\KidsNote\scss\pages\_page.scss" />
+    <Content Include="Content\KidsNote\scss\pages\_popup.scss" />
+    <Content Include="Content\KidsNote\scss\event.scss" />
+    <Content Include="Content\vendor\base\_base.scss" />
+    <Content Include="Content\vendor\base\_font.scss" />
+    <Content Include="Content\vendor\componets\_animate.scss" />
+    <Content Include="Content\vendor\utils\_a11y-hidden.scss" />
+    <Content Include="Content\vendor\utils\_mixin.scss" />
+    <Content Include="Content\vendor\utils\_variables.scss" />
+    <Content Include="Content\vendor\utils\_prefix.scss" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="Content\Font\NanumSquareL.eot" />
+    <Content Include="Content\Font\NanumSquareL.otf" />
+    <Content Include="Content\Font\NanumSquareL.woff" />
+    <Content Include="Content\Font\NanumSquareR.eot" />
+    <Content Include="Content\Font\NanumSquareR.ttf" />
+    <Content Include="Content\Font\NanumSquareR.woff" />
+    <Content Include="Content\Nilririmanbo\scss\style.scss" />
+    <Content Include="Content\Nilririmanbo\scss\_a11y-hidden.scss" />
+    <Content Include="Content\Nilririmanbo\scss\_btn.scss" />
+    <Content Include="Content\Nilririmanbo\scss\_font.scss" />
+    <Content Include="Content\Nilririmanbo\scss\_layout.scss" />
+    <Content Include="Content\Nilririmanbo\scss\_mixin.scss" />
+    <Content Include="Content\Nilririmanbo\scss\_page.scss" />
+    <Content Include="Content\Nilririmanbo\scss\_popup.scss" />
+    <Content Include="Content\Nilririmanbo\scss\_reset.scss" />
+    <Content Include="Content\Nilririmanbo\scss\_slick.scss" />
+    <Content Include="Content\Nilririmanbo\scss\_variables.scss" />
+    <Content Include="Content\MarketingAgree\scss\style.scss" />
+    <Content Include="Content\scssCommon\mixin\_background.scss" />
+    <Content Include="Content\scssCommon\mixin\_prefix.scss" />
+    <Content Include="Content\scssCommon\util\_a11y-hidden.scss" />
+    <Content Include="Content\scssCommon\vender\_jquery-ui.scss" />
+    <Content Include="Content\scssCommon\vender\_normalize.scss" />
+    <Content Include="Content\scssCommon\vender\_slick.scss" />
+    <Content Include="Content\rebranding\scss\event.scss" />
+    <Content Include="Content\rebranding\scss\pages\_page.scss" />
+    <Content Include="Content\rebranding\scss\pages\_popup.scss" />
+    <Content Include="Content\orange4050\scss\event.scss" />
+    <Content Include="Content\orange4050\scss\pages\_page.scss" />
+    <Content Include="Content\orange4050\scss\pages\_popup.scss" />
+    <Content Include="Content\financialConcertMarketingAgree\scss\event.scss" />
+    <Content Include="Content\financialConcertMarketingAgree\scss\_popup.scss" />
+    <Content Include="Content\FcEvent\scss\event.scss" />
+    <Content Include="Content\FcEvent\scss\pages\_page.scss" />
+    <Content Include="Content\FcEvent\scss\pages\_popup.scss" />
+    <Content Include="Content\TumblerEvent\scss\event.scss" />
+    <Content Include="Content\TumblerEvent\scss\pages\_page.scss" />
+    <Content Include="Content\TumblerEvent\scss\pages\_popup.scss" />
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NWebsecConfig\HttpHeaderSecurityModuleConfig.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\PublishProfiles\Release.pubxml" />
+    <None Include="Properties\PublishProfiles\Debug.pubxml" />
+    <None Include="Properties\PublishProfiles\실서버.pubxml" />
+    <None Include="Properties\PublishProfiles\테스트.pubxml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Scripts\jquery-1.11.3.intellisense.js" />
+    <Content Include="Scripts\jquery-1.11.3.js" />
+    <Content Include="Scripts\jquery-1.11.3.min.js" />
+    <Content Include="Scripts\jquery-1.11.3.min.map" />
+    <Content Include="Scripts\jquery.easing.1.3.js" />
+    <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.form.min.js" />
+    <Content Include="Scripts\jquery.form.min.js.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker-en-CA.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ar-tn.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ar.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.az.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.bg.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.bn.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.br.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.bs.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ca.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.cs.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.cy.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.da.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.de.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.el.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.en-AU.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.en-GB.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.en-IE.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.en-NZ.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.en-ZA.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.eo.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.es.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.et.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.eu.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fa.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fi.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fo.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fr-CH.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fr.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.gl.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.he.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.hi.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.hr.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.hu.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.hy.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.id.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.is.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.it-CH.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.it.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ja.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ka.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.kh.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.kk.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.km.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ko.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.kr.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.lt.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.lv.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.me.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.mk.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.mn.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ms.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.nb.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.nl-BE.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.nl.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.no.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.oc.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.pl.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.pt-BR.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.pt.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ro.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.rs-latin.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.rs.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ru.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.si.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sk.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sl.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sq.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sr-latin.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sr.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sv.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sw.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ta.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.tg.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.th.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.tr.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.uk.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.uz-cyrl.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.uz-latn.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.vi.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.zh-CN.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
+    <Content Include="Scripts\metisMenu.js" />
+    <Content Include="Scripts\metisMenu.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\vue.js" />
+    <Content Include="Scripts\vue.min.js" />
+    <Content Include="Views\KidsNote\_popup.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\KMCTest\Index.cshtml" />
+    <Content Include="Views\KMCTest\Test.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\OwinStartUpConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Admin\AdminFcEventController.cs" />
+    <Compile Include="Controllers\Admin\AdminFinancialConcertMarketingAgreeController.cs" />
+    <Compile Include="Controllers\Admin\AdminGoogleAnalyticsController.cs" />
+    <Compile Include="Controllers\Admin\AdminHomeController.cs" />
+    <Compile Include="Controllers\Admin\AdminOverFortyFiveController.cs" />
+    <Compile Include="Controllers\Admin\AdminMarketingAgreeController.cs" />
+    <Compile Include="Controllers\Admin\AdminNilririmamboController.cs" />
+    <Compile Include="Controllers\Admin\AdminKidsNoteController.cs" />
+    <Compile Include="Controllers\Admin\AdminTumblerEventController.cs" />
+    <Compile Include="Controllers\Admin\AdminRebrandingController.cs" />
+    <Compile Include="Controllers\Admin\AdminRoleManageController.cs" />
+    <Compile Include="Controllers\Admin\AdminUserManageController.cs" />
+    <Compile Include="Controllers\Api\AffiliatesController.cs" />
+    <Compile Include="Controllers\Api\EventManagementController.cs" />
+    <Compile Include="Controllers\Api\FcEvntApiController.cs" />
+    <Compile Include="Controllers\Api\FinancialConcertMarketingAgreeApiController.cs" />
+    <Compile Include="Controllers\Api\GoogleApisAnalyticsReportingController.cs" />
+    <Compile Include="Controllers\Api\TumblerEventApiController.cs" />
+    <Compile Include="Controllers\Api\OverFortyFiveApiController.cs" />
+    <Compile Include="Controllers\Api\MarketingAgreeApiController.cs" />
+    <Compile Include="Controllers\Api\NilririmamboApiController.cs" />
+    <Compile Include="Controllers\Api\KidsNoteApiController.cs" />
+    <Compile Include="Controllers\Api\KMCController.cs" />
+    <Compile Include="Controllers\Api\RebrandingApiController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\Admin\AdminEventManagementController.cs" />
+    <Compile Include="Controllers\Event\FcEventController.cs" />
+    <Compile Include="Controllers\Event\FinancialConcertMarketingAgreeController.cs" />
+    <Compile Include="Controllers\Event\MarketingAgreeController.cs" />
+    <Compile Include="Controllers\Event\NilririmanboEventController.cs" />
+    <Compile Include="Controllers\Event\KidsNoteController.cs" />
+    <Compile Include="Controllers\Event\LotteCinemaHiddenAssetsController.cs" />
+    <Compile Include="Controllers\Event\Orange4050Controller.cs" />
+    <Compile Include="Controllers\Event\ReBrandingController.cs" />
+    <Compile Include="Controllers\Event\TumblerEventController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KMCTestController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructures\GoogleAnalyticsReportingServices\GoogleServiceAccount.cs" />
+    <Compile Include="Infrastructures\Admin\IdentityHelpers.cs" />
+    <Compile Include="Infrastructures\CommonProvider.cs" />
+    <Compile Include="Infrastructures\GoogleAnalyticsReportingServices\GoogleAnalyticsReportingService.cs" />
+    <Compile Include="Infrastructures\GoogleAnalyticsReportingServices\IGoogleAnalyticsReportingService.cs" />
+    <Compile Include="Infrastructures\Interfaces\ICommonProvider.cs" />
+    <Compile Include="Infrastructures\IpAddressFilterAttribute.cs" />
+    <Compile Include="Infrastructures\KMCServices\IKMCService.cs" />
+    <Compile Include="Infrastructures\KMCServices\KMCService.cs" />
+    <Compile Include="Infrastructures\NinjectDependencyScope.cs" />
+    <Compile Include="Infrastructures\OnApiExceptionAttribute.cs" />
+    <Compile Include="Infrastructures\ResultMessage.cs" />
+    <Compile Include="Infrastructures\SerializablePagedList.cs" />
+    <Compile Include="Infrastructures\ValidationActionFilterAttribute.cs" />
+    <Compile Include="Models\AdminModels\AdminLoginModel.cs" />
+    <Compile Include="Models\AdminModels\AdminUserEditModel.cs" />
+    <Compile Include="Models\FinancialConcertMarketingAgreeModels\FinancialConcertMarketingAgreeAdminViewModel.cs" />
+    <Compile Include="Models\FinancialConcertMarketingAgreeModels\FinancialConcertMarketingAgreeCertModel.cs" />
+    <Compile Include="Models\FinancialConcertMarketingAgreeModels\FinancialConcertMarketingAgreeCreateModel.cs" />
+    <Compile Include="Models\FinancialConcertMarketingAgreeModels\FinancialConcertMarketingAgreeModel.cs" />
+    <Compile Include="Models\FinancialConsultantSharingModels\New\FCNewAuthModel.cs" />
+    <Compile Include="Models\FinancialConsultantSharingModels\New\FinancialConsultantSharingNewCreateModel.cs" />
+    <Compile Include="Models\FinancialConsultantSharingModels\New\FinancialConsultantSharingNewModels.cs" />
+    <Compile Include="Models\FinancialConsultantSharingModels\New\FinancialConsultantSharingNewViewModel.cs" />
+    <Compile Include="Models\FinancialConsultantSharingModels\Origin\PhoneModel.cs" />
+    <Compile Include="Models\FinancialConsultantSharingModels\Origin\FcCodeModel.cs" />
+    <Compile Include="Models\FinancialConsultantSharingModels\Origin\FcKakaoShareModel.cs" />
+    <Compile Include="Models\FinancialConsultantSharingModels\Origin\FinancialConsultantSharingKMCResultModel.cs" />
+    <Compile Include="Models\FinancialConsultantSharingModels\Origin\FinancialConsultantSharingOriginCreateModel.cs" />
+    <Compile Include="Models\FinancialConsultantSharingModels\Origin\FinancialConsultantSharingOriginModels.cs" />
+    <Compile Include="Models\FinancialConsultantSharingModels\Origin\FinancialConsultantSharingOriginViewModel.cs" />
+    <Compile Include="Models\GoogleApisModels\GoogleApisAnalyticsReportingResponseModel.cs" />
+    <Compile Include="Models\GoogleApisModels\GoogleApisAnalyticsReportingRequestModel.cs" />
+    <Compile Include="Models\JsonResultModel.cs" />
+    <Compile Include="Models\KidsNoteModels\KidsNoteModel.cs" />
+    <Compile Include="Models\KidsNoteModels\KidsNoteViewModel.cs" />
+    <Compile Include="Models\KMCModels\RequestKMCModel.cs" />
+    <Compile Include="Models\KMCModels\ResponseKMCModel.cs" />
+    <Compile Include="Models\KMCModels\ResultKMCModel.cs" />
+    <Compile Include="Models\ManagementModels\AffiliatesViewModel.cs" />
+    <Compile Include="Models\ManagementModels\EventManagementCreateModel.cs" />
+    <Compile Include="Models\ManagementModels\EventManagementViewModel.cs" />
+    <Compile Include="Models\MarketingAgreeModels\MarketingAgreeModel.cs" />
+    <Compile Include="Models\MarketingAgreeModels\MarketingAgreeViewModel.cs" />
+    <Compile Include="Models\NilririmamboModels\NilririmamboModel.cs" />
+    <Compile Include="Models\ReNrandingModels\RebrandingConsultingModels.cs" />
+    <Compile Include="Models\ReNrandingModels\RebrandingMarketingModels.cs" />
+    <Compile Include="Models\ReNrandingModels\RebrandingResponseKMCModel.cs" />
+    <Compile Include="Models\ReNrandingModels\RebrandingViewModel.cs" />
+    <Compile Include="Models\OverFortyFiveDbModels\OverFortyFiveDbModel.cs" />
+    <Compile Include="Models\OverFortyFiveDbModels\OverFortyFiveDbViewModel.cs" />
+    <Compile Include="Models\TumblerEventModels\TumblerCreateModel.cs" />
+    <Compile Include="Models\TumblerEventModels\TumblerEventModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\metisMenu.js.map" />
+    <Content Include="Views\AdminHome\Index.cshtml" />
+    <Content Include="Views\AdminHome\Login.cshtml" />
+    <Content Include="Views\AdminRoleManage\AddRole.cshtml" />
+    <Content Include="Views\AdminRoleManage\Index.cshtml" />
+    <Content Include="Views\AdminUserManage\AddUser.cshtml" />
+    <Content Include="Views\AdminUserManage\Edit.cshtml" />
+    <Content Include="Views\AdminUserManage\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_AdminNavigator.cshtml" />
+    <Content Include="Views\KMCTest\Callback.cshtml" />
+    <Content Include="Views\KMCTest\Result.cshtml" />
+    <Content Include="Views\Error\Forbidden.cshtml" />
+    <Content Include="Views\Error\InternalServerError.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\Unknown.cshtml" />
+    <Content Include="Views\AdminGoogleAnalytics\Index.cshtml" />
+    <Content Include="Views\AdminEventManagement\Index.cshtml" />
+    <Content Include="Views\KidsNote\Index.cshtml" />
+    <Content Include="Views\KidsNote\Callback.cshtml" />
+    <Content Include="Views\Shared\_Layout.Mobile.cshtml" />
+    <Content Include="Views\AdminKidsNote\Index.cshtml" />
+    <Content Include="Views\LotteCinemaHiddenAssets\Index.cshtml" />
+    <Content Include="Views\LotteCinemaHiddenAssets\Intro.cshtml" />
+    <Content Include="Views\LotteCinemaHiddenAssets\asset1.cshtml" />
+    <Content Include="Views\LotteCinemaHiddenAssets\asset2_1.cshtml" />
+    <Content Include="Views\LotteCinemaHiddenAssets\asset2_3.cshtml" />
+    <Content Include="Views\LotteCinemaHiddenAssets\asset2_2.cshtml" />
+    <Content Include="Views\LotteCinemaHiddenAssets\asset2_4.cshtml" />
+    <Content Include="Views\LotteCinemaHiddenAssets\asset2_5.cshtml" />
+    <Content Include="Views\LotteCinemaHiddenAssets\asset2_6.cshtml" />
+    <Content Include="Views\KidsNote\_policy.cshtml" />
+    <Content Include="Views\NilririmanboEvent\Index.cshtml" />
+    <Content Include="Views\NilririmanboEvent\_popup.cshtml" />
+    <Content Include="Views\AdminNilririmambo\Index.cshtml" />
+    <Content Include="Views\AdminNilririmambo\analytics.cshtml" />
+    <Content Include="Views\MarketingAgree\Index.cshtml" />
+    <Content Include="Views\MarketingAgree\Callback.cshtml" />
+    <Content Include="Views\AdminMarketingAgree\Index.cshtml" />
+    <Content Include="Views\ReBranding\Index.cshtml" />
+    <Content Include="Views\ReBranding\MarketingCallback.cshtml" />
+    <Content Include="Views\ReBranding\ConsultingCallback.cshtml" />
+    <Content Include="Views\orange4050\Index.cshtml" />
+    <Content Include="Views\orange4050\_popup.cshtml" />
+    <Content Include="Views\orange4050\Callback.cshtml" />
+    <Content Include="Views\AdminOverFortyFive\Index.cshtml" />
+    <Content Include="Views\ReBranding\Consulting.cshtml" />
+    <Content Include="Views\AdminRebranding\MarketingAgree.cshtml" />
+    <Content Include="Views\AdminRebranding\ConsultingAgree.cshtml" />
+    <Content Include="Views\FinancialConcertMarketingAgree\Index.cshtml" />
+    <Content Include="Views\FinancialConcertMarketingAgree\Callback.cshtml" />
+    <Content Include="Views\AdminFinancialConcertMarketingAgree\Index.cshtml" />
+    <Content Include="Views\tumblerEvent\Index.cshtml" />
+    <Content Include="Views\tumblerEvent\_popup.cshtml" />
+    <Content Include="Views\tumblerEvent\Callback.cshtml" />
+    <Content Include="Views\FcEvent\OriginCustomerIndex.cshtml" />
+    <Content Include="Views\FcEvent\_popup.cshtml" />
+    <Content Include="Views\FcEvent\_popupNew.cshtml" />
+    <Content Include="Views\AdminTumblerEvent\Tumbler.cshtml" />
+    <Content Include="Views\AdminTumblerEvent\Secret.cshtml" />
+    <Content Include="Views\FcEvent\NewCustomerIndex.cshtml" />
+    <Content Include="Views\FcEvent\Callback.cshtml" />
+    <Content Include="Views\AdminFcEvent\FcNewSharing.cshtml" />
+    <Content Include="Views\AdminFcEvent\FcOrinalSharing.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\TumblerEvent\sns\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ICERTSECURITYLib">
+      <Guid>{7D85EC48-BFB0-4BA8-98DB-A87AA22DAC03}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\INGLife.Event.Domain\INGLife.Event.Domain.csproj">
+      <Project>{f7ac11b0-44aa-4aee-b0e9-99a923767c91}</Project>
+      <Name>INGLife.Event.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\INGLife.Event.Message\INGLife.Event.Message.csproj">
+      <Project>{a5f554ef-ad46-48ee-aafd-42a364c386b3}</Project>
+      <Name>INGLife.Event.Message</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51162</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://dev.www.orange-event.kr</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

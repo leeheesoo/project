@@ -1,0 +1,106 @@
+//===================================
+// variable
+//===================================
+
+$loc-image-in-head: '../../../../Images/';
+
+$width-header: 1000px;
+
+//===================================
+// mixin
+//===================================
+// background-image: scssCommon mixin 사용
+// size: common/size 사용
+
+//===================================
+// reset
+//===================================
+
+//===================================
+// helper
+//===================================
+
+//===================================
+// common
+//===================================
+
+//===================================
+// page
+//===================================
+
+//===================================
+// header
+//===================================
+.header {
+	// @include debug;
+  position: absolute;
+  width: 100%;
+  background: #fff;
+  z-index: 10;
+  min-width: $width-header;
+
+  a {
+  	display: block;
+  }
+
+  &-title {
+  	position: absolute;
+	  top: 0;
+	  left: 50%;
+	  transform: translateX(-50%);
+	  margin: 0;
+
+	  a {
+	  	@include background-image($loc-image-in-head + 'logo/logo.png');
+	  	@include size(185px, 117px);
+	  }
+  } // title
+} // header
+
+//===================================
+// menu common
+// menu-flavor, menu-image, menu-magickinder, menu-togather location
+//===================================
+.header .menu {
+	margin-left: auto;
+	margin-right: auto;
+	width: $width-header;
+
+	&-item {
+		float: left;
+		margin-left: 57px;
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		&.on a,
+		& a:hover {
+			background-position: 0 -70px;
+		}
+
+		// flavor
+		&-flavor {
+			margin-left: 189px;
+		} // flavor
+
+		&-image,
+		&-magickinder,
+		&-togather {
+			margin-left: 20px;
+		}
+	} // item
+} // menu
+
+//===================================
+// 메뉴 이미지 반복작업
+// $menu-items: (메뉴 클래스명: 메뉴이미지 width)
+//===================================
+$menu-items: (intro: 78px, cf: 110px, event: 102px, flavor: 88px, image: 102px, togather: 102px, magickinder: 54px);
+
+@each $class, $val in $menu-items {
+	.header .menu-item-#{$class} a {
+		@include background-image($loc-image-in-head + 'menu/menu-#{$class}.png');
+		@include size($val, 70px);
+	}
+}

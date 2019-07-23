@@ -1,0 +1,168 @@
+﻿@model Finnq.Promotion.Models.RouletteEventModels.RouletteEventEntryModel
+<div class="dim"></div>
+
+
+<!--개인정보-->
+<div class="popups pop-info" id="pop-info">
+    <div class="btn-close">
+        <a href="javascript:void(0);" onclick="closePop('pop-info');"><img src="~/Content/roulette/images/popup/btn_close.png" alt="닫기" /></a>
+    </div>
+    <div class="pop-header">
+        <h3><img src="~/Content/roulette/images/popup/pop_tit_info.png" alt="당첨자 선정을 위한 개인정보를 입력해 주세요" /></h3>
+    </div>
+    <!-- pop-con -->
+    <div class="pop-con">
+        @using (Ajax.BeginRouteForm("CreateRouletteEventEntry",new { httpRoute=true},
+            new AjaxOptions { HttpMethod="post",
+                OnBegin = "rouletteEventEntryModel.beginEntry",
+                OnComplete = "rouletteEventEntryModel.completeEntry",
+                OnSuccess = "rouletteEventEntryModel.successEntry",
+                OnFailure = "rouletteEventEntryModel.failEntry" },
+            new { id="frmRouletteEventEntry"})) { 
+            <fieldset>
+                <legend class="blind">개인정보 입력</legend>
+                <div class="info-area">
+                    <dl class="info-name">
+                        <dt><label for="Name"><img src="~/Content/roulette/images/popup/text_name.png" alt="이름" /></label></dt>
+                        <dd>
+                            @Html.TextBoxFor(x => x.Name, new { @class = "ph_name", maxlength = "10" })
+                        </dd>
+                    </dl>
+                    <dl class="info-phone">
+                        <dt><label for="Mobile1"><img src="~/Content/roulette/images/popup/text_phone.png" alt="휴대폰" /></label></dt>
+                        <dd>
+                            @Html.TextBoxFor(x => x.PhoneA,new {@class="ph_phone",maxlength="3", type = "tel", onkeyup = "nextBlank(3, this.id, 'PhoneB')" }) <img src="~/Content/tmap/images/popup/icon_hyphen.jpg" alt="하이픈" />
+                            @Html.TextBoxFor(x => x.PhoneB, new { @class = "ph_phone", maxlength = "4", type = "tel", onkeyup = "nextBlank(4, this.id, 'PhoneC')" }) <img src="~/Content/tmap/images/popup/icon_hyphen.jpg" alt="하이픈" />
+                            @Html.TextBoxFor(x => x.PhoneC, new { @class = "ph_phone", maxlength = "4", type = "tel" })
+                        </dd>
+                    </dl>
+
+                </div>
+                <!-- //info-area -->
+                <!-- policy-area -->
+                <div class="policy-area policy-box1">
+                    <p class="policy-check">
+                        <img src="~/Content/roulette/images/popup/agree_policy1.png" alt="개인정보 수집 이용 동의 안내" />
+                    </p>
+                    <div class="contents">
+                        <span>
+                            [필수] 개인정보 수집 이용 동의 안내<br>
+                            1. 개인정보 수집 항목 : 이름, 휴대전화번호<br>
+                            2. 개인정보 수집 및 이용 목적 : 이벤트 응모, 추첨, 경품 발송 등 이벤트 운영<br>
+                            3. 개인정보 보유 및 이용 기간 : 이벤트 종료 후 1개월 이내 파기<br>
+                            4. 개인정보 수집 이용에 동의하지 않을 수 있으나, 미동의 시 이벤트 참여가 불가능합니다.<br>
+                            <br>
+                            ※ 본 동의는 이벤트 응모를 위한 개인정보 수집/이용에 대한 동의로서, 동의하지 않으실 경우 이벤트에 응모하실 수 없습니다.
+                        </span>
+                    </div>
+                    <p class="policy-check">
+                        <label>
+                            @Html.CheckBoxFor(x => x.Agree)
+                            <span></span>
+                        </label>
+                    </p>
+                </div>
+                <div class="policy-area policy-box2">
+                    <p class="policy-check">
+                        <img src="~/Content/roulette/images/popup/agree_policy2.png" alt="개인정보 취급 위탁 동의 안내" />
+                    </p>
+                    <div class="contents">
+                        <span>
+                            [선택] 개인정보 처리 위탁 동의 안내<br>
+                            1. 개인정보 처리 위탁을 받는 자 : 메가존㈜<br>
+                            2. 개인정보 처리 위탁 목적 : 이벤트 운영 대행을 위한 개인정보 취급<br>
+                            3. 개인정보 처리 및 이용 기간 : 이벤트 종료 후 1개월 이내 파기<br>
+                            4. 개인정보 처리 위탁에 동의하지 않을 수 있으나, 미동의 시 이벤트 참여가 불가능합니다.
+
+                        </span>
+                    </div>
+                    <p class="policy-check">
+                        <label>
+                            @Html.CheckBoxFor(x => x.Agree2)
+                            <span></span>
+                        </label>
+                    </p>
+                </div>
+                <div class="policy-area policy-box3">
+                    <p class="age-check">
+                        <label>
+                            @Html.CheckBoxFor(x => x.Agree3)
+                            <span></span>
+                        </label>
+                    </p>
+
+                    <p class="age-note">
+                        <img src="~/Content/roulette/images/popup/agree_note.png" alt="본 이벤트는 만 14세 미만은 참여 불가 합니다"/>
+                    </p>
+                </div>
+                <!-- //policy-area -->
+                <div class="btn game-start">
+                    <input type="submit" value="finish" id="finish" class="ga" data-action="완료 - 개인정보" />
+                    <button for="finish"><img src="~/Content/roulette/images/popup/btn_finish.png" alt="완료" /></button>
+                    <div class="loading" v-show="isLoading"><img src="~/Content/roulette/images/popup/loading.gif" alt="loading" /></div>
+                </div>
+            </fieldset>
+        }
+    </div>
+    <!-- //pop-con -->
+</div>
+
+<!--룰렛-->
+<div id="pop-roulette01" class="popups roulette01">
+    <div class="btn-close">
+        <a href="javascript:void(0);" onclick="closePop('pop-roulette01');"><img src="~/Content/tmap/images/popup/btn_close.png" alt="닫기" /></a>
+    </div>
+    <div class="pop-header">
+        <h3><img src="~/Content/roulette/images/popup/pop_tit_rolette01.png" alt="start버튼을 눌러 지금 룰렛을 돌려주세요" /></h3>
+    </div>
+    <!-- pop-con -->
+    <div class="pop-con">
+        <span class="pointer"><img src="~/Content/roulette/images/popup/roulette_point.png" alt="" /></span>
+        <span class="rolette-logo"><img src="~/Content/roulette/images/popup/roulette_logo.png" alt="핀크" /></span>
+        <div width="788" height="787" class="the_wheel" align="center" valign="center">
+            <canvas id="canvas" width="788" height="787"></canvas>
+        </div>
+        <button class="btn-start" v-on:click="updateRouletteEventEntry()" ><img src="~/Content/roulette/images/popup/btn_start.png" class="ga" data-action="START - 룰렛" alt="start" /></button>
+        <span class="finger-img floating"><img src="~/Content/roulette/images/popup/finger.png" alt="" /></span>
+    </div>
+</div>
+
+<!--룰렛결과-->
+<div id="pop-roulette02" class="popups roulette02">
+    <div class="btn-close">
+        <a href="javascript:void(0);" onclick="closePop('pop-roulette02');"><img src="~/Content/roulette/images/popup/btn_close.png" alt="닫기" /></a>
+    </div>
+    <div class="pop-header">
+        <h3>
+            <!-- pop_tit_rolette03 입니다 -->
+            <img src="~/Content/roulette/images/popup/pop_tit_rolette02.png" v-bind:src="'/Content/roulette/images/popup/'+isFailed+'.png'" alt="축하합니다" />
+            <span class="win-num-text">
+                <img src="~/Content/roulette/images/popup/waqpwpelre_t.png" v-bind:src="'/Content/roulette/images/popup/'+instantPrize+'_t.png'" alt="축하합니다" />
+            </span>
+        </h3>
+    </div>
+    <!-- pop-con -->
+    <div class="pop-con">
+        <div class="rolette-img"><img src="~/Content/roulette/images/popup/waqpwpelre.png" v-bind:src="'/Content/roulette/images/popup/'+instantPrize+'.png'" alt="축하합니다" /></div>
+        <button onclick="location.href ='https://finnq.onelink.me/YERF?pid=Tmap'" class="ga" data-action="핀크 앱 다운로드"><img src="~/Content/roulette/images/popup/btn_appdown.png" alt="핀크 앱 다운로드" /></button>
+        <p><img src="~/Content/roulette/images/popup/rolette01_note.png" alt="룰렛은 한번만 참여가 가능하며 당첨금액은 이벤트 기간 내 신규 가입자 대상으로 핀크 계좌에 입금됩니다." /></p>
+    </div>
+</div>
+
+@*<!--친구소개-->
+<div id="pop-friend" class="popups friend">
+    <div class="btn-close">
+        <a href="javascript:void(0);" onclick="closePop('pop-friend');"><img src="~/Content/tmap/images/popup/btn_close.png" alt="닫기" /></a>
+    </div>
+    <div class="pop-header">
+        <h3><img src="~/Content/roulette/images/popup/pop_tit_friend.png" alt="최대 100만원 꽝없는 100% 당첨" /></h3>
+    </div>
+    <!-- pop-con -->
+    <div class="pop-con">
+        <h4><img src="~/Content/roulette/images/popup/pop_sub_friend.png" alt="룰렛 이벤트를 내 친구에게 소개시켜 주세요" /></h4>
+        <div class="button-wrap">
+            <button class="codecopy clipboard ga" data-action="URL 복사하기" data-clipboard-text="https://skg.finnq.com/roulette?utm_source=share&utm_campaign=roulette&utm_medium=copy"><img src="~/Content/roulette/images/popup/btn_url.jpg" alt="url복사하여 바로 친구에게 보내기" /></button>
+            <button><img src="~/Content/roulette/images/popup/btn_katalk.jpg" v-on:click="kakaotalkShare()" class="ga" data-action="카카오톡으로 추천 하기" alt="카카오톡으로 추천하기" /></button>
+        </div>
+    </div>
+</div>*@

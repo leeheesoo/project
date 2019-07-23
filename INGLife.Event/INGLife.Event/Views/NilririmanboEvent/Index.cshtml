@@ -1,0 +1,164 @@
+﻿@{
+    ViewBag.Title = "ING생명 닐리리만보 이벤트";
+}
+
+@section styles {
+    <link href="~/Content/Nilririmanbo/css/style.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+    
+}
+
+@*<div style="position:fixed; top:0;width:100%; text-align:center;z-index:100;background-color:#ccc;">
+    <button onclick="openPop('input-form')" style="width:100px;height:50px;border:1px solid black;">정보입력폼</button>
+    <button onclick="openPop('second-prize-details')" style="width:100px;height:50px;border:1px solid black;">FC코드안내</button>
+    <button onclick="openPop('sns-guideline')" style="width:100px;height:50px;border:1px solid black;">가이드라인</button>
+    <button onclick="openPop('privacy-agreement')" style="width:100px;height:50px;border:1px solid black;">개인정보동의</button>
+    <button onclick="openPop('insta-post')" style="width:80px;height:50px;border:1px solid black;">인스타</button>
+</div>*@
+
+<div class="ing-event-wrap" id="nilririmanbo-event">
+    <h1><img class="logo" src="~/Content/Images/Nilririmanbo/logo.png" alt="ING 로고"></h1>
+    <!-- 이벤트 비주얼 -->
+    <section class="event-visual">
+        <h2><img src="~/Content/Images/Nilririmanbo/event-header.png" alt="어서 와~ 닐리리만보는 처음이지? 프로잠만보도 걷게 하는 기적의 앱, 닐리리-만보"></h2>
+        <img src="~/Content/Images/Nilririmanbo/event-visual.png" alt="일단 깔아봐- 깔면 걷게 돼있어">
+        <a href="https://itunes.apple.com/kr/app/%EB%8B%90%EB%A6%AC%EB%A6%AC%EB%A7%8C%EB%B3%B4/id1190726170?mt=8" class="btn--download ga-event" data-action="닐리리만보 - 앱스토어 다운로드" target="_blank"><img src="~/Content/Images/Nilririmanbo/btn-download-appstore.png" alt="앱스토어 다운로드 버튼" /></a>
+        <a href="https://play.google.com/store/apps/details?id=com.inglife.iwalk" class="btn--download ga-event" data-action="닐리리만보 - 구글플레이 다운로드" target="_blank"><img src="~/Content/Images/Nilririmanbo/btn-download-googleplay.png" alt="구글플레이 다운로드 버튼" /></a>
+    </section>
+
+    <!-- 이벤트 소개 -->
+    <section class="event-desc">
+        <h2><img src="~/Content/Images/Nilririmanbo/event-desc-header.png" alt="인스타그램 해시태그 이벤트"></h2>
+        <p>
+            <img src="~/Content/Images/Nilririmanbo/event-desc.png" alt="이벤트 안내">
+        </p>
+        <div class="a11y-hidden">
+
+            <em>일 걱정 하지 말고 #닐리리만보나 걷졍</em>
+            <p>닐리리만보 어디까지 사용해봤니? 걷고 운동하고 살 빼고 여행까지 가보고 싶다면 지금 바로 참여해주라(엄격, 근엄, 진지)</p>
+            <dl>
+                <dt>참여기간:</dt>
+                <dd>2018.06.19 ~ 06.30 </dd>
+                <dt>당첨자 발표:</dt>
+                <dd>2018.07.05</dd>
+            </dl>
+        </div>
+        <figure>
+            <img src="~/Content/Images/Nilririmanbo/event-desc-visual.png" alt="달리는 남자 일러스트">
+            <figcaption class="a11y-hidden">
+                지구는 둥그니까 자꾸 걸어나가면 #세상 유용한 #필수앱 #닐리리만보
+            </figcaption>
+        </figure>
+    </section>
+
+    <!-- 이벤트 상품 -->
+    <section class="event-prizes">
+        <h2><img src="~/Content/Images/Nilririmanbo/event-prizes-header.png" alt="ING생명 영업가족분들을 위한 특별한 선물!"></h2>
+        <p><img src="~/Content/Images/Nilririmanbo/event-prizes.png" alt="상품 소개"></p>
+        <div class="a11y-hidden">
+            <p>
+                <em>필수 해시태그 3가지</em>와 함께 인스타그램에
+                사진을 업로드하면 꿀잼 혜택이 가득한 선물을 드릴게요.
+                <선정 기준
+                    인스타그램 좋아요♥ 개수>
+            </p>
+            <ul>
+                <li>1등 경품: 100만원 국민관광상품권 사랑꾼상(1명)</li>
+                <li>2등 경품: 아이팟 무선 이어폰 마당발상(2명)</li>
+                <li>3등 경품: TLX PASS 1개월권(26 PASS) 다이어터상(2명)</li>
+                <li>4등 경품: BARREL 드라이백 여행가상(2명)</li>
+                <li>5등 경품: 스타벅스 아메리카노 기프티콘 럭키상(100명)</li>
+            </ul>
+            <em> 이벤트 참여 주제에 따라 당첨 경품이 달라져요~ 탐나는 경품에 맞춰서 사진을 마구마구 올려주세요!</em>
+        </div>
+        <button class="btn--prize-details" onclick="openPop('second-prize-details')" type="button"><img src="~/Content/Images/Nilririmanbo/btn-second-prize-detail.png" alt="Alternate Text" /></button>
+        <p><img src="~/Content/Images/Nilririmanbo/event-prizes-note.png" alt=""></p>
+    </section>
+
+    <!-- 이벤트 참여방법 -->
+    <section class="event-howto">
+        <h2><img src="~/Content/Images/Nilririmanbo/event-howto-header.png" alt="이벤트 참여 방법"></h2>
+        <p><img src="~/Content/Images/Nilririmanbo/event-howto.png" alt="참여 방법 안내"></p>
+        <div class="a11y-hidden">
+            <strong>필수 해시태그 : #닐리리만보</strong>
+            <ol>
+                <li>닐리리만보 앱 사용기에 대한 사진과 내용을 필수 해시태그와 함께 인스타그램에 올려주세요!</li>
+                <li>닐리리만보 이벤트 페이지에서 참여 완료 인증을 해주세요!</li>
+            </ol>
+        </div>
+
+        <h3 class="a11y-hidden">참여방법 설명 슬라이드</h3>
+        <div class="single-slider">
+            <ul class="slick slick--desc">
+                <li><img src="~/Content/Images/Nilririmanbo/insta01.jpg" alt=""></li>
+                <li><img src="~/Content/Images/Nilririmanbo/insta02.jpg" alt=""></li>
+                <li><img src="~/Content/Images/Nilririmanbo/insta03.jpg" alt=""></li>
+            </ul>
+        </div>
+
+        <div class="event-howto__nav">
+            <button type="button" class="howto__btn btn--prev"></button>
+            <button type="button" class="howto__btn btn--next"></button>
+        </div>
+        <button class="btn--participate ga-event" data-action="닐리리만보 - 이벤트 참여 완료 인증" v-on:click="openEntryInsertPop()" type="button"><img src="~/Content/Images/Nilririmanbo/btn-complete-participation.png" alt="" /></button>
+    </section>
+
+    <!-- 이벤트 참여자 현황 -->
+    <section class="event-photo-list" id="instaList">
+        <h2><img src="~/Content/Images/Nilririmanbo/event-photo-list-header.png" alt="실시간 #닐리리만보"></h2>
+        <p class="a11y-hidden">다들 어떻게 올리고 있을까?</p>
+        <div class="single-slider">
+            <ul class="slick slick--photolist">
+                <li v-for="item in imageData" class="single-slider__item">
+                    <a v-on:click="openInstaPopup(item)"><img v-bind:src="item.url" /></a>
+                </li>
+            </ul>
+        </div>
+        <div class="event-photo-list__nav">
+            <button type="button" class="photo-list__btn btn--prev"></button>
+            <button type="button" class="photo-list__btn btn--next"></button>
+        </div>
+        
+    </section>
+
+    <section class="event-note">
+        <h3><img src="~/Content/Images/Nilririmanbo/event-note.png"></h3>
+        <div class="a11y-hidden">
+            <strong>유의사항</strong>
+            <ul>
+                <li>ING생명 영업가족 분들만 참여 가능한 이벤트 입니다.</li>
+                <li>인스타그램에 해시태그와 함께 사진을 업로드 한 참여 인증(정보 입력)까지
+            완료하여야 참여자로 간주됩니다.</li>
+                <li>이벤트 참여 시 ING생명 SNS가이드라인을 꼭 준수해주시고,
+            게시글 내 보험상품 / 명품 / 외제차에 대한 언급은 피해주세요.</li>
+                <li>이벤트 참여기간(6/19~6/30) 내에 업로드 된 게시글만 참여로 인정됩니다.</li>
+                <li>인스타그램 업로드 시 필수해시태그를 누락한 경우 미 참여자로 분류됩니다.</li>
+                <li>부적절한 방법으로 이벤트 응모 시 당첨에서 제외됩니다.</li>
+                <li>개인정보를 정확하게 입력하지 않은 경우, 당첨이 취소됩니다.</li>
+                <li>중복 당첨은 불가하며 여러 개의 게시글을 작성한 경우
+            가장 많은 좋아요 수를 받은 게시글로 점수가 집계됩니다.</li>
+                <li>좋아요 수가 동일할 경우 더 많은 댓글이 달린 게시글의 계정으로 당첨자가 선정됩니다.
+            경품의 상세 이용방법은 이용처 규정을 확인해주세요.</li>
+                <li>준법감시인심의필 제2018-0503호(2018.06.14)</li>
+            </ul>
+        </div>
+    </section>
+    @Html.Partial("_popup")
+</div>
+
+@section scripts {
+    <script src="~/Content/common/dev-common.js"></script>
+    <script src="~/Content/js/Nilririmanbo/pub.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>    
+    <script src="~/Content/js/Nilririmanbo/dev.js"></script>
+    <script type="text/javascript">
+        var googleAnalyticCategory = '@ViewBag.Title';
+        var eventOpen = '@ViewBag.IsOpen';
+        var eventClose = '@ViewBag.IsClose';
+    </script>
+}
+
+

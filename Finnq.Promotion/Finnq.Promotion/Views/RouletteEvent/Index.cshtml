@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "T map 룰렛 이벤트";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/Content/roulette/css/reset.min.css" rel="stylesheet" />
+    <link href="~/Content/roulette/css/style.min.css" rel="stylesheet" />
+}
+
+<div class="wrap" id="rouletteEventEntry">
+    <div class="kv">
+        <div class="kv-inner">
+            <h1><img src="~/Content/roulette/images/logo.png" alt="finnq" /></h1>
+            <h2><img src="https://s3.ap-northeast-2.amazonaws.com/finnq-appsflyer/Tmap-images/roulette_event/event_title.png" alt="내나이가 어때서!" /></h2>
+            <div class="event-wrap">
+                <span><img src="https://s3.ap-northeast-2.amazonaws.com/finnq-appsflyer/Tmap-images/roulette_event/mian_event_time.png" alt="참여기간 2017.11.01~11.15" /></span>
+                <button onclick="alert('종료된 이벤트 입니다.');" class="ga" data-action="룰렛 돌리기 - 이벤트 참여"><img src="~/Content/roulette/images/btn_main_start.png" alt="룰렛돌리기" /></button>
+            </div>
+            <span class="finger" onclick="alert('종료된 이벤트 입니다.');"><img src="~/Content/roulette/images/popup/finger.png" alt="클릭" /></span>
+        </div>
+        <div class="event-rule">
+            <div class="inner-wrap">
+                <h3><img src="~/Content/roulette/images/tit_process.png" alt="룰렛 이벤트 참여방법" /></h3>
+                <div class="rule">
+                    <img src="~/Content/roulette/images/event_turn.png" alt="" />
+                </div>
+            </div>
+        </div>
+        <div class="event-guide">
+            <div class="inner-wrap">
+                <div class="inner-top">
+                    <h3><img src="~/Content/roulette/images/tit_event.png" alt="기본적립 내 나이가 어때서" /></h3>
+                    <p><img src="https://s3.ap-northeast-2.amazonaws.com/finnq-appsflyer/Tmap-images/roulette_event/event_content.png" alt="내용 : 대상 고객의 출생년도 만큼 핀크 기본계좌로 입금" /></p>
+                    <p><img src="https://s3.ap-northeast-2.amazonaws.com/finnq-appsflyer/Tmap-images/roulette_event/event_target01.png" alt="대상 : 이벤트 기간 내 핀크 신규 회원 가입 완료 고객" /></p>
+                    <p><img src="https://s3.ap-northeast-2.amazonaws.com/finnq-appsflyer/Tmap-images/roulette_event/event_give.png" alt="지급일 : 회원 가입 익일" /></p>
+                    <p><img src="https://s3.ap-northeast-2.amazonaws.com/finnq-appsflyer/Tmap-images/roulette_event/event_note01.png" alt="유의사항 : 이벤트 기간과 관계 없이 핀크 탈퇴 이력이 있는 고객은 대상에서 제외됩니다." /></p>
+                    <span><img src="https://s3.ap-northeast-2.amazonaws.com/finnq-appsflyer/Tmap-images/roulette_event/tmap_benefit.png" alt="tmap 고객 대상 추가 혜택" /></span>
+                </div>
+                <div class="inner-bottom">
+                    <h4><img src="~/Content/roulette/images/tit_note.png" alt="이벤트 안내" /></h4>
+                    <p><img src="https://s3.ap-northeast-2.amazonaws.com/finnq-appsflyer/Tmap-images/roulette_event/event_target02.png" alt="대상 : 이벤트 기간 t맵 이벤트에 참여한 핀크 앱 신규가입자" /></p>
+                    <p><img src="https://s3.ap-northeast-2.amazonaws.com/finnq-appsflyer/Tmap-images/roulette_event/event_time.png" alt="기간 : 2017.11.01~2017.11.15" /></p>
+                    <p><img src="https://s3.ap-northeast-2.amazonaws.com/finnq-appsflyer/Tmap-images/roulette_event/event_benefit.png" alt="혜택 : 핀크 설치 후 회원 가입하면 가입자 나이만큼 금액으로 입금, 추가 최대 100만원 계좌에 입금" /></p>
+                </div>
+                <div class="event-note">
+                    <img src="https://s3.ap-northeast-2.amazonaws.com/finnq-appsflyer/Tmap-images/roulette_event/event_note02.png" alt="이벤트 유의사항" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("_popup")
+
+
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/vuejs")
+    <script src="~/Content/roulette/js/Winwheel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+    <script src="~/Content/roulette/js/clipboard.min.js"></script>
+    <script src="~/Content/roulette/js/event-pub.js"></script>
+    <script src="~/Content/common/js/sns-common.js"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script>
+        //카카오 javascript key
+        Kakao.init('@System.Configuration.ConfigurationManager.AppSettings["sns.kakao.javascript.key"]');
+    </script>
+    <script src="~/Content/roulette/js/dev.js"></script>
+}

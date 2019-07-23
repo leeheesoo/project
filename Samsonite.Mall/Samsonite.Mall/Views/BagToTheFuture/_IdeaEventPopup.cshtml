@@ -1,0 +1,75 @@
+﻿@model Samsonite.Mall.Models.BagtotheFutureModels.BagtotheFutureEntryModel
+<!-- 첨부파일 확인 팝업 (아니오 & 네) -->
+<div class="popup yesno" id="yesno">
+    <span class="btn-close">
+        <a href="javascript:void(0);" onclick="closePop('yesno');" > <img src="~/Content/images/bag-to-the-future/popup/btn_close_b.png" alt="닫기" /></a>
+    </span>
+    <div class="yesno-text">
+        <img src="~/Content/images/bag-to-the-future/popup/yn_tit.png" alt="별도의 첨부파일없이 응모하시겠습니까?"/>
+    </div>
+    <div class="btn-wrap">
+        <button type="button" class="btn-no" onclick="closePop('yesno');"><img src="~/Content/images/bag-to-the-future/popup/btn_no.png" alt="아니오" /></button>
+        <button type="button" class="btn-yes" v-on:click="saveCheckEntry" ><img src="~/Content/images/bag-to-the-future/popup/btn_yes.png" alt="네" /></button>
+    </div>
+</div>
+
+<!-- 접수내용입력 -->
+@using (Ajax.BeginRouteForm("CreateBagtotheFutureEntry", new { httpRoute = true }, new AjaxOptions { HttpMethod = "post", OnBegin= "bagtoTheFutureModel.beginIdeaCompetition", OnComplete = "bagtoTheFutureModel.completeIdeaCompetition", OnSuccess = "bagtoTheFutureModel.successIdeaCompetition", OnFailure = "bagtoTheFutureModel.failureIdeaCompetition" }, new { id = "frmIdeaCompetitionPersonalInfo" })) {
+    @Html.HiddenFor(x => x.IdeaName,new { })
+    @Html.HiddenFor(x => x.IdeaDescription, new { })
+    @Html.HiddenFor(x => x.File, new { })
+    <div class="popup sns-share personal" id="personal">
+        <span class="btn-close">
+            <a href="javascript:void(0);" onclick="closePop('personal');"><img src="~/Content/images/bag-to-the-future/popup/btn_close.png" alt="닫기" /></a>
+        </span>
+        <h2>
+            <img src="~/Content/images/bag-to-the-future/popup/receipt_tit.png" alt="SNS 공유하기" />
+        </h2>
+        <div class="popover-content">
+            <fieldset>
+                <legend>개인정보입력</legend>
+                <dl class="input-name">
+                    <dt><img class="text-name" src="~/Content/images/bag-to-the-future/popup/name_text.png" alt="이름" /></dt>
+                    <dd>@Html.TextBoxFor(x=>x.Name, new { maxlength = 50})</dd>
+                </dl>
+                <dl class="input-number">
+                    <dt><img class="text-phone" src="~/Content/images/bag-to-the-future/popup/phone_text.png" alt="연락처" /></dt>
+                    <dd>@Html.TextBoxFor(x=>x.Mobile, new { type="tel", maxlength = 11, placeholder = "'-'기호 없이 입력해주세요." }) </dd>
+                </dl>
+                <dl class="input-email">
+                    <dt><img class="text-mail" src="~/Content/images/bag-to-the-future/popup/mail_text.png" alt="이메일" /></dt>
+                    <dd>@Html.TextBoxFor(x=>x.Email,new { maxlength = 100 })</dd>
+                </dl>
+                <label>
+                    @Html.CheckBoxFor(x => x.EntryAgree)<span class="checkbox"></span>
+                    <img class="agree-text01" src="~/Content/images/bag-to-the-future/popup/agree_text.png" alt="개인정보수집 및 이용동의합니다" />
+                </label>
+
+                <div class="text-box">
+                    <span>[개인정보 수집 및 활용 동의]</span><br><br>
+                    고객님이 입력한 개인정보는 ‘정보통신망 이용촉진 및 정보보호 등에 관한 법률’에 따라 쌤소나이트코리아(주)가 수집, 활용 및 취급 위탁 시 본인의 동의를 얻어야 하는 정보입니다. 입력하신 개인정보는 아래의 목적으로 프로모션 대행사에만 제공되며, 이외의 용도로는 활용되지 않습니다.<br><br>
+                    1) 개인정보 수집 및 이용목적 - 참여자 본인 확인 및 경품 발송<br>
+                    2) 수집하는 개인정보 항목 - 이름, 연락처, 이메일<br>
+                    3) 개인정보 보유 및 이용기간 - 이벤트 종료 후 3개월 이내 파기 (단, 관계 법령 규정에 의하여 보존할 필요가 있는 경우 관련 법령에 따라 보관)<br>
+                    4) 본 이벤트 참여 고객은 개인정보 수집, 활용에 대하여 동의를 거부할 권리가 있으며, 개인정보 수집, 활용에 대한 미동의 시 해당 이벤트 참여하실 수 없습니다.<br>
+                    5) 쌤소나이트코리아(주)는 서비스 향상과 원활한 진행을 위하여 개인 정보 처리 업무를 외부 전문 업체에 위탁하여 처리하고 있습니다. * 이벤트 운영 위탁 업체 : 메가존(주)<br><br>
+                </div>
+                <label>
+                    @Html.CheckBoxFor(x=>x.EntryAgree2)<span class="checkbox"></span>
+                    <img class="agree-text02" src="~/Content/images/bag-to-the-future/popup/agree_text02.png" alt="개인정보수집및이용동의" />
+                </label>
+            </fieldset>
+            <div class="btn-wrap">
+                <button type="submit" id="btn-idea-entry-complete">
+                    <img class="accept-btn" src="~/Content/images/bag-to-the-future/popup/btn_accept_finish.png" alt="접수완료" />
+                    <span class="loading" style="display:none;" v-bind:style="{ display: isLoading}"><img src="~/Content/images/bag-to-the-future/loading.gif" alt="loading" /></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+}
+
+
+
+

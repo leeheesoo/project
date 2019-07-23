@@ -1,0 +1,1431 @@
+﻿@charset "UTF-8";
+
+/* add / heeok / 2017.04.12 / event marvelfrozen에서 사용 */
+
+@font-face {
+    font-family: "KoreanBDG R";
+    src: url("../../fonts/KoreanBDG_R.eot");
+    src: url("../../fonts/KoreanBDG_R.eot?#iefix") format('embedded-opentype'), url("../../fonts/KoreanBDG_R.woff") format('woff'), url("../../fonts/KoreanBDG_R.ttf") format('truetype');
+    src: local(※), url("../../fonts/KoreanBDG_R.woff") format('woff');
+}
+
+.header .menu-list:after {
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+    *overflow: hidden;
+}
+
+.container,
+.parallax,
+body,
+html {
+    height: 100%;
+}
+
+.parallax {
+    background: #7f5333;
+}
+
+.content-flavor,
+.content-together {
+    min-height: 965px;
+    height: 100%;
+    position: relative;
+}
+
+.content-flavor-img,
+.content-image-img,
+.content-together-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.content-about .close,
+.content-flavor .close,
+.content-image .close,
+.content-together .close,
+.popup .popup-wrap .close {
+    position: absolute;
+    top: 60px;
+    left: 837px;
+    display: inline-block;
+    background: url("../../Images/items/close.png") no-repeat 0 0;
+    width: 36px;
+    height: 36px;
+    text-indent: -9999px;
+}
+
+.header .menu-list:after {
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+    *overflow: hidden;
+}
+
+/* common */
+
+a {
+    display: block;
+    /**/
+}
+
+.skip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-indent: -9999px;
+}
+
+.hide {
+    position: absolute;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    top: -9999px;
+    left: -9999px;
+}
+
+.dim {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: url("../../Images/dim.png") no-repeat 0 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: repeat;
+}
+
+.debug-red {
+    outline: 1px dashed red;
+}
+
+/*---------------------------- header ----------------------------*/
+
+.header {
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    z-index: 10;
+    min-width: 1000px;
+    text-indent: -9999px;
+}
+
+.header-title {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -92.5px;
+}
+
+.header-title a {
+    background: url("../../Images/logo/logo.png") no-repeat 0 0;
+    width: 185px;
+    height: 117px;
+}
+
+.header .menu {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.header .menu-item {
+    float: left;
+    margin-left: 57px;
+}
+
+.header .menu-item:first-child {
+    margin-left: 0;
+}
+
+.header .menu-item.on a {
+    background-position: 0 -70px;
+}
+
+.header .menu-item-intro a {
+    background: url("../../Images/menu/menu-intro.png") no-repeat 0 0;
+    width: 78px;
+    height: 70px;
+}
+
+.header .menu-item-intro a:hover {
+    background-position: 0 -70px;
+}
+
+.header .menu-item-cf a {
+    background: url("../../Images/menu/menu-cf.png") no-repeat 0 0;
+    width: 110px;
+    height: 70px;
+}
+
+.header .menu-item-cf a:hover {
+    background-position: 0 -70px;
+}
+
+.header .menu-item-event a {
+    background: url("../../Images/menu/menu-event.png") no-repeat 0 0;
+    width: 102px;
+    height: 70px;
+    width: 102px;
+}
+
+.header .menu-item-event a:hover {
+    background-position: 0 -70px;
+}
+
+.header .menu-item-flavor {
+    margin-left: 189px;
+}
+
+.header .menu-item-flavor a {
+    background: url("../../Images/menu/menu-flavor.png") no-repeat 0 0;
+    width: 88px;
+    height: 70px;
+}
+
+.header .menu-item-flavor a:hover {
+    background-position: 0 -70px;
+}
+
+.header .menu-item-image,
+.header .menu-item-magickinder,
+.header .menu-item-togather {
+    margin-left: 20px;
+}
+
+.header .menu-item-image a {
+    background: url("../../Images/menu/menu-image.png") no-repeat 0 0;
+    width: 102px;
+    height: 70px;
+}
+
+.header .menu-item-image a:hover {
+    background-position: 0 -70px;
+}
+
+.header .menu-item-togather a {
+    background: url("../../Images/menu/menu-togather.png") no-repeat 0 0;
+    width: 102px;
+    height: 70px;
+}
+
+.header .menu-item-togather a:hover {
+    background-position: 0 -70px;
+}
+
+.header .menu-item-magickinder a {
+    background: url("../../Images/menu/menu-magickinder.png") no-repeat 0 0;
+    width: 54px;
+    height: 70px;
+}
+
+.header .menu-item-magickinder a:hover {
+    background-position: 0 -70px;
+}
+
+/*---------------------------- index ----------------------------*/
+
+.container {
+    min-height: 900px;
+}
+
+.container .parallax {
+    position: relative;
+    overflow: hidden;
+    background: #60ccfb;
+}
+
+.container .parallax-layer {
+    background: url("../../Images/items/bg.jpg") no-repeat 0 0;
+    width: 2560px;
+    height: 100%;
+    background-position: center bottom;
+    position: absolute;
+    left: 50%;
+    margin-left: -1280px;
+}
+
+.container .motionWrap {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.container .eggs {
+    width: 1211px;
+    height: 524px;
+    margin-bottom: 45px;
+}
+
+.container .eggs .egg {
+    position: absolute;
+    top: 0;
+    z-index: 15;
+
+    width: 540px;
+    height: 645px;
+    overflow: hidden;
+    display: inline-block;
+
+    cursor: pointer;
+}
+
+.container .eggs .egg-flavor {
+    left: 0;
+}
+
+.container .eggs .egg-image {
+    left: 440px;
+}
+
+.container .eggs .egg-together {
+    left: 880px;
+}
+
+.container .eggs .egg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.container .eggs .egg-front {
+    z-index: 10;
+}
+
+.container .eggs .hand {
+    display: inline-block;
+    position: absolute;
+    z-index: 20;
+    background: url("../../Images/items/hand.png") no-repeat 0 0;
+    width: 440px;
+    height: 500px;
+}
+
+.container .balloon {
+    position: absolute;
+    top: -80px;
+    left: -140px;
+    width: 72px;
+    height: 127px;
+    overflow: hidden;
+    background: url("../../Images/items/balloon.png") no-repeat 0 0;
+    text-indent: -9999px;
+    animation: balloon-ani 3s infinite linear;
+}
+
+@keyframes balloon-ani {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+.container .icon_notice {
+    position: absolute;
+    top: -55px;
+    left: 525px;
+}
+
+.container .cloud {
+    position: absolute;
+    bottom: 72%;
+    left: 50%;
+    margin-left: -322px;
+}
+
+/* 76% */
+
+.container .cloud-item {
+    display: inline-block;
+    overflow: hidden;
+    text-indent: -9999px;
+}
+
+.clouds {
+    margin-top: 75px;
+    display: block;
+    height: 140px;
+    background: url("/Images/items/clouds.png") no-repeat 0 0;
+    animation: cloud-ani 1000s infinite linear;
+}
+
+@keyframes cloud-ani {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -4712px 0;
+    }
+}
+
+/* ===================================
+    gyrodrop
+=================================== */
+
+.gyrodrop {
+    position: absolute;
+    top: 12px;
+    left: 813px;
+    background: url("../../Images/items/gyrodrop-column.png") no-repeat 50% 100%;
+    width: 73px;
+    height: 384px;
+}
+
+.gyrodrop__circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 73px;
+    height: 73px;
+    background: url("/Images/items/gyrodrop-circle.png") no-repeat 0 0;
+}
+
+.gyrodrop__vehicle {
+    position: absolute;
+    top: 108px;
+    left: 2px;
+    display: inline-block;
+    overflow: hidden;
+    width: 70px;
+    height: 54px;
+    background: url("../../Images/items/drop.png") no-repeat 0 0;
+    text-indent: -9999px;
+}
+
+.gyrodrop .gyrodrop__circle,
+.gyrodrop .gyrodrop__vehicle {
+    transition: transform 2.6s 0.6s cubic-bezier(0.42, 0.1, 0.21, 0.96);
+}
+
+.gyrodrop.is-active .gyrodrop__circle {
+    transform: rotate(720deg);
+}
+
+.gyrodrop.is-active .gyrodrop__vehicle {
+    transform: translateY(230px);
+}
+
+/* ===================================
+    castle
+=================================== */
+.main.castle {
+    position: absolute;
+    top: 160px;
+    left: 1091px;
+    z-index: 10;
+    width: 452px;
+    height: 236px;
+    background: url("/Images/items/castle.png") no-repeat 0 0;
+}
+
+.castle__egg {
+    position: absolute;
+    top: 105px;
+    left: 1286px;
+    width: 60px;
+    height: 82px;
+    background: url("/Images/items/castle-egg.png") no-repeat 0 0;
+}
+
+/* ===================================
+    ferry wheel
+=================================== */
+
+.ferry-wheel {
+    position: absolute;
+    top: 31px;
+    right: -462px;
+    z-index: -1;
+    width: 272px;
+    height: 272px;
+    background: url("/Images/items/ferris-wheel.png") no-repeat 0 0;
+    animation: ferry-wheel-ani 70s linear infinite;
+}
+
+@keyframes ferry-wheel-ani {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.ferry-wheel__vehicle {
+    position: absolute;
+    width: 38px;
+    height: 51px;
+    background: url("/Images/items/ferris-wheel-vehicle.png") no-repeat 0 0;
+    animation: ferry-wheel-vehicle-ani 70s linear infinite;
+}
+
+@keyframes ferry-wheel-vehicle-ani {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+.ferry-wheel__vehicle--1 {
+    top: -24px;
+    left: 86px;
+}
+
+.ferry-wheel__vehicle--2 {
+    top: 30px;
+    left: 10px;
+}
+
+.ferry-wheel__vehicle--3 {
+    top: 116px;
+    left: -19px;
+}
+
+.ferry-wheel__vehicle--4 {
+    top: 200px;
+    left: 20px;
+}
+
+.ferry-wheel__vehicle--5 {
+    top: 239px;
+    left: 100px;
+}
+
+.ferry-wheel__vehicle--6 {
+    top: 223px;
+    left: 193px;
+}
+
+.ferry-wheel__vehicle--7 {
+    top: 145px;
+    left: 250px;
+}
+
+.ferry-wheel__vehicle--8 {
+    top: 50px;
+    left: 241px;
+}
+
+.ferry-wheel__vehicle--9 {
+    top: -10px;
+    left: 176px;
+}
+
+.container .copyright {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 27px;
+}
+
+/*.container .copyright { position: absolute; width: 100%; text-align: center; bottom: 27px; }*/
+
+/*---------------------------- about ----------------------------*/
+.content-about {
+    background: url("../../Images/items/about-bg.png") repeat 0 0;
+    width: auto;
+    padding: 70px 0 30px;
+    *padding: 175px 0 30px;
+}
+
+.content-about-img {
+    position: relative;
+    width: 948px;
+    margin: 100px auto 0;
+    text-align: center;
+}
+
+.content-about-ingredient {
+    margin-top: 26px;
+}
+
+.content-about .close {
+    top: 0;
+    left: 884px;
+}
+
+.content-about .copyright {
+    position: relative;
+    bottom: 0;
+    margin-top: 54px;
+}
+
+/*---------------------------- flavor ----------------------------*/
+.content-flavor {
+    background: #60ccfb url("../../Images/items/flavor-bg.png") repeat 0 0;
+}
+
+/* 170120 - 심소정 - 이미지 화면 가운데 위치하도록 위치값 수정 */
+.content-flavor .content-flavor-img {
+    transform: translate(-48%, -43%);
+}
+.content-flavor .content-flavor-img img {
+    vertical-align: top;
+}
+
+.content-flavor .close {
+    background: url("../../Images/items/close.png") no-repeat 0 0;
+    width: 36px;
+    height: 35px;
+    left: 703px;
+}
+
+/*---------------------------- image ----------------------------*/
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.content-image {
+    width: 100%;
+    height: auto;
+    background: #f4ffff url("../../Images/toy/main/bg_wrap.jpg") repeat center top;
+    overflow: hidden;
+}
+
+.content-image-inner {
+    position: relative;
+    left: 0;
+    top: 0;
+    min-width: 2560px;
+    max-width: 2560px;
+    height: 2630px;
+}
+.content-image-inner .top_sec {
+    position: relative;
+    width: 100%;
+    height: 647px;
+    background: #5acdea url("../../Images/toy/main/bg_top.jpg") no-repeat center bottom;
+}
+.content-image-inner .main_sec {
+    position: relative;
+    width: 100%;
+    height: 2923px;
+    min-height: 2923px;
+    background: url("../../Images/toy/main/bg_main.png") no-repeat left top;
+}
+
+.content-image-inner .tit_area {
+    position: absolute;
+    left: 50%;
+    top: 170px;
+    width: 1000px;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 3;
+}
+.content-image-inner .tit_area h2 {
+    margin-bottom: 25px;
+}
+.content-image-inner .tit_area p {}
+
+.pos_loc {
+    position: absolute;
+}
+.content-image-inner .top_sec .castle {
+    left: 580px;
+    bottom: -2px;
+    z-index: 2;
+}
+.content-image-inner .top_sec .castle .snow {
+    left: 7px;
+    top: -3px;
+    z-index: 3;
+}
+.content-image-inner .top_sec .gyro_bg .snow {
+    left: 2px;
+    top: -3px;
+    z-index: 3;
+}
+.content-image-inner .top_sec .top_toy {
+    top: 543px;
+    left: 50%;
+				width: 1000px;
+				height: 543px;
+				transform: translateX(-50%);
+    z-index: 6;
+				text-align: center;
+}
+.content-image-inner .top_sec .btn_go_event {
+    position: absolute;
+    top: 362px;
+    left: 305px;
+    width: 387px;
+    margin: 0 auto 30px;
+    z-index: 6;
+}
+.content-image-inner .top_sec .btn_go_event a {
+    width: 387px;
+    height: 115px;
+    background: url("../../Images/toy/main/bg_tit_toys.png") no-repeat 0 -418px;
+    font-size: 0;
+    z-index: 3;
+}
+
+.scroll_down {
+    position: absolute;
+    top: 427px;
+    left: 1200px;
+}
+.main_sec .fountain {
+    width: 378px;
+    height: 212px;
+    left: 1824px;
+    top: 1468px;
+    background: url("../../Images/toy/main/fountain.png") no-repeat 0 0;
+}
+.main_sec .sit_rano {
+    left: 685px;
+    top: -77px;
+    z-index: 9;
+}
+.main_sec .riding_rano {
+    left: 834px;
+    top: 871px;
+}
+/* 종류별 장난감 */
+.content-image-inner .play_ground {
+    width: 820px;
+    height: 988px;
+    left: 870px;
+    top: 257px;
+    z-index: 7;
+}
+.content-image-inner .play_ground h3 {
+    width: 750px;
+    margin: 0 auto;
+}
+.content-image-inner .play_ground .explain_area {
+    width: 820px;
+    margin: 38px 0 0;
+    background: url("../../Images/toy/main/bg_explain_area.png") 0 0 no-repeat;
+}
+.content-image-inner .play_ground .explain_area ul {
+    width: 760px;
+    padding: 30px;
+    overflow: hidden;
+}
+.content-image-inner .play_ground .explain_area ul li {
+    float: left;
+    width: 379px;
+    height: 306px;
+    text-align: center;
+}
+.content-image-inner .play_ground .explain_area ul li .btn {
+    margin-top: 13px;
+}
+.content-image-inner .play_ground .txt {
+    width: 705px;
+    margin: 0 auto;
+    padding: 41px 0 28px;
+}
+.content-image-inner .new_toy {
+    width: 1036px;
+    height: 740px;
+    right: 162px;
+    top: 384px;
+    background: url("../../Images/toy/main/new_toy.png") no-repeat 0 0;
+}
+.content-image-inner .new_toy h3 a {
+    position: absolute;
+    right: 229px;
+    top: 543px;
+    width: 308px;
+    height: 102px;
+    background: url("../../Images/toy/main/bg_tit_toys.png") no-repeat 0 -540px;
+    font-size: 0;
+    z-index: 3;
+}
+.content-image-inner .boy_toy {
+    width: 895px;
+    height: 581px;
+    left: 103px;
+    top: 1296px;
+    background: url("../../Images/toy/main/boy_toy.png") no-repeat 0 0;
+}
+.content-image-inner .boy_toy h3 a {
+    position: absolute;
+    left: 207px;
+    top: 464px;
+    width: 308px;
+    height: 103px;
+    background: url("../../Images/toy/main/bg_tit_toys.png") no-repeat 0 -315px;
+    font-size: 0;
+    z-index: 3;
+}
+.content-image-inner .boy_toy .bycicle_img {
+    position: absolute;
+    right: 125px;
+    bottom: 84px;
+}
+.content-image-inner .boy_toy .car_img {
+    position: absolute;
+    left: 280px;
+    bottom: 150px;
+    width: 274px;
+    height: 197px;
+}
+.content-image-inner .boy_toy .car_img .carbody_area {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.content-image-inner .boy_toy .car_img .carwheel1_area {
+    position: absolute;
+    left: 103px;
+    bottom: 15px;
+}
+.content-image-inner .boy_toy .car_img .carwheel2_area {
+    position: absolute;
+    right: 47px;
+    bottom: 45px;
+}
+.content-image-inner .common_toy {
+    width: 805px;
+    height: 518px;
+    left: 524px;
+    top: 1677px;
+    background: url("../../Images/toy/main/common_toy.png") no-repeat 0 0;
+    z-index: 7;
+}
+.content-image-inner .common_toy h3 a {
+    position: absolute;
+    left: 327px;
+    top: 403px;
+    width: 347px;
+    height: 103px;
+    background: url("../../Images/toy/main/bg_tit_toys.png") no-repeat 0 -105px;
+    font-size: 0;
+    z-index: 4;
+}
+.content-image-inner .girl_toy {
+    width: 1193px;
+    height: 656px;
+    right: 392px;
+    top: 2061px;
+    background: url("../../Images/toy/main/girl_toy.png") no-repeat 0 0;
+    z-index: 2;
+}
+.content-image-inner .girl_toy h3 a {
+    position: absolute;
+    left: 518px;
+    top: 409px;
+    width: 308px;
+    height: 104px;
+    background: url("../../Images/toy/main/bg_tit_toys.png") no-repeat 0 -210px;
+    font-size: 0;
+    z-index: 3;
+}
+.content-image-inner .girl_toy .accessories {
+    right: 45px;
+    bottom: 29px;
+    z-index: 3;
+}
+.content-image-inner .girl_toy .barbie {
+    right: -165px;
+    bottom: 0;
+    z-index: 3;
+}
+
+/* 영상 */
+.content-image-inner .mov_tvcf {
+    top: 1132px;
+    left: 1510px;
+}
+.content-image-inner .mov_tvcf a {
+    display: block;
+    width: 480px;
+    height: 255px;
+    background: url("../../Images/toy/main/mov_tvcf.png") no-repeat 0 0;
+    font-size: 0;
+}
+.content-image-inner .mov_toys {
+    top: 1666px;
+    left: 790px;
+}
+.content-image-inner .mov_toys a {
+    display: block;
+    width: 370px;
+    height: 261px;
+    background: url("../../Images/toy/main/mov_toys.png") no-repeat 0 0;
+    font-size: 0;
+}
+
+/* 플로팅 메뉴 */
+.content-image-inner .floating_menu {
+    position: fixed;
+    left: 50px;
+    top: 100px;
+    z-index: 99;
+}
+.content-image-inner .floating_menu ul {}
+.content-image-inner .floating_menu ul li {
+    position: relative;
+}
+.content-image-inner .floating_menu ul li a {
+    display: block;
+    width: 120px;
+    background: url("../../Images/toy/main/bg_floating_menu.png") no-repeat 0 0;
+}
+.content-image-inner .floating_menu ul li:nth-of-type(1) a {
+    background-position: 0 0;
+    height: 148px;
+}
+.content-image-inner .floating_menu ul li:nth-of-type(1) a.on {
+    background-position: -120px 0;
+}
+.content-image-inner .floating_menu ul li:nth-of-type(2) a {
+    background-position: 0 -148px;
+    height: 125px;
+}
+.content-image-inner .floating_menu ul li:nth-of-type(2) a.on {
+    background-position: -120px -148px;
+}
+.content-image-inner .floating_menu ul li:nth-of-type(3) a {
+    background-position: 0 -273px;
+    height: 154px;
+}
+.content-image-inner .floating_menu ul li:nth-of-type(3) a.on {
+    background-position: -120px -273px;
+}
+.content-image-inner .floating_menu ul li a > img {
+    position: relative;
+    top: 2px;
+    left: -35px;
+}
+
+/* 장난감 아이템 팝업 */
+.popup_toys {
+    position: absolute;
+    left: 50%;
+    margin-left: -462px;
+    top: 200px;
+    z-index: 10001;
+    width: 923px;
+}
+.popup_toys > .btn_close {
+    position: absolute;
+    top: 140px;
+    right: 50px;
+}
+.items_boys {
+    background: url("../../Images/toy/bn/bg_pop_boy.png") no-repeat 0 0;
+}
+.items_girls {
+    background: url("../../Images/toy/bn/bg_pop_girl.png") no-repeat 0 0;
+}
+.items_comm {
+    background: url("../../Images/toy/bn/bg_pop_comm.png") no-repeat 0 0;
+}
+.items_new {
+    background: url("../../Images/toy/bn/bg_pop_new.png") no-repeat 0 0;
+}
+
+.wrap_toys {
+    width: 923px;
+    height: 1349px;
+}
+.wrap_toys h4 {
+    font-size: 0;
+}
+.list_sec {
+    width: 923px;
+    height: 575px;
+    margin-top: 375px;
+    position: relative;
+}
+.list_sec .thumb {
+    position: absolute;
+    top: 93px; /*outline:1px solid red; */
+    width: 200px;
+}
+.list_sec .thumb ul {
+    width: 200px !important;
+}
+.list_sec .thumb ul li {
+    text-align: center;
+    height: 122px;
+    width: 200px !important;
+    display: table;
+}
+.list_sec .thumb ul li a {
+    display: table-cell;
+    vertical-align: bottom;
+}
+.list_sec .thumb .btn_prev {
+    position: absolute;
+    left: 50%;
+    margin-left: -16px;
+    top: -32px;
+}
+.list_sec .thumb .btn_next {
+    position: absolute;
+    left: 50%;
+    margin-left: -16px;
+    bottom: -48px;
+}
+.list_sec .thumb_left {
+    left: 110px;
+}
+.list_sec .thumb_right {
+    right: 110px;
+}
+
+.list_sec .show_box {
+    position: absolute;
+    bottom: 14px;
+    left: 255px;
+    width: 420px;
+    text-align: center;
+}
+/*272 */
+.sns_sec p {
+    text-align: center;
+    margin: 70px 0 15px;
+}
+.sns_sec ul {
+    text-align: center;
+}
+.sns_sec ul li {
+    display: inline-block;
+}
+.sns_sec ul li:nth-of-type(2) {
+    margin: 0 4px;
+}
+
+.content-image-inner .copy_txt {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+				transform: translateX(-50%);
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/*---------------------------- toyView ----------------------------*/
+.popup-toyView_wrap {
+    width: 920px;
+    height: auto;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    z-index: 1000;
+    padding-bottom: 79px;
+    margin-left: -460px;
+}
+.popup-toyView {
+    display: none;
+}
+.popup-toyView.on {
+    display: block;
+}
+.content-toyView {}
+.content-toyView .toy_selector {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+.content-toyView .toy_selector a {
+    position: relative;
+    margin: 0 5px;
+    display: inline-block;
+    height: 64px;
+    overflow: hidden;
+    display: inline-block;
+    text-indent: 0;
+}
+.content-toyView .toy_selector a img {
+    position: relative;
+}
+.content-toyView .toy_selector a.on img {
+    top: -64px;
+}
+.content-toyView .content-toyView-img {
+    position: relative;
+    text-align: center;
+}
+.content-toyView .content-toyView-img .group_boy {
+    padding: 144px 0 50px;
+    background: #60ccfb;
+}
+.content-toyView .content-toyView-img .group_girl {
+    padding: 144px 0 50px;
+    background: #fa85c9;
+}
+.content-toyView .content-toyView-img .group_child {
+    padding: 144px 0 50px;
+    background: #ffb61e;
+}
+.content-toyView .content-toyView-img img {
+    vertical-align: top;
+}
+.content-toyView .content-toyView-img p {
+    text-align: center;
+    padding: 40px 0 0;
+}
+
+.popup-toyView_wrap {
+    width: 920px;
+    height: auto;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    z-index: 1000;
+    padding-bottom: 79px;
+    margin-left: -460px;
+}
+.popup-toyView {
+    display: none;
+}
+.popup-toyView.on {
+    display: block;
+}
+.content-toyView {}
+.content-toyView .toy_selector {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+.content-toyView .toy_selector a {
+    position: relative;
+    margin: 0 5px;
+    display: inline-block;
+    height: 64px;
+    overflow: hidden;
+    display: inline-block;
+    text-indent: 0;
+}
+.content-toyView .toy_selector a img {
+    position: relative;
+}
+.content-toyView .toy_selector a.on img {
+    top: -64px;
+}
+.content-toyView .content-toyView-img {
+    position: relative;
+    text-align: center;
+}
+.content-toyView .content-toyView-img .group_boy {
+    padding: 144px 0 50px;
+    background: #60ccfb;
+}
+.content-toyView .content-toyView-img .group_girl {
+    padding: 144px 0 50px;
+    background: #fa85c9;
+}
+.content-toyView .content-toyView-img .group_child {
+    padding: 144px 0 50px;
+    background: #ffb61e;
+}
+.content-toyView .content-toyView-img img {
+    vertical-align: top;
+}
+.content-toyView .content-toyView-img p {
+    text-align: center;
+    padding: 40px 0 0;
+}
+
+/*---------------------------- together ----------------------------*/
+.content-together {
+    background: #fa85c9 url("../../Images/items/together-bg.png") repeat 0 0;
+}
+
+/* 170120 - 심소정 - 이미지 화면 가운데 위치하도록 위치값 수정 */
+.content-together-img {
+    transform: translate(-51%, -43%);
+}
+.content-together-img img {
+    vertical-align: top;
+}
+
+.content-together-img .close {
+    left: 783px;
+}
+
+/*---------------------------- popup ----------------------------*/
+.popup {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.popup .popup-wrap {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: url("../../Images/items/popup.png") no-repeat 0 0;
+    width: 623px;
+    height: 414px;
+    z-index: 100;
+}
+
+.popup .popup-wrap .close {
+    top: -30px;
+    left: 610px;
+}
+
+.popup .popup-wrap .pop-form {
+    margin-top: 272px;
+}
+
+.popup .popup-wrap label {
+    display: inline-block;
+    text-indent: -9999px;
+    margin-left: 5px;
+    background: url("../../Images/items/pop-txt.png") no-repeat 0 0;
+    width: 13px;
+    height: 15px;
+}
+
+.popup .popup-wrap .year {
+    background-position: 0 0;
+}
+
+.popup .popup-wrap .month {
+    background-position: 0 -20px;
+}
+
+.popup .popup-wrap .day {
+    background-position: 0 -40px;
+}
+
+.popup .popup-wrap .input {
+    background: #ededed;
+    height: 34px;
+    margin-left: 20px;
+    padding: 0 10px;
+    border: 2px solid #ededed;
+}
+
+.popup .popup-wrap .input-year {
+    width: 76px;
+    margin-left: 0;
+}
+
+.popup .popup-wrap .input-month {
+    width: 36px;
+}
+
+.popup .popup-wrap .input-day {
+    width: 36px;
+}
+
+.popup .pop-btn {
+    margin-top: 15px;
+    background: url("../../Images/items/pop-btn.png") no-repeat 0 0;
+    width: 212px;
+    height: 56px;
+    cursor: pointer;
+    border: none;
+}
+
+/*---------------------------- popup_main ----------------------------*/
+.popup-main {
+    position: absolute;
+    top: 50px;
+    right: 300px;
+    width: 320px;
+    z-index: 105;
+}
+.popup-main .close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 106;
+}
+.popup-main .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 1038px;
+    padding-bottom: 20px;
+    z-index: 105;
+    background: url("../../Images/items/bg_pop_main.jpg") no-repeat 0 0;
+    font-size: 0;
+}
+.popup-main .content .align-center {
+    text-align: center;
+}
+.popup-main .content h2 {
+    padding: 47px 0 29px;
+}
+.popup-main .content .txt1 {
+    margin-top: 17px;
+}
+.popup-main .content .toy-box {
+    margin: 10px 0 30px;
+}
+
+/*# sourceMappingURL=style.css.map */
+
+/* 플로팅 */
+.bn-main {
+    position: absolute;
+    bottom: -56px;
+}
+.bn-main > a {
+    text-indent: 0;
+}
+.bn-man {
+    bottom: -27px;
+    left: -340px;
+}
+.bn-main > button {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: url("../../Images/items/btn_close_bn.png") no-repeat 0 0;
+    text-indent: -9999px;
+    border: 0;
+    cursor: pointer;
+}
+.bn-man > button {
+    top: 58px;
+    left: 22px;
+}
+.bn-woman {
+    bottom: -31px;
+    right: -315px;
+}
+.bn-woman > button {
+    top: 147px;
+    left: 10px;
+}
+
+/* 배너 */
+.item_popup {
+    position: absolute;
+    top: 361px;
+    display: block;
+    height: 500px;
+}
+.item_popup > img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.item_popup.item_man {
+    left: -85px;
+    width: 500px;
+}
+.item_popup.item_woman {
+    right: 35px;
+}
+
+.banner_wrap {
+    position: relative;
+    width: 1116px;
+    height: 136px;
+    background: url("../../Images/toy/bn/bg_bn.png") no-repeat 0 0;
+    margin-top: 30px;
+    padding-top: 18px;
+}
+/* 136 */
+.banner_wrap a {
+    text-indent: 0;
+}
+.banner_wrap > a {
+    position: absolute;
+    top: 35px;
+}
+.banner_wrap ul {
+    font-size: 0;
+    overflow: hidden;
+    height: 98px;
+    width: 910px;
+}
+.banner_wrap ul li {
+    float: none !important;
+    display: inline-block !important;
+    text-align: center;
+    vertical-align: middle;
+    *display: inline;
+    *zoom: 1;
+}
+.banner_wrap ul li > a {
+    display: inline;
+}
+.banner_wrap .btn_prev {
+    left: 20px;
+}
+.banner_wrap .btn_next {
+    right: 20px;
+}
+
+.thum_41 {
+    margin-left: -10px;
+}
+.thum_42 {
+    margin-left: -15px;
+}
+.thum_43 {
+    margin-left: -20px;
+}
+.thum_44 {
+    margin-left: -2px;
+}
+.thum_45 {
+    margin-left: -2px;
+}
+.thum_46 {
+    margin-right: 10px;
+}
+.thum_47 {
+    margin-right: 10px;
+}
+.thum_48 {
+    margin-right: 10px;
+}
+.thum_49 {
+    margin-right: 10px;
+}
+.thum_50 {
+    width: 98px !important;
+}
+
+.rano {
+    position: absolute;
+    top: 607px;
+    left: 297px;
+    z-index: 20;
+}
+
+/* 구글 리마케팅 태그 코드 iframe reset */
+iframe[name='google_conversion_frame'] {
+    height: 0 !important;
+    width: 0 !important;
+    line-height: 0 !important;
+    font-size: 0 !important;
+    margin-top: -13px;
+    float: left;
+}
+
+@media(max-width:1200px) {
+    .content-image-inner .floating_menu {
+        position: fixed;
+        left: 10px;
+        top: 100px;
+        z-index: 99;
+    }
+}

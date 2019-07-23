@@ -1,0 +1,2302 @@
+@charset "UTF-8";
+/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR");
+html {
+  line-height: 1.15;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+  /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type="checkbox"],
+[type="radio"] {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none;
+}
+
+@font-face {
+  font-family: robotoItalic;
+  src: url(../../fonts/Roboto-Italic.ttf) format("truetype");
+}
+
+button {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0;
+}
+
+button:focus {
+  outline: none;
+}
+
+ul, ol {
+  padding: 0;
+  margin: 0;
+}
+
+ul li, ol li {
+  font-size: 0;
+  list-style: none;
+}
+
+dl, dt, dd, p {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+}
+
+.loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .7;
+  z-index: 9999;
+}
+
+.loading > img {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -50px 0 0 -50px;
+}
+
+label {
+  display: inline-block;
+}
+
+h1, h2, h3, h4, h5 {
+  font-size: 0;
+}
+
+input[type=text]::-ms-clear {
+  display: none;
+}
+
+input[type="text"],
+input[type="tel"] {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/*ios input reset*/
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.test-ui {
+  width: 100%;
+  display: none;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  z-index: 20000;
+}
+
+.test-ui a, .test-ui button {
+  font-size: 30px;
+  color: red;
+}
+
+.facial__wrap input::-webkit-input-placeholder {
+  color: #85e4ff;
+}
+
+.facial__wrap input:-ms-input-placeholder {
+  color: #85e4ff;
+}
+
+.facial__wrap input::-ms-input-placeholder {
+  color: #85e4ff;
+}
+
+.facial__wrap input::placeholder {
+  color: #85e4ff;
+}
+
+.facial__wrap input::-webkit-input-placeholder {
+  color: #85e4ff;
+}
+
+.facial__wrap input:-ms-input-placeholder {
+  color: #85e4ff;
+}
+
+.body__wrap input::-webkit-input-placeholder {
+  color: #fff;
+}
+
+.body__wrap input:-ms-input-placeholder {
+  color: #fff;
+}
+
+.body__wrap input::-ms-input-placeholder {
+  color: #fff;
+}
+
+.body__wrap input::placeholder {
+  color: #fff;
+}
+
+.body__wrap input::-webkit-input-placeholder {
+  color: #fff;
+}
+
+.body__wrap input:-ms-input-placeholder {
+  color: #fff;
+}
+
+.app {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.page {
+  width: 100%;
+  display: none;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: all 3s ease-in-out;
+  transition: all 3s ease-in-out;
+}
+
+.page.on {
+  display: block;
+}
+
+.page__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.page__inner > * {
+  text-align: center;
+}
+
+.page:not(.page-main) {
+  font-size: 0;
+  line-height: 0;
+}
+
+.page:not(.page-main) .title {
+  margin-top: 130px;
+}
+
+.page:not(.page-main) .event-duration {
+  margin-top: 40px;
+}
+
+.page:not(.page-main) .event-btns {
+  width: 100%;
+}
+
+.page:not(.page-main) .event-btns .btn-join {
+  margin-top: 18px;
+}
+
+.page:not(.page-main) .event-notice {
+  width: 100%;
+  height: 390px;
+  margin-top: 75px;
+  background-position: center top;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.page:not(.page-main) .event-notice .btn-show-detail {
+  position: absolute;
+}
+
+.nav-icon, .nav-wrap {
+  position: absolute;
+  z-index: 1000;
+}
+
+.logo {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  z-index: 1;
+}
+
+.nav-icon {
+  top: 40px;
+  right: 40px;
+}
+
+.nav-icon > button {
+  width: 60px;
+  height: 42px;
+}
+
+.nav-icon .nav-line {
+  display: inline-block;
+  width: 100%;
+  border-top: 2px solid #003c93;
+}
+
+.nav-icon .nav-line:not(:first-child) {
+  margin-top: 18px;
+}
+
+.nav-icon__more {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 70px;
+}
+
+.nav-dimmed {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: -1;
+  opacity: 0;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+.nav-dimmed.on {
+  opacity: 1;
+  z-index: 1000;
+}
+
+.nav-wrap {
+  width: 520px;
+  height: 100%;
+  top: 0;
+  right: -100%;
+  overflow: hidden;
+  background: #fff;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.nav-wrap.on {
+  right: 0;
+}
+
+.nav {
+  position: absolute;
+  top: 207px;
+  left: 65px;
+}
+
+.nav__btn-close {
+  position: absolute;
+  top: 35px;
+  right: 43px;
+}
+
+.nav__item:not(:first-child) {
+  margin-top: 90px;
+}
+
+.btn-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 70px;
+  height: 70px;
+  background-image: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/m/btn-top.png");
+  font-size: 0;
+}
+
+.page-main {
+  height: 1350px;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-main/bg.jpg") center top no-repeat;
+}
+
+.page-main .main-title {
+  position: absolute;
+  top: 350px;
+  left: 30px;
+}
+
+.page-main .btns-direct {
+  width: 100%;
+  height: 581px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  line-height: 0;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-main/bg-btns-direct.png") left bottom no-repeat;
+}
+
+.page-main .btns-direct button {
+  height: 63px;
+  position: absolute;
+  bottom: 40px;
+}
+
+.page-main .btns-direct .btn-gallery {
+  width: 125px;
+  left: 365px;
+}
+
+.page-main .btns-direct .btn-videoStage {
+  width: 146px;
+  left: 533px;
+}
+
+.page-main .main-product {
+  position: absolute;
+  width: 100%;
+  height: 217px;
+  top: 517px;
+  left: 0;
+}
+
+.page-main .main-product button {
+  position: absolute;
+  display: inline-block;
+  width: 60px;
+  height: 61px;
+  border-radius: 50%;
+}
+
+.page-main .main-product button.btn-detail-wash {
+  top: 0;
+  left: 119px;
+}
+
+.page-main .main-product button.btn-detail-lotion {
+  top: 155px;
+  left: 506px;
+}
+
+.page-contents {
+  background-color: #e2d5c9;
+}
+
+.page-contents .cards {
+  width: 100%;
+  height: 720px;
+  position: relative;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-contents/visual-bg.png") left top no-repeat;
+}
+
+.page-contents .cards li {
+  position: absolute;
+  display: inline-block;
+  -webkit-transform: translateZ(-5px);
+          transform: translateZ(-5px);
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  overflow: hidden;
+}
+
+.page-contents .cards li:hover, .page-contents .cards li.on {
+  z-index: 100;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+}
+
+.page-contents .cards .card-gallery {
+  width: 490px;
+  height: 677px;
+  top: 65px;
+  left: 20px;
+}
+
+.page-contents .cards .card-gallery img:last-child {
+  top: 30px;
+  left: 13px;
+}
+
+.page-contents .cards .card-video {
+  width: 490px;
+  height: 610px;
+  right: -45px;
+  top: 10px;
+}
+
+.page-contents .cards .card-video img:last-child {
+  top: 20px;
+  left: 13px;
+}
+
+.page-contents .cards img {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.page-contents .cards img.on {
+  opacity: 1;
+}
+
+.page-contents .event-notice {
+  background-image: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-contents/event-notice.png");
+}
+
+.page-calculator {
+  background-color: #cde4e3;
+}
+
+.page-calculator .event-notice {
+  background-image: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-calculator/event-notice.png");
+}
+
+.page-calculator .event-notice .btn-show-detail {
+  top: 266px;
+  left: 362px;
+}
+
+.page-age {
+  background-color: #d5e0e4;
+}
+
+.page-age .event-notice {
+  background-image: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-age/event-notice.png");
+}
+
+.page-age .event-notice .btn-show-detail {
+  top: 266px;
+  left: 362px;
+}
+
+.page.page-gift {
+  background-image: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-gift/bg.jpg");
+  background-repeat: repeat-x;
+  background-color: #cdcee4;
+  height: 1720px;
+}
+
+.page.page-gift .event-notice {
+  background-image: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-gift/event-notice-v2.png");
+  height: 390px;
+  margin-top: 60px;
+}
+
+.page.page-challenge {
+  background-color: #dadbde;
+}
+
+.page.page-challenge .visual {
+  position: relative;
+}
+
+.page.page-challenge .event-btns {
+  position: absolute;
+  bottom: 0;
+}
+
+.page.page-challenge .event-notice {
+  background-image: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/m/page-challenge/event-notice.png");
+  height: 571px;
+  margin-top: 85px;
+}
+
+.page.page-challenge .event-notice .btn-show-detail {
+  top: 246px;
+  left: 362px;
+}
+
+.popup-personal input[type="text"],
+.popup-personal input[type="tel"] {
+  float: right;
+  width: 450px;
+  height: 100%;
+  padding: 0 20px;
+  text-align: right;
+  vertical-align: top;
+  font-size: 20px;
+  background-color: #fff;
+  border: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.popup-wrap {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10000;
+}
+
+.popup-wrap.on {
+  display: block;
+}
+
+.popup-wrap.dimmed-none {
+  background: transparent;
+}
+
+.popup-wrap.popup-full {
+  min-width: 1200px;
+}
+
+.popup-wrap.popup-full .popup {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.popup-wrap.full-mov {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.popup {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background-color: #fff;
+  border-radius: 50px;
+  top: 0;
+}
+
+.popup__common {
+  position: absolute;
+  width: 720px;
+  padding-bottom: 80px;
+  border-radius: 50px;
+  overflow: hidden;
+  left: 0;
+}
+
+.popup__common .popup__inner {
+  width: 620px;
+  margin: 0 auto;
+}
+
+.popup__common .popup__header {
+  height: 250px;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/bg-header-common.png") top center no-repeat;
+}
+
+.popup__common .popup__header .popup__inner {
+  padding-top: 70px;
+}
+
+.popup__common .popup__body .popup__inner {
+  padding-top: 65px;
+}
+
+.popup__common .popup__title {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.popup__common .popup__title-sub {
+  display: inline-block;
+  margin: 112px 0 0 150px;
+  padding-bottom: 20px;
+  background-color: #fff;
+}
+
+.popup__common .popup__footer {
+  height: 254px;
+  background: #f4f4f7 url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/popup-footer.png") top center no-repeat;
+}
+
+.popup__common .btn {
+  display: block;
+  margin: 0 auto;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-btns.png") no-repeat;
+}
+
+.popup__common .btn__close {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  width: 50px;
+  height: 50px;
+  background-position: 0 0;
+}
+
+.popup__common .btn__start {
+  width: 260px;
+  height: 80px;
+  margin: 65px auto 0;
+  background-position: 0 -241px;
+}
+
+.popup__common .btn__confirm {
+  width: 260px;
+  height: 80px;
+  background-position: -270px -241px;
+}
+
+.popup__common .btn__join-finish {
+  width: 260px;
+  height: 80px;
+  background-position: 0 -800px;
+}
+
+.popup__common .btn__kakao {
+  background-position: 0 -421px;
+}
+
+.popup__common .btn__kakaostory {
+  margin: 0 30px;
+  background-position: -182px -421px;
+}
+
+.popup__common .btn__facebook {
+  background-position: -364px -421px;
+}
+
+.popup__common .btn__buy {
+  display: inline-block;
+  width: 260px;
+  height: 80px;
+  background-position: 0 -331px;
+}
+
+.popup__common .btn__shop {
+  display: inline-block;
+  width: 260px;
+  height: 80px;
+  background-position: -270px -331px;
+}
+
+.popup__common .btn__next {
+  width: 260px;
+  height: 82px;
+  background-position: -245px -616px;
+}
+
+.popup__common .btn__small-sns {
+  display: inline-block;
+  width: 51px;
+  height: 51px;
+  font-size: 0;
+}
+
+.popup__common .btn__naver_s {
+  background-position: -270px -163px;
+}
+
+.popup__common .btn__kakao_s {
+  background-position: -325px -163px;
+}
+
+.popup__common .btn__insta_s {
+  background-position: -380px -163px;
+}
+
+.popup__common .btn__face_s {
+  background-position: -435px -163px;
+}
+
+.popup__common .btn__clause-close {
+  width: 260px;
+  height: 80px;
+  background-position: 0 -980px;
+}
+
+.popup__common .btn__hint {
+  display: inline-block;
+  width: 180px;
+  height: 44px;
+  margin-left: 25px;
+  background-position: -315px -890px;
+}
+
+.popup__common .btn__event-join {
+  width: 260px;
+  height: 80px;
+  background-position: -270px -980px;
+}
+
+.popup__common.popup-contents-winners {
+  width: 680px;
+  height: 856px;
+  margin: 0;
+  padding: 0;
+  top: 60px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.popup__common.popup-contents-winners.pop-winners {
+  height: auto;
+  padding-bottom: 67px;
+}
+
+.popup__common.pop-winners .popup__header {
+  height: 339px;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.popup__common.pop-winners .winners-wrap {
+  padding: 0 30px;
+}
+
+.popup__common.pop-winners .winners-wrap:not(:first-child) {
+  margin-top: 25px;
+}
+
+.popup__common.pop-winners .winners-wrap.line1 .scroll-view {
+  height: 35px;
+}
+
+.popup__common.pop-winners .winners-wrap.line1 .winner {
+  padding: 0;
+}
+
+.popup__common.pop-winners .winners-wrap.line3 .scroll-view {
+  margin-top: 20px;
+  overflow-y: auto;
+}
+
+.popup__common.pop-winners .winners-title {
+  height: 50px;
+  background-repeat: no-repeat;
+  background-position-x: center;
+}
+
+.popup__common.pop-winners .winners .winner {
+  width: 33%;
+  display: inline-block;
+  padding: 9px 0;
+  font-size: 24px;
+  text-align: center;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.popup__common.pop-winners .scroll-view {
+  margin-top: 10px;
+  padding: 10px 0;
+  height: 80px;
+  overflow: hidden;
+}
+
+.popup__common.pop-winners__calculator .popup__header {
+  background-image: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/calculator-winners-header.png");
+}
+
+.popup__common.pop-winners__calculator .winners-title {
+  background-image: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/calculator-winners-titles.jpg");
+}
+
+.popup__common.pop-winners__calculator .winners-wrap:nth-child(1) .winners-title {
+  background-position-y: 0px;
+}
+
+.popup__common.pop-winners__calculator .winners-wrap:nth-child(2) .winners-title {
+  background-position-y: -50px;
+}
+
+.popup__common.pop-winners__calculator .winners-wrap:nth-child(3) .winners-title {
+  background-position-y: -100px;
+}
+
+.popup__common.pop-winners__age .popup__header {
+  background-image: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/age-winners-header.png");
+}
+
+.popup__common.pop-winners__age .winners-title {
+  background-image: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/age-winners-titles.jpg");
+}
+
+.popup__common.pop-winners__age .winners-wrap:nth-child(1) .winners-title {
+  background-position-y: 0px;
+}
+
+.popup__common.pop-winners__age .winners-wrap:nth-child(2) .winners-title {
+  background-position-y: -50px;
+}
+
+.popup__common.pop-winners__age .winners-wrap:nth-child(3) .winners-title {
+  background-position-y: -100px;
+}
+
+.popup__common.pop-winners__challenge .popup__header {
+  background-image: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/challenge-winners-header.png");
+}
+
+.popup__common.pop-winners__challenge .winners-title {
+  background-image: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/challenge-winners-titles.jpg");
+}
+
+.popup__common.pop-winners__challenge .winners-wrap:nth-child(1) .winners-title {
+  background-position-y: 0px;
+}
+
+.popup__common.pop-winners__challenge .winners-wrap:nth-child(2) .winners-title {
+  background-position-y: -50px;
+}
+
+.popup-personal .info {
+  height: 90px;
+  border-top: 2px solid #e1e1e1;
+}
+
+.popup-personal .info.agree {
+  border: none;
+}
+
+.popup-personal .info.snsinfo {
+  border-bottom: 2px solid #e1e1e1;
+}
+
+.popup-personal .info.snsinfo input[type="text"] {
+  width: 100%;
+  text-align: left;
+  padding-left: 0;
+  font-size: 24px;
+}
+
+.popup-personal .info.snsinfo input[type="text"]::-webkit-input-placeholder {
+  /* 크롬 4–56 */
+  color: #45b5fb;
+  font-weight: bold;
+}
+
+.popup-personal .info.snsinfo input[type="text"]:-ms-input-placeholder {
+  /* 인터넷 익스플로러 10+ */
+  color: #45b5fb;
+  font-weight: bold;
+}
+
+.popup-personal .info.snsinfo input[type="text"]::-ms-input-placeholder {
+  /* 파이어폭스 51+, 크롬 57+ */
+  color: #45b5fb;
+  font-weight: bold;
+  opacity: 1;
+}
+
+.popup-personal .info.snsinfo input[type="text"]::placeholder {
+  /* 파이어폭스 51+, 크롬 57+ */
+  color: #45b5fb;
+  font-weight: bold;
+  opacity: 1;
+}
+
+.popup-personal input[type="text"]:focus,
+.popup-personal input[type="tel"]:focus {
+  outline: none;
+}
+
+.popup-personal .agree label {
+  height: 90px;
+  line-height: 90px;
+}
+
+.popup-personal .agree input[type="checkbox"] {
+  position: absolute;
+  opacity: .01;
+}
+
+.popup-personal .agree input[type="checkbox"] ~ span {
+  display: inline-block;
+  width: 408px;
+  height: 36px;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/agree-check.png") top center no-repeat;
+  background-position: 0 top;
+  vertical-align: middle;
+  font-size: 0;
+  cursor: pointer;
+}
+
+.popup-personal .agree input[type="checkbox"]:checked ~ span {
+  background-position: 0 bottom;
+}
+
+.popup-personal .sns-wrap {
+  margin: 25px 0;
+  text-align: right;
+}
+
+.popup-personal .sns-note {
+  float: left;
+}
+
+.popup-personal .btn__next, .popup-personal .btn__event-join {
+  margin-top: 65px;
+}
+
+.popup-clause .popup__header {
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/bg-header-common-white.png") top center no-repeat;
+}
+
+.popup-clause .text-box {
+  width: 610px;
+  height: 500px;
+  margin: 50px auto;
+  padding-right: 10px;
+  color: #999;
+  line-height: 29px;
+  font-size: 17px;
+  font-family: 'Noto Sans KR', sans-serif;
+  overflow-y: scroll;
+}
+
+.popup-clause .text-box > b {
+  color: #111;
+}
+
+.popup-map.popup__common .popup__header {
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/bg-header-common-v2.png") left top no-repeat;
+}
+
+.popup-map .popup__body .popup__inner {
+  padding-top: 40px;
+}
+
+.popup-map .store-tab {
+  display: inline-block;
+  width: 308px;
+  height: 60px;
+}
+
+.popup-map .store-tab button {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #ddd;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 0;
+}
+
+.popup-map .store-tab:first-child button {
+  background-image: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/store-tab0.png");
+}
+
+.popup-map .store-tab:last-child button {
+  border-left: none;
+  background-image: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/store-tab1.png");
+}
+
+.popup-map .store-tab.on button {
+  background-position-y: -59px;
+}
+
+.popup-map .stores {
+  position: relative;
+  overflow: hidden;
+  width: 620px;
+  height: 592px;
+  margin-top: 43px;
+}
+
+.popup-map .store {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.popup-map .store.on {
+  display: block;
+}
+
+.popup-complete {
+  padding: 0;
+}
+
+.popup-complete .popup__body {
+  width: 720px;
+  height: 452px;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup/text-complete.png") top center no-repeat;
+}
+
+.popup-complete .btn__confirm {
+  position: relative;
+  top: 285px;
+}
+
+.common-share .sns__wrap {
+  width: 530px;
+  margin: 45px auto 60px;
+  padding-bottom: 60px;
+  border-bottom: 2px solid #e1e1e1;
+}
+
+.common-share .sns__wrap button {
+  display: inline-block;
+  width: 154px;
+  height: 187px;
+  font-size: 0;
+}
+
+.common-share .button__wrap {
+  width: 570px;
+  margin: -25px auto 0;
+  font-size: 0;
+}
+
+.common-share .button__inner {
+  display: inline-block;
+  width: 260px;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+.common-share .button__inner:first-child {
+  margin-right: 50px;
+}
+
+.common-share .img__cetaphil {
+  margin-bottom: 15px;
+}
+
+.common-share .img__shop {
+  margin-bottom: 25px;
+}
+
+.download-btns-wrap {
+  display: none;
+}
+
+.download-btns-wrap.on {
+  display: block;
+}
+
+.body-photo .hand {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 560px;
+  height: 560px;
+  background: white;
+}
+
+.body-photo .hand__default {
+  width: 100%;
+  height: 100%;
+}
+
+.popup-personal input[type="text"],
+.popup-personal input[type="tel"] {
+  float: right;
+  width: 450px;
+  height: 100%;
+  padding: 0 20px;
+  text-align: right;
+  vertical-align: top;
+  font-size: 20px;
+  background-color: #fff;
+  border: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.popup__m {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 720px;
+  height: 100%;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  overflow: hidden;
+}
+
+.popup__m .popup__inner {
+  width: 620px;
+  margin: 0 auto;
+}
+
+.popup__m .top-line {
+  display: block;
+  width: 100%;
+  border: 1px solid #e1e1e1;
+}
+
+.popup__m .btn {
+  display: block;
+  margin: 0 auto;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/btns.png") top center no-repeat;
+}
+
+.popup__m .btn__close {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  width: 50px;
+  height: 50px;
+  background-position: 0 0;
+}
+
+.popup__m .btn__close.white {
+  background-position: -60px 0;
+}
+
+.popup__m .btn__share {
+  margin-top: 340px;
+  width: 380px;
+  height: 100px;
+  background-position: 0 -230px;
+}
+
+.popup__m .btn__share-insta {
+  display: inline-block;
+  width: 130px;
+  height: 130px;
+  margin-right: 26px;
+  background-position: -390px -201px;
+}
+
+.popup__m .btn__share-facebook {
+  display: inline-block;
+  width: 130px;
+  height: 130px;
+  background-position: -550px -201px;
+}
+
+.popup__m .btn__next {
+  width: 400px;
+  height: 100px;
+  margin-bottom: 80px;
+  background-position: 0 -340px;
+}
+
+.popup__m .btn__download {
+  width: 81px;
+  height: 81px;
+  background-position: 0 -61px;
+}
+
+.popup__m .btn__confirm {
+  width: 400px;
+  height: 100px;
+  background-position: 0 -561px;
+  margin-bottom: 80px;
+}
+
+.popup__m .btn__photo-skip {
+  display: inline-block;
+  width: 296px;
+  height: 100px;
+  margin-right: 20px;
+  background-position: 0 -451px;
+}
+
+.popup__m .btn__photo-upload {
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  height: 100px;
+  background-position: -321px -451px;
+}
+
+.popup__m .btn__photo-upload .file-upload-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.popup__m .btn__down {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  vertical-align: middle;
+  background-position: -421px -561px;
+}
+
+.popup__m .btn__down-close {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  margin-right: 20px;
+  background-position: -297px -61px;
+}
+
+.popup__m .btn__photodown-popup {
+  width: 160px;
+  height: 160px;
+  background-position: 0 -61px;
+}
+
+.popup__m .btn__photo-close {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  margin-right: 20px;
+  background-position: -297px -61px;
+}
+
+.popup__m .btn__photo-mobile {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  margin-right: 20px;
+  background-position: -437px -61px;
+}
+
+.popup__m .btn__photo-pc {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  background-position: -577px -61px;
+}
+
+.popup__m .btn__checklist-start {
+  display: inline-block;
+  width: 324px;
+  height: 300px;
+  background-position: 0 -681px;
+}
+
+.main-popup.popup-main-lotion {
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/main-lotion.png") top center no-repeat;
+}
+
+.main-popup.popup-main-lotion.popup {
+  border-radius: 0;
+}
+
+.main-popup.popup-main-wash {
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/main-wash.png") top center no-repeat;
+}
+
+.main-popup.popup-main-wash.popup {
+  border-radius: 0;
+}
+
+.main-popup .btn__close {
+  position: absolute;
+  top: 60px;
+  right: 60px;
+  background-position: 0 0;
+}
+
+.common__calculator .popup__header {
+  height: 470px;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/bg-body-calculator.png") top center no-repeat;
+}
+
+.common__calculator .popup__title {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.common__calculator .popup__title-sub {
+  display: inline-block;
+  margin: 140px 0 0 350px;
+}
+
+.popup-calculator .calculator-list__title {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.popup-calculator .input-circle {
+  width: 130px;
+  height: 130px;
+  margin-top: 17px;
+  text-align: center;
+  border: none;
+  border-radius: 50%;
+  font-size: 60px;
+}
+
+.popup-calculator .input-circle:focus {
+  outline: none;
+}
+
+.popup-calculator .label-title {
+  display: block;
+  margin: 0 auto;
+}
+
+.popup-calculator ul {
+  font-size: 0;
+}
+
+.popup-calculator li {
+  display: inline-block;
+  margin-left: 33px;
+}
+
+.popup-calculator li:first-child {
+  margin: 0;
+}
+
+.popup-calculator .facial__wrap {
+  display: inline-block;
+  margin-top: 60px;
+}
+
+.popup-calculator .facial__wrap .input-circle {
+  color: #85e4ff;
+  background-color: #019afa;
+}
+
+.popup-calculator .body__wrap {
+  display: inline-block;
+  margin-top: 50px;
+}
+
+.popup-calculator .body__wrap .input-circle {
+  color: #fff;
+  background-color: #8ad2ce;
+}
+
+.popup-calculator .caption {
+  margin: 45px 0 50px;
+  text-align: center;
+}
+
+.popup-calculator-result .popup__title-sub {
+  margin: 245px 0 0 330px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 26px;
+  line-height: 39px;
+}
+
+.popup-calculator-result .popup__title-sub span {
+  font-weight: bold;
+  color: #019afa;
+}
+
+.popup-calculator-result .costs__wrap {
+  margin: 60px 0 40px;
+}
+
+.popup-calculator-result dl {
+  position: relative;
+  line-height: 100px;
+}
+
+.popup-calculator-result dt {
+  display: inline-block;
+}
+
+.popup-calculator-result dd {
+  display: inline-block;
+  width: 480px;
+  text-align: right;
+  vertical-align: middle;
+}
+
+.popup-calculator-result dd > img {
+  margin-left: 10px;
+}
+
+.popup-calculator-result dd span {
+  font-weight: bold;
+  font-size: 100px;
+}
+
+.popup-calculator-result dd span.text__gray {
+  color: #c3c3c3;
+}
+
+.popup-calculator-result dd span.text__blue {
+  color: #019afa;
+}
+
+.popup-calculator-result .calculator-result {
+  position: relative;
+  margin-left: 10px;
+}
+
+.popup-calculator-result .percentage {
+  position: absolute;
+  top: 70px;
+  right: 5px;
+  display: inline-block;
+  width: 108px;
+  height: 108px;
+  line-height: 108px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 36px;
+  color: #fff;
+  font-family: 'Noto Sans KR', sans-serif;
+  border-radius: 50%;
+  background-color: #fe0000;
+}
+
+.popup-calculator-result .percentage-num {
+  margin-right: 2px;
+  font-weight: bold;
+  font-size: 46px;
+}
+
+.body-share-in {
+  height: 2580px;
+  font-size: 0;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/share-event-v2.png") top center no-repeat;
+}
+
+.body-share-in .btn__share {
+  margin-top: 1578px;
+}
+
+.body-share-in .btn__wrap {
+  text-align: center;
+  margin-top: 597px;
+}
+
+.calulator-detail {
+  height: 1830px;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/body-calculator-note.png") top center no-repeat;
+}
+
+.challenge-detail {
+  height: 3445px;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/text-review.png") top center no-repeat;
+}
+
+.age-detail {
+  height: 1830px;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/body-age-note.png") top center no-repeat;
+}
+
+.popup-check .popup__header {
+  height: 470px;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/bg-body-check.png") top center no-repeat;
+}
+
+.popup-check .title__sub {
+  margin: 180px 0 0 310px;
+}
+
+.age-checklist-intro video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.age-checklist-intro.popup {
+  border-radius: 0;
+}
+
+.age-checklist-intro.popup__pc {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+.age-checklist-intro .mov-wrap {
+  height: 100%;
+  font-size: 0;
+  background: #fff;
+}
+
+.age-checklist-intro .btn-wrap {
+  margin: 590px 40px 0 0;
+  text-align: right;
+}
+
+.age-checklist-intro .age-btn-join {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+}
+
+.popup-checklist .list__wrap {
+  width: 620px;
+  margin: 0 auto;
+}
+
+.popup-checklist li {
+  padding: 40px 0;
+  border-top: 1px solid #e1e1e1;
+}
+
+.popup-checklist li:first-child {
+  border: none;
+}
+
+.popup-checklist li input {
+  position: absolute;
+  opacity: .000001;
+}
+
+.popup-checklist li input:checked ~ span {
+  background-color: #019afa;
+}
+
+.popup-checklist li .check {
+  display: inline-block;
+  width: 90px;
+  height: 90px;
+  background-image: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/btns.png");
+  background-color: #c1cbd2;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.popup-checklist .checklist-text {
+  display: inline-block;
+  width: 410px;
+  vertical-align: middle;
+}
+
+.popup-checklist label {
+  vertical-align: middle;
+}
+
+.popup-checklist .check-o {
+  margin-right: 10px;
+  background-position: -133px 24px;
+}
+
+.popup-checklist .check-x {
+  background-position: -220px 24px;
+}
+
+.popup-checklist .btn__next {
+  margin-top: 13px;
+  margin-bottom: 25px;
+}
+
+.body-photo .popup__body {
+  width: 620px;
+  height: 1090px;
+  margin: 0 auto;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/body-check-hand-text.png") top center no-repeat;
+}
+
+.body-photo .photo__wrap {
+  padding-top: 190px;
+}
+
+.body-photo .photo-upload-bg {
+  position: relative;
+  width: 540px;
+  height: 540px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: #e8e8e7;
+}
+
+.body-photo .photo-upload-bg .frame {
+  position: absolute;
+  top: 0;
+  width: 540px;
+  height: 540px;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/frame.png") top center no-repeat;
+}
+
+.body-photo .photo-upload-bg .frame-dim {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.body-photo .photo-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.body-photo .photo-loading.on {
+  display: block;
+}
+
+.body-photo .loading-inner {
+  position: absolute;
+  top: 650px;
+  left: 80px;
+  width: 560px;
+  height: 560px;
+  margin: 0 auto;
+  border-radius: 10px;
+  -webkit-box-shadow: 5px 20px 55px #b9b7b7;
+          box-shadow: 5px 20px 55px #b9b7b7;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.body-photo .loading-inner .frame {
+  position: absolute;
+  top: 0;
+  width: 559px;
+  height: 560px;
+  text-align: center;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/loading-frame.png") top center no-repeat;
+}
+
+.body-photo .loading-inner .frame > img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -100px 0 0 -100px;
+}
+
+.body-photo .loading-inner .frame-dim {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.body-photo .btn-wrap {
+  margin: 180px 0 80px;
+}
+
+.body-photo .btn-wrap button {
+  vertical-align: top;
+}
+
+.body-result .result-age {
+  margin: 150px 0 0 355px;
+}
+
+.body-result .title-sub {
+  margin-bottom: 20px;
+  font-size: 26px;
+  line-height: 33px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.body-result .title-sub span {
+  color: #019afa;
+  font-weight: bold;
+}
+
+.body-result dt {
+  display: inline-block;
+}
+
+.body-result dt > img {
+  vertical-align: 5px;
+}
+
+.body-result dd {
+  display: inline-block;
+  width: 145px;
+  padding-right: 25px;
+  text-align: right;
+}
+
+.body-result dd > span {
+  margin-right: 15px;
+  font-size: 80px;
+  font-weight: bold;
+}
+
+.body-result dd .text__gary {
+  color: #c1cbd2;
+}
+
+.body-result dd .text__blue {
+  color: #019afa;
+}
+
+.body-result .btn__confirm {
+  margin-top: 60px;
+  margin-bottom: 0;
+}
+
+.body-result .popup__body {
+  margin: 0 auto;
+}
+
+.gallery-popup {
+  background: #fff;
+}
+
+.popup-photo {
+  width: 100%;
+  max-width: 720px;
+  background: none;
+  border-radius: 0;
+}
+
+.slider-wrap {
+  position: relative;
+}
+
+.photo-slider {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  background: #fff;
+}
+
+.photo-slider li {
+  width: 100%;
+}
+
+.photo-slider img {
+  width: 100%;
+}
+
+.slick-arrow {
+  position: absolute;
+  top: 50%;
+  margin-left: -49px;
+  width: 59px;
+  height: 97px;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/btns.png") top center no-repeat;
+  z-index: 1;
+}
+
+.slick-prev {
+  left: 70px;
+  background-position: -175px -62px;
+}
+
+.slick-next {
+  right: 20px;
+  background-position: -236px -62px;
+}
+
+.slider-nav {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  font-family: robotoItalic;
+  color: #fff;
+  font-size: 45px;
+}
+
+.slider-nav .slider-idx {
+  color: #019afa;
+  font-size: 80px;
+}
+
+.slider-nav .slash {
+  font-size: 40px;
+}
+
+.btn__photodown-popup {
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  -webkit-box-shadow: 10px 10px 70px #5252525c;
+          box-shadow: 10px 10px 70px #5252525c;
+  border-radius: 50%;
+}
+
+.photo-down {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.photo-down .down-bg {
+  position: absolute;
+  right: 0;
+  top: 537px;
+  z-index: 1;
+}
+
+.photo-down .down-btn-wrap {
+  position: absolute;
+  top: 1115px;
+  right: 40px;
+  z-index: 1;
+}
+
+.photo-down .down-btn-wrap a {
+  vertical-align: middle;
+}
+
+.popup-mov {
+  border-radius: 0;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/mov-selecct-bg.jpg") top center no-repeat;
+  background-size: cover;
+}
+
+.popup-mov .mov-ele {
+  display: none;
+}
+
+.popup-mov .mov-ele.on {
+  display: block;
+}
+
+.mov-choice {
+  width: 100%;
+}
+
+.mov-choice .selecct-wrap {
+  position: relative;
+  height: 1280px;
+  background: url("https://cetaphil-event.s3.amazonaws.com/static/body/images/popup-m/mov-select-bg.png") top center no-repeat;
+  background-size: cover;
+}
+
+.mov-choice .selecct-wrap > button {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.001);
+}
+
+.mov-choice .mov-body {
+  top: 1047px;
+  left: 243px;
+  width: 234px;
+  height: 98px;
+}
+
+.mov-choice .mov-dance {
+  top: 521px;
+  left: 107px;
+  width: 233px;
+  height: 98px;
+}
+
+.mov-choice .mov-dance2 {
+  top: 490px;
+  left: 243px;
+  width: 234px;
+  height: 98px;
+}
+
+.mov-wrap {
+  position: relative;
+  width: 720px;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.mov-wrap > iframe {
+  position: absolute;
+  top: 50%;
+  width: 720px;
+  height: 400px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.mov-down {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-transition: all 2s ease-in-out;
+  transition: all 2s ease-in-out;
+}
+
+.mov-down .down-bg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.mov-down .btn__body-down {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 0;
+  width: 33.6%;
+}
+
+.mov-down .down-btn-wrap {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+}
+
+body {
+  font-family: robotoItalic;
+}

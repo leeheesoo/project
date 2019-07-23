@@ -1,0 +1,219 @@
+﻿<script>
+    //---------------------------------------------------
+    // [YoutubeApi]
+    // - 페이지에 들어가는 영상 제어
+    // - js파일로 link할 경우 IE에서 로드에 실패하는 경우가 있어 partial방식으로 변경(2017년 11월)
+    //---------------------------------------------------
+
+     //// This code loads the IFrame Player API code asynchronously.
+    //var tag = document.createElement('script');
+    //tag.src = "https://www.youtube.com/iframe_api";
+    //var firstScriptTag = document.getElementsByTagName('script')[0];
+    //firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    //console.log('https');
+    
+
+    // -------------------------------------------------------------
+    // init
+    // -------------------------------------------------------------
+    var mainPlayer = null; // true : undefined || false : null - 메인용 영상(페이지 로드시 자동재생, 팝업띄울때 정지)
+    var mainPlayerSize;
+    var popPlayer; // true : undefined || false : null - 팝업용 영상(정지상태로 로드)
+    var popPlayerSize;
+    var stId = 'HLiUTvuVALY';
+
+    // movie size setting
+    //if (device == 'w') {
+    //  mainPlayerSize = {
+    //    height: 487,
+    //    width: 866
+    //  }
+    //} else {
+    //  mainPlayerSize = {
+    //    height: 317,
+    //    width: 590
+    //  }
+    //}
+    popPlayerSize = {
+        height: 340,
+        width: 560
+    }
+
+
+    // -------------------------------------------------------------
+    // onYouTubeIframeAPIReady
+    // player 기본 세팅
+    // - page load시 youtube에서 즉시 호출
+    // -------------------------------------------------------------
+
+
+
+    // This function creates an <iframe> (and YouTube player)
+    // after the API code downloads.
+    function onYouTubeIframeAPIReady() {
+        if (mainPlayer !== null) {
+            mainPlayer = new YT.Player('mainPlayer', {
+                height: mainPlayerSize.height,
+                width: mainPlayerSize.width,
+                videoId: stId,
+                playerVars: {
+                    //controls: 0,
+                    loop: 1,
+                    playlist: 'ndR720FOSBA', // loop일경우 playlist가 필요
+                    rel: 0,
+                    showinfo: 0
+                },
+                events: {
+                    'onReady': mainPlayerReady,
+                    'onStateChange': mainPlayerEvent
+                }
+            });
+        }
+        if (popPlayer !== null) {
+            popPlayer = new YT.Player('popPlayer', {
+                height: popPlayerSize.height,
+                width: popPlayerSize.width,
+                videoId: stId,
+                playerVars: {
+                    controls: 0,
+                    rel: 0,
+                    showinfo: 0
+                },
+                events: {
+                    'onStateChange': popPlayerEvent
+                }
+            });
+        }
+    }
+
+    // -------------------------------------------------------------
+    // mainPlayer, popPlayer
+    // -------------------------------------------------------------
+
+    // mainPlayer 관련
+    function mainPlayerReady(event) {
+      event.target.playVideo();
+      event.target.setPlaybackQuality('hd720');
+    }
+    function mainPlayerEvent(event) {
+
+    }
+
+    // popPlayer 관련
+    function popPlayerEvent(event) {
+
+        $('.popup .btn-right').hide();
+
+        if (event.data == YT.PlayerState.PLAYING) {
+            playTimer(event, 'start', 3, function () {
+                $('.popup .btn-right').fadeIn();
+            });
+        }
+
+        if (event.data == YT.PlayerState.ENDED) {
+          $('.mov-cover').fadeIn(1000);
+          event.target.stopVideo();
+          //event.target.loadVideoById('ndR720FOSBA');
+          if (deviceOs == 'ios') event.target.webkitExitFullScreen();
+          eventResult();
+      }
+    }
+
+    // -------------------------------------------------------------
+    // play, stop, timer
+    // -------------------------------------------------------------
+    // play
+    function playVideo(player) {
+      if (!player) return;
+      player.playVideo();
+    }
+    // stop
+    function stopVideo(player) {
+      if (!player) return;
+      player.stopVideo();
+    }
+
+    // timer
+    function playTimer(event, action, time, callback) { // event, start or end, second, callback함수
+
+        var timer;
+        var once = true;
+        var player = event.target;
+        var duration = player.getDuration();
+
+        switch (action) {
+            case 'start':
+                timer = setInterval(function () {
+                    //console.log('currentTime:', player.getCurrentTime(), 'duration:', duration);
+                    if (player.getCurrentTime() >= time && once) {
+                        once = !once;
+                        callback();
+                    }
+                    if (player.getCurrentTime() >= duration || player.getCurrentTime() == 0) clearInterval(timer);
+                }, 300);
+                break;
+            case 'end': // 영상이 길 경우에는 꼭 호출해주세요~
+                clearInterval(timer);
+                break;
+        }
+    }
+
+    // -------------------------------------------------------------
+    // event
+    // -------------------------------------------------------------
+    //$(function () {
+    //  $(".btn-cover").click(function () {
+    //      alert('영상을 끝까지 시청하셔야 이벤트에 참여하실 수 있습니다');
+    //      // ios에서 버튼 클릭시 영상을 닫으면 포커스가 어긋나 있기 때문에 위치 재조정
+    //      var scrolltop = $(window).scrollTop();
+    //      $('#pop-messageWriteView').css('top', scrolltop + 'px');
+    //  });
+    //});
+
+
+    ////var tester;
+    ////var intervalNum = 0;
+
+    //if (!YT.loaded) {
+        //tester = setInterval(function () {
+        //    console.log('YT:' + YT, 'YT.loading:' + YT.loading, 'YT.loaded:' + YT.loaded);
+        //    intervalNum++;
+        //    if (intervalNum == 10) {
+        //        clearInterval(tester);
+        //    }
+        //    if ((YT.loaded)) {
+        //        console.log('YT.loaded:' + YT.loaded);
+        //        clearInterval(tester);
+        //    }
+        //}, 500);
+    //}
+    var testChecker = false;
+    // 로드가 되는지 체크
+    var checkYT = setInterval(function () {
+        console.log(window['YT']);
+
+        if (window['YT'] == undefined) { //로드되기 전이면
+            console.log('unloaded');
+        }
+
+        if (window['YT'] != undefined) { // 로드가 되었으면(loaded는 아직)
+            console.log(window['YT']);
+            console.log('YT.loading:' + YT.loading, 'YT.loaded:' + YT.loaded);
+        }
+
+        if (window['YT'] != undefined && YT.loaded == 1) { // 모두 완료되면
+            clearInterval(checkYT);
+            testChecker = true;
+            setTimeout(function () {
+                openPop('mov-view');
+            }, 500);
+
+            setTimeout(function () {
+                playVideo(popPlayer);
+            }, 1500);
+        }
+
+    }, 500);
+
+
+</script>

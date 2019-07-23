@@ -1,0 +1,268 @@
+﻿@charset "UTF-8";
+legend {
+  display: none; }
+
+fieldset {
+  padding: 0;
+  text-align: left; }
+
+/*팝업*/
+.popup {
+  display: none;
+  position: absolute;
+  left: 50%;
+  width: 100%;
+  height: auto;
+  max-width: 640px;
+  min-width: 320px;
+  margin: 0 auto;
+  background: #fff;
+  z-index: 10;
+  transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  /* IE 9 */
+  -webkit-transform: translateX(-50%);
+  /* Chrome, Safari, Opera */ }
+
+.pop-dim {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+  background: #000;
+  opacity: .8;
+  filter: alpha(opacity=80);
+  z-index: 10; }
+  .pop-dim.on {
+    display: block; }
+
+button > .loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  filter: alpha(opacity=60);
+  opacity: .6;
+  background-color: #000;
+  overflow: hidden; }
+  button > .loading img {
+    padding-top: 5%; }
+
+/*인앱팝업*/
+.pop-inapp {
+  background: #2C2320; }
+  .pop-inapp .btn-close {
+    position: absolute;
+    right: 2%;
+    top: 10px; }
+  .pop-inapp .popover-content > img {
+    width: 100%; }
+
+/*SNS공유하기*/
+.sns-share {
+  /*popover-content*/ }
+  .sns-share .one-button {
+    padding: 30px 0;
+    text-align: center; }
+    .sns-share .one-button button[type="submit"] {
+      position: relative;
+      width: 60%;
+      background-color: #0c59b0;
+      border-radius: 5px;
+      border: none;
+      height: 70px; }
+  .sns-share .btn-close {
+    position: absolute;
+    right: 2%;
+    top: 10px; }
+  .sns-share h2 {
+    width: 100%;
+    height: 125px;
+    margin: 0;
+    text-align: center;
+    line-height: 125px;
+    background: #007fb6;
+    font-size: 0; }
+    .sns-share h2 img {
+      width: 65%;
+      max-width: 299px; }
+  .sns-share .popover-content {
+    /*padding:0 7.8125%;*/
+    padding: 0 7%; }
+    .sns-share .popover-content h3 {
+      text-align: center;
+      padding: 50px 0 40px;
+      font-size: 0;
+      border-bottom: 2px dashed #dedede; }
+      .sns-share .popover-content h3.no-border {
+        border: none; }
+      .sns-share .popover-content h3 img {
+        width: 100%;
+        max-width: 415px;
+        height: 100%; }
+    .sns-share .popover-content dt {
+      display: inline-block;
+      width: 20%; }
+    .sns-share .popover-content dd {
+      display: inline-block;
+      width: 78%;
+      text-align: right; }
+      .sns-share .popover-content dd input {
+        width: 100%;
+        height: 55px;
+        max-width: 410px;
+        padding: 0 5%;
+        border: 2px solid #c0d4e7; }
+    .sns-share .popover-content label {
+      position: relative; }
+    .sns-share .popover-content input[type="checkbox"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: .01; }
+      .sns-share .popover-content input[type="checkbox"]:checked ~ span {
+        background: url("../../images/bag-to-the-future/popup/check_on.png") no-repeat 0 0; }
+    .sns-share .popover-content .checkbox {
+      display: inline-block;
+      width: 35px;
+      height: 35px;
+      margin-right: 10px;
+      background: url("../../images/bag-to-the-future/popup/check_off.png") no-repeat 0 0;
+      cursor: pointer; }
+    .sns-share .popover-content .agree-text01 {
+      display: inline-block;
+      width: 85%;
+      height: 100%;
+      vertical-align: 15px; }
+    .sns-share .popover-content .agree-text02 {
+      display: inline-block;
+      width: 85%;
+      height: 100%;
+      vertical-align: -8px; }
+    .sns-share .popover-content .text-box {
+      height: 180px;
+      border: 1px solid #c0d4e7;
+      overflow-y: scroll;
+      font-size: 12px;
+      line-height: 19px;
+      padding: 0 1%;
+      text-align: left;
+      color: #5e5e5e; }
+    .sns-share .popover-content .sns {
+      padding-bottom: 10%; }
+      .sns-share .popover-content .sns > img {
+        width: 100%;
+        padding: 50px 0 30px;
+        height: 100%; }
+      .sns-share .popover-content .sns ul {
+        max-width: 410px;
+        margin: 0 auto 30px;
+        padding: 0;
+        text-align: center; }
+        .sns-share .popover-content .sns ul li {
+          display: inline-block;
+          width: 30%; }
+          .sns-share .popover-content .sns ul li:first-child + li {
+            margin: 0 3%; }
+          .sns-share .popover-content .sns ul li img {
+            width: 100%;
+            max-width: 120px;
+            height: 100%; }
+      .sns-share .popover-content .sns .btn-wrap .btn-skyblue {
+        position: relative;
+        width: 48%;
+        background-color: #168cbf;
+        border-radius: 5px;
+        border: none;
+        height: 70px;
+        margin-right: 2%; }
+      .sns-share .popover-content .sns .btn-wrap .btn-blue {
+        position: relative;
+        width: 48%;
+        background-color: #0c59b0;
+        border-radius: 5px;
+        border: none;
+        height: 70px; }
+
+/*첨부파일 확인 팝업(아니오 & 네)*/
+.yesno {
+  padding: 92px 5% 70px;
+  text-align: center; }
+  .yesno .yesno-text > img {
+    width: 100%;
+    height: 100%; }
+  .yesno .btn-close {
+    position: absolute;
+    right: 2%;
+    top: 1%; }
+  .yesno .btn-wrap {
+    margin-top: 42px; }
+    .yesno .btn-wrap .btn-no {
+      position: relative;
+      width: 48%;
+      background-color: #168cbf;
+      border-radius: 5px;
+      border: none;
+      height: 70px;
+      margin-right: 2%; }
+    .yesno .btn-wrap .btn-yes {
+      position: relative;
+      width: 48%;
+      background-color: #0c59b0;
+      border-radius: 5px;
+      border: none;
+      height: 70px; }
+
+/*접수내용입력*/
+.personal h2 img {
+  max-width: 238px; }
+
+.personal .popover-content {
+  margin-top: 50px; }
+
+.personal .btn-wrap {
+  text-align: center; }
+  .personal .btn-wrap button[type="submit"] {
+    position: relative;
+    width: 48%;
+    background-color: #0c59b0;
+    border-radius: 5px;
+    border: none;
+    height: 70px;
+    margin: 40px 0 60px; }
+
+@media all and (max-width: 657px) {
+  .yesno .btn-wrap {
+    padding-bottom: 0 !important; } }
+
+@media all and (max-width: 500px) {
+  fieldset dl dt {
+    margin-right: 10%; }
+  fieldset dl dd {
+    width: 68% !important; }
+  .sns-share .btn-close {
+    top: .5%; }
+  .sns-share .agree-text01 {
+    width: 82% !important; }
+  .sns-share .agree-text02 {
+    width: 81.5% !important;
+    vertical-align: 16px !important; }
+  .popup .yesno-text {
+    margin-bottom: 20px; }
+  .popup .btn-wrap {
+    margin: 0 !important; }
+  .sns button > img {
+    width: 100%; } }
+
+@media all and (max-width: 400px) {
+  .sns-share .popover-content dd input {
+    height: 45px; }
+  .sns-share .popover-content h3 {
+    padding: 40px 0 30px; }
+  .sns-share .popover-content .sns > img {
+    padding: 40px 0 30px; } }
+

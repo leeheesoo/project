@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "쌤소나이트 공식몰 2주년 기념 BIG EVENT";
+}
+
+@section styles{
+    <link href="~/Content/sass/two-year-anniversary/css/event.min.css" rel="stylesheet" />
+}
+
+<div class="event-container" id="twoAnniversary">
+    <!-- loading -->
+    <div class="loading"><img src="~/Content/images/loading.svg" alt="loading" /></div>
+
+    <h2><img src="~/Content/images/two-year-anniversary/w/event01-title.jpg" alt="100%당첨 꽝없는 룰렛 돌리기" /></h2>
+    <div class="roulette-wrap" >
+        <img class="roulette" src="~/Content/images/two-year-anniversary/roulette.gif" alt="룰렛" />
+        <img class="pointer" src="~/Content/images/two-year-anniversary/pointer.png" alt="포인터" />
+        <!-- start -->
+        <button type="button" class="btn-start " v-on:click="createEvent();">
+            <img id="btn-two-year-start" src="~/Content/images/two-year-anniversary/btn-start.gif" alt="start" />
+        </button>
+    </div>
+    <div class="event-gift">
+        <img src="~/Content/images/two-year-anniversary/w/event01-gift.jpg" alt="1등:라인프렌크 캐리어 , 2등:20만원쿠폰, 3등:쌤소나이트정품 가방, 4등:아메리칸투어리스터 키즈백팩, 5등:스타벅스기프티콘, 6등:1만원쿠폰" />
+    </div>
+    <div class="event-note">
+        <img src="~/Content/images/two-year-anniversary/w/event01-note.jpg" alt="꼭 알아두세요" />
+    </div>
+    @Html.Partial("_popup")
+</div>
+
+@section scripts{
+    <script src="~/Content/js/two-year-anniversary/jQueryRotate.js"></script>
+    <script src="~/Scripts/jquery.easing.1.3.js"></script>
+    <script src="~/Content/js/two-year-anniversary/pub.js"></script>
+
+    <script src="~/Content/js/common/vue.min.js"></script>
+    <script src="~/Content/js/two-year-anniversary/dev.js"></script>
+    <script>
+        var twoYearCustNo = '@ViewBag.CustNo';
+    </script>
+}

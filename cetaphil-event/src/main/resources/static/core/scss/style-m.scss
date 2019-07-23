@@ -1,0 +1,53 @@
+﻿@charset 'UTF-8';
+
+$device: 'mo';
+$loc: 'https://cetaphil-event.s3.amazonaws.com/static/core/m/';
+
+@import '../../scssCommon/mixin/_background';
+@import '../../scssCommon/util/_a11y-hidden';
+@import '../../scssCommon/vender/_normalize';
+@import "../../scssCommon/mixin/_prefix";
+
+// ===================================
+// variable
+// pc / mobile 공용
+// ===================================
+
+// ===================================
+// mixin
+// pc / mobile 공용
+// debug($color): 레이아웃 디버그 mixin
+// change-bg($loc, $img): 언어별로 section 배경 변경
+// ===================================
+@import 'mixin';
+
+// ===================================
+// reset
+// pc / mobile 공용
+// ===================================
+@import 'reset';
+
+// ===================================
+// module
+// pc / mobile 공용
+// ===================================
+
+// ===================================
+// layout
+// pc / mobile 공용
+// ===================================
+@import 'layout-m';
+
+// ===================================
+// page
+// ===================================
+@import 'page-m';
+@import 'popup'; // pc / mobile 공용
+
+// ===================================
+// state
+// pc / mobile 공용
+// .is-active
+// ===================================
+
+

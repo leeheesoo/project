@@ -1,0 +1,417 @@
+﻿@import "../../Content/css/_reset-add.scss";
+@import "common-ui.scss";
+@import "_popup.scss";
+@import "_popup.scss";
+@import "_animation.scss";
+
+*{
+    box-sizing: border-box;
+}
+.hidden, legend, caption{
+    position: absolute; 
+    left: -9999em;
+}
+
+.guide {
+    width: 2000px;
+    height: 5000px;
+    background: url(../../Images/MarvelFrozen/w/guide.jpg) 0 0 no-repeat;
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translate(-50%);
+    /*display: none;*/
+}
+
+.event-container {
+    max-width: 4000px;
+    min-width: 1000px;
+    margin: 0 auto;
+    padding-top: 70px;
+    background: #faeee0;    
+    overflow: hidden;    
+    
+    a{
+        display: inline;
+    }
+}
+/*===*/
+.visual-wrap {
+    max-width: 4000px;
+    min-width: 1000px;
+    height: 956px;
+    margin: 0 auto;
+    background: #faeee0;
+    position: relative;
+
+    .visual {
+        width: 2000px;
+        height: 773px;
+        overflow: hidden;
+        background: #faeee0 url(../../Images/MarvelFrozen/w/main-visual-bg.jpg) center 0 no-repeat;
+        position: relative;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+
+        &>div{
+            transition: all .3s;
+        }
+        .marvel{
+            position: absolute;            
+            top: 82px; right: 0;
+        }        
+        .frozen{            
+            position: absolute;            
+            left: 360px; bottom: 0;            
+        }        
+        .olaf{
+            position: absolute;      
+            left: 210px; 
+            top: -80px;                  
+            -webkit-animation: verticalSwing 1.5s ease-in-out infinite;
+            -moz-animation: verticalSwing 1.5s ease-in-out infinite;
+            -o-animation: verticalSwing 1.5s ease-in-out infinite;
+            animation: verticalSwing 1.5s ease-in-out infinite;            
+        }                       
+        .disney{
+            position: absolute;            
+            left: 200px; bottom: -20px;            
+        }
+        .bg {
+            position: absolute;            
+            left: 0; bottom: -5px;
+        }
+        
+        /* effect */
+        .sizeup:hover{
+            transform: scale(1.1) translateX(+30px);
+        }
+    }
+
+    .title {
+        position: absolute;
+        left: 50%;
+        top: 58px;
+        transform: translateX(-50%);
+    }
+
+    .title-img {
+        position: absolute;
+        left: 50%;
+        top: 344px;
+        margin-left: -260px;
+    }
+}
+
+
+/*===*/
+.event-guide {
+    overflow: hidden;
+    /*height: 803px;*/
+    background: #faeee0;
+    text-align: center;
+
+    .title {
+        padding-left: 5px;
+    }
+
+    .desc {
+        margin-top: 9px;
+    }
+
+    .contents {
+        width: 1040px;
+        overflow: hidden;
+        margin: 45px auto 0;
+
+        .how {
+            float: left;
+        }
+
+        .given {
+            float: right;
+            position: relative;
+
+            .btn-check-win {
+                position: absolute;
+                left: 136px;
+                bottom: 36px;
+            }
+        }
+    }
+}
+
+/*===*/
+.game {
+    width: 1040px;
+    height: 785px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 63px 0 59px 0;
+    background: #faeee0;
+    position: relative;
+
+    .steps {
+        height: 100px;
+        background: url(../../Images/MarvelFrozen/w/game/steps.png) 62px 0px no-repeat;
+        position: relative;
+
+        .pointer {
+            position: absolute;
+            top: 44px;
+            left: 90px;
+        }
+    }
+
+    .stage {       
+        width: 100%;
+        height: 560px;
+        position: relative;
+        overflow: hidden;
+
+        li {
+            position: absolute;
+            letf: 0;
+            top: 0;
+            width: 100%;
+            height: 560px;
+            
+            &.current {
+                display: block;
+            }
+            &.bg1 {
+                background: url(../../Images/MarvelFrozen/w/game/stage-bg1.png) center 0 no-repeat;
+            }
+            &.bg2 {
+                background: url(../../Images/MarvelFrozen/w/game/stage-bg2.png) center 0 no-repeat;
+            }
+            &.bg3 {
+                background: url(../../Images/MarvelFrozen/w/game/stage-bg3.png) center 0 no-repeat;
+            }                        
+        }
+        li:nth-child(1) {
+            // position: relative;
+
+            & > * {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .baloon {
+                top: 100px;
+            }
+
+            .btn-game-start {
+                top: 345px;
+            }
+        }
+        li:nth-child(3) {
+            .txt-start{
+                text-align: center;
+                margin-top: 40px;
+            }
+        }        
+        li:nth-child(4) {
+            .state{
+                margin-top: 36px;
+                height: 66px;
+                line-height: 66px;                               
+                overflow: hidden;
+                text-align: left;
+                position: relative;
+                .timer{
+                    position: absolute;
+                    top: 0; left: 39px; 
+                    font-family: 'KoreanBDG R', sans-serif !important;
+                    font-size: 33px;
+                    color: #027fff;
+                    display: inline-block;
+                    text-shadow: 0px 1px rgba(63,107,169, 0.3), 4px 4px 0px rgba(63,107,169, 0.3);
+                    
+                    padding-bottom: 15px;
+                }
+                .bar-wrap{
+                    position: absolute;
+                    left: 197px; top: 23px;
+                    width: 636px; 
+                    height: 20px;
+                    border-radius: 10px;
+                    background: #add4fd;
+                    display: inline-block;                    
+                    overflow: hidden;
+                    
+                    .bar{
+                        position: absolute;
+                        left: -636px; top: 0;
+                        width: 100%;
+                        height: 100%; 
+                        border-radius: 10px;
+                        background: #3594f5;
+                    }
+                }
+                .btn-hint{
+                    position: absolute;
+                    top: 0; right: 30px;
+                    padding: 0;
+                    border: none;
+                    background: none;
+                    cursor: pointer;
+                    
+                }
+            }
+            
+        }   
+        li:nth-child(5){            
+            &>div{
+                margin: 0 auto;
+                text-align: center;
+            }
+            .score{
+                margin-top: 53px;
+                padding-top: 35px;
+                
+
+                width: 365px; 
+                height: 246px;                   
+                background: url(../../Images/MarvelFrozen/w/game/score-bg.png) center 0 no-repeat;
+                                
+                .score-num{
+                    font-family: 'KoreanBDG R', sans-serif;
+                    font-size: 60px;
+                    color: #00a1e9;
+                    padding: 18px 0 22px 0;
+                }
+                .btn-retry{
+                    border: 0; 
+                    padding: 0;
+                    background: none;                    
+                    cursor: pointer;
+                }
+            }
+
+            .sns{                
+                .txt{
+                    padding: 20px 0 20px 0;
+                }
+                a:not(:last-child){
+                    padding-right: 19px;
+
+                }
+            }
+
+        }     
+    }    
+}
+#cards{
+    width: 100%;    
+    position: absolute;
+    left: 2.5%; top: 302px;    
+    li{
+        float: left;
+        position: relative;
+        width: 155px; 
+        height: 190px;
+        margin: 5px;
+        cursor: pointer;               
+
+        transform-style: preserve-3d;
+
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        -o-transition: all .3s;
+        transition: all .3s;
+
+        transform: rotateY(0);            
+        // backface-visibility: hidden;
+        &.flipped{            
+            transform: rotateY(180deg);                        
+            .front{
+                z-index: 10;
+            }            
+        }
+        &.matched{
+            cursor: default;
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+            border-radius: 30px;                                   
+            cursor: default;
+        }
+        .face{
+            position: absolute;            
+            left: 0; top: 0;
+            width: 100%; 
+            height: 100%;            
+        } 
+    }// end of li
+}
+
+/*===*/
+.detail {
+    height: 746px;
+    background: #e0ecfa;
+
+    .title {
+        text-align: center;
+        padding: 53px 0 45px 3px;
+    }
+
+    .list-imgs {
+        width: 1040px;
+        height: 330px;
+        margin: 0 auto 41px;
+        overflow: hidden;
+        position: relative;
+
+        li {
+            width: 330px;
+            height: 330px;
+            position: absolute;
+        }
+
+        li:nth-child(2) {
+            left: 364px;
+        }
+
+        li:nth-child(3) {
+            left: 708px;
+        }
+    }
+
+    .btns {
+        width: 1040px;
+        margin: 0 auto;
+        text-align: center;
+
+        a {
+            display: inline;
+        }
+
+        .btn-go-buy {
+            padding-left: 40px;
+        }
+    }
+}
+
+
+/*===*/
+.notice {
+    height: 443px;
+    padding-top: 55px;
+    background: #9cc9fd;
+    p {
+        width: 1040px;
+        margin: 0 auto;
+        &.title{            
+            text-align: left;                        
+        }
+        &.txt {
+        margin-top: 18px;
+    }
+    }    
+}
+
+
+
+
+

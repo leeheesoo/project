@@ -1,0 +1,232 @@
+
+//===================================
+// variable
+//===================================
+
+$location: '../images/popup/';
+$width-max: 720px;
+$width-inner:570px;
+%inputText {
+    height:64px;
+    border:1px solid #d6d4d4;
+    padding:0 20px;
+    background-color:#fff;
+    font-size:20px;
+    box-sizing:border-box;
+}
+
+
+
+//===================================
+// test btn
+//===================================
+.test-btn {
+    position:fixed;
+    top:0;
+    left:0;
+    button {
+        background:red;
+        font-size:15px;
+        color:#fff;
+    }
+}
+
+
+
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:#000;
+    opacity:.7;
+    z-index:9999;
+}
+
+.dimmed {
+    display:none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:#000;
+    opacity:.7;
+    z-index:999;
+}
+
+.popup {
+   display:none;
+    position:absolute;
+    top:0;
+    width:$width-max;
+    text-align:left;
+    background-color:#f1f6f7;
+    padding-bottom:70px;
+    z-index:999;
+    @if $device == w {
+        left: 50%;
+        margin-left: -360px;
+    }
+    @else {
+        left: 0;
+    }
+    &__inner {
+        width:$width-inner;   
+        margin:0 auto;
+    } 
+    &__header {
+        width:100%;
+        height:158px;
+        @include background('pop-header.png', $repeat:no-repeat);       
+        font-size:0; 
+    }
+    &__content {
+        width:$width-inner;   
+        margin:0 auto;
+    }
+
+    .inner__title {
+        text-align:center;
+        padding-bottom:30px;
+        margin-bottom:40px;
+        border-bottom:1px solid #b5d0db;
+    }
+
+}
+
+
+
+
+
+
+//------------------
+// personal
+//------------------
+.pop-personal {
+    background-color:#ccebf8;
+    &.pop-win {
+        .popup__header {
+            background-color:#f1f6f7;
+        }
+    }
+    .popup__content {
+        margin:30px auto 0;
+    }
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="number"] {
+        @extend %inputText;
+        width:100%;
+    }
+    dl {
+        margin:10px 0;
+        font-size:0;
+    }
+    dt {
+        display:inline-block;
+    }
+    dd {
+        display:inline-block;
+        width: calc(100% - 136px);
+        margin:0;
+        vertical-align:top;
+        &.full-address {
+            margin:10px 0 0 135px;
+        }
+        .post-input {
+            width: calc(100% - 195px);
+        }
+    }
+
+    .personal__note {
+        margin-bottom:30px;
+    }
+    input[type="checkbox"] {
+       position:absolute;
+       opacity:.01; 
+       & ~ span {
+        display:inline-block;
+        width:282px;
+        height:26px;
+        @include background('personal-agree.png', $repeat:no-repeat) ;
+        background-position:0 top;
+        cursor:pointer;
+       }
+       &:checked ~ span {
+        background-position:0 bottom;
+       }
+    }
+
+    .agree-wrap {
+       margin-top:40px;
+       &.agree-wrap__border {
+           margin:40px 0 50px;
+           padding-top:40px;
+           border-top:1px solid #b5d0db;
+       }
+    }
+
+}
+//------------------
+// post
+//------------------
+#searchPostCode {
+    margin-top:40px;
+}
+
+
+//------------------
+// button
+//------------------
+.popup {
+    .btn {
+        display:block;
+        border-radius:0;
+        box-shadow:none;
+        @include background('btn-popup.png', $repeat:no-repeat);
+        &__close {
+            position: absolute;
+            top:-42px;
+            right:10px;
+            width:34px;
+            height:33px;
+            background-position:-197px -118px;      
+        }
+        &__post {
+            float:right;
+            width:187px;
+            height:64px;
+            vertical-align:-21px;
+            background-position:0 -118px;    
+        }
+        &__entry {
+            width:458px;
+            height:85px;
+            margin:0 auto ;
+            background-position:0 -193px;
+        }
+        &__check {
+            width:458px;
+            height:85px;
+            margin:0 auto;
+            background-position:0 -287px;
+        }
+        &__kakao {
+            display:inline-block;
+            width: 280px;
+            height:105px;
+            margin-right:3px;
+            background-position:0 0;
+        }
+        &__facebook {
+            display:inline-block;
+            width: 280px;
+            height:105px;
+            background-position:-290px 0;
+        }
+    }
+}
+

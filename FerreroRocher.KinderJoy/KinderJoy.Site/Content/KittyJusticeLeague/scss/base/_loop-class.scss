@@ -1,0 +1,59 @@
+/*!
+ * loop class - extras margin padding
+ * 2017.10.11
+ */
+
+//---------------------------------------------------
+// import
+//---------------------------------------------------
+
+
+//---------------------------------------------------
+// setting
+//---------------------------------------------------
+/*
+.mt1{
+  margin-top:1px;
+}
+.mr1{
+  margin-right:1px;
+}
+.mb1{
+  margin-bottom:1px;
+}
+.ml1{
+  margin-left:1px;
+}
+.pt1{
+  padding-top:1px;
+}
+.pr1{
+  padding-right:1px;
+}
+.pb1{
+  padding-bottom:1px;
+}
+.pl1{
+  padding-left:1px;
+}
+*/
+$total: 12;
+
+
+@each $obj in margin,padding {
+  @each $obj2 in top,right,bottom,left {
+    @for $i from 1 to $total {
+      .#{$obj}-#{$obj2}-#{$i}{
+        #{$obj}-#{$obj2}: $i+px;
+      }      
+    }
+  }
+}
+
+//@for $i from 1 to $total {
+  //.mt#{$i} {
+    //margin-top: $i+px;
+  //}
+//}
+
+

@@ -1,0 +1,266 @@
+﻿@charset 'UTF-8';
+
+
+/* common ============================
+
+html{width:100%; height:100%;}
+body{width:100%; height:100%; margin:0; padding:0; font-size:12px; color:#333333; font-family:"Malgun Gothic", "돋움", "Dotum", "Arial";}
+img{border:0; line-height:0; vertical-align:top;}
+ul{margin:0; padding:0; list-style:none;}
+ul li{margin:0; padding:0;}
+h1{margin:0; padding:0; width:0; height:0; line-height:0; font-size:0;}
+h2{margin:0; padding:0; line-height:0; font-size:0;}
+h3,h4{margin:0; padding:0;}
+dl,dt,dd{margin:0; padding:0;}
+form{padding:0;margin:0;}
+p{padding:0;margin:0;}
+a:link{font-size:11px; color:#898989; text-decoration:none; line-height:13px;}
+a:active{font-size:11px; color:#898989; text-decoration:none; line-height:13px;}
+a:visited{font-size:11px; color:#898989; text-decoration:none; line-height:13px;}
+a:hover{font-size:11px; color:#898989; text-decoration:none; line-height:13px;}
+caption{display:none;}
+
+/* 모바일 <a>tag 영역 안보이게 하는법 */
+a {
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-tap-highlight-color:transparent; /* For some Androids */
+}
+.blind{display:block; overflow:hidden; position:absolute; top:-1000em; left:0;}
+
+/* ====================================== */
+
+.mobile_wrap{padding-top:80px;}
+
+
+.mobile_wrap .visual_wrap{width:640px; height:816px; background:url('/Images/BackToSchool2016/m/bg_visual_wrap.jpg') top center no-repeat;}
+.mobile_wrap .visual_wrap .visual{position:relative; width:640px;}
+.mobile_wrap .visual_wrap .visual h2 {width:544px; margin:0 auto; padding-top:93px;}
+
+.mobile_wrap .visual_wrap .tab_area {width:640px; padding-top:386px;}
+.mobile_wrap .visual_wrap .tab_area ul {width:600px; margin:0 auto; overflow:hidden;}
+.mobile_wrap .visual_wrap .tab_area ul li {float:left; margin:0 14px;}
+
+
+
+.mobile_wrap .notice_wrap{width:640px; height:809px; background:url('/Images/BackToSchool2016/m/bg_notice_wrap.jpg') top center no-repeat;}
+.mobile_wrap .notice_wrap .notice{position:relative; width:640px;}
+.mobile_wrap .notice_wrap .notice .flag {width:233px; margin:0 auto; padding-top:52px;}
+.mobile_wrap .notice_wrap .notice h3 {width:431px; margin:0 auto; padding:22px 0 15px 0;}
+.mobile_wrap .notice_wrap .notice p {width:562px; margin:0 auto;}
+.mobile_wrap .notice_wrap .notice .txt{}
+.mobile_wrap .notice_wrap .notice ul {width:640px; margin:0 auto; padding:34px 0 0 0; overflow:hidden;}
+.mobile_wrap .notice_wrap .notice ul li {float:left;}
+.mobile_wrap .notice_wrap .notice ul li dl {overflow:hidden;}
+.mobile_wrap .notice_wrap .notice ul li dl dt {float:left; margin-right:11px;}
+.mobile_wrap .notice_wrap .notice ul li dl dd {float:left; padding:7px 0 0 0;}
+
+.mobile_wrap .notice_wrap .notice ul li.cont1_list1{padding:0 0 25px 25px;}
+.mobile_wrap .notice_wrap .notice ul li.cont1_list1 dl{}
+.mobile_wrap .notice_wrap .notice ul li.cont1_list1 dl dt{}
+.mobile_wrap .notice_wrap .notice ul li.cont1_list1 dl dd{margin:0 5px;}
+
+.mobile_wrap .notice_wrap .notice ul li.cont1_list2{padding:0 0 11px 38px;}
+
+.mobile_wrap .notice_wrap .notice ul li.cont1_list3{padding:0 0 0 38px;}
+
+
+.mobile_wrap .bingo_wrap{width:640px; height:999px; background:url('/Images/BackToSchool2016/m/bg_bingo_wrap.jpg') top center no-repeat;}
+.mobile_wrap .bingo_wrap .bingo{position:relative; width:640px;}
+.mobile_wrap .bingo_wrap .bingo h3 {width:355px; margin:0 auto; padding:44px 0 20px 0;}
+
+.mobile_wrap .bingo_wrap .bingo .quiz_area{width:479px; margin:0 auto;}
+.mobile_wrap .bingo_wrap .bingo .quiz_area .quiz-select{position:relative; width:470px; margin:0 auto; overflow:hidden; text-align:center; padding-top:51px;}
+.mobile_wrap .bingo_wrap .bingo .quiz_area .quiz-select .select-area{float:left; width:94px;}
+.mobile_wrap .bingo_wrap .bingo .quiz_area .quiz-select .select-area .js-rd-area{cursor:pointer;}
+.mobile_wrap .bingo_wrap .bingo .quiz_area .quiz-select .select-area .js-rd-area label.js-agree {display:block; cursor:pointer;}
+.mobile_wrap .bingo_wrap .bingo .quiz_area .quiz-select .select-area .js-rd-area input{position:absolute; top:68px; left:0; width:0; height:0; border:0; visibility:hidden; margin:0; padding:0;}
+
+.mobile_wrap .bingo_wrap .bingo .quiz_area .quiz-select .select-area #sel1 label.js-agree {padding-right:20px;}
+.mobile_wrap .bingo_wrap .bingo .quiz_area .quiz-select .select-area #sel2 label.js-agree {padding-right:13px;}
+
+.mobile_wrap .bingo_wrap .bingo .btn_area{padding-top:99px;}
+.mobile_wrap .bingo_wrap .bingo .btn_area ul {width:580px; margin:0 auto; overflow:hidden;}
+.mobile_wrap .bingo_wrap .bingo .btn_area ul li {float:left; margin:0 7px;}
+
+
+
+
+.mobile_wrap .toy_detail_wrap{width:640px; height:999px; background:#ffd630 url('/Images/BackToSchool2016/m/bg_toy_detail_wrap.jpg') top center no-repeat;}
+.mobile_wrap .toy_detail_wrap .toy_detail{position:relative; width:640px;}
+.mobile_wrap .toy_detail_wrap .toy_detail .flag {width:233px; margin:0 auto; padding-top:52px;}
+.mobile_wrap .toy_detail_wrap .toy_detail h3 {width:448px; margin:0 auto; padding:18px 0 16px 0;}
+.mobile_wrap .toy_detail_wrap .toy_detail .subtl {width:543px; margin:0 auto;}
+.mobile_wrap .toy_detail_wrap .toy_detail .txt{width:496px; margin:0 auto; padding-top:77px}
+.mobile_wrap .toy_detail_wrap .toy_detail .btn {width:442px; margin:0 auto; margin-top:419px;}
+
+
+
+
+.mobile_wrap .package_wrap {width:640px; height:1533px; background:url('/Images/BackToSchool2016/m/bg_pop_package.jpg') top center no-repeat;}
+.mobile_wrap .package_wrap  h3{padding:214px 0 0 47px;}
+.mobile_wrap .package_wrap .package_list{width:640px; padding:55px 0 0 0;}
+.mobile_wrap .package_wrap .package_list div {padding-left:105px;}
+.mobile_wrap .package_wrap .package_list ul{width:514px; margin:0 auto; overflow:hidden; padding-top:12px;}
+.mobile_wrap .package_wrap .package_list ul li{width:145px; float:left; margin:0 13px 26px 13px;}
+.mobile_wrap .package_wrap .package_list ul li.cereal {margin:0 20px 27px 5px;}
+.mobile_wrap .package_wrap .notice{width:485px; margin:0 auto; padding-top:15px;}
+
+
+
+.mobile_wrap .bottom_wrap{width:100%; background:#fff;}
+.mobile_wrap .bottom_wrap .bottom{position:relative; width:640px; height:608px; margin:0 auto;}
+.mobile_wrap .bottom_wrap .bottom dl {width:566px; margin:0 auto; overflow:hidden; padding-bottom:44px;}
+.mobile_wrap .bottom_wrap .bottom dl dt {padding:44px 0 23px 0;}
+
+
+
+
+
+/* 팝업:딤드처리*/
+#png_bg{position:absolute; top:0; left:0; width:100%; height:100%; filter:alpha(opacity=70); opacity:0.70; background-color:#000; z-index:98;}
+#png_bg2{position:absolute; top:0; left:0; width:100%; height:100%; filter:alpha(opacity=90); opacity:0.90; background-color:#000; z-index:98;}
+
+
+
+
+
+/* 팝업:개인정보입력*/
+#pop_entry{position:absolute; top:0; left:0px; width:640px; height:1335px; z-index:99; background:url('/Images/BackToSchool2016/pop/bg_pop_entry.png') 0 0 no-repeat;}
+#pop_entry .btn_close{position:absolute; top:238px; right:20px; z-index:999;}
+#pop_entry .pop_header {width:640px; padding-top:398px; text-align:center;}
+#pop_entry .pop_header p {padding-top:18px;}
+
+#pop_entry .pop_cont{width:640px; padding-top:60px;}
+#pop_entry .pop_cont .form_box{width:522px; margin:0 auto;}
+#pop_entry .pop_cont .form_box dl{width:522px; margin:0 auto; margin-bottom:14px; overflow:hidden;}
+#pop_entry .pop_cont .form_box dl dt{float:left; width:126px;}
+#pop_entry .pop_cont .form_box dl dt img{padding-top:16px;}
+#pop_entry .pop_cont .form_box dl dd{float:left; width:396px;}
+#pop_entry .pop_cont .form_box dl dd input{font-size:18px; height:50px; line-height:50px; font-weight:bold; border:none; background:#fff; color:#5c371e; vertical-align:top;
+-webkit-border-radius:5px;
+-moz-border-radius:5px;
+-ms-border-radius:5px;
+-o-border-radius:5px;
+border-radius:5px;
+}
+
+#pop_entry .pop_cont .form_box dl.input_name dd input{width:376px; padding:0 10px;}
+
+#pop_entry .pop_cont .form_box dl.input_age dd input{width:218px; padding:0 10px; margin-right:6px;}
+#pop_entry .pop_cont .form_box dl.input_age dd img{cursor:pointer;}
+
+#pop_entry .pop_cont .form_box dl.input_phone dd input{width:376px; padding:0 10px;}
+
+#pop_entry .pop_cont .form_box dl.input_address{margin-bottom:49px;}
+#pop_entry .pop_cont .form_box dl.input_address dd {padding-left:126px;}
+#pop_entry .pop_cont .form_box dl.input_address dd input{width:386px; margin:0 0 7px 0; padding:0 10px 0 0;}
+
+#pop_entry .pop_cont .form_box dl.input_address dd.input_post {height:50px; padding-left:0; margin: 0 0 7px 0;}
+#pop_entry .pop_cont .form_box dl.input_address dd.input_post input{width:218px; margin:0 6px 0 0; padding:0 10px;}
+#pop_entry .pop_cont .form_box dl.input_address dd.input_post img{cursor:pointer;}
+
+#pop_entry .pop_cont .form_box dl.input_address dd.notice{width:106px; padding:6px 0 0 106px;}
+
+
+
+#pop_entry .pop_cont .agree_area{width:522px; margin:0 auto;}
+#pop_entry .pop_cont .agree_area .agree_check {width:522px;height:29px; line-height:29px;}
+#pop_entry .pop_cont .agree_area .agree_check input{float:left; display:inline; width:29px; height:29px; margin:0; padding:0; line-height:29px; vertical-align:middle;
+transform: scale(1); 
+-ms-transform: scale(1); 
+-webkit-transform: scale(1); 
+-o-transform: scale(1); 
+-moz-transform:scale(1); 
+transform-origin: top left; 
+-ms-transform-origin: top left; 
+-webkit-transform-origin: top left; 
+-moz-transform-origin: top left; 
+-webkit-transform-origin: top left;}
+#pop_entry .pop_cont .agree_area .agree_check label {margin-left:10px; line-height:33px;}
+
+
+#pop_entry .pop_cont .agree_area .agree_txt {width:358px; height:107px; overflow-x:hidden; overflow-y:auto; padding:10px; margin-top:13px;	line-height:1.4;	text-align:left;}
+#pop_entry .pop_cont .agree_area .agree_txt dt {font-weight:bold; font-size:0.9em;}
+#pop_entry .pop_cont .agree_area .agree_txt dd {font-size:0.8em; margin-top:15px;}
+#pop_entry .pop_cont .agree_area .agree_txt dd ul {margin-top:10px;}
+#pop_entry .pop_cont .agree_area .agree_txt dd ul li {margin-top:5px;}
+#pop_entry .pop_cont .agree_area .agree_txt dd ul li p {margin-top:15px;}
+
+#pop_entry .btn{position:relative; text-align:center; padding:30px 0 0 0;}
+#pop_entry .btn .loading{position:absolute; top:30px; left:215px; width:211px; height:68px; text-align:center; filter:alpha(opacity=60); opacity:0.60; background-color:#000; overflow:hidden;}
+#pop_entry .btn .loading img{padding-top:11px;}
+
+
+
+
+/* 팝업:우편번호*/
+#pop_post {position:absolute; top:0; left:50%; margin-left:-320px; width:640px; height:1175px; z-index:99; background:url('/Images/BackToSchool2016/pop/bg_pop_post.png') 0 0 no-repeat;}
+#pop_post .btn_close{position:absolute; top:238px; right:20px; z-index:999;}
+#pop_post .pop_header {width:640px; padding-top:398px; text-align:center;}
+#pop_post .pop_header h3 {}
+#pop_post .pop_cont {width:536px; margin:0 auto; padding-top:35px;}
+
+
+
+/* 팝업:sns공유*/
+#pop_sns {position:absolute; top:0; left:0px; width:640px; height:1169px; z-index:99; background:url('/Images/BackToSchool2016/pop/bg_pop_sns.png') 0 0 no-repeat;}
+#pop_sns .btn_close{position:absolute; top:238px; right:20px; z-index:999;}
+#pop_sns .pop_header {width:640px; padding-top:398px; text-align:center;}
+#pop_sns .pop_header p {padding-top:18px;}
+#pop_sns .pop_cont{width:640px; padding:64px 0 0 0;}
+#pop_sns .pop_cont .share {position:relative; width:640px;}
+#pop_sns .pop_cont .share ul{width:438px; margin:0 auto; overflow:hidden;}
+#pop_sns .pop_cont .share ul li{float:left; margin:0 14px;}
+#pop_sns .pop_cont .share .loading{position:absolute; top:0; left:101px; width:438px; height:119px; text-align:center; filter:alpha(opacity=60); opacity:0.60; background-color:#000; overflow:hidden;}
+#pop_sns .pop_cont .share .loading img{padding-top:36px;}
+/*#pop_sns .pop_cont .share p {width:235px; margin:0 auto; padding:24px 0 25px 0;}*/
+#pop_sns .pop_cont .btn {width:640px; padding-top:30px;}
+#pop_sns .pop_cont .btn {width:640px;}
+#pop_sns .pop_cont .btn ul{width:531px; margin:0 auto; overflow:hidden;}
+#pop_sns .pop_cont .btn ul li{float:left; margin:0 2px;}
+#pop_sns .pop_bottom{width:640px; padding:73px 0 0 0;}
+#pop_sns .pop_bottom dl {width:523px; margin:0 auto;}
+#pop_sns .pop_bottom dl dt {margin-bottom:21px;}
+#pop_sns .pop_bottom dl dd {}
+
+
+
+/* 팝업:경품 및 당첨자*/
+#pop_gift {position:absolute; top:0; left:0px; width:640px; z-index:99; background:url('/Images/BackToSchool2016/pop/bg_pop_gift.png') 0 0 no-repeat;}
+#pop_gift .btn_close{position:absolute; top:238px; right:20px; z-index:999;}
+#pop_gift .pop_header {width:640px; padding:410px 0 53px 0;}
+
+#pop_gift .pop_header .tab_area{width:640px; margin:0 auto;}
+
+#pop_gift .pop_header .tab_area ul{width:446px; margin:0 auto; overflow:hidden;}
+#pop_gift .pop_header .tab_area ul li{float:left; width:213px; height:52px; text-align:center; font-size:30px; margin:0 5px;}
+#pop_gift .pop_header .tab_area ul li a{display:block; width:213px; height:52px; font-size:20px; color:#fff; line-height:48px;}
+
+#pop_gift .pop_cont{width:640px;}
+#pop_gift .pop_cont .gift_area {height:500px; background:url('/Images/BackToSchool2016/pop/bg_gift_area.png') 0 0 no-repeat;}
+#pop_gift .pop_cont .gift_area h4{padding:0 0 38px 137px;}
+#pop_gift .pop_cont .gift_area ul{width:596px; margin:0 auto; overflow:hidden;}
+#pop_gift .pop_cont .gift_area ul li {float:left;}
+
+#pop_gift .pop_cont .dang_area {position:relative; height:867px; background:url('/Images/BackToSchool2016/pop/bg_dang_area.png') 0 0 no-repeat;}
+#pop_gift .pop_cont .dang_area .dang1{position:absolute; top:146px; left:236px; width:335px; height:116px;}
+#pop_gift .pop_cont .dang_area .dang1 ul{width:335px; height:116px; overflow-y:auto;}
+#pop_gift .pop_cont .dang_area .dang1 ul li{float:left; width:105px; text-align:center; height:29px; line-height:29px; font-size:16px; font-weight:bold; color:#5c371e;}
+#pop_gift .pop_cont .dang_area .dang2{position:absolute; top:374px; left:236px; width:335px; height:116px;}
+#pop_gift .pop_cont .dang_area .dang2 ul{width:335px; height:116px; overflow-y:auto;}
+#pop_gift .pop_cont .dang_area .dang2 ul li{float:left; width:105px; text-align:center; height:29px; line-height:29px; font-size:16px; font-weight:bold; color:#5c371e;}
+#pop_gift .pop_cont .dang_area .dang3{position:absolute; top:625px; left:236px; width:335px; height:116px;}
+#pop_gift .pop_cont .dang_area .dang3 ul{width:335px; height:116px; overflow-y:auto;}
+#pop_gift .pop_cont .dang_area .dang3 ul li{float:left; width:105px; text-align:center; height:29px; line-height:29px; font-size:16px; font-weight:bold; color:#5c371e;}
+
+#pop_gift .pop_bottom{width:640px; padding:7px 30px 0 0;}
+#pop_gift .pop_bottom .notice{width:524px; margin:0 auto;}
+
+
+/* 팝업 : 인앱브라우저 */
+#pop_inapp{width:100%; width:640px; height:1380px; position:absolute; top:0px; left:0; z-index:999;}
+#pop_inapp .btn_close{position:absolute; top:20px; right:20px; z-index:999;}
+#pop_inapp .pop_header{width:640px; margin:0 auto; height:543px;}
+#pop_inapp .pop_header .tl{width:484px; margin:0 auto; padding:148px 0 0 0;}
+#pop_inapp .pop_cont {width:100%; height:700px; margin:0 auto;}
+#pop_inapp .pop_cont .txt{width:522px; margin:0 auto;}

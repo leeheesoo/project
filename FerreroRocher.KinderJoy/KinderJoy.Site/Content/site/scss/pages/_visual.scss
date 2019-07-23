@@ -1,0 +1,288 @@
+//===================================
+// variable
+//===================================
+$loc-img-site: '/Images/items/';
+//===================================
+// mixin
+//===================================
+//===================================
+// reset
+//===================================
+//===================================
+// helper
+//===================================
+//===================================
+// common
+//===================================
+
+//===================================
+// page
+//===================================
+
+// visual
+//===================================
+.container .parallax {
+    position: relative;
+    overflow: hidden;
+    background: #60ccfb;
+    &-layer {
+        @include background-image($loc-img-site + 'bg.jpg', $pos: center bottom);
+        @include size(2560px, 100%);
+        position: absolute;
+        left: 50%;
+        margin-left: -1280px;
+    }
+}
+
+.container .motionWrap {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.container .eggs {
+    @include size(1211px, 524px);
+    margin-bottom: 45px;
+    .egg {
+        @include size(540px, 645px);
+        position: absolute;
+        top: 0;
+        z-index: 15;
+        overflow: hidden;
+        display: inline-block;
+        cursor: pointer;
+        $egg-info: (flavor: 0, image: 440px, together: 880px);
+        @each $name,
+        $val in $egg-info {
+            &-#{$name} {
+                left: #{$val};
+            }
+        } // egg image loc
+    } // egg
+    .egg-front {
+        z-index: 10;
+    } // egg front
+    .egg-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+    } // egg-img
+    .hand {
+        @include background-image($loc-img-site + 'items/hand.png');
+        @include size(440px, 500px);
+        display: inline-block;
+        position: absolute;
+        z-index: 20;
+    } // hand
+} // eggs
+.container .balloon {
+    @include background-image($loc-img-site + 'balloon.png');
+    @include size(72px, 127px);
+    position: absolute;
+    top: -80px;
+    left: -140px;
+    overflow: hidden;
+    text-indent: -9999px;
+    animation: balloon-ani 3s infinite linear;
+}
+
+@keyframes balloon-ani {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+// 2018.4.25
+// 한승철
+// 주석처리
+// .container .icon_notice {
+//     position: absolute;
+//     top: -55px;
+//     left: 525px;
+// }
+.clouds {
+    @include background-image($loc-img-site + 'clouds.png');
+    margin-top: 75px;
+    display: block;
+    height: 140px;
+    animation: cloud-ani 1000s infinite linear;
+}
+
+@keyframes cloud-ani {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -4712px 0;
+    }
+}
+
+.visual-tit {
+    position: absolute;
+    bottom: 72%;
+    left: 50%;
+    margin-left: -322px;
+} // visual-tit
+
+// 플로팅 배너
+.visual-float {
+    position: absolute;
+    bottom: -56px;
+
+    a {
+        // text-indent: 0;
+    }
+
+    button {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background: url("/Images/items/btn_close_bn.png") no-repeat 0 0;
+        text-indent: -9999px;
+        border: 0;
+        cursor: pointer;
+    } // button
+
+    &-left {
+        bottom: -27px;
+        left: -340px;
+
+        button {
+            top: 66px;
+            left: 12px;
+        }
+    }
+
+    &-right {
+        bottom: -31px;
+        right: -315px;
+
+        button {
+            top: 153px;
+            left: 22px;
+        }
+    }
+}
+
+
+// gyrodrop
+.gyrodrop {
+    @include background-image($loc-img-site + 'gyrodrop-column.png', $pos: 50% 100%);
+    @include size(73px, 384px);
+    position: absolute;
+    top: 12px;
+    left: 813px;
+    &__circle {
+        @include background-image($loc-img-site + 'gyrodrop-circle.png');
+        @include size(73px);
+        position: absolute;
+        top: 0;
+        left: 0;
+        .gyrodrop.is-active & {
+            transform: rotate(720deg);
+        }
+    }
+    &__vehicle {
+        @include background-image($loc-img-site + 'drop.png');
+        @include size(70px, 54px);
+        position: absolute;
+        top: 108px;
+        left: 2px;
+        display: inline-block;
+        overflow: hidden;
+        text-indent: -9999px;
+        .gyrodrop.is-active & {
+            transform: translateY(230px);
+        }
+    }
+    &__circle,
+    &__vehicle {
+        transition: transform 2.6s 0.6s cubic-bezier(0.42, 0.1, 0.21, 0.96);
+    }
+} // gyrodrop
+//    castle
+.main.castle {
+    @include background-image($loc-img-site + 'castle.png');
+    @include size(452px, 236px);
+    position: absolute;
+    top: 160px;
+    left: 1091px;
+    z-index: 10;
+}
+
+.castle__egg {
+    @include background-image($loc-img-site + 'castle-egg.png');
+    @include size(60px, 82px);
+    position: absolute;
+    top: 105px;
+    left: 1286px;
+}
+
+//    ferry wheel
+// 관람차 계란 위치
+$ferry-wheel-pos: (
+    (top: -24px, left: 86px),
+    (top: 30px, left: 10px),
+    (top: 116px, left: -19px),
+    (top: 200px, left: 20px),
+    (top: 239px, left: 100px),
+    (top: 223px, left: 193px),
+    (top: 145px, left: 250px),
+    (top: 50px, left: 241px),
+    (top: -10px, left: 176px)
+);
+
+.ferry-wheel {
+    @include background-image($loc-img-site + 'ferris-wheel.png');
+    @include size(272px);
+    position: absolute;
+    top: 31px;
+    right: -462px;
+    z-index: -1;
+    animation: ferry-wheel-ani 70s linear infinite;
+    &__vehicle {
+        @include background-image($loc-img-site + 'ferris-wheel-vehicle.png');
+        @include size(38px, 51px);
+        position: absolute;
+        animation: ferry-wheel-vehicle-ani 70s linear infinite; // 관람차 위치 설정
+        @for $i from 1 through length($ferry-wheel-pos) {
+            &--#{$i} {
+                @each $key,
+                $val in nth($ferry-wheel-pos, $i) {
+                    #{$key}: #{$val};
+                }
+            }
+        }
+    } // vehicle
+}
+
+@keyframes ferry-wheel-ani {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ferry-wheel-vehicle-ani {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+// visual copyright
+.container .copyright {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 27px;
+}

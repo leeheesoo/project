@@ -1,0 +1,231 @@
+﻿/*!
+ * form layout
+ * kjh
+ */
+
+//---------------------------------------------------
+// Config
+//---------------------------------------------------
+// form-box
+$form-bottom-padding: 35px;
+$form-box: 100%;
+$line-height: 68px;
+
+// font
+$text-color: #868686;
+$input-color: #868686;
+$font-size: 24px;
+$font-family: 'Malgun Gothic', Dotum;
+
+// label
+$label-height: 50px;
+
+// input
+$input-width: 100%;
+$input-height: 50px;
+$input-padding: 8px;
+$background-color: #ececec;
+$select-option-bg: #fff;
+
+// border
+$border-width: 1px;
+$border-color: #6a5437;
+
+//---------------------------------------------------
+// form-box common
+// - form-box, input, checkbox, radio, textarea ..
+//---------------------------------------------------
+
+.form-box {
+  position: relative;
+  width: $form-box;
+  height: auto;
+  margin: 0 auto;
+  text-align: left;
+
+  legend {
+    display: none;
+  }
+
+  a {
+    display: inline-block;
+  }
+
+  // for label img check
+  img {
+    pointer-events: none;
+    vertical-align: middle;
+  }
+
+  // ios 기본 스타일 초기화
+  input[type=text],
+  input[type=button],
+  input[type=checkbox],
+  input[type=radio],
+  textarea {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+  }
+
+  // 입력요소 디테일 설정
+  input[type=text],
+  input[type=tel],
+  select,
+  textarea {
+    width: $input-width;
+    max-width: none;
+    padding-left: $input-padding;
+    padding-right: $input-padding;
+    height: $input-height;
+    line-height: $input-height;
+    border: $border-width solid $border-color;
+    border-radius: 0;
+    background-color: $background-color;
+    color: $input-color;
+    font-size: $font-size;
+    font-family: $font-family;
+    //vertical-align: top;
+  }
+
+  // 체크박스, 라디오 img on&off
+  input[type=checkbox] {
+    width: 28px;
+    height: 28px;
+    line-height: 100%;
+    vertical-align: middle;
+    margin: 0 8px 0 0;
+    background-size: 28px 28px;
+    @include background('../pop/form/icon-check-off.png');
+
+    &:checked {
+      @include background('../pop/form/icon-check-on.png');
+    }
+  }
+
+  input[type=radio] {
+    border: 0;
+    width: 35px;
+    height: 35px;
+    line-height: 100%;
+    vertical-align: middle;
+    margin: 0 4px 0 0;
+    @include background('form/icon-radio-off.png');
+
+    &:checked {
+      @include background('form/icon-radio-on.png');
+    }
+  }
+
+  // 셀렉트박스
+  select option {
+    color: $input-color;
+    background: $select-option-bg;
+    &:first-child {
+      color: $text-color;
+    }
+  }
+
+
+  .no-space {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .form-control{
+    box-shadow:none;
+  }
+  .form-group {
+    color: $text-color;
+    //margin-bottom: $form-bottom-padding;
+    lable, .control-label, strong {
+      color: #debb7b;
+      padding-left: 0;
+      padding-right: 0;
+      line-height: $label-height;
+      display: inline-block;
+    }
+
+    .label-style {
+      display: none;
+    }
+
+    .form-email {
+      &:before {
+        position: absolute;
+        content: '@';
+        top: 50%;
+        right: -6px;
+        transform: translateY(-50%);
+        color: #ccc;
+        font-size: 1.4em;
+        font-style: normal;
+        letter-spacing: -.15em;
+      }
+    }
+  }
+
+  // form 제출하기
+  button[type=submit] {
+    margin-top: 30px;
+    border: 0;
+    background: none;
+  }
+
+}
+
+//---------------------------------------------------
+// placeholder
+//---------------------------------------------------
+
+// Chrome/Opera/Safari
+::-webkit-input-placeholder { 
+  color: $text-color !important;
+}
+// Firefox 19+
+::-moz-placeholder { 
+  color: $text-color !important;
+}
+// IE 10+
+:-ms-input-placeholder { 
+  color: $text-color !important;
+  line-height: 1 !important;
+}
+// Firefox 18-
+:-moz-placeholder { 
+  color: $text-color !important;
+}
+
+//---------------------------------------------------
+// policy
+//---------------------------------------------------
+.privacy-policy {
+
+  label {
+    vertical-align: top;
+    display: inline-block;
+    line-height: auto;
+  }
+
+  // agree 자세히보기
+  .btn-agree {
+    display:inline-block;
+    margin-left: 15px;
+    margin-right: 0;
+    padding: 0;
+    //////// 이번이벤트에서만 사용
+    margin-top: 15px;
+    margin-left: 8px;
+    /////////
+  }
+
+}
+
+//---------------------------------------------------
+// daum api등의 iframe요소에 스크롤이 들어갈때
+//---------------------------------------------------
+.pop-post {
+  .pop-con {
+    -webkit-overflow-scrolling: touch; 
+    }
+ }

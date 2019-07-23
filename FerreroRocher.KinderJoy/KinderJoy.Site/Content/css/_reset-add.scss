@@ -1,0 +1,7 @@
+﻿*{
+    box-sizing: border-box;
+}
+.hidden, legend, caption{
+    position: absolute; 
+    left: -9999em;
+}

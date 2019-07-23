@@ -1,0 +1,240 @@
+﻿@charset "UTF-8";
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:700);
+.input-none, .pop-info .pop-con .policy-area p.policy-check input, .pop-info .pop-con .btn input[type="submit"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: .01; }
+
+.dim {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+  background: #000;
+  opacity: .7;
+  filter: alpha(opacity=80);
+  z-index: 10; }
+
+.popups {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  width: 1040px;
+  margin-left: -520px;
+  background: #fff;
+  overflow: hidden;
+  z-index: 99; }
+  .popups .btn-close {
+    position: absolute;
+    top: 60px;
+    right: 60px; }
+  .popups .pop-header {
+    width: inherit;
+    height: 297px;
+    background: url("../images/popup/popup_bg.jpg") no-repeat #5f43b9;
+    background-size: cover; }
+    .popups .pop-header h3 {
+      padding-top: 80px;
+      text-align: center; }
+  .popups .pop-con {
+    width: 920px;
+    margin: 0 auto; }
+
+.pop-info legend {
+  display: none; }
+
+.pop-info fieldset {
+  padding: 0; }
+
+.pop-info .pop-con {
+  /* info-area */
+  /* policy-area */ }
+  .pop-info .pop-con .info-area {
+    width: 920px;
+    margin: 0 auto; }
+    .pop-info .pop-con .info-area dl {
+      width: 920px;
+      margin: 0 auto;
+      padding-bottom: 10px;
+      overflow: hidden; }
+      .pop-info .pop-con .info-area dl:last-child {
+        padding: 0; }
+      .pop-info .pop-con .info-area dl dt {
+        padding: 60px 0 30px; }
+      .pop-info .pop-con .info-area dl dd {
+        line-height: 96px; }
+        .pop-info .pop-con .info-area dl dd > img {
+          vertical-align: middle; }
+        .pop-info .pop-con .info-area dl dd input {
+          width: 285px;
+          max-width: 920px;
+          height: 96px;
+          padding: 0 10px;
+          background: #eee;
+          border: 2px solid #dedede;
+          color: #231f1f;
+          font-size: 40px;
+          vertical-align: top;
+          line-height: 96px;
+          font-family: "Noto Sans KR", sans-serif;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          border-radius: 3px; }
+        .pop-info .pop-con .info-area dl dd input[type="text"] {
+          width: 920px; }
+          .pop-info .pop-con .info-area dl dd input[type="text"].ph_phone {
+            width: 285px; }
+  .pop-info .pop-con .policy-area {
+    width: 920px;
+    margin: 30px auto 0; }
+    .pop-info .pop-con .policy-area p.policy-check {
+      width: 920px;
+      padding: 30px 0 0;
+      margin-bottom: 28px; }
+      .pop-info .pop-con .policy-area p.policy-check input ~ span {
+        display: inline-block;
+        width: 228px;
+        height: 65px;
+        background: url("../images/popup/agree_check.png");
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        cursor: pointer; }
+      .pop-info .pop-con .policy-area p.policy-check input:checked ~ span {
+        background-position: 0 -78px; }
+    .pop-info .pop-con .policy-area .contents {
+      width: 920px;
+      height: 240px;
+      padding: 35px 30px;
+      border: 1px solid #999;
+      background: #eee;
+      color: #5e5e5e;
+      border: 2px solid #dedede;
+      font-size: 25px;
+      text-align: left;
+      line-height: 44px;
+      resize: none;
+      font-family: "Noto Sans KR", sans-serif;
+      overflow-y: scroll; }
+    .pop-info .pop-con .policy-area .policy-box2 {
+      padding-top: 0; }
+  .pop-info .pop-con .btn {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    padding: 0; }
+    .pop-info .pop-con .btn .loading {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 506px;
+      height: 128px;
+      margin-left: -253px;
+      text-align: center;
+      line-height: 120px;
+      opacity: .6;
+      background: #000;
+      overflow: hidden;
+      -webkit-border-radius: 65px;
+      -moz-border-radius: 65px;
+      border-radius: 65px; }
+      .pop-info .pop-con .btn .loading img {
+        vertical-align: middle; }
+  .pop-info .pop-con .next-text {
+    padding: 50px 0 80px;
+    text-align: center; }
+
+.wrap {
+  min-width: 1080px;
+  width: 100%;
+  /*계산*/
+  /*이벤트안내*/ }
+  .wrap .kv {
+    background: #5f44b9; }
+  .wrap .kv-inner {
+    height: 1134px;
+    text-align: center;
+    background: url("../images/event03_bg.jpg") no-repeat center; }
+    .wrap .kv-inner h2 {
+      padding-top: 100px; }
+    .wrap .kv-inner .sub-title {
+      margin-top: 40px; }
+  .wrap .reckoning-wrap {
+    width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Roboto Condensed', sans-serif; }
+    .wrap .reckoning-wrap .text-phonnumber {
+      padding: 90px 0 85px; }
+    .wrap .reckoning-wrap .text-benefit {
+      display: block;
+      padding-bottom: 30px; }
+    .wrap .reckoning-wrap .second-num {
+      margin-top: 40px;
+      padding-bottom: 50px;
+      border-bottom: 4px solid #222; }
+    .wrap .reckoning-wrap .number-input {
+      width: 160px;
+      height: 160px;
+      margin-left: 13px;
+      text-align: center;
+      vertical-align: top;
+      background: #eee;
+      font-size: 105px;
+      font-family: 'Roboto Condensed', sans-serif;
+      border: 2px dashed #b1afb0;
+      color: #222;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      outline: none; }
+    .wrap .reckoning-wrap .num1, .wrap .reckoning-wrap .num5 {
+      margin-left: 0; }
+    .wrap .reckoning-wrap .first-result {
+      float: right;
+      width: 900px;
+      height: 163px;
+      margin-top: 41px;
+      text-align: right;
+      font-size: 6.3em;
+      color: #222;
+      background: url("../images/number01_bg.png") no-repeat;
+      background-position: right 0; }
+      .wrap .reckoning-wrap .first-result:after {
+        content: " ";
+        display: block;
+        clear: both; }
+      .wrap .reckoning-wrap .first-result .first-result-num {
+        display: inline-block;
+        margin: 18px -75px 0 0;
+        font-size: 120px;
+        letter-spacing: 125px; }
+    .wrap .reckoning-wrap button {
+      margin: 80px 0 100px;
+      background: none;
+      border: none; }
+  .wrap .note-wrap {
+    text-align: center;
+    padding: 90px 0 100px;
+    background: #ffdf4f; }
+    .wrap .note-wrap .note-inner {
+      width: 1000px;
+      margin: 0 auto; }
+      .wrap .note-wrap .note-inner h3 {
+        padding: 90px 0 50px; }
+      .wrap .note-wrap .note-inner p {
+        padding-left: 5px;
+        text-align: left; }
+        .wrap .note-wrap .note-inner p.note2 {
+          padding: 85px 0 80px; }
+        .wrap .note-wrap .note-inner p.note4 {
+          padding: 83px 0 0; }
+

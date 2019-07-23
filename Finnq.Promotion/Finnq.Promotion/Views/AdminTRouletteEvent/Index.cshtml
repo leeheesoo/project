@@ -1,0 +1,116 @@
+﻿@using Finnq.Promotion.Domain.Abstract
+@using Finnq.Promotion.Domain.Entities.RouletteEvent
+@{
+    ViewBag.Title = "T-룰렛 이벤트 > 참여자";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row" style="padding-left:30px; padding-right:30px" id="t-roulette-entry">
+    <div class="panel panel-primary filterable">
+        <div class="panel-heading">
+            <h3 class="panel-title">Event 참여자</h3>
+            <div class="text-right">
+                <span>{{ data.TotalItemCount }} 건</span>
+            </div>
+        </div>
+        <table class="table table-bordered table-hover table-sortable" style="margin:10px;width:98.5%">
+            <thead>
+                <tr>
+                    <th style="vertical-align:middle;width:100px">번호</th>
+                    <th style="vertical-align:middle;width:100px">채널</th>
+                    <th style="vertical-align:middle;width:100px">IP</th>
+                    <th style="vertical-align:middle;width:100px">이름</th>
+                    <th style="vertical-align:middle;width:100px">휴대폰</th>
+                    <th style="vertical-align:middle;width:100px">개인정보등록일</th>
+                    <th style="vertical-align:middle;width:100px">경품</th>
+                    <th style="vertical-align:middle;width:100px">당첨일</th>
+                    <th style="vertical-align:middle;width:60px">비고</th>
+                </tr>
+                <tr class="filters">
+                    <th style="vertical-align:middle"></th>
+                    <th style="vertical-align:middle;width:100px">
+                        @Html.DropDownList("Channel", new List<SelectListItem>() {
+                                                                                new SelectListItem { Text = "Mobile", Value = ChannelType.Mobile.ToString("D") },
+                                                                                new SelectListItem { Text = "PC", Value = ChannelType.PC.ToString("D") }
+                                                                           }, "전체", new { v_model = "dataFilters.Channel", @class = "form-control" })
+                    </th>
+                    <th style="vertical-align:middle"></th>
+                    <th style="vertical-align:middle">@Html.TextBox("Name", "", new { @class = "form-control", placeholder = "이름", v_model = "dataFilters.Name" })</th>
+                    <th style="vertical-align:middle">@Html.TextBox("Mobile", "", new { @class = "form-control", placeholder = "휴대폰", v_model = "dataFilters.Mobile" })</th>
+                    <th style="vertical-align:middle">
+                        <input type="text" v-model="dataFilters.FromDate" class="form-control datepicker" id="fromDate" placeholder="시작일" />
+                        <input type="text" v-model="dataFilters.ToDate" class="form-control datepicker" id="toDate" placeholder="종료일" />
+                    </th>
+                    <th style="vertical-align:middle">
+                        @Html.DropDownList("PrizeType", new List<SelectListItem>() {
+                                                                               new SelectListItem { Text = "꽝", Value = TRouletteEventInstantLotteryPrizeType.Loser.ToString("D") },
+                                                                               new SelectListItem { Text = "5천원", Value = TRouletteEventInstantLotteryPrizeType.Cash5000.ToString("D") },
+                                                                               new SelectListItem { Text = "만원", Value = TRouletteEventInstantLotteryPrizeType.Cash10000.ToString("D") },
+                                                                               new SelectListItem { Text = "5만원", Value = TRouletteEventInstantLotteryPrizeType.Cash50000.ToString("D") },
+                                                                               new SelectListItem { Text = "10만원", Value = TRouletteEventInstantLotteryPrizeType.Cash100000.ToString("D") },
+                                                                               new SelectListItem { Text = "50만원", Value = TRouletteEventInstantLotteryPrizeType.Cash500000.ToString("D") },
+                                                                               new SelectListItem { Text = "100만원", Value = TRouletteEventInstantLotteryPrizeType.Cash1000000.ToString("D") }
+                                                                           }, "전체", new { v_model = "dataFilters.PrizeType", @class = "form-control" })
+                    </th>
+                    <th style="vertical-align:middle">
+                        <input type="text" v-model="dataFilters.UpdateFromDate" class="form-control datepicker" id="updateFromDate" placeholder="시작일" />
+                        <input type="text" v-model="dataFilters.UpdateToDate" class="form-control datepicker" id="updateToDate" placeholder="종료일" />
+                    </th>
+                    <th class="text-center" style="vertical-align:middle" nowrap>
+                        <button type="button" class="btn btn-primary btn-sm" v-on:click="goToPage(1)"><i class="fa fa-search"></i> 검색</button>
+                        <br>
+                        <button class="btn btn-success btn-sm" v-on:click="excelDownload()"><span class="glyphicon glyphicon-download-alt"></span> Download</button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-show="data.TotalItemCount > 0" v-for="(index, item) in data.Items">
+                    <td>{{ data.TotalItemCount - ((dataFilters.Page - 1) * (dataFilters.PageSize) + index) }}</td>
+                    <td>{{ item.ChannelName }}</td>
+                    <td>{{ item.IpAddress }}</td>
+                    <td>{{ item.Name }}</td>
+                    <td>{{ item.Mobile }}</td>
+                    <td>{{ item.CreateDate | getDate }}</td>
+                    <td>{{ item.PrizeName}}</td>
+                    <td>{{ item.UpdateDate | getDate}}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tbody v-show="data.TotalItemCount === 0">
+                <tr>
+                    <td style="color:red;text-align:center" colspan="9">데이터가 없습니다.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="text-align:center">
+            <div style="text-align:center">
+                <a href="#" v-show="!data.IsLastPage" v-on:click="goToPage(1)">처음</a>
+                <a href="#" v-show="data.HasPreviousPage" v-on:click="goToPage(data.pageNumber - 1)">이전</a>
+                <a href="#" v-for="page in pages" v-on:click="goToPage(page)" v-bind:style="{ fontWeight : ( page === data.PageNumber) ? 'bold' : 'normal' }"> {{ page }} </a>
+                <a href="#" v-show="data.HasNextPage" v-on:click="goToPage(data.PageNumber + 1)">다음</a>
+                <a href="#" v-show="!data.IsLastPage" v-on:click="goToPage(data.PageCount)">마지막</a>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    @Scripts.Render("~/bundles/vuejs")
+    <script src="~/Content/t-roulette/js/admin.js"></script>
+    <script>
+        $(function () {
+            tRouletteEntryModel.goToPage(1);
+        });
+        $('#fromDate').change(function () {
+            tRouletteEntryModel.dataFilters.FromDate = $('#fromDate').val();
+        });
+        $('#toDate').change(function () {
+            tRouletteEntryModel.dataFilters.ToDate = $('#toDate').val();
+        });
+        $('#updateFromDate').change(function () {
+            tRouletteEntryModel.dataFilters.UpdateFromDate = $('#updateFromDate').val();
+        });
+        $('#updateToDate').change(function () {
+            tRouletteEntryModel.dataFilters.UpdateToDate = $('#updateToDate').val();
+        });
+    </script>
+}

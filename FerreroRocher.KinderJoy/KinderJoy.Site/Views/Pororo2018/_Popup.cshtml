@@ -1,0 +1,157 @@
+﻿@model KinderJoy.Site.Models.Pororo2018.Pororo2018Model
+@*<div class="debuging">
+    <p>테스트용 버튼(이벤트 오픈시 숨김처리)</p>
+    <button tabindex="-1" onclick="openPop('mov-view'); return false;">팝업: 브검을 통해서 들어왔을때 영상팝업</button><br>
+    <button tabindex="-1" onclick="openPop('entry'); return false;">팝업: 당첨+개인정보입력</button><br>
+    <button tabindex="-1" onclick="openPop('fail'); return false;">팝업: 꽝</button><br>
+    <button tabindex="-1" onclick="openPop('post'); return false;">팝업: 우편번호 검색</button><br>
+    <button tabindex="-1" onclick="openPop('inapp'); return false;">팝업: 인앱</button><br>
+</div>*@
+
+<!-- 팝업 : dimmed -->
+<div id="dimmed"></div>
+
+
+<div id="loading" v-show="isLoading" style="display:none;">
+    <div class="loading-img"></div>
+</div>
+
+<!-- 팝업 : 영상시청 -->
+<div class="popup pop-mov-view" id="pop-mov-view" tabindex="0" role="dialog">
+    <div class="pop-top-img"><img src="~/Images/Pororo2018/pop/pop_top.png" alt="Alternate Text" /></div>
+    <div class="pop-header">
+        <h2><img src="~/Images/Pororo2018/pop/pop_title.png" alt="킨더조이 뽀로로 서프라이즈 런칭 즉석당첨 검색이벤트" /></h2>
+    </div>
+    <div class="pop-con">
+        <h3><img src="~/Images/Pororo2018/pop/mov_view_tl.png" alt="영상을 시청하면 즉석당첨 결과가 공개됩니다!"></h3>
+        <div class="mov-box">
+            <div id="popPlayer"></div>
+            <div class="mov-cover"></div>
+        </div>
+        <div class="btn-right">
+            <button type="button" v-on:click="createInstantLottery()"><img src="~/Images/Pororo2018/pop/btn_skip.png" id="btn-skip" alt="SKIP"></button>
+        </div>
+    </div>
+    <button type="button" class="btn-close" onclick="closePop('mov-view'); return false;"><span>팝업 닫기</span></button>
+</div>
+
+<!-- 팝업 : 당첨+ 개인정보입력 -->
+<div class="popup pop-entry" id="pop-entry" tabindex="0" role="dialog">
+    <div class="pop-top-img"><img src="~/Images/Pororo2018/pop/pop_top.png" alt="Alternate Text" /></div>
+    <div class="pop-header">
+        <h2><img src="~/Images/Pororo2018/pop/pop_title.png" alt="킨더조이 뽀로로 서프라이즈 런칭 즉석당첨 검색이벤트" /></h2>
+    </div>
+    <div class="pop-con">
+        <div class="result-view">
+            <p><img src="~/Images/Pororo2018/pop/wpqowreorrto.png" v-bind:src="'/Images/Pororo2018/pop/'+instantPrize+'.png'" alt="축하합니다!"></p>
+        </div>
+        <h3 id="pororo2018-address-position"><img src="~/Images/KittyJusticeLeague/pop/form/form-txt.png" alt="경품 수령을 위한 개인정보를 입력해주세요."></h3>
+        <div class="form-box">
+            @using (Ajax.BeginRouteForm("Pororo2018UpdateWinner", new { httpRoute=true},new AjaxOptions { HttpMethod="POST",
+                OnBegin = "pororo2018Model.beginEntry",
+                OnComplete = "pororo2018Model.completeEntry",
+                OnSuccess = "pororo2018Model.successEntry",
+                OnFailure = "pororo2018Model.failEntry"
+            }, new { id = "frmInstantLotteryEntry" })) {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(e => e.Id,new {v_model = "instantEntry.id" })
+                @Html.HiddenFor(e => e.PrizeType, new { v_model = "instantEntry.prizeType" })
+                <fieldset>
+                    <!-- 이름 -->
+                    <div class="form-group clearfix">
+                        <label for="Name" class="col-xs-3 control-label"><img src="~/Images/Pororo2018/pop/input_name.png" alt="이름"></label>
+                        <div class="col-xs-9 no-space">
+                            @Html.TextBoxFor(e => e.Name, new { @class = "form-control", maxlength = 10 })
+                        </div>
+                    </div>
+                    <!-- // 이름 -->
+                    <!-- 연락처 -->
+                    <div class="form-group clearfix">
+                        <label for="Mobile" class="col-xs-3 control-label"><img src="~/Images/Pororo2018/pop/input_phone.png" alt="연락처"></label>
+                        <div class="col-xs-9 no-space">
+                            @Html.TextBoxFor(e => e.Mobile,new{ type="tel", @class="form-control",maxlength=11, placeholder= " - 기호 없이 입력해주세요" })
+                        </div>
+                    </div>
+                    <!-- // 연락처 -->
+                    <!-- 개인정보 취급방침 동의 -->
+                    <div class="form-group privacy-policy clearfix">
+                        <div class="row">
+                            <div class="col-xs-9 col-xs-push-3" style="padding-left:10px;">
+                                <label for="Agree">
+                                    @Html.CheckBoxFor(e => e.Agree)
+                                    <strong class="big-label"><img src="~/Images/Pororo2018/pop/input_privacy.png" alt="개인정보 취급방침 동의"></strong>
+                                </label>
+                                <a href="@Url.Action("PrivacyPolicy")" target="_blank" class="btn-agree"><img src="~/Images/Pororo2018/pop/btn_privacy.png" alt="자세히보기"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // 개인정보 취급방침 동의 -->
+                    <!-- 주소 검색 -->
+                    <div class="form-group clearfix" v-show="instantEntry.prizeType != 1">
+                        <label for="address" class="col-xs-3 control-label"><img src="~/Images/Pororo2018/pop/input_address.png" alt="주소"></label>
+                        <div class="col-xs-9 no-space">
+                            <div class="row">
+                                <div class="col-xs-7" style="width:60%; padding-right:5px;">
+                                    @Html.TextBoxFor(e => e.ZipCode,new { @class="form-control", @readonly="readonly",placeholder="우편번호"})
+                                </div>
+                                <div class="col-xs-5" style="width:40%;">
+                                    <button type="button" class="btn-post" style="font-size:100%; margin-left:-5px;" v-on:click="openPostCode()"><img src="~/Images/Pororo2018/pop/btn_post.png" alt="우편번호"></button>
+                                </div>
+                                <div class="col-xs-12" style="margin-top:15px">
+                                    @Html.TextBoxFor(e => e.Address,new { @class="form-control", @readonly ="readonly",placeholder="주소를 검색해주세요."})
+                                </div>
+                                <div class="col-xs-12" style="margin-top:15px">
+                                    @Html.TextBoxFor(e => e.AddressDetail,new { @class="form-control", maxlength=200 , placeholder = "나머지 주소를 입력해주세요." })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // 주소 검색 -->
+                    <div class="btns">
+                        <button id="btn-entry-complete" type="submit"><img src="~/Images/Pororo2018/pop/btn_event_entry.png" alt="응모 완료"></button>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+    <button type="button" class="btn-close" onclick="closePop('entry'); return false;"><span>팝업 닫기</span></button>
+</div>
+
+<!-- 팝업 : 꽝 -->
+<div class="popup pop-fail" id="pop-fail" tabindex="0" role="dialog">
+    <div class="pop-top-img"><img src="~/Images/Pororo2018/pop/pop_top.png" alt="Alternate Text" /></div>
+    <div class="pop-header">
+        <h2><img src="~/Images/Pororo2018/pop/pop_title.png" alt="킨더조이 뽀로로 서프라이즈 런칭 즉석당첨 검색이벤트" /></h2>
+    </div>
+    <div class="pop-con">
+        <h3><img src="~/Images/Pororo2018/pop/result_lose_txt.png" alt="아쉽게도 꽝! 다시 킨더조이 크리스마스를 검색하여 즉석당첨에 재도전 해보세요!"></h3>
+        <div class="btns">
+            <a href="@Url.Action("InstantLotteryLanding", "Pororo2018")" target="_blank"><img src="~/Images/Pororo2018/pop/btn_retry.png" id="btn-retry" alt="재도전 하기"></a>
+        </div>
+    </div>
+    <button type="button" class="btn-close" onclick="closePop('fail'); return false;"><span>팝업 닫기</span></button>
+</div>
+
+
+<!-- 팝업 : 우편번호 찾기 -->
+<div class="popup pop-post" id="pop-post" tabindex="0" role="dialog">
+    <div class="pop-top-img"><img src="~/Images/Pororo2018/pop/pop_top.png" alt="Alternate Text" /></div>
+    <div class="pop-header">
+        <h2><img src="~/Images/Pororo2018/pop/pop_title.png" alt="킨더조이 뽀로로 서프라이즈 런칭 즉석당첨 검색이벤트" /></h2>
+    </div>
+    <div class="pop-con">
+        <h3><span>우편번호 찾기</span></h3>
+        <div id="searchPostCode"></div>
+    </div>
+    <button type="button" class="btn-close" onclick="closePop('post'); openPop('entry'); return false;"><span>팝업 닫기</span></button>
+</div>
+
+
+<!-- 팝업 : 인앱 -->
+<div class="popup pop-inapp" id="pop-inapp">
+    <div class="inapp-img">
+        <img src="~/Images/Pororo2018/pop/inapp_img.png" alt="다른브라우저에서 참여해주세요"/>
+    </div>
+    <button type="button" class="btn-close" onclick="closePop('inapp'); return false;"><span>팝업 닫기</span></button>
+</div>
+

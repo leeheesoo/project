@@ -1,0 +1,432 @@
+﻿
+@{
+	ViewBag.Title = "상상하는즐거움";
+	ViewBag.GaTitle = "상상하는즐거움";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/css/toy_motion_june.css" />
+<div class="content-image">
+	<div class="content-image-inner" id="wrap">
+		<div class="top_sec">
+			<div class="tit_area">
+                <h3><img src="~/Images/toy/main/tit_toy.png" alt="킨더조이의 상상하는 즐거움" /></h3>
+				<p><img src="~/Images/toy/main/txt01_toy.png" alt="킨더조이는 아이들의 창의성과 동심을 자극하는 상상 이상의 즐거움을 선사합니다. 지금, 아이와 함께 킨더조이 속 장난감을 확인해보세요!" /></p>
+			</div>
+			<!-- 앉은 라노 -->
+			<div class="pos_loc sit_rano">
+				<img src="Images/toy/main/sit_rano.png" alt="앉아있는 라노" />
+			</div>
+			<!-- 토끼 라노 -->
+			<div class="pos_loc rabbit_rano">
+				<img src="Images/toy/main/rano_rabbit.png" alt="토끼 라노" />
+			</div>
+			<!-- 롤러코스터 -->
+			<div class="train_rail">
+				<div class="train_area">
+					<div class="train1"><img src="~/images/toy/motion_img/train.png" alt="" /></div>
+
+					<div class="train2"><img src="~/images/toy/motion_img/train.png" alt="" /></div>
+
+					<div class="train3"><img src="~/images/toy/motion_img/train.png" alt="" /></div>
+
+					<div class="train4"><img src="~/images/toy/motion_img/train.png" alt="" /></div>
+
+					<div class="train5"><img src="~/images/toy/motion_img/train.png" alt="" /></div>
+				</div>
+			</div>
+			<!-- 자이로드롭 -->
+			<div class="gyro_area">
+				<div class="gyro_bg">
+					<div class="gyro_img"><img src="~/images/toy/motion_img/gyro_img.png" alt="" /></div>
+				</div>
+			</div>
+			<!-- 관람차 -->
+			<div class="ferris_area">
+				<div class="ferris_bg">
+					<div class="ferris_wheel_area"><img src="~/images/toy/motion_img/ferris_wheel.png" alt="" /></div>
+					<div class="ferris_kinder_area">
+						<div class="ferris_kinder1"><img src="~/images/toy/motion_img/ferris_kinder.png" alt="" /></div>
+						<div class="ferris_kinder2"><img src="~/images/toy/motion_img/ferris_kinder.png" alt="" /></div>
+						<div class="ferris_kinder3"><img src="~/images/toy/motion_img/ferris_kinder.png" alt="" /></div>
+						<div class="ferris_kinder4"><img src="~/images/toy/motion_img/ferris_kinder.png" alt="" /></div>
+						<div class="ferris_kinder5"><img src="~/images/toy/motion_img/ferris_kinder.png" alt="" /></div>
+						<div class="ferris_kinder6"><img src="~/images/toy/motion_img/ferris_kinder.png" alt="" /></div>
+						<div class="ferris_kinder7"><img src="~/images/toy/motion_img/ferris_kinder.png" alt="" /></div>
+						<div class="ferris_kinder8"><img src="~/images/toy/motion_img/ferris_kinder.png" alt="" /></div>
+						<div class="ferris_kinder9"><img src="~/images/toy/motion_img/ferris_kinder.png" alt="" /></div>
+					</div>
+				</div>
+			</div>
+
+		</div><!--//top_sec -->
+
+		<div class="main_sec">
+
+			<!-- 새로운 장난감 -->
+			<div class="pos_loc new_toy">
+				<!-- 쿵푸캐릭 -->
+				<div class="kungfu_area">
+					<div class="kungfu_tiger"><img src="~/images/toy/motion_img/kungfu_tiger0.png" alt="" /></div>
+					<div class="kungfu_panda"><img src="~/images/toy/motion_img/kungfu_panda.png" alt="" /></div>
+				</div>
+                <input type="button" value="new" onclick="openPop('pop_use_new')" />
+			</div>
+
+			<!-- 남아용 장난감 -->
+			<div class="pos_loc boy_toy">
+				<!-- 자동차풍선 -->
+				<div class="car_balloon">
+					<div class="car_balloon_green"><img src="~/images/toy/motion_img/car_balloon_green.png" alt="" /></div>
+					<div class="car_balloon_blue"><img src="~/images/toy/motion_img/car_balloon_blue.png" alt="" /></div>
+					<div class="car_balloon_img"><img src="~/images/toy/motion_img/car_balloon.png" alt="" /></div>
+                    <input type="button" value="son" onclick="openPop('pop_use_son')" />
+				</div>
+			</div>
+
+			<!-- 남여 공용 장난감 -->
+			<div class="pos_loc common_toy">
+				<!-- 테니스공 -->
+				<div class="tennis_area">
+					<div class="tennis_hand_area">
+						<div class="tennis_hand"><img src="~/images/toy/motion_img/tennis_hand.png" alt="" /></div>
+					</div>
+					<div class="tennis_kinder"><img src="~/images/toy/motion_img/tennis_kinder_n.png" alt="" /></div>
+					<div class="tennis_ball"><img src="~/images/toy/motion_img/tennis_ball.png" alt="" /></div>
+                    <input type="button" value="tog" onclick="openPop('pop_use_tog')" />
+				</div>
+				<!-- 왼쪽 자동차 레일 -->
+				<div class="monorail_area">
+					<div class="mono_train"><img src="~/images/toy/motion_img/monorail_train.png" alt="" /></div>
+				</div>
+			</div>
+
+			<!-- 여아용 장난감 -->
+			<div class="pos_loc girl_toy">
+				<div class="girl_balloon">
+					<div class="girl_balloon_bg">
+						<div class="girl_balloon_img"><img src="~/images/toy/motion_img/girl_balloon_img.png" alt="" /></div>
+                        <input type="button" value="da" onclick="openPop('pop_use_da')" />
+					</div>
+                    
+				</div>
+			</div>
+
+			<!-- 킨더조이CF  -->
+			<div class="pos_loc mov_tvcf">
+				<a href="javascript:openMov()">킨더조이CF</a>
+			</div>
+
+			<!-- 장난감영상  -->
+			<div class="pos_loc mov_toys">
+				<a href="javascript:openMov()">장난감영상</a>
+			</div>
+
+			<!-- 왼쪽 분수 -->
+			<div class="pos_loc fountain">
+			</div>
+
+			<!-- 플로팅 네비게이션 -->
+			<div class="floating_menu" id="stickNav">
+				<span><img src="~/Images/toy/main/floating_top.png" alt="킨더조이 메뉴 바로가기" /></span>
+				<ul>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+				</ul>
+			</div>
+		</div><!-- //main_sec -->
+		<!-- 동영상 팝업
+		<div class="popup-mov">
+			<div class="dim"></div>
+
+			<div class="popup-mov_wrap">
+				<button class="event-pop_close js-eventClose" onclick="closeMov()"><span class="skip">닫기</span></button>
+				<div class="popup-mov_body">
+					<div class="mov_cont"><iframe src="https://www.youtube.com/embed/gKCBtpYnpYk?rel=0&amp;showinfo=0&amp;wmode=opaque&amp;autoplay=1" width="900" height="506" wmode="opaque" frameborder="0" allowfullscreen="1"></iframe></div>
+				</div>
+			</div>
+		</div>-->
+	</div><!-- //content-image-inner -->
+	<!-- ***** 장난감 팝업 시작 **** -->
+	<!-- 남아용 장난감 팝업 -->
+    <div id="png_bg"></div>
+	<div class="popup_toys" id="pop_use_son" style="display:none">
+		<a href="javascript:void(0);" onclick="closePop('pop_use_son')" class="btn_close"><img src="~/Images/toy/bn/close_poup_toys.png" alt="팝업닫기" /></a>
+		<div class="wrap_toys items_boys">
+			<h4>남아용 장난감</h4>
+			<div class="list_sec">
+				<!-- 왼쪽 썸네일 -->
+				<div class="thumb">
+					<ul id="slider01">
+						<li><a href="javascript:itemShow('1','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_1.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('2','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_2.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('3','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_3.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('7','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_7.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('8','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_8.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('9','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_9.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('13','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_13.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('14','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_14.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('15','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_15.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('19','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_19.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('20','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_20.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('21','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_21.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('25','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_25.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('26','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_26.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('27','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_27.png" alt="" /></a></li>
+					</ul>
+					<a href="#none" class="btn_prev" id="btn01"><img src="Images/toy/bn/btn_prev.png" alt="Alternate Text" /></a> <a href="#none" class="btn_next" id="btn02"><img src="Images/toy/bn/btn_next.png" alt="Alternate Text" /></a>
+				</div>
+				<!-- 아이템 메인 -->
+				<div class="show_box">
+					<img src="~/Images/toy/bn/items/boys/item_0.png" alt="" />
+				</div>
+				<!-- 오른쪽 썸네일 -->
+				<div class="thumb thumb_right">
+					<ul id="slider02">
+						<li><a href="javascript:itemShow('4','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_4.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('5','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_5.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('6','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_6.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('10','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_10.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('11','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_11.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('12','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_12.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('16','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_16.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('17','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_17.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('18','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_18.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('22','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_22.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('23','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_23.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('24','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_24.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('28','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_28.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('29','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_29.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('30','boys');"><img src="~/Images/toy/bn/thumb/boys/thum_30.png" alt="" /></a></li>
+					</ul>
+					<a href="#none" class="btn_prev" id="btn03"><img src="Images/toy/bn/btn_prev.png" alt="Alternate Text" /></a> <a href="#none" class="btn_next" id="btn04"><img src="Images/toy/bn/btn_next.png" alt="Alternate Text" /></a>
+				</div>
+			</div><!-- //list_sec -->
+			<div class="sns_sec">
+				<p><img src="Images/toy/bn/txt01_sns.png" alt="친구들에게 킨더조이 속 숨겨진 장난감을 소개해보세요!" /></p>
+				<ul>
+					<li><a href=""><img src="~/Images/toy/bn/btn_ks.png" alt="카카오스토리" /></a></li>
+					<li><a href=""><img src="~/Images/toy/bn/btn_fs.png" alt="페이스북" /></a></li>
+					<li><a href=""><img src="~/Images/toy/bn/btn_tw.png" alt="트위터" /></a></li>
+				</ul>
+			</div>
+		</div>
+	</div><!-- //남아용 장난감 팝업 끝-->
+	<!-- 여아용 장난감 팝업 -->
+	<div class="popup_toys" id="pop_use_da" style="display:none">
+		<a href="javascript:void(0);" onclick="closePop('pop_use_da')" class="btn_close"><img src="~/Images/toy/bn/close_poup_toys.png" alt="팝업닫기" /></a>
+		<div class="wrap_toys items_girls">
+			<h4>여아용 장난감</h4>
+			<div class="list_sec">
+				<!-- 왼쪽 썸네일 -->
+				<div class="thumb thumb_left">
+					<ul id="slider03">
+						<li><a href="javascript:itemShow('1','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_1.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('2','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_2.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('3','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_3.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('7','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_7.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('8','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_8.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('9','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_9.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('13','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_13.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('14','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_14.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('15','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_15.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('19','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_19.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('20','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_20.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('21','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_21.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('25','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_25.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('26','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_26.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('27','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_27.png" alt="" /></a></li>
+					</ul>
+					<a href="#none" class="btn_prev" id="btn3_prev"><img src="Images/toy/bn/btn_prev2.png" alt="Alternate Text" /></a> <a href="#none" class="btn_next" id="btn3_next"><img src="Images/toy/bn/btn_next2.png" alt="Alternate Text" /></a>
+				</div>
+				<!-- 아이템 메인 -->
+				<div class="show_box">
+					<img src="~/Images/toy/bn/items/girls/item_0.png" alt="" />
+				</div>
+				<!-- 오른쪽 썸네일 -->
+				<div class="thumb thumb_right">
+					<ul id="slider04">
+						<li><a href="javascript:itemShow('4','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_4.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('5','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_5.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('6','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_6.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('10','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_10.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('11','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_11.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('12','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_12.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('16','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_16.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('17','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_17.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('18','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_18.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('22','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_22.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('23','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_23.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('24','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_24.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('28','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_28.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('29','girls');"><img src="~/Images/toy/bn/thumb/girls/thum_29.png" alt="" /></a></li>
+						
+					</ul>
+					<a href="#none" class="btn_prev" id="btn4_prev"><img src="Images/toy/bn/btn_prev2.png" alt="Alternate Text" /></a> <a href="#none" class="btn_next" id="btn4_next"><img src="Images/toy/bn/btn_next2.png" alt="Alternate Text" /></a>
+				</div>
+			</div><!-- //list_sec -->
+			<div class="sns_sec">
+				<p><img src="Images/toy/bn/txt02_sns.png" alt="친구들에게 킨더조이 속 숨겨진 장난감을 소개해보세요!" /></p>
+				<ul>
+					<li><a href=""><img src="~/Images/toy/bn/btn_ks.png" alt="카카오스토리" /></a></li>
+					<li><a href=""><img src="~/Images/toy/bn/btn_fs.png" alt="페이스북" /></a></li>
+					<li><a href=""><img src="~/Images/toy/bn/btn_tw.png" alt="트위터" /></a></li>
+				</ul>
+			</div>
+		</div>
+	</div><!-- //여아용 장난감 팝업 끝-->
+	<!-- 남녀공용 장난감 팝업 -->
+	<div class="popup_toys" id="pop_use_tog" style="display:none">
+		<a href="javascript:void(0);" onclick="closePop('pop_use_tog')" class="btn_close"><img src="~/Images/toy/bn/close_poup_toys.png" alt="팝업닫기" /></a>
+		<div class="wrap_toys items_comm">
+			<h4>남녀공용 장난감</h4>
+			<div class="list_sec">
+				<!-- 왼쪽 썸네일 -->
+				<div class="thumb thumb_left">
+					<ul id="slider05">
+						<li><a href="javascript:itemShow('1','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_1.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('2','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_2.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('3','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_3.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('7','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_7.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('8','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_8.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('9','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_9.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('13','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_13.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('14','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_14.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('15','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_15.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('19','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_19.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('20','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_20.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('21','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_21.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('25','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_25.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('26','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_26.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('27','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_27.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('31','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_31.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('32','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_32.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('33','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_33.png" alt="" /></a></li>
+
+					</ul>
+					<a href="#none" class="btn_prev" id="btn5_prev"><img src="Images/toy/bn/btn_prev3.png" alt="Alternate Text" /></a> <a href="#none" class="btn_next" id="btn5_next"><img src="Images/toy/bn/btn_next3.png" alt="Alternate Text" /></a>
+				</div>
+				<!-- 아이템 메인 -->
+				<div class="show_box">
+					<img src="~/Images/toy/bn/items/comm/item_0.png" alt="" />
+				</div>
+				<!-- 오른쪽 썸네일 -->
+				<div class="thumb thumb_right">
+					<ul id="slider06">
+						<li><a href="javascript:itemShow('4','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_4.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('5','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_5.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('6','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_6.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('10','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_10.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('11','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_11.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('12','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_12.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('16','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_16.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('17','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_17.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('18','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_18.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('22','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_22.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('23','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_23.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('24','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_24.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('28','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_28.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('29','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_29.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('30','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_30.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('34','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_34.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('35','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_35.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('36','comm');"><img src="~/Images/toy/bn/thumb/comm/thum_36.png" alt="" /></a></li>
+					</ul>
+					<a href="#none" class="btn_prev" id="btn6_prev"><img src="Images/toy/bn/btn_prev3.png" alt="Alternate Text" /></a> <a href="#none" class="btn_next" id="btn6_next"><img src="Images/toy/bn/btn_next3.png" alt="Alternate Text" /></a>
+				</div>
+			</div><!-- //list_sec -->
+			<div class="sns_sec">
+				<p><img src="Images/toy/bn/txt03_sns.png" alt="친구들에게 킨더조이 속 숨겨진 장난감을 소개해보세요!" /></p>
+				<ul>
+					<li><a href=""><img src="~/Images/toy/bn/btn_ks.png" alt="카카오스토리" /></a></li>
+					<li><a href=""><img src="~/Images/toy/bn/btn_fs.png" alt="페이스북" /></a></li>
+					<li><a href=""><img src="~/Images/toy/bn/btn_tw.png" alt="트위터" /></a></li>
+				</ul>
+			</div>
+		</div>
+	</div><!-- //남녀공용 장난감 팝업 끝-->
+	<!-- 새로운 장난감 팝업 -->
+	<div class="popup_toys" id="pop_use_new" style="display:none">
+		<a href="javascript:void(0);" onclick="closePop('pop_use_new')" class="btn_close"><img src="~/Images/toy/bn/close_poup_toys.png" alt="팝업닫기" /></a>
+		<div class="wrap_toys items_new">
+			<h4>새로운 장난감</h4>
+			<div class="list_sec">
+				<!-- 왼쪽 썸네일 -->
+				<div class="thumb thumb_left">
+					<ul id="slider07">
+						<li><a href="javascript:itemShow('1','new');"><img src="~/Images/toy/bn/thumb/new/thum_1.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('2','new');"><img src="~/Images/toy/bn/thumb/new/thum_2.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('3','new');"><img src="~/Images/toy/bn/thumb/new/thum_3.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('7','new');"><img src="~/Images/toy/bn/thumb/new/thum_7.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('8','new');"><img src="~/Images/toy/bn/thumb/new/thum_8.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('9','new');"><img src="~/Images/toy/bn/thumb/new/thum_9.png" alt="" /></a></li>
+					</ul>
+					<a href="#none" class="btn_prev" id="btn7_prev"><img src="Images/toy/bn/btn_prev4.png" alt="Alternate Text" /></a> <a href="#none" class="btn_next" id="btn7_next"><img src="Images/toy/bn/btn_next4.png" alt="Alternate Text" /></a>
+				</div>
+				<!-- 아이템 메인 -->
+				<div class="show_box">
+					<img src="~/Images/toy/bn/items/new/item_0.png" alt="" />
+				</div>
+				<!-- 오른쪽 썸네일 -->
+				<div class="thumb thumb_right">
+					<ul id="slider08">
+						<li><a href="javascript:itemShow('4','new');"><img src="~/Images/toy/bn/thumb/new/thum_4.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('5','new');"><img src="~/Images/toy/bn/thumb/new/thum_5.png" alt="" /></a></li>
+						<li><a href="javascript:itemShow('6','new');"><img src="~/Images/toy/bn/thumb/new/thum_6.png" alt="" /></a></li>
+					</ul>
+					<a href="#none" class="btn_prev" id="btn8_prev"><img src="Images/toy/bn/btn_prev4.png" alt="Alternate Text" /></a> <a href="#none" class="btn_next" id="btn8_next"><img src="Images/toy/bn/btn_next4.png" alt="Alternate Text" /></a>
+				</div>
+			</div><!-- //list_sec -->
+			<div class="sns_sec">
+				<p><img src="Images/toy/bn/txt04_sns.png" alt="친구들에게 킨더조이 속 숨겨진 장난감을 소개해보세요!" /></p>
+				<ul>
+					<li><a href=""><img src="~/Images/toy/bn/btn_ks.png" alt="카카오스토리" /></a></li>
+					<li><a href=""><img src="~/Images/toy/bn/btn_fs.png" alt="페이스북" /></a></li>
+					<li><a href=""><img src="~/Images/toy/bn/btn_tw.png" alt="트위터" /></a></li>
+				</ul>
+			</div>
+		</div>
+	</div><!-- //새로운 장난감 팝업 끝-->
+</div>
+
+<!-- // content -->
+@section scripts{
+<script type="text/javascript" src="~/Content/js/jquery-ui-1.11.4.min.js"></script>
+<script type="text/javascript" src="~/Content/js/jQueryRotate.js"></script>
+<script type="text/javascript" src="~/Content/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="~/Content/js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="~/Content/js/jquery.scrollTo.min.js"></script>
+<script type="text/javascript" src="~/Content/js/joy_motion.js"></script>
+<script type="text/javascript" src="~/Content/js/page.motion.js"></script>
+<script type="text/javascript" src="~/Content/js/page.motion2.js"></script>
+<script>
+    function openPop(param) {
+        $("html").css("overflow-y", "auto");
+
+        var wrapH = $('#wrap').height();
+        var wTop = $(window).scrollTop();
+
+        $('#png_bg').css('height', wrapH);
+        $('#png_bg').show();
+        $('#' + param).show();
+        $('html, body').animate({ scrollTop: wTop });
+        $('.popup_toys').animate({ 'top': wTop });
+
+        $('.popup_toys').css('top', wTop);
+        $('.otherBrowser').css('top', 0);
+
+        if (param == "otherBrowser") {
+            $('html, body').animate({ scrollTop: '0' });
+        }
+    }
+    function closePop(param) {
+        $('html,body').animate({ scrollTop: 0 });
+        $("html").css("overflow-y", "hidden");
+        $('#' + param).hide();
+        $('#png_bg').hide();
+    }
+</script>
+}
+
+
+

@@ -1,0 +1,328 @@
+﻿@model INGLife.Event.Models.TumblerEventModels.TumblerEventModel
+@using INGLife.Event.Domain.Entities.TumblerEntry
+
+<!-- test -->
+@*<div class="test-btn" style="z-index:1;position:fixed;top:0;left:0;background:#f7ff9b">
+	<p>테스트용 버튼(이벤트 오픈시 숨김처리)</p>
+	<button style="background:#2e59b2;color:#fff;" v-on:click="openEventPop('tumbler')">개인정보 </button>
+    <button style="background:#2e59b2;color:#fff;" v-on:click="openEventPop('secret')">개인정보 시크릿박스 </button>
+
+
+	<button style="background:#2e59b2;color:#fff;" onclick="openPop('post'); return false;"> /우편번호/ </button>
+</div>*@
+
+<!--// test -->
+<!-- 팝업 : dimmed -->
+<div id="dimmed" style="display:none;"></div>
+
+<!-- 팝업 : 마케팅동의 (관심분야 X : 텀블러받기 / 관심분야 O : 시크릿박스받기) -->
+<div id="pop-personal" class="pop-personal pop-personal">
+	<div class="header">
+		<h2 class="pop-title"><img src="~/Content/Images/TumblerEvent/form/personal-tit.png" alt="이벤트참여하기" /></h2>
+		<button onclick="closePop('personal'); return false;"><img src="~/Content/Images/TumblerEvent/form/btn-close.png" alt="닫기" /></button>
+	</div>
+
+	<div class="inner-pop">
+		<div class="btn-phoneconfirm">
+            <form id="KMCISForm" method="post" action="#">
+                <input type="hidden" name="tr_cert" value="@Model.TumblerAgreeKMCModel.Enc_Tr_Cert">
+                <input type="hidden" name="tr_url" value="@Model.TumblerAgreeKMCModel.Tr_Url">
+                <input type="hidden" name="tr_add" value="@Model.TumblerAgreeKMCModel.Tr_Add">
+                <input type="hidden" name="plusInfo" value="@Model.TumblerAgreeKMCModel.PlusInfo">
+                <button type="submit" id="kmc-btn" class="ga-event" data-action="휴대폰 인증" onclick="javascript:openKMCISWindow();">
+                    <img src="~/Content/Images/TumblerEvent/form/btn-phoneconfirm.png" alt="휴대폰인증" />
+                </button>
+            </form>
+		</div>
+        @using (Ajax.BeginForm("CreateTumblerMarketingAgreeEntry", new { }, new AjaxOptions
+        {
+            HttpMethod = "POST",
+            OnBegin = "secretBoxEventModel.beginEntry",
+            OnComplete = "secretBoxEventModel.completeEntry",
+            OnSuccess = "secretBoxEventModel.saveEntry",
+            OnFailure = "secretBoxEventModel.failureEntry"
+        }, new { id = "frmCreateSecretBoxEntry" }))
+        {
+            @Html.AntiForgeryToken()
+		<legend class="blind">개인정보 입력</legend>
+        @Html.HiddenFor(x => x.TumblerCreateModel.EventType, new { id ="eventType"})
+        <input type="hidden" id="eventType" name="eventType" value=""/>
+		<!--info-area-->
+		<div class="info-area">
+			<div class="name-line">
+				@*<input type="text" value="" placeholder="이름" readonly="readonly" />*@
+                @Html.TextBoxFor(x => x.TumblerCreateModel.Name, new { placeholder = "이름", @readonly = "readonly" })
+				<div class="gender">
+					<label for="male" class="info-male">
+						@*<input type="radio" id="male" value="남" name="gender" />*@
+                        @Html.RadioButtonFor(x => x.TumblerCreateModel.Gender, "남", new { id = "male" })
+						<span class="btn__event btn__ir-radio"></span>
+					</label>
+					<label for="female" class="info-female">
+						@*<input type="radio" id="female" value="여" name="gender" />*@
+                        @Html.RadioButtonFor(x => x.TumblerCreateModel.Gender, "여", new { id = "female" })
+						<span class="btn__event btn__ir-radio"></span>
+					</label>
+				</div>
+			</div>
+			<div class="phone">
+				@*<input type="text" value="" placeholder="휴대폰번호(-없이 입력)" readonly="readonly" />*@
+                @Html.TextBoxFor(x => x.TumblerCreateModel.Mobile, new { placeholder = "휴대폰번호(-없이 입력)", @readonly = "readonly" })
+			</div>
+			<div class="birth">
+				@*<input type="text" value="" placeholder="생년월일(8자리)" readonly="readonly" />*@
+                @Html.TextBoxFor(x => x.TumblerCreateModel.BirthDay, new { placeholder = "생년월일(8자리)", @readonly = "readonly" })
+			</div>
+			<div class="transparent-bg" id="kmcArea" href="javascript:close()"></div>
+		</div>
+		<!--//info-area-->
+		<p class="agree-notice"><img src="~/Content/Images/TumblerEvent/form/notice-agree.png" alt="본 동의는 선택사항입니다." /></p>
+
+		<!--개인(신용)정보 수집 이용-->
+		<div class="agree-text">
+			<div class="policy-area">
+				<div class="policy-txt">
+					<img src="/Content/Images/TumblerEvent/form/agree-inner-marketing01.png" alt="개인정보의 수집 이용에 관한 사항">
+				</div>
+			</div>
+
+			<h3 class="select-title"><img src="~/Content/Images/TumblerEvent/form/agree-tit1.png" alt="개인(신용)정보 수집 이용" /></h3>
+
+			<label for="MarketingAgree01" class="agree">
+				@*<input type="radio" value="agree01" id="agree01" name="agree01" />*@
+                @Html.RadioButtonFor(x => x.TumblerCreateModel.Agree, 1, new { id = "MarketingAgree01", @class = "agree01" })
+				<span class="em"></span>
+				<img src="~/Content/Images/TumblerEvent/form/agree.png" alt="동의" />
+				<span class="check-dimm"></span>
+			</label>
+
+			<label for="MarketingDisagree01" class="label-agree disagree">
+				@*<input type="radio" value="disagree01" id="disagree01" name="agree01" />*@
+                @Html.RadioButtonFor(x => x.TumblerCreateModel.Agree, 2, new { id = "MarketingDisagree01", @class = "disagree01" })
+				<span></span>
+				<img src="~/Content/Images/TumblerEvent/form/disagree.png" alt="동의하지않음" />
+				<span class="check-dimm"></span>
+			</label>
+		</div>
+		<!--//개인(신용)정보 수집 이용-->
+		<!--개인(신용)정보 제공-->
+		<div class="agree-text">
+			<div class="policy-area">
+				<div class="policy-txt">
+					<img src="/Content/Images/TumblerEvent/form/agree-inner-marketing02.png" alt="개인정보의 수집 이용에 관한 사항">
+				</div>
+			</div>
+
+			<h3 class="select-title"><img src="~/Content/Images/TumblerEvent/form/agree-tit2.png" alt="개인정보의 수집 이용동의" /></h3>
+
+			<label for="MarketingAgree02" class="agree">
+				@*<input type="radio" value="agree02" id="agree02" name="agree02" />*@
+                @Html.RadioButtonFor(x => x.TumblerCreateModel.Agree2, 1, new { id = "MarketingAgree02", @class = "agree02" })
+				<span class="em"></span>
+				<img src="~/Content/Images/TumblerEvent/form/agree.png" alt="동의" />
+				<span class="check-dimm"></span>
+			</label>
+
+			<label for="MarketingDisagree02" class="label-agree disagree">
+				@*<input type="radio" value="disagree02" id="disagree02" name="agree02" />*@
+                @Html.RadioButtonFor(x => x.TumblerCreateModel.Agree2, 2, new { id = "MarketingDisagree02", @class = "disagree02" })
+				<span></span>
+				<img src="~/Content/Images/TumblerEvent/form/disagree.png" alt="동의하지않음" />
+				<span class="check-dimm"></span>
+			</label>
+		</div>
+		<!--//개인정보 제공-->
+		<!--보유 이용기간-->
+		<div class="retention-period">
+			<h3 class="select-title">
+				<img src="~/Content/Images/TumblerEvent/form/retention-tit.png" alt="보유 이용기간" />
+			</h3>
+			<label for="year5">
+				@*<input type="radio" value="year5" id="year5" name="RetentionPeriodType" />*@
+                @Html.RadioButtonFor(x => x.TumblerCreateModel.RetentionPeriodType, 5, new { id = "year5" })
+				<span class="radio em"></span>
+				<img src="~/Content/Images/TumblerEvent/form/5year.png" alt="5년" />
+				<span class="check-dimm"></span>
+			</label>
+			<label for="year4">
+				@*<input type="radio" value="year4" id="year4" name="RetentionPeriodType" />*@
+                @Html.RadioButtonFor(x => x.TumblerCreateModel.RetentionPeriodType, 4, new { id = "year4" })
+				<span class="radio"></span>
+				<img src="~/Content/Images/TumblerEvent/form/4year.png" alt="4년" />
+			</label>
+			<label for="year3">
+				@*<input type="radio" value="year3" id="year3" name="RetentionPeriodType" />*@
+                @Html.RadioButtonFor(x => x.TumblerCreateModel.RetentionPeriodType, 3, new { id = "year3" })
+				<span class="radio"></span>
+				<img src="~/Content/Images/TumblerEvent/form/3year.png" alt="3년" />
+			</label>
+			<label for="year2">
+				@*<input type="radio" value="year2" id="year2" name="RetentionPeriodType" />*@
+                @Html.RadioButtonFor(x => x.TumblerCreateModel.RetentionPeriodType, 2, new { id = "year2" })
+				<span class="radio"></span>
+				<img src="~/Content/Images/TumblerEvent/form/2year.png" alt="2년" />
+			</label>
+			<label for="year1">
+				@*<input type="radio" value="year1" id="year1" name="RetentionPeriodType" />*@
+                @Html.RadioButtonFor(x => x.TumblerCreateModel.RetentionPeriodType, 1, new { id = "year1" })
+				<span class="radio"></span>
+				<img src="~/Content/Images/TumblerEvent/form/1year.png" alt="1년" />
+			</label>
+		</div>
+		<!--//보유 이용기간-->
+		<!-- 연락방식 선택 -->
+		<div class="contact-check">
+			<h3 class="select-title">
+				<img src="~/Content/Images/TumblerEvent/form/contact-tit.png" alt="연락방식 선택" />
+			</h3>
+			<p><img src="~/Content/Images/TumblerEvent/form/contact-note-event.png" alt="전화,문자메세지,우편동의를 하셔야 이벤트 참여가 가능합니다" /></p>
+			<label for="all">
+				@*<input type="checkbox" value="all" id="all" />*@
+                @Html.CheckBoxFor(x => x.TumblerCreateModel.AllCheck, new { id = "all", @class = "all" })
+				<span class="em"></span>
+				<img src="~/Content/Images/TumblerEvent/form/all.png" alt="전체" />
+				<span class="check-dimm"></span>
+			</label>
+			<label for="phone">
+				@*<input type="checkbox" value="phone" class="chkbox input__contact-method" id="phone" />*@
+                @Html.CheckBoxFor(x => x.TumblerCreateModel.PhoneCheck, new { id = "phone", @class = "chkbox input__contact-method phone"})
+				<span></span>
+				<img src="~/Content/Images/TumblerEvent/form/phone.png" alt="전화" />
+			</label>
+			<label for="sms" class="width-auto">
+				@*<input type="checkbox" value="sms" class="chkbox input__contact-method" id="sms" />*@
+                @Html.CheckBoxFor(x => x.TumblerCreateModel.MessageCheck, new { id = "sms", @class = "chkbox input__contact-method sms" })
+				<span></span>
+				<img src="~/Content/Images/TumblerEvent/form/sms.png" alt="문자메세지" />
+			</label>
+			<label for="post">
+				@*<input type="checkbox" value="post" class="chkbox input__contact-method" id="post" />*@
+                @Html.CheckBoxFor(x => x.TumblerCreateModel.PostCheck, new { id = "post", @class = "chkbox input__contact-method post" })
+				<span></span>
+				<img src="~/Content/Images/TumblerEvent/form/post.png" alt="우편" />
+			</label>
+			<label for="email">
+				@*<input type="checkbox" value="email" class="chkbox input__contact-method" id="email" />*@
+                @Html.CheckBoxFor(x => x.TumblerCreateModel.EmailCheck, new { id = "email", @class = "chkbox input__contact-method" })
+				<span></span>
+				<img src="~/Content/Images/TumblerEvent/form/email.png" alt="이메일" />
+			</label>
+		</div>
+		<!-- //연락방식 선택 -->
+		<!-- 필수 : 주소  -->
+		<div class="post-wrap address-wrap">
+			<h3 class="select-title"><img src="~/Content/Images/rebranding/form/tit-address.png" alt="주소" /></h3>
+			<div class="post-dim-wrap">
+				<div class="post-dim"></div>
+				@*<input type="text" class="post-box" readonly="readonly" value="" />*@
+                @Html.TextBoxFor(x => x.TumblerCreateModel.ZipCode, new { @readonly = "readonly", @class = "post-box" })
+			</div>
+			<button type="button" class="btn-post" v-on:click="openPostCode();"><img src="~/Content/Images/rebranding/form/btn-post.png" alt="우편번호" /></button>
+			<div class="post-dim-wrap">
+				<div class="post-dim"></div>
+				@*<input type="text" readonly="readonly" value="" />*@
+                @Html.TextBoxFor(x => x.TumblerCreateModel.Address, new { @readonly = "readonly" })
+			</div>
+			@*<input type="text" placeholder="나머지 주소를 입력해주세요." maxlength="200" value="" />*@
+            @Html.TextBoxFor(x => x.TumblerCreateModel.AddressDetail, new { placeholder = "나머지 주소를 입력해주세요.", maxlength = "200" })
+		</div>
+
+		<!-- 이메일 -->
+		<div class="email-wrap">
+			<div class="info-name">
+				<h3 class="select-title"><img src="~/Content/Images/rebranding/form/tit-email.png" alt="이메일" /></h3>
+				<div>
+					@*<input type="text" id="email1" class="email-box" maxlength="25" value="" />*@
+                    @Html.TextBoxFor(x => x.TumblerCreateModel.Email1, new { id = "email1", @class = "email-box", maxlength = 25 })
+					<img class="email-icon" src="~/Content/Images/rebranding/form/email-thum.png" alt="골뱅이" />
+					@*<input type="text" id="email2" class="email-box" maxlength="25" value="" />*@
+                    @Html.TextBoxFor(x => x.TumblerCreateModel.Email2, new { id = "email2", @class = "email-box", maxlength = 25 })
+
+				</div>
+				<div>
+					<select name="emailSelect" class="email-box" id="emailSelect">
+						<option value="1">직접입력</option>
+						<option value="naver.com">naver.com</option>
+						<option value="hotmail.com">hotmail.com</option>
+						<option value="hanmail.net">hanmail.net</option>
+						<option value="yahoo.co.kr">yahoo.co.kr</option>
+						<option value="paran.com">paran.com</option>
+						<option value="nate.com">nate.com</option>
+						<option value="empal.com">empal.com</option>
+						<option value="dreamwiz.com">dreamwiz.com</option>
+						<option value="hanafos.com">hanafos.com</option>
+						<option value="korea.com">korea.com</option>
+						<option value="chol.com">chol.com</option>
+						<option value="gmail.com">gmail.com</option>
+						<option value="lycos.co.kr">lycos.co.kr</option>
+						<option value="netian.com">netian.com</option>
+						<option value="hanmir.com">hanmir.com</option>
+						<option value="sayclub.com">sayclub.com</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<!-- //이메일 -->
+		<!-- 관심분야 (관심분야 O : 텀블러받기 / 관심분야x : 시크릿박스받기)-->
+		<div class="interest-check" id="interest-check">
+			<h3 class="select-title">
+				<img src="~/Content/Images/TumblerEvent/form/interest-tit.png" alt="관심분야" />
+			</h3>
+
+			<label for="health">
+				@*<input type="checkbox" value="health" id="health" />*@
+                @Html.CheckBoxFor(x => x.TumblerCreateModel.HealthCheck, new { id = "health" })
+				<span></span>
+				<img src="~/Content/Images/TumblerEvent/form/health.png" alt="건강관리" />
+			</label>
+			<label for="salary">
+				@*<input type="checkbox" value="salary" class="chkbox input__contact-method" id="salary" />*@
+                @Html.CheckBoxFor(x => x.TumblerCreateModel.SalaryCheck, new { id = "salary", @class = "input__contact-method" })
+				<span></span>
+				<img src="~/Content/Images/TumblerEvent/form/salary.png" alt="월급관리" />
+			</label>
+			<label for="savings">
+				@*<input type="checkbox" value="savings" class="chkbox input__contact-method" id="savings" />*@
+                @Html.CheckBoxFor(x => x.TumblerCreateModel.SavingCheck, new { id = "savings", @class = "input__contact-method" })
+				<span></span>
+				<img src="~/Content/Images/TumblerEvent/form/savings.png" alt="저축/연금" />
+			</label>
+			<label for="reserved-fund">
+				@*<input type="checkbox" value="reserved-fund" class="chkbox input__contact-method" id="reserved-fund" />*@
+                @Html.CheckBoxFor(x => x.TumblerCreateModel.FundCheck, new { id = "reserved-fund", @class = "input__contact-method" })
+				<span></span>
+				<img src="~/Content/Images/TumblerEvent/form/reserved-fund.png" alt="예비자금준비" />
+			</label>
+			<label for="etc">
+				@*<input type="checkbox" value="etc" class="chkbox input__contact-method" id="etc" />*@
+                @Html.CheckBoxFor(x => x.TumblerCreateModel.EtcCheck, new { id = "etc", @class = "input__contact-method" })
+				<span></span>
+				<img src="~/Content/Images/TumblerEvent/form/etc.png" alt="기타" />
+			</label>
+		</div>
+		<!--// 관심분야 -->
+		<!-- 입력완료 -->
+		<div class="btn-complete-box">
+			<button id="submit-btn" class="complete ga-event" data-action="입력완료" type="submit">
+				<img src="~/Content/Images/TumblerEvent/form/btn-complete.png" alt="입력완료" />
+			</button>
+			<div class="loading" style="display:none;"><img src="~/Content/Images/TumblerEvent/form/loading.gif" alt="loading"></div>
+		</div>
+        }
+	</div>
+</div>
+
+
+
+<!-- 팝업 : 우편번호 -->
+<div id="pop-post" class="pop-post">
+
+	<div class="header">
+		<h3><img src="~/Content/Images/rebranding/form/post-tit.png" alt="우편번호 검색" /></h3>
+		<button class="btn-close" onclick="closePop('post'); return false;">
+			<img src="~/Content/Images/TumblerEvent/form/btn-close.png" alt="닫기" />
+		</button>
+	</div>
+	<!-- 우편번호API -->
+	<div id="searchPostCode" class="post-api"></div>
+</div>

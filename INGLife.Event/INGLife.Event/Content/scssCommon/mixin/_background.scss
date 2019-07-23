@@ -1,0 +1,4 @@
+// background
+@mixin background($file, $position:null, $repeat: no-repeat, $color:null) {
+    background: $color url($location + $file) $position $repeat;
+}

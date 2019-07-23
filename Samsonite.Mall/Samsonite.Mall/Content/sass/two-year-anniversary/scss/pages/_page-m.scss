@@ -1,0 +1,273 @@
+﻿$innerWidth : 587px;
+
+
+//---------------------------------------------------
+// event 영역 스타일
+//---------------------------------------------------
+.wrap {
+  position: relative;
+  width: 640px;
+  margin:0 auto;
+  text-align:center;
+
+  button {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .kv {
+      height:2005px;
+       @include background('kv-bg.jpg', $repeat:no-repeat);
+
+       h1 {
+           position:absolute;
+           right:25px;
+           top:125px;
+       }
+       h2 {
+           padding:178px 0 30px;
+       }
+       p {
+           margin:30px 0 25px 0;
+       }
+       .kv-button-wrap {
+           button {
+               width:282px;
+               height:59px;
+               @include background('btn-kv.png', $repeat:no-repeat);
+               &:first-child {
+                   background-position:0 top;
+                   margin-right:18px;
+               }
+               &:first-child + button {
+                   background-position:0 bottom;
+               }
+           }
+       }
+    }//kv
+    .share-wrap {
+        /*width:690px;*/
+        height:147px;
+        margin:0 auot;
+        background-color:#f8c5e3;
+            > p {
+            display:inline-block;
+            margin:27px 0 17px;
+                img {
+                    vertical-align:middle;
+                }
+            }
+        .share-btn {
+            display:inline-block;
+            button {
+                width:58px;
+                height:58px;
+                margin-right:20px;
+                @include background('icon-sns.png', $repeat:no-repeat);
+                &.btn-facebook { background-position:0 0; }
+                &.btn-kakaostory { background-position:-71px 0; }
+                &.btn-kakaotalk { background-position:-143px 0; }
+                &.btn-url { 
+                    width:60px;
+                    height:60px;
+                    margin:0; 
+                    background-position:-212px 0; 
+                    
+
+                }
+            }
+        }
+    }//share-wrap
+
+     .review-wrap {
+         padding:25px 0 27px;
+         background-color:#fff;
+         .review-inner {
+             width:$innerWidth;
+             margin:0 auto;
+             border-top:8px solid #ed1695;
+             h3 {
+                 margin:22px 0 29px;
+             }
+             .table-wrap { 
+                 overflow:hidden;
+                 border:6px solid #f7f4f9;
+             }
+             table {
+                 line-height:140px;   
+                 text-align:left;              
+                 tr {
+                    
+                     td {
+                         padding-left:17px;
+                         text-align:left;
+                         &:first-child+td {
+                             line-height:50px;
+                             vertical-align:middle;
+                          }
+                         &:first-child+td+td {
+                             text-align:center;
+                             padding:0;
+                         }
+                         img {
+                             vertical-align:middle;
+                         }
+
+                     }
+                 }
+                 thead {
+                     height:60px;
+                     line-height:60px;
+                    tr {
+                        height:60px;
+                    }
+                    &:first-child+td+td {
+                        padding-left:17px;
+                        text-align:center;
+                    }
+                 }
+                 tbody {
+                     tr { 
+                         height:140px;                       
+                         &:nth-child(odd) {
+                             background-color:#fdf5f9;
+                         }
+                     }
+                    .review-icon {
+                        a {
+                            margin-right:15px;
+                            &:last-child {
+                                margin:0;
+                            }
+                        }
+                       
+                    }
+                 }
+             }
+             .pager-wrap {
+                 margin:30px 0 25px;
+                 button {
+                     width:37px;
+                     height:37px;
+                     vertical-align:middle;
+                     @include background('btn-arrow.png', $repeat:no-repeat);
+                     &.prev {
+                         background-position:left 0;
+                     }
+                     &.next {
+                         background-position:right 0;
+                     }
+                 }
+                 span {
+                     display:inline-block;
+                     width:25px;
+                     height:25px;
+                     margin:0 5px;
+                     vertical-align:middle;
+                     font-size:15px;
+                     text-align:center;
+                     line-height:25px;
+                     background:#f3bddd;
+                     color:#5e5d5d;
+                     border-radius:100%;
+                     &.on {
+                         color:#fff;
+                         background:#ED1695;
+                     }
+                 }
+             }
+         }
+     } //review-wrap
+
+     .guideline-wrap {
+         background-color:#ead6f7;
+         padding-bottom:50px;
+         .guideline-inner {
+             width:$innerWidth;
+             margin:0 auto;
+             background-color:#fff;
+             &.on {
+                 height:auto;
+             }
+             h3 {
+                 width:$innerWidth;
+                 height:125px;                 
+                 line-height:125px;
+                 border-bottom:10px solid #ed1695;
+                 background-color:#ead6f7;
+                 cursor:pointer;
+                 span {
+                     display:inline-block;
+                     width:441px;
+                     height:32px;
+                     vertical-align:middle;
+                     @include background('title-guideline.png', $repeat:no-repeat);
+                 }
+                 &.on {
+                     span {
+                         @include background('title-guideline-on.png', $repeat:no-repeat);
+                     }
+                 }
+             }
+             .guideline-text {
+                 display:none;
+                 //padding:120px 0 48px 0;
+             }
+         }
+     } //guideline-wrap
+
+    .reason-wrap {
+        margin-top: -7px;
+        padding:75px 0 53px;
+        background-color:#f8c5e3;
+        h3 {
+            width:$innerWidth;
+            margin:0 auto;
+            padding:28px 0 55px;           
+            border-top:8px solid #ed1695;
+        }
+        .reason-inner {
+            position:relative;
+            width:$innerWidth;
+            margin:0 auto;
+            padding:42px 0 40px;
+            border-top:20px solid #662c91;
+            background-color:#fff;
+            .s9-btn {
+                display:block;
+                margin-top:40px;
+            }
+        }
+    }
+
+    .note-wrap {
+        background-color:#efefef;
+    }
+
+    //floating
+    .floating-m {
+        position:fixed;
+        top:29px;
+        left:50%;
+        margin-left:-298px;
+        z-index:1;
+        button {
+            width:291px;
+            height:69px;
+            &.btn-mall {
+                margin-right:10px;
+                @include background('btn-floating01.png', $repeat:no-repeat);
+            }
+            &.btn-why {
+                margin-top:10px;
+                @include background('btn-floating02.png', $repeat:no-repeat);
+            }
+        }
+
+    }
+  
+}

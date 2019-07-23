@@ -1,0 +1,89 @@
+﻿$minWidth: 320;
+$maxWidth: 980;
+$popMaxWidth: 693;
+$popConWidth: 492;
+
+//---------------------------------------------------
+// event 영역 스타일
+//---------------------------------------------------
+html,body { 
+    position:relative;
+    width:100%;
+    min-width:$minWidth + px;
+    max-width:$maxWidth + px;
+    padding:0;
+    margin:0;
+    margin:0 auto;
+}
+
+.loading {
+    display:none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:rgba(0, 0, 0, .7);
+    z-index: 110;
+    text-align: center;
+    >img {
+        width:auto !important;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin:-100px 0 0 -100px;
+    }
+}
+
+.event-container {
+    img {
+        width:100%;
+        height:auto;
+    }
+    text-align:center;
+    h2 {
+        margin:0;
+        font-size:0;
+    }
+    .roulette-wrap {
+        position:relative;
+        width:100%;
+        //height:865px;
+        @include background('roulette-bg.jpg', $repeat:no-repeat);
+        background-size:cover;
+        .roulette {
+            width:78.57%;
+            height:auto;
+            @media all and (max-width:692px) {
+                width:90.6%;
+            }
+        }
+        .pointer {
+            width:4.6%;
+            position:absolute;
+            top:-4%;
+            left:50%;
+            margin-left:-1.8%;
+            @media all and (max-width:692px) {
+                width:5.6%;
+                margin-left:-2%;
+            }
+        }
+        button {
+            display:inline-block;
+            position:absolute;
+            top:39%;
+            left:50%;
+            margin-left:-9.03%;
+            width:18.06%;
+            &:focus{
+              outline:none;
+            }
+            @media all and (max-width:692px) {
+                width:24.2%;
+                margin-left:-12.1%;
+             }
+        }
+    }
+} //wrap
+

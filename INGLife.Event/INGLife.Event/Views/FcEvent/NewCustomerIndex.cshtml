@@ -1,0 +1,94 @@
+﻿@{
+	ViewBag.Title = "ORANGELIFE FC 이벤트 신규고객";
+	ViewBag.ViewPortWidth = 720;
+}
+@section styles {
+	<link href="~/Content/FcEvent/css/event.min.css" rel="stylesheet" />
+	@Scripts.Render("~/bundles/vuejs")
+}
+
+@section metas{
+    <meta property="og:title" content="오렌지 텀블러 1+1 무료증정" />
+    <meta property="og:description" content="지금 바로 친구와 함께 신청하세요!" />
+    <meta property="og:image" content="@ViewBag.image" />
+    <meta property="og:url" content="@ViewBag.url" />
+}
+
+<div class="wrap" id="fc-sharing-new-event">
+	<div class="event-inner">
+
+		<section class="kv kv-new">
+			<div class="a11y-hidden">
+				<h2>오렌지 텀블러 1+1 무료증정</h2>
+				<p>지금 바로 친구와 함께 신청하세요!</p>
+				<dl>
+					<dt>이벤트 기간</dt>
+					<dd>2018,11.16 ~ 경품 소진시까지</dd>
+				</dl>
+			</div>
+		</section>
+
+		<div class="event-rule-new">
+			<div class="a11y-hidden">
+				<h2>이벤트 참여방법</h2>
+				<ol>
+					<li>step01 : 이벤트 참여하기 버튼 클릭(버튼을 클릭해서 이벤트에 참여해주세요)</li>
+					<li>step02 : 마케팅 동의하기(오렌지 라이프를 소개해준 친구의 이름을 확인하세요!)</li>
+				</ol>
+			</div>
+            @if (ViewBag.IsClose)
+            {
+                <button type="button" class="btn btn__join-new" onclick="alert('@ViewBag.Message'); return false;">이벤트 참여하기</button>                
+            }
+            else
+            {
+                <button type="button" class="btn btn__join-new ga-event" data-action="[신규]이벤트 참여하기" onclick="openPop('personal'); return false;">이벤트 참여하기</button>
+            }
+			
+		</div>
+
+		<footer class="new">
+			<div class="a11y-hidden">
+				<h2>이벤트 유의사항</h2>
+				<ul>
+					<li>텀블러 소진 시 이벤트가 종료됩니다.</li>
+					<li>상기 이미지와 실제 상품에는 차이가 있을 수 있으며, 내부사정으로 인해 변경될 수 있습니다.</li>
+					<li>상품은 11월 말 이후 순차적으로 배송됩니다.</li>
+					<li>친구에게 공유 받은 링크로 접속하시면 FC코드와 추천인 정보가 자동으로 입력됩니다.</li>
+					<li>추천인과 추천 받은 분 모두 이벤트 참여 시에만 텀블러 수령이 가능합니다.</li>
+					<li>텀블러는 오렌지라이프 FC가 직접 방문 배송해드립니다.</li>
+					<li>응모 시 정보 오 기입으로 인해 상품 수령이 불가할 경우, 당사는 책임지지 않습니다.</li>
+					<li>이벤트 관련 문의사항은 담당 FC에게 문의해주세요.</li>
+				</ul>
+			</div>
+		</footer>
+
+	</div>
+
+	@Html.Partial("_popupNew")
+</div>
+
+@section scripts {
+	<script src="~/Content/common/dev-common.js"></script>
+	<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script src="~/Content/js/FcEvent/pub.js"></script>
+    <script src="~/Content/js/FcEvent/new-dev.js"></script>
+<script type="text/javascript">
+        var googleAnalyticCategory = '@ViewBag.Title';
+        var eventClose = '@ViewBag.IsClose';
+
+        Kakao.init('1e6ffb62d13c4100e95f1adc540918bc');
+
+        window.name = "test";
+        function openKMCISWindow() {
+            var KMCIS_window = window.open('', 'KMCISWindow', 'width=425, height=550, resizable=0, scrollbars=no, status=0, titlebar=0, toolbar=0, left=435, top=250');
+            if (KMCIS_window == null) {
+                alert(" ※ 윈도우 XP SP2 또는 인터넷 익스플로러 7 사용자일 경우에는 \n    화면 상단에 있는 팝업 차단 알림줄을 클릭하여 팝업을 허용해 주시기 바랍니다. \n\n※ MSN,야후,구글 팝업 차단 툴바가 설치된 경우 팝업허용을 해주시기 바랍니다.");
+            }
+            $('#fcKMCform')[0].target = 'KMCISWindow';
+            $('#fcKMCform')[0].action = 'https://www.kmcert.com/kmcis/web/kmcisReq.jsp';
+            $('#fcKMCform')[0].submit();
+        }
+</script>
+}

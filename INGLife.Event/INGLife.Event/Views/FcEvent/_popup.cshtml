@@ -1,0 +1,324 @@
+﻿@model INGLife.Event.Models.FinancialConsultantSharingModels.Origin.FinancialConsultantSharingOriginModels
+@using INGLife.Event.Domain.Entities.FinancialConsultantSharing
+<!-- test -->
+@*<div class="test-btn" style="z-index:1;position:fixed;top:0;left:0;background:#f7ff9b">
+	<p>테스트용 버튼(이벤트 오픈시 숨김처리)</p>
+	<button style="background:#2e59b2;color:#fff;" onclick="openPop('personal'); return false;"> /개인정보/ </button>
+	<button style="background:#2e59b2;color:#fff;" onclick="openPop('share'); return false;"> /카톡공유/ </button>
+	<button style="background:#2e59b2;color:#fff;" onclick="openPop('post'); return false;"> /우편번호/ </button>
+</div>*@
+
+<!--// test -->
+<!-- 팝업 : dimmed -->
+<div id="dimmed" style="display:none;"></div>
+
+<!-- loading -->
+<div id="loading"><img src="~/Content/Images/loading.svg" alt="loading"></div>
+
+<!-- 팝업 : 마케팅동의 (기존고객) -->
+<div id="pop-personal" class="pop-personal">
+	<div class="header">
+		<h2 class="pop-title"><img src="~/Content/Images/FcEvent/form/personal-tit.png" alt="이벤트참여하기" /></h2>
+		<button onclick="closePop('personal'); return false;"><img src="~/Content/Images/FcEvent/form/btn-close.png" alt="닫기" /></button>
+	</div>
+
+	<div class="inner-pop">		
+		<div class="btn-phoneconfirm">			
+            <form id="fcKMCform" method="post" action="#">
+                <input type="hidden" name="tr_cert" value="@Model.RequestKMCModel.Enc_Tr_Cert">
+                <input type="hidden" name="tr_url" value="@Model.RequestKMCModel.Tr_Url">
+                <input type="hidden" name="tr_add" value="@Model.RequestKMCModel.Tr_Add">
+                @if (ViewBag.IsClose)
+                {
+                    <button type="submit" class="ga-event" data-action="휴대폰 인증" onclick="alert('@ViewBag.Message');">
+                        <img src="~/Content/Images/orange4050/form/btn-phoneconfirm.png" alt="휴대폰 인증" />
+                    </button>
+                }
+                else
+                {
+                    <button type="button" onclick="javascript:openKMCISWindow()">
+                        <img src="~/Content/Images/FcEvent/form/btn-phoneconfirm.png" alt="휴대폰인증" />
+                    </button>
+                }
+            </form>
+        </div>
+            <legend class="a11y-hidden">개인정보 입력</legend>
+            @using (Ajax.BeginForm("CreateFcOriginEntry", new { }, new AjaxOptions
+            {
+                HttpMethod = "post",
+                OnBegin = "fcSharingEventModel.beginEntry",
+                OnComplete = "fcSharingEventModel.completeEntry",
+                OnSuccess = "fcSharingEventModel.saveEntry",
+                OnFailure = "fcSharingEventModel.failureEntry"
+            }, new { id = "fcSharingOrginModelEntry" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="info-area">
+                    <div class="name-line">                                                
+                        @Html.TextBoxFor(x => x.FinancialConsultantSharingOriginCreateModel.Name, new { placeholder = "이름", @readonly = "readonly" })
+                        <div class="gender">
+                            <label for="male" class="info-male">                                
+                                @Html.RadioButtonFor(x => x.FinancialConsultantSharingOriginCreateModel.Gender, "0", new { id = "male" })
+                                <span class="btn__event btn__ir-radio"></span>
+                            </label>
+                            <label for="female" class="info-female">                                
+                                @Html.RadioButtonFor(x => x.FinancialConsultantSharingOriginCreateModel.Gender, "1", new { id = "female" })
+                                <span class="btn__event btn__ir-radio"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="phone">                        
+                        @Html.TextBoxFor(x => x.FinancialConsultantSharingOriginCreateModel.Mobile, new { placeholder = "휴대폰번호(-없이 입력)", @readonly = "readonly" })
+                    </div>
+                    <div class="birth">                        
+                        @Html.TextBoxFor(x => x.FinancialConsultantSharingOriginCreateModel.BirthDay, new { placeholder = "생년월일(8자리)", @readonly = "readonly" })
+                    </div>
+                    <div class="transparent-bg">
+                        <a id="kmcArea" href="javascript:close()"></a>
+                    </div>
+                </div>
+
+                <!--//info-area-->
+                <p class="agree-notice"><img src="~/Content/Images/FcEvent/form/notice-agree.png" alt="본 동의는 선택사항입니다." /></p>
+
+				<!--개인(신용)정보 수집 이용-->
+                <div class="agree-text">
+                    <div class="policy-area">
+                        <div class="policy-txt">
+                            <img src="/Content/Images/FcEvent/form/agree-inner-marketing01.png" alt="개인정보의 수집 이용에 관한 사항">
+                        </div>
+                    </div>
+
+                    <h3 class="select-title"><img src="~/Content/Images/FcEvent/form/agree-tit1.png" alt="개인(신용)정보 수집 이용" /></h3>
+                    <label for="agree01" class="agree">                        
+                        @Html.RadioButtonFor(x => x.FinancialConsultantSharingOriginCreateModel.Agree, 1, new { id = "agree01" })
+                        <span class="em"></span>
+                        <img src="~/Content/Images/FcEvent/form/agree.png" alt="동의" />
+                        <span class="check-dimm"></span>
+                    </label>
+                    <label for="disagree01" class="label-agree disagree">                        
+                        @Html.RadioButtonFor(x => x.FinancialConsultantSharingOriginCreateModel.Agree, 2, new { id = "disagree01" })
+                        <span></span>
+                        <img src="~/Content/Images/FcEvent/form/disagree.png" alt="동의하지않음" />
+                        <span class="check-dimm"></span>
+                    </label>
+                </div>
+                <!--//개인(신용)정보 수집 이용-->
+
+                <!--개인(신용)정보 제공-->
+                <div class="agree-text">
+                    <div class="policy-area">
+                        <div class="policy-txt">
+                            <img src="/Content/Images/FcEvent/form/agree-inner-marketing02.png" alt="개인정보의 수집 이용에 관한 사항">
+                        </div>
+                    </div>
+
+                    <h3 class="select-title"><img src="~/Content/Images/FcEvent/form/agree-tit2.png" alt="개인정보의 수집 이용동의" /></h3>
+                    <label for="agree02" class="agree">                        
+                        @Html.RadioButtonFor(x => x.FinancialConsultantSharingOriginCreateModel.Agree2, 1, new { id = "agree02" })
+                        <span class="em"></span>
+                        <img src="~/Content/Images/FcEvent/form/agree.png" alt="동의" />
+                        <span class="check-dimm"></span>
+                    </label>
+                    <label for="disagree02" class="label-agree disagree">                        
+                        @Html.RadioButtonFor(x => x.FinancialConsultantSharingOriginCreateModel.Agree2, 2, new { id = "disagree02" })
+                        <span></span>
+                        <img src="~/Content/Images/FcEvent/form/disagree.png" alt="동의하지않음" />
+                        <span class="check-dimm"></span>
+                    </label>
+                </div>
+				<!--//개인정보 제공-->
+
+                <!--보유 이용기간-->
+                <div class="retention-period">
+                    <h3 class="select-title">
+                        <img src="~/Content/Images/FcEvent/form/retention-tit.png" alt="보유 이용기간" />
+                    </h3>
+                    <label for="year5">                        
+                        @Html.RadioButtonFor(x => x.FinancialConsultantSharingOriginCreateModel.RetentionPeriodOriginType, RetentionPeriodOriginType.FiveYears, new { id = "year5" })
+                        <span class="radio em"></span>
+                        <img src="~/Content/Images/FcEvent/form/5year.png" alt="5년" />
+                        <span class="check-dimm"></span>
+                    </label>
+                    <label for="year4">                        
+                        @Html.RadioButtonFor(x => x.FinancialConsultantSharingOriginCreateModel.RetentionPeriodOriginType, RetentionPeriodOriginType.FourYears, new { id = "year4" })
+                        <span class="radio"></span>
+                        <img src="~/Content/Images/FcEvent/form/4year.png" alt="4년" />
+                    </label>
+                    <label for="year3">                        
+                        @Html.RadioButtonFor(x => x.FinancialConsultantSharingOriginCreateModel.RetentionPeriodOriginType, RetentionPeriodOriginType.ThreeYears, new { id = "year3" })
+                        <span class="radio"></span>
+                        <img src="~/Content/Images/FcEvent/form/3year.png" alt="3년" />
+                    </label>
+                    <label for="year2">                        
+                        @Html.RadioButtonFor(x => x.FinancialConsultantSharingOriginCreateModel.RetentionPeriodOriginType, RetentionPeriodOriginType.TwoYears, new { id = "year2" })
+                        <span class="radio"></span>
+                        <img src="~/Content/Images/FcEvent/form/2year.png" alt="2년" />
+                    </label>
+                    <label for="year1">                        
+                        @Html.RadioButtonFor(x => x.FinancialConsultantSharingOriginCreateModel.RetentionPeriodOriginType, RetentionPeriodOriginType.OneYear, new { id = "year1" })
+                        <span class="radio"></span>
+                        <img src="~/Content/Images/FcEvent/form/1year.png" alt="1년" />
+                    </label>
+                </div>
+				<!--//보유 이용기간-->
+
+                <!-- 연락방식 선택 -->
+                <div class="contact-check">
+                    <h3 class="select-title">
+                        <img src="~/Content/Images/FcEvent/form/contact-tit.png" alt="연락방식 선택" />
+                    </h3>
+                    <p><img src="~/Content/Images/FcEvent/form/contact-note-event.png" alt="전화,문자메세지,우편동의를 하셔야 이벤트 참여가 가능합니다" /></p>
+                    <label for="all">                        
+                        @Html.CheckBoxFor(x => x.FinancialConsultantSharingOriginCreateModel.AllCheck, new { id = "all" })
+                        <span class="em"></span>
+                        <img src="~/Content/Images/FcEvent/form/all.png" alt="전체" />
+                        <span class="check-dimm"></span>
+                    </label>
+                    <label for="phone">                        
+                        @Html.CheckBoxFor(x => x.FinancialConsultantSharingOriginCreateModel.PhoneCheck, new { id = "phone", @class = "chkbox input__contact-method" })
+                        <span></span>
+                        <img src="~/Content/Images/FcEvent/form/phone.png" alt="전화" />
+                    </label>
+                    <label for="sms" class="width-auto">                        
+                        @Html.CheckBoxFor(x => x.FinancialConsultantSharingOriginCreateModel.MessageCheck, new { id = "sms", @class = "chkbox input__contact-method" })
+                        <span></span>
+                        <img src="~/Content/Images/FcEvent/form/sms.png" alt="문자메세지" />
+                    </label>
+                    <label for="post">
+                        @Html.CheckBoxFor(x => x.FinancialConsultantSharingOriginCreateModel.PostCheck, new { id = "post", @class = "chkbox input__contact-method" })
+                        <span></span>
+                        <img src="~/Content/Images/FcEvent/form/post.png" alt="우편" />
+                    </label>
+                    <label for="email">
+                        @Html.CheckBoxFor(x => x.FinancialConsultantSharingOriginCreateModel.EmailCheck, new { id = "email", @class = "chkbox input__contact-method" })
+                        <span></span>
+                        <img src="~/Content/Images/FcEvent/form/email.png" alt="이메일" />
+                    </label>                   
+                </div>
+                <!-- //연락방식 선택 -->
+
+                <!-- 필수 : 주소  -->
+                <div class="post-wrap address-wrap">
+                    <h3 class="select-title"><img src="~/Content/Images/FcEvent/form/tit-address.png" alt="주소" /></h3>
+                    <div class="post-dim-wrap">
+                        <div class="post-dim" v-on:click="openPostCode('marketing')"></div>
+                        @Html.TextBoxFor(x => x.FinancialConsultantSharingOriginCreateModel.ZipCode, new { @readonly = "readonly", @class = "post-box" })
+                    </div>
+                    <span>
+                        <button type="button" v-on:click="openPostCode()" class="btn-post"><img src="~/Content/Images/FcEvent/form/btn-post.png" alt="우편번호" /></button>
+                    </span>
+                    <div class="post-dim-wrap">
+                        <div class="post-dim" v-on:click="openPostCode()"></div>
+                        @Html.TextBoxFor(x => x.FinancialConsultantSharingOriginCreateModel.Address, new { @readonly = "readonly" })
+                    </div>
+
+                    @Html.TextBoxFor(x => x.FinancialConsultantSharingOriginCreateModel.AddressDetail, new { placeholder = "나머지 주소를 입력해주세요.", maxlength = "200" })
+                </div>
+                <!-- //주소  -->
+
+                <!-- 이메일 -->
+                <div class="email-wrap">
+                    <div class="info-name">
+                        <h3 class="select-title"><img src="~/Content/Images/financialConcertMarketingAgree/tit-email.png" alt="이메일" /></h3>
+                        <div class="clear-fix">
+                            @Html.TextBoxFor(x => x.FinancialConsultantSharingOriginCreateModel.Email1, new { id = "email1", @class = "email-box", maxlength = 25 })
+                            <img class="email-icon" src="~/Content/Images/financialConcertMarketingAgree/email-thum.png" alt="골뱅이" />
+                            @Html.TextBoxFor(x => x.FinancialConsultantSharingOriginCreateModel.Email2, new { id = "email2", @class = "email-box", maxlength = 25 })
+
+                        </div>
+                        <div>
+                            <select name="emailSelect" class="email-box" id="emailSelect">
+                                <option value="1">직접입력</option>
+                                <option value="naver.com">naver.com</option>
+                                <option value="hotmail.com">hotmail.com</option>
+                                <option value="hanmail.net">hanmail.net</option>
+                                <option value="yahoo.co.kr">yahoo.co.kr</option>
+                                <option value="paran.com">paran.com</option>
+                                <option value="nate.com">nate.com</option>
+                                <option value="empal.com">empal.com</option>
+                                <option value="dreamwiz.com">dreamwiz.com</option>
+                                <option value="hanafos.com">hanafos.com</option>
+                                <option value="korea.com">korea.com</option>
+                                <option value="chol.com">chol.com</option>
+                                <option value="gmail.com">gmail.com</option>
+                                <option value="lycos.co.kr">lycos.co.kr</option>
+                                <option value="netian.com">netian.com</option>
+                                <option value="hanmir.com">hanmir.com</option>
+                                <option value="sayclub.com">sayclub.com</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- //이메일 -->
+              
+                <!-- FC코드  -->
+                <div class="fc-code-wrap fc-code-wrap-old">
+                    <h3 class="select-title">
+                        <label for="fccode">
+                            <img src="~/Content/Images/FcEvent/form/fccode-tit.png" alt="FC코드" />
+                        </label>
+                    </h3>
+                    <p class="sub-note"><img src="~/Content/Images/FcEvent/form/fccode-note.png" alt="필수입력사항" /></p>
+                    @Html.TextBoxFor(x => x.FinancialConsultantSharingOriginCreateModel.FcCode, new { @class = "post-box", @id= "fccode"})                    
+                    <button type="button" v-on:click="checkFcCode()"><img src="~/Content/Images/FcEvent/form/fccode-btn.png" alt="인증" /></button>
+                </div>
+                <!-- //FC코드  -->
+
+                <!-- 입력완료 -->
+                <div class="btn-complete-box">
+                    <button class="complete ga-event" data-action="[기존]입력완료" type="submit">
+                        <img src="~/Content/Images/FcEvent/form/btn-complete.png" alt="입력완료" />
+                    </button>
+                    <div class="loading" style="display:none;"><img src="~/Content/Images/FcEvent/form/loading.gif" alt="loading"></div>
+                </div>
+            }       
+        </div>
+    </div>
+
+<!-- 팝업 : 우편번호 -->
+<div id="pop-post" class="pop-post">
+
+    <div class="header">
+        <h3><img src="~/Content/Images/FcEvent/form/post-tit.png" alt="우편번호 검색" /></h3>
+        <button class="btn-close" onclick="closePop('post'); openPop('personal'); return false;">
+            <img src="~/Content/Images/FcEvent/form/btn-close.png" alt="닫기" />
+        </button>
+    </div>
+    <!-- 우편번호API -->
+    <div id="searchPostCode" class="post-api"></div>
+</div>
+
+<!-- 카카오톡 공유 -->
+<div id="pop-share" class="pop-share">
+    <p>
+        <img src="~/Content/Images/FcEvent/share-text.png" alt="친구에게 이벤트 URL을 공유하세요! 공유를 완료하셔야만 참여로 인정됩니다." />
+    </p>				
+    <button class="btn btn-_kakao-share dev-kakao-control ga-event" data-action="[기존]카카오톡 공유하기 팝업" v-on:click="kakaoUrlShare();"></button>
+
+		@*<button class="btn btn-replay">새로고침</button>*@
+
+    <button class="btn-close" onclick="closePop('share'); return false;"><img src="~/Content/Images/FcEvent/form/_btn-close.png" alt="닫기" /></button>
+</div>
+
+<!-- 참여 완료 인증 -->
+<div id="pop-confirm" class="pop-confirm">
+	<div class="a11y-hidden">
+		<h3>참여 완료 인증</h3>
+		<p>이벤트 참여 시 입력한 연락처를 입력해주세요.</p>
+	</div>
+
+	<input type="tel" id="checkPhone" value="" placeholder="- 없이 입력해주세요."/>
+    @if (ViewBag.IsClose)
+    {
+        <button class="btn btn-confirm-share" data-action="[기존]인증 후 공유하기" onclick="alert('@ViewBag.Message'); return false;">인증 후 공유하기</button>        
+    }
+    else
+    {
+        <button class="btn btn-confirm-share ga-event" data-action="[기존]인증 후 공유하기" v-on:click="checkPhone();">인증 후 공유하기</button>        
+    }
+	
+
+	<p class="a11y-hidden">입력하신 정보는 조회 목적으로만 사용되며 저장되지 않습니다.</p>
+	<button class="btn-close" onclick="closePop('confirm'); return false;"><img src="~/Content/Images/FcEvent/form/_btn-close.png" alt="닫기" /></button>
+</div>

@@ -1,0 +1,8 @@
+﻿<script type="text/javascript" src="/common/js/jquery.ycg.ga.js"></script>
+<script type="text/javascript">
+    $(window).load(function () {
+        $.ga.load('@System.Configuration.ConfigurationManager.AppSettings["google.analytics.account"]');
+        $.ga.trackPageview();
+        $.ga.setTrackEvent('.GA');
+    });
+</script>

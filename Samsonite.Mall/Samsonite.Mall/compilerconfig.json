@@ -1,0 +1,30 @@
+﻿[
+  {
+    "outputFile": "Content/css/one-year-anniversary/event.css",
+    "inputFile": "Content/sass/one-year-anniversary/event.scss"
+  },
+  {
+    "outputFile": "Content/css/bag-to-the-future/popup.css",
+    "inputFile": "Content/sass/bag-to-the-future/popup.scss"
+  },
+  {
+    "outputFile": "Content/css/bag-to-the-future/style.css",
+    "inputFile": "Content/sass/bag-to-the-future/style.scss"
+  },
+  {
+    "outputFile": "Content/css/aspero-launching/slick.css",
+    "inputFile": "Content/sass/aspero-launching/slick.scss"
+  },
+  {
+    "outputFile": "Content/css/aspero-launching/style.css",
+    "inputFile": "Content/sass/aspero-launching/style.scss"
+  },
+  {
+    "outputFile": "Content/css/christmas2017/style.css",
+    "inputFile": "Content/sass/christmas2017/style.scss"
+  },
+  {
+    "outputFile": "Content/sass/two-year-anniversary/css/event.css",
+    "inputFile": "Content/sass/two-year-anniversary/scss/event.scss"
+  }
+]

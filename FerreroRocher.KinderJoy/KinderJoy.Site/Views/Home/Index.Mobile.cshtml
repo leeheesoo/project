@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "킨더조이 공식 사이트";
+    ViewBag.GaTitle = "킨더조이메인";
+
+    var isClose = DateTime.Now >= new DateTime(2017, 7, 27);
+}
+@section scripts {
+
+	<script>
+		// code
+		$(function() {
+
+			$('.content-main .eggs').bxSlider({
+				//mode: 'vertical',
+				slideMargin: 0,
+				//auto: false,
+				//pager: false,
+				auto: true,
+				infiniteLoop : true,
+				autoDelay:5000
+			});
+
+		});
+	</script>
+}
+<div class="mobile_wrap">
+	<div class="content-main">
+		<h2 class="main_tl">
+			<img class="egg-img GA" src="~/Images/m/items/tit-visual.png" alt="세가지 즐거움이 하나에! 새로운 디즈니 커플 &스타워즈 서프라이즈를 만나보세요! 열때마다 100% 디즈니 커플과 스타워즈가 들어있어요!">
+		</h2>
+		 <!-- 플로팅 메뉴 -->
+		 <span class="visual-float visual-float-left">
+		 	<a href="@Url.Action("Image")">
+		 		<img src="~/Images/m/items/float-starwars.png" alt="스타워즈 아이템 바로가기">
+		 	</a>
+		 	<button type="button"><span class="a11y-hidden">배너닫기</span></button>
+		 </span>
+		 <span class="visual-float visual-float-right">
+		 	<a href="@Url.Action("Image")">
+		 		<img src="~/Images/m/items/float-couple.png" alt="디즈니 커플 아이템 바로가기">
+		 	</a>
+		 	<button type="button"><span class="a11y-hidden">배너닫기</span></button>
+		 </span>
+		<!-- eggs -->
+		<div class="eggs">
+			<div class="egg"><a href="@Url.Action("Flavor")"><img class="egg-img GA" src="~/Images/m/items/egg-flavor.png" alt="맛있는 즐거움 바로가기" data-category="@ViewBag.GaTitle" data-action="[@ViewBag.GaTitle] 맛있는즐거움 바로가기"></a></div>
+			<div class="egg"><a href="@Url.Action("Image")"><img class="egg-img GA" src="~/Images/m/items/egg-image.png" alt="상상하는 즐거움 바로가기" data-category="@ViewBag.GaTitle" data-action="[@ViewBag.GaTitle] 상상하는즐거움 바로가기"/></a></div>
+			<div class="egg"><a href="@Url.Action("Together")"><img class="egg-img GA" src="~/Images/m/items/egg-together.png" alt="함께하는 즐거움 바로가기" data-name="together" data-category="@ViewBag.GaTitle" data-action="[@ViewBag.GaTitle] 함께하는즐거움 바로가기"></a></div>
+		</div>
+		<!-- // eggs -->
+	</div>
+	<div class="copyright">
+		<p><img src="~/Images/m/copy.png" alt="Copyright ⓒ 1976, 2017 SANRIO CO., LTD.(Appl.No.SK17048)  JUSTICE LEAGUE and all related characters and elements ⓒ & ™ DC Comics. (s17)  ⓒFerrero Group. All Rights Reserved."></p>
+	</div>
+
+	<!-- popup -->
+    <div class="popup" style="display:none">
+        <div class="dim"></div>
+        <div class="popup-wrap">
+            <!--<a class="close js-pop-close" href="#">close</a>-->
+            <!-- hide -->
+            <div class="hide">
+                <h1>부모님 여러분</h1>
+                <p>저희는 킨더조이 브랜드가 여러분과 여러분의 가족분들께 더욱 가까이 다가갈 수 있도록 본 사이트를 개발했습니다. 그러나 부모님들께서 안심할 수 있도록 부모님의 허락하에 자녀분들께서 접속할 수 있도록 설정되어 있습니다. <em>그 이유로 부모님의 생년월일을 입력하도록 되어 있습니다.</em></p>
+            </div>
+            <!-- // hide -->
+            <form action="" method="post" onsubmit="return checkAge();">
+                <div class="pop-form">
+                    <input class="input input-year" type="text" name="year" id="year" maxlength="4"><label class="year" for="year">년</label>
+                    <input class="input input-month" type="text" name="month" id="month" maxlength="2"><label class="month" for="month">월</label>
+                    <input class="input input-day" type="text" name="day" id="day" maxlength="2"><label class="day" for="day">일</label>
+                </div>
+                <input type="submit" class="pop-btn" value="들어가기" class="GA" data-category="@ViewBag.GaTitle" data-action="[@ViewBag.GaTitle] 들어가기">
+            </form>
+        </div>
+    </div>
+    <!-- // popup -->
+</div>
+
+<script type="text/javascript">
+
+	//ie7 때문에 input button value 없애기
+	$('.pop-btn').attr('value','');
+
+	//팝업 닫기
+	$('.js-pop-close').on('click',function() {
+		$(this).parent().parent().hide();
+	});
+
+	//팝업보이기
+	function popLocation() {
+		var width=$('.popup-wrap').width();
+		var height=$('.popup-wrap').height();
+
+		$('.popup-wrap').css({
+			marginLeft: '-'+width/2+'px',
+			marginTop: '-'+height/2+'px'
+		});
+	}
+
+	//플로팅 팝업 닫기
+	$(".bn-main button").click(function () {
+		$(this).parent().hide();
+	});
+
+	var $contentMainH = $('.content-main');
+
+	function openPopMain() {
+	    $contentMainH.height('2075px');
+	    $('.popup-main').show();
+	};
+
+	function closePopMain() {
+	    $('.popup-main').hide();
+	    $('.popup-main iframe').attr('src', '');
+	    $contentMainH.height('1340px');
+	}
+	</script>

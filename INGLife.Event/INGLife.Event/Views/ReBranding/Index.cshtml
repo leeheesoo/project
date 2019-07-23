@@ -1,0 +1,289 @@
+﻿@model INGLife.Event.Models.ReNrandingModels.RebrandingMarketingModels
+@using INGLife.Event.Domain.Entities.Rebranding
+@{
+    ViewBag.Title = "오렌지 신청 + 스페인 항공권 응모";
+    ViewBag.ViewPortWidth = 750;
+}
+
+@section styles {
+    <link href="~/Content/rebranding/css/event.min.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/vuejs")
+}
+
+<div class="wrap rebranding-event" id="rebranding-marketing-event">
+	<!-- 팝업 : dimmed -->
+	<div id="dimmed"></div>
+
+	<!-- 팝업 : 종료 dimmed -->
+	<div id="endDimmed" style="display:@(ViewBag.IsClose ? "block" : "none")">
+		<img src="~/Content/Images/rebranding/form/end.png" alt="이벤트가 종료되었습니다." />
+	</div>
+
+
+	<!-- 팝업 : 우편번호 -->
+	<div id="pop-post" class="agree-pop pop-post">
+
+		<div class="header">
+			<h1><img src="~/Content/Images/rebranding/form/post-tit.png" alt="우편번호 검색" /></h1>
+			<button class="btn-close" v-on:click="closePostCode()">
+				<img src="~/Content/Images/rebranding/form/btn-close.png" alt="닫기" />
+			</button>
+		</div>
+		<!-- 우편번호API -->
+		<div id="searchPostCode" class="post-api"></div>
+	</div>
+
+	<!-- 팝업 : 마케팅동의 -->
+	<div id="pop-marketing" class="pop-marketing pop-personal">
+		<div class="header">
+			<h1><img src="~/Content/Images/rebranding/form/personal-tit.png" alt="이벤트참여하기" /></h1>
+			@*<button onclick="closePop('marketing'); return false;"><img src="~/Content/Images/rebranding/form/btn-close.png" alt="닫기" /></button>*@
+		</div>
+
+		<div class="inner-pop">
+			<div class="btn-phoneconfirm">
+
+				<form id="reqMarketingKMCISForm" method="post" action="#">
+					<input type="hidden" name="tr_cert" value="@Model.RequestMarketingKMCModel.Enc_Tr_Cert">
+					<input type="hidden" name="tr_url" value="@Model.RequestMarketingKMCModel.Tr_Url">
+					<input type="hidden" name="tr_add" value="@Model.RequestMarketingKMCModel.Tr_Add">
+					<button type="button" onclick="javascript: openKMCISWindow();" class="ga-event" data-action="마케팅동의 휴대폰 인증">
+						<img src="~/Content/Images/rebranding/form/btn-phoneconfirm.png" alt="휴대폰 인증" />
+					</button>
+				</form>
+			</div>
+			@using (Ajax.BeginForm("CreateRebrandingMarketingAgreeEntry", new { }, new AjaxOptions
+			{
+				HttpMethod = "POST",
+				OnBegin = "rebrandingEventView.beginEntry",
+				OnComplete = "rebrandingEventView.completeEntry",
+				OnSuccess = "rebrandingEventView.saveMarkeitngEntry",
+				OnFailure = "rebrandingEventView.failureEntry"
+			}, new { id = "frmMarketingEntry" }))
+			{
+				@Html.AntiForgeryToken()
+				<legend class="a11y-hidden">개인정보 입력</legend>
+            <!--info-area-->
+				<div class="info-area">
+					<div class="name-line">
+						@Html.TextBoxFor(x => x.RebrandingMarketingModel.Name, new { placeholder = "이름", @readonly = "readonly" })
+						<div class="gender">
+							<label for="marketing-male" class="info-male">
+								@Html.RadioButtonFor(x => x.RebrandingMarketingModel.Gender, "0", new { id = "marketing-male" })
+								<span class="btn__event btn__ir-radio"></span>
+							</label>
+							<label for="marketing-female" class="info-female">
+								@Html.RadioButtonFor(x => x.RebrandingMarketingModel.Gender, "1", new { id = "marketing-female" })
+								<span class="btn__event btn__ir-radio"></span>
+							</label>
+						</div>
+					</div>
+					<div class="phone">
+						@Html.TextBoxFor(x => x.RebrandingMarketingModel.Mobile, new { placeholder = "휴대폰번호(-없이 입력)", @readonly = "readonly" })
+					</div>
+					<div class="birth">
+						@Html.TextBoxFor(x => x.RebrandingMarketingModel.BirthDay, new { placeholder = "생년월일(8자리)", @readonly = "readonly" })
+					</div>
+					<div class="transparent-bg">
+						<a id="kmcArea" href="javascript:close()"></a>
+					</div>
+				</div>
+            <!--//info-area-->
+
+            <!--개인(신용)정보 수집 이용-->
+				<div class="agree-text">
+					<p class="agree-notice"><img src="~/Content/Images/rebranding/form/notice-marketing.png" alt="본 동의는 선택사항입니다." /></p>
+					@*<p><img src="~/Content/Images/rebranding/form/agree-text1.png" alt="개인정보의 수집 이용에 관한 사항" /></p>*@
+					<div class="policy-area">
+						<div class="policy-txt">
+							<img src="~/Content/Images/rebranding/form/agree-inner-marketing01.png" alt="개인정보의 수집 이용에 관한 사항" />
+						</div>
+					</div>
+
+					<h3><img src="~/Content/Images/rebranding/form/agree-tit1.png" alt="개인(신용)정보 수집 이용" /></h3>
+					<label for="MarketingAgree01">
+						@Html.RadioButtonFor(x => x.RebrandingMarketingModel.Agree, 1, new { id = "MarketingAgree01" })
+						<span class="em"></span>
+						<img src="~/Content/Images/rebranding/form/agree.png" alt="동의" />
+						<span class="check-dimm"></span>
+					</label>
+					<label for="MarketingDisagree01" class="disagree-label">
+						@Html.RadioButtonFor(x => x.RebrandingMarketingModel.Agree, 2, new { id = "MarketingDisagree01" })
+						<span></span>
+						<img src="~/Content/Images/rebranding/form/disagree.png" alt="동의하지 않음" />
+					</label>
+				</div>
+            <!--//개인(신용)정보 수집 이용-->
+
+            <!--개인(신용)정보 제공-->
+				<div class="agree-text">
+					<div class="policy-area">
+						<div class="policy-txt">
+							<img src="~/Content/Images/rebranding/form/agree-inner-marketing02.png" alt="개인정보의 수집 이용에 관한 사항" />
+						</div>
+					</div>
+					<h3>
+						<img src="~/Content/Images/rebranding/form/agree-tit2.png" alt="개인정보의 수집 이용동의" />
+					</h3>
+					<label for="MarketingAgree02">
+						@Html.RadioButtonFor(x => x.RebrandingMarketingModel.Agree2, 1, new { id = "MarketingAgree02" })2
+						<span class="em"></span>
+						<img src="~/Content/Images/rebranding/form/agree.png" alt="동의" />
+						<span class="check-dimm"></span>
+					</label>
+					<label for="MarketingDisagree02" class="disagree-label">
+						@Html.RadioButtonFor(x => x.RebrandingMarketingModel.Agree2, 2, new { id = "MarketingDisagree02" })
+						<span></span>
+						<img src="~/Content/Images/rebranding/form/disagree.png" alt="동의하지 않음" />
+					</label>
+				</div>
+            <!--//개인정보 제공-->
+
+            <!--보유 이용기간-->
+				<div class="retention-period">
+					<h3>
+						<img src="~/Content/Images/rebranding/form/retention-tit.png" alt="보유 이용기간" />
+					</h3>
+					<label for="year5">
+						@Html.RadioButtonFor(x => x.RebrandingMarketingModel.RetentionPeriodType, RebrandingRetentionPeriodType.FiveYears, new { id = "year5" })
+						<span class="radio em"></span>
+						<img src="~/Content/Images/rebranding/form/5year.png" alt="5년" />
+						<span class="check-dimm"></span>
+					</label>
+					<label for="year4">
+						@Html.RadioButtonFor(x => x.RebrandingMarketingModel.RetentionPeriodType, RebrandingRetentionPeriodType.FourYears, new { id = "year4" })
+						<span class="radio"></span>
+						<img src="~/Content/Images/rebranding/form/4year.png" alt="4년" />
+					</label>
+					<label for="year3">
+						@Html.RadioButtonFor(x => x.RebrandingMarketingModel.RetentionPeriodType, RebrandingRetentionPeriodType.ThreeYears, new { id = "year3" })
+						<span class="radio"></span>
+						<img src="~/Content/Images/rebranding/form/3year.png" alt="3년" />
+					</label>
+					<label for="year2">
+						@Html.RadioButtonFor(x => x.RebrandingMarketingModel.RetentionPeriodType, RebrandingRetentionPeriodType.TwoYears, new { id = "year2" })
+						<span class="radio"></span>
+						<img src="~/Content/Images/rebranding/form/2year.png" alt="2년" />
+					</label>
+					<label for="year1">
+						@Html.RadioButtonFor(x => x.RebrandingMarketingModel.RetentionPeriodType, RebrandingRetentionPeriodType.OneYear, new { id = "year1" })
+						<span class="radio"></span>
+						<img src="~/Content/Images/rebranding/form/1year.png" alt="1년" />
+					</label>
+				</div>
+            <!--//보유 이용기간-->
+
+            <!-- 연락방식 선택 -->
+				<div class="contact-check">
+					<h3>
+						<img src="~/Content/Images/rebranding/form/contact-tit.png" alt="연락방식 선택" />
+					</h3>
+					<p><img src="~/Content/Images/rebranding/form/contact-note-event.png" alt="전화,문자메세지,우편동의를 하셔야 이벤트 참여가 가능합니다" /></p>
+					<label for="all">
+						@Html.CheckBoxFor(x => x.RebrandingMarketingModel.AllCheck, new { id = "all" })
+						@*<input type="checkbox" value="all" id="all"/>*@
+						<span class="em"></span>
+						<img src="~/Content/Images/rebranding/form/all.png" alt="전체" />
+						<span class="check-dimm"></span>
+					</label>
+					<label for="phone">
+						@Html.CheckBoxFor(x => x.RebrandingMarketingModel.PhoneCheck, new { id = "phone", @class = "chkbox input__contact-method" })
+						<span></span>
+						<img src="~/Content/Images/rebranding/form/phone.png" alt="전화" />
+					</label>
+					<label for="sms">
+						@Html.CheckBoxFor(x => x.RebrandingMarketingModel.MessageCheck, new { id = "sms", @class = "chkbox input__contact-method" })
+						<span></span>
+						<img src="~/Content/Images/rebranding/form/sms.png" alt="문자메세지" />
+					</label>
+					<label for="post">
+						@Html.CheckBoxFor(x => x.RebrandingMarketingModel.PostCheck, new { id = "post", @class = "chkbox input__contact-method" })
+						<span></span>
+						<img src="~/Content/Images/rebranding/form/post.png" alt="우편" />
+					</label>
+					<label for="email">
+						@Html.CheckBoxFor(x => x.RebrandingMarketingModel.EmailCheck, new { id = "email", @class = "chkbox input__contact-method" })
+						<span></span>
+						<img src="~/Content/Images/rebranding/form/email.png" alt="이메일" />
+					</label>
+				</div>
+            <!-- //연락방식 선택 -->
+
+            <!-- 필수 : 주소  -->
+
+				<div class="post-wrap address-wrap">
+					<h3><img src="~/Content/Images/rebranding/form/tit-address.png" alt="주소" /></h3>
+					<div class="post-dim-wrap">
+						<div class="post-dim" v-on:click="openPostCode('marketing')"></div>
+						@Html.TextBoxFor(x => x.RebrandingMarketingModel.ZipCode, new { @readonly = "readonly", @class = "post-box" })
+					</div>
+					<span>
+						<button type="button" v-on:click="openPostCode()" class="btn-post"><img src="~/Content/Images/rebranding/form/btn-post.png" alt="우편번호" /></button>
+					</span>
+					<div class="post-dim-wrap">
+						<div class="post-dim" v-on:click="openPostCode()"></div>
+						@Html.TextBoxFor(x => x.RebrandingMarketingModel.Address, new { @readonly = "readonly" })
+					</div>
+
+					@Html.TextBoxFor(x => x.RebrandingMarketingModel.AddressDetail, new { placeholder = "나머지 주소를 입력해주세요.", maxlength = "200" })
+				</div>
+                <!-- //주소  -->
+
+            <!-- 이메일 -->
+				<div class="email-wrap">
+					<div class="info-name">
+						<h3><img src="~/Content/Images/rebranding/form/tit-email.png" alt="이메일" /></h3>
+						<div>
+							@Html.TextBoxFor(x => x.RebrandingMarketingModel.Email1, new { id = "email1", @class = "email-box", maxlength = 25 })
+							<img class="email-icon" src="~/Content/Images/rebranding/form/email-thum.png" alt="골뱅이" />
+							@Html.TextBoxFor(x => x.RebrandingMarketingModel.Email2, new { id = "email2", @class = "email-box", maxlength = 25 })
+
+						</div>
+						<div>
+							<select name="emailSelect" class="email-box" id="emailSelect">
+								<option value="1">직접입력</option>
+								<option value="naver.com">naver.com</option>
+								<option value="hotmail.com">hotmail.com</option>
+								<option value="hanmail.net">hanmail.net</option>
+								<option value="yahoo.co.kr">yahoo.co.kr</option>
+								<option value="paran.com">paran.com</option>
+								<option value="nate.com">nate.com</option>
+								<option value="empal.com">empal.com</option>
+								<option value="dreamwiz.com">dreamwiz.com</option>
+								<option value="hanafos.com">hanafos.com</option>
+								<option value="korea.com">korea.com</option>
+								<option value="chol.com">chol.com</option>
+								<option value="gmail.com">gmail.com</option>
+								<option value="lycos.co.kr">lycos.co.kr</option>
+								<option value="netian.com">netian.com</option>
+								<option value="hanmir.com">hanmir.com</option>
+								<option value="sayclub.com">sayclub.com</option>
+							</select>
+						</div>
+					</div>
+				</div>
+            <!-- //이메일 -->
+
+
+            <!-- 입력완료 -->
+				<div class="btn-complete-box">
+					<button class="complete ga-event" data-action="마케팅동의 입력완료" type="submit">
+						<img src="~/Content/Images/rebranding/form/btn-complete.png" alt="입력완료" />
+					</button>
+					<div class="loading" style="display:none;"><img src="~/Content/Images/rebranding/form/loading.gif" alt="loading"></div>
+				</div>
+			}
+		</div>
+	</div>
+
+</div>
+
+@section scripts {
+    <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+    <script src="~/Content/common/dev-common.js"></script>
+    <script src="~/Content/js/rebranding/pub.js"></script>
+    <script src="~/Content/js/rebranding/marketing-dev.js"></script>
+    <script>
+        var googleAnalyticCategory = '@ViewBag.Title';
+    </script>
+}

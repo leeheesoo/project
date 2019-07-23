@@ -1,0 +1,462 @@
+﻿//---------------------------------------------------
+// for this site
+//---------------------------------------------------
+.header-title {
+  font-size: 0;
+}
+/*.container{
+  min-width:unset;
+  max-width:unset;
+  width:auto;
+  margin:0;
+  padding:0;
+}*/
+
+.container.body-content{
+  width:auto;
+  padding:0;
+}
+//---------------------------------------------------
+// ir
+// heading, etc
+//---------------------------------------------------
+
+// heading
+.event-intro .heading {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  @include background('event-intro-heading.png', $y:0px);
+  width: 100%;
+  height: 320px;
+  z-index: 1;
+
+  &.kt{
+    @include background('event-intro-heading2.png', $y:0px);
+  }
+
+  .deco {
+    position: absolute;
+    top: 0px;
+    left: 54px;
+    width: 126px;
+    height: 233px;
+    @include background('event-intro-heading-deco.png', $y:0px);
+  }
+}
+
+.event-area .heading {
+  @include background('event-area-heading.png', $y:110px);
+  height: 480px;
+}
+
+/*.product-intro .heading {
+  @include background('product-intro-heading.png', $y:130px);
+  height: 400px;
+}*/
+
+.event-info {
+  @include background('event-info-img.png');
+  height: 920px;
+}
+//---------------------------------------------------
+// event 영역 스타일
+//---------------------------------------------------
+body {
+  position: relative;
+  background: #61aed8;
+}
+
+.bacgkround-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 80px;
+  width: 100%;
+  //min-width: 1000px;
+  overflow: hidden;
+
+  .bg1 {
+    position: relative;
+    height: 973px;
+  }
+
+  .bg2 {
+    position: relative;
+    height: 2560px;
+    //@include background('section-bg2.jpg');
+    &::after {
+      content: url('/Images/KittyJusticeLeague/m/section-deco-bottom.png');
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      //width:1000px;
+      height: 771px;
+    }
+
+    .section-deco-top-snow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      @include background('section-deco-top-snow.png', $repeat:repeat-x);
+    }
+
+    .section-deco-center {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100%;
+      //@include background('section-deco-center.png', $y:16px);
+    }
+
+    .section-deco-center-snow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 200%;
+      @include background('section-deco-center-snow.png', $repeat:repeat);
+    }
+
+    .section-deco-center-snow-b {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      @include background('section-deco-center-snow-b.png', $repeat:repeat);
+    }
+  }
+}
+
+.event-container {
+  position: relative;
+  //min-width: 1000px;
+  padding-top: 80px;
+
+  button {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    display: inline-block;
+    //font-size:0;
+    //text-indent: -9999em;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  // 버튼 아래에 박스쉐도우 효과 추가
+  .shine {
+    box-shadow: 7px 7px 30px -4px rgba(0,0,0,0.75);
+  }
+  /*.brand-logo {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+  }*/
+  // 이벤트 도입부
+  .event-intro {
+    position: relative;
+    height: 973px;
+
+    .toyview-container {
+      position: relative;
+      height: 973px;
+      //@include prefix(transition, all .5s ease-in-out);
+      overflow: hidden;
+
+      .paging {
+        position: absolute;
+        top: 315px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        //min-width:1000px;
+        //max-width:1600px;
+        > div {
+          width: 200px;
+          cursor: pointer;
+        }
+
+        button{
+	        text-decoration: none;
+	        outline: 0;
+        }
+
+        .main {
+          @include background('slider-go-main.png', $y:center);
+        }
+
+        .kt {
+          @include background('slider-go-kt.png', $y:center);
+        }
+
+        .jt {
+          @include background('slider-go-jt.png', $y:center);
+        }
+
+        .btn-prev {
+          position: absolute;
+          top: 0;
+          left: 2%;
+          text-align: left;
+        }
+
+        .btn-next {
+          position: absolute;
+          top: 0;
+          right: 2%;
+          text-align: right;
+        }
+      }
+
+      .toyview {
+        display:none;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 100%;
+
+        .item {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        .snowhill {
+          top: 0;
+          @include background('visual-bg.png', $y:bottom);
+        }
+
+        .back {
+          bottom: 0;
+        }
+
+        .sky {
+          top: 0;
+        }
+
+        .toy {
+          top: 0;
+        }
+
+        .top {
+          top: 0;
+        }
+
+        .logo {
+          top:15px;
+          left:15px;
+          width:140px;
+          height:140px;
+        }
+
+        .center {
+          top:0;
+        }
+
+        @each $scene in main, kt, jt {
+          &.#{$scene} {
+            .back {
+              @include background('visual-#{$scene}-bottom.png', $y:bottom);
+            }
+
+            .sky {
+              @include background('visual-#{$scene}-sky.png', $y:top);
+            }
+
+            .top {
+              @include background('visual-#{$scene}-top.png', $y:top);
+            }
+
+            .logo {
+              @include background('visual-#{$scene}-logo.png', $x:0, $y:0);
+            }
+
+            .toy {
+              @include background('visual-#{$scene}-toy.png', $y:bottom);
+            }
+            .center {
+              @include background('visual-#{$scene}-center.png', $y:384px);
+            }
+          }
+        }
+
+      }
+    }
+  }
+  // 이벤트 참여영역
+  .event-area {
+    position: relative;
+    height: 2560px;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      @include background('section-deco-top.png', $repeat:repeat-x);
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 190px;
+    }
+    // 네이버 검색 유도 영역
+    .naver-search-go {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+      height: 300px;
+      padding-top: 160px;
+
+      a {
+        position: relative;
+        display: inline-block;
+        z-index: 1;
+      }
+
+      .search-deco {
+        position: absolute;
+        top: 0;
+        left: 30px;
+        width: 563px;
+        height: 280px;
+        @include background('naver-search-deco.png', $y: 0);
+      }
+
+      .search-deco-click {
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        width: 90px;
+        height: 91px;
+        @include background('naver-search-deco-click.png', $y: 0);
+      }
+
+      .text-flow {
+        position: absolute;
+        top: 178px;
+        right: 310px;
+        width: 0px;
+        height: 50px;
+        background: #fff;
+        z-index: 1;
+      }
+    }
+    /*.entry-list-wrap {
+      .list-loading {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 500px;
+        @include background('loading.gif', $y: center);
+        z-index: 1;
+      }
+
+      .message-box {
+        position: relative;
+        margin: 0 auto;
+        height: 420px;
+
+        li {
+          display: inline-block;
+        }
+
+        img {
+          width: 730px;
+        }
+      }
+
+      .message-paging {
+        position: absolute;
+        top: 215px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+
+        .btn-prev {
+          position: absolute;
+          top: 0;
+          right: 1140px;
+        }
+
+        .btn-next {
+          position: absolute;
+          top: 0;
+          left: 1140px;
+        }
+      }
+
+      .message-indicator {
+        height: 64px;
+        color: #d9b07e;
+        font-size: 26px;
+      }
+
+      button {
+        margin: 0 5px;
+        margin-bottom: 80px;
+      }
+    }*/
+  }
+  // 제품 소개
+  .product-intro {
+    position: relative;
+    height: 1209px;
+
+    .product-img {
+      position: relative;
+      top: -55px;
+    }
+
+    .review-img {
+      top: -55px;
+      margin: 0 auto;
+      padding-bottom: 60px;
+      text-align: center;
+
+      ul {
+        list-style: none;
+
+        li {
+          display: inline-block;
+          margin: 0 5px;
+
+          &.second {
+            position: relative;
+            top: -70px;
+          }
+
+          img {
+            box-shadow: 7px 7px 30px -4px rgba(0,0,0,0.75);
+          }
+        }
+      }
+    }
+
+    .dday-box {
+      position: absolute;
+      top: 700px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  // 하단 유의사항
+  .event-note {
+    position: relative;
+    background: #2a445e;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}

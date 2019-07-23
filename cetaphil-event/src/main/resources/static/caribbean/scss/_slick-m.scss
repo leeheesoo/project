@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    // background-color: lightskyblue;
+}
+
+.slider {
+    // max-width: 1062px;
+    margin  : 0 auto;
+    position: relative;
+    // padding  : 0;
+}
+
+.slick {
+    // outline: 1px solid red;
+    padding: 0;
+}
+
+.slick__item {
+    /* outline: 1px solid blue; */
+    /* background-color: white; */
+    text-align  : left;
+    margin      : 20px 0;
+    padding-left: 42px;
+    /* padding         : 0 20px; */
+    /* margin          : 0 20px; */
+}
+
+.slick__item-elem {
+    width : 335px;
+    height: 288px;
+    // margin-bottom: 30px;
+    padding      : 30px;
+    padding-right: 50px;
+    background   : url(../images/mobile/box-m.png)no-repeat left top;
+    font-size    : 22px;
+    font-weight  : 600;
+    text-align   : left;
+}
+
+.slick__item-wrap > div:after {
+    content: '';
+    display: table;
+    clear  : both;
+}
+
+.slick__item--text {
+    color        : #105481;
+    height       : 130px;
+    margin-bottom: 25px;
+    overflow     : hidden;
+    text-align   : left;
+}
+
+.slick__item--name {
+    color: #019bff;
+    float: left;
+}
+
+.slick__item--date {
+    color: #019bff;
+    float: right;
+}
+
+.slick-current + .slick-active {
+    transform: translateY(20%)
+}
+
+.slick-track {
+    padding-top   : 35px;
+    padding-bottom: 70px;
+}
+
+.slick__item-wrap {
+    vertical-align: top;
+    width         : 335px;
+    display       : inline-block;
+    overflow      : hidden;
+    // margin        : 0 13px;
+    /* background-color: white; */
+    // padding: 0 20px;
+}
+
+.slick__item-wrap:nth-child(2) {
+    margin-top: 50px;
+}
+
+.slick-dots {
+             bottom: 60px;
+}
+
+.slick-dots li button:before {
+    font-size: 22px;
+    color    : #2563d2;
+}
+      
+.slick-dots li.slick-active button:before {
+    color: #45c3ff;
+}
+
+/* .slick-arrow {
+    width     : 26px;
+    height    : 47px;
+    background: url(../images/pc/button-nav.png) no-repeat left top;
+    top       : 40%;
+}
+
+.slick-next {
+    background-position: right top;
+    right              : -38px;
+    &:before {
+        content: '';
+    }
+    &:hover {
+        background: url(../images/pc/button-nav.png) no-repeat right top;
+        color     : rgba(0,0,0,0);
+    }
+    &:focus {
+        background: url(../images/pc/button-nav.png) no-repeat right top;
+        color     : rgba(0,0,0,0);
+    }
+}
+
+.slick-prev {
+    left: -38px;
+    &:before {
+        content: '';
+    }
+    &:hover {
+        background: url(../images/pc/button-nav.png) no-repeat left top;
+    }
+    &:focus {
+        background: url(../images/pc/button-nav.png) no-repeat left top;
+    }
+} */ // slick-theme 초기화 후 적용
+
+
+.slider__nav {
+    position: absolute;
+    top     : 35%;
+    width   : 100%;
+    // outline : 1px solid salmon;
+    &:after {
+        content: '';
+        display: table;
+        clear  : both;
+    }
+}
+
+.nav__btn {
+    width : 26px;
+    height: 47px;
+}
+
+.btn--prev {
+    background: url(../images/pc/button-nav.png) no-repeat left top;
+    // position   : absolute;
+    float      : left;
+    margin-left: -38px;
+}
+
+.btn--next {
+    background: url(../images/pc/button-nav.png) no-repeat right top;
+    // position    : absolute;
+    float       : right;
+    margin-right: -38px;
+}
+
+/* .slick-slide {
+    margin: 0 20px
+} */

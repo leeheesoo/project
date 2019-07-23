@@ -1,0 +1,269 @@
+﻿@model INGLife.Event.Models.OverFortyFiveDbModels.OverFortyFiveDbModels
+@using INGLife.Event.Domain.Entities.KidsNote
+<!-- test -->
+@*<div class="test-btn" style="z-index:1;position:fixed;top:0;left:0;background:#f7ff9b">
+		<p>테스트용 버튼(이벤트 오픈시 숨김처리)</p>
+		<button style="background:#2e59b2;color:#fff;" onclick="openPop('personal'); return false;"> /개인정보/ </button>
+		<button style="background:#2e59b2;color:#fff;" onclick="openPop('post'); return false;"> /우편번호/ </button>
+	</div>*@
+
+<!--// test -->
+
+
+
+<!-- 팝업 : dimmed -->
+<div id="dimmed" style="display:none;"></div>
+
+<!-- 팝업 :이벤트 참여 필수 확인사항 -->
+<div id="pop-confirm" class="pop-confirm">
+	<button class="btn-close" onclick="closePop('confirm');"><img src="~/Content/Images/orange4050/form/btn-close2.png" alt="닫기" /></button>
+
+	<span class="btn btn-ok"><a href="https://pf.kakao.com/_IXrZj" target="_blank" onclick="closePop('confirm')">확인</a></span>
+</div>
+
+
+<!-- 팝업 : 개인정보의수집.이용목적 -->
+<div id="pop-agree01" class="agree-pop pop-agree01">
+	<div class="header">
+		<h2 class="pop-title"><img src="~/Content/Images/orange4050/form/agree01-tit.png" alt="개인신용정보 수집.이용관한 사항" /></h2>
+		<button class="btn-close" onclick="closePop('agree01'); openPop('personal')">
+			<img src="~/Content/Images/orange4050/form/btn-close.png" alt="닫기" />
+		</button>
+	</div>
+	<div class="inner-pop">
+		<img src="~/Content/Images/orange4050/form/agree01-txt.png" alt="" />
+	</div>
+	<button class="btn-agree" onclick="closePop('agree01'); openPop('personal')"><img src="~/Content/Images/orange4050/form/btn-agree.png" alt="동의함" /></button>
+</div>
+
+<!-- 팝업 :개인정보제공 -->
+<div id="pop-agree02" class="agree-pop pop-agree02">
+	<div class="header">
+		<h2 class="pop-title"><img src="~/Content/Images/orange4050/form/agree02-tit.png" alt="개인신용정보 제공 관한 사항" /></h2>
+		<button class="btn-close" onclick="closePop('agree02'); openPop('personal');">
+			<img src="~/Content/Images/orange4050/form/btn-close.png" alt="닫기" />
+		</button>
+	</div>
+	<div class="inner-pop">
+		<img src="~/Content/Images/orange4050/form/agree02-txt.png" alt="" />
+	</div>
+	<button class="btn-agreet" onclick="closePop('agree02'); openPop('personal');"><img src="~/Content/Images/orange4050/form/btn-agree.png" alt="동의함" /></button>
+</div>
+
+<!-- 팝업 : 마케팅동의 -->
+<div id="pop-personal" class="pop-personal">
+	<div class="header">
+		<h2 class="pop-title"><img src="~/Content/Images/orange4050/form/personal-tit.png" alt="이벤트참여하기" /></h2>
+		<button onclick="closePop('personal'); return false;"><img src="~/Content/Images/orange4050/form/btn-close.png" alt="닫기" /></button>
+	</div>
+
+	<div class="inner-pop">
+		<p class="top-note"><img src="~/Content/Images/orange4050/form/top-note.png" alt="이모티콘 이벤트 참여 고객님은 마케팅동의를 위한 본인인증을 진행해주세요." /></p>
+		<div class="btn-phoneconfirm">
+			<form id="4050KMCISForm" method="post" action="#">
+				<input type="hidden" name="tr_cert" value="@Model.RequestKMCModel.Enc_Tr_Cert">
+				<input type="hidden" name="tr_url" value="@Model.RequestKMCModel.Tr_Url">
+				<input type="hidden" name="tr_add" value="@Model.RequestKMCModel.Tr_Add">
+                @if (ViewBag.IsClose)
+                {
+                    <button type="submit" class="ga-event" data-action="휴대폰 인증" onclick="alert('해당 이벤트는 선착순 마감되었습니다.');">
+                        <img src="~/Content/Images/orange4050/form/btn-phoneconfirm.png" alt="휴대폰 인증" />
+                    </button>
+                }
+                else
+                {
+                    <button type="submit" class="ga-event" data-action="휴대폰 인증" onclick="javascript:openKMCISWindow();">
+                        <img src="~/Content/Images/orange4050/form/btn-phoneconfirm.png" alt="휴대폰 인증" />
+                    </button>
+                }
+			</form>
+		</div>
+		<legend class="blind">개인정보 입력</legend>
+		<!--info-area-->
+		@using (Ajax.BeginForm("Create4050Entry", new { }, new AjaxOptions
+		{
+			HttpMethod = "post",
+			OnBegin = "orange4050EventModel.beginEntry",
+			OnComplete = "orange4050EventModel.CompleteEntry",
+			OnSuccess = "orange4050EventModel.saveEntry",
+			OnFailure = "orange4050EventModel.failureEntry"
+		}, new { id = "frmorange4050EventModelEntry" }))
+		{
+			@Html.AntiForgeryToken()
+			<div class="info-area">
+				<div class="name-line">
+					@*<input type="text" value="" placeholder="이름" readonly="readonly" />*@
+					@Html.TextBoxFor(x => x.OverFortyFiveDbModel.Name, new { placeholder = "이름", @readonly = "readonly" })
+					<div class="gender">
+						<label for="male" class="info-male">
+							@*<input type="radio" id="male" value="남" name="gender" />*@
+							@Html.RadioButtonFor(x => x.OverFortyFiveDbModel.Gender, "0", new { id = "male" })
+							<span class="btn__event btn__ir-radio"></span>
+						</label>
+						<label for="female" class="info-female">
+							@*<input type="radio" id="female" value="여" name="gender" />*@
+							@Html.RadioButtonFor(x => x.OverFortyFiveDbModel.Gender, "1", new { id = "female" })
+							<span class="btn__event btn__ir-radio"></span>
+						</label>
+					</div>
+				</div>
+				<div class="phone">
+					@*<input type="text" value="" placeholder="휴대폰번호(-없이 입력)" readonly="readonly" />*@
+					@Html.TextBoxFor(x => x.OverFortyFiveDbModel.Mobile, new { placeholder = "휴대폰번호(-없이 입력)", @readonly = "readonly" })
+				</div>
+				<div class="birth">
+					@*<input type="text" value="" placeholder="생년월일(8자리)" readonly="readonly" />*@
+					@Html.TextBoxFor(x => x.OverFortyFiveDbModel.BirthDay, new { placeholder = "생년월일(8자리)", @readonly = "readonly" })
+				</div>
+				<div class="transparent-bg">
+					<a id="kmcArea" href="javascript:close()"></a>
+				</div>
+			</div>
+						<!--//info-area-->
+						<p class="agree-notice"><img src="~/Content/Images/orange4050/form/notice-agree.png" alt="본 동의는 선택사항입니다." /></p>
+
+						<!--개인(신용)정보 수집 이용-->
+						<div class="agree-text">
+							<h3 class="select-title"><img src="~/Content/Images/orange4050/form/agree-tit1.png" alt="개인(신용)정보 수집 이용" /></h3>
+							<label for="agree01" class="agree">
+								@*<input type="checkbox" value="agree01" id="agree01" name="agree01" />*@
+								@Html.RadioButtonFor(x => x.OverFortyFiveDbModel.Agree, 1, new { id = "agree01" })
+								<span class="em"></span>
+								<img src="~/Content/Images/orange4050/form/agree.png" alt="동의" />
+								<span class="check-dimm"></span>
+							</label>
+							<label for="disagree01" class="label-agree disagree">
+								@*<input type="checkbox" value="disagree01" id="disagree01" name="OverFortyFiveDbModel.Agree" />*@
+								@Html.RadioButtonFor(x => x.OverFortyFiveDbModel.Agree, 2, new { id = "disagree01" })
+								<span></span>
+								<img src="~/Content/Images/orange4050/form/disagree.png" alt="동의하지않음" />
+								<span class="check-dimm"></span>
+							</label>
+						</div>
+						<!--//개인(신용)정보 수집 이용-->
+						<!--개인(신용)정보 제공-->
+						<div class="agree-text">
+							<h3 class="select-title"><img src="~/Content/Images/orange4050/form/agree-tit2.png" alt="개인정보의 수집 이용동의" /></h3>
+							<label for="agree02" class="agree">
+								@*<input type="checkbox" value="agree02" id="agree02" name="agree02" />*@
+								@Html.RadioButtonFor(x => x.OverFortyFiveDbModel.Agree2, 1, new { id = "agree02" })
+								<span class="em"></span>
+								<img src="~/Content/Images/orange4050/form/agree.png" alt="동의" />
+								<span class="check-dimm"></span>
+							</label>
+							<label for="disagree02" class="label-agree disagree">
+								@*<input type="checkbox" value="disagree02" id="disagree02" name="OverFortyFiveDbModel.Agree2" />*@
+								@Html.RadioButtonFor(x => x.OverFortyFiveDbModel.Agree2, 2, new { id = "disagree02" })
+								<span></span>
+								<img src="~/Content/Images/orange4050/form/disagree.png" alt="동의하지않음" />
+								<span class="check-dimm"></span>
+							</label>
+						</div>
+						<!--//개인정보 제공-->
+						<!-- 연락방식 선택 -->
+						<div class="contact-check">
+							<h3 class="select-title">
+								<img src="~/Content/Images/orange4050/form/contact-tit.png" alt="연락방식 선택" />
+							</h3>
+							<p><img src="~/Content/Images/orange4050/form/contact-note-event.png" alt="전화,문자메세지,우편동의를 하셔야 이벤트 참여가 가능합니다" /></p>
+							<label for="all">
+								@*<input type="checkbox" value="all" id="all" />*@
+								@Html.CheckBoxFor(x => x.OverFortyFiveDbModel.AllCheck, new { id = "all" })
+								<span class="em"></span>
+								<img src="~/Content/Images/orange4050/form/all.png" alt="전체" />
+								<span class="check-dimm"></span>
+							</label>
+							<label for="phone">
+								@*<input type="checkbox" value="phone" class="chkbox input__contact-method" id="phone" />*@
+								@Html.CheckBoxFor(x => x.OverFortyFiveDbModel.PhoneCheck, new { id = "phone", @class = "chkbox input__contact-method" })
+								<span></span>
+								<img src="~/Content/Images/orange4050/form/phone.png" alt="전화" />
+							</label>
+							<label for="sms" class="width-auto">
+								@*<input type="checkbox" value="sms" class="chkbox input__contact-method" id="sms" />*@
+								@Html.CheckBoxFor(x => x.OverFortyFiveDbModel.MessageCheck, new { id = "sms", @class = "chkbox input__contact-method" })
+								<span></span>
+								<img src="~/Content/Images/orange4050/form/sms.png" alt="문자메세지" />
+							</label>
+						</div>
+						<!-- //연락방식 선택 -->
+						<!--보유 이용기간-->
+						<div class="retention-period">
+							<h3 class="select-title">
+								<img src="~/Content/Images/orange4050/form/retention-tit.png" alt="보유 이용기간" />
+							</h3>
+							<label for="year5">
+								@*<input type="radio" value="year5" id="year5" name="RetentionPeriodType" />*@
+								@Html.RadioButtonFor(x => x.OverFortyFiveDbModel.RetentionPeriodType, RetentionPeriodType.FiveYears, new { id = "year5" })
+								<span class="radio em"></span>
+								<img src="~/Content/Images/orange4050/form/5year.png" alt="5년" />
+								<span class="check-dimm"></span>
+							</label>
+							<label for="year4">
+								@*<input type="radio" value="year4" id="year4" name="RetentionPeriodType" />*@
+								@Html.RadioButtonFor(x => x.OverFortyFiveDbModel.RetentionPeriodType, RetentionPeriodType.FourYears, new { id = "year4" })
+								<span class="radio"></span>
+								<img src="~/Content/Images/orange4050/form/4year.png" alt="4년" />
+							</label>
+							<label for="year3">
+								@*<input type="radio" value="year3" id="year3" name="RetentionPeriodType" />*@
+								@Html.RadioButtonFor(x => x.OverFortyFiveDbModel.RetentionPeriodType, RetentionPeriodType.ThreeYears, new { id = "year3" })
+								<span class="radio"></span>
+								<img src="~/Content/Images/orange4050/form/3year.png" alt="3년" />
+							</label>
+							<label for="year2">
+								@*<input type="radio" value="year2" id="year2" name="RetentionPeriodType" />*@
+								@Html.RadioButtonFor(x => x.OverFortyFiveDbModel.RetentionPeriodType, RetentionPeriodType.TwoYears, new { id = "year2" })
+								<span class="radio"></span>
+								<img src="~/Content/Images/orange4050/form/2year.png" alt="2년" />
+							</label>
+							<label for="year1">
+								@*<input type="radio" value="year1" id="year1" name="RetentionPeriodType" />*@
+								@Html.RadioButtonFor(x => x.OverFortyFiveDbModel.RetentionPeriodType, RetentionPeriodType.OneYear, new { id = "year1" })
+								<span class="radio"></span>
+								<img src="~/Content/Images/orange4050/form/1year.png" alt="1년" />
+							</label>
+						</div>
+						<!--//보유 이용기간-->
+						<!--이모티콘 선택-->
+						<div class="emoticon-select">
+							<h3 class="select-title"><img src="~/Content/Images/orange4050/form/emoticon-tit.png" alt="마음에 드는 이모티콘을 선택하세요!" /></h3>
+							<label for="emoticon01">
+								@*<input type="radio" value="emoticon01" id="emoticon01" name="emoticon" />*@
+								@Html.RadioButtonFor(x => x.OverFortyFiveDbModel.EmoticonType, EmoticonType.Emoticon1, new { id = "emoticon01" })
+								@*@Html.RadioButtonFor(x => x.OverFortyFiveDbModel.Emoticon, new { id = "emoticon01", value= "우리 딸" })*@
+								<span class="radio"></span>
+								<img src="~/Content/Images/orange4050/form/emoticon01.png" alt="니들이 엄니맘을 알어?" />
+								<span class="check-dimm"></span>
+							</label>
+							<label for="emoticon02">
+								@*<input type="radio" value="emoticon02" id="emoticon02" name="emoticon" />*@
+								@Html.RadioButtonFor(x => x.OverFortyFiveDbModel.EmoticonType, EmoticonType.Emoticon2, new { id = "emoticon02" })
+								<span class="radio"></span>
+								<img src="~/Content/Images/orange4050/form/emoticon02.png" alt="깨방정 요하" />
+							</label>
+							<label for="emoticon03">
+								@*<input type="radio" value="emoticon03" id="emoticon03" name="emoticon" />*@
+								@Html.RadioButtonFor(x => x.OverFortyFiveDbModel.EmoticonType, EmoticonType.Emoticon3, new { id = "emoticon03" })
+								<span class="radio"></span>
+								<img src="~/Content/Images/orange4050/form/emoticon03.png" alt="어서와~이런 덕담 처음이지?" />
+							</label>
+						</div>
+						<div class="emoticon-view">
+							<img src="~/Content/Images/orange4050/form/emoticon01-ex.png" alt="니들이 엄니맘을 알어?" />
+							<img src="~/Content/Images/orange4050/form/emoticon02-ex.png" alt="깨방정 요하" />
+							<img src="~/Content/Images/orange4050/form/emoticon03-ex.png" alt="어서와~이런 덕담 처음이지?" />
+
+							<p class="emoticon-note"><img src="~/Content/Images/orange4050/form/emoticon-note.png" alt="이모티콘 선택 시 선택한 이모티콘 상세 이미지 확인이 가능합니다." /></p>
+						</div>
+						<!--//보유 이용기간-->
+						<!-- 입력완료 -->
+						<div class="btn-complete-box">
+							<button class="complete ga-event" data-action="입력완료" type="submit">
+								<img src="~/Content/Images/orange4050/form/btn-complete.png" alt="입력완료" />
+							</button>
+							<div class="loading" style="display:none;"><img src="~/Content/Images/orange4050/form/loading.gif" alt="loading"></div>
+						</div>
+		}
+	</div>
+</div>

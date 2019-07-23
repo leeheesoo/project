@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "[메인스트림 이벤트] 참여자";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+    var action = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+}
+<div class="panel panel-default" id="adminMainStreamDiv">
+    <div class="panel-body">
+        <div class="row" style="padding-left:10px">
+            <h1>@ViewBag.Title</h1>
+        </div>
+        <div style="float:right;padding-bottom:10px">
+            전체 <b style="color:red" data-bind="text: totalItemCount"></b> 건
+            <a class="btn btn-default" href="@Url.Action("ExcelDownload", "AdminMainStream", new { Type = action })"><i class="fa fa-download"></i> 엑셀다운로드</a>
+        </div>
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th style="text-align:center;vertical-align:middle">No.</th>
+                    <th style="text-align:center;vertical-align:middle;">참여일</th>
+                    <th style="text-align:center;vertical-align:middle;">디바이스</th>
+                    <th style="text-align:center;vertical-align:middle;">IP</th>
+                    <th style="text-align:center;vertical-align:middle;">이름</th>
+                    <th style="text-align:center;vertical-align:middle;">나이</th>
+                    <th style="text-align:center;vertical-align:middle;">성별</th>
+                    <th style="text-align:center;vertical-align:middle;">서프라이즈</th>
+                    <th style="text-align:center;vertical-align:middle;">연락처</th>
+                    <th style="text-align:center;vertical-align:middle">비고</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th style="vertical-align:middle;">
+                        <div>
+                            @Html.TextBox("fromDate","","{0:yyyy-MM-dd}", new { @class = "form-control input-sm datepicker", style="cursor:pointer", placeholder = "시작", data_bind= "value: filterFromDate" })
+                            @Html.TextBox("toDate", "","{0:yyyy-MM-dd}", new { @class = "form-control input-sm datepicker", style = "cursor:pointer", placeholder = "종료", data_bind = "value: filterToDate" })
+                        </div>
+                    </th>
+                    <th style="vertical-align:middle;">
+                        @Html.DropDownList("ddlDevice", new List<SelectListItem>() { new SelectListItem { Text = "web", Value = "web" }, new SelectListItem { Text = "mobile", Value = "mobile" } }
+                        , "선택", new { data_bind = "value: filterDevice", @class = "form-control" })
+                    </th>
+                    <th style="vertical-align:middle;">@Html.TextBox("tbIpAddress","",new { data_bind= "value: filterIpAddress, event:{ keyup: function(){goToPage(1);} }", @class="form-control" })</th>
+                    <th style="vertical-align:middle;">@Html.TextBox("tbName", "", new { data_bind = "value: filterName, event:{ keyup: function(){goToPage(1);} }", @class = "form-control" })</th>
+                    <th style="vertical-align:middle;">@Html.TextBox("tbAge", "", new { data_bind = "value: filterAge, event:{ keyup: function(){goToPage(1);} }", @class = "form-control" })</th>
+                    <th style="vertical-align:middle;">
+                        @Html.DropDownList("ddlGender", new List<SelectListItem>() { new SelectListItem { Text = "남아", Value = "남아" }, new SelectListItem { Text = "여아", Value = "여아" } }
+                        , "선택", new { data_bind = "value: filterGender", @class = "form-control" })
+                    </th>
+                    <th style="vertical-align:middle;">
+                        @Html.DropDownList("ddlSurprise", ViewBag.MainStreamSurprise as List<SelectListItem>
+                        , "선택", new { data_bind = "value: filterSurprise", @class = "form-control" })
+                    </th>
+                    <th style="vertical-align:middle;">@Html.TextBox("tbMobile", "", new { data_bind = "value: filterMobile, event:{ keyup: function(){goToPage(1);} }", @class = "form-control" })</th>
+                    <th style="vertical-align:middle;"><button class="btn btn-success btn-sm" data-bind="click:function(){goToPage(1);}"><i class="fa fa-search"></i> 검색</button></th>
+                </tr>
+            </thead>
+            <tbody style="text-align:center" data-bind="visible: totalItemCount() > 0, foreach: items">
+                <tr>
+                    <td data-bind="text: ($root.pageSize() * ($root.pageNumber() - 1)) + $index() + 1"></td>
+                    <td data-bind="text: convertToDate(createDate())"></td>
+                    <td data-bind="text: channel"></td>
+                    <td data-bind="text: ipAddress"></td>
+                    <td data-bind="text: name"></td>
+                    <td data-bind="text: age"></td>
+                    <td data-bind="text: gender"></td>
+                    <td data-bind="text: quizName"></td>
+                    <td data-bind="text: mobile"></td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tbody style="display:none" data-bind="visible: totalItemCount() == 0">
+                <tr>
+                    <td colspan="10" style="color:red;text-align:center">데이터가 없습니다.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="paging" style="text-align:center">
+            <a href="#" data-bind="visible: !isFirstPage(), click: function () { goToPage(1); }">처음</a>
+            <a href="#" data-bind="visible: hasPreviousPage(), click: function () { goToPage(pageNumber() - 1); }">이전</a>
+            <!-- ko foreach: pages -->
+            <a href="#" data-bind="click: function () { $root.goToPage($data) }, text: $data, style: { color: ($root.pageNumber() == $data) ? 'black' : '', fontWeight: ($root.pageNumber() == $data) ? 'bold' : 'normal' } "></a>
+            <!-- /ko -->
+            <a href="#" data-bind="visible: hasNextPage(), click: function () { goToPage(pageNumber() + 1); }">다음</a>
+            <a href="#" data-bind="visible: !isLastPage(), click: function () { goToPage(pageCount()); }">마지막</a>
+
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/MainStream/admin-viewmodels.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            if ('@TempData["message"]' != '') {
+                alert('@TempData["message"]');
+            }
+
+            var adminMainStreamViewModel = new createAdminMainStreamViewModel();
+            ko.applyBindings(adminMainStreamViewModel, document.getElementById('adminMainStreamDiv'));
+        });
+    </script>
+}

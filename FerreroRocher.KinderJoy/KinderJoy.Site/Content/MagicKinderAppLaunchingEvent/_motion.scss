@@ -1,0 +1,205 @@
+﻿// Animation Variables
+$animation-speed: .5s;
+$animation-delay: .5s;
+$animation-timing: ease-in;
+$animation-fill: both;
+$animation-direction: alternate;
+$animation-slide-distance: 30px;
+
+// Animation Mixin
+@mixin animation($name, $properties: null, $name2: nullh) {
+	@if $properties {
+	  animation: $name $properties;
+	} 
+	
+	@else if $name2 {
+	  animation-name: $name, $name2;
+	}
+	
+	@else {
+	  animation-name: $name $name2;
+	}
+}
+
+
+// Animation Properties Mixin
+@mixin animationBase($speed, $timing, $fill, $direction, $iterate: null, $delay:null) {
+  .animated {
+    animation-duration: $speed;
+    animation-timing-function: $timing;
+    animation-fill-mode: $fill;
+    animation-direction: $direction;
+    animation-delay: $delay;
+    
+    @if $iterate {
+      animation-iteration-count: $iterate;
+    }
+  }
+}
+
+// Base Call
+@include animationBase($animation-speed, $animation-timing, $animation-fill, $animation-direction);
+
+@mixin animate() {
+    /*.animate-with-delay {
+        -webkit-animation-delay: $animation-delay;
+    }*/
+  
+    .animate-fade-in {
+        @include animation(fadeIn);
+    }
+  
+    .animate-fade-out {
+        @include animation(fadeOut);
+    }
+
+    .animate-slide-up {
+        @include animation(slideUp);
+    }
+
+    .animate-slide-right {
+     @include animation(slideRight);
+    }
+
+    .animate-slide-down {
+        @include animation(slideDown);
+    }
+
+    .animate-slide-left {
+        @include animation(slideLeft);
+    }
+
+    .animate-fade-in-slide-up {
+        @include animation(fadeIn, $name2: slideUp);
+    }
+
+    .animate-fade-in-slide-right {
+        @include animation(fadeIn, $name2: slideRight);
+    }
+
+    .animate-fade-in-slide-left {
+        @include animation(fadeIn, $name2: slideLeft);
+    }
+
+    .animate-floating{
+        @include animation(floatingUpDn2, 4s ease-in-out infinite);
+    }
+    .animate-floating2{
+        @include animation(floatingUpDn, 6s ease-in-out infinite);
+    }
+    .animate-floating3{
+        @include animation(floatingDnUp, 2s ease-in-out infinite);
+    }
+}
+
+
+// Call Animations
+@include animate();
+
+// Keyframes
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+	    @content;
+    }
+	
+    @keyframes #{$name} {
+	    @content;
+    }
+}
+
+@include keyframes(fadeIn) {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@include keyframes(fadeOut) {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@include keyframes(slideUp) {
+  0% {
+    transform: translateY($animation-slide-distance);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@include keyframes(slideRight) {
+  0% {
+    transform: translateX($animation-slide-distance);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@include keyframes(slideDown) {
+  0% {
+    transform: translateY(-$animation-slide-distance);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@include keyframes(slideLeft) {
+  0% {
+    transform: translateX(-$animation-slide-distance);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@include keyframes(floatingUpDn) {
+    from {
+        opacity:1;
+        transform:translate(0, 0px);
+    }
+    65% {
+        transform:translate(0, 8px);
+    }
+    to {
+        opacity:1;
+        transform: translate(0, 0px);
+    }    
+}
+
+@include keyframes(floatingUpDn2) {
+    from {
+        opacity:1;
+        transform:translate(0, 0px);
+    }
+    65% {
+        transform:translate(0, 13px);
+    }
+    to {
+        opacity:1;
+        transform: translate(0, 0px);
+    }    
+}
+
+@include keyframes(floatingDnUp) {
+    from {
+        opacity:1;
+        transform:translate(0, -6px);
+    }
+    65% {
+        transform:translate(0, 0px);
+    }
+    to {
+        opacity:1;
+        transform: translate(0, -6px);
+    }    
+}

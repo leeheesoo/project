@@ -1,0 +1,1156 @@
+﻿@charset "UTF-8";
+.c-tab::after, .package__detail__wrap::after, .event1__web-search::after, .event1__what::after, .pop-sns__list::after, .pop-userInfo__form__wrap::after, .pop-prize__form fieldset::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/*=============================
+    common
+===============================*/
+.screen-out {
+  position: absolute;
+  overflow: hidden;
+  top: -9999em;
+  left: -9999em;
+}
+
+.container a {
+  text-indent: 0;
+}
+
+/* 로딩바 */
+.btns-wrap {
+  display: inline-block;
+  position: relative;
+}
+
+.loading-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background: #000;
+  opacity: .7;
+  filter: alpha(opacity=70);
+}
+
+.loading-wrap.on {
+  display: block;
+}
+
+.loading-wrap img {
+  margin-top: 25px;
+}
+
+/* 개인정보 수집 */
+.agree-txt {
+  height: 150px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  font-size: 75%;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.agree-txt dt {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.agree-txt dd {
+  margin-top: 15px;
+}
+
+.agree-txt ul {
+  margin-top: 10px;
+}
+
+.agree-txt li {
+  margin-top: 5px;
+}
+
+.agree-txt p {
+  margin-top: 15px;
+}
+
+/*=============================
+    visual
+===============================*/
+.visual {
+  background: transparent url(/Images/Christmas2015/m/bg-visual.jpg) no-repeat center bottom;
+  height: 615px;
+  padding-top: 80px;
+  text-align: center;
+}
+
+.visual__tit {
+  margin-top: 125px;
+}
+
+/*=============================
+    tab
+===============================*/
+.c-tab {
+  background: #f4f4f4;
+  padding-top: 36px;
+  padding-bottom: 15px;
+}
+
+.c-tab__wrap {
+  position: relative;
+  z-index: 10;
+}
+
+.c-tab__item {
+  float: left;
+  margin-left: 39px;
+}
+
+.c-tab__item:first-child {
+  margin-left: 35px;
+}
+
+.c-tab__link, .c-tab__link--sec, .c-tab__link--last {
+  background: transparent url(/Images/Christmas2015/m/btn-tabs.png) no-repeat 0 top;
+  width: 164px;
+  height: 164px;
+  display: block;
+}
+
+.c-tab__link.on, .on.c-tab__link--sec, .on.c-tab__link--last {
+  background-position: 0 bottom;
+}
+
+.c-tab__link--sec {
+  background-position: center top;
+}
+
+.c-tab__link--sec.on {
+  background-position: center bottom;
+}
+
+.c-tab__link--last {
+  background-position: right top;
+}
+
+.c-tab__link--last.on {
+  background-position: right bottom;
+}
+
+/* wave */
+.wave {
+  background: transparent url(/Images/Christmas2015/m/bg-wave.png) no-repeat center top;
+  height: 60px;
+}
+
+/*=============================
+    package
+===============================*/
+.package {
+  position: relative;
+  margin-top: -30px;
+  padding-top: 55px;
+  padding-bottom: 40px;
+  display: none;
+  background: #f15b22;
+  text-align: center;
+  z-index: 1;
+}
+
+.package.on {
+  display: block;
+}
+
+.package__img {
+  position: relative;
+  margin-top: 55px;
+  background: #fff;
+  padding-top: 52px;
+  position: relative;
+}
+
+.package .wave__white {
+  background: transparent url(/Images/Christmas2015/m/bg-wave-white.png) no-repeat center top;
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  top: 428px;
+}
+
+/* package-detail */
+.package__detail {
+  margin-top: 98px;
+  padding-bottom: 50px;
+}
+
+.package__detail__wrap {
+  padding: 20px 50px 0;
+}
+
+.package__detail__item {
+  float: left;
+  margin-left: 28px;
+  margin-top: 30px;
+}
+
+.package__detail__item:first-child,
+.package__detail__item:nth-child(4) {
+  margin-left: 0;
+}
+
+/*=============================
+    event1
+===============================*/
+.event1 {
+  outline: 1px dashed red;
+  display: none;
+  margin-top: -60px;
+  padding-top: 110px;
+  text-align: center;
+}
+
+.event1.on {
+  display: block;
+}
+
+.event1__txt {
+  margin-top: 25px;
+}
+
+.event1__date {
+  background: transparent url(/Images/Christmas2015/m/date-event1.png) no-repeat center top;
+  overflow: hidden;
+  width: 437px;
+  height: 32px;
+  margin: 28px auto 0;
+  text-indent: -9999em;
+}
+
+.event1 .youtube {
+  margin: 20px auto 0;
+  width: 565px;
+  height: 372px;
+}
+
+.event1 .youtube iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.event1__join__list {
+  background: transparent url(/Images/Christmas2015/m/list-join.png) no-repeat center top;
+  overflow: hidden;
+  text-indent: -9999em;
+  width: 571px;
+  height: 260px;
+  margin: 18px auto 0;
+}
+
+.event1__web-search {
+  margin: 38px auto 0;
+  width: 565px;
+}
+
+.event1__web-search img {
+  float: left;
+}
+
+.event1__web-search__link {
+  float: right;
+}
+
+.event1__what {
+  width: 565px;
+  margin: 20px auto 0;
+}
+
+.event1__what--left,
+.event1__what--right {
+  display: inline-block;
+  text-indent: 0;
+}
+
+.event1__what--left {
+  float: left;
+}
+
+.event1__what--right {
+  float: right;
+}
+
+/*=============================
+    event2
+===============================*/
+.event2 {
+  background: #fff url(/Images/Christmas2015/m/bg-event2.jpg) no-repeat center top;
+  display: none;
+  margin-top: -35px;
+  text-align: center;
+  padding-top: 82px;
+}
+
+.event2.on {
+  display: block;
+}
+
+.event2__txt {
+  margin-top: 25px;
+}
+
+/* make tree */
+.make-tree {
+  position: relative;
+}
+
+/* tree area */
+.tree-area {
+  background: transparent url(/Images/Christmas2015/m/bg-tree.png) no-repeat center top;
+  height: 761px;
+  position: relative;
+}
+
+.tree-area canvas {
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.tree-area__inner {
+  position: relative;
+  height: 761px;
+  z-index: 1;
+  padding: 0 30px 0 120px;
+}
+
+/* toys */
+.toys {
+  background: transparent url(/Images/Christmas2015/m/bg-slider.png) no-repeat center top;
+  width: 608px;
+  height: 126px;
+  margin: 0 auto;
+  padding-top: 20px;
+  position: relative;
+}
+
+.toyItem {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -46px;
+}
+
+.arrow-prev, .arrow-next {
+  background: transparent url(/Images/Christmas2015/m/arrow.png) no-repeat left top;
+  width: 46px;
+  height: 47px;
+  position: absolute;
+  top: 50%;
+  margin-top: -23.5px;
+  border: none;
+}
+
+.arrow-prev {
+  left: 17px;
+}
+
+.arrow-next {
+  background-position: right top;
+  right: 17px;
+}
+
+.btn-reset, .btn-build {
+  background: transparent url(/Images/Christmas2015/m/btn-reset.png) no-repeat center top;
+  width: 255px;
+  height: 79px;
+  margin-top: 20px;
+  border: none;
+}
+
+.btn-build {
+  background-image: url(/Images/Christmas2015/m/btn-tree.png);
+  width: 295px;
+  margin-left: 9px;
+}
+
+/* pop tree */
+.pop-tree {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  height: 1073px;
+  display: none;
+}
+
+.pop-tree.on {
+  display: block;
+}
+
+.pop-tree__inner {
+  background: transparent url(/Images/Christmas2015/m/bg-grid.png) no-repeat 347px 270px;
+  position: relative;
+  height: 1009px;
+  z-index: 10;
+}
+
+.pop-tree__txt {
+  margin-top: 64px;
+}
+
+.pop-tree__txt--btm { display: inline-block; margin-top: 57px; }
+
+.pop-tree__btn {
+  background: transparent url(/Images/Christmas2015/m/btn-poptree.png) no-repeat center top;
+  width: 445px;
+  height: 99px;
+  border: none;
+  margin: 700px auto 0;
+}
+
+.dim-tree {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+/* 이벤트 기간 */
+.date-event2 {
+  background: transparent url(/Images/Christmas2015/m/bg-snow.png) no-repeat center top;
+  margin-top: 30px;
+}
+
+.date-event2__list {
+  background: transparent url(/Images/Christmas2015/m/date-event2.png) no-repeat center top;
+  width: 500px;
+  height: 64px;
+  display: inline-block;
+  margin: 63px auto 0;
+  text-indent: -9999em;
+}
+
+/* 참여방법 */
+.event2-join__list {
+  background: transparent url(/Images/Christmas2015/m/list-join-event2.png) no-repeat center top;
+  width: 570px;
+  height: 263px;
+  text-indent: -9999em;
+  margin: 27px auto 0;
+}
+
+.btn-gift__long {
+  display: inline-block;
+  text-indent: 0;
+  margin-top: 34px;
+}
+
+/*=============================
+    caution
+===============================*/
+.christmas__caution {
+  position: relative;
+  padding: 132px 0 27px;
+  background: #f15b22;
+  text-align: left;
+}
+
+christmas__caution a { display: block; }
+
+.christmas__caution .wave__white {
+  background: transparent url(/Images/Christmas2015/m/bg-wave-caution.png) no-repeat center top;
+  height: 90px;
+  width: 100%;
+  position: absolute;
+  top: -1px;
+}
+
+.christmas__caution__list {
+  margin-left: 37px;
+}
+
+.christmas__caution__txt {
+  background: transparent url(/Images/Christmas2015/m/txt-caution.png) no-repeat center top;
+  width: 559px;
+  height: 287px;
+  overflow: hidden;
+  margin-top: 25px;
+  text-indent: -9999em;
+}
+
+/**
+ *
+ *   popup
+======================================================================*/
+.dim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background: #000;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+
+.dim.on {
+  display: block;
+}
+
+.pop-bang .close, .pop-sns .close, .pop-userInfo .close, .pop-prize .close, .pop-winner .close, .pop-post .close, .pop-card .close, .pop-package .close, .pop-bang__retry, .pop-sns__close, .pop-userInfo__ok, .pop-prize__ok {
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  width: 364px;
+  height: 97px;
+}
+
+.pop-bang, .pop-sns, .pop-userInfo, .pop-prize, .pop-winner, .pop-post, .pop-card, .pop-package {
+  width: 600px;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  margin-left: -300px;
+  text-align: center;
+  display: none;
+  z-index: 100;
+}
+
+.on.pop-bang, .on.pop-sns, .on.pop-userInfo, .on.pop-prize, .on.pop-winner, .on.pop-post, .on.pop-card, .on.pop-package {
+  display: block;
+}
+
+.pop-bang__header, .pop-sns__header, .pop-userInfo__header, .pop-prize__header {
+  padding: 50px 0;
+  background: #f15b22;
+}
+
+.pop-bang__body, .pop-sns__body, .pop-userInfo__body, .pop-prize__body {
+  padding: 40px 0 35px;
+  background: #fff;
+}
+
+.pop-bang .close, .pop-sns .close, .pop-userInfo .close, .pop-prize .close, .pop-winner .close, .pop-post .close, .pop-card .close, .pop-package .close {
+  background: transparent url(/Images/Christmas2015/popup/btn-close.png) no-repeat center top;
+  width: 51px;
+  height: 50px;
+  right: 0;
+  top: -60px;
+  position: absolute;
+}
+
+/* 꽝 */
+.pop-bang__txt {
+  margin-top: 18px;
+}
+
+.pop-bang__retry {
+  margin-top: 27px;
+}
+
+/* sns 공유 */
+.pop-sns__link--facebook, .pop-sns__link--kakaoStory, .pop-sns__link--kakaoTalk {
+  background: transparent url(/Images/Christmas2015/popup/ir-sns.png) no-repeat 0 top;
+  display: block;
+  width: 118px;
+  height: 119px;
+}
+
+.pop-sns {
+  top: 1630px;
+}
+
+.pop-sns__header__txt {
+  margin-top: 20px;
+}
+
+.pop-sns .sns-wrap {
+  display: inline-block;
+  position: relative;
+  margin-top: 20px;
+}
+
+.pop-sns .sns-wrap img {
+  margin-top: 35px;
+}
+
+.pop-sns__list {
+  width: 410px;
+}
+
+.pop-sns__item {
+  float: left;
+  margin-left: 28px;
+}
+
+.pop-sns__item:first-child {
+  margin-left: 0;
+}
+
+.pop-sns__link--kakaoStory {
+  background-position: center top;
+}
+
+.pop-sns__link--kakaoTalk {
+  background-position: right top;
+}
+
+.pop-sns__caution {
+  background: transparent url(/Images/Christmas2015/popup/txt-sns2.png) no-repeat center top;
+  width: 235px;
+  height: 21px;
+  overflow: hidden;
+  margin: 50px auto 0;
+  text-indent: -9999em;
+}
+
+.pop-sns .btns-wrap {
+  margin-top: 30px;
+}
+
+.pop-sns__close {
+  background: transparent url(/Images/Christmas2015/popup/btn-sns.png) no-repeat center top;
+}
+
+.pop-sns__caution--btm {
+  background: #fff5dc;
+  margin: 40px auto 0;
+  width: 523px;
+  height: 222px;
+  padding-top: 25px;
+  padding-left: 10px;
+}
+
+.pop-sns__caution--btm__list {
+  background: transparent url(/Images/Christmas2015/popup/img-snsCaution.png) no-repeat center top;
+  overflow: hidden;
+  width: 513px;
+  height: 194px;
+  text-indent: -9999em;
+}
+
+/* 개인정보 입력 */
+.pop-userInfo__form__label--name,
+.pop-userInfo__form__label--phone,
+.pop-userInfo__form__label--addr,
+.pop-userInfo__form__label--age,
+.pop-prize__label--name,
+.pop-prize__label--phone,
+.pop-prize__label--addr {
+  background: transparent url(/Images/Christmas2015/popup/label-userInfo.png) no-repeat left top;
+  display: block;
+  float: left;
+  width: 126px;
+  height: 50px;
+}
+
+.pop-userInfo__input--long, .pop-userInfo__input--short, .pop-prize__input--short, .pop-prize__input--long {
+  background: #fff8e8;
+  border: #f2ebdb;
+  height: 48px;
+  width: 361px;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.pop-userInfo {
+  top: 1400px;
+}
+
+.pop-userInfo__header__txt {
+  margin-top: 19px;
+}
+
+.pop-userInfo__body {
+  padding: 59px 0 40px;
+}
+
+.pop-userInfo__form {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.pop-userInfo__form fieldset {
+  text-align: left;
+}
+
+.pop-userInfo__form__wrap {
+  margin-top: 18px;
+}
+
+.pop-userInfo__form__wrap--first {
+  margin-top: 0;
+}
+
+.pop-userInfo__form__wrap--txr {
+  text-align: right;
+}
+
+.pop-userInfo__form__label--name {
+  background-position: 0 14px;
+}
+
+.pop-userInfo__form__label--phone {
+  background-position: 0 -50px;
+}
+
+.pop-userInfo__form__label--addr {
+  background-position: 0 -115px;
+}
+
+.pop-userInfo__form__label--age { background-position: 0 -237px; }
+
+.pop-userInfo__input--long { width: 364px; }
+
+.pop-userInfo__addr {
+  position: relative;
+}
+
+.pop-userInfo__addr .post {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.pop-userInfo__input--short {
+  width: 205px;
+}
+
+.pop-userInfo__agree {
+  position: relative;
+  margin-top: 35px;
+}
+
+.pop-userInfo__agree * {
+  vertical-align: top;
+}
+
+.pop-userInfo__agree .agree-input {
+  width: 26px;
+  height: 26px;
+}
+
+.pop-userInfo__agree .agree-label {
+  background: transparent url(/Images/Christmas2015/popup/txt-agree.png) no-repeat center top;
+  display: inline-block;
+  width: 194px;
+  height: 19px;
+  margin-top: 5px;
+}
+
+.pop-userInfo__agree .agree-detail {
+  position: absolute;
+  left: 237px;
+  top: 8px;
+}
+
+.pop-userInfo .btns-wrap {
+  margin-top: 30px;
+}
+
+.pop-userInfo__ok {
+  background: transparent url(/Images/Christmas2015/popup/btn-insertOk.png) no-repeat center top;
+}
+
+/* 당첨 팝업 */
+.pop-prize {
+  top: 200px;
+}
+
+.pop-prize__gift {
+  margin-top: 30px;
+}
+
+.pop-prize__txt {
+  margin-top: 17px;
+}
+
+.pop-prize__form {
+  width: 520px;
+  margin: 0 auto;
+}
+
+.pop-prize__form fieldset {
+  text-align: left;
+}
+
+.pop-prize__field {
+  margin-top: 18px;
+}
+
+.pop-prize__field--first {
+  margin-top: 15px;
+}
+
+.pop-prize__field--addr {
+  position: relative;
+}
+
+.pop-prize__field--addr--last {
+  margin-top: 5px;
+  text-align: right;
+}
+
+.pop-prize__field--addr--last .pop-prize__input--long {
+  width: 384px;
+}
+
+.pop-prize__label--name {
+  float: left;
+  background-position: 0 17px;
+}
+
+.pop-prize__label--phone {
+  float: left;
+  background-position: 0 -50px;
+}
+
+.pop-prize__label--addr {
+  float: left;
+  background-position: 0 -117px;
+}
+
+.pop-prize__input--short {
+  width: 227px;
+}
+
+.pop-prize__input--long {
+  width: 380px;
+}
+
+.pop-prize .post {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.pop-prize .show-addr {
+  display: none;
+}
+
+.pop-prize .show-addr.on {
+  display: block;
+}
+
+.pop-prize__field__agree {
+  margin-top: 13px;
+  position: relative;
+}
+
+.pop-prize__field__agree * {
+  vertical-align: top;
+}
+
+.pop-prize__field__agree input {
+  width: 26px;
+  height: 26px;
+  border: 1px solid #ddd;
+}
+
+.pop-prize__label {
+  background: transparent url(/Images/Christmas2015/popup/txt-agree.png) no-repeat center top;
+  display: inline-block;
+  width: 194px;
+  height: 19px;
+  margin-top: 5px;
+}
+
+.pop-prize__detail {
+  position: absolute;
+  top: 8px;
+  left: 236px;
+}
+
+.pop-prize__ok {
+  background: transparent url(/Images/Christmas2015/popup/btn-prize.png) no-repeat center top;
+}
+
+.pop-prize .btns-wrap {
+  margin-top: 26px;
+}
+
+/* 당첨자 발표 */
+.pop-winner__list { position: relative; }
+
+.pop-winner__item { background: #fff; }
+.pop-winner__item--last { padding-bottom: 50px; }
+
+.pop-winner__item--first.on .pop-winner__link--first { background-position: 0 bottom; }
+.pop-winner__item--first.on .pop-gift { display: block; }
+
+.pop-winner__item--sec.on .pop-winner__link--sec { background-position: center bottom; }
+.pop-winner__item--sec.on .pop-winner__names { display: block; }
+
+.pop-winner__item--last.on .pop-winner__link--last { background-position: right bottom; }
+.pop-winner__item--last.on .pop-winner__names { display: block; }
+
+.pop-winner__link {
+  background: transparent url(/Images/Christmas2015/popup/btn-tab.png) no-repeat 0 top;
+  display: block;
+  width: 200px;
+  height: 125px;
+  position: absolute;
+  top: 0;
+}
+
+.pop-winner__link--first { left: 0; background-position: 0 0; }
+.pop-winner__link--sec { left: 200px; background-position: center top; }
+.pop-winner__link--last { right: 0; background-position: right top; }
+
+.pop-winner .pop-gift {
+  background: #fff;
+  padding-top: 170px;
+  display: none;
+}
+
+.pop-winner .pop-gift--top {
+  background: transparent url(/Images/Christmas2015/popup/img-gift-top.png) no-repeat center top;
+  width: 525px;
+  height: 229px;
+  margin: 30px auto 0;
+  padding-bottom: 34px;
+  overflow: hidden;
+  text-indent: -9999em;
+  border-bottom: 1px solid #c5bcb4;
+}
+
+.pop-winner .pop-gift__tit {
+  margin-top: 35px;
+}
+
+.pop-winner .pop-gift--bottom {
+  background: transparent url(/Images/Christmas2015/popup/img-gift-bottom.png) no-repeat center top;
+  width: 525px;
+  height: 229px;
+  margin: 30px auto 0;
+  padding-bottom: 42px;
+  overflow: hidden;
+  text-indent: -9999em;
+}
+
+.pop-winner__names {
+  background: #fff;
+  padding-top: 207px;
+  width: 520px;
+  margin: 0 auto;
+  text-align: left;
+  display: none;
+}
+
+.pop-winner__count {
+  margin-top: 40px;
+}
+
+.pop-winner__name-wrap {
+  margin-top: 19px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 274px;
+  background: #fff8e8;
+  border: 1px solid #f2ebdb;
+  font-size: 18px;
+  color: #4b320e;
+  padding: 10px 0;
+}
+
+.pop-winner__name-wrap li {
+  float: left;
+  width: 140px;
+  margin-left: 25px;
+  line-height: 2;
+}
+
+.pop-post {
+  top: 140px;
+  width: 620px;
+  margin-left: -320px;
+  background: #f15b22;
+  padding: 60px 10px 30px;
+}
+
+.pop-post__body {
+  margin-top: 40px;
+  padding: 20px 0;
+  background: #fff;
+}
+
+/* 크리스마스 카드 작성 */
+.pop-card {
+  top: 1400px;
+}
+
+.pop-card__header {
+  background: #f15b22;
+  padding: 42px 0;
+}
+
+.pop-card__txt {
+  margin-top: 20px;
+}
+
+.pop-card__body {
+  background: #fff;
+  padding: 35px 0 50px;
+}
+
+.pop-card__list {
+  margin: 18px auto 0;
+  width: 550px;
+}
+
+.pop-card__item {
+  position: relative;
+  margin-top: 10px;
+}
+
+.pop-card__item input[type=radio] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+}
+
+.pop-card input[type=radio]:checked + label .radio-img {
+  background-position: center bottom;
+}
+
+.pop-card .radio-img {
+  background: transparent url(/Images/Christmas2015/popup/img-radio.png) no-repeat center top;
+  width: 42px;
+  height: 42px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 75px;
+}
+
+.pop-card .label-box1, .pop-card .label-box2, .pop-card .label-box3 {
+  display: inline-block;
+  width: 486px;
+  height: 199px;
+  margin-left: 16px;
+}
+
+.pop-card .label-box1 {
+  background: #fff5dc url(/Images/Christmas2015/popup/txt-card1.png) no-repeat center center;
+}
+
+.pop-card .label-box2 {
+  background: #fff5dc url(/Images/Christmas2015/popup/txt-card2.png) no-repeat center center;
+}
+
+.pop-card .label-box3 {
+  background: #fff5dc;
+}
+
+.pop-card .label-box3 input {
+  margin-top: 85px;
+  padding: 10px 0 10px 10px;
+  width: 430px;
+  background: #fff5dc;
+  border: none;
+}
+
+.pop-card .btns-wrap {
+  margin-top: 45px;
+}
+
+.pop-card__btn {
+  background: transparent url(/Images/Christmas2015/popup/btn-insertOk.png) no-repeat center top;
+  width: 364px;
+  height: 97px;
+  border: none;
+  cursor: pointer;
+}
+
+/* 윈터 패키지 */
+.pop-package__header {
+  background: #f15b22;
+  padding: 42px 0;
+}
+
+.pop-package__body {
+  padding-bottom: 45px;
+  background: #fff;
+}
+
+.pop-package__img {
+  position: relative;
+  padding: 45px 0 3px;
+  background: #f4f4f4;
+}
+
+.pop-package__img .wave {
+  background: transparent url(/Images/Christmas2015/m/popup/bg-snow.png) no-repeat center top;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 59px;
+  top: 100%;
+}
+
+.pop-package__list {
+  overflow: hidden;
+  margin-top: 58px;
+}
+
+.pop-package__item {
+  float: left;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.pop-package__item:first-child,
+.pop-package__item .pop-package__item--fourth {
+  margin-left: 34px;
+}
+
+.pop-package__txt {
+  margin-top: 57px;
+}
+
+/* inapp */
+.popup-inapp_wrap {
+  width: 640px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 1000;
+  background: #fffdfa;
+  padding-bottom: 79px;
+  margin-left: -320px;
+  text-align: center;
+}
+
+.popup-inapp {
+  display: none;
+}
+
+.popup-inapp.on {
+  display: block;
+}
+
+.popup-inapp_wrap {
+  background: #fff;
+}
+
+.popup-inapp_body {
+  margin: 20px auto 0;
+  text-align: center;
+}
+
+
+/* 당첨자 내용 */
+.prize-giftName { display: block; text-align: center; font-size: 1.2em; font-weight: bold; }
+.prize-giftName__mantle {}
+.prize-giftName__gifty { margin-top: 25px; }
+.prize-giftUser { margin-top: 10px; overflow: hidden; }

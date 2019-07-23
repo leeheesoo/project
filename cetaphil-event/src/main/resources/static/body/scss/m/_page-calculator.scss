@@ -1,0 +1,13 @@
+.page-calculator{      
+  background-color: #cde4e3;  
+
+  .event-notice{
+    background-image: url($imgPath + '/page-calculator/event-notice.png');
+
+    .btn-show-detail{
+      top: 266px;
+      left: 362px;
+    }
+  }
+}
+

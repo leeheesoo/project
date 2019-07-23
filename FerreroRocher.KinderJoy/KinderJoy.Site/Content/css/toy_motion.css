@@ -1,0 +1,534 @@
+﻿@charset "UTF-8";
+/* 170413 마블&디즈니 모션 삽입 */
+@import url('toy_animate.min.css');
+
+/* 구름 */
+
+.cloud1 {
+    position: absolute;
+    left: 278px;
+    top: 218px;
+    z-index: 2;
+}
+
+.cloud2 {
+    position: absolute;
+    left: 623px;
+    top: 157px;
+    z-index: 2;
+}
+
+.cloud3 {
+    position: absolute;
+    left: 753px;
+    top: 251px;
+    z-index: 2;
+}
+
+.cloud4 {
+    position: absolute;
+    left: 1718px;
+    top: 186px;
+    z-index: 2;
+}
+
+.cloud5 {
+    position: absolute;
+    left: 1765px;
+    top: 247px;
+    z-index: 2;
+}
+
+.cloud6 {
+    position: absolute;
+    left: 2184px;
+    top: 193px;
+    z-index: 2;
+}
+
+
+/* 롤러코스터 */
+
+#wrap .train_rail {
+    display: none;
+    width: 1210px;
+    height: 200px;
+    position: absolute;
+    top: 384px;
+    left: 703px;
+}
+
+#wrap .train_rail .train_area {
+    position: absolute;
+    top: 144px;
+    left: 40px;
+    width: 200px;
+    height: 100px;
+}
+
+#wrap .train_rail .train_area .train1 {
+    position: absolute;
+    top: 0;
+    left: 0px;
+}
+
+#wrap .train_rail .train_area .train2 {
+    position: absolute;
+    top: 0;
+    left: 36px;
+}
+
+#wrap .train_rail .train_area .train3 {
+    position: absolute;
+    top: 0;
+    left: 72px;
+}
+
+#wrap .train_rail .train_area .train4 {
+    position: absolute;
+    top: 0;
+    left: 108px;
+}
+
+#wrap .train_rail .train_area .train5 {
+    position: absolute;
+    top: 0;
+    left: 144px;
+}
+
+#wrap .train_rail .train_area .link1 {
+    position: absolute;
+    top: 0;
+    left: 32px;
+}
+
+#wrap .train_rail .train_area .link2 {
+    position: absolute;
+    top: 0;
+    left: 68px;
+}
+
+#wrap .train_rail .train_area .link3 {
+    position: absolute;
+    top: 0;
+    left: 104px;
+}
+
+#wrap .train_rail .train_area .link4 {
+    position: absolute;
+    top: 0;
+    left: 140px;
+}
+
+
+/* 자이로 드롭 */
+#wrap .gyro_area {
+    position: absolute;
+    bottom: 0px;
+    right: 805px;
+    width: 53px;
+    height: 278px;
+    z-index: 5;
+}
+
+#wrap .gyro_area .gyro_bg {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 53px;
+    height: 278px;
+    background: url('../../images/toy/motion_img/gyro_bg.png') center top no-repeat;
+}
+
+#wrap .gyro_area .gyro_bg .gyro_img {
+    position: absolute;
+    top: 65px;
+    left: 0px;
+}
+
+#wrap .ferris_area {
+    position: absolute;
+    bottom: 0px;
+    right: 530px;
+    width: 254px;
+    height: 310px;
+    z-index: 5;
+}
+
+#wrap .ferris_area .ferris_bg {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 254px;
+    height: 310px;
+    background: url('../../images/toy/motion_img/ferris_bar.png') center bottom no-repeat;
+}
+
+#wrap .ferris_area .ferris_bg .ferris_wheel_area {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    margin-left: -114px;
+    width: 228px;
+    height: 228px;
+}
+
+#wrap .ferris_area .ferris_bg .ferris_kinder_area {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 260px;
+    height: 260px;
+}
+
+#wrap .ferris_area .ferris_bg .ferris_kinder1 {
+    position: absolute;
+    top: 7px;
+    left: 75px;
+}
+
+#wrap .ferris_area .ferris_bg .ferris_kinder2 {
+    position: absolute;
+    top: 7px;
+    left: 153px;
+}
+
+#wrap .ferris_area .ferris_bg .ferris_kinder3 {
+    position: absolute;
+    top: 50px;
+    left: 213px;
+}
+
+#wrap .ferris_area .ferris_bg .ferris_kinder4 {
+    position: absolute;
+    top: 134px;
+    left: 226px;
+}
+
+#wrap .ferris_area .ferris_bg .ferris_kinder5 {
+    position: absolute;
+    top: 201px;
+    left: 187px;
+}
+
+#wrap .ferris_area .ferris_bg .ferris_kinder6 {
+    position: absolute;
+    top: 228px;
+    left: 114px;
+}
+
+#wrap .ferris_area .ferris_bg .ferris_kinder7 {
+    position: absolute;
+    top: 203px;
+    left: 41px;
+}
+
+#wrap .ferris_area .ferris_bg .ferris_kinder8 {
+    position: absolute;
+    top: 134px;
+    left: 2px;
+}
+
+#wrap .ferris_area .ferris_bg .ferris_kinder9 {
+    position: absolute;
+    top: 50px;
+    left: 15px;
+}
+
+#wrap .toy_balloon {
+    position: absolute;
+    top: 782px;
+    right: 500px;
+    width: 260px;
+    height: 320px;
+}
+
+#wrap .toy_balloon .toy_balloon_bg {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 53px;
+    height: 278px;
+    background: url('../../images/toy/motion_img/balloon_bg.png') center bottom no-repeat;
+}
+
+#wrap .toy_balloon .toy_balloon_bg .toy_balloon_img {
+    position: absolute;
+    bottom: 65px;
+    left: 0px;
+}
+
+#wrap .kungfu_area {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    width: 570px;
+    height: 300px;
+}
+
+#wrap .kungfu_area .kungfu_tiger {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+#wrap .kungfu_area .kungfu_panda {
+    position: absolute;
+    top: 35px;
+    left: 320px;
+}
+
+#wrap .car_balloon {
+    position: absolute;
+    top: -134px;
+    left: 255px;
+    width: 290px;
+    height: 310px;
+}
+
+#wrap .car_balloon .car_balloon_img {
+    position: absolute;
+    top: -16px;
+    left: 45px;
+    width: 202px;
+    height: 650px;
+}
+
+#wrap .car_balloon .car_balloon_green {
+    position: absolute;
+    top: 136px;
+    left: 73px;
+    width: 109px;
+    height: 368px;
+}
+
+#wrap .car_balloon .car_balloon_blue {
+    position: absolute;
+    top: 147px;
+    left: 183px;
+    width: 86px;
+    height: 344px;
+}
+
+
+/* 왼쪽 자동차 */
+
+#wrap .monorail_area {
+    position: absolute;
+    top: 1677px;
+    left: 0px;
+    width: 1200px;
+    height: 518px;
+    z-index: 2;
+}
+
+#wrap .mono_rail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('../../images/toy/main/common_monorail.png') 0 0 repeat-x;
+    width: 1200px;
+    height: 518px;
+    z-index: 3;
+}
+
+#wrap .monorail_area .mono_train {
+    position: absolute;
+    top: 176px;
+    left: 0px;
+}
+
+
+/* 테니스 라노 */
+
+#wrap .tennis_area {
+    position: absolute;
+    top: 103px;
+    right: 8px;
+    width: 320px;
+    height: 390px;
+}
+
+#wrap .tennis_area .tennis_hand_area {
+    position: absolute;
+    top: 202px;
+    left: 198px;
+    width: 100px;
+    height: 100px;
+}
+
+#wrap .tennis_area .tennis_hand_area .tennis_hand {
+    position: absolute;
+    top: 0;
+    right: 0px;
+}
+
+#wrap .tennis_area .tennis_kinder {
+    position: absolute;
+    top: 5px;
+    left: 0px;
+}
+
+#wrap .tennis_area .tennis_ball {
+    position: absolute;
+    top: 225px;
+    right: 3px;
+}
+
+
+/* 여아용 장난감 풍선 */
+
+#wrap .girl_balloon {
+    position: absolute;
+    top: 0px;
+    /* -8px */
+    right: -21px;
+    width: 240px;
+    height: 556px;
+}
+
+#wrap .girl_balloon .girl_balloon_bg {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 240px;
+    height: 560px;
+    background: url('../../images/toy/motion_img/girl_balloon_bg.png') center 386px no-repeat;
+}
+
+#wrap .girl_balloon .girl_balloon_bg .girl_balloon_img {
+    position: absolute;
+    top: 0px;
+    left: 32px;
+    width: 183px;
+    height: 784px;
+}
+
+#wrap .fountain_area {
+    position: absolute;
+    top: 230px;
+    right: 480px;
+    width: 260px;
+    height: 320px;
+}
+
+#wrap .fountain_area .fountain_bg {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 53px;
+    height: 278px;
+    background: url('../../images/toy/motion_img/fountain_bg.png') center bottom no-repeat;
+}
+
+#wrap .fountain_area .fountain_bg .gyro_wheel {
+    position: absolute;
+    bottom: 65px;
+    left: 0px;
+}
+
+#wrap .fountain_area .fountain_bg .gyro_kinder {
+    position: absolute;
+    top: 65px;
+    left: 0px;
+}
+
+#png_bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    z-index: 1000;
+}
+
+/* 180104 - 모션 작업 - 심소정 */
+.top-rino {
+    top:0;
+    left: 356px;
+    z-index: 2;
+    animation-delay: 1.5s;
+}
+.top-left {
+    top: 80px;
+    left: -18px;
+    animation-delay: 2.5s;
+}
+.top-right {
+    top: 93px;
+    right: -56px;
+    animation-delay: 2.5s;
+}
+.top-left img,
+.top-right img{
+    animation-duration: 2s;
+}
+
+.motion-pororo1 {
+			position: absolute;
+			bottom:113px;
+			left:112px;
+}
+
+.motion-pororo2 {
+		 position: absolute;
+			bottom:238px;
+			right:0px;
+			animation-duration: 6s;
+}
+
+.motion-pororo2-hand {
+		 position: absolute;
+			top: 186px;
+			left: 33px;
+			z-index:3;
+}
+
+.motion-pororo2-snow {
+		 position: absolute;
+			bottom:10px;
+			left:20px;
+	  transform-origin: center;
+			animation-duration: 6s;
+			z-index:2;
+}
+
+
+.boy-cat-women {
+    bottom:0;
+    left:45px;
+    animation-duration: 2s;
+    z-index: 6;
+}
+
+.boy-superman {
+    bottom: 40px;
+    right: 26px;
+    animation-duration: 2s;
+}
+
+.boy-light {
+    bottom: 202px;
+    left: 465px;
+    width:111px;
+    height: 97px;
+    background: url('../../Images/toy/motion_img/motion_light.png') 0 0 no-repeat;
+}
+
+.girl-kitty-eye {
+    bottom: 349px;
+    left: 445px;
+    width:144px;
+    height: 42px;
+    background: url('../../Images/toy/motion_img/motion_kitty_eye.jpg') 0 0 no-repeat;
+}
+
+.girl-kitty-left {
+    bottom: 45px;
+    left: 230px;
+    transform-origin: center center;
+}

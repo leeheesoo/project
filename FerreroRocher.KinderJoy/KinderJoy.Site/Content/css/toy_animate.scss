@@ -1,0 +1,264 @@
+﻿// Animation Variables
+$animation-speed: .5s;
+$animation-delay: .5s;
+$animation-timing: ease-in;
+$animation-fill: both;
+$animation-direction: alternate;
+$animation-slide-distance: 30px;
+
+// Animation Mixin
+@mixin animation($name, $properties: null, $name2: nullh) {
+	@if $properties {
+	  animation: $name $properties;
+	} 
+	
+	@else if $name2 {
+	  animation-name: $name, $name2;
+	}
+	
+	@else {
+	  animation-name: $name $name2;
+	}
+}
+
+
+// Animation Properties Mixin
+@mixin animationBase($speed, $timing, $fill, $direction, $iterate: null, $delay:null) {
+  .animated {
+    animation-duration: $speed;
+    animation-timing-function: $timing;
+    animation-fill-mode: $fill;
+    animation-direction: $direction;
+    animation-delay: $delay;
+    
+    @if $iterate {
+      animation-iteration-count: $iterate;
+    }
+  }
+}
+
+// Base Call
+@include animationBase($animation-speed, $animation-timing, $animation-fill, $animation-direction);
+
+@mixin animate() {
+    .animate-floating{
+        @include animation(floating, 2s ease-out infinite);
+    }
+
+    .animate-rotate-left {
+          @include animation(shake, 2s ease-out infinite);
+    }
+
+    .animate-rotate-right {
+          @include animation(shakeR, 2s ease-out infinite);
+    }
+
+    .animate-cat-women{
+        @include animation(cat-women, 3s ease-in-out infinite);
+    } 
+
+    .animate-pororo{
+        @include animation(pororo, 3s ease-in-out infinite);
+    } 
+
+    .animate-snowball{
+        @include animation(snowball, 3s ease-in-out infinite);
+    }
+
+
+    .animate-jump{
+        @include animation(jump, 3s ease-in-out infinite);
+    }
+
+    .animate-marvel-left{
+        @include animation(marvelLeft, 2s ease-in-out infinite);
+    }
+
+    .animate-marvel-right{
+        @include animation(marvelRight, 2s ease-in-out infinite);
+    }
+
+     .animate-bg-pos-x{
+        @include animation(bg-pos-x, 2s steps(2) infinite);
+    }
+    
+}
+
+// Call Animations
+@include animate();
+
+// Keyframes
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+	    @content;
+    }
+	
+    @keyframes #{$name} {
+	    @content;
+    }
+}
+
+
+@include keyframes(marvelLeft) {
+  from {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  to {
+    transform: translateX(-5px);
+  }
+}
+
+@include keyframes(marvelRight) {
+  from {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  to {
+    transform: translateX(5px);
+  }
+}
+
+@include keyframes(princess) {
+  from {
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+  to {
+  }
+}
+
+@include keyframes(floating) {
+  from {
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+  to {
+  }
+}
+
+@include keyframes(jump) {
+    from  {
+        transform:translate(0, 0);
+    }
+    20% {
+        transform:translate(0, -30px);
+    }
+    25% {
+        transform:translate(0, -30px) rotate(10deg);
+    }
+    30% {
+        transform:translate(0, -30px) rotate(-10deg);
+    }
+    40% {
+        transform:translate(0, -0px);
+    }
+    to {
+        transform: translate(0, 0);
+    }    
+
+}
+
+@include keyframes(shake) {
+    from {
+        transform: rotate(15deg);
+    }
+    25% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(20deg);
+    }
+    75% {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(15deg);
+    }
+}
+
+@include keyframes(shakeR) {
+    from {
+        transform: rotate(-15deg);
+    }
+    25% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-20deg);
+    }
+    75% {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-15deg);
+    }
+}
+
+@include keyframes(rotate) {
+    from {
+        transform:  scale(0) rotate(360deg);
+    }
+    80% {
+        transform: scale(1.2) rotate(0deg);
+    }
+    to {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@include keyframes(cat-women) {
+    0% {
+        transform:translate(0, 0);
+    }
+    30% {
+        transform:translate(30px, 10px);
+    }
+    70% {
+        transform:translate(30px, 10px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }    
+}
+
+@include keyframes(pororo) {
+    from {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-30px, 30px);
+    }
+    to {
+        transform: translate(0, 0px);
+    }    
+}
+
+@include keyframes(snowball) {
+    from {
+        transform: scale(.9) rotate(0deg) translate(-7px, 0px);
+    }
+    50% {
+        transform: scale(1) rotate(180deg) translate(7px, 10px);
+    }
+    to {
+       transform: scale(.9) rotate(0) translate(-7px, 0px); 
+    }    
+}
+
+@include keyframes(bg-pos-x) {
+    from {
+        background-position-x: 0;
+
+    }
+    to {
+        background-position-x: 200%;
+
+    }  
+}

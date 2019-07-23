@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="ko-KR" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:fragment="configFragment">
+	<title layout:title-pattern="$CONTENT_TITLE"></title>
+	<meta charset="UTF-8" />
+ 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	  
+	<meta name="viewport" content="width=720, user-scalable=no"/> 
+    
+	<th:block layout:fragment="meta"></th:block>
+	<!-- 공통으로 사용하는 CSS 파일만 넣어주세요 -->	
+	<th:block layout:fragment="css"></th:block>
+    <!-- 공통으로 사용하는 Script 파일만 넣어주세요 -->	
+	<script src="/js/jquery-3.3.1.min.js"></script>
+	<script src="/js/common-pub.js"></script>
+    <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+    <script src="/js/vue.min.js"></script>
+	<script src="/js/jquery.form.min.js"></script>
+	<script src="/js/jquery.validate.min.js"></script>
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-KW65TXF');</script>
+	<!-- End Google Tag Manager -->
+	<th:block layout:fragment="script"></th:block>
+</head>
+<body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KW65TXF"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+	
+	<div layout:fragment="content"></div>
+	
+	<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>	 
+	<script type="text/javascript">
+		// kakao api setting
+		Kakao.init('197dc59525b8dc79d893d0402d6e1613');
+		
+		/* validation message alert */
+     	$.validator.setDefaults({
+     		onkeyup: false,
+     		onclick: false,
+     		onfocusout: false,
+     		showErrors: function (errorMap, errorList) {
+     			if (this.numberOfInvalids() && errorList != '') {
+     				alert(errorList[0].message);
+     				$(errorList[0].element).focus();
+     			}
+         	}
+     	});
+	</script>
+	 
+	<th:block layout:fragment="body-script"></th:block>
+</body>
+</html>

@@ -1,0 +1,119 @@
+﻿@charset "UTF-8";
+
+/** 20150804 이벤트 페이지 작업 */
+.event {min-width: 1000px; max-width: 2000px; margin: 0 auto; }
+.event-content-wrap { margin: 0 auto; width: 1000px; }
+.event-header { position: relative; height: 780px; }
+.event-header_mv {position:absolute; top: 70px; height: 750px; width: 100%; overflow: hidden; }
+.event-header_mv .mvDim { background: url(../../Images/event/mv_dim.png) repeat 0 0; width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+
+.event-body {background:url(../../Images/event/bg_event.png) no-repeat center top; height: 1374px; text-align: center; position: relative; margin-top: -438px; }
+.event-body a{text-indent:0;}
+.event-body .event-content-wrap { padding-top: 668px; }
+.event-body_btn { position: absolute; display: block; width: 363px; left: 50%; margin-left: -181.5px; top: -182px; }
+.event-body_txt { margin-top: 17px; }
+.event-body_img { margin-top: 30px; }
+
+.event-bottom { background:#e8502d url(../../Images/event/bg_quiz.png) no-repeat center top; height: 1460px; }
+.event-bottom a{text-indent:0;}
+.event-bottom .event-content-wrap { position: relative; padding-top: 45px; }
+.event-bottom .event-character { width: 504px; position: absolute; right: -83px; top: 65px; }
+.event-bottom_title { margin-left: 20px; }
+.event-bottom_txt1 { margin: 23px 0 0 20px; }
+.event-bottom_txt2 { margin: 21px 0 0 20px; }
+.event-bottom_btn-hint { position: absolute; display: block; width: 127px; height: 117px; left: 610px; top: 164px; }
+
+.quiz_area{margin: 40px 0 0 20px;}
+.quiz_area .event-quiz {  }
+.quiz_area .event-quiz legend { display: none; }
+.quiz_area .event-quiz_input { background: url(../../Images/event/bg_input.png) no-repeat 0 0; width: 95px; height: 131px; display: inline-block; border: none; font-size: 72px; color: #6f6f6f; padding-left: 24px; line-height: 131px; margin-left: 10px; }
+.quiz_area .event-quiz_input:first-child { margin-left: 0; }
+.quiz_area .event-quiz_btn { display: block; background: transparent url(../../Images/event/btn_response.png) no-repeat 0 0; width: 528px; height: 105px; border: none; cursor: pointer; margin-top: 28px; }
+.quiz_area p { padding:28px 0 0 0;}
+
+.event-way {position:relative; margin-top: 65px; background: url(../../Images/event/bg_eventWay.png) no-repeat 0 0; width: 852px; height: 445px; padding: 56px 59px 56px 52px; *zoom: 1; }
+.event-way .btn_check{position:absolute; top:65px; right:60px;}
+
+.event-copyright { width: 963px; margin-top: 26px; text-align: center; }
+
+/* 이벤트 팝업 */
+/* 공통 */
+.dim {z-index: 100; position: fixed; top: 0; left: 0; background: url("../../Images/dim.png") no-repeat 0 0; width: 100%; height: 100%; background-repeat: repeat;}
+.event-pop_close { background: url(../../Images/event/btn_close.png) no-repeat 0 0; width: 51px; height: 50px; position: absolute; border: none; cursor: pointer; top: -60px; right: 0; }
+
+/* 사용자 정보 */
+.popup-userInfo_wrap{ width: 600px; position: absolute; top: 100px; left: 50%; z-index: 1000; background: #fffdfa; padding-bottom: 79px; margin-left: -300px; }
+.popup-userInfo { display: none; }
+.popup-userInfo.on { display: block; }
+.popup-userInfo_header { text-align: center; background: #fa85c9; padding: 59px 0 39px; }
+.popup-userInfo_header--txt { margin-top: 18px; }
+.popup-userInfo_form { width: 500px; margin: 10px auto 0; }
+.popup-userInfo_form legend { display: none; }
+.popup-userInfo_form .label { display: block; background: url(../../Images/event/label_ir.png) no-repeat 0 0; width: 165px; height: 70px; float: left; }
+.popup-userInfo_form .label_name { background-position: 0 21px; }
+.popup-userInfo_form .label_gender { background-position: 0 -75px; height: 31px; }
+.popup-userInfo_form .label_age { background-position: 0 -130px; }
+.popup-userInfo_form .label_phone { background-position: 0 -210px; }
+.popup-userInfo_form .label_gender-gift { background-position: 0 -308px; height: 31px; }
+.popup-userInfo_form .label_article { background-position: 0 -362px; float: none; width: 418px; margin-top: 50px; }
+.popup-userInfo_form .input-wrap { margin-top: 50px; position: relative; }
+.popup-userInfo_form .input-wrap_radio { height: 31px; }
+.popup-userInfo_form .info_input { border: 1px solid #f2ead9; background: #fff8e8; width: 290px; height: 68px; padding: 0 10px 0 33px; font-size: 27px; color: #615240; }
+.popup-userInfo_form .placeholder { position: absolute; top: 20px; left: 180px; font-size: 27px; color: #615240; }
+.popup-userInfo_form .placeholder-age { font-size: 18px; top: 25px; }
+.popup-userInfo_form .radio-right { margin-left: 62px; }
+.popup-userInfo_form .radio { width: 25px; height: 25px; }
+.popup-userInfo_form .label_radio { display: inline-block; background-position: 0 0; background-repeat: no-repeat; height: 26px; }
+.popup-userInfo_form .label_radio--m { background-image: url(../../Images/event/radio_m.png); width: 50px; }
+.popup-userInfo_form .label_radio--w { background-image: url(../../Images/event/radio_w.png); width: 51px; }
+.popup-userInfo_form .label_radio--giftM { background-image: url(../../Images/event/radio_giftM.png); width: 69px; }
+.popup-userInfo_form .label_radio--giftW { background-image: url(../../Images/event/radio_giftW.png); width: 70px; }
+
+.popup-userInfo_form .info-article { border: 1px solid #f2ead9; background: #fff8e8; height: 288px; overflow-x: hidden; overflow-y: auto; line-height:28px;}
+.popup-userInfo_form .info-article span { color:red;}
+.popup-userInfo_form .wrap-chk { margin-top: 20px; }
+.popup-userInfo_form .wrap-chk .info-chk { vertical-align: middle; display: inline-block; width: 40px; height: 40px; }
+.popup-userInfo_form .wrap-chk .agree-label { background: url(../../Images/event/chk_agree.png) no-repeat 0 0; width: 229px; height: 27px; display: inline-block; margin-left: 14px; vertical-align: middle; }
+.popup-userInfo_form .wrap-chk input { width: 29px; height: 27px; display: inline-block; margin-left: 14px; vertical-align: middle; }
+.popup-userInfo_form .btn-area { text-align: center; margin-top: 60px; }
+.popup-userInfo_form .btn-area .btn-subcription { background-color: transparent; border: none; cursor: pointer; }
+
+/* sns */
+.popup-sns_wrap{ width: 600px; position: absolute; top: 100px; left: 50%; z-index: 1000; background: #fffdfa; padding-bottom: 79px; margin-left: -300px; }
+.popup-sns { display: none; }
+.popup-sns.on { display: block; }
+.popup-sns_wrap { background: #fff; }
+.popup-sns_body { width: 520px; margin: 59px auto 0; text-align: center; }
+.popup-sns_btns { overflow: hidden; }
+.popup-sns_btns li { float: left; margin-left: 15px; }
+.popup-sns_btns li:first-child { margin-left: 0; }
+.popup-sns_btns li a { display: block; text-indent:0;}
+.popup-sns_txt { margin-top: 33px; }
+.popup-sns_ok { border: none; background-color: transparent; cursor: pointer; margin-top: 43px; }
+
+/* 당첨자 발표 */
+.popup-winner_wrap { width: 600px; position: absolute; top: 100px; left: 50%; z-index: 1000; background: #fffdfa; padding-bottom: 79px; margin-left: -300px; }
+.popup-winner { display: none; }
+.popup-winner.on { display: block; }
+.popup-winner_body { width: 556px; margin: 40px auto 0; }
+.popup-winner_body .dang_selector{height:98px;}
+.popup-winner_body .dang_selector a{float:left; height:98px; overflow:hidden; text-indent:0;}
+.popup-winner_body .dang_selector a img{position:relative;}
+.popup-winner_body .dang_selector a.on img{position:relative; top:-98px;}
+.popup-winner_body .winner_info{padding:30px 0 0 0;}
+.popup-winner_list { text-indent: -9999px; background: url(../../Images/event/list_popup_winner.png) no-repeat 0 0; height: 124px; margin-top: 30px; }
+.popup-winner_name--list { margin-top: 47px; }
+.popup-winner_name--txts { margin-top: 20px; background: #fff8e8; border: 1px solid #f2ebdb; padding: 20px 35px 50px; overflow-y: auto; height: 203px; font-size: 18px; color: #4b320e; }
+.popup-winner_name--txts li { display: inline-block; margin: 10px 0 0 10px; }
+.popup-winner_name--txts li.name-right { margin: 30px 0 0 49px; }
+.popup-winner_gift--bottom { margin-top: 39px; }
+.popup-winner_btns { text-align: center; }
+.popup-winner_btn { cursor: pointer; background-color: transparent; border: none; margin-top: 50px; }
+
+/* 영상 */
+.popup-mov_wrap { width: 900px; position: absolute; top: 100px; left: 50%; z-index: 1000; padding-bottom: 79px; margin-left: -450px; }
+.popup-mov { display: none; }
+.popup-mov.on { display: block; }
+.popup-mov_body { width: 900px; margin: 20px auto 0; text-align: center; }
+.popup-mov_body .mov_cont{width:900px; height:506px; background:#000 url(../../Images/event/loading.gif) center center no-repeat;}
+

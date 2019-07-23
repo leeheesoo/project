@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>세타필 x 케리비안베이 이벤트</title>
+<meta charset="UTF-8" />	   
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <meta name="viewport" content="width=720, user-scalable=no"/>
+ <meta property="og:url" content="https://cetaphil.pentacle.co.kr"/>
+ <meta property="og:title" content="세타필 레스토라덤(AD) 런칭파티 기대평을 남겨주세요!"/>
+ <meta property="og:image" content="https://cetaphil.pentacle.co.kr/caribbean/images/cetaphil_kakao_300x300.jpg"/>
+ <meta property="og:description" content="28일(토) 캐리비안 베이에서 열리는 세타필 레스토라덤(AD)런칭파티 기대평을 남겨주시면 추첨을 통해 푸짐한 상품을 드립니다."/>
+<!--  <meta name="description" th:attr="content=${contents}" /> -->
+ <!-- 이벤트 JS 파일 추가 -->
+  <th:block layout:fragment="script" th:remove="tag">
+    <!-- head태그 내 삽입해야할 script를 넣어주세요.  -->
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script> -->
+    <script src="/js/slick.js"></script>
+    <script src="/js/vue.min.js"></script>
+    <script src="/js/moment.js"></script>
+    <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script type="text/javascript">
+    	Kakao.init('197dc59525b8dc79d893d0402d6e1613');
+    	
+    	<!-- Google Tag Manager -->
+    	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    	})(window,document,'script','dataLayer','GTM-KW65TXF');
+    	<!-- End Google Tag Manager -->
+    </script>
+  </th:block>
+
+  <!-- 이벤트 CSS 파일 추가 -->
+  <th:block layout:fragment="css" th:remove="tag">
+  	<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/caribbean/css/style-m.css" />
+  </th:block>
+</head>
+<body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KW65TXF"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+	<div class="restoraderm-event-wrap" id="cetaphil-event">
+        <!-- <div class="debug"></div>
+        <div style="position:fixed;left:0;top:120px;z-index:1000;">
+            <ul>
+                <li>
+                    <button type="button" onclick="openPop('form')" style="width:150px;font-size:25px;height:70px;background:salmon;">개인정보입력</button>
+                </li>
+                <li>
+                    <button type="button" onclick="openPop('sns-share')" style="width:150px;font-size:25px;height:70px;background:salmon;">sns공유</button>
+                </li>
+                <li>
+                    <button type="button" onclick="openPop('search-zip')" style="width:150px;font-size:25px;height:70px;background:salmon;">우편번호</button>
+                </li>
+            </ul>
+        </div> -->
+        <h1 class="logo">
+            <img src="/caribbean/images/mobile/logo-cetaphil.png" alt="logo">
+        </h1>
+        <section class="visual">
+            <h2 class="a11y-hidden">세타필 레스토라덤(AD) 런칭 이벤트</h2>
+            <div class="a11y-hidden">
+                <p>속상한 여름 피부를 처음의 건강함으로</p>
+                <p>심의번호 KR/CET/0957/0618-200619</p>
+            </div>
+            <a href="http://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=A000000114543&dispCatNo=1000001000300050001" class="btn--product box-shd" target="_blank"><img src="/caribbean/images/mobile/button-product.png" alt="레스토라덤(AD) 제품 자세히 보기"></a>
+        </section>
+
+        <section class="video" id="event1">
+            <h2 class="a11y-hidden">세타필 레스토라덤(AD) 런칭파티 7월 28일</h2>
+            <div class="a11y-hidden">
+                <p>세타필 레스토라덤(AD) X 캐리비안 베이</p>
+                <p>운 태양에도 속상해진 피부를 되돌려주는 세타필 레스토라덤(AD)을
+                    캐리비안 베이에서 직접 체험할 수 있는 기회가 열립니다</p>
+            </div>
+            <div id="player" class="player box-shd">
+
+            </div>
+            <div class="sns-btns">
+                <div class="a11y-hidden">
+                    <p>
+                        친구에게 세타필 런칭파티를 알려 주세요 
+                    </p>
+                    <dl>
+                        <dt>이벤트 기간</dt>
+                        <dd>7월 28일 12:00 ~ 20:00</dd>
+                        <dt>장소</dt>
+                        <dd>캐리비안 베이 메인 홀</dd>
+                    </dl>
+                </div>
+                <button class="btn--sns-kakao" type="button" v-on:click="shareKakao"><img src="/caribbean/images/mobile/button-share-kakao.png" alt="카카오톡 공유하기"></button>
+                <button class="btn--sns-facebook" type="button" v-on:click="shareFacebook"><img src="/caribbean/images/mobile/button-share-facebook.png" alt="페이스북 공유하기"></button>
+            </div>
+            <div class="location">
+                <a href="http://www.everland.com/web/caribbean/how/traffic/how_traffic_info04.html" class="link--location" target="_blank"><img src="/caribbean/images/mobile/button-map.png" alt="찾아오는길"></a>
+            </div>
+        </section>
+        
+        <section class="main-event" id="event2">
+            <h2 class="a11y-hidden">런칭파티 기대평 이벤트</h2>
+            <div class="desc">
+                <div class="a11y-hidden">
+                    <p>
+                        지금 세타필 레스토라덤(AD) X 캐리비안 베이 이벤트 기대평을 남겨 주신 분 중
+                        추첨을 통해 푸짐한 선물을 드립니다
+                    </p>
+                    <dl>
+                        <dt>이벤트 기간</dt>
+                        <dd>7울 23일~26일</dd>
+                        <dt>당첨자 발표</dt>
+                        <dd>7월 27(금)</dd>
+                        <dt>경품</dt>
+                        <dd>
+                            <ul>
+                                <li>1등 (10명)  캐리비안 베이 종일권 1인 2매(16만원 상당)</li>
+                                <li>2등 (20명)  세타필 레스토라덤(AD) 2종 세트(6만원 상당)</li>
+                                <li>3등 (30명)  세타필 손선풍기(색상 랜덤 증정) </li>
+                            </ul>
+                        </dd>
+                        <dt>경품 발송</dt>
+                        <dd>
+                            캐리비안 베이 종일권, 세타필 레스토라덤(AD) 세트, 세타필 손선풍기 8월 10일 일괄배포
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="event" id="app">
+
+                <div class="input-box">
+                    <input class="input-write" id="content" type="text" placeholder="기대평을 남겨 주세요." v-model="userInfo.content" />
+                    <button type="button" v-on:click="openInfoPop">
+                        <img src="/caribbean/images/mobile/button-write.png" alt="글쓰기">
+                    </button>
+                </div>
+                <div class="slider">
+                    <div class="slider__content">
+                        <ul class="slick">
+                            <li class="slick__item" v-for="i in listLength" > 
+                                <div class="slick__item-wrap" v-for="idx in 2">
+                                    <div v-if="dataArr[(idx-1)+(4*(i-1))]">
+                                        <div class="slick__item-elem">
+                                            <!-- <p class="slick__item--text" v-text="$options.filters.filter(dataArr[(idx-1)+(4*(i-1))].content)"></p> -->
+                                            <p class="slick__item--text" v-text="dataArr[(idx-1)+(4*(i-1))].content">
+                                            <div>
+                                                <span class="slick__item--name" v-text="dataArr[(idx-1)+(4*(i-1))].name"> </span>
+                                                <span class="slick__item--date" v-text="moment(dataArr[(idx-1)+(4*(i-1))].createDate).format('YYYY-MM-DD')"> </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div v-if="dataArr[(idx+1)+(4*(i-1))]">
+                                        <div class="slick__item-elem">
+                                            <!-- <p class="slick__item--text" v-text="$options.filters.filter(dataArr[(idx+1)+(4*(i-1))].content)"> </p> -->
+                                            <p class="slick__item--text" v-text="dataArr[(idx+1)+(4*(i-1))].content"> </p>
+                                            <div>
+                                                <span class="slick__item--name" v-text="dataArr[(idx+1)+(4*(i-1))].name"> </span>
+                                                <span class="slick__item--date" v-text="moment(dataArr[(idx+1)+(4*(i-1))].createDate).format('YYYY-MM-DD')"> </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                    
+                            </li>   
+                            
+                        </ul>
+                    </div>
+
+<!--                     <nav class="slider__nav">
+                        <button class="nav__btn btn--prev"></button>
+                        <button class="nav__btn btn--next"></button>
+                    </nav> -->
+                </div>
+            </div>
+        </section>
+        
+        <section class="reservation-event" id="event3">
+            <h2 class="a11y-hidden">런칭파티 사전 예약 이벤트!</h2>
+            <div class="a11y-hidden">
+                <p>
+                    속상한 여름 피부를 되돌리고 싶은 세타필 레스토라덤(AD)
+                    얼리버드만을 위한 특별한 혜택을 누려보세요! 
+                </p>
+                <dl>
+                    <dt>얼리버드만을 위한 특별한 혜택</dt>
+                    <dd>
+                        세타필 피부리턴 세트
+                        (레스토라덤(AD) 워시, 레스토라덤(AD) 로션,레스토라덤(AD) 샘플키트) + 레스토라덤(AD) 손선풍기, 세타필 샤워볼 + 사전 예약 특별가
+                    </dd>
+                </dl>
+            </div>
+            <a href="http://item.gmarket.co.kr/Item?goodscode=1155596747" class="btn--reservation box-shd" taget="_blank">
+                <img src="/caribbean/images/mobile/button-reservation.png" alt="사전 예약 이벤트 자세히 보기">
+            </a>
+            <!-- <img class="cover" src="/caribbean/images/mobile/cover-m.png" alt="coming soon"> -->
+        </section>
+        
+        <section class="event-note">
+            <ul class="a11y-hidden">
+                <li>등록하신 개인 정보는 이벤트 경품 수령을 위한 정보로만 사용되며 이벤트 종료 3개월 후에 자동 폐기됩니다</li>
+                <li>부적절한 형태로 이벤트 참여 시 당첨에서 제외됩니다</li>
+                <li>잘못된 개인정보 입력으로 인해 연락이 되지 않을 시 경품 수령이 불가능합니다</li>
+                <li>경품은 회사 내부 사정에 의하여 변경 될 수 있습니다</li>
+                <li>위 이벤트와 관련하여 문의사항 발생 시 cetaphilrestoradermad@gmail.com 이메일 주소로 연락 부탁 드립니다</li>
+            </ul>
+        </section>
+
+        <!-- popup : start -->
+        <div id="app" th:include="caribbean/_popup"></div>
+   		<!-- popup : end -->
+
+        
+        <nav class="floating-nav">
+            <ul class="floating-nav__items">
+                <li class="floating-nav__item"><button type="button"><img src="/caribbean/images/mobile/nav-1.png" alt="런칭파티 일정"></button></li>
+                <li class="floating-nav__item"><button type="button"><img src="/caribbean/images/mobile/nav-2.png" alt="기대평 이벤트"></button></li>
+                <li class="floating-nav__item"><button type="button"><img src="/caribbean/images/mobile/nav-3.png" alt="예약 이벤트"></button></li>
+            </ul>
+        </nav>
+        
+        <div class="dimmed"></div>
+    </div>
+	<!-- <img src="/caribbean/images/popup-bg.png" /> -->
+	
+	<!-- 이벤트 body영역 JS 파일 추가 -->
+	<th:block layout:fragment="body-script" th:remove="tag">
+        <script src="/caribbean/js/pub-deviceCheck.js"></script>
+		<script src="/caribbean/js/pub.js"></script>	
+        <script src="/caribbean/js/dev.js"></script>
+		
+	</th:block>
+</body>
+</html>

@@ -1,0 +1,13 @@
+.page-age{      
+  background-color: #d5e0e4;  
+
+  .event-notice{
+    background-image: url($imgPath + '/page-age/event-notice.png');
+
+    .btn-show-detail{
+      top: 266px;
+      left: 362px;
+    }
+  }
+}
+

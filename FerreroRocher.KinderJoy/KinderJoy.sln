@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinderJoy.Site", "KinderJoy.Site\KinderJoy.Site.csproj", "{9D5272A7-F038-4D59-935C-DD7E029C64DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8CE08AC7-083C-4594-B475-90107AC124B6}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinderJoy.Domain", "KinderJoy.Domain\KinderJoy.Domain.csproj", "{81DDF423-82A0-44FE-8A2D-AAFD6F7A6919}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinderJoy.Test", "KinderJoy.Test\KinderJoy.Test.csproj", "{AD68A5F8-B877-40DE-B4A7-573DBBE5C241}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D5272A7-F038-4D59-935C-DD7E029C64DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D5272A7-F038-4D59-935C-DD7E029C64DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D5272A7-F038-4D59-935C-DD7E029C64DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D5272A7-F038-4D59-935C-DD7E029C64DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81DDF423-82A0-44FE-8A2D-AAFD6F7A6919}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81DDF423-82A0-44FE-8A2D-AAFD6F7A6919}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81DDF423-82A0-44FE-8A2D-AAFD6F7A6919}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81DDF423-82A0-44FE-8A2D-AAFD6F7A6919}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD68A5F8-B877-40DE-B4A7-573DBBE5C241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD68A5F8-B877-40DE-B4A7-573DBBE5C241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD68A5F8-B877-40DE-B4A7-573DBBE5C241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD68A5F8-B877-40DE-B4A7-573DBBE5C241}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,946 @@
+//===================================
+// variable
+//===================================
+// $location: "../images/popup-pc/";
+$location: $imgPathRoot + '/popup-pc/';
+$width-max: 1200px;
+$width-inner:900px;
+$sliderBorder:7px;
+
+%inputText {
+  float: right;
+  width: 450px;
+  height: 100%;
+  padding: 0 20px;
+  text-align: right;
+  vertical-align: top;
+  font-size: 20px;
+  background-color: #fff;
+  border: none;
+  box-sizing: border-box;
+}
+
+.popup__pc {
+  position: absolute;
+  left: 50%;
+  width: $width-max;
+  padding-bottom: 80px;
+  margin-left: -600px;
+  border-radius: 50px;
+  overflow: hidden;
+
+  .popup__inner {
+    width: $width-inner;
+    margin: 0 auto;
+  }
+
+  .popup__body {
+    .popup__inner {
+      padding-top: 65px;
+    }
+  }
+
+  .top-line {
+    display: block;
+    width: 862px;
+    margin: 0 auto 60px;
+    border: 1px solid #e1e1e1;
+  }
+
+  .btn {
+    display: block;
+    margin: 0 auto;
+    // background: url( "../images/popup-btns.png") no-repeat;
+    background: url( $imgPathRoot + "/popup-btns.png") no-repeat;
+
+    &__close {
+      position: absolute;
+      right: 40px;
+      top: 40px;
+      width: 50px;
+      height: 50px;
+      background-position: 0 0;
+    }
+    &__confirm {
+      width: 260px;
+      height: 80px;
+      background-position: -270px -241px;
+    }
+
+    &__join {
+      margin-top: 340px;
+      width: 236px;
+      height: 72px;
+      background-position: 0 -616px;
+    }
+
+    &__event-share {
+      margin-top: 340px;
+      width: 236px;
+      height: 73px;
+      background-position: -294px -1077px;
+    }
+    &__share-insta {
+      display: inline-block;
+      width: 93px;
+      height: 92px;
+      margin-right: 26px;
+      background-position: 0 -698px;
+    }
+
+    &__share-facebook {
+      display: inline-block;
+      width: 93px;
+      height: 92px;
+      background-position: -119px -698px;
+    }
+
+    &__next {
+      width: 260px;
+      height: 80px;
+      background-position: -245px -616px;
+      margin-top: 30px;
+    }
+
+    &__download {
+      width: 81px;
+      height: 81px;
+      background-position: 0 -61px;
+    }
+
+    &__photo-skip {
+      display: inline-block;
+      width: 300px;
+      height: 80px;
+      margin-right: 35px;
+      background-position: -223px -706px;
+    }
+
+    &__photo-upload {
+      position: relative;
+      display: inline-block;
+      width: 300px;
+      height: 80px;
+      background-position: 0 -890px;      
+    }
+    .file-upload-input{
+      position: absolute;
+      left: 0;
+      top: 0; // right: 0;
+      // bottom: 0;    
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    &__complete {
+      width: 300px;
+      height: 80px;
+      background-position: -270px -800px;    
+    }
+
+    &__down {
+      display:inline-block;
+      width: 81px;
+      height: 82px;
+      vertical-align:middle;
+      background-position: 0 -61px;    
+    }
+
+    &__photo-close {
+      display:inline-block;
+      width: 82px;
+      height: 82px;
+      vertical-align:middle;
+      margin-right:10px;
+      background-position: 0 -150px;    
+    }
+    &__photo-mobile {
+      display:inline-block;
+      width: 82px;
+      height: 82px;
+      margin-right:10px;
+      background-position: -90px -150px;  
+    }
+    &__photo-pc {
+      display:inline-block;
+      width: 82px;
+      height: 82px;
+      background-position: -180px -150px;  
+    }
+
+    &__checklist-start {
+      display:inline-block;
+      width: 326px;
+      height: 301px;
+      background-position: 0 -1079px;  
+    }
+  }
+
+  //btns
+}
+
+//----------------------------
+// 메인 팝업
+//----------------------------
+.main-popup {
+  width: 1200px;
+  padding: 0;
+  background: none;
+  top:90px;
+  .btn__close {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    background-position: 0 0;
+  }
+}
+
+
+//----------------------------
+// 바디계산기 공통
+//----------------------------
+.common__calculator {
+  .popup__header {
+    height: 416px;
+    @include background("bg-body-calculator.png", $repeat: no-repeat);
+
+    .popup__inner {
+      padding-top: 70px;
+    }
+  }
+
+  .popup__title {
+    display: inline-block;
+    vertical-align: top;
+
+    &-sub {
+      display: inline-block;
+      margin-left: 488px;
+    }
+  }
+}
+
+// 동안바디계산기
+.popup-calculator {
+  .calculator-list__title {
+    //margin:0 0 35px -10px;
+    margin-bottom: 35px;
+  }
+
+  .input-circle {
+    // input 공통
+    width: 88px;
+    height: 88px;
+    margin-top: 10px;
+    text-align: center;
+    border: none;
+    border-radius: 50%;
+    font-size: 40px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .label-title {
+    display: block;
+    margin: 0 auto;
+  }
+
+  ul {
+    margin-left: -10px;
+  }
+
+  li {
+    display: inline-block;
+    margin-left: 15px;
+
+    &:first-child {
+      margin: 0;
+    }
+  }
+
+
+  .facial__wrap {
+    display: inline-block;
+
+    .input-circle {
+      color: #85e4ff;
+      background-color: #019afa;
+    }
+  }
+
+  .body__wrap {
+    display: inline-block;
+    margin-left: 80px;
+
+    .input-circle {
+      color: #fff;
+      background-color: #8ad2ce;
+    }
+  }
+
+  .caption {
+    margin: 30px 0 35px;
+  }
+}
+
+//바디 계산기 결과
+.popup-calculator-result {
+  .top-line {
+    margin:0 auto;
+  }
+  .popup__title-sub {
+    margin: 30px 0 37px 530px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 27px;
+    line-height: 36px;
+
+    span {
+      font-weight: bold;
+      color: #019afa;
+    }
+  }
+
+  .costs__wrap {
+    width: 320px;
+    margin: 0 0 10px 538px;
+    background-color: #fff;
+  }
+
+  dd {
+    position: relative;
+    
+    span {
+      font-weight: bold;
+      font-size: 70px;
+
+      &.text__gray {
+        color: #c3c3c3
+      }
+
+      &.text__blue {
+        color: #019afa;
+      }
+    }
+
+    >img {
+      position: absolute;
+      right: 0;
+      bottom: 15px;
+    }
+  }
+
+  dl{
+    &:last-child{
+      margin-top: 20px;
+    }
+  }
+  
+
+  .calculator-result {
+    position: relative;
+  }
+
+  .percentage {
+    position: absolute;
+    top: 32px;
+    right: 135px;
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+    border-radius: 50%;
+    background-color: #fe0000;
+
+    &-num {
+      font-size: 40px;
+    }
+  }
+}
+
+// 동안바디 공유이벤트
+.body-share {
+  .popup-share {
+    padding: 0;
+    font-size: 0;
+
+    .popup__header {
+      height: 609px;
+      background: url($location + 'shareevent-text-v2.png') 170px 71px no-repeat;
+      // @include background("shareevent-text-v2.png", $repeat: no-repeat);
+    }
+
+    .share-gift {
+      position: relative;
+      display: block;
+      margin: 40px 0 0 440px;
+    }
+
+    .popup__body {
+      padding-bottom: 70px;
+      background-color: #e2d5c9;
+
+      .popup__inner {
+        width: 850px;
+        margin: 0 auto;
+      }
+    }
+
+    .share-event01 {
+      display: inline-block;
+      width: 414px;
+      height: 470px;
+      margin-right: 20px;
+      margin: -245px 20px 0 0;
+      vertical-align: top;
+      @include background("shareevent-event01.png", $repeat: no-repeat);
+    }
+
+    .share-event02 {
+      display: inline-block;
+      width: 414px;
+      height: 470px;
+      margin-top: -245px;
+      vertical-align: top;
+      text-align: center;
+      @include background("shareevent-event02.png", $repeat: no-repeat);
+
+      .btn__wrap {
+        margin-top: 340px;
+      }
+    }
+
+    .caption {
+      margin-top: 15px;
+    }
+  }
+}
+
+//----------------------------
+// 챌린지(후기) 이벤트 안내
+//----------------------------
+.popup-review {  
+  height: 1341px;
+  @include background("text-review.png", $repeat: no-repeat);
+}
+
+//----------------------------
+// 바디계산기 이벤트 안내
+//----------------------------
+.popup-calulator-note {
+  height: 960px;
+  @include background("body-calculator-note.png", $repeat: no-repeat);
+}
+
+//----------------------------
+// 동안바디 이벤트 안내
+//----------------------------
+.popup-age-note {
+  height: 960px;
+  @include background("body-age-note.png", $repeat: no-repeat);
+}
+
+//----------------------------
+// 동안바디 체크 공통
+//----------------------------
+//intro
+.age-checklist-intro {  
+  &.popup__pc {
+    width: 100%;
+    height: 100%;
+    left:0;
+    margin:0;
+    padding:0;
+    border-radius:0;
+    background:#000;
+  }
+  .mov-wrap {
+    text-align:center;
+    padding:0;
+    font-size:0;    
+  }  
+  .btn-wrap {
+    width: 1200px;
+    margin:445px auto 0;
+    text-align:right;
+  }
+  .age-btn-join{  
+    display: block;
+    position: absolute;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0,0);        
+  }  
+}
+
+
+//이벤트 안내
+.popup-age-detail {
+  height: 960px;
+  @include background("bodytest-note.png", $repeat: no-repeat);
+}
+
+.popup-check {
+  .popup__header {
+    height: 449px;
+    @include background("bg-body-check.jpg", $repeat: no-repeat);
+  }
+
+  .title__sub {
+    margin: 162px 0 0 486px;
+  }
+
+}
+
+//설문조사
+.popup-checklist {
+  .top-line {
+    margin-bottom: 25px;
+  }
+
+  .list__wrap {
+    width: 862px;
+    margin: 0 auto;
+  }
+
+  li {
+    margin-bottom: 18px;
+
+    input {
+      position: absolute;
+      opacity: .000001;
+
+      &:checked~span {
+        background-color: #019afa;
+      }
+    }
+
+    span {
+      display: inline-block;
+      width: 46px;
+      height: 46px;
+      // background-image: url("../images/popup-btns.png");
+      background-image: url($imgPathRoot + "/popup-btns.png");
+      background-color: #c1cbd2;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+
+  .check-o {
+    margin-right: 10px;
+    background-position: -441px 12px;
+  }
+
+  .check-x {
+    background-position: -490px 12px;
+  }
+  .txt-refer{
+    margin-top: 24px;
+    text-align: right;
+    
+  }  
+  &.popup__pc{    
+    .btn__next{
+      margin-top: 22px;
+    }
+  }  
+}
+
+//사진업로드 
+.body-photo {
+  .btn-wrap {
+    text-align: center;    
+    button{
+      vertical-align: top;
+    }    
+  }
+}
+
+//사진분석중
+.photo-loading {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, .1);
+  width: 100%;
+  height: 100%;
+  
+  &.on{
+    display: block;        
+  }    
+}
+
+.loading-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 560px;
+  height: 560px;
+  margin: -280px 0 0 -280px;
+  border-radius: 10px;
+  box-shadow: 5px 20px 55px #b9b7b7;
+  border-radius: 15px;
+  overflow: hidden;
+
+  .frame {
+    position: absolute;
+    top: 0;
+    width: 559px;
+    height: 560px;
+    text-align: center;
+    @include background("frame.png", $repeat: no-repeat);
+
+    >img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin: -100px 0 0 -100px;
+    }
+  }
+
+  .frame-dim {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .1);
+  }
+  
+}
+
+// 분석결과
+.body-result {
+  .result-age {
+    margin:165px 0 0 490px;
+  }
+  .title-sub {
+    margin-bottom:20px;
+    font-size:26px;
+    line-height:33px;
+    font-family: 'Noto Sans KR', sans-serif;
+    span {
+      color:#019afa;
+      font-weight:bold;
+    }
+  }
+
+  dt {
+    display:inline-block;
+    >img {
+      vertical-align:5px;
+    }
+  }
+  dd {
+    display:inline-block;
+    width: 145px;
+    padding-right:25px;
+    text-align:right;
+    > span {
+      margin-right:15px;
+      font-size:80px;   
+      font-weight:bold;   
+    }
+    .text__gary {
+      color:#c1cbd2;
+    }
+    .text__blue {
+      color:#019afa;
+    }
+  }
+  .btn__confirm {
+    margin-top:60px;
+  }
+  .top-line {
+    margin:0 auto;
+  }
+}
+
+
+  //----------------------------
+  // 화보 slider
+  //----------------------------
+  .popup-gallery {
+    background:#fff;
+  }
+  .popup-photo {
+    width: 100%;
+    height: 100%;
+
+    &.popup__pc {
+      left: 0;
+      margin: 0;
+      padding: 0;
+      background: none;
+      border-radius: 0;
+    }
+  }
+
+  .slider-wrap {
+    position: relative;
+    top: 50%;
+    //max-width:2300px;
+    height: 100%;
+    margin: 0 auto;
+    transform: translateY(-50%);
+  }
+
+  .photo-slider {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    top: 50%; 
+    transform: translateY(-50%);
+    background:#fff;
+
+    > .photo {
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      width: 100%;
+      height:auto;
+    }
+  }
+
+  .slick-arrow {
+    position: absolute;
+    top: 50%;
+    margin-left: -40px;
+    width: 81px;
+    height: 81px;
+    box-shadow: 10px 11px 30px #8888882e;
+    border-radius: 50%;
+    // background: url( "../images/popup-btns.png") no-repeat;
+    background: url( $imgPathRoot + "/popup-btns.png") no-repeat;
+
+    z-index: 1;
+  }
+
+  .slick-prev {
+    left: 80px;
+    background-position: -90px -61px;
+  }
+
+  .slick-next {
+    right: 40px;
+    background-position: -180px -61px;
+  }
+
+  .photo-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1200px;
+    z-index:1;
+    .nav__list {
+      position: relative;
+      width: 133px;
+      margin-left: 15px;
+      text-align: center;
+      box-shadow: 10px 10px 50px #0e0e0e36;
+      border-radius: 50%;
+      box-sizing: border-box;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        border-radius: 51%;
+        background-color: rgba(66, 71, 90, .7);
+      }
+
+      &:first-child {
+        margin: 0;
+      }
+
+      img {
+        width: 100%;
+        display: inline-block;
+        margin: 0;
+      }
+
+      &.slick-current {
+        //top:-8px;
+        border-radius: 50%;
+
+        &:after {
+          top: -($sliderBorder);
+          left: -($sliderBorder);
+          background: none;
+          border: $sliderBorder solid #63a1e8;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+    }
+
+    .btn__photodown {
+      display: inline-block;
+      width:133px;
+      margin-left: 15px;
+
+      >img {
+        width: 100%;
+        height:auto;
+      }
+    }
+  }
+
+  .photo-down-wrap {
+    position:absolute;
+    top:0;
+    // display:none;
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0,.5);
+    z-index:1;
+    .down-bg {
+      position: absolute;
+      right:0;
+      bottom:0;
+    }
+    .down-btn-wrap {
+      position: absolute;
+      right:60px;
+      bottom:60px;
+      a {
+        vertical-align:middle;
+      }
+    }
+  }
+
+  //----------------------------
+  // 화보 비디오
+  //----------------------------
+  .popup-mov {
+    .mov-ele{
+      display: none;
+      &.on{
+        display: block;
+      }
+    }
+
+
+    &.popup__pc {
+      width: 100%;
+      height: 100%;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      background: none;
+      border-radius: 0;
+    }
+  }
+
+  .mov-choice {
+    width: 100%;
+    height: 100%;
+    //background: rgba(39, 40, 44, .6);
+    @include background("mov-selecct-bg.jpg", $repeat: no-repeat);
+    background-size:cover;
+    .selecct-wrap {
+      position: absolute;
+      transform: translateY(-50%);
+      transform: translateX(-50%);
+      left: 50%;
+      top: 45%;
+      width: 1196px;
+      height: 268px;
+      @include background("mov-select-bg.png", $repeat: no-repeat);
+      > button {
+        position: absolute;
+        background:rgba(0,0,0,.001);
+      }
+      .mov-body {
+        top: 140px;
+        left: 918px;
+        width: 284px;
+        height: 67px;
+      }
+      .mov-dance {
+        top:148px;
+        left:0;
+        width: 272px;
+        height: 58px;
+      }
+      .mov-dance2 {
+        // top:207px;
+        top:140px;
+        left:0;
+        width: 284px;
+        height: 67px;
+      }
+    }
+
+  }
+
+  .mov-wrap {
+    position: relative;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-bottom: 48%;
+
+    >iframe {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .mov-down {
+    // display:none;
+    position: absolute;
+    top:0;
+    width: 100%;
+    height: 100%;
+    //background: rgba(0, 0, 0, .5);
+    -webkit-transition: all 2s ease-in-out;
+    transition: all 2s ease-in-out;
+    z-index:1;
+    &.on {
+      display:block;
+    }
+
+    &.mov-dance {
+      @include background("mov-dance-end.jpg", $repeat: no-repeat);
+      background-size:cover;  
+    }
+    &.mov-body {
+      @include background("mov-body-end.jpg", $repeat: no-repeat);
+      background-size:cover;  
+    }
+    .down-wrap {
+      position:absolute;
+      bottom:0;
+      right:0;
+      width: 645px;
+      height: 773px;
+      
+    }
+    .down-btn-wrap {
+      position: absolute;
+      bottom: 80px;
+      right: 60px;
+    }
+  }
+

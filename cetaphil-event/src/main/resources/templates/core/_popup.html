@@ -1,0 +1,592 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+  <div th:fragment="core-popup">
+    <!-- test -->
+    <!-- <div class="test-btn" style="z-index:1000"> -->
+
+    <!-- 즉당(검색이벤트) -->
+    <!-- <button onclick="openPopup('search-fail'); return false;">즉당:꽝</button>
+      <button onclick="openPopup('search-win'); return false;">즉당:당첨</button>
+      <button onclick="openPopup('search-notice'); return false;">즉당:개인정보동의</button>
+      <button v-on:click="initUserInfo(); openPop('search-personal');">즉당 : 개인정보</button>
+      <br> -->
+
+    <!-- 공유이벤트 -->
+    <!-- <button onclick="openPopup('share-notice'); return false;">공유:개인정보동의</button>
+      <button onclick="openPopup('share'); return false;">공유하기</button>
+      <button v-on:click="initUserInfo(); openPop('share-personal');">공유:개인정보</button>
+      <br> -->
+
+    <!-- 팬덤지원이벤트 -->
+    <!-- <button onclick="openPopup('fandom-support'); return false;">팬덤지원서</button>
+      <button onclick="openPopup('fandom-personal'); return false;">팬덤:개인정보</button>
+      <button onclick="openPopup('fandom-notice'); return false;">팬덤:개인정보동의</button>
+      <button onclick="openPopup('fandom-pick'); return false;">팬덤:모집안내</button>
+      <button onclick="openPopup('post'); return false;">우편번호</button> -->
+
+
+    <!-- <div style="background: white; font-size: 22px;">
+        <span>currentPop : </span><span>{{ currentPop }}</span>
+        <br>
+        <span>prevPop : </span><span>{{ prevPop }}</span>
+      </div> -->
+    <!-- </div> -->
+
+    <!--// test -->
+
+    <div class="dimmed"></div>
+
+    <!--///// 즉당 /////-->
+
+    <!-- 꽝 : 재도전 팝업 -->
+    <div class="popup pop-search-fail" id="pop-search-fail">
+      <div class="popup__header">
+        <h4><img src="https://cetaphil-event.s3.ap-northeast-2.amazonaws.com/static/core/popup/tit-fail.png" alt="꽝!"></h4>
+      </div>
+      <div class="popup__content">
+        <p><img v-if="!prizeName == ''" :src="'https://cetaphil-event.s3.amazonaws.com/static/core/popup/' + prizeName + '.png'" alt="지금 바로 재도전 해보세요!" /></p>
+
+        <button type="button" class="btn btn__another-event" v-on:click="goToAnotherEvent">다른 이벤트
+          보러가기</button>
+        <a href="/core/naver-landing" target="_blank" class="btn btn__again" v-on:click="hidePopup('search-fail');">재도전 하러가기</a>
+
+      </div>
+      <button type="button" class="btn btn__close" v-on:click="hidePopup('search-fail'); return false;">닫기</button>
+    </div>
+
+    <!-- 당첨 : 개인정보 팝업 -->
+    <div class="popup pop-search-win pop-personal" id="pop-search-win">
+      <div class="popup__header">
+        <h4><img src="https://cetaphil-event.s3.ap-northeast-2.amazonaws.com/static/core/popup/tit-win.png" alt="축하합니다!"></h4>
+      </div>
+      <div class="popup__content">
+        <!-- win-img01~03 // 이미지명 변경하기 -->
+        <p><img v-if="!prizeName == ''" :src="'https://cetaphil-event.s3.amazonaws.com/static/core/popup/'+ prizeName + '.png'"
+            alt="" /></p>
+
+        <button type="button" class="btn btn__receive-goods" v-on:click="getPrize" alt="제품받기 버튼">제품받기</button>
+
+      </div>
+      <button type="button" class="btn btn__close" v-on:click="hidePopup('search-win');">닫기</button>
+    </div>
+
+    <!-- 즉당 :개인정보 팝업 -->
+    <div class="popup pop-personal pop-search-personal" id="pop-search-personal">
+      <div class="popup__header">
+        <h4>
+          <img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/tit-search.png" alt="검색이벤트">
+        </h4>
+      </div>
+      <div class="popup__content">
+        <p class="inner__title"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/tit-personal.png"
+            alt="개인정보입력" /></p>
+        <form action="" method="POST" name="" id="">
+          <dl>
+            <dt>
+              <label for="search-name"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/personal-name.png"
+                  alt="성명" /></label>
+            </dt>
+            <dd><input type="text" name="name" id="search-name" maxlength="10" v-model="eventUserData.name" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <label for="search-phone"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/personal-phone.png"
+                  alt="휴대폰" /></label>
+            </dt>
+            <dd><input type="tel" name="phone" id="search-phone" maxlength="11" placeholder="'-'기호없이 입력해주세요." v-model="eventUserData.mobile" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <label for="search-address"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/personal-address.png"
+                  alt="주소" /></label>
+            </dt>
+            <dd>
+              <input type="text" class="post-input" name="post" id="search-zipcode" readonly="readonly" v-model="eventUserData.zipcode" />
+              <button type="button" class="btn btn__post" onclick="execDaumPostcode()" alt="즉석당첨 우편번호 검색 버튼">우편번호</button>
+            </dd>
+            <dd class="full-address"><input type="text" name="address01" id="search-address" readonly="readonly"
+                v-model="eventUserData.address" /></dd>
+            <dd class="full-address"><input type="text" name="address02" placeholder="상세주소를 입력해주세요" maxlength="50"
+                v-model="eventUserData.addressDetail" /></dd>
+          </dl>
+
+
+          <div class="agree-wrap agree-wrap__border">
+            <p class="personal__note"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/personal-notice.png"
+                alt="등록하신 개인정보는 이벤트경품 수령을 위한 정보 및 사전 예약 이벤트 정보 제공을위해 사용되며 이벤트 종료 3개월후에 자동 폐기됩니다." /></p>
+            <label for="search-agree">
+              <input type="checkbox" id="search-agree" name="agree" v-model="eventUserData.agree" />
+              <span></span>
+            </label>
+
+            <button type="button" class="btn btn__agree-hint" v-on:click="closePop('search-personal'); openPop('search-notice'); return false;"
+              alt="즉석당첨 개인정보 수집동의 자세히보기">자세히보기</button>
+          </div>
+          <button type="button" class="btn btn__entry" v-on:click="lotteryEventUserInfo" alt="즉석당첨 개인정보 저장 완료 버튼">확인</button>
+        </form>
+      </div>
+      <button type="button" class="btn btn__close" v-on:click="closePop('search-personal'); return false;">닫기</button>
+    </div>
+
+    <!-- 즉당 개인정보 동의안내 팝업 -->
+    <div class="popup pop-search-notice" id="pop-search-notice">
+      <div class="popup__header">
+        <h4><img src="https://cetaphil-event.s3.ap-northeast-2.amazonaws.com/static/core/popup/tit-search.png" alt="검색 이벤트"></h4>
+      </div>
+      <div class="popup__content">
+        <img src="https://cetaphil-event.s3.ap-northeast-2.amazonaws.com/static/core/popup/search-agree-text.png" alt="">
+        <div class="a11y-hidden">
+          <h5>
+            개인 정보 수집 및 이용 관련 동의
+          </h5>
+          <p>
+            개인 정보 수집 및 이용 관련 동의
+
+            세타필 이벤트 이용 약관
+
+            갈더마 코리아 ㈜ 귀하본 이벤트 응모 관련하여 귀사가 본인의 개인(신용)정보를 수집 • 이용하고자 하는 경우에는「신용정보의 이용 및 보호에 관한 법률」제32조 및 제33조, 제34조,
+            「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제22조,「개인정보보호법」 제15조 및 제22조,제24조에 따라 본인의 동의를 얻어야 합니다. 이에 본인은 귀사가 아래와 같이
+            본인의개인(신용)정보를 수집 • 이용하는 것에 대하여동의합니다.
+
+            이 동의서는 계약의 갱신 등으로 변경되는 경우에도 유효합니다.
+
+            1.개인(신용)정보 수집 • 이용 목적- 이벤트 참여여부 확인, 이벤트 당첨 시 경품 발송, 유선 업무를 통한 당첨자 확인, 이벤트 관리, 입력한 통계자료 및 설문조사 마케팅 및 제품 마케팅
+            알림 활용, 등록한 텍스트 및 이미지에 대한 마케팅 활용, 제세공과금 대납을 위한 고객정보 제공
+            2. 수집하는 개인(신용)정보의 항목- 성명, 휴대폰번호, 나이, 경품배송주소, 이벤트 입력 항목.
+            3. 개인정보의 보유 및 이용기간회원의 개인정보(성명, 휴대폰번호, 나이, 경품배송주소)는 개인정보의 수집/이용 목적이 달성되면지체 없이 파기됩니다. 단, 이벤트 입력 항목에 대한 자료는
+            마케팅 요소로 활용되어 일정기간 보유합니다.
+            4. 귀하는 개인(신용)정보의 수집 및 이용에 대한 동의를 거부할 수 있으나, 미 동의 시 이벤트 당첨이 불가능합니다.5. 연락처 오기입, 변경으로 인한 경품 미수령에 대한 책임은 참여자
+            본인에게 있습니다.
+          </p>
+        </div>
+      </div>
+      <button type="button" class="btn btn__close" v-on:click="closePop('search-notice'); openPop('prev'); return false;">닫기</button>
+    </div>
+
+
+    <!--///// 영상공유 이벤트 /////-->
+
+    <!-- 공유하기 -->
+    <div class="popup pop-share" id="pop-share">
+      <div class="is-loading" v-if="loading"></div>
+      <div class="popup__header">
+        <h4>
+          <img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/tit-mov-share.png" alt="영상공유이벤트">
+        </h4>
+      </div>
+      <div class="popup__content pop__content-center">
+        <p><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/tit-share.png" alt="공유하는 sns수가 많을수록 당첨 확률 up!"></p>
+
+        <div class="btn-wrap">
+          <button type="button" class="btn btn__kakaotalk" v-on:click="snsShare('kakaotalk')" alt="카카오톡 공유하기">카카오톡 공유하기</button>
+          <button type="button" class="btn btn__kakaostory" v-on:click="snsShare('kakaostory')" alt="카카오 스토리 공유하기">카카오
+            스토리 공유하기</button>
+          <button type="button" class="btn btn__facebook" v-on:click="snsShare('facebook')" alt="페이스북 공유하기">페이스북 공유하기</button>
+        </div>
+      </div>
+      <button type="button" class="btn btn__close" v-on:click="closePop('share'); return false;">닫기</button>
+    </div>
+
+    <!-- 공유이벤트 : 개인정보 -->
+    <div class="popup pop-personal pop-share-personal" id="pop-share-personal">
+      <div class="popup__header">
+        <h4>
+          <img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/tit-mov-share.png" alt="영상공유이벤트">
+        </h4>
+      </div>
+      <div class="popup__content">
+        <p class="inner__title"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/tit-personal.png"
+            alt="개인정보입력" /></p>
+        <form action="" method="POST" name="" id="">
+          <dl>
+            <dt>
+              <label for="share-name"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/personal-name.png"
+                  alt="성명" /></label>
+            </dt>
+            <dd><input type="text" name="name" id="share-name" maxlength="10" v-model="eventUserData.name" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <label for="share-phone"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/personal-phone.png"
+                  alt="휴대폰" /></label>
+            </dt>
+            <dd><input type="tel" name="phone" id="share-phone" maxlength="11" placeholder="'-'기호없이 입력해주세요." v-model="eventUserData.mobile" /></dd>
+          </dl>
+
+          <div class="agree-wrap agree-wrap__border">
+            <p class="personal__note"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/personal-notice.png"
+                alt="등록하신 개인정보는 이벤트경품 수령을 위한 정보 및 사전 예약 이벤트 정보 제공을위해 사용되며 이벤트 종료 3개월후에 자동 폐기됩니다." /></p>
+
+            <label for="share-agree">
+              <input type="checkbox" id="share-agree" name="agree" v-model="eventUserData.agree" />
+              <span></span>
+            </label>
+
+            <button type="button" class="btn btn__agree-hint" v-on:click="closePop('share-personal'); openPop('share-notice')"
+              alt="sns공유 개인정보 수집 자세히보기">자세히보기</button>
+          </div>
+          <button type="button" class="btn btn__entry" v-on:click="sendSnsShareUserInfo" alt="sns공유 개인정보 입려완료">확인</button>
+        </form>
+      </div>
+      <button type="button" class="btn btn__close" v-on:click="closePop('share-personal'); return false;">닫기</button>
+    </div>
+
+    <!-- 공유이벤트 개인정보 동의안내 팝업 -->
+    <div class="popup pop-share-notice" id="pop-share-notice">
+      <div class="popup__header">
+        <h4><img src="https://cetaphil-event.s3.ap-northeast-2.amazonaws.com/static/core/popup/tit-mov-share.png" alt="공유이벤트"></h4>
+      </div>
+      <div class="popup__content">
+        <img src="https://cetaphil-event.s3.ap-northeast-2.amazonaws.com/static/core/popup/share-agree-text.png" alt="">
+        <div class="a11y-hidden">
+          <h5>
+            개인 정보 수집 및 이용 관련 동의
+          </h5>
+          <p>
+            개인 정보 수집 및 이용 관련 동의
+
+            세타필 이벤트 이용 약관
+
+            갈더마 코리아 ㈜ 귀하본 이벤트 응모 관련하여 귀사가 본인의 개인(신용)정보를 수집 • 이용하고자 하는 경우에는「신용정보의 이용 및 보호에 관한 법률」제32조 및 제33조, 제34조,
+            「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제22조,「개인정보보호법」 제15조 및 제22조,제24조에 따라 본인의 동의를 얻어야 합니다. 이에 본인은 귀사가 아래와 같이
+            본인의개인(신용)정보를 수집 • 이용하는 것에 대하여동의합니다.
+
+            이 동의서는 계약의 갱신 등으로 변경되는 경우에도 유효합니다.
+
+            1.개인(신용)정보 수집 • 이용 목적- 이벤트 참여여부 확인, 이벤트 당첨 시 경품 발송, 유선 업무를 통한 당첨자 확인, 이벤트 관리, 입력한 통계자료 및 설문조사 마케팅 및 제품 마케팅
+            알림 활용, 등록한 텍스트 및 이미지에 대한 마케팅 활용, 제세공과금 대납을 위한 고객정보 제공
+            2. 수집하는 개인(신용)정보의 항목- 성명, 휴대폰번호, 나이, 경품배송주소, 이벤트 입력 항목.
+            3. 개인정보의 보유 및 이용기간회원의 개인정보(성명, 휴대폰번호, 나이, 경품배송주소)는 개인정보의 수집/이용 목적이 달성되면지체 없이 파기됩니다. 단, 이벤트 입력 항목에 대한 자료는
+            마케팅 요소로 활용되어 일정기간 보유합니다.
+            4. 귀하는 개인(신용)정보의 수집 및 이용에 대한 동의를 거부할 수 있으나, 미 동의 시 이벤트 당첨이 불가능합니다.5. 연락처 오기입, 변경으로 인한 경품 미수령에 대한 책임은 참여자
+            본인에게 있습니다.
+          </p>
+        </div>
+      </div>
+      <button type="button" class="btn btn__close" v-on:click="closePop('share-notice'); openPop('prev'); return false;">닫기</button>
+    </div>
+
+
+    <!--///// 팬덤지원 이벤트 /////-->
+
+    <!-- 팬덤 지원서 -->
+    <div class="popup pop-fandom-support" id="pop-fandom-support">
+      <div class="popup__header">
+        <h4><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/tit-fandom-application.png" alt="세타필 펜덤 지원서"></h4>
+      </div>
+      <div class="popup__content">
+        <div class="question-wrap">
+          <p><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/fandom-question01.png" alt="1. 세타필을 사용하신 적이 있나요?"></p>
+          <div class="answer-wrap">
+            <label>
+              <input type="radio" name="use" value="Y" v-model="eventUserData.isUse">
+              <span></span>
+              <img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/fandom-yes.png" alt="네"></label>
+            <label>
+              <input type="radio" name="use" value="N" v-model="eventUserData.isUse">
+              <span></span>
+              <img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/fandom-no.png" alt="아니요">
+            </label>
+          </div>
+        </div>
+
+        <div class="question-wrap">
+          <p><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/fandom-question02.png" alt="2. 자녀가 있으신가요?"></p>
+          <div class="answer-wrap">
+            <label>
+              <input type="radio" name="children" value="Y" v-model="eventUserData.isChildren">
+              <span></span>
+              <img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/fandom-yes.png" alt="네"></label>
+            <label>
+              <input type="radio" name="children" value="N" v-model="eventUserData.isChildren">
+              <span></span>
+              <img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/fandom-no.png" alt="아니요">
+            </label>
+          </div>
+        </div>
+
+        <div class="question-wrap">
+          <p><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/fandom-question03.png" alt="3. 자녀의 연령층은 어떻게 되시나요?"></p>
+          <div class="answer-wrap">
+            <label><input type="checkbox" name="age" v-model="eventUserData.childrenAge" :disabled="eventUserData.isChildren == 'N'"><span></span><img
+                src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/fandom-answer01.png" alt="0-5세"></label>
+            <label><input type="checkbox" name="age" v-model="eventUserData.childrenAge2" :disabled="eventUserData.isChildren == 'N'"><span></span><img
+                src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/fandom-answer02.png" alt="6-9세"></label>
+            <label><input type="checkbox" name="age" v-model="eventUserData.childrenAge3" :disabled="eventUserData.isChildren == 'N'"><span></span><img
+                src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/fandom-answer03.png" alt="9-12세"></label>
+            <label class="line-2"><input type="checkbox" name="age" v-model="eventUserData.childrenAge4" :disabled="eventUserData.isChildren == 'N'"><span></span><img
+                src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/fandom-answer04.png" alt="12세이상"></label>
+          </div>
+        </div>
+
+        <div class="question-wrap">
+          <p>
+            <label for="promise"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/fandom-question04.png"
+                alt="4. 세타필 팬덤 한줄다짐을 말해주세요!"></label>
+          </p>
+          <div class="answer-wrap"><input type="text" id="promise" v-model="eventUserData.comment" maxlength="20"></div>
+        </div>
+
+        <div class="question-wrap">
+          <p>
+            <label for="sns"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/fandom-question05.png"
+                alt="5. 개인 sns를 입력해주세요!"></label>
+          </p>
+          <div class="answer-wrap">
+            <input type="text" id="sns" placeholder="인스타그램" v-model="eventUserData.snsAddress">
+            <input type="text" placeholder="페이스북" v-model="eventUserData.snsAddress2">
+            <input type="text" placeholder="블로그" v-model="eventUserData.snsAddress3">
+            <input type="text" placeholder="유튜브,카카오스토리 등" v-model="eventUserData.snsAddress4">
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn__next" v-on:click="validateUserInfo" alt="팬덤지원 다음 버튼">다음</button>
+      <button type="button" class="btn btn__close" v-on:click="closePop('fandom-support')">닫기</button>
+    </div>
+
+    <!-- 개인정보 팝업 -->
+    <div class="popup pop-personal pop-fandom-personal" id="pop-fandom-personal">
+      <div class="popup__header">
+        <h4>
+          <img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/tit-fandom-application.png" alt="세타필 팬덤지원서">
+        </h4>
+      </div>
+      <div class="popup__content">
+        <p class="inner__title"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/tit-personal.png"
+            alt="개인정보입력" /></p>
+        <form action="" method="POST" name="" id="">
+          <dl>
+            <dt>
+              <label for="fandom-name"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/personal-name.png"
+                  alt="성명" /></label>
+            </dt>
+            <dd><input type="text" name="name" id="fandom-name" maxlength="10" v-model="eventUserData.name" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <label for="fandom-phone"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/personal-phone.png"
+                  alt="휴대폰" /></label>
+            </dt>
+            <dd><input type="tel" name="phone" id="fandom-phone" maxlength="11" placeholder="'-'기호없이 입력해주세요." v-model="eventUserData.mobile" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <label for="fandom-address"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/personal-address.png"
+                  alt="주소" /></label>
+            </dt>
+            <dd>
+              <input type="text" class="post-input" name="post" id="fandom-zipcode" readonly="readonly" v-model="eventUserData.zipcode" />
+              <button type="button" class="btn btn__post" onclick="execDaumPostcode()">우편번호</button>
+            </dd>
+            <dd class="full-address"><input type="text" name="address01" id="fandom-address" readonly="readonly"
+                v-model="eventUserData.address" /></dd>
+            <dd class="full-address"><input type="text" name="address02" placeholder="상세주소를 입력해주세요" maxlength="50"
+                v-model="eventUserData.addressDetail" /></dd>
+          </dl>
+          <dl>
+            <dt>
+              <label for="fandom-age"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/personal-age.png"
+                  alt="생년월일" /></label>
+            </dt>
+            <dd><input type="tel" name="phone" id="fandom-age" maxlength="6" placeholder="Ex) 800808" v-model="eventUserData.birth" /></dd>
+          </dl>
+
+
+          <div class="agree-wrap agree-wrap__border">
+            <p class="personal__note"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/fandom-notice.png"
+                alt="" /></p>
+            <label for="fandom-agree">
+              <input type="checkbox" id="fandom-agree" name="agree" v-model="eventUserData.agree" />
+              <span></span>
+            </label>
+
+            <button type="button" class="btn btn__agree-hint" v-on:click="closePop('fandom-personal');openPop('fandom-notice');"
+              alt="팬덤 개인정보 수집 자세히보기">자세히보기</button>
+          </div>
+        </form>
+      </div>
+      <div class="btn-wrap">
+        <button type="button" class="btn btn__prev" v-on:click="closePop('fandom-personal');openPop('fandom-support')"
+          alt="팬덤지원 뒤로가기">팬덤지원 뒤로가기</button>
+        <button type="button" class="btn btn__complete" v-on:click="sendFandomUserInfo" alt="팬덤 지원 개인정보 입력 완료">지원완료</button>
+      </div>
+      <button type="button" class="btn btn__close" v-on:click="closePop('fandom-personal'); return false;">닫기</button>
+    </div>
+
+    <!-- 팬덤 모집안내 -->
+    <div class="popup pop-fandom-pick" id="pop-fandom-pick">
+      <div class="popup__header">
+        <h4>
+          <img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/tit-fandom.png" alt="세타필 팬덤">
+        </h4>
+      </div>
+      <div class="popup__content pop__content-center">
+        <p><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/fandom-text-notice.png" alt=""></p>
+        <div class="a11y-hidden">
+          <h5>모집안내</h5>
+          <dl>
+            <dt>모집인원</dt>
+            <dd>60명</dd>
+            <dt>모집기간</dt>
+            <dd>2019년 01월 02일 ~ 2019년 01월 27일</dd>
+            <dt>1차 발표</dt>
+            <dd>2019년 01월 14일 발표 (30명) *합격자 개별연락</dd>
+            <dt>2차 발표</dt>
+            <dd>2019년 01월 28일 발표 (30명) *합격자 개별연락</dd>
+            <dt>활동기간</dt>
+            <dd>2019년 01월 15일 ~ 2019년 02월 20일</dd>
+            <dt>지원자격</dt>
+            <dd>SNS활동을 하시는 모든 분!
+            </dd>
+            <dt>활동 안내</dt>
+            <dd>총 2회의 필수미션 수행
+              (미션 가이드는 선정 시 전달 예정)
+            </dd>
+            <dt>활동 혜택</dt>
+            <dd>미션을 수행할 때 마다 푸짐한 선물을 드립니다!</dd>
+            <dt>혜택1</dt>
+            <dd>세타필 3종 세트(로션 + 크림 + 클린저)</dd>
+            <dt>혜택2</dt>
+            <dd>임명장 & 파리바게뜨상품권(3만원권)</dd>
+            <dt>혜택3</dt>
+            <dd>세타필 1년팩 로션3 + 크림3 + 클린저3</dd>
+            <dt>혜택4</dt>
+            <dd>베스트 팬덤 호텔 숙박권(!명), 백화점 상품권 10만원권 (3명), 외식상품권 5만원권 (10명)</dd>
+          </dl>
+        </div>
+        <button type="button" class="btn btn__entry" v-on:click="closePop('fandom-pick')" alt="팬덤지원 모집안내 확인">모집안내 확인</button>
+      </div>
+      <button type="button" class="btn btn__close" v-on:click="closePop('fandom-pick')">닫기</button>
+    </div>
+
+    <!-- 팬덤지원서 이용관련 동의-->
+    <div class="popup pop-fandom-notice" id="pop-fandom-notice">
+      <div class="popup__header">
+        <h4>
+          <img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/tit-fandom.png" alt="세타필 팬덤">
+        </h4>
+      </div>
+      <div class="popup__content pop__content-center">
+        <p><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/fandom-agree-text.png" alt=""></p>
+        <div class="a11y-hidden">
+          <p>
+            안녕하세요 세타필 입니다.
+
+            세타필 팬덤에 지원하기 위해서는 아래와 같이 개인 정보 수집 및 이용에 동의하셔야 합니다.
+            이는 개인정보보호법 시행에 따라 개인정보를 합법적으로 수집하기 위한 것입니다.
+
+            ◇ 개인정보의 수집•이용 목적
+
+            세타필 팬덤 선발•활동을 위해 귀하의 개인정보를 수집 및 이용합니다.
+            팬덤 활동 시 생성 된 콘텐츠는 세타필에 귀속되어 활용될 수 있으며, 2차 마케팅에 활용 될 수 있습니다.
+
+            ◇ 수집하는 개인정보의 항목
+
+            성명, 주소, 전화번호(휴대전화 포함) , SNS 계정 등
+
+            ◇ 개인정보의 보유 및 이용기간
+
+            개인정보 이용 목적에 따라 수집한 개인정보는 관계법령 등의 규정에 의하여 기록•보존됩니다.
+            또한 세타필 팬덤으로 선발된 분에 한하여 1년간 관련 정보를 보유하며, 선발되지 않은 분의 정보는 서류전형 종료 후 즉시 파기됩니다.
+
+            •귀하는 개인정보 수집 및 이용 동의를 거부하실 수 있으며, 다만
+            이 경우 세타필 팬덤 선발에 있어 불이익을 받으실 수 있습니다.
+            •팬덤 선발 후 활동을 성실히 수행하지 않을 경우 세타필 팬덤 자격에
+            박탈될 수 있습니다
+          </p>
+        </div>
+      </div>
+      <button type="button" class="btn btn__close" v-on:click="openPop('prev');">닫기</button>
+    </div>
+
+
+    <!--우편번호 팝업 -->
+    <div class="popup pop-post" id="pop-post">
+      <div class="popup__header">
+        <h4><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/tit-post.png" alt=""> </h4>
+      </div>
+      <!--  우편번호 -->
+      <div id="searchPostCode"></div>
+      <button type="button" class="btn btn__close" v-on:click="closePop('post'); openPop('prev')">닫기</button>
+    </div>
+
+
+    <!-- 당첨자 팝업 -->
+    <div class="popup pop-winner" id="pop-winner">
+      <div class="popup__header">
+        <h4><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/tit-winner.png" alt="당첨자 발표"> </h4>
+      </div>
+
+      <div class="popup__content pop__content-center">
+        <h5><img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/tit-winner-txt.png" alt="NO.1 바디보습 세타필 이벤트 당첨을 축하드립니다!">
+        </h5>
+
+        <div class="winner-list-wrap">
+          <ul class="winner-list__tabs">
+            <li class="winner-list__tab"><button type="button" class="btn--tab btn--tab01" :class="{ on : currentTab ==='share'}"
+                v-on:click="currentTab = 'share'">공유 이벤트 당첨자보기</button></li>
+            <!-- <li class="winner-list__tab"><button type="button" class="btn--tab btn--tab02" :class="{ on : currentTab ==='fandom'}"
+                onclick="alert('1월 14일에 발표됩니다.')">팬덤모집 이벤트 당첨자보기</button></li> -->
+            <li class="winner-list__tab"><button type="button" class="btn--tab btn--tab02" :class="{ on : currentTab ==='fandom'}"
+                v-on:click="currentTab = 'fandom'">팬덤모집 이벤트 당첨자 보기</button></li>
+          </ul>
+
+          <div class="winner-list winner-list--share" :class="{ on : currentTab ==='share'}">
+            <div class="winner-list__title">
+              <img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/txt-share-winner.png" alt="공유이벤트 당첨자(10명)">
+            </div>
+            <div class="table-wrap">
+              <ul class="winner-list__table">
+                <li v-for="item in winnerShare" class="table__item">
+                  {{ item }}
+                </li>
+              </ul>
+              <p>* 경품은 01월 14일 일괄 발송 예정입니다</p>
+            </div>
+          </div>
+
+          <div class="winner-list winner-list--fandom" :class="{ on : currentTab ==='fandom'}">
+            <div class="winner-list__title">
+              <img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/txt-best-fandom-winner.png" alt="베스트팬덤 당첨자(14명)">
+            </div>
+
+            <div class="table-wrap">
+              <ul class="winner-list__table isScrollable">
+                <li v-for="item in bestFandomList" class="table__item">
+                  {{ item }}
+                </li>
+              </ul>
+            </div>
+
+            <div class="winner-list__title">
+              <img src="https://cetaphil-event.s3.amazonaws.com/static/core/popup/txt-fandom-winner12.png" alt="세타필팬덤 당첨자(60명)">
+            </div>
+
+            <div class="table-wrap">
+              <ul class="winner-list__table isScrollable">
+                <li v-for="item in fandomWinnersList" class="table__item">
+                  {{ item }}
+                </li>
+              </ul>
+              <p class="paragraph">
+                * 발표일(1/28)부터, 2일 이내 입력해주신 연락처를 통해 팬덤 활동 여부에 대해 개별 연락드릴 예정입니다.
+                <br />
+                * 확정되신 분들에 한하여, 금주중으로 체험용 세타필 3종 세트와 미션 가이드 전달이 이뤄질 예정입니다. 
+                <br />
+                * 세타필팬덤 관련 문의처 : cetaphilevent@gmail.com 
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <button type="button" class="btn btn__close" v-on:click="hidePopup('winner');">닫기</button>
+    </div>
+</body>
+
+</html>

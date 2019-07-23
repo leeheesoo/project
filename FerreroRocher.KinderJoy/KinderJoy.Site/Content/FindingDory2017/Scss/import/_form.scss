@@ -1,0 +1,168 @@
+﻿@charset "UTF-8";
+
+//variable
+
+// about width
+$form_box: 420px;
+$border-width:1px;
+$input-padding: 4px;
+$line-height: 48px;
+$input-height: 38px;
+$border-color: #c3d7e5;
+$text-color:#555;
+$font-size:20px;
+
+// 우편번호찾기버튼
+$searchButton-width: 117px;
+$searchButton-left-space: 8px;
+
+// ====================================
+// 상황에 맞는 계산법 사용
+// ====================================
+
+// 계산법: px로 처리(버튼크기만 넣으면 우편번호 검색크기 자동 계산)
+/*
+$dt-width: $form_box * 0.30;
+$dd-width: $form_box * 0.70;
+$input-width: $dd-width - ($input-padding + $border-width) * 2;
+$addr1-width: $input-width - $searchButton-width - $searchButton-left-space;
+*/
+
+// 계산법: %로 처리 (주소쪽 크기는 직접 잡아주기)
+$dt-width: 30%;
+$dd-width: 70%;
+$input-width: 96%;
+$addr1-width: 157px;
+
+// ====================================
+
+
+/* form */
+.form_box {
+	position: relative;
+	width: $form_box;
+	height: auto;
+	margin: 0 auto;
+	text-align:left;
+	legend {
+		display :none;
+	}
+	dl {
+		height: $line-height;
+		vertical-align:top;
+		text-align: left;
+		margin:0;
+		padding:0;
+		font-size:0;
+		line-height:0;
+	}
+	dt {
+		float: left;
+		width: $dt-width;
+		height: $line-height;
+		line-height: $input-height;
+		padding:0;
+		vertical-align: middle;
+		& img {
+			vertical-align: middle;
+		}
+	}
+	dd {
+		float: left;
+		width: $dd-width;
+		height: $line-height;
+		line-height: $line-height;
+		color: $text-color;
+	}
+	a {
+		display: inline-block;
+	}
+	input[type=text],
+	input[type=button],
+	input[type=checkbox],
+	input[type=textarea] {
+		-webkit-appearance: none;
+		border-radius: 0;
+	}
+	input[type=text],
+	input[type=tel],
+	select,
+	textarea {
+		width: $input-width;
+		padding-left: $input-padding;
+		padding-right: $input-padding;
+		height: $input-height;
+		line-height: $input-height;
+		border: $border-width solid $border-color;
+		background-color: #fff;
+		color: $text-color;
+		font-size: $font-size;
+		font-family: 'Malgun Gothic', Dotum;
+		vertical-align: top;
+	}
+	& .input_address1 {
+		position: relative;
+		& input{
+			//width: 45%;
+			width: $addr1-width;
+			margin-right: $searchButton-left-space;
+		}
+		dd img{
+			position:relative;
+			top:-1px;
+		}
+	}
+	& .input_address2 {
+		height: $line-height * 2;
+		& dt {
+			display:none;
+		}
+		& dd {
+			padding-left: $dt-width;
+		}
+	}
+}
+
+
+.agree_policy {
+	height: auto;
+	margin-top: 10px;
+	text-align: center;
+	vertical-align: top;
+	// 좌측
+	& .text {
+		vertical-align: top;
+		display: inline-block;
+	}
+	// 우측
+	& .btn_agree{
+		vertical-align: top;
+		display: inline-block;
+		margin-left: 5px;
+	}
+
+	& label{
+		vertical-align: top;
+		display: inline-block;
+		line-height: auto;
+		img {
+			/* for label img check */
+			pointer-events: none;
+		}
+		input[type=checkbox] {
+			width: 14px;
+			height: 14px;
+			line-height: 100%;
+			vertical-align: top;
+			margin: 0 18px 0 0;
+			@include prefix(transform, scale(1.4));
+			@include prefix(transform-origin, 15% 15%);
+		}
+	}
+	& + * button{ // 제출하기버튼이 버튼일 경우
+		background:none;
+		border:0;
+	}
+
+}
+

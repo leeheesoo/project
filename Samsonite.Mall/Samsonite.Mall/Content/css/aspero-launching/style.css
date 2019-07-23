@@ -1,0 +1,283 @@
+﻿@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+html, body {
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  min-width: 320px;
+  padding: 0;
+  margin: 0; }
+
+.pop-dim {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+  background: #000;
+  opacity: .8;
+  filter: alpha(opacity=80);
+  z-index: 10; }
+  .pop-dim.on {
+    display: block; }
+
+.popup-insta {
+  display: none;
+  position: absolute;
+  left: 50%;
+  width: 90%;
+  max-width: 834px;
+  min-width: 320px;
+  margin: 0 auto;
+  background: #fff;
+  font-family: "Noto Sans KR", sans-serif;
+  border: 1px solid #eee;
+  z-index: 10; }
+  .popup-insta > div {
+    float: left; }
+  .popup-insta .popup-close {
+    position: absolute;
+    top: -50px;
+    right: -4%; }
+  .popup-insta .insta-img {
+    width: 64.14868105515588%;
+    height: 100%;
+    background: #eee; }
+    .popup-insta .insta-img img {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      max-height: 500px; }
+  .popup-insta .insta-text-wrap {
+    width: 35.85131894484412%;
+    height: 100%;
+    max-height: 536px;
+    padding: 27px;
+    font-size: 17px;
+    overflow-y: auto;
+    box-sizing: border-box; }
+    .popup-insta .insta-text-wrap .insta-tit {
+      padding-bottom: 26px;
+      border-bottom: 1px solid #c7c7c7;
+      font-size: 20px; }
+    .popup-insta .insta-text-wrap .insta-like {
+      margin: 20px 0 15px; }
+    .popup-insta .insta-text-wrap .insta-hashtag {
+      margin-bottom: 20px;
+      color: #39628b; }
+    .popup-insta .insta-text-wrap .insta-wrap {
+      font-size: 13px; }
+
+.wrap {
+  position: relative; }
+  .wrap .aspro-kv {
+    width: 100%; }
+    .wrap .aspro-kv > img {
+      width: 100%; }
+  .wrap .event01-wrap .video-wrap .video-mute {
+    position: relative;
+    width: 100%;
+    max-width: 980px;
+    padding-bottom: 52.9%; }
+    .wrap .event01-wrap .video-wrap .video-mute > div {
+      position: absolute;
+      top: 0; }
+    .wrap .event01-wrap .video-wrap .video-mute .vd-cover {
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.7);
+      cursor: pointer; }
+      .wrap .event01-wrap .video-wrap .video-mute .vd-cover > img {
+        width: 100%; }
+  .wrap .event01-wrap .video-wrap .video-sound {
+    display: none;
+    position: relative;
+    width: 100%;
+    max-width: 980px;
+    padding-bottom: 52.9%; }
+  .wrap .event01-wrap div[class^="video-"] iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%; }
+  .wrap .event01-wrap .coupon-wrap {
+    width: 100%;
+    padding-bottom: 7%;
+    background-image: url("../../images/aspero-launching/bg01.jpg");
+    background-size: cover;
+    text-align: center; }
+    .wrap .event01-wrap .coupon-wrap > span {
+      width: 100%;
+      max-width: 580px;
+      display: inline-block;
+      margin: 55px 0 20px; }
+      .wrap .event01-wrap .coupon-wrap > span img {
+        width: 100%;
+        padding: 0 3%;
+        box-sizing: border-box; }
+    .wrap .event01-wrap .coupon-wrap .coupon {
+      position: relative;
+      width: 64.0816%;
+      height: 60px;
+      margin: 0 auto;
+      background: #fff; }
+      .wrap .event01-wrap .coupon-wrap .coupon > p {
+        display: inline-block;
+        position: absolute;
+        left: 1%;
+        top: 50%;
+        margin-top: -10px;
+        font-size: 15px;
+        color: #827979;
+        font-family: "Noto Sans KR", sans-serif; }
+      .wrap .event01-wrap .coupon-wrap .coupon > span {
+        display: none;
+        position: absolute;
+        left: 2.6%;
+        top: 16px;
+        font-size: 20px;
+        font-weight: bold; }
+      .wrap .event01-wrap .coupon-wrap .coupon button {
+        position: absolute;
+        right: 0;
+        width: 183px;
+        height: 100%;
+        background: #39b4ea;
+        border: none;
+        color: #fff;
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 20px; }
+    .wrap .event01-wrap .coupon-wrap .coupon-method {
+      position: relative;
+      width: 100%;
+      max-width: 788px;
+      margin: 0 auto;
+      margin-top: 34px;
+      padding: 0 1.5%;
+      box-sizing: border-box; }
+      .wrap .event01-wrap .coupon-wrap .coupon-method img {
+        width: 100%;
+        max-width: 765px; }
+      .wrap .event01-wrap .coupon-wrap .coupon-method .my-page-link {
+        position: absolute;
+        width: 19%;
+        height: 56%;
+        right: 8%;
+        bottom: 8%; }
+  .wrap .event01-wrap .product {
+    width: 100%; }
+    .wrap .event01-wrap .product img {
+      float: left;
+      width: 50%; }
+    .wrap .event01-wrap .product:after {
+      content: '';
+      clear: both; }
+  .wrap .event02-wrap img {
+    width: 100%; }
+  .wrap .event03-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 70px;
+    background-image: url("../../images/aspero-launching/bg03.jpg");
+    background-size: cover; }
+    .wrap .event03-wrap > img {
+      width: 100%; }
+    .wrap .event03-wrap .slider .slick-slide {
+      margin-right: 9px; }
+      .wrap .event03-wrap .slider .slick-slide div:first-child {
+        margin-bottom: 2px; }
+      .wrap .event03-wrap .slider .slick-slide div img {
+        width: 100%; }
+    .wrap .event03-wrap .slider > button {
+      position: absolute;
+      top: 50%;
+      width: 23px;
+      height: 63px;
+      margin-top: -11.5px;
+      border: none;
+      background: none;
+      font-size: 0; }
+      .wrap .event03-wrap .slider > button.slick-prev {
+        background-image: url("../../images/aspero-launching/btn_left.png");
+        left: -5.5%; }
+      .wrap .event03-wrap .slider > button.slick-next {
+        background-image: url("../../images/aspero-launching/btn_right.png");
+        right: -5.5%; }
+  .wrap .event-note {
+    width: 100%; }
+    .wrap .event-note img {
+      width: 100%; }
+  .wrap .loader {
+    position: relative; }
+    .wrap .loader > img {
+      margin-top: 18%; }
+  .wrap .end-wrap {
+    position: absolute;
+    top: 0;
+    max-width: 980px;
+    width: 100%;
+    height: 100%;
+    background: url("../../images/one-year-anniversary/w_bg.png");
+    z-index: 1; }
+    .wrap .end-wrap .end-text {
+      text-align: center;
+      margin-top: 35%; }
+      .wrap .end-wrap .end-text > img {
+        max-width: 90%; }
+
+@media all and (max-width: 800px) {
+  .coupon > p {
+    display: none !important; } }
+
+@media all and (max-width: 658px) {
+  .wrap .event01-wrap .coupon-wrap .coupon button {
+    width: 48%; }
+  .wrap .event01-wrap .video-wrap .video-mute {
+    padding-bottom: 59.2%; }
+  .wrap .event01-wrap .video-wrap .video-sound {
+    padding-bottom: 59.2%; }
+  .wrap .event01-wrap .product img {
+    float: none;
+    width: 100%; }
+  .wrap .popup-insta {
+    width: 85%;
+    top: 15% !important; }
+    .wrap .popup-insta > div {
+      float: none;
+      width: 100%; }
+    .wrap .popup-insta .insta-img > img {
+      min-height: 310px; }
+    .wrap .popup-insta .insta-text-wrap {
+      height: 375px; }
+    .wrap .popup-insta .popup-close {
+      width: auto; } }
+
+@media all and (max-width: 600px) {
+  .wrap .event03-wrap {
+    padding-bottom: 110px; }
+    .wrap .event03-wrap .slider > button {
+      width: 57px;
+      height: 57px;
+      top: auto;
+      bottom: -70px; }
+      .wrap .event03-wrap .slider > button.slick-prev {
+        background: url("../../images/aspero-launching/m_btn_left.png") no-repeat !important;
+        left: 50%;
+        margin-left: -67px; }
+      .wrap .event03-wrap .slider > button.slick-next {
+        background: url("../../images/aspero-launching/m_btn_right.png") no-repeat !important;
+        right: 50%;
+        margin-right: -67px; } }
+
+@media all and (max-width: 450px) {
+  .coupon {
+    width: 70% !important;
+    height: 50px !important; }
+    .coupon > span {
+      top: 12px !important; } }
+
+@media all and (max-width: 400px) {
+  .coupon > span {
+    top: 14px !important;
+    font-size: 17px !important; }
+  .coupon button {
+    font-size: 17px !important; } }
+

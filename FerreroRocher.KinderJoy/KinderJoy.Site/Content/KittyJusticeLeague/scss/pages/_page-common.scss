@@ -1,0 +1,38 @@
+﻿//---------------------------------------------------
+// EVENT 공통
+//---------------------------------------------------
+
+.debuging {
+  button {
+    background: #dedede !important;
+    border: .5px solid silver;
+    border-radius: 2px;
+    margin: 1px;
+    padding:5px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.event-container {
+  text-align: center;
+
+  h1, h2 {
+    // 텍스트는 시야에서 숨김 (heading에 배경으로 이미지 노출 처리)
+    @extend %a11y-hidden;
+  }
+}
+
+.heading {
+  position: relative;
+}
+
+//---------------------------------------------------
+// for mobile
+//---------------------------------------------------
+@if $device == mob {
+
+}

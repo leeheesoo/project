@@ -1,0 +1,113 @@
+﻿@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:700);
+@import 'popup.scss';
+
+
+.wrap {
+    min-width: 1080px;
+    width: 100%;
+    .kv {
+        background: #5f44b9;
+    }
+    .kv-inner {
+        height:1134px; 
+        text-align:center;
+        background:url('../images/event03_bg.jpg') no-repeat center;
+        h2 {
+            padding-top:100px;        
+        }
+        .sub-title {
+            margin-top:40px;
+        }
+    }
+
+    /*계산*/
+    .reckoning-wrap {
+        width:900px; 
+        margin:0 auto; 
+        text-align:center;
+        font-family: 'Roboto Condensed', sans-serif;
+
+        .text-phonnumber {
+            padding:90px 0 85px;
+        }
+        .text-benefit {
+            display:block; 
+            padding-bottom:30px;
+        }
+        .second-num {
+            margin-top:40px;
+            padding-bottom:50px;
+            border-bottom:4px solid #222;
+        }
+        .number-input {
+            width: 160px; 
+            height:160px; 
+            margin-left:13px; 
+            text-align:center; 
+            vertical-align:top;
+             background:#eee;
+             font-size:105px; 
+             font-family: 'Roboto Condensed', sans-serif; 
+             border:2px dashed #b1afb0; 
+             color:#222;
+             @include form-input-radius(50%);
+             outline:none;
+        }
+        .num1 , .num5 {
+            margin-left:0;
+        }
+        .first-result {
+            float:right;          
+            width: 900px;
+            height:163px;
+            margin-top:41px; 
+            text-align:right; 
+            font-size:6.3em; 
+            color:#222;
+            background:url('../images/number01_bg.png') no-repeat; 
+            background-position:right 0;
+            &:after {
+                content:" "; 
+                display:block; 
+                clear:both;
+            }
+            .first-result-num {
+                display:inline-block;
+                margin:18px -75px 0 0; 
+                font-size:120px; 
+                letter-spacing:125px
+            }
+        }
+        button {
+            margin:80px 0 100px;
+            background:none;
+            border:none;
+        }
+    }
+
+
+    /*이벤트안내*/
+    .note-wrap {
+        text-align:center;
+        padding:90px 0 100px;
+        background: #ffdf4f;
+        .note-inner {
+            width:1000px;
+            margin:0 auto;
+            h3 {
+                 padding:90px 0 50px;
+            }
+            p {
+                padding-left:5px;
+                text-align:left;
+                &.note2 {
+                    padding:85px 0 80px;
+                }
+                &.note4 {
+                    padding:83px 0 0;
+                }
+            }
+        }
+    }
+}

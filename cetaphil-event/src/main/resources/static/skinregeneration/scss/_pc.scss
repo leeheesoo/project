@@ -1,0 +1,185 @@
+//===================================
+// variable
+//===================================
+$location: '../images/w/';
+
+.skin-event {
+    position:relative;
+    width:100%;
+    max-width: $width-max;
+    min-width: $width-min;
+    margin:0 auto;
+    h1 {
+        position:absolute;
+        top:45px;
+        left:62px;
+        z-index:1;
+    }
+    section {
+        position: relative;
+        width:100%;
+        max-width:$width-max;
+        min-width:$width-min;
+        text-align:center;
+        background-position:top center;
+        background-repeat:no-repeat;
+    }
+}
+
+//===================================
+// nav
+//===================================
+.floating__nav {
+    position: absolute;
+    right:50px;
+    
+    z-index:1;
+    ul {
+        width: 118px;
+        height: 390px;
+        border-radius:10px;
+        box-shadow: 30px 30px 50px -8px rgba(3, 59, 171, 0.35);
+        overflow: hidden;
+    }
+    li {
+        width:100%;
+        height:130px;
+        background-image:url($location+'btns.png')
+    }
+    &-02 {
+        background-position:0 -391px;
+    }
+    &-03 {
+        background-position:0 -521px;
+    }
+    &-04 {
+        background-position:0 -651px;
+    }    
+}
+
+//===================================
+// kv
+//===================================
+.kv {
+    height:1182px;
+    @include background('bg-kv.jpg') ;
+}
+
+//===================================
+// 즉당이벤트
+//===================================
+.lottery-event {
+    height: 1070px;
+    @include background('bg-lottery-event.jpg') ;
+}
+.naver-search-go {
+    position: relative;
+    top:392px;
+    width: 1062px;
+    margin:0 auto;
+    .naver-landing{
+        box-shadow: 20px 30px 50px #033bab30;
+        border-radius:10px;
+    }
+    .text-flow {
+        position: absolute;
+        top:35px;
+        right:550px;
+        width: 0px;
+        height: 50px;
+        background: #fff;
+        z-index: 1;
+    }
+}
+
+
+//===================================
+// 영상공유이벤트
+//===================================
+.share-event {
+    height: 2670px;
+    @include background('bg-share-event.jpg') ;   
+}
+.wrap {
+    &__movie{
+        position: relative;
+        top:340px;
+        width: 1056px;
+        height:594px;
+        margin:0 auto;
+    }
+    &__sharebtn{
+        margin-top:370px;
+        font-size:0;
+    }
+}
+
+
+//===================================
+// 스페셜기프트이벤트
+//===================================
+.set-event {
+    height:1118px;
+    @include background('bg-set-event.jpg') ;   
+}
+
+//===================================
+// footer
+//===================================
+.footer {
+    height:266px;
+    @include background('bg-footer.jpg');   
+}
+
+//===================================
+// button
+//===================================
+.btn {
+    display:inline-block;
+    font-size:0;
+    box-shadow: 20px 30px 50px #033bab30;
+    border-radius:10px;
+    @include background('btns.png', $repeat:no-repeat) ;
+
+    &__ad-hint {
+        width: 460px;
+        height: 80px;
+        margin-top:988px;
+        background-position:0 -301px;
+
+    }
+    &__hint {
+        position: absolute;
+        top:624px;
+        left:795px;
+        width: 112px;
+        height:32px;
+        background-position:-371px -1px;
+        box-shadow:none;
+    }
+    &__naver-search{
+        width: 360px;
+        height:120px;
+        margin-left:20px;
+        background-position:0 0;
+        vertical-align:top;
+    }
+    &__share{
+        width: 522px;
+        height:73px;
+        box-shadow: 0 10px 60px #c1cccc;
+    }
+    &__share-facebook {
+        margin-right:16px;
+        background-position:0 -932px;       
+    }
+    &__share-insta{
+        background-position:0 -1013px;
+    }
+    &__buy {
+        width: 460px;
+        height: 80px;
+        background-position:0 -130px;
+        margin-top:966px;
+    }
+}

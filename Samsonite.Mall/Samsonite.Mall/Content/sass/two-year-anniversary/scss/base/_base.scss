@@ -1,0 +1,79 @@
+﻿/*!
+ * tag reset&base
+ * 2017.10.11
+ */
+
+//---------------------------------------------------
+// reset - normalize
+//---------------------------------------------------
+
+//@import "/Content/vendor/normalize.min.css";
+
+//---------------------------------------------------
+// custom add
+//---------------------------------------------------
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: top;
+}
+
+
+img {
+  border: 0;
+  vertical-align: top;
+  line-height: 0;
+  font-size: 0;
+  // double click prevent
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+button {
+    border:none;
+    background:none;
+    padding:0;
+}
+select {
+    -webkit-appearance: none; /* 화살표 없애기 for chrome*/
+    -moz-appearance: none;    /* 화살표 없애기 for firefox*/
+    appearance: none;         /* 화살표 없애기 공통*/
+}
+
+select::-ms-expand {
+   display: none;            /* 화살표 없애기 for IE10, 11*/
+}
+
+
+.wrap {
+   font-family: 'Noto Sans Korean';
+}
+
+
+//---------------------------------------------------
+// a tag
+//---------------------------------------------------
+a {
+    display:inline-block;
+}
+
+
+// a 태그 터치시 터치영역 안보이게 처리
+/*a {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent; // For some Androids
+}*/
+
+// 버튼 포커스
+/*a:hover, a:active {
+	text-decoration: none;
+	outline: 0;
+}*/
+
+/*a:link, a:visited {
+	text-decoration: none;
+}*/

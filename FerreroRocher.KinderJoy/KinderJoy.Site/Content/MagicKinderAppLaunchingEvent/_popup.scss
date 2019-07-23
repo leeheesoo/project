@@ -1,0 +1,383 @@
+﻿// init
+button[type="submit"] {
+    padding: 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+// popup: dimm 
+#png-bg {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+// popup: common 
+.popups {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    width: 640px;
+    margin-left: -320px;
+    background: #fff;
+    overflow: hidden;
+    z-index: 99;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    border-radius: 50px;
+    .btn-close {
+        position: absolute;
+        top: 17px;
+        right: 19px;
+    }
+    .pop-header {
+        width: 640px;
+    }
+    .pop-con {
+        width: 540px;
+        margin: 0 auto;
+    }
+}
+
+// popup: pop-entry 
+#pop-entry {
+    height: 1729px;
+    background: url("/Images/MagicKinderAppLaunchingEvent/pop/bg_pop_entry.png") 0 0 no-repeat;
+    font-family: 'KoreanBDG R', sans-serif;
+    // S: reg-area 
+    .reg-area {
+        h3 {
+            padding: 58px 0 120px 0;
+        }
+        // reg-img 
+        .reg-img {
+            .img-upload-box {
+                padding: 20px 0 17px 0;
+                .inputfile {
+                    width: 0.1px;
+                    height: 0.1px;
+                    opacity: 0;
+                    overflow: hidden;
+                    position: absolute;
+                    z-index: -1;
+                }
+                .inputfile + label {
+                    display: inline-block;
+                    height: 50px;
+                    padding: 0;
+                    color: #404040;
+                    font-size: 20px;
+                    cursor: pointer;
+                    overflow: hidden;
+                }
+                .inputfile + label span {
+                    display: inline-block;
+                    width: 383px;
+                    height: 48px;
+                    margin-right: 5px;
+                    border: 1px solid #bdbdbd;
+                    line-height: 48px;
+                    overflow: hidden;
+                    vertical-align: top;
+                    font-family: inherit;
+                }
+            }
+        }
+        .select-category {
+            padding: 38px 0 51px 0;
+            select {
+                width: 540px;
+                height: 50px;
+                padding: 10px;
+                border-radius: 0px; // iOS 둥근모서리 제거 
+                border: 1px solid #bdbdbd;
+                color: #404040;
+                font-size: 20px;
+                font-family: inherit; 
+            }
+        }
+        // reg-comment 
+        .reg-comment {
+            textarea {
+                width: 518px;
+                height: 78px;
+                padding: 10px;
+                margin-top: 19px;
+                border: 1px solid #bdbdbd;
+                color: #404040;
+                font-size: 20px;
+                line-height: 25px;
+                resize: none;
+                font-family: inherit;
+                // ios border-radius 및 그림자 제거
+                border-radius: 0;
+                -webkit-appearance: none;
+            }
+        }
+    }
+    // E: reg-area 
+
+    // S: info-area 
+    .info-area {
+        h3 {
+            padding: 115px 0 120px 0;
+        }
+        p {
+           margin-bottom: 5px;
+        } 
+        dl {
+            width: 540px;
+            margin: 0 auto;
+            margin-top: 18px;
+            overflow: hidden;
+            dt {
+                float: left;
+                width: 156px;
+                padding-right: 10px;
+                font-size: 0;
+            }
+            dd {
+                float: left;
+                width: 374px;
+                input[type="text"],
+                input[type="tel"] {
+                    width: 352px;
+                    height: 48px;
+                    padding: 0 10px;
+                    border: 1px solid #bdbdbd;
+                    color: #404040;
+                    font-size: 20px;
+                    line-height: 48px;
+                    vertical-align: top;
+                    font-family: inherit;
+                    // ios border-radius 및 그림자 제거
+                    border-radius: 0;
+                    -webkit-appearance: none;
+                }
+                &.post-box {
+                    input {
+                        width: 205px;
+                        margin: 0 8px 6px 0;
+                    }
+                }
+                &.address-box {
+                    padding-left: 166px;
+                    #Address {
+                        margin-bottom: 6px;
+                    }
+                }
+                img.btn_search {
+                    cursor: pointer;
+                }
+            }
+        }   
+    }
+    // E: info-area 
+
+    .policy-area {
+        .policy-check {
+            height: 28px;
+            text-align: left;
+            line-height: 28px;
+            padding: 30px 0 10px 0;
+            input {
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                margin: 0 12px 0 7px;
+                vertical-align: middle;
+                // Double-sized Checkboxes 
+                transform: scale(2);
+                -ms-transform: scale(2); // IE 
+                -moz-transform: scale(2); // FF 
+                -webkit-transform: scale(2); // Safari and Chrome 
+                -o-transform: scale(2); // Opera 
+            }
+            label {
+                cursor: pointer;
+                img {
+                  vertical-align: middle;
+                }
+            }
+        }
+        .contents {
+            width: 518px;
+            height: 78px;
+            padding: 10px;
+            border: 1px solid #999999;
+            color: #5e5e5e;
+            font-size: 12px;
+            text-align: left;
+            line-height: 18px;
+            resize: none;
+            font-family: 'Malgun Gothic', sans-serif;
+            overflow-y: scroll;
+        }
+        p.notice {
+            padding: 16px 0 42px 0;
+        }
+    }
+
+    .btn {
+        position: relative;
+        width: 272px;
+        margin: 0 auto;
+        .loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center; 
+            filter: alpha(opacity=60); 
+            opacity: 0.60; 
+            background-color: #000; 
+            overflow: hidden;
+            img {
+                padding-top: 15px;
+            }
+        }
+    }   
+}
+
+// popup: pop-post 
+#pop-post {
+    background: url("/Images/MagicKinderAppLaunchingEvent/pop/bg_pop_entry.png") 0 0 no-repeat;
+    .pop-header {
+        h3 {
+            padding: 58px 0 120px 0;
+        }
+    }
+     .pop-con {
+        width: 640px;
+        height: 590px;
+        background: #fff;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+// popup: pop-app-detail
+#pop-app-detail {
+    height: 980px;
+    background: url("/Images/MagicKinderAppLaunchingEvent/pop/bg_app_detail.png") 0 0 no-repeat;
+    .pop-header {
+        h3 {
+            padding: 51px 0 39px 0;
+        }
+    }
+    .pop-con {
+        width: 640px;
+        background: #ffc600;
+        .tab-area {
+            width: 616px;
+            padding: 14px 0 0 0; 
+            margin: 0 auto;
+            ul {
+                width: inherit;
+                overflow:hidden;
+                li {
+                    float:left;
+                    width: 116px;
+                    height: 64px;
+                    margin-right: 9px;
+                    background: url("/Images/MagicKinderAppLaunchingEvent/pop/bg_tab_app_detail.png") no-repeat;
+                    background-position-y: 0;
+                    text-indent: -999em;
+                    cursor: pointer;
+                    &:last-child {
+                        margin: 0;
+                    }
+                    &:hover, &.active {
+                        background-position-y: -64px;
+                    }
+                    &:nth-child(1) {
+                        background-position-x: 0px;
+                    }
+                    &:nth-child(2) {
+                        background-position-x: -125px;
+                    }
+                    &:nth-child(3) {
+                        background-position-x: -250px;
+                    }
+                    &:nth-child(4) {
+                        background-position-x: -375px;
+                    }
+                    &:nth-child(5) {
+                        background-position-x: -500px;
+                    }
+                }
+
+            }
+        }
+        .contents-area {
+            width: 565px;
+            margin: 0 auto;
+            ul {
+                width: inherit;
+                li {
+                    display: none;
+                    &.active {
+                        display:block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// popup: pop-winners
+#pop-winners {
+    height: 916px;
+    background: url("/Images/MagicKinderAppLaunchingEvent/pop/bg_pop_winners.png") 0 0 no-repeat;
+    .pop-header {
+        h3 {
+            padding: 58px 0 68px 0;
+        }
+    }
+    .pop-con {
+        padding: 20px 0;
+        .winner-box {
+            width: inherit;
+            padding: 20px 0;
+            .winner-prize {
+                margin-bottom: 10px;
+                color: #404040;
+                font-size: 23px;
+                font-family: 'KoreanBDG R', sans-serif;
+                text-align: center;
+            }
+            .winner-list {
+                width: inherit;
+                max-height: 70px;
+                padding: 5px 0;
+                font-size: 0;
+                text-align: center;
+                border: 1px solid #bdbdbd;
+                overflow-y: scroll;
+                li {
+                    display: inline-block;
+                    width: 125px;
+                    height: 35px;
+                    color: #404040;
+                    font-size: 18px;
+                    font-family: 'Malgun Gothic', sans-serif;
+                    line-height: 35px;
+                }
+            }
+            &:first-child {
+                .winner-list {
+                    overflow-y: hidden;
+                }
+            }
+        }
+    }
+}

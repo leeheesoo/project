@@ -1,0 +1,417 @@
+﻿@charset 'utf-8';
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+$width-min:320px;
+$width-max:980px;
+$font-style:'Noto Sans KR', sans-serif;
+
+html,body { 
+    position:relative;
+    width:100%;
+    max-width:$width-max;
+    min-width:$width-min;
+    padding:0;
+    margin:0;
+}
+//-----팝업
+.pop-dim {
+position: fixed;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+display: none;
+background: #000;
+opacity: .8;
+filter: alpha(opacity=80);
+z-index: 10;
+
+    &.on {
+        display: block;
+    }
+}
+
+.popup-insta {
+    display:none;
+    position:absolute;
+    left:50%;
+    width:90%;
+    max-width:834px;
+    min-width:$width-min;
+    margin:0 auto;
+    background:#fff;
+    font-family: $font-style;
+    border:1px solid #eee;
+    z-index:10;
+    &>div {
+        float:left;
+    }
+    .popup-close {
+        position:absolute;
+        top:-50px;
+        right:-4%;
+            }
+    .insta-img {
+        width:64.14868105515588%;
+        height:100%;
+        background:#eee;
+        img {
+            width:100%;
+            height:100%;
+            min-height:400px;
+            max-height: 500px;
+        }
+    }
+    .insta-text-wrap {
+        width:35.85131894484412%;
+        height:100%;
+        max-height:536px;
+        padding:27px;
+        font-size:17px;
+        overflow-y:auto;
+        box-sizing:border-box;
+         .insta-tit {
+            padding-bottom:26px;
+            border-bottom:1px solid #c7c7c7;
+            font-size:20px;
+        }
+        .insta-like {
+            margin:20px 0 15px;
+        }
+        .insta-hashtag {
+            margin-bottom:20px;
+            color:#39628b;
+        }
+        .insta-wrap {
+            font-size:13px;
+        }    
+    }
+}
+//---팝업끝--
+
+
+.wrap {
+    position:relative;   
+    .aspro-kv {
+        width:100%;
+        &>img {
+            width:100%;
+        }
+    }
+
+    .event01-wrap {
+        .video-wrap {
+            //position:relative;
+            .video-mute {
+                position:relative;
+                width:100%;
+                max-width:980px;
+                padding-bottom: 52.9%;
+                &>div {
+                    position:absolute;
+                    top:0;
+                }
+                .vd-cover {
+                    z-index:1;
+                    background:rgba(0,0,0,0.7);
+                    cursor:pointer;
+                    >img {
+                        width:100%;
+                    }
+                }
+            }
+            .video-sound {
+                display:none;
+                position:relative;
+                width:100%;
+                max-width:980px;
+                padding-bottom: 52.9%;
+            }
+        }
+        div[class^="video-"] {
+            iframe {
+                position:absolute;
+                width: 100%;
+                height:100%;
+            }
+        }
+        .coupon-wrap {
+            //display:none;
+            
+            width:100%;
+            padding-bottom:7%;
+            background-image: url('../../images/aspero-launching/bg01.jpg');
+            background-size:cover;
+            text-align:center;
+            &>span {
+                
+                width:100%;
+                max-width:580px;
+                display:inline-block;
+                margin:55px 0 20px;
+                img {
+                    width:100%;
+                    padding:0 3%;
+                    box-sizing:border-box;
+                }
+            }
+            
+            .coupon {
+                position:relative;
+                width:64.0816%;
+                height:60px;
+                margin:0 auto;
+                background:#fff;
+                &>p {
+                    display:inline-block;
+                    position:absolute;
+                    left:1%;
+                    top:50%;
+                    margin-top:-10px;
+                    font-size:15px;
+                    color:#827979;
+                    font-family: $font-style;
+                }
+                &>span { 
+                    display:none;
+                    position:absolute;
+                    left:2.6%;
+                    top:16px;
+                    font-size:20px;
+                    font-weight:bold;
+                }
+                 button {
+                    position:absolute;
+                    right:0;
+                    width:183px;
+                    height:100%;
+                    background:#39b4ea;
+                    border:none;
+                    color:#fff;
+                    font-family: $font-style;
+                    font-size:20px;
+                    }
+
+            }
+              .coupon-method {
+                    position:relative;
+                    width:100%;
+                    max-width:788px;
+                    margin:0 auto;
+                    margin-top:34px;
+                    padding:0 1.5%;
+                    box-sizing:border-box;
+                    img {
+                        width:100%;
+                        max-width:765px;
+                    }
+                    .my-page-link {
+                        position:absolute;
+                        width:19%;
+                        height:56%;
+                        right:8%;
+                        bottom:8%;
+                    }
+                }
+
+        }
+        
+        .product {
+            width:100%;
+            img {
+                float:left;
+                width:50%;
+            }
+            &:after {
+                content:'';
+                clear:both;
+            }
+        }
+    } //--envet01
+
+      //event02
+      .event02-wrap {
+          img {
+              width:100%;
+          }
+      }
+       //event03
+      .event03-wrap {
+          position:relative;
+          width:100%;
+          padding-bottom:70px;
+          background-image: url('../../images/aspero-launching/bg03.jpg');
+          background-size:cover;
+          &>img {
+              width:100%;
+          }
+          .slider {
+              .slick-slide {
+                  margin-right:9px;
+                  div {
+                      &:first-child {
+                          margin-bottom:2px;
+                      }
+                      img {
+                          width:100%;
+                      }
+                  }
+              }
+              & >button {
+                  position:absolute;
+                  top:50%;
+                  width:23px;
+                  height:63px;
+                  margin-top:-11.5px;
+                  border:none;
+                  background:none;
+                  font-size:0;
+                  &.slick-prev {
+                    background-image: url('../../images/aspero-launching/btn_left.png');
+                    left:-5.5%;
+                  }
+                   &.slick-next {
+                      background-image: url('../../images/aspero-launching/btn_right.png');
+                      right:-5.5%;
+                  }
+              }
+          }
+      } //--event03
+
+    .event-note {
+        width:100%;
+        img {
+            width:100%;
+        }
+    }
+
+.loader {
+   position:relative;
+   &>img {
+       margin-top:18%;
+   }
+}
+
+    .end-wrap {
+        position:absolute;
+        top:0;
+        max-width:980px;
+        width:100%;
+        height:100%;
+        background: url('../../images/one-year-anniversary/w_bg.png');
+        z-index:1;
+        .end-text {
+            text-align:center;
+            margin-top:35%;
+            &>img {
+                max-width:90%;
+            }
+        }
+    }
+
+
+
+}//wrap
+
+
+
+ @media all and (max-width:800px){
+    .coupon {
+         &>p{
+             display:none !important;
+         }
+     }
+ }
+ @media all and (max-width:658px){
+     .wrap {
+         .event01-wrap {
+             .coupon-wrap {
+                 .coupon {
+                     button {
+                         width:48%;
+                     }
+                 }
+             }
+            .video-wrap {
+                .video-mute {
+                     padding-bottom:59.2%;
+                 }
+                 .video-sound {
+                     padding-bottom:59.2%;
+                 }
+            }
+            .product {
+                img {
+                    float:none;
+                    width:100%;
+                }
+            }
+         }
+
+         .popup-insta {
+             width:85%;
+             top: 15% !important;
+             &>div {
+                 float:none;
+                 width:100%;
+             }
+             .insta-img {
+                 &>img {
+                     min-height:310px;
+                 }
+             }
+             .insta-text-wrap {
+                 height:375px;
+             }
+             .popup-close {
+                 width:auto;
+             }
+         }
+     }//wrap
+ }
+ @media all and (max-width:600px){
+     .wrap {
+          .event03-wrap {
+              padding-bottom:110px;
+             .slider {
+                &>button {
+                    width:57px;
+                    height:57px;
+                    top: auto;
+                    bottom:-70px;
+                  &.slick-prev {
+                     background: url('../../images/aspero-launching/m_btn_left.png') no-repeat !important;
+                     left:50%;
+                     margin-left:-67px;
+                 }
+                 &.slick-next {
+                     background: url('../../images/aspero-launching/m_btn_right.png') no-repeat !important;
+                     right:50%;
+                     margin-right:-67px;
+                 }
+                }
+
+             }
+         }
+     }
+
+ }
+ @media all and (max-width:450px){
+     .coupon {
+         width:70% !important;
+         height:50px !important;
+         &>span {
+             top:12px !important;
+         }
+     }
+ }
+ @media all and (max-width:400px){
+     .coupon {
+         &>span {
+             top: 14px !important;
+             font-size:17px !important;
+         }
+         button {
+             font-size:17px !important;
+         }
+     }
+ }

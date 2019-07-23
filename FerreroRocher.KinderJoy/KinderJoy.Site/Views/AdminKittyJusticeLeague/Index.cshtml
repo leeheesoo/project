@@ -1,0 +1,146 @@
+﻿@using KinderJoy.Domain.Abstract
+@using KinderJoy.Domain.Entities.KittyJusticeLeague
+@{
+    ViewBag.Title = "[키티 & 저스티스리그] 참여자";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewBag.Title</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row" id="kitty-justiceleague-entry">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-video-camera fa-fw"></i> @ViewBag.Title
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div class="row" style="padding-bottom:10px">
+                        <div class="col-xs-6">
+                            전체 <span style="color:red">{{ data.totalItemCount }}</span>건
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover table-condensed" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th class="vert-middle text-center">No.</th>
+                                            <th class="vert-middle text-center">당첨일</th>
+                                            <th class="vert-middle text-center">디바이스</th>
+                                            <th class="vert-middle text-center">IP</th>
+                                            <th class="vert-middle text-center">이름</th>
+                                            <th class="vert-middle text-center">연락처</th>
+                                            <th class="vert-middle text-center">우편번호</th>
+                                            <th class="vert-middle text-center">주소</th>
+                                            <th class="vert-middle text-center">상세주소</th>
+                                            <th class="vert-middle text-center">경품</th>
+                                            <th class="vert-middle text-center">개인정보등록일</th>
+                                            <th class="vert-middle text-center">관리</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="vert-middle text-center"></th>
+                                            <th class="vert-middle text-center">
+                                                <div class="row">
+                                                    <div class="col-xs-6" style="padding-right:3px;">@Html.TextBox("fromDate", "", new { v_model = "dataFilters.FromDate", @class = "form-control input-sm datepicker", placeholder = "시작" })</div>
+                                                    <div class="col-xs-6" style="padding-left:3px;">@Html.TextBox("toDate", "", new { v_model = "dataFilters.ToDate", @class = "form-control input-sm datepicker", placeholder = "종료" })</div>
+                                                </div>
+                                            </th>
+                                            <th class="vert-middle text-center">
+                                                @Html.DropDownList("channel", new List<SelectListItem>() {
+                                                                                new SelectListItem { Text = "Mobile", Value = ChannelType.Mobile.ToString("D") },
+                                                                                new SelectListItem { Text = "PC", Value = ChannelType.PC.ToString("D") }
+                                                                           }, "전체", new { v_model = "dataFilters.Channel", @class = "form-control" })
+                                            </th>
+                                            <th class="vert-middle text-center"></th>
+                                            <th class="vert-middle text-center">@Html.TextBox("name", "", new { v_model = "dataFilters.Name", @class = "form-control" })</th>
+                                            <th class="vert-middle text-center">@Html.TextBox("mobile", "", new { v_model = "dataFilters.Mobile", @class = "form-control" })</th>
+                                            <th class="vert-middle text-center"></th>
+                                            <th class="vert-middle text-center">@Html.TextBox("address", "", new { v_model = "dataFilters.Address", @class = "form-control" })</th>
+                                            <th class="vert-middle text-center"></th>
+                                            <th class="vert-middle text-center">
+                                                @Html.DropDownList("prizeType", new List<SelectListItem>() {
+                                                                               new SelectListItem { Text = "꽝", Value = KittyJusticeLeagueInstantLotteryPrizeType.Loser.ToString("D") },
+                                                                               new SelectListItem { Text = "기프티콘", Value = KittyJusticeLeagueInstantLotteryPrizeType.JoyGifticon.ToString("D") },
+                                                                               new SelectListItem { Text = "헬로키티 나노블럭", Value = KittyJusticeLeagueInstantLotteryPrizeType.KittyNanoBlock.ToString("D") },
+                                                                               new SelectListItem { Text = "저스티스리그 나노블럭", Value = KittyJusticeLeagueInstantLotteryPrizeType.JusticeLeagueNanoBlock.ToString("D") },
+                                                                               new SelectListItem { Text = "미니 크리스마스 트리", Value = KittyJusticeLeagueInstantLotteryPrizeType.ChirstmasTree.ToString("D") },
+                                                                               new SelectListItem { Text = "크리스마스 카드", Value = KittyJusticeLeagueInstantLotteryPrizeType.ChristmasCard.ToString("D") }
+                                                                           }, "전체", new { v_model = "dataFilters.PrizeType", @class = "form-control" })
+                                            </th>
+                                            <th class="vert-middle text-center">
+                                                <div class="col-xs-6" style="padding-right:3px;">@Html.TextBox("updateFromDate", "", new { v_model = "dataFilters.UpdateFromDate", @class = "form-control input-sm datepicker", placeholder = "시작" })</div>
+                                                <div class="col-xs-6" style="padding-left:3px;">@Html.TextBox("updateToDate", "", new { v_model = "dataFilters.UpdateToDate", @class = "form-control input-sm datepicker", placeholder = "종료" })</div>
+                                            </th>
+                                            <th class="text-center" style="vertical-align:middle" nowrap>
+                                                <button type="button" class="btn btn-primary btn-sm" v-on:click="goToPage(1)"><i class="fa fa-search"></i> 검색</button>
+                                                <br>
+                                                <button class="btn btn-success btn-sm" v-on:click="excelDownload()"><span class="glyphicon glyphicon-download-alt"></span> Download</button>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-show="data.totalItemCount > 0" v-for="(index, item) in data.items">
+                                            <td class="vert-middle text-center">{{ data.totalItemCount - ((dataFilters.Page - 1) * (dataFilters.PageSize) + index) }}</td>
+                                            <td class="vert-middle text-center">{{ item.createDate | getDate }}</td>
+                                            <td class="vert-middle text-center">{{ item.channelName }}</td>
+                                            <td class="vert-middle text-center">{{ item.ipAddress }}</td>
+                                            <td class="vert-middle text-center">{{ item.name }}</td>
+                                            <td class="vert-middle text-center">{{ item.mobile }}</td>
+                                            <td class="vert-middle text-center">{{ item.zipCode }}</td>
+                                            <td class="vert-middle text-center">{{ item.address }}</td>
+                                            <td class="vert-middle text-center">{{ item.addressDetail }}</td>
+                                            <td class="vert-middle text-center">{{ item.prizeName }}</td>
+                                            <td class="vert-middle text-center">{{ item.updateDate | getDate }}</td>
+                                            <td class="vert-middle text-center"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div style="text-align:center">
+                                <div style="text-align:center">
+                                    <a href="#" v-show="!data.isLastPage" v-on:click="goToPage(1)">처음</a>
+                                    <a href="#" v-show="data.hasPreviousPage" v-on:click="goToPage(data.pageNumber - 1)">이전</a>
+                                    <a href="#" v-for="page in pages" v-on:click="goToPage(page)" v-bind:style="{ fontWeight : ( page === data.pageNumber) ? 'bold' : 'normal' }"> {{ page }} </a>
+                                    <a href="#" v-show="data.hasNextPage" v-on:click="goToPage(data.pageNumber + 1)">다음</a>
+                                    <a href="#" v-show="!data.isLastPage" v-on:click="goToPage(data.pageCount)">마지막</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+@section scripts {
+    <script src="~/Scripts/vue.min.js"></script>
+    <script src="~/Scripts/KittyJusticeLeague/admin.js"></script>
+    <script>
+        $(function () {
+            kittyJusticeLeagueModel.goToPage(1);
+        });
+        $('#fromDate').change(function () {
+            kittyJusticeLeagueModel.dataFilters.FromDate = $('#fromDate').val();
+        });
+        $('#toDate').change(function () {
+            kittyJusticeLeagueModel.dataFilters.ToDate = $('#toDate').val();
+        });
+        $('#updateFromDate').change(function () {
+            kittyJusticeLeagueModel.dataFilters.UpdateFromDate = $('#updateFromDate').val();
+        });
+        $('#updateToDate').change(function () {
+            kittyJusticeLeagueModel.dataFilters.UpdateToDate = $('#updateToDate').val();
+        });
+    </script>
+}
+

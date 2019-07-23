@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "다양한 장난감";
+    ViewBag.GaTitle = "다양한 장난감";
+}
+<!--
+<h2>toy</h2>
+    -->
+<div class="mobile_wrap">
+<!-- content -->
+   <div class="content-toyView">
+      <a class="close" href="@Url.Action("Image")"></a>
+		<div class="toy_selector"><a href="javascript:tabControl('boy');" class="on" id="tab_boy"><img src="~/Images/m/toy/tab_boy.png" alt="남아용 장난감" /></a><a href="javascript:tabControl('girl');" id="tab_girl"><img src="~/Images/m/toy/tab_girl.png" alt="여아용 장난감" /></a><!--a href="javascript:tabControl('child');" id="tab_child"><img src="~/Images/m/toy/tab_child.png" alt="남녀공용 장난감" /></a--></div>
+    <div class="content-toyView-img">
+      <div class="group_boy">
+			<div><img src="~/Images/m/toy/group_boy.png" alt="" /></div>
+			<p><img src="~/Images/m/toy/txt_boy.png" alt=""></p>
+		</div>
+      <div class="group_girl" style="display:none;">
+			<div><img src="~/Images/m/toy/group_girl.png" alt="" /></div>
+			<p><img src="~/Images/m/toy/txt_girl.png" alt=""></p>
+		</div>
+      <div class="group_child" style="display:none;">
+			<div><img src="~/Images/m/toy/group_child.png" alt="" /></div>
+			<p><img src="~/Images/m/toy/txt_child.png" alt=""></p>
+		</div>
+    </div>
+       <div class="copyright">
+        <p><img src="~/Images/m/copy.png" alt="CopyrightⓒFerrero 2015 all rights reserved."></p>
+      </div>
+  </div>
+  <!-- // content -->
+</div>
+<script>
+	function tabControl(flag) {
+		$('.group_boy, .group_girl, .group_child').hide();
+		$('#tab_boy, #tab_girl, #tab_child').removeClass('on');
+		$('.group_'+flag).show();
+		$('#tab_'+flag).addClass('on');
+	}
+
+</script>

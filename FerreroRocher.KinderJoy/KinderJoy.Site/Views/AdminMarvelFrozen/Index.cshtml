@@ -1,0 +1,112 @@
+﻿@using KinderJoy.Domain.Entities.MavelFrozen
+@{
+    ViewBag.Title = "[마블프로즌 이벤트] 참여자";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewBag.Title</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row" ng-app="app-admin-marvel-frozen" ng-controller="ctrl-admin-marvel-frozen-user">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-video-camera fa-fw"></i> @ViewBag.Title
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div class="row" style="padding-bottom:10px">
+                        <div class="col-xs-6">
+                            전체 <span style="color:red">{{ data.totalItemCount }}</span>건
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover table-condensed" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th class="vert-middle text-center">No.</th>
+                                            <th class="vert-middle text-center">참여일</th>
+                                            <th class="vert-middle text-center">디바이스</th>
+                                            <th class="vert-middle text-center">IP</th>
+                                            <th class="vert-middle text-center">아이성별</th>
+                                            <th class="vert-middle text-center">이름</th>
+                                            <th class="vert-middle text-center">연락처</th>
+                                            <th class="vert-middle text-center">주소</th>
+                                            <th class="vert-middle text-center">우편번호</th>
+                                            <th class="vert-middle text-center">나이</th>
+                                            <th class="vert-middle text-center">관리</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="vert-middle text-center"></th>
+                                            <th class="vert-middle text-center">
+                                                <div class="row">
+                                                    <div class="col-xs-6" style="padding-right:3px;">@Html.TextBox("fromDate", "", new { @ng_model = "userFilter.fromDate", @class = "form-control input-sm datepicker", placeholder = "시작" })</div>
+                                                    <div class="col-xs-6" style="padding-left:3px;">@Html.TextBox("toDate", "", new { @ng_model = "userFilter.toDate", @class = "form-control input-sm datepicker", placeholder = "종료" })</div>
+                                                </div>
+                                            </th>
+                                            <th class="vert-middle text-center">@Html.DropDownList("channel", new SelectList(new string[] { "PC", "Mobile" }), "전체", new { @ng_model = "userFilter.channel", @class = "form-control" }) </th>
+                                            <th class="vert-middle text-center"></th>
+                                            <th class="vert-middle text-center">
+                                                @Html.DropDownList("screenShotType", new List<SelectListItem>() {
+                                                                               new SelectListItem { Text = "남아", Value = GenderType.Boy.ToString("D") },
+                                                                               new SelectListItem { Text = "여아", Value = GenderType.Girl.ToString("D") }
+                                                                           }, "전체", new { @ng_model = "userFilter.childGender", @class = "form-control" })
+                                            </th>
+                                          
+                                            <th class="vert-middle text-center">@Html.TextBox("name", "", new { @ng_model = "userFilter.name", @class = "form-control" })</th>
+                                            <th class="vert-middle text-center">@Html.TextBox("mobile", "", new { @ng_model = "userFilter.mobile", @class = "form-control" })</th>
+                                            <th class="vert-middle text-center"></th>
+                                            <th class="vert-middle text-center"></th>
+                                            <th class="vert-middle text-center"></th>
+                                            <th class="vert-middle text-center">
+                                                <button type="button" class="btn btn-info btn-block btn-xs" ng-click="goToPage(1)"><i class="fa fa-search fa-fw"></i>검색</button>
+                                                <button type="button" class="btn btn-primary btn-xs" ng-click="excelDownload()"><i class="fa fa-download fa-fw"></i>엑셀다운로드</button>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in data.items">
+                                            <td class="vert-middle text-center">{{ item.id }}</td>
+                                            <td class="vert-middle text-center">{{ item.createDate | date : 'yyyy-MM-dd HH:mm:ss' }}</td>
+                                            <td class="vert-middle text-center">{{ item.channel }}</td>
+                                            <td class="vert-middle text-center">{{ item.ipAddress }}</td>
+                                            <td class="vert-middle text-center">{{ item.childGenderDisplayName }}</td>
+                                            <td class="vert-middle text-center">{{ item.name }}</td>
+                                            <td class="vert-middle text-center">{{ item.mobile }}</td>
+                                            <td class="vert-middle text-center">{{ item.address + ' ' +item.addressDetail }}</td>
+                                            <td class="vert-middle text-center">{{ item.zipCode }}</td>
+                                            <td class="vert-middle text-center">{{ item.age }}</td>
+                                            <td class="vert-middle text-center"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div style="text-align:center">
+                                <a href="#" ng-show="!data.isFirstPage" ng-click="goToPage(1)">처음</a>
+                                <a href="#" ng-show="data.hasPreviousPage" ng-click="goToPage(data.pageNumber - 1)">이전</a>
+                                <a href="#" ng-repeat="page in data.pageNumber | pages:data.pageCount" ng-click="goToPage(page)"> {{ page }} </a>
+                                <a href="#" ng-show="data.hasNextPage" ng-click="goToPage(data.pageNumber + 1)">다음</a>
+                                <a href="#" ng-show="!data.isLastPage" ng-click="goToPage(data.pageCount)">마지막</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+@section scripts {
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-resource.min.js"></script>
+    <script src="~/Scripts/Admin/marvel-frozen.js"></script>
+}
+

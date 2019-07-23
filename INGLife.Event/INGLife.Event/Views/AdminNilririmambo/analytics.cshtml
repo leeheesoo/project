@@ -1,0 +1,30 @@
+﻿@model INGLife.Event.Models.GoogleApisModels.GoogleApisAnalyticsReportingRequestModel
+@using INGLife.Event.Domain.Entities.Abstract
+@using INGLife.Event.Domain.Entities.KidsNote
+@{
+    ViewBag.Title = "닐리리맘보 이벤트";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row" style="padding-left:30px; padding-right:30px">
+    <div class="panel panel-primary filterable" id="kids-note-entry">
+        <div class="panel-heading">
+            <h3 class="panel-title">@ViewBag.Title analytics</h3>
+            <div class="text-right">
+                <span>{{ data.totalItemCount }} 건</span>
+                <button class="btn btn-success " v-on:click="excelDownload()"><span class="glyphicon glyphicon-download-alt"></span> excel</button>
+            </div>
+        </div>
+        <div>
+            <iframe width="1200" height="900" src="https://datastudio.google.com/embed/reporting/1-M2TEl5S1Xi2fzYz9HY6sMV0kIcAVs_c/page/UXfT" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/js/kidsNote/admin.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            kidsNoteModel.goToPage(1);
+        });
+    </script>
+}

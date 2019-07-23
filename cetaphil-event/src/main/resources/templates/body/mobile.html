@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="share/layoutMobile">
+
+<head>
+  <meta name="viewport" content="width=720, user-scalable=no" />
+  <title>세타필 #동안바디 이벤트 모바일</title>
+</head>
+
+<!-- 이벤트 Meta 태그 추가 -->
+<th:block layout:fragment="meta" th:remove="tag">
+  <meta property="og:title" th:attr="content=${ogtitle}" />
+  <meta property="og:description" th:attr="content=${ogdescription}" />
+  <meta property="og:url" th:attr="content=${ogurl}" />
+  <meta property="og:image" content="https://cetaphil-event.s3.amazonaws.com/static/body/images/sharing/sharing.jpg" />
+</th:block>
+
+<!-- 이벤트 CSS 파일 추가 -->
+<th:block layout:fragment="css" th:remove="tag">
+  <link rel="stylesheet" href="/css/slick.min.css">
+  <link rel="stylesheet" href="/body/css/style-m.min.css">
+</th:block>
+
+<!-- 이벤트 JS 파일 추가 -->
+<th:block layout:fragment="script" th:remove="tag">
+
+</th:block>
+
+<body>
+  <div layout:fragment="content" id="app" class="app" :class="{'fit-height': app.fitHeight }" v-cloak>
+
+    <div class="test-ui">
+      <a class="btn__photodown" href="https://s3.ap-northeast-2.amazonaws.com/cetaphil-event/static/body/gallery-pc.zip" download>download::zip</a>
+      <a class=" btn__photodown" href="https://s3.ap-northeast-2.amazonaws.com/cetaphil-event/static/body/video-dance.mp4" download>download::video</a>
+    </div>
+
+    <!-- logo -->
+    <h1 class="logo" @click="showPage('main')">
+      <button><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/m/logo.png" alt="logo"></button>
+    </h1>
+
+    <!-- nav -->
+    <div class="nav-dimmed" :class="{on: mobile.onNav}"></div>
+    <div class="nav-icon">
+      <span class="nav-icon__more"><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/m/nav-icon-more.png" alt=""></span>
+      <button type="button" @click="openNav()">
+        <span class="nav-line"></span>
+        <span class="nav-line"></span>
+        <span class="nav-line"></span>
+        <!-- <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/m/nav-icon.png" alt=""> -->
+      </button>
+    </div>
+    <nav class="nav-wrap" :class="{on: mobile.onNav}">
+      <button type="button" class="nav__btn-close" @click="closeNav()"><img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/m/nav-btn-close.png" alt=""></button>
+      <ul class="nav">
+        <li class="nav__item" v-for="(navObj, idx) in nav">
+          <button type="button" @click="showPage(navObj.key)"><img :src="'https://cetaphil-event.s3.amazonaws.com/static/body/images/m/nav'+ idx + '.png'" :alt="navObj.label">{{navObj.label}}</button>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- main -->
+    <div class="page page-main" :class="{on: page.current === 'main'}">
+      <div class="page__inner">
+        <!-- 바로가기 메뉴 -->
+        <div class="btns-direct">
+          <button type="button" class="btn-gallery" @click="showPop('contents-gallery')">디지털화보</button>
+          <button type="button" class="btn-videoStage" @click="showPop('contents-video-select')">동안바디영상</button>
+        </div>
+
+        <!-- 제품상세보기 -->
+        <div class="main-product">
+          <button type="button" class="btn-detail-wash" @click="showPop('item-wash')">바디워시</button>
+          <button type="button" class="btn-detail-lotion" @click="showPop('item-lotion')">바디로션</button>
+        </div>
+      </div>
+      <!-- // inner -->
+    </div>
+    <!-- // main -->
+
+    <!-- pages -->
+    <div th:include="body/m/_page-contents :: page-contents" class="page page-contents" :class="{on: page.current === 'contents'}"></div>
+    <div th:include="body/m/_page-calculator :: page-calculator" class="page page-calculator" :class="{on: page.current === 'calculator'}"></div>
+    <div th:include="body/m/_page-age :: page-age" class="page page-age" :class="{on: page.current === 'age'}"></div>
+    <div th:include="body/m/_page-gift :: page-gift" class="page page-gift" :class="{on: page.current === 'gift'}"></div>
+    <div th:include="body/m/_page-challenge :: page-challenge" class="page page-challenge" :class="{on: page.current === 'challenge'}"></div>
+    <!-- // pages -->
+
+    <!-- popup group : start-->
+    <div class="popup-m" th:include="body/_popup-m :: body-popup-m"></div>
+    <div class="popup-common" th:include="body/_popup :: body-popup"></div>
+    <!-- popup group : end -->
+
+    <div class="btn-top" @click="topMove()" v-if="topBtnShow">상단으로 이동</div>
+  </div>
+
+  <!-- 이벤트 body영역 JS 파일 추가 -->
+  <th:block layout:fragment="body-script" th:remove="tag">
+    <!-- libs -->
+
+
+    <script src="/js/arrFindPollyfill.js"></script>
+    <script src="/js/objValuesPollyfill.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/slick.min.js"></script>
+    <script src="/js/TweenMax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+    <script src="/js/load-image.all.min.js"></script>
+    <script src="/js/vue.min.js"></script>
+
+
+
+    <!-- even js: custom -->
+    <script src="/body/js/utils.js"></script>
+    <script src="/body/js/slider.js"></script>
+    <script src="/body/js/videoCtrl.js"></script>
+
+    <!-- common data  -->
+    <script>
+      var deviceKind = 'm';
+    </script>
+    <script src="/body/js/appData.js"></script>
+    <script src="/body/js/app.js"></script>
+
+  </th:block>
+
+</body>
+
+</html>

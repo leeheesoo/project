@@ -1,0 +1,30 @@
+﻿[
+  {
+    "outputFile": "Content/KidsNote/css/event.css",
+    "inputFile": "Content/KidsNote/scss/event.scss"
+  },
+  {
+    "outputFile": "Content/Nilririmanbo/css/style.css",
+    "inputFile": "Content/Nilririmanbo/scss/style.scss"
+  },
+  {
+    "outputFile": "Content/MarketingAgree/css/style.css",
+    "inputFile": "Content/MarketingAgree/scss/style.scss"
+  },
+  {
+    "outputFile": "Content/orange4050/css/event.css",
+    "inputFile": "Content/orange4050/scss/event.scss"
+  },
+  {
+    "outputFile": "Content/rebranding/css/event.css",
+    "inputFile": "Content/rebranding/scss/event.scss"
+  },
+  {
+    "outputFile": "Content/TumblerEvent/css/event.css",
+    "inputFile": "Content/TumblerEvent/scss/event.scss"
+  },
+  {
+    "outputFile": "Content/FcEvent/css/event.css",
+    "inputFile": "Content/FcEvent/scss/event.scss"
+  }
+]

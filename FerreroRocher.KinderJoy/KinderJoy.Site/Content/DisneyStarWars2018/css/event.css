@@ -1,0 +1,1576 @@
+﻿/*!
+ * tag reset&base
+ * 2017.10.11
+ */
+@import url(/Content/vendor/normalize.min.css);
+@import url(/Content/vendor/animate.min.css);
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: top;
+}
+
+img {
+  border: 0;
+  vertical-align: top;
+  line-height: 0;
+  font-size: 0;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+/*a {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent; // For some Androids
+}*/
+/*a:hover, a:active {
+	text-decoration: none;
+	outline: 0;
+}*/
+/*a:link, a:visited {
+	text-decoration: none;
+}*/
+/*!
+ * font set
+ * 2017.10.11
+ */
+body, input, textarea {
+  font-family: 'Myriad Pro', 'Malgun Gothic', dotum, sans-serif;
+}
+
+.a11y-hidden {
+  position: absolute;
+  top: auto;
+  left: -9999em;
+  overflow: hidden;
+  margin: -1px;
+  width: 1px;
+  height: 1px;
+}
+
+.popup .btn-close span, .pop-notice .pop-header h3, .pop-policy .pop-header h3 {
+  position: absolute;
+  top: auto;
+  left: -9999em;
+  overflow: hidden;
+  margin: -1px;
+  width: 1px;
+  height: 1px;
+}
+
+.animated {
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: both;
+  animation-direction: alternate;
+}
+
+.animate-scale-rotate {
+  animation: floating 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+@-webkit-keyframes floating {
+  from {
+    transform: scale(0.9) rotate(0deg);
+  }
+  50% {
+    transform: scale(1) rotate(10deg);
+  }
+  to {
+    transform: scale(0.9) rotate(0deg);
+  }
+}
+
+@keyframes floating {
+  from {
+    transform: scale(0.9) rotate(0deg);
+  }
+  50% {
+    transform: scale(1) rotate(10deg);
+  }
+  to {
+    transform: scale(0.9) rotate(0deg);
+  }
+}
+
+.animate-flow {
+  -webkit-animation: flow 3s infinite;
+  -moz-animation: flow 3s infinite;
+  -ms-animation: flow 3s infinite;
+  -o-animation: flow 3s infinite;
+  animation: flow 3s infinite;
+}
+
+@-webkit-keyframes flow {
+  0% {
+    width: 450px;
+  }
+  80% {
+    width: 0;
+  }
+}
+
+@keyframes flow {
+  0% {
+    width: 450px;
+  }
+  80% {
+    width: 0;
+  }
+}
+
+.dongdong {
+  -webkit-animation: dongdong 1s infinite;
+  -moz-animation: dongdong 1s infinite;
+  -ms-animation: dongdong 1s infinite;
+  -o-animation: dongdong 1s infinite;
+  animation: dongdong 1s infinite;
+}
+
+.heartbeat {
+  -webkit-animation: heartbeat 3s infinite;
+  -moz-animation: heartbeat 3s infinite;
+  -ms-animation: heartbeat 3s infinite;
+  -o-animation: heartbeat 3s infinite;
+  animation: heartbeat 3s infinite;
+}
+
+.pororo {
+  -webkit-animation: pororo 8s infinite;
+  -moz-animation: pororo 8s infinite;
+  -ms-animation: pororo 8s infinite;
+  -o-animation: pororo 8s infinite;
+  animation: pororo 8s infinite;
+}
+
+.animate-rotate-right {
+  animation: shakeR 4.5s ease-out infinite;
+  transform-origin: bottom right;
+  -ms-transform-origin: bottom right;
+  -webkit-transform-origin: bottom right;
+}
+
+.bounce {
+  animation: bounce 1.6s ease;
+  transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
+}
+
+.slide-tl {
+  animation: slide-tl 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+.title-scale {
+  animation: title-scale 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.scale-in-hor-center {
+  animation: scale-in-hor-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes dongdong {
+  0% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -o-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes dongdong {
+  0% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -o-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes pororo {
+  0% {
+    -webkit-transform: translateX(20px);
+    -moz-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    -o-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+  50% {
+    -webkit-transform: translateX(-20px);
+    -moz-transform: translateX(-20px);
+    -ms-transform: translateX(-20px);
+    -o-transform: translateX(-20px);
+    transform: translateX(-20px);
+  }
+  100% {
+    -webkit-transform: translateX(20px);
+    -moz-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    -o-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+}
+
+@keyframes pororo {
+  0% {
+    -webkit-transform: translateX(20px);
+    -moz-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    -o-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+  50% {
+    -webkit-transform: translateX(-20px);
+    -moz-transform: translateX(-20px);
+    -ms-transform: translateX(-20px);
+    -o-transform: translateX(-20px);
+    transform: translateX(-20px);
+  }
+  100% {
+    -webkit-transform: translateX(20px);
+    -moz-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    -o-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+}
+
+@-webkit-keyframes heartbeat {
+  10% {
+    -webkit-transform: translateY(-20px);
+    -moz-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    -o-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+  15% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px);
+  }
+  20% {
+    -webkit-transform: translateY(-20px);
+    -moz-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    -o-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+  25% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+  to {
+  }
+}
+
+@keyframes heartbeat {
+  10% {
+    -webkit-transform: translateY(-20px);
+    -moz-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    -o-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+  15% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px);
+  }
+  20% {
+    -webkit-transform: translateY(-20px);
+    -moz-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    -o-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+  25% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+  to {
+  }
+}
+
+@-webkit-keyframes shakeR {
+  from {
+    transform: rotate(-10deg);
+  }
+  25% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-10deg);
+  }
+}
+
+@keyframes shakeR {
+  from {
+    transform: rotate(-10deg);
+  }
+  25% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-10deg);
+  }
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    transform: translateY(0%) scaleY(0.8);
+  }
+  60% {
+    transform: translateY(-20%) scaleY(1);
+  }
+  70% {
+    transform: translateY(0%) scaleY(0.95) scaleX(1.05);
+  }
+  80% {
+    transform: translateY(0%) scaleY(1.05) scaleX(1);
+  }
+  90% {
+    transform: translateY(0%) scaleY(0.95) scaleX(1);
+  }
+  100% {
+    transform: translateY(0%) scaleY(1) scaleX(1);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0%) scaleY(0.8);
+  }
+  60% {
+    transform: translateY(-20%) scaleY(1);
+  }
+  70% {
+    transform: translateY(0%) scaleY(0.95) scaleX(1.05);
+  }
+  80% {
+    transform: translateY(0%) scaleY(1.05) scaleX(1);
+  }
+  90% {
+    transform: translateY(0%) scaleY(0.95) scaleX(1);
+  }
+  100% {
+    transform: translateY(0%) scaleY(1) scaleX(1);
+  }
+}
+
+@-webkit-keyframes slide-tl {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    transform: translateY(-20px) translateX(-40px);
+  }
+}
+
+@keyframes slide-tl {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    transform: translateY(-20px) translateX(-40px);
+  }
+}
+
+@-webkit-keyframes scale-in-hor-center {
+  0% {
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in-hor-center {
+  0% {
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.bgbg {
+  -webkit-animation: bgbg 5s infinite;
+  -moz-animation: bgbg 5s infinite;
+  -ms-animation: bgbg 5s infinite;
+  -o-animation: bgbg 5s infinite;
+  animation: bgbg 5s infinite;
+}
+
+.kitikiti {
+  -webkit-animation: kitikiti 18s infinite;
+  -moz-animation: kitikiti 18s infinite;
+  -ms-animation: kitikiti 18s infinite;
+  -o-animation: kitikiti 18s infinite;
+  animation: kitikiti 18s infinite;
+}
+
+@-webkit-keyframes kitikiti {
+  0% {
+    -webkit-transform: translateX(70px);
+    -moz-transform: translateX(70px);
+    -ms-transform: translateX(70px);
+    -o-transform: translateX(70px);
+    transform: translateX(70px);
+  }
+  50% {
+    -webkit-transform: translateX(-70px);
+    -moz-transform: translateX(-70px);
+    -ms-transform: translateX(-70px);
+    -o-transform: translateX(-70px);
+    transform: translateX(-70px);
+  }
+  100% {
+    -webkit-transform: translateX(70px);
+    -moz-transform: translateX(70px);
+    -ms-transform: translateX(70px);
+    -o-transform: translateX(70px);
+    transform: translateX(70px);
+  }
+}
+
+@keyframes kitikiti {
+  0% {
+    -webkit-transform: translateX(70px);
+    -moz-transform: translateX(70px);
+    -ms-transform: translateX(70px);
+    -o-transform: translateX(70px);
+    transform: translateX(70px);
+  }
+  50% {
+    -webkit-transform: translateX(-70px);
+    -moz-transform: translateX(-70px);
+    -ms-transform: translateX(-70px);
+    -o-transform: translateX(-70px);
+    transform: translateX(-70px);
+  }
+  100% {
+    -webkit-transform: translateX(70px);
+    -moz-transform: translateX(70px);
+    -ms-transform: translateX(70px);
+    -o-transform: translateX(70px);
+    transform: translateX(70px);
+  }
+}
+
+@-webkit-keyframes bgbg {
+  0% {
+    -webkit-transform: translateX(15px);
+    -moz-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    -o-transform: translateX(15px);
+    transform: translateX(15px);
+  }
+  50% {
+    -webkit-transform: translateX(-25px);
+    -moz-transform: translateX(-25px);
+    -ms-transform: translateX(-25px);
+    -o-transform: translateX(-25px);
+    transform: translateX(-25px);
+    -webkit-transform: translateY(25px);
+    -moz-transform: translateY(25px);
+    -ms-transform: translateY(25px);
+    -o-transform: translateY(25px);
+    transform: translateY(25px);
+  }
+  to {
+    -webkit-transform: translateX(15px);
+    -moz-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    -o-transform: translateX(15px);
+    transform: translateX(15px);
+  }
+}
+
+@keyframes bgbg {
+  0% {
+    -webkit-transform: translateX(15px);
+    -moz-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    -o-transform: translateX(15px);
+    transform: translateX(15px);
+  }
+  50% {
+    -webkit-transform: translateX(-25px);
+    -moz-transform: translateX(-25px);
+    -ms-transform: translateX(-25px);
+    -o-transform: translateX(-25px);
+    transform: translateX(-25px);
+    -webkit-transform: translateY(25px);
+    -moz-transform: translateY(25px);
+    -ms-transform: translateY(25px);
+    -o-transform: translateY(25px);
+    transform: translateY(25px);
+  }
+  to {
+    -webkit-transform: translateX(15px);
+    -moz-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    -o-transform: translateX(15px);
+    transform: translateX(15px);
+  }
+}
+
+.flash {
+  -webkit-animation: flash 0.06s infinite;
+  -moz-animation: flash 0.06s infinite;
+  -ms-animation: flash 0.06s infinite;
+  -o-animation: flash 0.06s infinite;
+  animation: flash 0.06s infinite;
+}
+
+@-webkit-keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.dancing {
+  -webkit-animation: dancing 6s infinite;
+  -moz-animation: dancing 6s infinite;
+  -ms-animation: dancing 6s infinite;
+  -o-animation: dancing 6s infinite;
+  animation: dancing 6s infinite;
+}
+
+@-webkit-keyframes dancing {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  15% {
+    transform: translate(0, -30px);
+  }
+  45% {
+    transform: translate(-30px, -15px);
+  }
+  67% {
+    transform: translate(-10px, -5px);
+  }
+}
+
+@keyframes dancing {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  15% {
+    transform: translate(0, -30px);
+  }
+  45% {
+    transform: translate(-30px, -15px);
+  }
+  67% {
+    transform: translate(-10px, -5px);
+  }
+}
+
+.twinkle {
+  -webkit-animation: twinkle 1.5s infinite;
+  -moz-animation: twinkle 1.5s infinite;
+  -ms-animation: twinkle 1.5s infinite;
+  -o-animation: twinkle 1.5s infinite;
+  animation: twinkle 1.5s infinite;
+}
+
+@-webkit-keyframes twinkle {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*!
+ * form layout
+ * kjh
+ */
+.form-box {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.form-box legend {
+  display: none;
+}
+
+.form-box a {
+  display: inline-block;
+}
+
+.form-box img {
+  pointer-events: none;
+  vertical-align: middle;
+}
+
+.form-box input[type=text],
+.form-box input[type=button],
+.form-box input[type=checkbox],
+.form-box input[type=radio],
+.form-box textarea {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+
+.form-box input[type=text],
+.form-box input[type=tel],
+.form-box select,
+.form-box textarea {
+  width: 100%;
+  max-width: none;
+  padding-left: 8px;
+  padding-right: 8px;
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid #6a5437;
+  border-radius: 0;
+  background-color: #ececec;
+  color: #868686;
+  font-size: 24px;
+  font-family: "Malgun Gothic", Dotum;
+}
+
+.form-box input[type=checkbox] {
+  width: 28px;
+  height: 28px;
+  line-height: 100%;
+  vertical-align: middle;
+  margin: 0 8px 0 0;
+  background-size: 28px 28px;
+  background: url("../../../Images/DisneyStarWars2018/pop/form/icon_check.png") no-repeat center top;
+  background-position: center top;
+}
+
+.form-box input[type=checkbox]:checked {
+  background-position: center bottom;
+}
+
+.form-box input[type=radio] {
+  border: 0;
+  width: 35px;
+  height: 35px;
+  line-height: 100%;
+  vertical-align: middle;
+  margin: 0 4px 0 0;
+  background: url("../../../Images/DisneyStarWars2018/w/form/icon-radio-off.png") no-repeat center top;
+}
+
+.form-box input[type=radio]:checked {
+  background: url("../../../Images/DisneyStarWars2018/w/form/icon-radio-on.png") no-repeat center top;
+}
+
+.form-box select option {
+  color: #868686;
+  background: #fff;
+}
+
+.form-box select option:first-child {
+  color: #868686;
+}
+
+.form-box .no-space {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.form-box .form-control {
+  box-shadow: none;
+}
+
+.form-box .form-group {
+  color: #868686;
+}
+
+.form-box .form-group lable, .form-box .form-group .control-label, .form-box .form-group strong {
+  color: #debb7b;
+  padding-left: 0;
+  padding-right: 0;
+  line-height: 50px;
+  display: inline-block;
+}
+
+.form-box .form-group .label-style {
+  display: none;
+}
+
+.form-box .form-group .form-email:before {
+  position: absolute;
+  content: '@';
+  top: 50%;
+  right: -6px;
+  transform: translateY(-50%);
+  color: #ccc;
+  font-size: 1.4em;
+  font-style: normal;
+  letter-spacing: -.15em;
+}
+
+.form-box button[type=submit] {
+  margin-top: 30px;
+  border: 0;
+  background: none;
+}
+
+::-webkit-input-placeholder {
+  color: #868686 !important;
+}
+
+::-moz-placeholder {
+  color: #868686 !important;
+}
+
+:-ms-input-placeholder {
+  color: #868686 !important;
+  line-height: 1 !important;
+}
+
+:-moz-placeholder {
+  color: #868686 !important;
+}
+
+.privacy-policy label {
+  vertical-align: top;
+  display: inline-block;
+  line-height: auto;
+}
+
+.privacy-policy .btn-agree {
+  display: inline-block;
+  margin-left: 15px;
+  margin-right: 0;
+  padding: 0;
+  margin-top: 15px;
+  margin-left: 8px;
+}
+
+.pop-post .pop-con {
+  -webkit-overflow-scrolling: touch;
+}
+
+.pop-winner {
+  text-align: center;
+}
+
+.pop-winner .pop-con .dang-group {
+  width: 540px;
+  margin: 0 auto;
+  /*padding-top:40px;*/
+  color: #323232;
+}
+
+.pop-winner .pop-con .dang-group p {
+  padding-bottom: 20px;
+  text-align: left;
+}
+
+.pop-winner .pop-con .dang-group .dang-box {
+  width: 100%;
+  height: 190px;
+  border: 1px solid #dedede;
+  background: #f4f4f4;
+  overflow-x: hidden;
+  /*overflow-y: auto;*/
+  margin-bottom: 40px;
+  text-align: left;
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.pop-winner .pop-con .dang-group .dang-box ul {
+  padding: 14px 0 0 60px;
+  list-style: none;
+}
+
+.pop-winner .pop-con .dang-group .dang-box li {
+  float: left;
+  width: 33%;
+}
+
+.pop-winner .pop-con .dang-group .dang-box.winner1 {
+  text-align: center;
+  overflow: hidden;
+  height: 60px;
+}
+
+.pop-winner .pop-con .dang-group .dang-box.winner1 ul {
+  padding: 14px 0;
+}
+
+.pop-winner .pop-con .dang-group .dang-box.winner1 li {
+  padding: 0;
+  float: none;
+  width: 100%;
+}
+
+.pop-winner .pop-con .dang-note {
+  padding-bottom: 35px;
+}
+
+body {
+  background: #ffe9af;
+}
+
+.video-player {
+  position: relative;
+  display: block;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.container {
+  min-width: unset;
+  max-width: unset;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.event-container {
+  /*background: url(../../../Images/DisneyStarWars2018/w/content-bg.png) no-repeat center top;*/
+  /*padding-bottom: 5000px;*/
+  position: relative;
+  min-width: 1300px;
+  /*padding-top: 70px;*/
+  overflow: hidden;
+}
+
+.event-intro {
+  position: relative;
+  height: 1468px;
+}
+
+.toyview-container {
+  position: relative;
+  height: 1468px;
+}
+
+.toyview-container::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 128px;
+  bottom: 0;
+  background: url(../../../Images/DisneyStarWars2018/w/intro-deco-bottom.png) no-repeat center bottom;
+}
+
+.toyview {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  /*&.star {
+    background: url(../../../Images/DisneyStarWars2018/w/intro-starwars.png) no-repeat center top;
+    }
+
+    &.disney {
+    background: url(../../../Images/DisneyStarWars2018/w/intro-disney.png) no-repeat center top;
+    }*/
+}
+
+.toyview.kj {
+  background: url(../../../Images/DisneyStarWars2018/w/intro-kj.png) no-repeat center top;
+}
+
+.toyview .item {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.toyview .snowhill {
+  top: 0;
+  background: url("../../../Images/DisneyStarWars2018/w/visual-bg.png") no-repeat center bottom;
+}
+
+.toyview .back {
+  top: 0;
+}
+
+.toyview .sky {
+  top: 0;
+}
+
+.toyview .toy {
+  top: 0;
+}
+
+.toyview .top {
+  top: 0;
+}
+
+.toyview .logo {
+  top: 105px;
+  left: 50px;
+  width: 190px;
+  height: 140px;
+}
+
+.toyview .center {
+  top: 0;
+}
+
+.toyview .center-deco {
+  top: 0;
+}
+
+.toyview.kj .back {
+  background: url("../../../Images/DisneyStarWars2018/w/visual-kj-bottom.png") no-repeat center top;
+}
+
+.toyview.kj .sky {
+  background: url("../../../Images/DisneyStarWars2018/w/visual-kj-sky.png") no-repeat center top;
+}
+
+.toyview.kj .top {
+  background: url("../../../Images/DisneyStarWars2018/w/visual-kj-top.png") no-repeat center top;
+}
+
+.toyview.kj .logo {
+  background: url("../../../Images/DisneyStarWars2018/w/visual-kj-logo.png") no-repeat 0 0;
+}
+
+.toyview.kj .toy {
+  background: url("../../../Images/DisneyStarWars2018/w/visual-kj-toy.png") no-repeat center top;
+}
+
+.toyview.kj .center {
+  background: url("../../../Images/DisneyStarWars2018/w/visual-kj-center.png") no-repeat center top;
+}
+
+.toyview.kj .center-deco {
+  background: url("../../../Images/DisneyStarWars2018/w/visual-kj-center-deco.png") no-repeat center top;
+}
+
+.event-area {
+  position: relative;
+  background: url("../../../Images/DisneyStarWars2018/w/content-bg.png") no-repeat center top;
+}
+
+.event-area .heading {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.naver-search-go {
+  position: relative;
+  width: 920px;
+  margin: 0 auto;
+  height: 410px;
+  padding-top: 250px;
+}
+
+.naver-search-go a {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.naver-search-go .search-deco {
+  position: absolute;
+  top: 0;
+  left: 44px;
+  width: 810px;
+  height: 280px;
+  background: url("../../../Images/DisneyStarWars2018/w/naver-search-deco.png") no-repeat center 0;
+}
+
+.naver-search-go .search-deco-click {
+  position: absolute;
+  bottom: -75px;
+  right: 0;
+  width: 152px;
+  height: 112px;
+  background: url("../../../Images/DisneyStarWars2018/w/click.png") no-repeat center 0;
+  z-index: 10;
+}
+
+.naver-search-go .text-flow {
+  position: absolute;
+  top: 300px;
+  right: 410px;
+  width: 0px;
+  height: 50px;
+  background: #fff;
+  z-index: 1;
+}
+
+.event-info {
+  background: url("../../../Images/DisneyStarWars2018/w/instruction-main-event.png") no-repeat center top;
+  margin-top: 70px;
+  height: 1270px;
+}
+
+.video-wrap {
+  position: relative;
+  width: 1238px;
+  height: 1357px;
+  margin: 0 auto;
+  padding-top: 190px;
+  padding-bottom: 300px;
+  text-align: center;
+  background: url("../../../Images/DisneyStarWars2018/w/video-bg.png") no-repeat center -140px;
+}
+
+.video-wrap .video-pororo-img {
+  overflow: hidden;
+}
+
+.video-wrap .video-pororo-img > img {
+  margin-top: 120px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.video-wrap .video-inner {
+  position: relative;
+  width: 812px;
+  height: 457px;
+  margin: 25px auto 0;
+  overflow: hidden;
+  z-index: 10;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+  border-radius: 25px;
+}
+
+.video-wrap .video-inner #eventPlayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.video-wrap .video-inner .video-cover {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  z-index: 6;
+}
+
+.video-wrap .video-inner .video-cover > img {
+  vertical-align: middle;
+}
+
+.video-wrap > .video-deco {
+  position: absolute;
+  top: 700px;
+  left: 0;
+}
+
+.event-note {
+  position: relative;
+  background: #5d7a2a;
+}
+
+.event-note .event-note-inner {
+  width: 100%;
+  height: 360px;
+  background: url("../../../Images/DisneyStarWars2018/w/footer.png") no-repeat center top;
+}
+
+.kj-event-copyright {
+  padding: 20px 0;
+  background-color: #ececec;
+  text-align: center;
+}
+
+.kj-event-copyright img {
+  vertical-align: middle;
+}
+
+.popup .btns {
+  left: 0 !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+.popup .btns a {
+  display: inline-block;
+}
+
+img {
+  vertical-align: top;
+}
+
+.debuging {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  padding: 10px;
+  border: 1px dotted gray;
+  text-align: left;
+  font-size: 90%;
+  color: #fff;
+  z-index: 999;
+}
+
+.debuging p {
+  color: #000;
+  background: yellow;
+}
+
+.debuging button {
+  background: black !important;
+  padding: 3px;
+}
+
+/*.popup:focus{
+  outline:none;
+}*/
+#dimmed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/Images/DisneyStarWars2018/pop/dim.png") repeat center top;
+  z-index: 99;
+}
+
+#loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/Images/DisneyStarWars2018/pop/dim.png") repeat center top;
+  z-index: 110;
+  text-align: center;
+  /*.img-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 278px;
+    height: 327px;
+    @include background('bg_loading.png');
+    transform: translate(-50%, -50%);
+    animation-duration: 1s;
+
+    &1 {
+      background-position-y: 0;
+    }
+
+    &2 {
+      background-position-y: -327px;
+      opacity: 0;
+    }
+
+    &3 {
+      background-position-y: -656px;
+      opacity: 0;
+    }
+  }*/
+}
+
+#loading .loading-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/Images/DisneyStarWars2018/pop/loading.gif") no-repeat center center;
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 640px;
+  height: auto;
+  z-index: 99;
+  text-align: left;
+  outline: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  left: 50%;
+  margin-left: -320px;
+}
+
+.popup h3 {
+  text-align: center;
+  padding: 0 0 40px;
+  margin: 0;
+}
+
+.popup .btns {
+  position: relative;
+  margin-left: -30px;
+  left: 15px;
+}
+
+.popup .btn-close {
+  position: absolute;
+  top: 150px;
+  right: 0px;
+  width: 51px;
+  height: 50px;
+  border: none;
+  color: transparent;
+  background: url("/Images/DisneyStarWars2018/pop/button-close.png") no-repeat center top;
+}
+
+.popup .pop-header {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  background: #fe531f url("/Images/DisneyStarWars2018/pop/popup-header.png") no-repeat center top;
+  /*&:after{
+      content:'';
+      display:block;
+      width:100%;
+      height:100%;
+      @include background('pop-header.png', $y:center);
+    }*/
+}
+
+.popup .pop-con {
+  padding: 40px 40px;
+  padding-bottom: 70px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.popup .pop-con h2 {
+  margin-bottom: 42px;
+  text-align: center;
+}
+
+.popup .pop-con .loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  filter: alpha(opacity=60);
+  opacity: 0.60;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.popup .pop-con .loading img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -24px 0 0 -24px;
+}
+
+.pop-entry .result-view {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.pop-entry .pop-con {
+  padding-top: 30px;
+}
+
+.pop-notice .pop-header {
+  height: 240px;
+  background: url("/Images/DisneyStarWars2018/pop/pop-header-notice.png") no-repeat center top;
+}
+
+.pop-notice .pop-con {
+  position: relative;
+  padding-top: 0;
+}
+
+.pop-policy .pop-header {
+  height: 290px;
+  background: url("/Images/DisneyStarWars2018/pop/pop-header-policy.png") no-repeat center top;
+}
+
+.pop-policy .pop-con {
+  padding-top: 0;
+}
+
+.pop-mov-view .mov-box {
+  position: relative;
+  width: 100%;
+  /*iframe {
+      width: 560px;
+      height: 315px;
+    }*/
+}
+
+.pop-mov-view .mov-box .mov-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.pop-mov-view .mov-box-text {
+  text-align: center;
+}
+
+.pop-mov-view .btn-right {
+  text-align: right;
+}
+
+.pop-mov-view .btn-center {
+  text-align: center;
+  display: none;
+}
+
+.pop-mov-view .btn-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+}
+
+.pop-share .pop-con {
+  text-align: center;
+}
+
+.pop-share .pop-con p {
+  padding-top: 40px;
+  padding-bottom: 0;
+}
+
+.pop-share .pop-con .share-box button {
+  margin: 0 15px;
+}
+
+.pop-share .pop-con .btns {
+  margin-top: 50px;
+}
+
+.pop-complete .pop-con .product-img {
+  margin-top: -30px;
+}
+
+.pop-gmarket {
+  text-align: center;
+}
+
+.pop-gmarket .pop-header {
+  height: 148px;
+  overflow: hidden;
+}
+
+.pop-gmarket .pop-con .dday-box {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.pop-post {
+  z-index: 100;
+}
+
+.pop-post h3 {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.pop-post .pop-con {
+  padding: 0;
+}
+
+.pop-inapp {
+  background: none;
+  text-align: center;
+  /*.inapp-img{
+    width:640px;
+    height:932px;
+    @include background('inapp-img.png');
+  }*/
+  /*.popup-bg{
+    display:none;
+  }*/
+}
+
+.pop-inapp .btn-close {
+  top: 0px;
+}
+
+.dday-box > div {
+  vertical-align: top;
+  display: inline-block;
+}
+
+.dday-box .deco {
+  padding-right: 5px;
+}
+
+.dday-box .number {
+  background: url("/Images/DisneyStarWars2018/pop/dday-num.png") no-repeat center top;
+  width: 60px;
+  height: 80px;
+}
+
+.dday-box .number0 {
+  background-position-x: 0px;
+}
+
+.dday-box .number1 {
+  background-position-x: -126px;
+}
+
+.dday-box .number2 {
+  background-position-x: -252px;
+}
+
+.dday-box .number3 {
+  background-position-x: -378px;
+}
+
+.dday-box .number4 {
+  background-position-x: -504px;
+}
+
+.dday-box .number5 {
+  background-position-x: -630px;
+}
+
+.dday-box .number6 {
+  background-position-x: -756px;
+}
+
+.dday-box .number7 {
+  background-position-x: -882px;
+}
+
+.dday-box .number8 {
+  background-position-x: -1008px;
+}
+
+.dday-box .number9 {
+  background-position-x: -1134px;
+}
+
+.text-box {
+  display: none;
+  color: black;
+  height: 150px;
+  overflow-y: scroll;
+}
+

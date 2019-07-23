@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{81DDF423-82A0-44FE-8A2D-AAFD6F7A6919}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KinderJoy.Domain</RootNamespace>
+    <AssemblyName>KinderJoy.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.MappingAPI, Version=6.1.0.9, Culture=neutral, PublicKeyToken=7ee2e825d201459e, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.MappingAPI.6.1.0.9\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.1.7.2, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqKit.1.1.7.2\lib\net451\LinqKit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.10.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.10\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.10.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.10\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Web, Version=6.9.10.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Web.6.9.10\lib\net45\MySql.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.3.11\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\Christmas2015\Christmas2015EnumConst.cs" />
+    <Compile Include="Abstract\CommonEnum.cs" />
+    <Compile Include="Abstract\EventNaverSearching.cs" />
+    <Compile Include="Abstract\EventNaverSearchingSettings.cs" />
+    <Compile Include="Abstract\EventNaverPrizeSelector.cs" />
+    <Compile Include="Abstract\EventSnsSharing.cs" />
+    <Compile Include="Abstract\EventSnsSharingUser.cs" />
+    <Compile Include="Entities\BackToSchool2016\BackToSchool2016BingoQuiz.cs" />
+    <Compile Include="Entities\BackToSchool2016\BackToSchool2016BingoQuizSns.cs" />
+    <Compile Include="Entities\ChildrensDay\ChildrensDayHiddenPicture.cs" />
+    <Compile Include="Entities\ChildrensDay\ChildrensDayHiddenPictureSns.cs" />
+    <Compile Include="Entities\Christmas2015\Christmas2015MakeTree.cs" />
+    <Compile Include="Entities\Christmas2015\Christmas2015MakeTreeSNSShare.cs" />
+    <Compile Include="Entities\Christmas2015\Christmas2015Win.cs" />
+    <Compile Include="Entities\Christmas2015\Christmas2015WinPrizeSetting.cs" />
+    <Compile Include="Entities\FindingDory2017\FindingDory2017SNS.cs" />
+    <Compile Include="Entities\FindingDory2017\FindingDory2017User.cs" />
+    <Compile Include="Entities\KittyJusticeLeague\KittyJusticeLeagueInstantLottery.cs" />
+    <Compile Include="Entities\KittyJusticeLeague\KittyJusticeLeagueInstantLotteryPrizeSetting.cs" />
+    <Compile Include="Entities\MagicKinderAppLaunchingEvent\MagicKinderAppLaunching.cs" />
+    <Compile Include="Entities\MainStream\MainStreamSurprise.cs" />
+    <Compile Include="Entities\MainStream\MainStreamSurpriseSNS.cs" />
+    <Compile Include="Entities\MavelFrozen\MavelFrozenSNS.cs" />
+    <Compile Include="Entities\MavelFrozen\MavelFrozenUser.cs" />
+    <Compile Include="Entities\NinjaBarbie2016\NinjaBarbie2016Sharing.cs" />
+    <Compile Include="Entities\NinjaBarbie2016\NinjaBarbie2016User.cs" />
+    <Compile Include="Entities\DisneyStarWars2018\DisneyStarWars2018InstantLottery.cs" />
+    <Compile Include="Entities\DisneyStarWars2018\DisneyStarWars2018InstantLotteryPrizeSetting.cs" />
+    <Compile Include="Entities\Pororo2018\Pororo2018InstantLottery.cs" />
+    <Compile Include="Entities\Pororo2018\Pororo2018InstantLotteryPrizeSetting.cs" />
+    <Compile Include="Exceptions\EventServiceException.cs" />
+    <Compile Include="Identity\AppRole.cs" />
+    <Compile Include="Identity\AppUser.cs" />
+    <Compile Include="Identity\AppUserClaim.cs" />
+    <Compile Include="Identity\AppUserLogin.cs" />
+    <Compile Include="Identity\AppUserRole.cs" />
+    <Compile Include="Infrastructure\AppRoleManager.cs" />
+    <Compile Include="Infrastructure\AppUserManager.cs" />
+    <Compile Include="Infrastructure\AppDbContext.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\TimeProvider.cs" />
+    <Compile Include="Infrastructure\ITimeProvider.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Entities\PersonalInfos.cs" />
+    <Compile Include="Entities\Word\WordEvent.cs" />
+    <Compile Include="Entities\Word\WordEventShare.cs" />
+    <Compile Include="Entities\Word\WordWinner.cs" />
+    <Compile Include="Migrations\201711130212342_change-mysql-init.cs" />
+    <Compile Include="Migrations\201711130212342_change-mysql-init.Designer.cs">
+      <DependentUpon>201711130212342_change-mysql-init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711150704027_Create-KittyJusticeLeague.cs" />
+    <Compile Include="Migrations\201711150704027_Create-KittyJusticeLeague.Designer.cs">
+      <DependentUpon>201711150704027_Create-KittyJusticeLeague.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801040806473_Create-Pororo2018.cs" />
+    <Compile Include="Migrations\201801040806473_Create-Pororo2018.Designer.cs">
+      <DependentUpon>201801040806473_Create-Pororo2018.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805090731096_Create-DisneyStarWars.cs" />
+    <Compile Include="Migrations\201805090731096_Create-DisneyStarWars.Designer.cs">
+      <DependentUpon>201805090731096_Create-DisneyStarWars.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\FindingDory2017\AdminFindingDory2017QueryOptions.cs" />
+    <Compile Include="Models\FindingDory2017\AdminFindingDory2017StatsViewModel.cs" />
+    <Compile Include="Models\MagicKinderAppLaunchingEvent\AdminMagicKinderStatsViewModel.cs" />
+    <Compile Include="Models\MainStream\AdminMainStreamSnsStatsViewModel.cs" />
+    <Compile Include="Models\MarvelFrozen\AdminMarvelFrozenStatsViewModel.cs" />
+    <Compile Include="Models\MarvelFrozen\MarvelFrozenQueryOptions.cs" />
+    <Compile Include="Models\NinjaBarbie2016\AdminNinjaBarbie2016SharingQueryOptions.cs" />
+    <Compile Include="Models\NinjaBarbie2016\AdminNinjaBarbie2016StatisticsViewModel.cs" />
+    <Compile Include="Models\NinjaBarbie2016\AdminNinjaBarbie2016UserQueryOptions.cs" />
+    <Compile Include="Models\PageQueryOptions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\BackToSchool2016\BackToSchool2016Repository.cs" />
+    <Compile Include="Repository\BackToSchool2016\IBackToSchool2016Repository.cs" />
+    <Compile Include="Repository\ChildrensDay\ChildrensDayRepository.cs" />
+    <Compile Include="Repository\ChildrensDay\IChildrensDayRepository.cs" />
+    <Compile Include="Repository\Christmas2015\Christmas2015Repository.cs" />
+    <Compile Include="Repository\Christmas2015\IChristmas2015Repository.cs" />
+    <Compile Include="Repository\FindingDory2017\FindingDory2017SNSRepository.cs" />
+    <Compile Include="Repository\FindingDory2017\FindingDory2017UserRepository.cs" />
+    <Compile Include="Repository\FindingDory2017\IFindingDory2017SNSRepository.cs" />
+    <Compile Include="Repository\FindingDory2017\IFindingDory2017UserRepository.cs" />
+    <Compile Include="Repository\KittyJusticeLeague\KittyJusticeLeagueInstantLotteryPrizeSettingRepository.cs" />
+    <Compile Include="Repository\KittyJusticeLeague\IKittyJusticeLeagueInstantLotteryPrizeSettingRepository.cs" />
+    <Compile Include="Repository\KittyJusticeLeague\KittyJusticeLeagueInstantLotteryRepository.cs" />
+    <Compile Include="Repository\KittyJusticeLeague\IKittyJusticeLeagueInstantLotteryRepository.cs" />
+    <Compile Include="Repository\MagicKinderAppLaunchingEvent\IMagicKinderAppLaunchingRepository.cs" />
+    <Compile Include="Repository\MagicKinderAppLaunchingEvent\MagicKinderAppLaunchingRepository.cs" />
+    <Compile Include="Repository\MainStream\IMainStreamRepository.cs" />
+    <Compile Include="Repository\MainStream\MainStreamRepository.cs" />
+    <Compile Include="Repository\MavelFrozen\IMavelFrozenSnsRepository.cs" />
+    <Compile Include="Repository\MavelFrozen\IMavelFrozenUserRepository.cs" />
+    <Compile Include="Repository\MavelFrozen\MavelFrozenSnsRepository.cs" />
+    <Compile Include="Repository\MavelFrozen\MavelFrozenUserRepository.cs" />
+    <Compile Include="Repository\NinjaBarbie2016\INinjaBarbie2016SharingRepository.cs" />
+    <Compile Include="Repository\NinjaBarbie2016\INinjaBarbie2016UserRepository.cs" />
+    <Compile Include="Repository\NinjaBarbie2016\NinjaBarbie2016SharingRepository.cs" />
+    <Compile Include="Repository\NinjaBarbie2016\NinjaBarbie2016UserRepository.cs" />
+    <Compile Include="Repository\DisneyStarWars2018\IDisneyStarWars2018InstantLotteryPrizeSettingRepository.cs" />
+    <Compile Include="Repository\DisneyStarWars2018\IDisneyStarWars2018InstantLotteryRepository.cs" />
+    <Compile Include="Repository\DisneyStarWars2018\DisneyStarWars2018InstantLotteryPrizeSettingRepository.cs" />
+    <Compile Include="Repository\DisneyStarWars2018\DisneyStarWars2018InstantLotteryRepository.cs" />
+    <Compile Include="Repository\Pororo2018\IPororo2018InstantLotteryPrizeSettingRepository.cs" />
+    <Compile Include="Repository\Pororo2018\Pororo2018InstantLotteryPrizeSettingRepository.cs" />
+    <Compile Include="Repository\Pororo2018\Pororo2018InstantLotteryRepository.cs" />
+    <Compile Include="Repository\Pororo2018\IPororo2018InstantLotteryRepository.cs" />
+    <Compile Include="Service\BackToSchool2016QueryOptions.cs" />
+    <Compile Include="Service\ChildrensDayOption.cs" />
+    <Compile Include="Service\Christmas2015QueryOptions.cs" />
+    <Compile Include="Service\FindingDory2017\FindingDory2017Service.cs" />
+    <Compile Include="Service\FindingDory2017\IFindingDory2017Service.cs" />
+    <Compile Include="Service\KittyJusticeLeague\KittyJusticeLeagueService.cs" />
+    <Compile Include="Service\KittyJusticeLeague\IKittyJusticeLeagueService.cs" />
+    <Compile Include="Service\KittyJusticeLeague\KittyJusticeLeagueQueryOptions.cs" />
+    <Compile Include="Service\MagicKinderAppLaunchingEvent\IMagicKinderAppLaunchingService.cs" />
+    <Compile Include="Service\MagicKinderAppLaunchingEvent\MagicKinderAppLaunchingQueryOptions.cs" />
+    <Compile Include="Service\MagicKinderAppLaunchingEvent\MagicKinderAppLaunchingService.cs" />
+    <Compile Include="Service\MainStream\IMainStreamService.cs" />
+    <Compile Include="Service\MainStream\MainStreamQueryOptions.cs" />
+    <Compile Include="Service\MainStream\MainStreamService.cs" />
+    <Compile Include="Service\MavelFrozen\IMavelFrozenService.cs" />
+    <Compile Include="Service\MavelFrozen\MavelFrozenService.cs" />
+    <Compile Include="Service\NinjaBarbie2016\INinjaBarbie2016Service.cs" />
+    <Compile Include="Service\NinjaBarbie2016\NinjaBarbie2016Service.cs" />
+    <Compile Include="Service\PageQueryOptions.cs" />
+    <Compile Include="Service\DisneyStarWars2018\IDisneyStarWars2018Service.cs" />
+    <Compile Include="Service\DisneyStarWars2018\DisneyStarWars2018QueryOptions.cs" />
+    <Compile Include="Service\DisneyStarWars2018\DisneyStarWars2018Service.cs" />
+    <Compile Include="Service\Pororo2018\IPororo2018Service.cs" />
+    <Compile Include="Service\Pororo2018\Pororo2018QueryOptions.cs" />
+    <Compile Include="Service\Pororo2018\Pororo2018Service.cs" />
+    <Compile Include="Service\SerializablePagedList.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\PagedList.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711130212342_change-mysql-init.resx">
+      <DependentUpon>201711130212342_change-mysql-init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711150704027_Create-KittyJusticeLeague.resx">
+      <DependentUpon>201711150704027_Create-KittyJusticeLeague.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801040806473_Create-Pororo2018.resx">
+      <DependentUpon>201801040806473_Create-Pororo2018.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805090731096_Create-DisneyStarWars.resx">
+      <DependentUpon>201805090731096_Create-DisneyStarWars.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

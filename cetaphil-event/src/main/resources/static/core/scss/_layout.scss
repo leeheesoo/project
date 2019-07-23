@@ -1,0 +1,104 @@
+.wrap {
+  position: relative;
+  margin: 0 auto;
+  max-width: 2560px;
+  min-width: 1100px;
+  overflow-x: hidden;
+}
+
+.logo {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+.inner {
+  margin: 0 auto;
+  width: 1100px;
+}
+
+.event-kv {
+  height: 1030px;
+  @include background-image($loc + 'bg-kv.png');
+}
+
+.event01 {
+  height: 1139px;
+  @include background-image($loc + 'bg-ev1-v2.png');
+}
+
+.event02 {
+  height: 1863px;
+  padding-top: 274px;
+  @include background-image($loc + 'bg-ev2-v3.png');
+  .inner {
+    text-align: center;
+  }
+}
+
+.event03 {
+  height: 950px;
+  padding-top: 257px;
+  @include background-image($loc + 'bg-ev3-v2.png');
+}
+
+// .event04 {
+//   height: 935px;
+//   @include background-image($loc + 'bg-ev4.png');
+// }
+
+.event-footer {
+  height: 278px;
+  @include background-image($loc + 'bg-footer.png');
+}
+
+.nav {
+  position: absolute;
+  top: 600px;
+  left: 100%;
+  transform: translateX(-100%);
+
+  .anchors {
+    &__item {
+      font-size: 0;
+      display: block;
+      margin-bottom: 15px;
+    }
+  }
+  
+  .anchor {
+    display: block;
+    @include size(233px, 50px);
+    @include background-image($loc + 'f-nav.png', $pos: -379px top);
+
+    &-to-ev1 {
+      background-position: -379px -65px;
+    }
+    &-to-ev2 {
+      background-position: -379px -130px;
+    }
+    &-to-ev3 {
+      background-position: -379px -260px;
+    }
+    &-to-ev4 {
+      background-position: -379px -260px;
+    }
+
+    &.on, &:hover {
+      background-position-x: left;
+    }
+  }
+
+  .btn-winner {
+    @include background-image($loc + 'btn-winner-pop.png', $pos: right top);
+    @include size(233px, 50px);
+    &:hover, &.on{
+      background-position-x: left;
+    }
+  }
+
+}
+
+input[type="text"] {
+  font-family: 'Malgun Gothic', dotum, sans-serif;
+}

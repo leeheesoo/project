@@ -1,0 +1,20 @@
+.page-gift{    
+  background-image: url( $imgPath + '/page-gift/bg.png'), url( $imgPath + '/page-gift/bg-2.jpg');
+  background-repeat: no-repeat, repeat-x;
+  background-color: #fff;
+  background-position: center top, left top;
+  
+  .page__inner{
+    background: url($imgPath+'/page-gift/visual.png') right top no-repeat;        
+
+    .btn-join-event{      
+      top: 540px;
+      button{
+        width: 258px; 
+        height: 240px;
+        background: url($imgPath+'/page-gift/btn-event-join.png') center center no-repeat;        
+      }      
+    }    
+  }  
+}
+

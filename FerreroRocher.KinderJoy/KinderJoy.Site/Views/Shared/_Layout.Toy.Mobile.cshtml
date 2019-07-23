@@ -1,0 +1,138 @@
+﻿@{
+    var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+    var action = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window, document, 'script', 'dataLayer', 'GTM-NQVHZQQ');
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=640, user-scalable=yes" />
+    <title>@ViewBag.Title</title>
+    <meta property="og:title" content="@ViewBag.ogTitle" />
+    <meta property="og:url" content="@ViewBag.ogSnsURL" />
+    <meta property="og:image" content="@ViewBag.ogImage" />
+    <meta property="og:description" content="@ViewBag.ogDescription" />
+    @*@Styles.Render("~/Content/css")*@
+    @Scripts.Render("~/bundles/modernizr")
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    @RenderSection("metas", false)
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/style.Mobile.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/event.Mobile.css" />
+    @RenderSection("styles", false)
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript" src="~/Scripts/jquery.form.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/jquery.parallax.js"></script>
+    <script type="text/javascript" src="~/Content/js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/jquery.cookie.js"></script>
+    @*<script type="text/javascript" src="~/Scripts/ga.analytics.helper-0.1.js"></script>*@
+
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/expressive.annotations.validate.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/knockout-3.4.0.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/js/jquery.bxslider.css" />
+
+    <script src="~/Scripts/js/jquery.cookie.js"></script>
+    <script type="text/javascript">
+        @*$.ga.init({
+            analyticsId: '@System.Configuration.ConfigurationManager.AppSettings["google.analytics.account"]',
+        obj: ".GA"
+        });*@
+        var contentUrl = "@Url.Content("~/")";
+    </script>
+    <script src="~/Scripts/js/func.js"></script>
+    <script src="~/Scripts/js/controller.js"></script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQVHZQQ"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="nav_bar">
+        <div class="logo"><a href="@Url.Action("Index", "Home")"><img src="~/Images/m/logo/logo.png" alt="kinderjoy"></a></div>
+        <div class="icon_menu"><a href="javascript:openNav();"><img src="~/Images/m/logo/icon_menu.png" alt="menu"></a></div>
+    </div>
+    <div class="cont_navi" style="display:none;">
+        <div class="btn_close"><a href="javascript:closeNav();"><img src="~/Images/m/items/close.png" alt="닫기"></a></div>
+        <!-- header -->
+        <div class="header">
+            <h1 class="header-title"><a href="@Url.Action("Index", "Home")" class="GA" data-category="@ViewBag.GaTitle" data-action="[@ViewBag.GaTitle] [네비] 메인으로" data-delay="100">kinderjoy</a></h1>
+            <div class="menu">
+                <ul class="menu-list">
+                    <li class="menu-item menu-item-intro"><a href="@Url.Action("About", "Home")" class="GA" data-category="@ViewBag.GaTitle" data-action="[@ViewBag.GaTitle] [네비] 킨더조이란" data-delay="100">킨더조이란?</a></li>
+                    <li class="menu-item menu-item-cf"><a href="@Url.Action("TvCF", "Home")" class="GA" data-category="@ViewBag.GaTitle" data-action="[@ViewBag.GaTitle] [네비] TV/CF" data-delay="100">킨더조이 TV / CF</a></li>
+                    <li class="menu-item menu-item-event"><a href="@Url.Action("Index", "Pororo2018")" class="GA" data-category="@ViewBag.GaTitle" data-action="[@ViewBag.GaTitle] [네비] 킨더조이 이벤트" data-delay="100">킨더조이 이벤트</a></li>
+                    <li class="menu-item menu-item-flavor"><a href="@Url.Action("Flavor", "Home")" class="GA" data-category="@ViewBag.GaTitle" data-action="[@ViewBag.GaTitle] [네비] 맛있는 즐거움" data-delay="100">맛있는 즐거움</a></li>
+                    <li class="menu-item menu-item-image"><a href="@Url.Action("Image", "Home")" class="GA" data-category="@ViewBag.GaTitle" data-action="[@ViewBag.GaTitle] [네비] 상상하는 즐거움" data-delay="100">상상하는 즐거움</a></li>
+                    <li class="menu-item menu-item-togather"><a href="@Url.Action("Together", "Home")" class="GA" data-category="@ViewBag.GaTitle" data-action="[@ViewBag.GaTitle] [네비] 함께하는 즐거움" data-delay="100">함께하는 즐거움</a></li>
+                    <li class="menu-item menu-item-magickinder"><a href="@Url.Action("Index", "MagicKinderAppLaunchingEvent")" class="GA" data-category="@ViewBag.GaTitle" data-action="[@ViewBag.GaTitle] [네비] 매직킨더" data-delay="100">매직킨더</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- // header -->
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <!-- <hr />-->
+    </div>
+
+    <script type="text/javascript">
+
+        //cf, event  alert
+        $('.js-alert').on('click', 'a', function () {
+            alert('준비중입니다.');
+        });
+
+        function openNav() {
+        	$('.cont_navi').height($('.mobile_wrap').height()).show();
+        	$('.cont_navi .header').animate({right:0},500);
+        }
+
+        function closeNav() {
+        	$('.cont_navi .header').animate({ right: -418 },500,function() {
+        		$('.cont_navi').hide();
+        	});
+        }
+    </script>
+
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+
+    <!-- 구글 리마케팅 태그 코드 -->
+    @if (controller == "Home" && (action == "Index" || action == "About" || action == "Flavor" || action == "Image" || action == "Together")) {
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            var google_conversion_id = 872488122;
+            var google_custom_params = window.google_tag_params;
+            var google_remarketing_only = true;
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+        </script>
+        <noscript>
+            <div style="display:inline;">
+                <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/872488122/?guid=ON&script=0" />
+            </div>
+        </noscript>
+    }
+    <!-- // 구글 리마케팅 태그 코드 -->
+</body>
+</html>

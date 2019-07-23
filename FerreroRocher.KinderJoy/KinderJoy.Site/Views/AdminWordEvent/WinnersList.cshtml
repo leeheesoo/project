@@ -1,0 +1,158 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<KinderJoy.Site.Models.Admin.WordEvent.WordWinners>
+@{
+    ViewBag.Title = "당첨자업로드";
+    var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+    var action = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script>
+    $.validator.setDefaults({
+        onkeyup: false,
+        onclick: false,
+        onfocusout: false,
+        showErrors: function (errorMap, errorList) {
+            if (this.numberOfInvalids()) { // 에러가 있을 때만..
+                alert(errorList[0].message);
+                $(errorList[0].element).focus();
+            }
+        }
+    });
+</script>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="btn-group">
+                    <a class="btn btn-default @(action.Equals("Index") ? "active" : "")" href="@Url.Action("Index", "AdminWordEvent")">응모자</a>
+                    <a class="btn btn-default @(action.Equals("Share") ? "active" : "")" href="@Url.Action("Share", "AdminWordEvent")">공유</a>
+                    <a class="btn btn-default @(action.Equals("Stats") ? "active" : "")" href="@Url.Action("Stats", "AdminWordEvent")">통계</a>
+                    <a class="btn btn-default @(action.Equals("Winners") ? "active" : "")" href="@Url.Action("Winners", "AdminWordEvent")">당첨자</a>
+                    <a class="btn btn-default @(action.Equals("WinnersList") ? "active" : "")" href="@Url.Action("WinnersList", "AdminWordEvent")">당첨자업로드</a>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="text-left">
+            <form name="frmSearch1" action="@Url.Action("WinnersUpload")" class="form-inline" method="post" enctype="multipart/form-data">
+                <input type="hidden" class="form-control" name="St" value="1" readonly="readonly" />
+                1회:
+                <input type="file" class="form-control" name="UpFile" data-val="true" data-val-required="파일을 선택해 주세요." />
+                <input type="submit" value="업로드" />
+                <input type="button" value="보기" onclick="getWinnerList(1);" />
+            </form>
+
+            <form name="frmSearch2" action="@Url.Action("WinnersUpload")" class="form-inline" method="post" enctype="multipart/form-data">
+                <input type="hidden" class="form-control" name="St" value="2" readonly="readonly" />
+                2회:
+                <input type="file" class="form-control" name="UpFile" data-val="true" data-val-required="파일을 선택해 주세요." />
+                <input type="submit" value="업로드" />
+                <input type="button" value="보기" onclick="getWinnerList(2);" />
+            </form>
+
+            <form name="frmSearch2" action="@Url.Action("WinnersUpload")" class="form-inline" method="post" enctype="multipart/form-data">
+                <input type="hidden" class="form-control" name="St" value="3" readonly="readonly" />
+                3회:
+                <input type="file" class="form-control" name="UpFile" data-val="true" data-val-required="파일을 선택해 주세요." />
+                <input type="submit" value="업로드" />
+                <input type="button" value="보기" onclick="getWinnerList(3);" />
+            </form>
+
+            <form name="frmSearch2" action="@Url.Action("WinnersUpload")" class="form-inline" method="post" enctype="multipart/form-data">
+                <input type="hidden" class="form-control" name="St" value="4" readonly="readonly" />
+                4회:
+                <input type="file" class="form-control" name="UpFile" data-val="true" data-val-required="파일을 선택해 주세요." />
+                <input type="submit" value="업로드" />
+                <input type="button" value="보기" onclick="getWinnerList(4);" />
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                당첨자
+            </div>
+            <div class="modal-body" id="winList">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>이름</th>
+                            <th>연락처</th>
+                            <th>남/여</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $("#btnExcel").click(function (e) {
+        e.preventDefault();
+        var params = $("form[name=frmSearch]").serialize();
+        location.href = "/__Manager/WordEvent/ExcelWinners" + "?" + params;
+    });
+    $(function () {
+        $("form").each(function(){
+            $(this).data("validator").settings.submitHandler = function (form) {
+                var $form = $(form);
+                $form.ajaxSubmit({
+                    dataType: 'json',
+                    cache: false,
+                    async: false,
+                    beforeSubmit: function () {
+                        $(window).data('isLoading', true);
+                        $(".loading").show();
+                    },
+                    complete: function () {
+                        $(window).data('isLoading', false);
+                        $(".loading").hide();
+                    },
+                    success: function (data) {
+                        if (data.Result) {
+                            alert("당첨자가 업로드 되었습니다.");
+                            getWinnerList($form.find("input[name=St]").val());
+                        } else {
+                            alert(data.Message);
+                        }
+                        $form.clearForm();
+                    },
+                    error: function () {
+                        alert('일시적인 오류가 발생하였습니다. 페이지 새로고침 후 다시 시도해 주세요');
+                    }
+                });
+            }
+        });
+    });
+    function getWinnerList(St) {
+        $.ajax({
+            url: "@Url.Action("WinnersMembers")",
+            dataType: 'html',
+            cache: false,
+            data: {
+                St: St
+            },
+            success: function (data) {
+                $("#winList").html(data);
+                $('#uploadModal').modal();
+            },
+            error: function () {
+            }
+        });
+    }
+</script>

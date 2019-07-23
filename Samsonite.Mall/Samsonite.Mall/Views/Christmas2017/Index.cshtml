@@ -1,0 +1,244 @@
+﻿@model Samsonite.Mall.Models.Christmas2017Models.Christmas2017EntryModel
+@using Samsonite.Mall.Domain.Entities.Christmas2017
+@{
+    ViewBag.Title = "샘소나이트 크리스마스 2017";
+
+    bool isClose = DateTime.UtcNow.AddHours(9) >= new DateTime(2017, 12, 18);
+}
+@section styles{
+    <link href="~/Content/css/christmas2017/style.css" rel="stylesheet" />
+    <style>
+        [v-cloak]{
+            display:none;
+        }
+    </style>
+}
+
+<div class="event-container" id="christmas-2017-entry">
+    <!-- S: 이벤트2 -->
+    <section class="dibs-area">
+        <h2><img src="~/Content/images/christmas2017/w/tl_event2.jpg" alt="내 마음에 쏘옥~드는 가방을 꾸욱~ 찍어 찜! 가장 받고 싶은 크리스마스 선물은?" class="change-img"></h2>
+        <div class="choose-product">
+            <form action="/" method="post">
+                <!-- product1 -->
+                <div class="choose-product-box">
+                    <div class="progress-box">
+                        <div class="progress-head"><img src="~/Content/images/christmas2017/w/img_progress_head.png" alt="Alternate Text" /></div>
+                        <p><span class="total-num" v-cloak>{{tielonnCount}}</span>표</p>
+                        <div id="progressbar" class="progress-body">
+                            <div class="dibs-progress-bar" id="dipsProgressBar1">
+                                <img src="~/Content/images/christmas2017/bg_progressbar.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-box">
+                        <label for="product1">
+                            @Html.RadioButtonFor(e => e.ChristmasBagType, ChristmasBagType.Tielonn, new { @class = "input-ir", id = "product1", v_model = "christmasBag" })
+                            <span class="product-img">
+                                <img src="~/Content/images/christmas2017/w/dibs_product1.png" alt="">
+                                <span class="dimm-dibs">
+                                    <img src="~/Content/images/christmas2017/w/dim_dibs.png" alt="">
+                                </span>
+                            </span>
+                            <i class="rd-img">
+                                <img src="~/Content/images/christmas2017/w/vr_rd.png" alt="">
+                            </i>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- product2 -->
+                <div class="choose-product-box">
+                    <div class="progress-box">
+                        <div class="progress-head"><img src="~/Content/images/christmas2017/w/img_progress_head.png" alt=""></div>
+                        <p><span class="total-num" v-cloak>{{marlonCount}}</span>표</p>
+                        <div id="progressbar" class="progress-body">
+                            <div class="dibs-progress-bar" id="dipsProgressBar2">
+                                <img src="~/Content/images/christmas2017/bg_progressbar.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-box">
+                        <label for="product2">
+                            @Html.RadioButtonFor(e => e.ChristmasBagType, ChristmasBagType.Marlon, new { @class = "input-ir", id = "product2", v_model = "christmasBag" })
+                            <span class="product-img">
+                                <img src="~/Content/images/christmas2017/w/dibs_product2.png" alt="">
+                                <span class="dimm-dibs">
+                                    <img src="~/Content/images/christmas2017/w/dim_dibs.png" alt="">
+                                </span>
+                            </span>
+                            <i class="rd-img">
+                                <img src="~/Content/images/christmas2017/w/vr_rd.png" alt="">
+                            </i>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- product3 -->
+                <div class="choose-product-box">
+                    <div class="progress-box">
+                        <div class="progress-head"><img src="~/Content/images/christmas2017/w/img_progress_head.png" alt=""></div>
+                        <p><span class="total-num" v-cloak>{{supremeLiteCount}}</span>표</p>
+                        <div id="progressbar" class="progress-body">
+                            <div class="dibs-progress-bar" id="dipsProgressBar3">
+                                <img src="~/Content/images/christmas2017/bg_progressbar.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-box">
+                        <label for="product3">
+                            @Html.RadioButtonFor(e => e.ChristmasBagType, ChristmasBagType.SupremeLite, new { @class = "input-ir", id = "product3", v_model = "christmasBag" })
+                            <span class="product-img">
+                                <img src="~/Content/images/christmas2017/w/dibs_product3.png" alt="">
+                                <span class="dimm-dibs">
+                                    <img src="~/Content/images/christmas2017/w/dim_dibs.png" alt="">
+                                </span>
+                            </span>
+                            <i class="rd-img">
+                                <img src="~/Content/images/christmas2017/w/vr_rd.png" alt="">
+                            </i>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- product4 -->
+                <div class="choose-product-box">
+                    <div class="progress-box">
+                        <div class="progress-head"><img src="~/Content/images/christmas2017/w/img_progress_head.png" alt=""></div>
+                        <p><span class="total-num" v-cloak>{{plumeBasicCount}}</span>표</p>
+                        <div id="progressbar" class="progress-body">
+                            <div class="dibs-progress-bar" id="dipsProgressBar4">
+                                <img src="~/Content/images/christmas2017/bg_progressbar.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-box">
+                        <label for="product4">
+                            @Html.RadioButtonFor(e => e.ChristmasBagType, ChristmasBagType.PlumeBasic, new { @class="input-ir", id="product4", v_model = "christmasBag" })
+                            <span class="product-img">
+                                <img src="~/Content/images/christmas2017/w/dibs_product4.png" alt="">
+                                <span class="dimm-dibs">
+                                    <img src="~/Content/images/christmas2017/w/dim_dibs.png" alt="">
+                                </span>
+                            </span>
+                            <i class="rd-img">
+                                <img src="~/Content/images/christmas2017/w/vr_rd.png" alt="">
+                            </i>
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <ul class="btn-box">
+            <li><button  type="button" id="btnCopy"><img src="~/Content/images/christmas2017/w/btn_event_share.png" alt="이벤트 공유하기"></button></li>
+            <li><button type="button" v-on:click="openChristmasEntry()"><img src="~/Content/images/christmas2017/w/btn_vote.png" alt="선물 투표하기"></button></li>
+        </ul>
+    </section>
+    <!-- E: 이벤트2 -->
+
+    <!-- S: 이벤트3 -->
+    <section class="banner-area">
+        <h2><img src="~/Content/images/christmas2017/w/tl_event3.jpg" alt="크리스마스니까! 더 드려요~ 쌤소나이트 공식몰 추가 혜택!"></h2>
+        <ul>
+            <li><img src="~/Content/images/christmas2017/w/img_banner1.jpg" alt="이벤트 기간 동안! 쌤소나이트 공식몰 구매 고객 대상 뚜레쥬르 크리스마스 케이크 50명 추첨 증정!"></li>
+            <li><a href="https://www.samsonitemall.co.kr/RegiEvent_201712?utm_source=Promotion&utm_campaign=17_Christmas&utm_medium=RegiEvent" target="_blank"><img src="~/Content/images/christmas2017/w/img_banner2.jpg" alt="12월 한 달간! 쌤소나이트 공식몰 회원가입 시 따뜻한 아메리카노 추첨 증정! 회원가입 하기"></a></li>
+        </ul>
+    </section>
+    <!-- E: 이벤트3 -->
+
+    <section class="event-notice">
+        <img src="~/Content/images/christmas2017/w/notice_event.jpg" alt="이벤트 공지사항">
+    </section>
+
+    <!--======================
+    // 개인정보 입력 팝업 
+    ========================-->
+    <div id="dimmed"></div>
+    <div class="popup" id="pop-entry">
+        <h2><img src="~/Content/images/christmas2017/tl_pop.jpg" alt="이벤트 참여를 위한 개인 정보를 입력해 주세요!"></h2>
+        <div class="pop-con">
+            @using (Ajax.BeginRouteForm("CreateChristmas2017", new { httpRoute = true },
+                new AjaxOptions {
+                    HttpMethod = "post",
+                    OnBegin = "christmas2017Model.beginEntry",
+                    OnComplete = "christmas2017Model.completeEntry",
+                    OnSuccess = "christmas2017Model.successEntry",
+                    OnFailure = "christmas2017Model.failEntry"
+                },
+                new { id = "frmChristmas2017" })) {
+                @Html.HiddenFor(e => e.ChristmasBagType,new { v_model = "christmasBag" })
+                <fieldset>
+                    <div class="reg-con">
+                        <div class="info-area">
+                            <dl class="info-name">
+                                <dt class="tl-name"><img src="~/Content/images/christmas2017/tl_info_name.jpg" alt="이름"></dt>
+                                <dd>
+                                    @Html.TextBoxFor(e =>e.Name,new { @class="entry-name",maxlength=20})
+                                </dd>
+                            </dl>
+                            <dl class="info-id">
+                                <dt class="tl-id"><img src="~/Content/images/christmas2017/tl_info_id.jpg" alt="공식몰 ID"></dt>
+                                <dd>
+                                    @Html.TextBoxFor(e => e.SamsoniteMallId, new { maxlength = 50 })
+                                </dd>
+                            </dl>
+                            <dl class="info-phone">
+                                <dt class="tl-phone"><img src="~/Content/images/christmas2017/tl_info_phone.jpg" alt="연락처"></dt>
+                                <dd class="phone-box">
+                                    @Html.TextBoxFor(e => e.Mobile, new { @class= "entry-phone", type="tel", maxlength = 11 })
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="policy-area">
+                        <p class="policy-check">
+                            <label for="Agree">
+                                @Html.CheckBoxFor(e => e.Agree,new { @class="input-ir"})
+                                <span id="imgAgree"><img src="~/Content/images/christmas2017/agree_policy1_off.jpg" alt="개인정보 수집 및 취급 위탁 동의"></span>
+                            </label>
+                        </p>
+                        <div class="policy-box">
+                            <p class="contents">
+                                [개인정보 수집 및 취급 위탁 동의]<br>
+                                <br>
+                                고객님이 입력하신 개인정보는 ‘정보통신망 이용촉진 및 정보보호 등에 관한 법률’에 따라 쌤소나이트코리아(주)가 수집, 활용 및 취급 위탁 시 본인의 동의를 얻어야 하는 정보입니다.<br>
+                                개인정보는 아래의 목적으로 프로모션 대행사에만 제공되며, 이외의 용도로는 활용되지 않습니다.<br><br>
+                                1)&nbsp;개인정보 수집 및 이용목적 : 참여자 본인 확인 및 경품 발송<br>
+                                2)&nbsp;수집하는 개인정보 항목 : 이름, 연락처, 공식몰 ID<br>
+                                3)&nbsp;개인정보 보유 및 이용기간 : 이벤트 종료 후 3개월 이내 파기 (단, 관계 법령 규정에 의하여 보존할 필요가 있는 경우 관련 법령에 따라 보관)<br>
+                                4)&nbsp;본 이벤트 참여 고객은 개인정보 수집, 활용에 대하여 동의를 거부할 권리가 있으며, 개인정보 수집, 활용에 대한 미동의 시 해당 이벤트 참여하실 수 없습니다.<br>
+                                5)&nbsp;쌤소나이트코리아(주)는 서비스 향상과 원활한 진행을 위하여 개인 정보 처리 업무를 외부 전문 업체에 위탁하여 처리하고 있습니다. <br>
+                                <br>
+                                * 이벤트 운영 위탁 업체 : 메가존(주)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="btn-complete">
+                        <button type="submit" v-bind:disabled="isDisabled"><img src="~/Content/images/christmas2017/btn_reg_complete.png" alt="참여완료"></button>
+                    </div>
+                </fieldset>
+            }
+        </div> <!-- E: pop-con -->
+        <p class="event-notice"><img src="~/Content/images/christmas2017/pop_notice.jpg" alt="반드시 쌤소나이트 공식 온라인몰 개인정보와 동일한 연락처를 기입하셔야 합니다."></p>
+        <button type="button" onclick="closePop('entry'); return false;" class="btn-close"><img src="~/Content/images/christmas2017/btn_close.png" alt="팝업 닫기"></button>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.shy4blue.placeholder.js"></script>
+    <script src="~/Content/js/common/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+    <script src="~/Content/js/christmas2017/common_pub.js"></script>
+    <script src="~/Content/js/christmas2017/dev.js"></script>
+    <script>
+        var isClose = '@isClose';
+        $(function () {
+            christmas2017Model.getChristmasStatsList();
+        });
+    </script>
+}

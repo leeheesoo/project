@@ -1,0 +1,500 @@
+﻿@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@charset 'utf-8';
+
+$fontStyle : 'Noto Sans KR' ;
+
+$inputBorder :  1px solid #ac9988;
+$inputBg : #fff;
+$inputTextColor : #777;
+
+$color-orange: #eb6306;
+
+$location: '../../Images/FinancialConcertMarketingAgree/';
+$popWidth:750px;
+$popInnerWidth:626px;
+
+// =============================
+// mixin
+// =============================
+
+// form - input border-radius
+@mixin form-input-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+// size
+@mixin size($w, $h: $w) {
+  width: $w;
+  height: $h;
+}
+
+// =============================
+// clear
+// =============================
+.clear-fix::after {
+  display: table;
+  clear: both;
+  content: '';
+}
+
+//popup
+#dimmed {
+	display:block;
+}
+
+#endDimmed {
+	display:none;
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	text-align:center;
+    background-color: rgba(255,255,255,.8);
+	z-index:999;
+	> img {
+		margin-top:140px;
+    }
+}
+
+div[id^="pop-"] {
+  //  display:none;
+    position:absolute;
+	top:0;
+    left:50%;
+    width:$popWidth;
+    margin-left:-375px;
+    z-index:99;
+    background-color:#fff;
+}
+.inner-pop {
+    width: $popInnerWidth;
+    margin:0 auto;
+    padding-bottom:50px;
+}
+.header {
+    position:relative;
+    background-color:$color-orange;
+    button {
+        position:absolute;
+        right:15px;
+        top:15px;
+        background-image:url(about:blank);
+    }
+}
+h1 {
+    height:130px;
+    line-height:130px;
+    text-align:center;
+    img {
+        vertical-align:middle;
+    }
+}
+label {
+    cursor: pointer;
+}
+  img {
+    pointer-events: none;
+  }
+input {
+    min-width: initial;
+}
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+select {
+    width: $popInnerWidth;
+    height:70px;
+    min-width:auto;
+    padding-left:30px;
+    margin-bottom:15px;
+    line-height:57px;
+    border:$inputBorder;
+    background:$inputBg;
+    color:$inputTextColor;
+    font-family:$fontStyle;
+    font-size:24px;
+    box-sizing: border-box;
+    @include form-input-radius(5px);
+
+}
+input[type="radio"],
+input[type="checkbox"] {
+    position:absolute;
+    width:1px;
+    height:1px;
+    opacity:.0001;
+}
+
+ //개인정보팝업
+.pop-personal {
+    background:#fff;
+    .btn-phoneconfirm {
+        button {
+            @include form-input-radius(5px);
+            background-color:#524840;
+        }
+    }
+    //input style
+    label {
+        position: relative;
+        display:inline-block;
+        width:205px;
+        line-height:40px;
+        font-size:0;
+        span {
+            display:inline-block;
+            width:47px;
+            height:47px;
+            margin-right:13px;
+            @include background('input-check.png', $repeat:no-repeat, $position:center top);
+            &.em {
+              @include background('input-check-em.png', $position:center top);
+            }
+        }
+        span.radio {
+            display:inline-block;
+            width:47px;
+            height:47px;
+            margin-right:13px;
+            @include background('input-radio.png', $repeat:no-repeat, $position:center top);
+            &.em {
+                @include background('input-radio-em.png',$position:center top);
+            }
+        }
+        .check-dimm {
+            position: absolute;
+            top: -7px;
+            left: -7px;
+            width: 95%;
+            height: 53px;
+            background: transparent;
+            opacity: .3;
+        }
+        input:checked ~ .check-dimm {
+            display: block;
+        }
+        input:checked ~span {
+            background-position:center bottom !important;
+        }
+        img {
+            margin-right:15px;
+            vertical-align:middle;
+        }
+    }
+    h3 {
+        margin:40px 0 18px;
+    }
+
+    .text-19 {
+        margin:30px 0 15px;
+        text-align: center;
+    }
+    .btn-phoneconfirm {
+        margin:53px 0;
+        text-align:center;
+    }
+    //info-area
+    .info-area {
+        position:relative;
+        text-align:left;
+        .transparent-bg {
+            position:absolute;
+            left:0;
+            top:0;
+            width:$popInnerWidth;
+            height:240px;
+            background:rgba(0,0,0,0.000001);
+            a {
+                display:block;
+                height:100%;
+                cursor:default;
+            }
+        }
+        .name-line {
+            input[type="text"]{
+                float:left;
+                width: 395px;
+                margin-right:10px;
+            }
+            .gender {
+                float:left;
+                width:218px;
+                height:71px;
+                overflow:hidden;
+                font-size:0;
+
+                label {
+                    cursor:pointer;
+                }
+                .info-male{
+                    width: 110px;
+                    span {
+                        width: 110px;
+                        height:71px;
+                        @include background('btn-man.png', $repeat:no-repeat, $position:top center);
+                    }
+                    input:checked ~span {
+                        background-position:center bottom;
+                    }
+                }
+                .info-female{
+                    width:108px;
+                    span {
+                        width: 108px;
+                        height:71px;
+                        @include background('btn-woman.png', $repeat:no-repeat, $position:top center);
+                    }
+                    input:checked ~span {
+                        background-position:center bottom;
+                    }
+                }
+            }
+        }
+        input[type="text"] {
+            background-position:30px center;
+        }
+    }
+
+    //개인정보 수집이용,개인정보의 제공
+    .agree-text {
+        margin-bottom:48px;
+        text-align:left;
+        p {
+            margin-top:15px;
+            padding-top:30px;
+            border-top:1px solid #777;
+            &.agree-notice {
+                padding: 0;
+                padding-bottom: 42px;
+                margin: 26px 0 44px 0;
+                border: none;
+                border-bottom: 2px solid #777;
+            }
+
+        }
+        label[for="agree01"] {
+            width: 190px;
+        }
+        label[for="disagree01"],
+        .disagree-label {
+            width:240px;
+        }
+        &.bottom-line {
+            padding-bottom:30px;
+            border-bottom:1px solid #cbcccd;
+        }
+    }
+
+    //보유 이용기간
+    .retention-period {
+        font-size:0;
+        text-align:left;
+        label[for="year2"],
+        label[for="year1"]
+            {
+            margin-top:15px;
+        }
+    }
+    //연락방식 선택
+    .contact-check {
+        font-size:0;
+        text-align:left;
+        p {
+            margin-bottom:20px;
+        }
+        label[for="email"] {
+            margin-top:15px;
+        }
+        label[for="post"] {
+            margin-top:15px;
+        }
+    }
+    //관심분야
+    .interest-check {
+        label {
+            width:48%;
+            margin-bottom:15px;
+        }
+    }
+
+    //이메일
+    .email-wrap {
+        display:none;
+        text-align:left;
+        .info-name {
+            margin-top:33px;
+            input {
+                width: 285px;
+
+                &:nth-of-type(2) {
+                  float: right;
+                }
+            }
+            .email-icon {
+                display:inline-block;
+                font-size:0;
+                padding:0 9px;
+                vertical-align:-4px;
+            }
+            select {
+                // width:380px;
+                -webkit-appearance: none; /* 화살표 없애기 for chrome*/
+                -moz-appearance: none;    /* 화살표 없애기 for firefox*/
+                appearance: none;         /* 화살표 없애기 공통*//* 화살표 아이콘 추가 */
+                @include background('select-icon.png', $repeat:no-repeat, $position:95% 50%);
+            }
+            select::-ms-expand {
+                display: none;            /* 화살표 없애기 for IE10, 11*/
+            }
+        }
+    }
+    .essential-point-title {
+        margin:20px 0 25px;
+        //border-top: 1px solid #777;
+    }
+    //주소
+    .post-wrap {
+        text-align:left;
+        &.address-wrap {
+            display:none;
+        }
+        .btn-post {
+            background:#524840;
+            @include form-input-radius(5px);
+        }
+        .post-box {
+            display:inline-block;
+            width: 413px;
+            margin-right:7px;
+        }
+        span {
+            img {
+                vertical-align:-23px;
+            }
+        }
+		.post-dim-wrap {
+			display:inline-block;
+			position:relative;
+		}
+		.post-dim {
+			position:absolute;
+			top:0;
+			left:0;
+			width:100%;
+			height:70px;
+		}
+    }
+
+    //자녀 이름,나이
+    .children-wrap {
+        margin-top:25px;
+        padding-bottom:40px;
+        border-bottom:1px solid #cbcccd;
+        label {
+            width:258px;
+            &:first-child {
+                margin-right:8px;
+            }
+            input {
+                width:100%;
+            }
+        }
+    }
+
+    .btn-complete-box {
+        position: relative;
+        margin-top: 34px;
+        padding-top: 44px;
+        border-top: 1px solid #ac9988;
+            .loading {
+            position: absolute;
+            top: 44px;
+            left: 0;
+            width: 100%;
+            height: 112px;
+            text-align: center;
+            filter: alpha(opacity=60);
+            opacity: 0.60;
+            background-color: #000;
+            overflow: hidden;
+            img {
+                padding-top: 25px;
+            }
+        }
+    }
+}
+
+// 동의팝업
+.agree-pop {
+    text-align:center;
+    padding:85px 0 50px;
+    .btn-close {
+        position:absolute;
+        top:28px;
+        right:32px;
+    }
+    p {
+        width:530px;
+        margin:0 auto;
+    }
+    .btn-agree {
+        margin-top:62px;
+    }
+}
+
+
+// 우편번호 팝업
+.pop-post {
+    padding: 0;
+    .btn-close {
+        top: 0px;
+        right: 0px;
+    }
+	.post-api {
+		width:680px;
+		padding:50px 0;
+		margin:0 auto;
+		-webkit-overflow-scrolling: touch //ios scroll
+	}
+}
+
+
+
+.policy-area {
+  height: 238px;
+  border: 1px solid #dbccbf;
+  color: #656565;
+  border-radius: 5px;
+  line-height:1.5;
+  overflow-y: auto;
+  font-family: 'Malgun Gothic', Dotum, sans-serif;
+  .policy-txt {
+    margin: 20px 0 0 20px;
+    padding-bottom:20px;
+  }
+}
+
+ // ======================
+ // 회차선택
+ // ======================
+ .term {
+  &-tit {
+    @include size(null, 69px);
+    @include background('tit-select-term.png', $position: left 30px);
+    text-indent: -9999em;
+  } // tit
+
+  &-select {
+    @include background('ico-arrow-down.png', $position: 574px center);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+}
+
+figure img {
+    width: 100%;
+}

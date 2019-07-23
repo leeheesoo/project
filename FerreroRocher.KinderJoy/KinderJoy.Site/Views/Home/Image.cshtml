@@ -1,0 +1,280 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "상상하는즐거움";
+    ViewBag.GaTitle = "상상하는즐거움";
+
+    string trackingURLSNSFlag = Request.QueryString.Get("utm_medium");
+    string trackingURLScrapFlag = Request.QueryString.Get("utm_content");
+
+    ViewBag.ogTitle = "우리아이에게 필요한 서프라이즈는 무엇일까요?";
+    ViewBag.ogDescription = "킨더조이 NEW 서프라이즈 출시!";
+    ViewBag.ogImgae = "http://" + HttpContext.Current.Request["HTTP_HOST"] + "/Images/toy/thumbnail/facebook/facebook_boys.jpg";
+
+    if (trackingURLSNSFlag != null && trackingURLScrapFlag != null)
+    {
+        if (trackingURLSNSFlag.Equals("facebook"))
+        {
+            ViewBag.ogSnsURL = "http://" + HttpContext.Current.Request["HTTP_HOST"] + "/ Image/Track/toyPage/facebook/" + trackingURLScrapFlag;
+            ViewBag.ogImage = "http://" + HttpContext.Current.Request["HTTP_HOST"] + "/Images/toy/thumbnail/facebook/facebook_" + trackingURLScrapFlag + ".jpg";
+        }
+        else
+        {
+            ViewBag.ogSnsURL = "http://" + HttpContext.Current.Request["HTTP_HOST"] + "/Image/Track/toyPage/kakaostory/" + trackingURLScrapFlag;
+            ViewBag.ogImage = "http://" + HttpContext.Current.Request["HTTP_HOST"] + "/Images/toy/thumbnail/kakaostory/kakaostory_" + trackingURLScrapFlag + ".jpg";
+        }
+    }
+}
+@section metas{
+    <meta property="og:title" content="@ViewBag.ogTitle" />
+    <meta property="og:url" content="@ViewBag.ogSnsURL" />
+    <meta property="og:image" content="@ViewBag.ogImage" />
+    <meta property="og:description" content="@ViewBag.ogDescription" />
+}
+@section styles{
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/toy_motion.css" />
+}
+<script>
+    var isMobile = false;
+    var isInApp = false;
+</script>
+<script src="~/Scripts/Common/toyController.js"></script>
+<div class="content-image">
+
+    <div class="content-image-inner" id="wrap">
+        <div class="top_sec">
+            <div class="tit_area">
+                <h2>
+                    <img src="~/Images/toy/main/tit-toy.png" alt="킨더조이의 상상하는 즐거움">
+                </h2>
+                <p>
+                    <img src="~/Images/toy/main/txt-toy-header.png" alt="즐거움이 가득한 디즈니 커플 & 스타워즈 서프라이즈! 100% 디즈니 커플 & 스타워즈 친구들을 만나보세요!">
+                </p>
+            </div>
+            <!-- 스크롤 다운 -->
+            <figure class="scroll_down">
+                <img src="~/Images/toy/main/ico_scrollDown_w.png" alt="스크롤 다운">
+                <figcaption class="a11y-hidden">
+                    화면을 스크롤 하여 킨더 조이 장난감을 만나 보세요
+                </figcaption>
+            </figure>
+
+            <!-- 성 -->
+            <figure class="toy-castle">
+                <img src="Images/toy/main/castle.png" alt="성">
+            </figure>
+
+
+            <figure class="toy-center-rino">
+                <img class="pos_loc top-rino animated bounceIn" src="~/images/toy/motion_img/rino-center.png" alt="">
+                <figcaption>
+                    @*<a class="electronic-sign electronic-sign-go-event" role="button" style="cursor:pointer;" onclick="alert('5월 10일 새로운 이벤트로 만나요!');">*@
+                    <a class="electronic-sign electronic-sign-go-event" href="@Url.Action("Index", "DisneyStarWars2018")" target="_blank">
+                        <span class="a11y-hidden">이벤트 참여하러가기</span>
+                    </a>
+                </figcaption>
+            </figure>
+
+            <!-- 자이로드롭 -->
+            <div class="gyro_area">
+                <div class="gyro_bg">
+                    <div class="gyro_img">
+                        <img src="~/images/toy/motion_img/gyro_img.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- 관람차 -->
+            <div class="ferris_area">
+                <div class="ferris_bg">
+                    <div class="ferris_wheel_area"><img src="~/images/toy/motion_img/ferris_wheel.png" alt=""></div>
+                    <div class="ferris_kinder_area">
+                        <div class="ferris_kinder1"><img src="~/images/toy/motion_img/ferris_kinder.png" alt=""></div>
+                        <div class="ferris_kinder2"><img src="~/images/toy/motion_img/ferris_kinder.png" alt=""></div>
+                        <div class="ferris_kinder3"><img src="~/images/toy/motion_img/ferris_kinder.png" alt=""></div>
+                        <div class="ferris_kinder4"><img src="~/images/toy/motion_img/ferris_kinder.png" alt=""></div>
+                        <div class="ferris_kinder5"><img src="~/images/toy/motion_img/ferris_kinder.png" alt=""></div>
+                        <div class="ferris_kinder6"><img src="~/images/toy/motion_img/ferris_kinder.png" alt=""></div>
+                        <div class="ferris_kinder7"><img src="~/images/toy/motion_img/ferris_kinder.png" alt=""></div>
+                        <div class="ferris_kinder8"><img src="~/images/toy/motion_img/ferris_kinder.png" alt=""></div>
+                        <div class="ferris_kinder9"><img src="~/images/toy/motion_img/ferris_kinder.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div><!--//top_sec -->
+
+        <div class="main_sec">
+
+            <!-- ### 장난감 1 ###-->
+            <figure class="toy-first">
+                <img class="starwars-motion-egg" src="/Images/toy/motion_img/motion-boys-egg.png" alt="발사되는 달걀">
+                <img class="starwars-motion-car1 animate-jump" src="/Images/toy/motion_img/motion-boys-car1.png" alt="움직이는 차 1">
+                <img class="starwars-motion-car2" src="/Images/toy/motion_img/motion-boys-car2.png" alt="움직이는 차 2">
+                <img class="starwars-motion-car3" src="/Images/toy/motion_img/motion-boys-car3.png" alt="움직이는 차 3">
+                <img class="starwars-motion-car4 " src="/Images/toy/motion_img/motion-boys-car4.png" alt="움직이는 차 4">
+                <img class="starwars-motion-fire " src="/Images/toy/motion_img/motion-fire.png" alt="로켓 불">
+                <figcaption>
+                    <button class="electronic-sign electronic-sign-boy" onclick="showToyDetailPop('boys')">
+                        <span class="a11y-hidden">남아용 장난감</span>
+                    </button>
+                </figcaption>
+            </figure>
+
+            <!-- ### 장난감 2 ### -->
+            <figure class="toy-second">
+                <img class="disney-motion1" src="/Images/toy/motion_img/motion-girl1.png" alt="움직이는 커플1">
+                <img class="disney-motion2" src="/Images/toy/motion_img/motion-girl2.png" alt="움직이는 커플2">
+                <img class="disney-motion3" src="/Images/toy/motion_img/motion-girl3.png" alt="움직이는 커플3">
+                <img class="disney-motion4" src="/Images/toy/motion_img/motion-girl4.png" alt="움직이는 커플4">
+                <img class="disney-motion5" src="/Images/toy/motion_img/motion-girl5.png" alt="움직이는 커플5">
+                <figcaption>
+                    <button class="electronic-sign electronic-sign-girl" onclick="showToyDetailPop('girls')">
+                        <span class="a11y-hidden">여아용 장난감</span>
+                    </button>
+                </figcaption>
+            </figure>
+
+            <!-- ### 장난감 3 ###
+            <div class="toy-third">
+                <h3><a href="#none" onclick="showToyDetailPop('girls')" class="GA" data-category="상상하는즐거움" data-action="[상상하는즐거움] 여아용 장난감">여아용 장난감</a></h3>
+                <div class="pos_loc girl-kitty-left animate-jump"><img src="~/images/toy/motion_img/motion_kitty_left.png" alt=""></div>
+                <div class="pos_loc girl-kitty-eye animate-bg-pos-x"></div>
+                <div class="copy_txt"><img src="/Images/toy/main/copy.png" alt="Copyright ⓒ 1976, 2017 SANRIO CO., LTD.(Appl.No.SK17048)  JUSTICE LEAGUE and all related characters and elements ⓒ & ™ DC Comics. (s17)  ⓒFerrero Group. All Rights Reserved."></div>
+            </div>
+            -->
+            <!-- 앉은 라노 -->
+            <div class="pos_loc sit_rano">
+                <img src="~/images/toy/main/sit_rano.png" alt="자전거 타는 라노">
+            </div>
+            <!-- 자전거 타는 라노
+            <div class="pos_loc riding_rano"><img src="~/images/toy/main/riding_rano.png" alt="자전거 타는 라노"></div>
+            -->
+            <!-- 왼쪽 분수 -->
+            <!-- 플로팅 네비게이션 -->
+            <div class="toy-sticky" id="stickNav">
+                <span>
+                    <a class="toy-sticky-go-top" href="#">
+                       <span class="a11y-hidden">메뉴로 가기</span>
+                    </a>
+                </span>
+                <ul>
+                    <li class="toy-sticky-item">
+                        <a class="toy-sticky-link" href="#" class="GA" data-category="상상하는즐거움" data-action="[상상하는즐거움] [퀵] 뽀로로 장난감">
+                            <span class="a11y-hidden">이벤트 참여하기</span>
+                        </a>
+                    </li>
+                    <li class="toy-sticky-item is-new">
+                        <a class="toy-sticky-link" href="#" class="GA" data-category="상상하는즐거움" data-action="[상상하는즐거움] [퀵] 남아용 장난감">
+                            <span class="a11y-hidden">남아용 장난감</span>
+                        </a>
+                    </li>
+                    <li class="toy-sticky-item is-new">
+                        <a class="toy-sticky-link" href="#" class="GA" data-category="상상하는즐거움" data-action="[상상하는즐거움] [퀵] 여아용 장난감">
+                            <span class="a11y-hidden">여아용 장난감</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- //main_sec -->
+    </div><!-- //content-image-inner -->
+    <!-- ***** 장난감 팝업 시작 **** -->
+	<div id="png_bg"></div>
+
+	<div class="popup_toys">
+		<header>
+			<h3 class="popup_toy-tit">
+				<img src="~/Images/toy/bn/popup-detail-tit.png" alt="디즈니 커플 & 스타워즈 장난감">
+			</h3>
+			<span class="toy-disc"></span>
+		</header>
+
+		<div class="clearfix">
+			 <!-- 왼쪽 썸네일 -->
+          <div class="popup_toys-thumb popup_toys-thumb-left">
+              <ul class="js-thumb"></ul>
+          </div>
+
+    			<!-- 오른쪽 썸네일 -->
+          <div class="popup_toys-thumb popup_toys-thumb-right">
+              <ul class="js-thumb"></ul>
+          </div>
+
+    			<!-- detail -->
+          <figure class="popup_toys-detail js-toy-detail">
+          	<img src="~/Images/toy/bn/items/girls/thumb-0.png" alt="">
+          </figure><!-- // detail -->
+		</div>
+
+		<p class="a11y-hidden">친구들에게 킨더조이 속 숨겨진 장난감을 소개해보세요!</p>
+
+        <ul class="popup_toys-sns js-sns">
+            <li>
+              	<button type="button" onclick="toyKakaoStoryScrap();">
+              		<img src="~/Images/toy/bn/btn_ks.png" alt="카카오스토리">
+              	</button>
+            </li>
+            <li>
+                <button type="button" onclick="toyFacebookScrap();">
+              		<img src="~/Images/toy/bn/btn_fs.png" alt="페이스북">
+              	</button>
+            </li>
+        </ul>
+
+		<button onclick="closePop();" class="popup_toys-close">
+			<span class="a11y-hidden">팝업닫기</span>
+		</button>
+	</div><!-- ***** 장난감 팝업 **** -->
+
+</div>
+
+<!-- // content -->
+@section scripts{
+    <script type="text/javascript" src="~/Content/js/jquery-ui-1.11.4.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/jQueryRotate.js"></script>
+    <script type="text/javascript" src="~/Content/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="~/Content/js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="~/Content/js/toy_motion.js"></script>
+    <script type="text/javascript" src="~/Content/js/toy.page.js"></script>
+    <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script>
+        // kakao api setting
+        Kakao.init('@System.Configuration.ConfigurationManager.AppSettings["sns.kakao.key"]');
+
+        // ==================================================
+        // common setting
+        // ==================================================
+        function goPosition(to) {
+            scrollReady = false;
+            $("html, body").stop().animate(
+				{ scrollTop: to },
+				500,
+				function () { scrollReady = true; }
+			);
+        }
+
+        // ==================================================
+        // func
+        // ==================================================
+
+        // 팝업 여닫기(외부에서 사용할수 있도록 함수 처리)
+        function _openPop(flag) {
+            var name = '.popup-' + flag;
+            $(name).addClass('on');
+            goPosition(0);
+        }
+
+        // 동영상 팝업
+        function _openMov(param) {
+            _openPop('mov');
+            var hrefMov = $(param).attr("href");
+            $('.mov_cont iframe').attr('src', hrefMov);
+
+        }
+        function _closeMov() {
+            $('.mov_cont iframe').attr('src', '');
+
+        }
+    </script>
+}
+
+
+

@@ -1,0 +1,137 @@
+﻿@{
+    ViewBag.Title = "2018 디즈니커플&스타워즈";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var isClose = DateTime.Now >= new DateTime(2018, 2, 12);
+}
+
+
+@section styles {
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/Pororo2018/css/event.min.css" rel="stylesheet" />
+}
+
+<div class="container" id="pororo-2018-event">
+    <div class="event-container">
+        <!-- kv -->
+        <div class="event-kv">
+            <div class="kv-inner">
+                <h2><img src="~/Images/Pororo2018/w/pororo_logo.png" alt="뽀롱뽀롱 뽀로로" /></h2>
+                <h3><img src="~/Images/Pororo2018/w/kv_title.png" alt="new 킨더조이의 새로운 뽀로로 서프라이즈를 만나보세요" /></h3>
+            </div>
+            <!-- rino -->
+            <div class="rino-wrap">
+                <div class="rino animated">
+                    <img src="~/Images/Pororo2018/w/kv_rino.png" alt="" />
+                    <span class="animated animate-rotate-right">
+                        <img src="~/Images/Pororo2018/w/kv_rino_arm.png" alt="100% 뽀로로 장난감" />
+                    </span>
+                </div>
+                <div class="pororo-friend heartbeat">
+                    <img src="~/Images/Pororo2018/w/kv_pororo.png" alt=""/>
+                </div>
+            </div>
+            <div class="small-toy-bg pororo"></div>
+        </div>
+        <!-- 이벤트 참여영역 -->
+        <div class="event-area">
+            <h4><img src="~/Images/Pororo2018/w/event_title.png" alt="킨더조이 뽀로로 즉석당첨 이벤트" /></h4>
+            <!-- 검색하러가기 -->
+            <div class="naver-search-go">
+                <div class="search-deco"></div>
+                <div class="search-deco-click slide-tl"></div>
+                <a href="@(isClose ? "javascript:alert('이벤트가 종료되었습니다.');" : Url.Action("InstantLotteryLanding", "Pororo2018"))" target="_blank"><img src="~/Images/Pororo2018/w/naver_search.png" id="btn-naver-landing" alt="네이버에 킨더조이 졸업선물 검색하러 가기" /></a>
+                <div class="text-flow animate-flow"></div>
+            </div>
+            <!-- 이벤트 기간,참여방법 -->
+            <div class="event-period wow fadeIn">
+                <div class="a11y-hidden">
+                    <p>이벤트 기간 : 2018년 1월 17일 ~ 2월 11일</p>
+                    <p>참여방법</p>
+                    <ol>
+                        <li>01. 네이버에서 '킨더조이 졸업선물' 검색!</li>
+                        <li>02. 즉석당첨 버튼 클릭!</li>
+                        <li>03 킨더조이 TVCF 시청</li>
+                        <li>04 즉석당첨 결과 확인!</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- 이벤트 경품안내 -->
+            <div class="event-give wow fadeIn">
+                <div class="a11y-hidden">
+                    <p>경품 안내</p>
+                    <ul>
+                        <li>뽀로로 킨더조이 기프티콘 (랜덤발송) 1,000명</li>
+                        <li>킨더조이 목걸이만들기 DIY팩 80명</li>
+                        <li>뽀로로 사인펜(12색) 15명</li>
+                        <li>뽀로로 스케치북 10명</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 목걸이 만들기 영상 -->
+            <div class="video-wrap wow fadeIn">
+                <!-- 영상준비전 예시이미지 -->
+                @*<div class="video-pororo-img">
+                    <img src="~/Images/Pororo2018/w/ex_video.jpg" alt=""/>
+                </div>*@
+                <!-- 영상 -->
+                <div class="video-inner">
+                    <div id="eventPlayer"></div>
+                      <div class="play-cover">
+                          <img src="~/Images/Pororo2018/w/btn-play-movie.png" alt="" />
+                      </div>
+                    <div class="more-btn">
+                        <a href="https://www.youtube.com/watch?v=NkVJ7tVujvU" target="_blank"><img src="~/Images/Pororo2018/w/btn-more.png" alt="전체영상 보러가기"/></a>
+                    </div>
+                </div>
+                
+                <span class="deco-rino"><img src="~/Images/Pororo2018/w/video_rino.png" alt="" /></span>
+                <span class="deco-book"><img src="~/Images/Pororo2018/w/video_book.png" alt="" /></span>
+            </div>
+        </div>
+
+        <!-- 이벤트 유의사항 -->
+        <div class="event-note">
+            <div class="event-note-inner"></div>
+            <div class="a11y-hidden">
+                <p>이벤트 유의사항</p>
+                <ul>
+                    <li>회사 내부 사정에 의하여 경품이 변경될 수 있습니다.</li>
+                    <li>부적절한 형태로 이벤트에 응모시 당첨에서 제외됩니다.</li>
+                    <li>이벤트 관련 문의사항은 kinderkorea1@gmail.com으로 연락 부탁드립니다.</li>
+                    <li>잘못된 개인정보 입력으로 연락이 불가능하거나, 경품이 반송될 경우 이는 재발송되지 않습니다.</li>
+                    <li>당첨된 기프티콘은 이벤트 종료 후 mms를 통해 일괄 발송 됩니다.</li>
+                    <li>즉석당첨 이벤트의 경우 중복 참여가 가능함, 매일 참여할수록 당첨확률이 높아집니다.</li>
+                    <li>배송받는 경품은 당첨자 발표 후, 1주일 내 이벤트 참여 시 입력한 주소지로 배송됩니다.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="pororo-event-copyright">
+            <img src="~/Images/Pororo2018/w/copyright.png" alt="copyright"/>
+        </div>
+    </div>
+    @Html.Partial("_YoutubeAPI")
+    @Html.Partial("_Popup")
+    @Html.Partial("_PopupPrizeWinner")
+</div>
+@section scripts {
+    <script src="~/Scripts/Pororo2018/pub-deviceCheck.js" type="text/javascript"></script>
+    <script src="~/Scripts/Pororo2018/wow.js"></script>
+    <script src="~/Content/js/jquery.easing.1.3.js"></script>
+    <script src="~/Scripts/Pororo2018/pub-common.js" type="text/javascript"></script>
+    <script src="~/Scripts/Pororo2018/pub-event.js" type="text/javascript"></script>
+    <script type="text/javascript" src="~/Scripts/Common/devCommon.js"></script>
+    <script type="text/javascript" src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
+    <script src="~/Scripts/vue.min.js"></script>
+    <script type="text/javascript">
+        if ('@ViewBag.IsShowInstantLottery' == 'True') {
+            popAutoPlayMode = true;
+        } else {
+            popAutoPlayMode = false;
+        }
+        $(window).load(function () {
+            if (popAutoPlayMode) openPop('mov-view');
+        });
+    </script>
+    <script src="~/Scripts/Pororo2018/dev.js"></script>
+}

@@ -1,0 +1,410 @@
+﻿@charset "UTF-8";
+/*!
+ * tag reset&base
+ * 2017.10.11
+ */
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: top; }
+
+img {
+  border: 0;
+  vertical-align: top;
+  line-height: 0;
+  font-size: 0;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none; }
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0; }
+
+/*a {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent; // For some Androids
+}*/
+/*a:hover, a:active {
+	text-decoration: none;
+	outline: 0;
+}*/
+/*a:link, a:visited {
+	text-decoration: none;
+}*/
+#dimmed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../../Images/dim.png") repeat center top; }
+
+/*!
+ * font set
+ * 2017.10.11
+ */
+body, input, textarea {
+  font-family: 'Myriad Pro', 'Malgun Gothic', dotum, sans-serif; }
+
+.a11y-hidden {
+  position: absolute;
+  top: auto;
+  left: -9999em;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0); }
+
+#dimmed {
+  display: block; }
+
+#endDimmed {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 999; }
+  #endDimmed > img {
+    margin-top: 140px; }
+
+#openDimmed {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 999; }
+  #openDimmed > img {
+    margin-top: 140px; }
+
+div[id^="pop-"] {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 750px;
+  margin-left: -375px;
+  z-index: 99;
+  background-color: #fff; }
+
+.inner-pop {
+  width: 626px;
+  margin: 0 auto;
+  padding-bottom: 50px; }
+
+.header {
+  position: relative;
+  background-color: #f58126; }
+  .header button {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background-image: url(about:blank); }
+
+h1 {
+  height: 130px;
+  line-height: 130px;
+  text-align: center; }
+  h1 img {
+    vertical-align: middle; }
+
+label {
+  cursor: pointer; }
+
+img {
+  pointer-events: none; }
+
+input {
+  min-width: initial; }
+
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+select {
+  width: 626px;
+  height: 70px;
+  min-width: auto;
+  padding-left: 30px;
+  margin-bottom: 15px;
+  line-height: 57px;
+  border: 1px solid #ac9988;
+  background: #fff;
+  color: #777;
+  font-family: "Noto Sans KR";
+  font-size: 24px;
+  box-sizing: border-box;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
+
+input[type="radio"],
+input[type="checkbox"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: .0001; }
+
+.pop-personal {
+  background: #fff; }
+  .pop-personal .btn-phoneconfirm button {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #524840; }
+  .pop-personal label {
+    position: relative;
+    display: inline-block;
+    width: 205px;
+    line-height: 40px;
+    font-size: 0; }
+    .pop-personal label span {
+      display: inline-block;
+      width: 47px;
+      height: 47px;
+      margin-right: 13px;
+      background: url("../../Images/rebranding/form/input-check.png") center top no-repeat; }
+      .pop-personal label span.em {
+        background: url("../../Images/rebranding/form/input-check-em.png") center top no-repeat; }
+    .pop-personal label span.radio {
+      display: inline-block;
+      width: 47px;
+      height: 47px;
+      margin-right: 13px;
+      background: url("../../Images/rebranding/form/input-radio.png") center top no-repeat; }
+      .pop-personal label span.radio.em {
+        background: url("../../Images/rebranding/form/input-radio-em.png") center top no-repeat; }
+    .pop-personal label .check-dimm {
+      position: absolute;
+      top: -7px;
+      left: -7px;
+      width: 95%;
+      height: 53px;
+      background: transparent;
+      opacity: .3; }
+    .pop-personal label input:checked ~ .check-dimm {
+      display: block; }
+    .pop-personal label input:checked ~ span {
+      background-position: center bottom !important; }
+    .pop-personal label img {
+      margin-right: 15px;
+      vertical-align: middle; }
+  .pop-personal h3 {
+    margin: 40px 0 18px; }
+  .pop-personal .text-19 {
+    margin: 30px 0 15px;
+    text-align: center; }
+  .pop-personal .btn-phoneconfirm {
+    margin: 53px 0;
+    text-align: center; }
+  .pop-personal .info-area {
+    position: relative;
+    text-align: left; }
+    .pop-personal .info-area .transparent-bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 626px;
+      height: 240px;
+      background: rgba(0, 0, 0, 1e-06); }
+      .pop-personal .info-area .transparent-bg a {
+        display: block;
+        height: 100%;
+        cursor: default; }
+    .pop-personal .info-area .name-line input[type="text"] {
+      float: left;
+      width: 395px;
+      margin-right: 10px; }
+    .pop-personal .info-area .name-line .gender {
+      float: left;
+      width: 218px;
+      height: 71px;
+      overflow: hidden;
+      font-size: 0; }
+      .pop-personal .info-area .name-line .gender label {
+        cursor: pointer; }
+      .pop-personal .info-area .name-line .gender .info-male {
+        width: 110px; }
+        .pop-personal .info-area .name-line .gender .info-male span {
+          width: 110px;
+          height: 71px;
+          background: url("../../Images/rebranding/form/btn-man.png") top center no-repeat; }
+        .pop-personal .info-area .name-line .gender .info-male input:checked ~ span {
+          background-position: center bottom; }
+      .pop-personal .info-area .name-line .gender .info-female {
+        width: 108px; }
+        .pop-personal .info-area .name-line .gender .info-female span {
+          width: 108px;
+          height: 71px;
+          background: url("../../Images/rebranding/form/btn-woman.png") top center no-repeat; }
+        .pop-personal .info-area .name-line .gender .info-female input:checked ~ span {
+          background-position: center bottom; }
+    .pop-personal .info-area input[type="text"] {
+      background-position: 30px center; }
+  .pop-personal .agree-text {
+    margin-bottom: 48px;
+    text-align: left; }
+    .pop-personal .agree-text p {
+      margin-top: 15px;
+      padding-top: 30px;
+      border-top: 1px solid #777; }
+      .pop-personal .agree-text p.agree-notice {
+        padding: 0;
+        padding-bottom: 42px;
+        margin: 26px 0 44px 0;
+        border: none;
+        border-bottom: 2px solid #777; }
+    .pop-personal .agree-text label[for="agree01"] {
+      width: 190px; }
+    .pop-personal .agree-text label[for="disagree01"],
+    .pop-personal .agree-text .disagree-label {
+      width: 240px; }
+    .pop-personal .agree-text.bottom-line {
+      padding-bottom: 30px;
+      border-bottom: 1px solid #cbcccd; }
+  .pop-personal .retention-period {
+    font-size: 0;
+    text-align: left; }
+    .pop-personal .retention-period label[for="year2"],
+    .pop-personal .retention-period label[for="year1"] {
+      margin-top: 15px; }
+  .pop-personal .contact-check {
+    font-size: 0;
+    text-align: left; }
+    .pop-personal .contact-check p {
+      margin-bottom: 20px; }
+    .pop-personal .contact-check label[for="email"] {
+      margin-top: 15px; }
+    .pop-personal .contact-check label[for="post"] {
+      margin-top: 15px; }
+  .pop-personal .interest-check label {
+    width: 48%;
+    margin-bottom: 15px; }
+  .pop-personal .email-wrap {
+    display: none;
+    text-align: left; }
+    .pop-personal .email-wrap .info-name {
+      margin-top: 33px; }
+      .pop-personal .email-wrap .info-name input {
+        width: 285px; }
+      .pop-personal .email-wrap .info-name .email-icon {
+        display: inline-block;
+        font-size: 0;
+        padding: 0 9px;
+        vertical-align: -4px; }
+      .pop-personal .email-wrap .info-name select {
+        width: 380px;
+        -webkit-appearance: none;
+        /* 화살표 없애기 for chrome*/
+        -moz-appearance: none;
+        /* 화살표 없애기 for firefox*/
+        appearance: none;
+        /* 화살표 없애기 공통*/
+        /* 화살표 아이콘 추가 */
+        background: url("../../Images/rebranding/form/select-icon.png") 95% 50% no-repeat; }
+      .pop-personal .email-wrap .info-name select::-ms-expand {
+        display: none;
+        /* 화살표 없애기 for IE10, 11*/ }
+  .pop-personal .essential-point-title {
+    margin: 20px 0 25px; }
+  .pop-personal .post-wrap {
+    text-align: left; }
+    .pop-personal .post-wrap.address-wrap {
+      display: none; }
+    .pop-personal .post-wrap .btn-post {
+      background: #524840;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px; }
+    .pop-personal .post-wrap .post-box {
+      display: inline-block;
+      width: 413px;
+      margin-right: 7px; }
+    .pop-personal .post-wrap span img {
+      vertical-align: -23px; }
+    .pop-personal .post-wrap .post-dim-wrap {
+      display: inline-block;
+      position: relative; }
+    .pop-personal .post-wrap .post-dim {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px; }
+  .pop-personal .children-wrap {
+    margin-top: 25px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #cbcccd; }
+    .pop-personal .children-wrap label {
+      width: 258px; }
+      .pop-personal .children-wrap label:first-child {
+        margin-right: 8px; }
+      .pop-personal .children-wrap label input {
+        width: 100%; }
+  .pop-personal .btn-complete-box {
+    position: relative;
+    margin-top: 34px;
+    padding-top: 44px;
+    border-top: 1px solid #ac9988; }
+    .pop-personal .btn-complete-box .loading {
+      position: absolute;
+      top: 44px;
+      left: 0;
+      width: 100%;
+      height: 112px;
+      text-align: center;
+      filter: alpha(opacity=60);
+      opacity: 0.60;
+      background-color: #000;
+      overflow: hidden; }
+      .pop-personal .btn-complete-box .loading img {
+        padding-top: 25px; }
+
+.agree-pop {
+  text-align: center;
+  padding: 85px 0 50px; }
+  .agree-pop .btn-close {
+    position: absolute;
+    top: 28px;
+    right: 32px; }
+  .agree-pop p {
+    width: 530px;
+    margin: 0 auto; }
+  .agree-pop .btn-agree {
+    margin-top: 62px; }
+
+.pop-post {
+  padding: 0; }
+  .pop-post .btn-close {
+    top: 0px;
+    right: 0px; }
+  .pop-post .post-api {
+    width: 680px;
+    padding: 50px 0;
+    margin: 0 auto;
+    -webkit-overflow-scrolling: touch; }
+
+.policy-area {
+  height: 238px;
+  border: 1px solid #dbccbf;
+  color: #656565;
+  border-radius: 5px;
+  line-height: 1.5;
+  overflow-y: auto;
+  font-family: 'Malgun Gothic', Dotum, sans-serif; }
+  .policy-area .policy-txt {
+    margin: 20px 0 0 20px;
+    padding-bottom: 20px; }

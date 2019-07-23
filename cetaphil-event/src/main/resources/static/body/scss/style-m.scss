@@ -1,0 +1,35 @@
+@charset 'UTF-8';
+$device: 'm';
+$device_: '/m';
+
+$imgPathRoot: 'https://cetaphil-event.s3.amazonaws.com/static/body/images';
+$imgPath: $imgPathRoot + $device_;
+$imgPathPop: $imgPathRoot+ '/popup-m';
+
+$minW: 1200px;
+$minH: 1100px;
+
+@import '../../scssCommon/vender/normalize';
+@import '../../scssCommon/mixin/_background';
+@import './_font';
+@import './_reset';
+@import './_common';
+
+@import './m/_common';
+@import './m/_page-main';
+@import './m/_page-contents';
+@import './m/_page-calculator';
+@import './m/_page-age';
+@import './m/_page-gift';
+@import './m/_page-challenge';
+
+@import './popup';
+@import './popup-m';
+
+body{
+  font-family: robotoItalic;
+}
+
+
+
+

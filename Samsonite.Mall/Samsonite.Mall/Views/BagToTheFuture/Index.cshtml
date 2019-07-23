@@ -1,0 +1,162 @@
+﻿@model Samsonite.Mall.Models.BagtotheFutureModels.BagtotheFutureModel
+@{
+    ViewBag.Title = "쌤소나이트 백투더퓨처";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.IsClosed = "N";
+    if (DateTime.Now >= new DateTime(2017, 7, 20)) {
+        ViewBag.IsClosed = "Y";
+    }
+}
+@section headscripts{
+    <script>
+            if ('@ViewBag.IsRedirect' === 'Y') {
+                window.location.href = window.location.href.replace('/bag-to-the-future', '/bag-to-the-future/redirect') + '&is_rd=y';
+            }
+    </script>
+}
+@section metas{
+    <meta property="og:url" content="@ViewBag.SnsUrl" />
+    <meta property="og:title" content="BAG 투 더 퓨쳐 총 상금 1,000만원의 주인공은?" />
+    <meta property="og:image" content="https://samsonite.pentacle.co.kr/Content/images/bag-to-the-future/sns/sns-facebook.jpg" />
+    <meta property="og:description" content="하늘을 나는 드론 캐리어? 낙하산이 되는 백팩? 톡톡 튀는 아이디어만 있으면 누구나 참여 가능!" />
+
+    @if (ViewBag.SnsType == "kakaostory") {
+    <meta property="og:type" content="video">
+    <meta property="og:video:url" content="https://www.youtube.com/embed/-o11S_tYxPk">
+    <meta property="og:video:secure_url" content="https://www.youtube.com/embed/-o11S_tYxPk">
+    <meta property="og:video:type" content="text/html">
+    <meta property="og:video:width" content="1280">
+    <meta property="og:video:height" content="720">
+    <meta property="og:video:url" content="http://www.youtube.com/v/-o11S_tYxPk?version=3&amp;autohide=1">
+    <meta property="og:video:secure_url" content="https://www.youtube.com/v/-o11S_tYxPk?version=3&amp;autohide=1">
+    <meta property="og:video:type" content="application/x-shockwave-flash">
+    <meta property="og:video:width" content="1280">
+    <meta property="og:video:height" content="720">
+    }
+}
+@section styles{
+    <link href="~/Content/css/bag-to-the-future/normalize.css" rel="stylesheet" />
+    <link href="~/Content/css/bag-to-the-future/popup.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bag-to-the-future/style.min.css" rel="stylesheet" />
+}
+
+
+<div class="wrap" id="bagtothefuture">
+    <!-- 팝업 dimmed -->
+    <div class="pop-dim"></div>
+
+
+    <!-- 백투더퓨처 -->
+    <div class="bag-kv">
+        <img src="~/Content/images/bag-to-the-future/kv.jpg" alt="Bag 투더퓨쳐" />
+    </div>
+    <div class="write-wrap">
+        @Html.Partial("_IdeaEventPopup")
+        @using (Html.BeginForm("Post", "BagTotheFuture", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmIdeaCompetition" }))
+        {
+        <!-- 응모하기 -->
+            <span class="ticket-left-tit"><img src="~/Content/images/bag-to-the-future/idea_tit.png" alt="상금1천만원 주인공은 나야나!" /></span>
+            <div class="ticket">
+                <!-- 티켓좌측 -->
+                <div class="ticket-left">
+                    <span><img src="~/Content/images/bag-to-the-future/ticket_tit.png" alt="" /></span>
+                    <fieldset>
+                        <label>
+                            @Html.TextBoxFor(x => x.BagtotheFutureEntryCheckModel.IdeaName, new { maxlength = 50, placeholder = "아이디어명" })
+                        </label>
+                        @Html.TextAreaFor(x => x.BagtotheFutureEntryCheckModel.IdeaDescription, new { placeholder = "아이디어에 대해 자유롭게 적어주세요." })
+                    </fieldset>
+                </div>
+                <!-- 티켓우측 -->
+                <div class="ticket-right">
+                    <img src="~/Content/images/bag-to-the-future/popup/wirte_note.png" alt="첨부파일 올리기는 선택사항입니다." />
+                    <label>
+                        @Html.TextBoxFor(x => x.BagtotheFutureEntryCheckModel.Attachment, new { type = "file" })
+                        <img src="~/Content/images/bag-to-the-future/file-upload.png" alt="파일 업로드" onclick="@(ViewBag.IsClosed == "Y" ? "alert('접수가 마감되었습니다.'); return false;" : "")" />
+                    </label>
+                </div>
+            </div><!--// 티켓 -->
+            <div class="btn-wrap">
+                <button type="button" class="btn-qna btn-idea-qna" onclick="window.open('http://blog.naver.com/samsoniter/221030648094')"><img class="btn-idea-qna" src="~/Content/images/bag-to-the-future/contest_faq.png" alt="이벤트 faq"/></button>
+                <button type="@(ViewBag.IsClosed =="Y" ? "button" : "submit")" class="btn-join btn-idea-entry" v-on:click="openEntryPopup">
+                    @*<span class="loading" style="display:none;" v-bind:style="{ display: isLoading}"><img src="~/Content/images/bag-to-the-future/loading.gif" alt="loading" /></span>*@
+                    <span class="loading" style="display:none;" v-bind:style="{ display: isLoading}"><img src="~/Content/images/bag-to-the-future/loading.gif" alt="loading" /></span>
+                    <img class="btn-idea-entry" src="~/Content/images/bag-to-the-future/btn_join.png" alt="참여하기" />
+                </button>
+            </div>
+
+        }
+    </div>
+    <!-- 티켓우측 -->
+    <div class="event-award">
+        <img src="~/Content/images/bag-to-the-future/award.jpg" alt="공모전 시상내역" />
+    </div>
+
+    <!-- 공유이벤트 -->
+    <div class="sns-share-wrap">
+        @Html.Partial("_SnsEventPopup")
+        <img src="~/Content/images/bag-to-the-future/event_top.png" alt="bag투더퓨처 공모전을 공유하라" />
+        <div class="youtube-wrap">
+            <div id="youtube"></div>
+        </div>
+
+        <div class="step-list">
+            <img src="~/Content/images/bag-to-the-future/event_step.png" alt="" />
+        </div>
+        <div class="btn-wrap">
+            <button type="button" class="btn-qna btn-sns-share-faq" onclick="window.open('http://blog.naver.com/samsoniter/221030648573')"><img class="btn-sns-share-faq" src="~/Content/images/bag-to-the-future/btn_faq.png" alt="이벤트 qna"/></button>
+            <button type="button" class="btn-join btn-sns-share-entry" v-on:click="openSnsPopup"><img class="btn-sns-share-entry" src="~/Content/images/bag-to-the-future/btn_sns_share.png" /></button>
+        </div>
+    </div>
+    <!--유의사항 -->
+    <div class="note-wrap">
+        <img src="~/Content/images/bag-to-the-future/note.png" alt="유의사항" />
+    </div>
+
+    <!--- 이벤트 종료 -->
+    <div class="end-wrap">
+        <div class="end-text">
+            <img src="~/Content/images/bag-to-the-future/end.png" alt="이벤트가 종료되었습니다." />
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/Content/js/common/vue.min.js"></script>
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script src="~/Content/js/common/sns-share-methods.js"></script>
+    <script>
+        //카카오 javascript key
+        Kakao.init('@System.Configuration.ConfigurationManager.AppSettings["sns.kakao.key"]');
+
+        //페이스북
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '@System.Configuration.ConfigurationManager.AppSettings["sns.facebook.appid"]', // App ID
+                channelUrl: '//@HttpContext.Current.Request["HTTP_HOST"]/facebook-channel.php', // Channel File
+                status: true, // check login status
+                xfbml: true  // parse XFBML
+            });
+            //팝업방지..
+            FB.getLoginStatus(function (response) { });
+        };
+        (function (d, debug) {
+            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement('script'); js.id = id; js.async = true;
+            js.src = "//connect.facebook.net/ko_KR/all" + (debug ? "/debug" : "") + ".js";
+            ref.parentNode.insertBefore(js, ref);
+        }(document, /*debug*/false));
+        $(function () {
+            var fbAppId = '@System.Configuration.ConfigurationManager.AppSettings["sns.facebook.appid"]';
+        })
+    </script>
+    <script src="~/Content/js/bag-to-the-future/bag-to-the-future-dev.js"></script>
+    <script src="~/Content/js/bag-to-the-future/bag-pub.js"></script>
+    <script>
+            bagtoTheFutureModel.isClosed = '@ViewBag.IsClosed';
+    </script>
+}
+

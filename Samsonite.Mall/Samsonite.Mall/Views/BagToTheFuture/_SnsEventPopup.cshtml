@@ -1,0 +1,84 @@
+﻿@model Samsonite.Mall.Models.BagtotheFutureModels.BagtotheFutureSnsUserModel
+<!-- SNS공유이벤트 개인정보 -->
+<div class="popup sns-share" id="sns-share-personal">
+    @using (Ajax.BeginRouteForm("CreateSnsPersonalInfo",new { httpRoute = true },
+        new AjaxOptions { HttpMethod = "post", OnBegin = "bagtoTheFutureModel.beginIdeaCompetition", OnComplete = "bagtoTheFutureModel.completeIdeaCompetition", OnSuccess = "bagtoTheFutureModel.saveSnsPersonalInfo", OnFailure = "bagtoTheFutureModel.failureIdeaCompetition" }, new { id = "frmSnsPersonalInfo" })) {
+    <span class="btn-close">
+        <a href="javascript:void(0);" onclick="closePop('sns-share-personal');"><img src="~/Content/images/bag-to-the-future/popup/btn_close.png" alt="닫기" /></a>       
+    </span>
+    <h2>
+        <img src="~/Content/images/bag-to-the-future/popup/share_event_tit.png" alt="SNS 공유하기" />
+    </h2>
+    <div class="popover-content">
+        <h3 class="no-border"><img src="~/Content/images/bag-to-the-future/popup/sns_personal_top_text.png" alt="개인정보 입력 후 이벤트에 참여해주세요"/></h3>
+        <fieldset>
+            <legend>개인정보입력</legend>
+            <dl class="input-name">
+                <dt><img class="text-name" src="~/Content/images/bag-to-the-future/popup/name_text.png" alt="이름" /></dt>
+                <dd>@Html.TextBoxFor(x => x.Name, new { maxlength = 50 })</dd>
+            </dl>
+            <dl class="input-number">
+                <dt><img class="text-phone" src="~/Content/images/bag-to-the-future/popup/phone_text.png" alt="연락처" /></dt>
+                <dd>@Html.TextBoxFor(x => x.Mobile, new { type = "tel", maxlength = 11, placeholder = "'-'기호 없이 입력해주세요." })</dd>
+            </dl>
+            <label>
+                @Html.CheckBoxFor(x => x.Agree)<span class="checkbox"></span>
+                <img class="agree-text01" src="~/Content/images/bag-to-the-future/popup/agree_text.png" alt="개인정보수집및이용동의" />
+            </label>
+        </fieldset>
+        <div class="text-box">
+            <span>[개인정보 수집 및 활용 동의]</span><br><br>
+            고객님이 입력한 개인정보는 ‘정보통신망 이용촉진 및 정보보호 등에 관한 법률’에 따라 쌤소나이트코리아(주)가 수집, 활용 및 취급 위탁 시 본인의 동의를 얻어야 하는 정보입니다. 입력하신 개인정보는 아래의 목적으로 프로모션 대행사에만 제공되며, 이외의 용도로는 활용되지 않습니다.<br><br>
+            1) 개인정보 수집 및 이용목적 - 참여자 본인 확인 및 경품 발송<br>
+            2) 수집하는 개인정보 항목 - 이름, 연락처<br>
+            3) 개인정보 보유 및 이용기간 - 이벤트 종료 후 3개월 이내 파기 (단, 관계 법령 규정에 의하여 보존할 필요가 있는 경우 관련 법령에 따라 보관)<br>
+            4) 본 이벤트 참여 고객은 개인정보 수집, 활용에 대하여 동의를 거부할 권리가 있으며, 개인정보 수집, 활용에 대한 미동의 시 해당 이벤트 참여하실 수 없습니다.<br>
+            5) 쌤소나이트코리아(주)는 서비스 향상과 원활한 진행을 위하여 개인 정보 처리 업무를 외부 전문 업체에 위탁하여 처리하고 있습니다. * 이벤트 운영 위탁 업체 : 메가존(주)<br><br>
+        </div>
+        <div class="btn-wrap one-button">          
+            <button type="submit" class="btn-sns-share-entry-complete">
+                <img class="btn-sns-share-entry-complete" src="~/Content/images/bag-to-the-future/popup/btn_event_join.png" alt="이벤트참여하기" />
+                <span class="loading" style="display:none;" v-bind:style="{ display: isLoading}"><img src="~/Content/images/bag-to-the-future/loading.gif" alt="loading" /></span>
+            </button>
+        </div>
+    </div>
+    }
+</div>
+
+<!-- SNS공유하기 -->
+<div class="popup sns-share" id="sns-share">
+    @Html.Hidden("hidUserId",new { })
+    <span class="btn-close">
+        <a href="javascript:void(0);" onclick="closePop('sns-share');"><img src="~/Content/images/bag-to-the-future/popup/btn_close.png" alt="닫기" /></a>
+    </span>
+    <h2>
+        <img src="~/Content/images/bag-to-the-future/popup/share_event_tit.png" alt="SNS 공유하기" />
+    </h2>
+    <div class="popover-content">
+        <h3><img src="~/Content/images/bag-to-the-future/popup/sns_share_top_text.png" alt=""/></h3>
+        <div class="sns">
+            <img src="~/Content/images/bag-to-the-future/popup/sns_bottom_text.png" alt="공유할 SNS채널을 선택해주세요" />
+            <ul>
+                <li><img id="shareFacebook" src="~/Content/images/bag-to-the-future/popup/btn_f.png" style="cursor:pointer" v-on:click ="shareFacebook" alt="페이스북" /></li>
+                <li><img id="sharekakaostory" src="~/Content/images/bag-to-the-future/popup/btn_ks.png" style="cursor:pointer" v-on:click ="shareKakaostory" alt="카카오스토리" /></li>
+                <li v-bind:style="{ display: (checkMobile.any() ? '' : 'none')}"><img id="shareKakaotalk" style="cursor:pointer" src="~/Content/images/bag-to-the-future/popup/btn_kt.png" v-on:click ="shareKakaotalk" alt="카카오톡" /></liv-bind:style="{>
+            </ul>
+            <div class="btn-wrap">
+                <button type="button" class="btn-skyblue btn-sns-share-faq-detail" onclick="window.open('http://blog.naver.com/samsoniter/221030648573')"><img class="btn-sns-share-faq-detail" src="~/Content/images/bag-to-the-future/btn_faq.png" alt="이벤트 FAQ" /></button>
+                <button type="button" class="btn-blue btn-sns-share-close" onclick="closePop('sns-share');">
+                    <img class="btn-sns-share-close" src="~/Content/images/bag-to-the-future/popup/btn_finish.png"  alt="응모완료" />
+                    @*<span class="loading"><img src="~/Content/images/bag-to-the-future/loading.gif" alt="loading" /></span>*@
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 인앱브라우저 팝업 -->
+<div class="popup pop-inapp" id="pop-inapp">
+    <span class="btn-close">
+        <a href="javascript:void(0);" onclick="closePop('pop-inapp');"><img src="~/Content/images/bag-to-the-future/popup/btn_close.png" alt="닫기" /></a>
+    </span>
+    <div class="popover-content">
+        <img src="~/Content/images/bag-to-the-future/popup/inapp.png" alt="위 방법으로 참여하셔야 경품 혜택을 받으실 수 있습니다." />
+    </div>
+</div>

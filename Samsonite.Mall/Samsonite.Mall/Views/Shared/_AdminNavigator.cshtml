@@ -1,0 +1,40 @@
+﻿@using Samsonite.Mall.Infrastructure.Admin
+@{
+    var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+    var action = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+
+}
+<li>
+    <a href="@Url.Action("Index","AdminHome")"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+</li>
+<li>
+    <a href="#"><i class="fa fa-files-o fa-fw"></i> 1주년 댓글등록 이벤트 <span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li><a href="@Url.Action("Index","AdminOneYearAnniversary")">참여자</a></li>
+    </ul>
+    <!-- /.nav-second-level -->
+</li>
+<li>
+    <a href="#"><i class="fa fa-files-o fa-fw"></i> 백투더퓨처 이벤트 <span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li><a href="@Url.Action("Index","AdminBagToTheFuture")">Event01 참여자</a></li>
+        <li><a href="@Url.Action("SnsUser","AdminBagToTheFuture")">Event02 참여자</a></li>
+        <li><a href="@Url.Action("SnsShare","AdminBagToTheFuture")">Event02 SNS공유</a></li>
+    </ul>
+    <!-- /.nav-second-level -->
+</li>
+<li>
+    <a href="#"><i class="fa fa-files-o fa-fw"></i> 2017크리스마스 이벤트 <span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li><a href="@Url.Action("Index","AdminChristmas2017")"> 참여자</a></li>
+    </ul>
+    <!-- /.nav-second-level -->
+</li>
+<li>
+    <a href="#"><i class="fa fa-files-o fa-fw"></i> 2주년 댓글등록 이벤트 <span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li><a href="@Url.Action("Index","AdminTwoYearAnniversary")">참여자</a></li>
+        <li><a href="@Url.Action("PrizeSetting","AdminTwoYearAnniversary")">경품관리</a></li>        
+    </ul>
+    <!-- /.nav-second-level -->
+</li>

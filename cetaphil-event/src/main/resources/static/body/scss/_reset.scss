@@ -1,0 +1,90 @@
+
+button {
+    padding:0;
+    background:none;
+    border:none;
+    cursor:pointer;
+    font-size:0;
+    &:focus {
+        outline:none;
+    } 
+}
+
+ul,ol{
+    padding:0;
+    margin:0;
+    li {
+        font-size:0;
+        list-style:none;
+    }
+}
+
+dl, dt, dd, p {
+    padding:0;
+    margin:0;
+}
+
+a {
+    display:inline-block;
+    width:100%;
+    height:100%;
+    font-size:0;
+}
+
+.loading {
+    //display:none;
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:#000;
+    opacity:.7;
+    z-index:9999;
+    >img {
+        width:100px;
+        height:100px;
+        position:absolute;
+        top:50%;
+        left:50%;
+        margin:-50px 0 0 -50px;
+    }
+}
+
+label {
+    display: inline-block;
+}
+h1,h2,h3,h4,h5 {
+    font-size:0;
+}
+
+input[type=text]::-ms-clear {
+    display:none;
+}
+  
+
+input[type="text"],
+input[type="tel"]{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/*ios input reset*/
+
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    box-sizing:border-box;
+}
+
+//number 화살표 제거
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+

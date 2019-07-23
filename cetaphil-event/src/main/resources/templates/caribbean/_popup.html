@@ -1,0 +1,371 @@
+<div class="popup popup--form">
+    <h2 class="popup-header">
+        <img src="/caribbean/images/pop/popup-header.png" alt="세타필 레스토라덤(AD) X 캐리비안베이 런칭파티 기대평 이벤트">
+    </h2>
+    <div class="form-header">
+        <img src="/caribbean/images/pop/text-form-header.png" alt="기대평 이벤트 참여 및 경품 수령을 위한 개인정보를 입력해주세">
+    </div>
+    <form action="" id="caribbeanForm">
+        <fieldset>
+            <legend class="a11y-hidden">정보입력</legend>
+            <dl>
+                <dt>
+                    <label for="name">
+                        <img src="/caribbean/images/pop/label-name.png" alt="이름">
+                    </label>
+                </dt>
+                <dd>
+                    <input id="name" name="name" type="text" maxlength="6" v-model="userInfo.name" />
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    <label for="mobile">
+                        <img src="/caribbean/images/pop/label-tel.png" alt="전화번호">
+                    </label>
+                </dt>
+                <dd>
+                    <input id="mobile" name="mobile" type="tel" placeholder="-기호없이 입력해주세요." maxlength="11" v-model="userInfo.mobile" />
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    <label for="zipcode">
+                        <img src="/caribbean/images/pop/label-add.png" alt="주소">
+                    </label>
+                </dt>
+                <dd>
+                    <input class="input-small" id="zipcode" name="zipcode" type="text" readonly v-model="userInfo.zipcode" />
+                </dd>
+                <button type="button" class="btn-search-address" @click="closePop('form');execDaumPostcode();openPop('search-zip')">
+                    <img src="/caribbean/images/pop/button-search-address.png" alt="우편번호 찾기">
+                </button>
+
+            </dl>
+            <dl>
+                <dt>
+                    <label for="address">
+                    </label>
+                </dt>
+                <dd>
+                    <input id="address" name="address" type="text" readonly v-model="userInfo.address" />
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    <label for="addressDetail">
+                    </label>
+                </dt>
+                <dd>
+                    <input id="addressDetail" name="addressDetail" type="text" placeholder="상세주소를 입력해주세요." v-model="userInfo.addressDetail" />
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    <label for="birth">
+                        <img src="/caribbean/images/pop/label-birth.png" alt="생년월일">
+                    </label>
+                </dt>
+                <dd>
+                    <input id="birth" name="birth" type="text" placeholder="EX) 800808" maxlength="6" v-model="userInfo.birth" />
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    <label for="email">
+                        <img src="/caribbean/images/pop/label-email.png" alt="이메일">
+                    </label>
+                </dt>
+                <dd>
+                    <input id="email" name="email" type="text" v-model="userInfo.email" />
+                </dd>
+            </dl>
+
+            <div class="form-agreement-desc">
+                <p>
+                    <img src="/caribbean/images/pop/label-agreement-desc.png" alt="등록하신 개인 정보는 이벤트 경품 수령을 위한 정보로만 사용되며 
+                    이벤트 종료 3개월 후에 자동 폐기됩">
+                </p>
+            </div>
+
+            <div class="checkbox">
+                <!-- <p>
+                    <img src="" alt="">
+                </p> -->
+                <label for="agreement">
+                    <input type="checkbox" name="agreement" id="agreement" v-model="userInfo.agree">
+                    <span class="checkbox__visual"></span>
+                    <img src="/caribbean/images/pop/label-agreement.png" alt="개인정보 수집동의 (필수)">
+                </label>
+                <!-- <button class="btn" onclick="closePop('input-form'); openPop('privacy-agreement');" type="button">
+                            <img src="~/Content/Images/Nilririmanbo/pop/btn-show-details.png">
+                        </button> -->
+            </div>
+        </fieldset>
+    </form>
+    <div>
+        <button class="btn--close" v-on:click="closePopButton" type="button">
+            <img src="/caribbean/images/pop/button-close.png" alt="닫기">
+        </button>
+        <button class="btn--submit" type="button" v-on:click="saveUserInfo">
+            <img src="/caribbean/images/pop/button-submit.png" alt="이벤트 참여하기">
+        </button>
+    </div>
+</div>
+
+<div class="popup popup--sns-share">
+    <h2 class="popup-header">
+        <img src="/caribbean/images/pop/popup-header.png" alt="세타필 레스토라덤(AD) X 캐리비안베이 런칭파티 기대평 이벤트">
+    </h2>
+
+    <div class="popup-content">
+        <p>
+            <img src="/caribbean/images/pop/text-share-header.png" alt="이벤트에 참여해주셔서 감사합니다!
+            지금 SNS 기대평 이벤트를 공유하면
+            당첨 확률이 UP!!">
+        </p>
+    </div>
+
+    <div>
+        <button class="btn--share-kakao" type="button" v-on:click="updateShareCount('kakao')">
+            <img src="/caribbean/images/pop/button-share-kakao-pop.png" alt="카카오톡 공유하기"> </button>
+        <button class="btn--share-facebook" type="button" v-on:click="updateShareCount('facebook')">
+            <img src="/caribbean/images/pop/button-share-facebook-pop.png" alt="페이스북 공유하기"> </button>
+    </div>
+
+    <div>
+        <button class="btn--close" onclick="closePop('sns-share');" type="button">
+            <img src="/caribbean/images/pop/button-close.png" alt="닫기">
+        </button>
+    </div>
+</div>
+
+<div class="popup popup--search-zip">
+    <h2 class="popup-header">
+        우편번호
+    </h2>
+
+    <div id="layer">
+
+    </div>
+
+    <div>
+        <button class="btn--close" onclick="closePop('search-zip');openPop('form')" type="button">
+            <img src="/caribbean/images/pop/button-close.png" alt="닫기">
+        </button>
+    </div>
+</div>
+
+<!-- 당첨자 발표 -->
+<div class="popup popup--winner">
+    <h2 class="popup-header">
+        <img src="/caribbean/images/pop/winner/title.jpg" alt="">
+    </h2>
+    <div id="layer">
+        <p class="ment">
+            <img src="/caribbean/images/pop/winner/ment.jpg" alt="">
+        </p>
+        <div class="notice">
+            <p class="title">
+                <img src="/caribbean/images/pop/winner/title2-1.png" alt="">
+            </p>
+           
+            <div class="names-wrap">                
+                <ul class="names names-first" >
+                    <li>강**을(7033)</li><li>김*옥(9405)</li>
+                    <li>이*재(9728)</li>
+                    <li>
+                        정*수(9347)
+                    </li>
+                    <li>김*지(3209)</li>
+                    <li>설*빈(7111)</li>
+                    <li>
+                        이*훈(4109)
+                    </li>
+                    <li>
+                        박*영(4866)
+                    </li>
+                    <li>
+                        이*정(6580)
+                    </li>
+                    <li>
+                        박*우(2147)
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="notice">
+            <p class="title">
+                <img src="/caribbean/images/pop/winner/title2-2.png" alt="">
+            </p>
+            <div class="names-wrap">
+                <ul class="names">
+                    <li>
+                        김*미(9665)
+                    </li>
+                    <li>
+                        김*대(4902)
+                    </li>
+                    <li>
+                        허*미(7638)
+                    </li>
+                    <li>
+                        김*진(0007)
+                    </li>
+                    <li>
+                        이*연(3106)
+                    </li>
+                    <li>
+                        윤*서(5064)
+                    </li>
+                    <li>
+                        김*희(3752)
+                    </li>
+                    <li>
+                        채*준(7459)
+                    </li>
+                    <li>
+                        이*은(2946)
+                    </li>
+                    <li>
+                        유*영(9790)
+                    </li>
+                    <li>
+                        하*혜(9919)
+                    </li>
+                    <li>
+                        고*혁(0614)
+                    </li>
+                    <li>
+                        주*균(5911)
+                    </li>
+                    <li>
+                        서*화(1318)
+                    </li>
+                    <li>
+                        박*정(1288)
+                    </li>
+                    <li>
+                        이*원(7315)
+                    </li>
+                    <li>
+                        김*일(7956)
+                    </li>
+                    <li>
+                        박*형(5799)
+                    </li>
+                    <li>
+                        남*우(8342)
+                    </li>
+                    <li>
+                        이*영(2987)
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="notice">
+            <p class="title">
+                <img src="/caribbean/images/pop/winner/title2-3.png" alt="">
+            </p>
+            <div class="names-wrap">
+                <ul class="names">
+                    <li>
+                        이*재(4151)
+                    </li>
+                    <li>
+                        조*방(4062)
+                    </li>
+                    <li>
+                        정*숙(5715)
+                    </li>
+                    <li>
+                        정*희(2022)
+                    </li>
+                    <li>
+                        최*진(1111)
+                    </li>
+                    <li>
+                        지*경(9770)
+                    </li>
+                    <li>
+                        권*현(7473)
+                    </li>
+                    <li>
+                        노*원(7174)
+                    </li>
+                    <li>
+                        정*경(6454)
+                    </li>
+                    <li>
+                        김*진(4321)
+                    </li>
+                    <li>
+                        김*현(0023)
+                    </li>
+                    <li>
+                        김*정(7483)
+                    </li>
+                    <li>
+                        박*진(5825)
+                    </li>
+                    <li>
+                        이*희(9511)
+                    </li>
+                    <li>
+                        정*희(0727)
+                    </li>
+                    <li>
+                        김*별(1201)
+                    </li>
+                    <li>
+                        백*미(0217)
+                    </li>
+                    <li>
+                        천*옥(0161)
+                    </li>
+                    <li>
+                        권*정(2684)
+                    </li>
+                    <li>
+                        이*라(9828)
+                    </li>
+                    <li>
+                        권*윤(7980)
+                    </li>
+                    <li>
+                        김*주(6036)
+                    </li>
+                    <li>
+                        김*선(9744)
+                    </li>
+                    <li>
+                        윤*리(9226)
+                    </li>
+                    <li>
+                        이*정(3442)
+                    </li>
+                    <li>
+                        박*영(2618)
+                    </li>
+                    <li>
+                        고*경(1130)
+                    </li>
+                    <li>
+                        권*현(1346)
+                    </li>
+                    <li>
+                        김*영(3956)
+                    </li>
+                    <li>
+                        이*영(4016)
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button class="btn--close" onclick="closePop('winner')" type="button">
+            <img src="/caribbean/images/pop/button-close.png" alt="닫기">
+        </button>
+    </div>
+</div>

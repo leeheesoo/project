@@ -1,0 +1,174 @@
+/* * {
+    box-sizing: border-box;
+} */
+
+body {
+    // background-color: lightskyblue;
+}
+
+.slider {
+    max-width: 1200px;
+    margin   : 0 auto;
+    position : relative;
+    // padding  : 0;
+}
+
+.slick {
+    // outline: 1px solid red;
+    padding: 0;
+}
+
+.slick__item {
+    /* outline: 1px solid blue; */
+    /* background-color: white; */
+    text-align  : center;
+    margin      : 20px 0;
+    padding-left: 50px;
+    /* padding         : 0 20px; */
+    /* margin          : 0 20px; */
+}
+
+.slick__item-elem {
+    // width        : 324px;
+    // height       : 246px;
+    width        : 371px;
+    height       : 280px;
+    margin-bottom: 4px;
+    padding      : 30px;
+    padding-right: 77px;
+    background   : url(../images/pc/box.png)no-repeat left top;
+    font-size    : 19px;
+    font-weight  : 600;
+    // box-shadow   : 20px -24px 44px -23px #164fbf;
+    // border-radius: 10px;
+}
+
+.slick__item-wrap > div:after {
+    content: '';
+    display: table;
+    clear  : both;
+}
+
+.slick__item--text {
+    color         : #105481;
+    height        : 110px;
+    margin-bottom : 25px;
+    overflow      : hidden;
+    letter-spacing: -1px;
+    text-align    : left;
+}
+
+.slick__item--name {
+    color: #019bff;
+    float: left;
+}
+
+.slick__item--date {
+    color: #019bff;
+    float: right;
+}
+
+.slick-current + .slick-active {
+    transform: translateY(20%)
+}
+
+.slick-track {
+    padding-top   : 37px;
+    padding-bottom: 70px;
+}
+
+.slick__item-wrap {
+    vertical-align: top;
+    width         : 371px;
+    display       : inline-block;
+    // overflow      : hidden;
+    margin: 0;
+    /* background-color: white; */
+    // padding: 0 20px;
+    /* &:nth-child(1){
+        margin-right: 23px;
+    }
+    &:nth-child(2){
+        margin: 0 22px;
+    }
+    &:nth-child(3){
+        margin-left: 23px;
+    } */
+    // margin: 0 21px;
+}
+
+.slick__item-wrap:nth-child(2) {
+    margin-top: 50px;
+}
+
+/* .slick-arrow {
+    width     : 26px;
+    height    : 47px;
+    background: url(../images/pc/button-nav.png) no-repeat left top;
+    top       : 40%;
+}
+
+.slick-next {
+    background-position: right top;
+    right              : -38px;
+    &:before {
+        content: '';
+    }
+    &:hover {
+        background: url(../images/pc/button-nav.png) no-repeat right top;
+        color     : rgba(0,0,0,0);
+    }
+    &:focus {
+        background: url(../images/pc/button-nav.png) no-repeat right top;
+        color     : rgba(0,0,0,0);
+    }
+}
+
+.slick-prev {
+    left: -38px;
+    &:before {
+        content: '';
+    }
+    &:hover {
+        background: url(../images/pc/button-nav.png) no-repeat left top;
+    }
+    &:focus {
+        background: url(../images/pc/button-nav.png) no-repeat left top;
+    }
+} */ // slick-theme 초기화 후 적용
+
+
+.slider__nav {
+    position: absolute;
+    top     : 285px;
+    width   : 100%;
+    // outline : 1px solid salmon;
+    &:after {
+        content: '';
+        display: table;
+        clear  : both;
+    }
+}
+
+.nav__btn {
+    width : 26px;
+    height: 47px;
+}
+
+.btn--prev {
+    background: url(../images/pc/button-nav.png) no-repeat left top;
+    // position   : absolute;
+    float      : left;
+    margin-left: 0;
+}
+
+.btn--next {
+    background: url(../images/pc/button-nav.png) no-repeat right top;
+    // position    : absolute;
+    float       : right;
+    margin-right: 0;
+}
+
+/* .slick-slide {
+    margin: 0 20px
+} */

@@ -1,0 +1,18 @@
+﻿@charset "UTF-8";
+
+/* 우편번호 팝업 */
+#pop_post {
+	& .pop_header{
+		background: #08a0dd;;
+	}
+	& .header-tl {
+		height: auto;
+		padding-top: 50px;
+	}
+	& .pop_con {
+		/*padding-top: 50px;*/
+	}
+
+	& .api_con {
+	}
+}

@@ -1,0 +1,104 @@
+//---------------------------------------------------
+// IR (img replacement) / IS (img sprite)
+//---------------------------------------------------
+
+//init
+// 딱 맞는 이미지일경우(버튼 등)
+// fit-img
+// 경로, 가로, 세로
+$fit-img: (
+  btn-privacy: (197px, 58px),
+  icon-check-off: (49px, 49px),
+  icon-check-on: (49px, 49px),
+  icon-radio-off: (35px, 35px),
+  icon-radio-on: (35px, 35px),
+) !default;
+// 높이만 맞추면 되는 경우
+// center-img
+// (경로, 세로)
+$section-heading: 'url',197px, 58px, 0 0;
+
+// IR일경우
+// sprite-img
+// (경로, 가로, 세로, 좌표)
+$btn-share: (
+   url:'',
+    facebook: (52px, 57px, 0 -251px),
+    kakostory: (52px, 57px, -54px -251px),
+    kakaotalk: (52px, 57px, -108px -251px)
+  ) !default;
+
+
+
+//---------------------------------------------------
+// IR button 관련
+// 영역크기 == 이미지 크기
+//---------------------------------------------------
+.btnx {
+  @include background('event-intro-heading.png');
+  width:100px;
+  height: 200px;
+}
+//---------------------------------------------------
+// IR heading, img
+// 가운데정렬, 높이만 각각 다르게 부여할때
+//---------------------------------------------------
+.event-intro .heading {
+  @include background('event-intro-heading.png');
+  height: 200px;
+}
+//---------------------------------------------------
+// IS
+// 규격이 변하지 않는 이미지 처리시 사용
+//---------------------------------------------------
+$btn-info : null;
+
+@if $device == web {
+
+  $btn-info: (
+      notice: (197px, 58px, 0 0),
+      facebook: (52px, 57px, 0 -251px),
+      kakostory: (52px, 57px, -54px -251px),
+      kakaotalk: (52px, 57px, -108px -251px)
+    ) !default;
+
+}@else {
+
+  $btn-info: (
+      notice: (249px, 38px, 0 0),
+      facebook: (38px, 43px, 0 -260px),
+      kakostory: (38px, 43px, -50px -260px),
+      kakaotalk: (38px, 43px, -98px -260px)
+    ) !default;
+
+
+
+ }
+ 
+@mixin btn($info) {
+  @each $el,
+  $vals in $info {
+    &-#{$el} {
+      width: nth($vals, 1);
+      height: nth($vals, 2);
+      background-position: nth($vals, 3);
+      background: url('/Images/GoldenBell/pop/form/btn-privacy.png');
+    }
+  }
+}
+
+.eve-btn{
+    //@include background('/Images/GoldenBell/pop/form/btn-privacy.png');
+    @include btn($btn-info);
+    border:0;
+    display: inline-block;
+    font-size:0;
+    text-indent: -9999em;
+    overflow: hidden;
+
+    @if $device == web {
+        cursor: pointer;
+    }
+}
+
+

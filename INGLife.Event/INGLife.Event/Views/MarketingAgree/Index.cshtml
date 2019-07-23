@@ -1,0 +1,203 @@
+﻿@model INGLife.Event.Models.MarketingAgreeModels.MarketingAgreeModels
+@using INGLife.Event.Domain.Entities.KidsNote
+@{
+    ViewBag.Title = "ING생명 마케팅동의 캠페인";
+}
+
+@section styles {
+    <link href="~/Content/MarketingAgree/css/style.min.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/vuejs")
+}
+
+<div class="event__agree-wrap">
+    <!-- 팝업 : dimmed -->
+    <div id="dimmed"></div>
+
+    <!-- 팝업 : 종료 dimmed -->
+    <div id="endDimmed" style="display:@(ViewBag.IsClose ? "block" : "none")">
+        <img src="~/Content/Images/rebranding/form/end.png" alt="이벤트가 종료되었습니다." />
+    </div>
+
+    <div class="popup__entry">
+        <div class="popup__header">
+            <h1><img src="~/Content/Images/MarketingAgree/tit-event.jpg" alt="이벤트 참여하기" /></h1>
+        </div>
+
+        <section class="popup__content">
+            <div class="align-center">
+                <form id="reqKMCISForm" method="post" action="#">
+                    <input type="hidden" name="tr_cert" value="@Model.RequestKMCModel.Enc_Tr_Cert">
+                    <input type="hidden" name="tr_url" value="@Model.RequestKMCModel.Tr_Url">
+                    <input type="hidden" name="tr_add" value="@Model.RequestKMCModel.Tr_Add">
+                    @if (ViewBag.IsClose)
+                    {
+                        <button type="button" class="btn__event btn__certification-phone" onclick="alert('이벤트가 종료되었습니다.'); return false;">휴대폰 인증</button>
+                    }
+                    else
+                    {
+                        <button type="submit" onclick="javascript:openKMCISWindow();" class="btn__event btn__certification-phone ga-event" data-action="휴대폰 인증">휴대폰 인증</button>                        
+                    }
+                </form>
+ 
+            </div>
+            @using( Ajax.BeginForm("CreateMarketingAgreeEntry", new { }, new AjaxOptions {
+                HttpMethod = "post",
+                OnBegin = "marketingAgreeEventModel.beginEntry",
+                OnComplete = "marketingAgreeEventModel.CompleteEntry",
+                OnSuccess = "marketingAgreeEventModel.saveEntry",
+                OnFailure = "marketingAgreeEventModel.failureEntry"
+            }, new { id = "frmMarketingAgreeEntry" }) ) {
+                @Html.AntiForgeryToken()
+                <div class="personal-name">
+                    @Html.TextBoxFor(x => x.MarketingAgreeModel.Name, new { placeholder="이름",@readonly = "readonly",@class= "input__personal-name" })
+                    <!-- 성별에 class on  -->
+                    <div class="personal-gender">
+                        <label for="male" class="radio__male">
+                            @Html.RadioButtonFor(x=>x.MarketingAgreeModel.Gender,"0",new { id = "male" })
+                            <span class="btn__event btn__ir-radio">남</span>
+                        </label>
+                        <label for="female" class="radio__female">
+                            @Html.RadioButtonFor(x => x.MarketingAgreeModel.Gender, "1", new { id = "female" })
+                            <span class="btn__event btn__ir-radio">여</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="personal-phone">
+                    @Html.TextBoxFor(x => x.MarketingAgreeModel.Mobile, new { placeholder = "휴대폰번호(-없이 입력)", @readonly = "readonly" })
+                </div>
+                <div class="personal-birth">
+                    @Html.TextBoxFor(x => x.MarketingAgreeModel.BirthDay, new { placeholder = "생년월일(8자리)", @readonly = "readonly" })
+                </div>
+
+                <div class="dimm__block" onclick="alert('휴대폰 인증을 진행해 주세요');"></div>
+
+                <!--개인정보 수집 이용-->
+                <div class="personal-policy">
+                    <p><img src="~/Content/Images/MarketingAgree/notice-agree.jpg" alt="본 동의는 선택사항입니다. 다만, 이에 동의를 하시지 않을 경우에는  이벤트 참여를 포함한 다양한 편의제공 및 신상품 안내 등에 일부 제한이 있을 수 있습니다." /></p>
+
+                    <div class="policy-text-box">
+                        <img src="~/Content/Images/MarketingAgree/txt-policy-agree1.png" alt="개인정보 수집·이용 관련 안내 ING생명보험㈜는 개인정보보호법 및 정보통신망법에 따라 보험상품 소개, 홍보 및 재무 설계 컨설팅, 이벤트 진행 등을 위하여 귀하의 개인정보를 다음과 같이 수집·이용하고자 합니다. 이에 동의하십니까?" />
+                    </div>
+
+                    <h2><img src="~/Content/Images/MarketingAgree/tit-policy-agree1.jpg" alt="개인(신용)정보 수집·이용" /></h2>
+                    <label for="agreePolicy01">
+                        @Html.RadioButtonFor(x=> x.MarketingAgreeModel.Agree,1,new { id="agreePolicy01" })
+                        <span class="btn__event btn__ir-radio btn__ir-radio-em"></span>
+                        <img src="~/Content/Images/MarketingAgree/agree.png" alt="동의" />
+                    </label>
+                    <label for="disagreePolicy01" class="disagree">
+                        @Html.RadioButtonFor(x=>x.MarketingAgreeModel.Agree,2,new { id= "disagreePolicy01" })
+                        <span class="btn__event btn__ir-radio"></span>
+                        <img src="~/Content/Images/MarketingAgree/disagree.png" alt="동의하지 않음" />
+                    </label>
+
+                    <div class="policy-text-box">
+                        <img src="~/Content/Images/MarketingAgree/txt-policy-agree2.png" alt="개인정보의 제공 관련 안내 ING생명보험㈜는 개인정보보호법 및 정보통신망법에 따라 귀하의 개인정보를 다음과 같이 제3자에게 상품 소개, 홍보 및 재무 설계 컨설팅 등 영업 목적으로 제공하고자 합니다. 이에 동의하십니까?" />
+                    </div>
+                    <h2><img src="~/Content/Images/MarketingAgree/tit-policy-agree2.jpg" alt="개인(신용)정보 제공" /></h2>
+                    <label for="agreePolicy02">
+                        @Html.RadioButtonFor(x => x.MarketingAgreeModel.Agree2, 1, new { id = "agreePolicy02"})
+                        <span class="btn__event btn__ir-radio btn__ir-radio-em"></span>
+                        <img src="~/Content/Images/MarketingAgree/agree.png" alt="동의" />
+                    </label>
+                    <label for="disagreePolicy02" class="disagree">
+                        @Html.RadioButtonFor(x => x.MarketingAgreeModel.Agree2, 2, new { id = "disagreePolicy02" })
+                        <span class="btn__event btn__ir-radio"></span>
+                        <img src="~/Content/Images/MarketingAgree/disagree.png" alt="동의하지 않음" />
+                    </label>
+                </div>
+                <!--개인정보 수집 이용-->
+
+                <!--보유, 이용기간-->
+                <div class="retention-period">
+                    <h2><img src="~/Content/Images/MarketingAgree/tit-retention.jpg" alt="보유 이용기간" /></h2>
+                    <label for="selectRetention5years">
+                        @Html.RadioButtonFor(x => x.MarketingAgreeModel.RetentionPeriodType, RetentionPeriodType.FiveYears, new { id = "selectRetention5years" })
+                        <span class="btn__event btn__ir-radio btn__ir-radio-em"></span>
+                        <img src="~/Content/Images/MarketingAgree/5year.png" alt="5년" />
+                    </label>
+                    <label for="selectRetention4years">
+                        @Html.RadioButtonFor(x => x.MarketingAgreeModel.RetentionPeriodType, RetentionPeriodType.FourYears, new { id = "selectRetention4years" })
+                        <span class="btn__event btn__ir-radio"></span>
+                        <img src="~/Content/Images/MarketingAgree/4year.png" alt="4년" />
+                    </label>
+                    <label for="selectRetention3years">
+                        @Html.RadioButtonFor(x => x.MarketingAgreeModel.RetentionPeriodType, RetentionPeriodType.ThreeYears, new { id = "selectRetention3years" })
+                        <span class="btn__event btn__ir-radio"></span>
+                        <img src="~/Content/Images/MarketingAgree/3year.png" alt="3년" />
+                    </label>
+                    <label for="selectRetention2years">
+                        @Html.RadioButtonFor(x => x.MarketingAgreeModel.RetentionPeriodType, RetentionPeriodType.TwoYears, new { id = "selectRetention2years" })
+                        <span class="btn__event btn__ir-radio"></span>
+                        <img src="~/Content/Images/MarketingAgree/2year.png" alt="2년" />
+                    </label>
+                    <label for="selectRetention1years">
+                        @Html.RadioButtonFor(x => x.MarketingAgreeModel.RetentionPeriodType, RetentionPeriodType.OneYear, new { id = "selectRetention1years" })
+                        <span class="btn__event btn__ir-radio"></span>
+                        <img src="~/Content/Images/MarketingAgree/1year.png" alt="1년" />
+                    </label>
+                </div>
+                <!--//보유, 이용기간-->
+
+                <!--연락 방식 선택-->
+                <div class="contact-method">
+                    <h2><img src="~/Content/Images/MarketingAgree/tit-contact-method.jpg" alt="연락 방식 선택" /></h2>
+                    <label for="selectContactAll">
+                        @Html.CheckBoxFor(x => x.MarketingAgreeModel.AllCheck,new { id= "selectContactAll" })
+                        <span class="btn__event btn__ir-radio btn__ir-radio-em"></span>
+                        <img src="~/Content/Images/MarketingAgree/all.png" alt="전체" />
+                    </label>
+                    <label for="selectContactPhone">
+                        @Html.CheckBoxFor(x => x.MarketingAgreeModel.PhoneCheck, new { id = "selectContactPhone",@class= "input__contact-method" })
+                        <span class="btn__event btn__ir-radio"></span>
+                        <img src="~/Content/Images/MarketingAgree/phone.png" alt="전화" />
+                    </label>
+                    <label for="selectContactSms">
+                        @Html.CheckBoxFor(x => x.MarketingAgreeModel.MessageCheck, new { id = "selectContactSms", @class = "input__contact-method" })
+                        <span class="btn__event btn__ir-radio"></span>
+                        <img src="~/Content/Images/MarketingAgree/sms.png" alt="문자메세지" />
+                    </label>
+                </div>
+                <!--//연락 방식 선택-->
+
+                <div class="align-center">
+                    @if (ViewBag.IsClose)
+                    {
+                        <button type="button" class="btn__event btn__complete" onclick="alert('이벤트가 종료되었습니다.'); return false;">입력완료</button>
+                    }
+                    else
+                    {
+                        <button class="btn__event btn__complete ga-event" data-action="입력완료">입력완료</button>
+                    }                    
+                    <div class="dimm__loading" style="display:none;"><img src="~/Content/Images/MarketingAgree/loading.gif" alt="로딩중" /></div>
+                </div>
+            }
+        </section>
+    </div>
+
+
+    <!-- 팝업 : start -->
+    <div id="popupDimm"></div>
+    <div class="popup__alert" id="popupAlert">
+        <p><img src="~/Content/Images/MarketingAgree/txt-event-alert.jpg" alt="전화와 문자메시지, 두 가지 항목에 수신 동의를 하셔야 이벤트 참여가 가능합니다." /></p>
+        <div class="align-center">
+            <button class="btn__event btn__confirm" onclick="closePopup('Alert'); return false;">확인</button>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Content/common/dev-common.js"></script>
+    <script src="~/Content/js/MarketingAgree/pub.js"></script>
+    <script src="~/Content/js/MarketingAgree/dev.js"></script>
+    <script type="text/javascript">
+        var googleAnalyticCategory = '@ViewBag.Title';
+        var eventClose = '@ViewBag.IsClose';
+
+        window.name = "kmcis_web_sample";
+        function openKMCISWindow(){
+            alert('이벤트가 종료되었습니다.');
+            return false;
+        }
+    </script>
+}

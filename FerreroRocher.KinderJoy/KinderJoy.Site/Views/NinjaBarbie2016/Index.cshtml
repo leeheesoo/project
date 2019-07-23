@@ -1,0 +1,327 @@
+﻿@model KinderJoy.Site.Models.NinjaBarbie2016.NinjaBarbie2016UserViewModel
+@{
+    ViewBag.Title = "2016 닌자바비 이벤트";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    DateTime? now = ViewBag.DateTimeNow as DateTime?;
+    //종료설정
+    bool isClose = false;
+    if (now.HasValue && now >= new DateTime(2017, 1, 2)) {
+        isClose = true;
+    }
+    //테스트서버에서 테스트 참여 가능하도록 설정
+    if (!Request.Url.Host.Equals("www.kinderjoy.co.kr")) {
+        isClose = true;
+    }
+}
+@section metas {
+    <meta name="title" content="NEW 서프라이즈 출시 기념 이벤트" />
+    <meta name="description" content="킨더조이 1,000개 증정!">
+    <meta property="og:title" content="NEW 서프라이즈 출시 기념 이벤트" />
+    <meta property="og:description" content="킨더조이 1,000개 증정!">
+    @if (ViewBag.UserId != null) {
+        <meta property="og:image" content="@ViewBag.OgImage">
+        <meta property="og:url" content="http://@(Request.Url.Host)/event/2016-ninjabarbie/@(ViewBag.UserId)?utm_source=Kakaostory&utm_medium=sharing&utm_campaign=ninjabarbie2016">
+    }
+}
+@section styles{
+    <link rel="stylesheet" type="text/css" href="~/Content/js/jquery.bxslider.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/NinjaBarbie2016/ninjaBarbie.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/NinjaBarbie2016/popup.css" />
+}
+<div class="event_wrap">
+    <h2>@ViewBag.Title</h2>
+    <!-- 상단 안내 -->
+    <div class="page_top">
+        <div class="inner">
+            <div class="page_tl"><img src="~/Images/NinjaBarbie2016/w/page_tl.png" alt="킨더조이 NEW SURPRISE"></div>
+            <div class="page_txt"><img src="~/Images/NinjaBarbie2016/w/page_txt.png" alt=""></div>
+            <div class="btn_xmas"><a href="javascript:openPop('pop_xmas');"><img src="~/Images/NinjaBarbie2016/w/btn_xmas.png" alt="킨더 크리스마스 팩 자세히 보기" /></a></div>
+            <div class="page_btns">
+                <a href="@Url.Action("Image", "Home")" target="_blank" class="GA" data-category="@ViewBag.Title" data-action="바비 8종 보러가기"><img src="~/Images/NinjaBarbie2016/w/btn_view_bb_active.png" alt="바비 8종 보러가기" /></a>
+                <a href="@Url.Action("Image", "Home")" target="_blank" class="GA" data-category="@ViewBag.Title" data-action="닌자 8종 보러가기"><img src="~/Images/NinjaBarbie2016/w/btn_view_nj_active.png" alt="닌자 8종 보러가기" /></a>
+            </div>
+        </div>
+    </div>
+    <!-- 이벤트 설명 -->
+    <div class="event_info">
+        <div class="inner">
+            <div class="info_tl"><img src="~/Images/NinjaBarbie2016/w/info_tl.png" alt="" /></div>
+            <div class="info_txt"><img src="~/Images/NinjaBarbie2016/w/info_txt.png" alt="" /></div>
+            <div class="info_btn"><a href="javascript:openPop('pop_benefit','dang');" class="GA" data-category="@ViewBag.Title" data-action="경품 안내"><img src="~/Images/NinjaBarbie2016/w/btn_view_dang.png" alt="당첨자 및 경품 안내" /></a></div>
+
+        </div>
+    </div>
+    <!-- 이벤트 영역 시작 -->
+    <div class="game_area_wrap" id="ninjabarbieevent" ng-app="event">
+        <div class="inner">
+            <div class="game_deco"></div>
+            <div class="game_area">
+                <div></div>
+                <!-- 시작화면: 서프라이즈 선택 -->
+                <div class="game_common select_char" style="display:;">
+                    <div class="tl"><img src="~/Images/NinjaBarbie2016/w/step1/char_tl.png" alt="서프라이즈를 선택해주세요"></div>
+                    <ul>
+                        @if (isClose) {
+                            <li>
+                                <div class="btn"><a href="javascript:alert('이벤트가 종료되었습니다!');"><img src="~/Images/NinjaBarbie2016/w/step1/btn_char_bb_active.png" alt="바비 외출 준비"></a></div>
+                            </li>
+                            <li>
+                                <div class="btn"><a href="javascript:alert('이벤트가 종료되었습니다!');"><img src="~/Images/NinjaBarbie2016/w/step1/btn_char_nj_active.png" alt="닌자 외출 준비"></a></div>
+                            </li>
+                        } else {
+                            <li>
+                                <div class="btn"><a href="javascript:;" ng-click="selectType('@KinderJoy.Domain.Entities.NinjaBarbie2016.NinjaBarbieSurprizeType.BARBIE');" class="GA" data-category="@ViewBag.Title" data-action="바비 외출 준비"><img src="~/Images/NinjaBarbie2016/w/step1/btn_char_bb_active.png" alt="바비 외출 준비"></a></div>
+                            </li>
+                            <li>
+                                <div class="btn"><a href="javascript:;" ng-click="selectType('@KinderJoy.Domain.Entities.NinjaBarbie2016.NinjaBarbieSurprizeType.NINJA');" class="GA" data-category="@ViewBag.Title" data-action="닌자 전투 준비"><img src="~/Images/NinjaBarbie2016/w/step1/btn_char_nj_active.png" alt="닌자 외출 준비"></a></div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <!-- 개인정보 입력 -->
+                <div class="game_common personal_info" style="display:none;">
+                    @*<div class="btn_close"><a href="javascript:"><img src="images/btn_close.png" alt="전 단계로 돌아가기" /></a></div>*@
+                    <div class="form_tl"><img src="~/Images/NinjaBarbie2016/w/step2/form_tl.png" alt="개인정보 입력 당첨자 발표 후 경품 발송을 위한 개인정보를 입력해주세요!" /></div>
+                    <form name="saveEvent1Step1" class="private_info_frm" ng-submit="save()">
+                        @Html.HiddenFor(x => x.SurprizeType, new { @ng_bind = "user.surprizeType" })
+                        <div class="form_box">
+                            <dl class="input_name">
+                                <dt><img src="~/Images/NinjaBarbie2016/w/step2/input_name.png" alt="이름" /></dt>
+                                <dd>@Html.TextBoxFor(x => x.Name, new { ng_model = "user.name", maxlength = 10, kr_input = "" })</dd>
+                            </dl>
+                            <dl class="input_phone">
+                                <dt><img src="~/Images/NinjaBarbie2016/w/step2/input_phone.png" alt="휴대폰 번호" /></dt>
+                                <dd>@Html.TextBoxFor(x => x.Mobile, new { type = "tel", ng_model = "user.mobile", maxlength = 11, @class = "ph_phone" })</dd>
+                            </dl>
+                            <dl class="input_address">
+                                <dt><img src="~/Images/NinjaBarbie2016/w/step2/input_address.png" alt="주소" /></dt>
+                                <dd class="dd_address1">@Html.TextBoxFor(x => x.ZipCode, new { ng_model = "user.zipcode", maxlength = 7, @class = "address1", @readonly = "readonly" })<img src="~/Images/NinjaBarbie2016/w/step2/btn_search.png" alt="우편번호" class="btn_search" ng_click="openPostCode()" /></dd>
+                                <dd class="dd_address2">@Html.TextBoxFor(x => x.Address, new { ng_model = "user.address", maxlength = 150, @class = "addr1", @readonly = "readonly" })@Html.TextBoxFor(x => x.AddressDetail, new { ng_model = "user.addressDetail", maxlength = 200, @class = "ph_address", kr_input = "" })</dd>
+                            </dl>
+                            <dl class="input_phone">
+                                <dt><img src="~/Images/NinjaBarbie2016/w/step2/input_age.png" alt="나이" /></dt>
+                                <dd>@Html.TextBoxFor(x => x.Age, new { type = "tel", @class = "ph_age", ng_model = "user.age", maxlength = 3 })</dd>
+                            </dl>
+                            <div class="agree_policy">
+                                <span><label for="agreeCheck"><input data-val="true" data-val-assertthat="개인정보보호를 위한 이용자 동의사항에 동의해 주세요." data-val-assertthat-constsmap="{}" data-val-assertthat-expression="Agree == true" data-val-assertthat-fieldsmap="{&quot;Agree&quot;:&quot;bool&quot;}" data-val-required="개인정보보호를 위한 이용자 동의사항에 동의해 주세요." id="agreeCheck" name="Agree" type="checkbox" value="true"><img src="~/Images/NinjaBarbie2016/w/step2/input_agree.png" class="txt_img" alt="개인정보의 수집/이용에 대한 동의" /></label></span><a href="@Url.Action("PrivacyPolicy", "NinjaBarbie2016")" target="_blank"><img src="~/Images/NinjaBarbie2016/w/step2/btn_policy.png" alt="자세히 보기 버튼" /></a>
+                            </div>
+                        </div>
+                        <div class="btn_area">
+                            <div class="btn"><button type="submit" style="cursor:pointer" class="GA" data-category="@ViewBag.Title" data-action="개인정보 입력 완료"><img src="~/Images/NinjaBarbie2016/w/step2/btn_entry.png" alt="입력 완료" /></button></div>
+                        </div>
+                    </form>
+                </div>
+                <!-- 게임화면 -->
+                <div class="game_common game_stage" style="display:none;">
+                    <!-- 바비 -->
+                    <div class="stage_bb" style="display:none;" ng-controller="Barbie">
+                        <div class="tl"><img src="~/Images/NinjaBarbie2016/w/step3/bb_tl.png" alt="나만의 서프라이즈 자랑하기"></div>
+                        <div class="cont">
+                            <!-- 좌측상단 스테이지 -->
+                            <div class="mix_result">
+                                <div class="back">
+                                    <canvas id="barbie_canvas" width="262" height="262"></canvas>
+                                    <div class="toy_acc" style="top:110px;left:150px;"><img id="barbie_acc" src="~/Images/NinjaBarbie2016/w/blank.gif" alt=""></div>
+                                </div>
+                            </div>
+                            <!-- 좌측하단 기본세트 선택 -->
+                            <div class="mix_default_set">
+                                <ul>
+                                    <li ng-click="setDraw(1);"><label for="bb-set1"><img src="~/Images/NinjaBarbie2016/w/blank.gif" alt="" /><input type="radio" id="bb-set1" name="bb_set" /></label></li>
+                                    <li ng-click="setDraw(2);"><label for="bb-set2"><img src="~/Images/NinjaBarbie2016/w/blank.gif" alt="" /><input type="radio" id="bb-set2" name="bb_set" /></label></li>
+                                    <li ng-click="setDraw(3);"><label for="bb-set3"><img src="~/Images/NinjaBarbie2016/w/blank.gif" alt="" /><input type="radio" id="bb-set3" name="bb_set" /></label></li>
+                                    <li ng-click="setDraw(4);"><label for="bb-set4"><img src="~/Images/NinjaBarbie2016/w/blank.gif" alt="" /><input type="radio" id="bb-set4" name="bb_set" /></label></li>
+                                    <li ng-click="setDraw(5);"><label for="bb-set5"><img src="~/Images/NinjaBarbie2016/w/blank.gif" alt="" /><input type="radio" id="bb-set5" name="bb_set" /></label></li>
+                                    <li ng-click="setDraw(6);"><label for="bb-set6"><img src="~/Images/NinjaBarbie2016/w/blank.gif" alt="" /><input type="radio" id="bb-set6" name="bb_set" /></label></li>
+                                    <li ng-click="setDraw(7);"><label for="bb-set7"><img src="~/Images/NinjaBarbie2016/w/blank.gif" alt="" /><input type="radio" id="bb-set7" name="bb_set" /></label></li>
+                                    <li ng-click="setDraw(8);"><label for="bb-set8"><img src="~/Images/NinjaBarbie2016/w/blank.gif" alt="" /><input type="radio" id="bb-set8" name="bb_set" /></label></li>
+                                </ul>
+                            </div>
+                            <div class="mix_slider">
+                                <div class="toy_top_slider">
+                                    <ul class="toy_bxslider1">
+                                        <!-- 상의 8종 -->
+                                        <li ng-click="setTop(2);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_top_1.png" alt=""></li>
+                                        <li ng-click="setTop(1);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_top_2.png" alt=""></li>
+                                        <li ng-click="setTop(7);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_top_3.png" alt=""></li>
+                                        <li ng-click="setTop(6);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_top_4.png" alt=""></li>
+                                        <li ng-click="setTop(4);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_top_5.png" alt=""></li>
+                                        <li ng-click="setTop(3);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_top_6.png" alt=""></li>
+                                        <li ng-click="setTop(8);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_top_7.png" alt=""></li>
+                                        <li ng-click="setTop(5);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_top_8.png" alt=""></li>
+                                    </ul>
+                                </div>
+                                <div class="toy_bottom_slider">
+                                    <ul class="toy_bxslider2">
+                                        <!-- 하의 8종 -->
+                                        <li ng-click="setBottom(6);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_bottom_1.png" alt=""></li>
+                                        <li ng-click="setBottom(4);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_bottom_2.png" alt=""></li>
+                                        <li ng-click="setBottom(3);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_bottom_3.png" alt=""></li>
+                                        <li ng-click="setBottom(1);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_bottom_4.png" alt=""></li>
+                                        <li ng-click="setBottom(2);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_bottom_5.png" alt=""></li>
+                                        <li ng-click="setBottom(5);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_bottom_6.png" alt=""></li>
+                                        <li ng-click="setBottom(8);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_bottom_7.png" alt=""></li>
+                                        <li ng-click="setBottom(7);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_bottom_8.png" alt=""></li>
+                                    </ul>
+                                </div>
+                                <div class="toy_acc_slider">
+                                    <ul class="toy_bxslider3">
+                                        <!-- 악세사리 4종 -->
+                                        <li ng-click="setAcc(1);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_acc_1.png" alt=""></li>
+                                        <li ng-click="setAcc(5);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_acc_2.png" alt=""></li>
+                                        <li ng-click="setAcc(3);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_acc_3.png" alt=""></li>
+                                        <li ng-click="setAcc(6);"><img src="~/Images/NinjaBarbie2016/w/step3/original/bb_acc_4.png" alt=""></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- 우측 슬라이더 덮게 -->
+                            <div class="stage_cover"></div>
+                        </div>
+                        <div class="btns">
+                            <img src="~/Images/NinjaBarbie2016/w/step3/bb_compelte_bb.png" alt="나만의 바비 완성" ng-click="goResult()" style="cursor:pointer" class="GA" data-category="@ViewBag.Title" data-action="나만의 바비 완성" />
+                            <img src="~/Images/NinjaBarbie2016/w/step3/btn_replay.png" alt="다시 도전" ng-click="canvasRevert()" style="cursor:pointer" class="GA" data-category="@ViewBag.Title" data-action="나만의 바비 되돌리기">
+                        </div>
+                    </div>
+                    <!-- 닌자 -->
+                    <div class="stage_nj" style="display:none;" ng-controller="Ninja">
+                        <div class="tl"><img src="~/Images/NinjaBarbie2016/w/step3/nj_tl.png" alt="나만의 서프라이즈 자랑하기"></div>
+                        <div class="cont">
+                            <!-- 좌측상단 스테이지 -->
+                            <div class="mix_result">
+                                <div class="back">
+                                    <canvas id="ninja_canvas" width="262" height="262"></canvas>
+                                    <div class="toy_acc" style="top:110px;left:150px;"><img id="ninja_acc" src="~/Images/NinjaBarbie2016/w/blank.gif" alt=""></div>
+                                </div>
+                            </div>
+                            <!-- 좌측하단 기본세트 선택 -->
+                            <div class="mix_default_set">
+                                <ul>
+                                    <li ng-click="setDraw(1);"><label for="nj-set1"><img src="~/Images/NinjaBarbie2016/w/blank.gif" alt="" /><input type="radio" id="nj-set1" name="nj_set" /></label></li>
+                                    <li ng-click="setDraw(2);"><label for="nj-set2"><img src="~/Images/NinjaBarbie2016/w/blank.gif" alt="" /><input type="radio" id="nj-set2" name="nj_set" /></label></li>
+                                    <li ng-click="setDraw(3);"><label for="nj-set3"><img src="~/Images/NinjaBarbie2016/w/blank.gif" alt="" /><input type="radio" id="nj-set3" name="nj_set" /></label></li>
+                                    <li ng-click="setDraw(4);"><label for="nj-set4"><img src="~/Images/NinjaBarbie2016/w/blank.gif" alt="" /><input type="radio" id="nj-set4" name="nj_set" /></label></li>
+                                    <li ng-click="setDraw(5);"><label for="nj-set5"><img src="~/Images/NinjaBarbie2016/w/blank.gif" alt="" /><input type="radio" id="nj-set5" name="nj_set" /></label></li>
+                                    <li ng-click="setDraw(6);"><label for="nj-set6"><img src="~/Images/NinjaBarbie2016/w/blank.gif" alt="" /><input type="radio" id="nj-set6" name="nj_set" /></label></li>
+                                    <li ng-click="setDraw(7);"><label for="nj-set7"><img src="~/Images/NinjaBarbie2016/w/blank.gif" alt="" /><input type="radio" id="nj-set7" name="nj_set" /></label></li>
+                                    <li ng-click="setDraw(8);"><label for="nj-set8"><img src="~/Images/NinjaBarbie2016/w/blank.gif" alt="" /><input type="radio" id="nj-set8" name="nj_set" /></label></li>
+                                </ul>
+                            </div>
+                            <div class="mix_slider">
+                                <div class="toy_top_slider">
+                                    <ul class="toy_bxslider1">
+                                        <!-- 상의 7종 -->
+                                        <li ng-click="setTop(2);"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_top_1.png" alt=""></li>
+                                        <li ng-click="setTop(1);"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_top_2.png" alt=""></li>
+                                        <li ng-click="setTop(3);"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_top_3.png" alt=""></li>
+                                        <li ng-click="setTop(4);"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_top_4.png" alt=""></li>
+                                        <li ng-click="setTop(6);"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_top_5.png" alt=""></li>
+                                        <li ng-click="setTop(5);" class="nj_top_6"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_top_6.png" alt=""></li>
+                                        <li ng-click="setTop(7);" class="nj_top_7"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_top_7.png" alt=""></li>
+                                        <li ng-click="setTop(8);" class="nj_top_8"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_top_8.png" alt=""></li>
+                                    </ul>
+                                </div>
+                                <div class="toy_bottom_slider">
+                                    <ul class="toy_bxslider2">
+                                        <!-- 하의 7종 -->
+                                        <li ng-click="setBottom(2);" class="nj_bottom_1"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_bottom_1.png" alt=""></li>
+                                        <li ng-click="setBottom(4);" class="nj_bottom_2"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_bottom_2.png" alt=""></li>
+                                        <li ng-click="setBottom(3);" class="nj_bottom_3"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_bottom_3.png" alt=""></li>
+                                        <li ng-click="setBottom(5);"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_bottom_4.png" alt=""></li>
+                                        <li ng-click="setBottom(7);"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_bottom_5.png" alt=""></li>
+                                        <li ng-click="setBottom(6);"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_bottom_6.png" alt=""></li>
+                                        <li ng-click="setBottom(1);"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_bottom_7.png" alt=""></li>
+                                    </ul>
+                                </div>
+                                <div class="toy_acc_slider">
+                                    <ul class="toy_bxslider3">
+                                        <!-- 악세사리 7종 -->
+                                        <li ng-click="setAcc(7);"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_acc_1.png" alt=""></li>
+                                        <li ng-click="setAcc(2);"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_acc_2.png" alt=""></li>
+                                        <li ng-click="setAcc(5);"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_acc_3.png" alt=""></li>
+                                        <li ng-click="setAcc(1);"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_acc_4.png" alt=""></li>
+                                        <li ng-click="setAcc(6);"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_acc_5.png" alt=""></li>
+                                        <li ng-click="setAcc(3);"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_acc_6.png" alt=""></li>
+                                        <li ng-click="setAcc(4);" class="nj_acc_7"><img src="~/Images/NinjaBarbie2016/w/step3/original/nj_acc_7.png" alt=""></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="stage_cover"></div>
+                        </div>
+                        <div class="btns">
+                            <img src="~/Images/NinjaBarbie2016/w/step3/bb_compelte_nj.png" alt="나만의 닌자 완성" ng-click="goResult()" style="cursor:pointer" class="GA" data-category="@ViewBag.Title" data-action="나만의 닌자 완성">
+                            <img src="~/Images/NinjaBarbie2016/w/step3/btn_replay.png" alt="다시 도전" ng-click="canvasRevert()" style="cursor:pointer" class="GA" data-category="@ViewBag.Title" data-action="나만의 닌자 되돌리기">
+                        </div>
+                    </div>
+                </div>
+                <!-- 결과화면 -->
+                <div class="game_common game_result_share" id="shareSns" style="display:none;">
+                    <div class="tl"><img ng-class="sharing.surprizeType == 1 ? 'bb_bg' : 'nj_bg'" src="~/Images/NinjaBarbie2016/w/blank.gif" alt="나만의 서프라이즈 자랑하기"></div>
+                    <div class="cont">
+                        <div ng-class="sharing.surprizeType == 1 ? 'result_view bb_bg' : 'result_view nj_bg'"><div class="result_view_img"><img id="canvas_result" src="~/Images/NinjaBarbie2016/w/blank.gif" alt="합성된 이미지"></div></div>
+                        <div class="sns_share">
+                            <div class="tl"><img src="~/Images/NinjaBarbie2016/w/step4/sns_share_tl.png" alt="SNS 공유하기"></div>
+                            <div class="share_icons">
+                                <img src="~/Images/NinjaBarbie2016/w/step4/btn_f.png" alt="facebook" ng-click="shareOnSns('@KinderJoy.Domain.Abstract.SnsType.Facebook');" style="cursor:pointer" class="GA" data-category="@ViewBag.Title" data-action="페이스북 공유" />
+                                <img src="~/Images/NinjaBarbie2016/w/step4/btn_ks.png" alt="kakao story" ng-click="shareOnSns('@KinderJoy.Domain.Abstract.SnsType.Kakaostory');" style="cursor:pointer" class="GA" data-category="@ViewBag.Title" data-action="카카오스토리 공유" />
+                                <img src="~/Images/NinjaBarbie2016/w/step4/btn_kt.png" alt="kakao talk" ng-click="shareOnSns('@KinderJoy.Domain.Abstract.SnsType.Kakaotalk');" style="cursor:pointer" class="GA" data-category="@ViewBag.Title" data-action="카카오톡 공유" />
+                            </div>
+                            <div class="share_txt"><img src="~/Images/NinjaBarbie2016/w/step4/share_txt.jpg" alt="SNS 공유하기 안내"></div>
+                        </div>
+                    </div>
+                    <div class="btns">
+                        <a href="@Url.Action("Image", "Home")" target="_blank" class="GA" data-category="@ViewBag.Title" data-action="다른 서프라이즈 구경하기"><img src="~/Images/NinjaBarbie2016/w/step4/btn_another_game.png" alt="다른 서프라이즈 구경하기" /></a>
+                        <img src="~/Images/NinjaBarbie2016/w/step4/btn_replay.png" alt="처음 화면으로" ng-click="reply()" class="GA" data-category="@ViewBag.Title" data-action="처음 화면으로" data-delay="500" />
+                    </div>
+                </div>
+            </div>
+            <!-- // 이벤트 영역 종료 -->
+        </div>
+    </div>
+    <!-- 하단 안내 -->
+    <div class="page_bottom">
+        <div><img src="~/Images/NinjaBarbie2016/w/page_bottom_txt.png" alt="이벤트 유의사항" /></div>
+    </div>
+</div>
+@Html.Partial("_Popup")
+<!-- // event_wrap -->
+<div style="display:none;">
+    <canvas id="sharing_canvas_facebook" width="600" height="315"></canvas>
+    <canvas id="sharing_canvas_kakaotalk" width="300" height="200"></canvas>
+    <canvas id="sharing_canvas_kakaostory" width="632" height="300"></canvas>
+</div>
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/Christmas2015/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.shy4blue.placeholder.js"></script>
+    <script type="text/javascript" src="~/Content/js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/NinjaBarbie2016/ninjaBarbie.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-resource.min.js"></script>
+    <script type="text/javascript" src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/kakako-1.8.0.min.js"></script>
+    <script type="text/javascript">
+        //카카오 javascript key
+        Kakao.init('@System.Configuration.ConfigurationManager.AppSettings["sns.kakao.key"]');
+        //페이스북
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '@System.Configuration.ConfigurationManager.AppSettings["sns.facebook.apikey"]', // App ID
+                channelUrl: '//@HttpContext.Current.Request["HTTP_HOST"]/facebook-channel.php', // Channel File
+                status: true, // check login status
+                xfbml: true  // parse XFBML
+            });
+            //팝업방지..
+            FB.getLoginStatus(function (response) { });
+        };
+        (function (d, debug) {
+            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement('script'); js.id = id; js.async = true;
+            js.src = "//connect.facebook.net/ko_KR/all" + (debug ? "/debug" : "") + ".js";
+            ref.parentNode.insertBefore(js, ref);
+        }(document, /*debug*/false));
+    </script>
+    <script type="text/javascript" src="~/Scripts/Common/devCommon.js"></script>
+    <script type="text/javascript" src="~/Scripts/Common/snsCommon.js"></script>
+    <script type="text/javascript" src="~/Scripts/NinjaBarbie2016/dev.js"></script>
+}

@@ -1,0 +1,138 @@
+﻿@using KinderJoy.Site.Infrastructure.Admin
+@{
+    var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+    var action = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+
+}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/favicon.ico" />
+    <title>킨더조이 관리자 : @ViewBag.Title</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/site.css" rel="stylesheet" />
+    <script src="/Scripts/_modernizr-2.6.2.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/metisMenu.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/sb-admin-2.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/jquery.fancybox.css" />
+    <style type="text/css">
+        body {
+            font-family: 'Malgun Gothic', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+    </style>
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script type="text/javascript" src="~/Scripts/jquery.form.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/expressive.annotations.validate.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/knockout-3.4.0.js"></script>
+    <script type="text/javascript" src="~/Scripts/knockout.mapping-latest.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="~/Scripts/locales/bootstrap-datepicker.kr.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/metisMenu.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/sb-admin-2.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/moment.js"></script>
+</head>
+<body style="padding-top:5px">
+    <div id="wrapper" style="vertical-align:top">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header" style="width:100%;height:50px">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index", "Manager")"><img src="~/Images/logo/logo.png" style="height:45px;margin-top:-12px;vertical-align:middle;float:left" /><span style="padding-left:5px;font-weight:bold">킨더조이 관리자</span></a>
+
+                <!-- /.navbar-top-links -->
+                <ul class="nav navbar-top-links navbar-right" style="float:right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user"></i> @Html.GetName(User.Identity.Name)  <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="@Url.Action("Logout", "Manager")"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-user -->
+                    </li>
+                    <!-- /.dropdown -->
+                </ul>
+            </div>
+            <!-- /.navbar-header -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        @if (User.IsInAnyRole("Administrators")) {
+                            <li class="@(new string[] { "AdminUsers", "AdminUserRoles" }.Contains(controller) ? "active" : null)">
+                                <a href="#"><i class="fa fa-gears fa-fw"></i> 시스템 관리자<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="@Url.Action("Index", "AdminUsers")" class="@(controller == "AdminUsers" ? "active" : null)"><i class="fa fa-users fa-fw"></i> 계정 관리</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index", "AdminUserRoles")" class="@(controller == "AdminUserRoles" ? "active" : null)"><i class="fa fa-sitemap fa-fw"></i> 역할 관리</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            @RenderBody()
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $.validator.setDefaults({
+            onkeyup: false,
+            onclick: false,
+            onfocusout: false,
+            showErrors: function (errorMap, errorList) {
+                if (this.numberOfInvalids() && errorList != '') { // 에러가 있을 때만..
+                    alert(errorList[0].message);
+                    $(errorList[0].element).focus();
+                }
+            }
+        });
+        $(function () {
+            $.fn.datepicker.defaults.format = "yyyy-mm-dd";
+            $.fn.datepicker.defaults.language = 'kr';
+            $('.datepicker').datepicker();
+
+            $('#PageSizeSelector').on('change', function () {
+                document.location = this.value;
+            });
+
+            $('.fancybox').fancybox();
+        });
+    </script>
+</body>
+</html>

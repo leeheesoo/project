@@ -1,0 +1,58 @@
+﻿//---------------------------------------------------
+// 팝업 : 당첨자발표
+//---------------------------------------------------
+.pop-winner {
+  text-align:center;
+  .pop-header{
+
+  }
+  .pop-con {
+	  .dang-group{
+		  width:540px;
+		  margin:0 auto;
+		  padding-top:40px;
+      color:#323232;
+		  p {
+			  padding-bottom: 20px;
+			  text-align:left;
+		  }
+		  .dang-box {
+			  width: 100%;
+			  height: 190px;
+			  border: 1px solid #dedede;
+			  background: #f4f4f4;
+			  overflow-x: hidden;
+			  /*overflow-y: auto;*/
+			  margin-bottom: 40px;
+			  text-align:left;
+				font-size: 18px;
+				line-height: 1.9;
+			  ul {
+				  padding: 14px 0 0 60px;
+          list-style:none;
+			  }
+			  li {
+				  float: left;
+				  width: 33%;
+			  }
+        &.winner1{
+          text-align:center;
+          overflow:hidden;
+          height:60px;
+          ul{
+            padding: 14px 0;
+          }
+          li{
+            padding:0;
+            float:none;
+            width:100%;
+          }
+        }
+		  }
+	  }
+	  .dang-note{
+		  //padding-top:35px;
+		  padding-bottom:35px;
+	  }
+  }
+}

@@ -1,0 +1,1305 @@
+﻿@charset 'UTF-8';
+
+//variable
+$bg-tab: #f4f4f4;
+$bg-orange: #f15b22;
+
+$color-orange: #f15b22;
+$color-white: #fff;
+
+$width-pop: 600px;
+
+
+// extend
+%clearfix {
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+// mixin
+// debug
+@mixin debug($color: red) {
+    outline: 1px dashed $color;
+}
+
+@mixin background($file,$type,$repeat: no-repeat,$x: center, $y: top,$color: transparent) {
+    background: #{$color} url(/Images/Christmas2015/m/#{$file}.#{$type}) #{$repeat} #{$x} #{$y};
+}
+
+@mixin backgroundP($file,$type,$repeat: no-repeat,$x: center, $y: top,$color: transparent) {
+    background: #{$color} url(/Images/Christmas2015/#{$file}.#{$type}) #{$repeat} #{$x} #{$y};
+}
+
+/*=============================
+    common
+===============================*/
+.screen-out {
+    position: absolute;
+    overflow: hidden;
+    top: -9999em;
+    left: -9999em;
+}
+
+.container a {
+    text-indent: 0;
+}
+
+/* 로딩바 */
+.btns-wrap {
+    display: inline-block;
+    position: relative;
+}
+
+.loading-wrap {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;    
+    display: none;
+    background: #000;
+    opacity: .7;
+    filter: alpha(opacity=70);
+
+    &.on { display: block; }
+
+    img { margin-top: 25px; }
+}
+
+/* 개인정보 수집 */
+.agree-txt {
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    font-size: 75%;
+    line-height: 1.4;
+    text-align: left;
+
+    dt {
+        font-weight: bold;
+        font-size: 1em;
+    }
+
+    dd { margin-top: 15px; }
+
+    ul { margin-top: 10px; }
+
+    li { margin-top: 5px; }
+
+    p { margin-top: 15px; }
+}
+
+
+/*=============================
+    visual
+===============================*/
+.visual {
+    //@include debug;
+    @include background('bg-visual','jpg',$y:bottom);
+    height: 615px;
+    padding-top: 80px;
+    text-align: center;
+
+    &__tit {
+        margin-top: 125px;
+    }
+}
+
+/*=============================
+    tab
+===============================*/
+
+.c-tab {
+
+    &__wrap {
+        position: relative;
+        z-index: 10;
+    }
+
+    @extend %clearfix;
+    background: $bg-tab;
+
+    padding: {
+        top: 36px;
+        bottom: 15px;
+    }
+
+    &__item {
+        float: left;
+        margin-left: 39px;
+
+        &:first-child {
+            margin-left: 35px;
+        }
+    }
+
+    &__link {
+        @include background('btn-tabs','png',$x: 0);
+        width: 164px;
+        height: 164px;
+        display: block;
+
+        &.on {
+            background-position: 0 bottom;
+        }
+
+
+        &--sec {
+            @extend .c-tab__link;
+            background-position: center top;
+
+            &.on {
+                background-position: center bottom;
+            }
+        }
+
+        &--last {
+            @extend .c-tab__link;
+            background-position: right top;
+
+            &.on {
+                background-position: right bottom;
+            }
+        }
+    }
+}
+
+/* wave */
+.wave {
+    @include background('bg-wave','png');
+    height: 60px;
+}
+
+/*=============================
+    package
+===============================*/
+
+.package {
+    position: relative;
+    margin-top: -30px;
+    padding-top: 55px;
+    padding-bottom: 40px;
+    display: none;
+    background: $bg-orange;
+    text-align: center;
+    z-index: 1;
+
+    &.on {
+        display: block;
+    }
+
+    &__img {
+        position: relative;
+        margin-top: 55px;
+        background: #fff;
+        padding-top: 52px;
+        position: relative;
+    }
+
+    .wave__white {
+        @include background('bg-wave-white','png');
+        position: absolute;
+        width: 100%;
+        height: 60px;
+        top: 428px;
+    }
+}
+
+/* package-detail */
+.package__detail {
+    margin-top: 98px;
+    padding-bottom: 50px;
+
+    &__wrap {
+        @extend %clearfix;
+        padding: 20px 50px 0;
+    }
+
+    &__item {
+        float: left;
+        margin-left: 28px;
+        margin-top: 30px;
+
+        &:first-child,
+        &:nth-child(4) {
+            margin-left: 0;
+        }
+    }
+}
+
+/*=============================
+    event1
+===============================*/
+.event1 {
+    @include debug;
+    display: none;
+    margin-top: -60px;
+    padding-top: 110px;
+    text-align: center;
+
+    &.on {
+        display: block;
+    }
+
+    &__txt {
+        margin-top: 25px;
+    }
+
+    &__date {
+        @include background('date-event1','png');
+        overflow: hidden;
+        width: 437px;
+        height: 32px;
+        margin: 28px auto 0;
+        text-indent: -9999em;
+    }
+
+    .youtube {
+        margin: 20px auto 0;
+        width: 565px;
+        height: 372px;
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__join__list {
+        @include background('list-join','png');
+        overflow: hidden;
+        text-indent: -9999em;
+        width: 571px;
+        height: 260px;
+        margin: 18px auto 0;
+    }
+
+    &__web-search {
+        @extend %clearfix;
+        margin: 38px auto 0;
+        width: 565px;
+
+        img {
+            float: left;
+        }
+
+        &__link {
+            float: right;
+        }
+    }
+
+    &__what {
+        @extend %clearfix;
+        width: 565px;
+        margin: 20px auto 0;
+
+        &--left,
+        &--right {
+            display: inline-block;
+            text-indent: 0;
+        }
+
+        &--left {
+            float: left;
+        }
+
+        &--right {
+            float: right;
+        }
+    }
+}
+
+/*=============================
+    event2
+===============================*/
+.event2 {
+    @include background('bg-event2','jpg',$color: #fff);
+    display: none;
+    margin-top: -35px;
+    text-align: center;
+    padding-top: 47px + 35;
+
+    &.on {
+        display: block;
+    }
+
+    &__txt {
+        margin-top: 25px;
+    }
+}
+
+/* make tree */
+.make-tree {
+    //@include debug;
+    position: relative;
+}
+
+/* tree area */
+.tree-area {
+    //@include debug(gray);
+    @include background('bg-tree','png');    
+    height: 761px;
+    position: relative;
+
+    canvas { visibility: hidden; position: absolute; left: 0; top: 0; }
+
+    &__inner {
+        position: relative;        
+        height: 761px;
+        z-index: 1;
+        padding: 0 30px 0 120px;
+       // outline: 1px dashed blue;
+    }
+}
+
+/* toys */
+.toys {
+    @include background('bg-slider','png');
+    width: 608px;
+    height: 126px;
+    margin: 0 auto;
+    padding-top: 20px;
+    position: relative;
+}
+
+// 동적 생성 장난감
+.toyItem {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -46px;
+}
+
+%arrow {
+    @include background('arrow','png', $x: left);
+    width: 46px;
+    height: 47px;
+    position: absolute;
+    top: 50%;
+    margin-top: -23.5px;
+    border: none;
+}
+
+.arrow-prev {
+    @extend %arrow;
+    left: 17px;
+}
+
+.arrow-next {
+    @extend %arrow;
+    background-position: right top;
+    right: 17px;
+}
+
+.btn-reset {
+    @include background('btn-reset','png');
+    width: 255px;
+    height: 79px;
+    margin-top: 20px;
+    border: none;
+}
+
+.btn-build {
+    @extend .btn-reset;
+    background-image: url(/Images/Christmas2015/m/btn-tree.png);
+    width: 295px;
+    margin-left: 9px;
+}
+
+/* pop tree */
+.pop-tree {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    height: 1073px;
+    display: none;
+
+    &.on {
+        display: block;
+    }
+
+    &__inner {
+        @include background('bg-grid','png',$x: 347px, $y: 270px);
+        position: relative;
+        height: 1073px - 64;
+        z-index: 10;
+    }
+
+    &__txt {
+        margin-top: 64px;
+    }
+
+    &__btn {
+        @include background('btn-poptree','png');
+        width: 445px;
+        height: 99px;
+        border: none;
+        margin: 700px auto 0;
+    }
+}
+
+.dim-tree {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+/* 이벤트 기간 */
+.date-event2 {
+    @include background('bg-snow','png');
+    margin-top: 30px;
+
+    &__list {
+        @include background('date-event2','png');
+        width: 500px;
+        height: 64px;
+        display: inline-block;
+        margin: 63px auto 0;
+        text-indent: -9999em;
+    }
+}
+
+/* 참여방법 */
+.event2-join__list {
+    @include background('list-join-event2','png');
+    width: 570px;
+    height: 263px;
+    text-indent: -9999em;
+    margin: 27px auto 0;
+}
+
+.btn-gift__long {
+    display: inline-block;
+    text-indent: 0;
+    margin-top: 34px;
+}
+
+/*=============================
+    caution
+===============================*/
+.christmas__caution {
+    position: relative;
+    padding: 132px 0 27px;
+    background: $bg-orange;
+    text-align: left;
+
+    .wave__white {
+        @include background('bg-wave-caution','png');
+        height: 90px;
+        width: 100%;
+        position: absolute;
+        top: -1px;
+    }
+
+    &__list {
+        margin-left: 37px;
+    }
+
+    &__txt {
+        @include background('txt-caution','png');
+        width: 559px;
+        height: 228px;
+        overflow: hidden;
+        margin-top: 25px;
+        text-indent: -9999em;
+    }
+}
+
+
+/**
+ *
+ *   popup
+======================================================================*/
+.dim {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background: #000;
+    opacity: 0.7;
+    filter: alpha(opacity = 70);
+
+    &.on {
+        display: block;
+    }
+}
+
+%btnReset {
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    width: 364px;
+    height: 97px;
+}
+
+
+%popup {
+    //@include debug;
+    width: $width-pop;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    margin-left: ($width-pop / 2) * -1;
+    text-align: center;
+    display: none;
+    z-index: 100;
+
+    &.on {
+        display: block;
+    }
+}
+
+%popup__header {
+    padding: 50px 0;
+    background: $color-orange;
+}
+
+%popup__body {
+    padding: 40px 0 35px;
+    background: $color-white;
+}
+
+%popup__close {
+    @include backgroundP('popup/btn-close','png');
+    @extend %btnReset;
+    width: 51px;
+    height: 50px;
+    right: 0;
+    top: -60px;
+    position: absolute;
+}
+
+
+/* 꽝 */
+.pop-bang {
+    @extend %popup;
+
+    &__header {
+        @extend %popup__header;
+    }
+
+    &__body {
+        @extend %popup__body;
+    }
+
+    &__txt {
+        margin-top: 18px;
+    }
+
+    &__retry {
+        @extend %btnReset;
+        margin-top: 27px;
+    }
+
+    .close {
+        @extend %popup__close;
+    }
+}
+
+/* sns 공유 */
+%snsLink {
+    @include backgroundP('popup/ir-sns','png',$x: 0);
+    display: block;
+    width: 118px;
+    height: 119px;
+}
+
+.pop-sns {
+    @extend %popup;
+    top: 1630px;
+
+    &__header {
+        @extend %popup__header;
+
+        &__txt {
+            margin-top: 20px;
+        }
+    }
+
+    &__body {
+        @extend %popup__body;
+    }
+
+    .sns-wrap {
+        display: inline-block;
+        position: relative;
+        margin-top: 20px;
+        img { margin-top: 35px; }
+    }
+    // sns images
+    &__list {
+        @extend %clearfix;
+        width: 410px;
+        //margin: 20px auto 0;
+    }
+
+    &__item {
+        float: left;
+        margin-left: 28px;
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+
+    &__link--facebook {
+        @extend %snsLink;
+    }
+
+    &__link--kakaoStory {
+        @extend %snsLink;
+        background-position: center top;
+    }
+
+    &__link--kakaoTalk {
+        @extend %snsLink;
+        background-position: right top;
+    }
+    // caution
+    &__caution {
+        @include backgroundP('popup/txt-sns2','png');
+        width: 235px;
+        height: 21px;
+        overflow: hidden;
+        margin: 50px auto 0;
+        text-indent: -9999em;
+    }
+
+    .btns-wrap { margin-top: 30px; }
+
+    &__close {
+        @extend %btnReset;
+        @include backgroundP('popup/btn-sns','png');
+        
+    }
+    // 유의사항
+    &__caution--btm {
+        background: #fff5dc;
+        margin: 40px auto 0;
+        width: 523px;
+        height: 222px;
+        padding-top: 25px;
+        padding-left: 10px;
+
+        &__list {
+            @include backgroundP('popup/img-snsCaution','png');
+            overflow: hidden;
+            width: 513px;
+            height: 194px;
+            text-indent: -9999em;
+        }
+    }
+
+    .close {
+        @extend %popup__close;
+    }
+}
+
+
+/* 개인정보 입력 */
+%labelDefault {
+    @include backgroundP('popup/label-userInfo','png',$x: left);
+    display: block;
+    float: left;
+    width: 126px;
+    height: 50px;
+}
+
+%inputDefault {
+    background: #fff8e8;
+    border: #f2ebdb;
+    height: 48px;
+    width: 361px;
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+.pop-userInfo {
+    @extend %popup;
+    top: 1400px;
+
+    &__header {
+        @extend %popup__header;
+
+        &__txt {
+            margin-top: 19px;
+        }
+    }
+
+    &__body {
+        @extend %popup__body;
+        padding: 59px 0 40px;
+    }
+
+    &__form {
+        // @include debug;
+        width: 500px;
+        margin: 0 auto;
+
+        fieldset {
+            text-align: left;
+        }
+        // wrap
+        &__wrap {
+            // @include debug(green);
+            @extend %clearfix;
+            margin-top: 18px;
+
+            &--first {
+                margin-top: 0;
+            }
+        }
+        // 오른쪽 정렬
+        &__wrap--txr {
+            text-align: right;
+        }
+        // label
+        &__label--name {
+            @extend %labelDefault;
+            background-position: 0 14px;
+        }
+
+        &__label--phone {
+            @extend %labelDefault;
+            background-position: 0 -50px;
+        }
+
+        &__label--addr {
+            @extend %labelDefault;
+            background-position: 0 -115px;
+        }
+    }
+    // form
+    // 긴 input
+    &__input--long {
+        @extend %inputDefault;
+        width: 354px;
+    }
+    //주소입력
+    &__addr {
+        position: relative;
+
+        .post {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+
+    &__input--short {
+        @extend %inputDefault;
+        width: 205px;
+    }
+
+
+    &__agree {
+        // @include debug;
+        //margin-left: 126px;
+        position: relative;
+        margin-top: 17px;
+
+        * {
+            vertical-align: top;
+        }
+
+        .agree-input {
+            width: 26px;
+            height: 26px;
+            //border: 1px solid #999;
+        }
+
+        .agree-label {
+            @include backgroundP('popup/txt-agree','png');
+            display: inline-block;
+            width: 194px;
+            height: 19px;
+            margin-top: 5px;
+        }
+
+        .agree-detail {
+            position: absolute;
+            left: 237px;
+            top: 8px;
+        }
+    }
+
+    .btns-wrap { margin-top: 30px; }
+
+    &__ok {
+        @extend %btnReset;
+        @include backgroundP('popup/btn-insertOk','png');
+        
+    }
+
+    .close {
+        @extend %popup__close;
+    }
+}
+
+/* 당첨 팝업 */
+.pop-prize {
+    @extend %popup;
+
+    top: 200px;
+
+    &__header {
+        @extend %popup__header;
+    }
+
+    &__body {
+        @extend %popup__body;
+    }
+
+    &__gift {
+        margin-top: 30px;
+    }
+
+    &__txt {
+        margin-top: 17px;
+    }
+
+    &__form {
+        //@include debug;
+        width: 520px;
+        margin: 0 auto;
+
+        fieldset {
+            @extend %clearfix;
+            text-align: left;
+        }
+    }
+
+    &__field {
+        // @include debug;
+        margin-top: 18px;
+
+        &--first {
+            margin-top: 15px;
+        }
+
+        &--addr {
+            position: relative;
+        }
+
+        &--addr--last {
+            margin-top: 5px;
+            text-align: right;
+
+            .pop-prize__input--long {
+                width: 384px;
+            }
+        }
+    }
+    // field
+    //label
+    &__label--name {
+        @extend %labelDefault;
+        float: left;
+        background-position: 0 17px;
+    }
+
+    &__label--phone {
+        @extend %labelDefault;
+        float: left;
+        background-position: 0 -50px;
+    }
+
+    &__label--addr {
+        @extend %labelDefault;
+        float: left;
+        background-position: 0 -117px;
+    }
+    // input
+    &__input--short {
+        @extend %inputDefault;
+        width: 227px;
+    }
+
+    &__input--long {
+        @extend %inputDefault;
+        width: 380px;
+    }
+
+    .post {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    // 망토 당첨시 주소 보이기
+    .show-addr {
+        display: none;
+
+        &.on {
+            display: block;
+        }
+    }
+    // 동의하기
+    &__field__agree {
+        margin-top: 13px;
+        //margin-left: 124px;
+        position: relative;
+
+        * {
+            vertical-align: top;
+        }
+
+        input {
+            width: 26px;
+            height: 26px;
+            border: 1px solid #ddd;
+        }
+    }
+
+    &__label {
+        @include backgroundP('popup/txt-agree','png');
+        display: inline-block;
+        width: 194px;
+        height: 19px;
+        margin-top: 5px;
+    }
+
+    &__detail {
+        position: absolute;
+        top: 8px;
+        left: 236px;
+    }
+    //완료
+    &__ok {
+        @extend %btnReset;
+        @include backgroundP('popup/btn-prize','png');
+        
+    }
+
+    .btns-wrap { margin-top: 26px; }
+
+    .close {
+        @extend %popup__close;
+    }
+}
+
+
+/* 당첨자 발표 */
+.pop-winner {
+    @extend %popup;
+
+    &__list {
+        //@extend %clearfix;
+        position: relative;
+    }
+
+    &__item {
+        background: $color-white;
+
+        &--last {
+            padding-bottom: 50px;
+        }
+
+        &--first.on .pop-winner__link--first {
+            background-position: 0 bottom;
+        }
+
+        &--first.on .pop-gift {
+            display: block;
+        }
+
+        &--last.on .pop-winner__link--last {
+            background-position: right bottom;
+        }
+
+        &--last.on .pop-winner__names {
+            display: block;
+        }
+    }
+
+    &__link {
+        @include backgroundP('popup/btn-tab','png',$x: 0);
+        display: block;
+        width: 300px;
+        height: 125px;
+        position: absolute;
+        top: 0;
+
+        &--first {
+            left: 0;
+            background-position: 0 0;
+            // &.on { background-position: 0 0; }
+        }
+
+        &--last {
+            right: 0;
+            background-position: right top;
+            // &.on { background-position: right bottom; }
+        }
+    }
+
+    .pop-gift {
+        background: $color-white;
+        padding-top: 170px;
+        display: none;
+        // &.on { display: block; }
+        &--top {
+            @include backgroundP('popup/img-gift-top','png');
+            width: 525px;
+            height: 229px;
+            margin: 30px auto 0;
+            padding-bottom: 34px;
+            overflow: hidden;
+            text-indent: -9999em;
+            border-bottom: 1px solid #c5bcb4;
+        }
+
+        &__tit {
+            margin-top: 35px;
+        }
+
+        &--bottom {
+            @include backgroundP('popup/img-gift-bottom','png');
+            width: 525px;
+            height: 229px;
+            margin: 30px auto 0;
+            padding-bottom: 42px;
+            overflow: hidden;
+            text-indent: -9999em;
+        }
+    }
+    // gift
+    // 당첨자
+    &__names {
+        // @include debug;
+        background: $color-white;
+        padding-top: 207px;
+        width: 520px;
+        margin: 0 auto;
+        text-align: left;
+        display: none;
+    }
+
+    &__count {
+        margin-top: 40px;
+    }
+
+    &__name-wrap {
+        margin-top: 19px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 274px;
+        background: #fff8e8;
+        border: 1px solid #f2ebdb;
+        font-size: 18px;
+        color: #4b320e;
+        padding: 10px 0;
+
+        li {
+            float: left;
+            width: 140px;
+            margin-left: 25px;
+            line-height: 2;
+        }
+    }
+
+    .close {
+        @extend %popup__close;
+    }
+}
+
+
+// 우편번호 찾기
+.pop-post {
+    @extend %popup;
+    top: 140px;
+    width: 620px;
+    margin-left: -320px;
+    background: $bg-orange;
+    padding: 60px 10px 30px;
+    // body
+    &__body {
+        margin-top: 40px;
+        padding: 20px 0;
+        background: #fff;
+    }
+
+    .close {
+        @extend %popup__close;
+    }
+}
+
+
+/* 크리스마스 카드 작성 */
+.pop-card {
+    @extend %popup;
+    top: 1400px;
+
+    &__header {
+        background: $bg-orange;
+        padding: 42px 0;
+    }
+
+    &__txt {
+        margin-top: 20px;
+    }
+
+    &__body {
+        background: #fff;
+        padding: 35px 0 50px;
+    }
+
+    &__list {
+        // @include debug;
+        margin: 18px auto 0;
+        width: 550px;
+    }
+
+    &__item {
+        position: relative;
+        margin-top: 10px;
+
+        input[type=radio] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+        }
+    }
+
+    input[type=radio]:checked + label .radio-img {
+        background-position: center bottom;
+    }
+    // radio -img
+    .radio-img {
+        @include backgroundP('popup/img-radio','png');
+        width: 42px;
+        height: 42px;
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 75px;
+    }
+
+    %card-default {
+        display: inline-block;
+        width: 486px;
+        height: 199px;
+        margin-left: 16px;
+    }
+
+    .label-box1 {
+        @extend %card-default;
+        @include backgroundP('popup/txt-card1','png',$color: #fff5dc,$y: center);
+    }
+
+    .label-box2 {
+        @extend %card-default;
+        @include backgroundP('popup/txt-card2','png',$color: #fff5dc,$y: center);
+    }
+
+    .label-box3 {
+        @extend %card-default;
+        background: #fff5dc;
+
+        input {
+            margin-top: 85px;
+            padding: 10px 0 10px 10px;
+            width: 430px;
+            background: #fff5dc;
+            border: none;
+        }
+    }
+
+    .btns-wrap { margin-top: 45px; }
+
+    &__btn {
+        @include backgroundP('popup/btn-insertOk','png');
+        width: 364px;
+        height: 97px;        
+        border: none;
+        cursor: pointer;
+    }
+
+    .close {
+        @extend %popup__close;
+    }
+}
+
+
+/* 윈터 패키지 */
+.pop-package {
+    @extend %popup;
+
+    &__header {
+        background: $bg-orange;
+        padding: 42px 0;
+    }
+
+    &__body {
+        padding-bottom: 45px;
+        background: #fff;
+    }
+
+    &__img {
+        position: relative;
+        padding: 45px 0 3px;
+        background: #f4f4f4;
+
+        .wave {
+            @include background('popup/bg-snow','png');
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 59px;
+            top: 100%;
+        }
+    }
+
+    &__list { 
+        overflow: hidden; 
+        //width: 539px;
+        margin-top: 58px;
+    }
+    
+    &__item { 
+        float: left; 
+        margin-left: 30px; 
+        margin-top: 30px;
+
+        &:first-child,
+        .pop-package__item--fourth { margin-left: 34px; }
+    }
+    
+    &__txt {
+        margin-top: 57px;
+    }    
+
+    .close {
+        @extend %popup__close;
+    }
+}
+
+/* inapp */
+.popup-inapp_wrap{ width: 640px; position: absolute; top: 0; left: 50%; z-index: 1000; background: #fffdfa; padding-bottom: 79px; margin-left: -320px; text-align:center;}
+.popup-inapp { display: none; }
+.popup-inapp.on { display: block; }
+.popup-inapp_wrap { background: #fff; }
+.popup-inapp_body { margin: 20px auto 0; text-align: center; }
+
+
+// temp
+.temp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background: #4b320e;
+    z-index: 100;
+}

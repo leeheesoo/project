@@ -1,0 +1,56 @@
+body {
+    width: 720px;
+}
+
+.restoraderm-event-wrap {
+    position  : relative;
+    width     : 720px;
+    margin    : 0 auto;
+    margin-top: 100px;
+    
+}
+
+.logo {
+    position: absolute;
+    left    : 44px;
+    top     : 34px;
+}
+
+.visual {
+    position  : relative;
+    z-index   : 2;
+    background: url(../images/mobile/key-visual.png) no-repeat center top;
+    height    : 1296px;
+}
+
+.video {
+    position       : relative;
+    overflow       : hidden;
+    background     : url(../images/mobile/sec1-bg.png) no-repeat center top;
+    background-size: cover;
+    height         : 1431px;
+}
+
+.main-event {
+    background     : url(../images/mobile/sec2-bg.png) no-repeat center top;
+    background     : url(../images/mobile/sec2-bg.png) no-repeat center top, -moz-linear-gradient(top, #92d8fa 0%, #2563d2 100%);
+    background     : url(../images/mobile/sec2-bg.png) no-repeat center top, -webkit-linear-gradient(top, #92d8fa 0%,#2563d2 100%);
+    background     : url(../images/mobile/sec2-bg.png) no-repeat center top, linear-gradient(to bottom, #92d8fa 0%,#2563d2 100%);
+    background-size: cover;
+    overflow       : hidden;
+    height         : 2228px;
+    
+}
+
+.reservation-event {
+    position        : relative;
+    background      : url(../images/mobile/sec3-bg.png) no-repeat center top;
+    background-color: #2563d2;
+    background-size : cover;
+    height          : 1555px;
+}
+
+.event-note {
+    background: url(../images/mobile/event-note.png) no-repeat center top;
+    height    : 346px;
+}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <!-- 화보, 비디오 -->
+  <div th:fragment="page-contents">
+    <div class="page__inner">
+      <ul class="cards">
+        <!-- gallery, video -->
+        <li v-for="(obj, idx) in contents.kinds" :class="['card-'+ obj.key, {on: contents.selected === obj.key}]"
+          @click="showPop(obj.next)" @mouseover="contents.selected = obj.key" @mouseout="obj.key === 'video' ? contents.selected = 'gallery': contents.selected = 'gallery' ">
+          <img class="on" :src="'https://cetaphil-event.s3.amazonaws.com/static/body/images/pc/page-contents/card-'+ obj.key +'-off.png'"
+            :alt="obj.desc">
+          <img :class="{on: contents.selected === obj.key}" :src="'https://cetaphil-event.s3.amazonaws.com/static/body/images/pc/page-contents/card-'+ obj.key +'-on.png'"
+            :alt="obj.desc">
+        </li>
+      </ul>
+      <div class="title">
+        <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/pc/page-contents/title.png" alt="">
+      </div>
+      <div class="btn-join-event">
+        <button type="button" @click="showPop('contents-event')">이벤트_시작버튼</button>
+      </div>
+      <div class="event-duration">
+        <img src="https://cetaphil-event.s3.amazonaws.com/static/body/images/pc/page-contents/event-duration-v2.png"
+          alt="">
+      </div>
+      <div class="event-notice"></div>
+    </div>
+  </div>
+</body>
+
+</html>

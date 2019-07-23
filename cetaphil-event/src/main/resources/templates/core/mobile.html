@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="share/layoutMobile">
+
+<head>
+  <title>세타필 코어 리브랜딩 모바일</title>
+</head>
+
+<!-- 이벤트 Meta 태그 추가 -->
+<th:block layout:fragment="meta" th:remove="tag">
+  <meta property="og:title" content="No.1 바디보습 세타필 #이벤트" />
+  <meta property="og:description" content="지금 이벤트 참여하면 1년치 세타필 제품 증정! 푸짐한 선물까지!" />
+  <meta property="og:url" th:attr="content=${ogurl}" />
+  <meta property="og:image" content="https://cetaphil-event.s3.amazonaws.com/static/core/sharing/sharing-sns.jpg" />
+</th:block>
+
+<!-- 이벤트 CSS 파일 추가 -->
+<th:block layout:fragment="css" th:remove="tag">
+  <link rel="stylesheet" href="/core/css/slick.css">
+  <link rel="stylesheet" href="/core/css/slick-theme.css">
+  <link rel="stylesheet" href="/core/css/style-m.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">
+</th:block>
+
+<body>
+  <div layout:fragment="content" id="app--cetaphil-core" class="wrap">
+    <section id="event-kv" class="event-kv">
+      <h1 class="logo"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/m/logo-cetaphil.png" alt=""></h1>
+      <h2 class="a11y-hidden">온 가족 건강한 피부 습관 No.1 바디 세타필</h2>
+      <p class="a11y-hidden">
+        *CNN이 칸타월드와 공동으로 2018년 1월 ~ 6월 뷰티 패널 9천 7백명의 화장품 구매조사 분석한 결과 바디보습 부분 1위
+      </p>
+      <a alt="구매하기" class="link link-to-purchase has-shadow" href="http://item.gmarket.co.kr/Item?goodscode=1505743733&pos_shop_cd=SH&pos_class_cd=111111111&pos_class_kind=T&keyword_order=1505743733&keyword_seqno=17429191107&search_keyword=1505743733"
+        target="_blank"><span class="a11y-hidden">구매하러 가기</span></a>
+    </section>
+
+    <!-- 검색 이벤트 -->
+    <section id="event01" class="event01">
+      <h2 class="a11y-hidden">세타필 팬덤이 궁금하다면?</h2>
+      <div class="a11y-hidden">
+        <p>
+          세타필 팬덤이란 세타필을 사랑하는 팬을 지칭하여 이르는 말입니다.
+          네이버 검색창에 <b>‘세타필 팬덤’</b> 검색하면 선물 증정!
+        </p>
+        <dl>
+          <dt>이벤트 기간</dt>
+          <dd>2019년 01월 09일 ~ 02월 03일</dd>
+          <dt>선물배송날짜</dt>
+          <dd>2019년 02월 08일</dd>
+          <dt>이벤트 선물</dt>
+          <dd>에어팟(3명), 다이슨 에어랩 (2명), 스타벅스 아메리카노(50명)
+            세타필로션(50명), 세타필크림(50명)</dd>
+          <dt>참여방법</dt>
+          <dd>네이버에서 <b>세타필 팬덤 검색</b> > 브랜드검색 내 <b>즉석당첨 버튼</b> 클릭 <em>*해당이벤트는 중복당첨이 불가합니다.</em> 클릭 > 즉석당첨 <b>결과확인</b></dd>
+        </dl>
+      </div>
+      <div class="naver-search-go has-shadow--naver">
+        <a class="naver-landing" href="/core/naver-landing" target="_blank">
+          <img src="https://cetaphil-event.s3.amazonaws.com/static/core/m/img-naver-search.png" class="naver-landing"
+            alt="세타필 레스토라덤 AD">
+          <button type="button" class="link link-naver-search" alt="네이버 검색하러 가기"><span class="a11y-hidden">검색하러가기</span></button>
+        </a>
+        <div class="deco-arrow"><img src="https://cetaphil-event.s3.amazonaws.com/static/core/m/arrow-naver-search.png"
+            alt="deco"></div>
+        <div class="text-flow animate-flow"></div>
+      </div>
+
+    </section>
+
+    <!-- 펜덤모집 -->
+    <section id="event02" class="event02">
+      <h2 class="a11y-hidden">세타필 팬덤을 찾습니다!</h2>
+      <div class="a11y-hidden">
+        <p>
+          영상 시청 후 2019년 세타필 팬덤에 도전하세요!
+          1년 동안 사용 가능한 세타필 제품과 특별한 선물을 드립니다!
+        </p>
+        <b>이벤트선물소개</b>
+        <ul>
+          <li><b>전원증정</b> 1년치 세타필 (로션4개, 크림4개, 클린저4개)</li>
+          <li><b>전원증정</b> 임명장 + 파리바게뜨상품권(3만원권)</li>
+          <li><b>베스트팬덤</b> 호텔 숙박권(1명), 백화점 상품권(10만원권 3명), 외식상품권(5만원권 10명) </li>
+        </ul>
+      </div>
+      <button type="button" class="btn btn--application-detail" v-on:click="checkFandomPick" alt="팬덤 모집안내 자세히보기"><span
+          class="a11y-hidden">모집내용
+          자세히보기</span></button>
+
+      <ul class="reviews a11y-hidden">
+        <li class="review">
+          <p>
+            우리가족은 세타필 로션과
+            크림을 함께 사용해서
+            보습을 해주지요
+            <b>ID : woobully</b>
+          </p>
+        </li>
+        <li class="review">
+          <p>
+            로션이랑 크림이랑 같이
+            사용하니까 진짜 엄청
+            촉촉하다
+            <b>ID : xx.boram</b>
+          </p>
+        </li>
+        <li class="review">
+          <p>
+            세타필 바르고
+            우리가족 쪽독쫀독 피부
+            <b>ID : bebe_jina</b>
+          </p>
+        </li>
+      </ul>
+      <p class="a11y-hidden">소다네 건강한 피부습관 의 비밀은?</p>
+      
+      <!-- <div class="player-wrap">
+        <div id="player" class="player has-shadow">
+        </div>
+        
+      </div> -->
+      
+      <a href="https://www.youtube.com/watch?v=xM2FpJ-z3Nk&feature=youtu.be" target="_blank" class="link-to-youtube" alt="영상보기"><span class="a11y-hidden">영상보기</span></a>
+
+      <button type="button" class="btn btn--apply has-shadow" v-on:click="applyFandom" alt="팬덤 지원하기 버튼"><span class="a11y-hidden">지원하기</span></button>
+
+    </section>
+
+    <!-- 공유하기 -->
+    <!-- <section id="event03" class="event03">
+      <h2 class="a11y-hidden">세타필 이벤트 소문내기</h2>
+      <div class="a11y-hidden">
+        <p>
+          지금 SNS에 이벤트 공유하고 선물 받아가세요!
+        </p>
+        <dl>
+          <dt>이벤트 기간</dt>
+          <dd>2019년 01월 02일 ~ 01월 08일</dd>
+          <dt>당첨자 발표</dt>
+          <dd>2019년 01월 09 일</dd>
+        </dl>
+        <b>이벤트선물소개</b>
+        <ul>
+          <li><b>10명</b> 올리브영 상품권(3 만원권) </li>
+        </ul>
+      </div>
+      <button type="button" class="btn btn--share has-shadow" v-on:click="shareUrl" alt="sns 공유하기 버튼"><span class="a11y-hidden">공유하기</span></button>
+    </section> -->
+
+    <!-- 인증샷 이벤트 -->
+    <section id="event03" class="event03">
+      <h2 class="a11y-hidden">건강한 피부습관의 완성! 세타필 인증샷!</h2>
+      <div class="a11y-hidden">
+        <p>
+          세타필로 완성한 건강한 피부습관! 지금 확인해보세요.
+        </p>
+        <dl>
+          <dt>이벤트 기간</dt>
+          <dd>2019년 01월 11일 ~ 02월 03일</dd>
+          <dt>당첨자 발표</dt>
+          <dd>2019년 02월 08 일</dd>
+          <dt>참여방법</dt>
+          <dd>필수해시태그 입력하고 SNS에 인증하면 참여 완료!</dd>
+          <dd>필수해시태그 : #세타필 #세타필피부습관 #세타필팬덤 <em>(*당첨자는 DM으로 개별 연락)</em></dd>
+        </dl>
+        <b>이벤트선물소개</b>
+        <ul>
+          <li><b>30명</b> 기프티콘 아메리카노 </li>
+          <li><b>10명</b> 백화점 상품권(3만원권) </li>
+        </ul>
+      </div>
+      <div class="img-slider">
+
+        <!-- <img src="https://cetaphil-event.s3.amazonaws.com/static/core/m/gallery.png" alt=""> -->
+
+      </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="event-footer">
+      <h2 class="a11y-hidden">이벤트 유의사항</h2>
+      <p class="a11y-hidden">
+        허위정보 및 부적절한 형태로 이벤트에 참여 시 당첨에서 제외합니다.
+        개인정보 미기입시 경품이 지급되지 않으며 오기입으로 연락이 불가능하거나, 경품이 반송 될 경우 이는 재발송되지 않습니다
+        회사 내부사정에 의하여 경품이 변경 되거나 이벤트가 조기종료 될 수 있습니다.
+        이벤트 참여 시 생성 된 콘텐츠는 세타필에 귀속되며, 2차 마케팅에 활용 될 수 있습니다.
+        이벤트 관련 문의사항: cetaphilevent@gmail.com 이메일 주소로 연락 부탁 드립니다
+      </p>
+    </footer>
+
+    <div th:include="core/_popup" th:remove="tag"></div>
+
+    <nav class="nav">
+      <ul class="anchors">
+        <li class="anchors__item"><a href="#event-kv" class="anchor anchor-to-kv" alt="세타필 구매하기 nav">세타필 구매하기</a></li>
+        <li class="anchors__item"><a href="#event01" class="anchor anchor-to-ev1" alt="검색이벤트 nav">검색 이벤트</a></li>
+        <li class="anchors__item"><a href="#event02" class="anchor anchor-to-ev2" alt="팬덤모집 이벤트 nav">팬덤모집 이벤트</a></li>
+        <li class="anchors__item"><a href="#event03" class="anchor anchor-to-ev3" alt="세타필 인증샷 이벤트 nav">세타필 인증샷 이벤트</a></li>
+        <li class="anchors__item"><button type="button" class="btn-winner" :class="{ on: currentPop === 'winner'}"
+            v-on:click="onWinnerPop">당첨자팝업</button></li>
+      </ul>
+    </nav>
+  </div>
+
+  <th:block layout:fragment="body-script" th:remove="tag">
+    <hashsnap-embed settings-uid="4ba40ce0-d2f3-4021-9427-fca5d85d6482" width="100%"></hashsnap-embed>
+    <script>
+      var deviceKind = 'mo';
+    </script>
+    <script th:inline="javascript">
+      /*<![CDATA[*/
+      var lottery = /*[[${prizePopOpen}]]*/;
+      /*]]>*/
+    </script>
+    <script src="/core/js/winner.js"></script>
+    <script src="/core/js/deviceCheck.js"></script>
+    <script src="/core/js/slick.modified.js"></script>
+    <script src="/core/js/youtubeApi.js"></script>
+    <script src="/core/js/pub-m.js"></script>
+    <script src="/core/js/app.js"></script>
+    <script src="/core/js/daumPostApi.js"></script>
+    <script>
+      $(window).on('load', function () {
+        $('.web-hashsnap-net .web-hashsnap-net-iframe').css({ height: '965px' });
+        $('.img-slider').prepend($('.web-hashsnap-net'));
+      })
+    </script>
+  </th:block>
+</body>
+
+</html>

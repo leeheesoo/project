@@ -1,0 +1,74 @@
+﻿@model List<Samsonite.Mall.Domain.Identity.AppRole>
+@{
+    ViewBag.Title = "Settings > 역할관리";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Idx = 1;
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="">
+            <div class="panel-heading">
+                <h4></h4>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div class="text-right" style="padding-bottom:10px">
+                        <a href="@Url.Action("AddRole")" class="btn btn-primary">역할추가</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover table-condensed" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th class="vert-middle text-center">No</th>
+                                            <th class="vert-middle text-center">아이디</th>
+                                            <th class="vert-middle text-center">역할이름</th>
+                                            <th class="vert-middle text-center">매칭계정수</th>
+                                            <th class="vert-middle text-center">비고</th>
+                                        </tr>
+                                        <tr></tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.Count() > 0) {
+                                            foreach (var role in Model) {
+                                                <tr>
+                                                    <td class="vert-middle text-center">@ViewBag.Idx</td>
+                                                    <td class="vert-middle text-center">@role.Id</td>
+                                                    <td class="vert-middle text-center">@role.Name</td>
+                                                    <td class="vert-middle text-center">@role.Users.Count()</td>
+                                                    <td class="vert-middle text-center">
+                                                        <button onclick="javascript:if(confirm('삭제하시겠습니까?')){ location.href = '@Url.Action("Delete", new { roleId = role.Id }  )'}" class="btn btn-danger btn-xs">삭제</button>
+                                                    </td>
+                                                </tr>
+                                                ViewBag.Idx = ViewBag.Idx + 1;
+                                            }
+                                        } else {
+                                            <tr style="text-align:center;color:red">
+                                                <td colspan="6">존재하는 관리자 정보가 없습니다.</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            if ('@TempData["message"]' != '') {
+                alert('@TempData["message"]');
+            }
+        });
+    </script>
+}

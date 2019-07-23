@@ -1,0 +1,283 @@
+﻿.video-player {
+    position : relative;
+    display  : block;
+    top      : 20%;
+    left     : 50%;
+    transform: translateX(-50%);
+}
+
+
+.container {
+  min-width: unset;
+  max-width: unset;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.event-container {
+    /*background: url(../../../Images/DisneyStarWars2018/w/content-bg.png) no-repeat center top;*/
+    /*padding-bottom: 5000px;*/
+    position: relative;
+    min-width: 1300px;
+    /*padding-top: 70px;*/
+    overflow: hidden;
+}
+
+.event-intro {
+    position: relative;
+    height: 1468px;
+    
+}
+
+.toyview-container {
+    position: relative;
+    height: 1468px;
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 128px;
+        bottom: 0;
+        background: url(../../../Images/DisneyStarWars2018/w/intro-deco-bottom.png)no-repeat center bottom;
+    }   
+}
+
+.toyview {
+    display:none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+
+    &.kj {
+    background: url(../../../Images/DisneyStarWars2018/w/intro-kj.png) no-repeat center top;
+    }
+
+    /*&.star {
+    background: url(../../../Images/DisneyStarWars2018/w/intro-starwars.png) no-repeat center top;
+    }
+
+    &.disney {
+    background: url(../../../Images/DisneyStarWars2018/w/intro-disney.png) no-repeat center top;
+    }*/
+
+    .item {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .snowhill {
+        top: 0;
+        @include background('visual-bg.png', $y:bottom);
+    }
+
+    .back {
+        top: 0;
+    }
+
+    .sky {
+        top: 0;
+    }
+
+    .toy {
+        top: 0;
+    }
+
+    .top {
+        top: 0;
+    }
+
+    .logo {
+        top:105px;
+        left:50px;
+        width:190px;
+        height:140px;
+    }
+
+    .center {
+        top: 0;
+    }
+
+    .center-deco {
+        top: 0;
+    }
+
+    @each $scene in kj {
+        &.#{$scene} {
+            .back {
+                @include background('visual-#{$scene}-bottom.png', $y:top);
+            }
+
+            .sky {
+                @include background('visual-#{$scene}-sky.png', $y:top);
+            }
+
+            .top {
+                @include background('visual-#{$scene}-top.png', $y:top);
+            }
+
+            .logo {
+                @include background('visual-#{$scene}-logo.png', $x:0, $y:0);
+            }
+
+            .toy {
+                @include background('visual-#{$scene}-toy.png', $y:top);
+            }
+            .center {
+                @include background('visual-#{$scene}-center.png', $y:top);
+            }
+            .center-deco {
+                @include background('visual-#{$scene}-center-deco.png', $y:top);
+            }
+        }
+    }
+        
+}
+
+
+
+.event-area {
+    position: relative;
+    @include background('content-bg.png');
+    .heading {
+        text-align: center;
+        padding-bottom: 40px;
+    }
+}
+
+// 네이버 검색 유도 영역
+    .naver-search-go {
+      position: relative;
+      width: 920px;
+      margin: 0 auto;
+      height: 410px;
+      padding-top: 250px;
+
+      a {
+        position: relative;
+        display: inline-block;
+        z-index: 1;
+        cursor: pointer;
+      }
+
+      .search-deco {
+        position: absolute;
+        top: 0;
+        left: 44px;
+        width: 810px;
+        height: 280px;
+        @include background('naver-search-deco.png', $y: 0);
+      }
+
+      .search-deco-click {
+        position: absolute;
+        bottom:-75px;
+        right: 0;
+        width: 152px;
+        height: 112px;
+        @include background('click.png', $y: 0);
+        z-index:10;
+      }
+
+      .text-flow {
+        position: absolute;
+        top: 300px;
+        right: 410px;
+        width: 0px;
+        height: 50px;
+        background: #fff;
+        z-index: 1;
+      }
+    }
+
+    .event-info {
+      @include background('instruction-main-event.png');
+      margin-top: 70px;
+      height: 1270px;
+    }
+
+    //video
+  .video-wrap {
+      position:relative;
+      width:1238px;
+      height:1357px;
+      margin:0 auto;
+      padding-top: 190px;
+      padding-bottom: 300px;
+      text-align: center;
+      @include background('video-bg.png', $repeat:no-repeat, $y:-140px);
+      //영상준비전 이미지
+      .video-pororo-img {
+          overflow:hidden;         
+        >img {
+            margin-top:120px;
+            border-radius:20px;
+            cursor:pointer;
+        }
+      }
+      //영상
+      .video-inner {
+          position: relative;
+          width: 812px;
+          height: 457px;
+          margin: 25px auto 0;
+          overflow: hidden;
+          z-index: 10;
+          @include prefix(border-radius, 25px);
+          
+          #eventPlayer {
+              position: absolute;
+              top:0;
+              left:0;
+              width: 100%;
+              height: 100%;
+              z-index: 5;
+          }
+
+          .video-cover {
+              display: none;
+              position:absolute;
+              top:0;
+              left:0;
+              width: 100%;
+              height: 100%;
+              background:rgba(0,0,0,.6);
+              cursor:pointer;
+              z-index: 6;
+              > img {
+                  vertical-align:middle;
+              }
+          }        
+      }
+      > .video-deco {
+          position: absolute;
+          top: 700px;
+          left: 0;
+      }
+  }
+
+  // 하단 유의사항
+  .event-note {
+    position: relative;
+    background: #5d7a2a;
+    .event-note-inner {
+    width:100%;
+    height:360px;
+    @include background('footer.png', $repeat:no-repeat);
+    }
+  }
+
+  //copyright
+  .kj-event-copyright {
+      padding: 20px 0;
+      background-color:#ececec;
+      text-align:center;
+      img {
+          vertical-align:middle;
+      }
+  }

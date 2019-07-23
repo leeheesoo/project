@@ -1,0 +1,4 @@
+﻿// percentage
+@function getPercent($me, $parent) {
+   @return ($me / $parent) * 100%;
+}

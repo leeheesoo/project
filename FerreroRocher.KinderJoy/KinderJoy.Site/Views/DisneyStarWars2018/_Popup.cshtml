@@ -1,0 +1,167 @@
+﻿@model KinderJoy.Site.Models.DisneyStarWars2018.DisneyStarWars2018Model
+@*<div class="debuging">
+    <p>테스트용 버튼(이벤트 오픈시 숨김처리)</p>
+    <button tabindex="-1" onclick="openPop('mov-view'); return false;">팝업: 브검을 통해서 들어왔을때 영상팝업</button><br>
+    <button tabindex="-1" onclick="openPop('entry'); return false;">팝업: 당첨+개인정보입력</button><br>
+    <button tabindex="-1" onclick="openPop('fail'); return false;">팝업: 꽝</button><br>
+    <button tabindex="-1" onclick="openPop('post'); return false;">팝업: 우편번호 검색</button><br>
+    <button tabindex="-1" onclick="openPop('inapp'); return false;">팝업: 인앱</button><br>
+    <button tabindex="-1" onclick="openPop('winner'); return false;">팝업: 당첨자발표</button><br>
+</div>*@
+
+<!-- 팝업 : dimmed -->
+<div class="dimmed" id="dimmed" style="display:none;"></div>
+
+<!-- 팝업 : loading -->
+@*<div id="loading" v-bind:style="{display: isLoading}">
+        <div class="img-loader img-loader1"></div>
+        <div class="img-loader img-loader2"></div>
+        <div class="img-loader img-loader3"></div>
+    </div>*@
+
+<div id="loading" v-show="isLoading" style="display:none;">
+    <div class="loading-img"></div>
+</div>
+
+<!-- 팝업 : 영상시청 -->
+<div class="popup pop-mov-view" id="pop-mov-view" tabindex="0" role="dialog">
+    <div class="pop-deco"><img src="~/Images/DisneyStarWars2018/pop/popup-header-deco.png" alt="Alternate Text" /></div>
+    <div class="pop-header"></div>
+    <div class="pop-con">
+        <h3><img src="~/Images/DisneyStarWars2018/pop/popup-video-message.png" alt="영상을 시청하면 즉석당첨 결과가 공개됩니다!"></h3>
+        <div class="mov-box">
+            <div id="popPlayer"></div>
+            <div class="mov-cover"></div>
+        </div>
+        <p class="mov-box-text"><img src="~/Images/DisneyStarWars2018/pop/popup-video-instruction.png" alt="재생버튼을 눌러주세요" /></p>
+        <div class="btn-center">
+            <img src="~/Images/DisneyStarWars2018/pop/button-skip.png" id="btn-skip" alt="SKIP"  v-on:click="createInstantLottery()">
+        </div>
+    </div>
+    <button type="button" class="btn-close" onclick="closePop('mov-view'); return false;"><span>팝업 닫기</span></button>
+</div>
+
+<!-- 팝업 : 당첨+ 개인정보입력 -->
+<div class="popup pop-entry" id="pop-entry" tabindex="0" role="dialog">
+    <div class="pop-deco"><img src="~/Images/DisneyStarWars2018/pop/popup-header-deco.png" alt="Alternate Text" /></div>
+    <div class="pop-header"></div>
+    <div class="pop-con">
+        <div class="result-view">
+            <p><img v-if="instantPrize!=''" v-bind:src="'/Images/DisneyStarWars2018/pop/'+instantPrize+'.png'" alt="축하합니다!"></p>
+        </div>
+        <h3 id="disneyStarWars2018-address-position"><img src="~/Images/DisneyStarWars2018/pop/form/form-txt.png" alt="경품 수령을 위한 개인정보를 입력해주세요."></h3>
+        <div class="form-box">
+            @using (Ajax.BeginRouteForm("DisneyStarWars2018UpdateWinner", new { httpRoute = true}, new AjaxOptions { HttpMethod="POST",
+                OnBegin = "disneyStarWars2018Model.beginEntry",
+                OnComplete = "disneyStarWars2018Model.completeEntry",
+                OnFailure= "disneyStarWars2018Model.failEntry",
+                OnSuccess= "disneyStarWars2018Model.successEntry"
+            }, new { id = "frmInstantLotteryEntry" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(e => e.Id, new { v_model = "instantEntry.id" })
+                @Html.HiddenFor(e => e.PrizeType, new { v_model = "instantEntry.prizeType" })            
+            <fieldset>
+                <!-- 이름 -->
+                <div class="form-group clearfix">
+                    <label for="Name" class="col-xs-3 control-label"><img src="~/Images/DisneyStarWars2018/pop/form/input-name.png" alt="이름"></label>
+                    <div class="col-xs-9 no-space">
+                        @Html.TextBoxFor(e => e.Name, new { @class = "form-control", maxlength = 10 })
+                    </div>
+                </div>
+                <!-- // 이름 -->
+                <!-- 연락처 -->
+                <div class="form-group clearfix">
+                    <label for="Mobile" class="col-xs-3 control-label"><img src="~/Images/DisneyStarWars2018/pop/form/input-phone.png" alt="연락처"></label>
+                    <div class="col-xs-9 no-space">
+                        @Html.TextBoxFor(e => e.Mobile,new{ type="tel", @class="form-control",maxlength=11, placeholder= " - 기호 없이 입력해주세요" })
+                    </div>
+                </div>
+                <!-- // 연락처 -->
+                <!-- 개인정보 취급방침 동의 -->
+                <div class="form-group privacy-policy clearfix">
+                    <div class="row">
+                        <div class="col-xs-9 col-xs-push-3" style="padding-left:10px;">
+                            <label for="Agree">
+                                @Html.CheckBoxFor(e => e.Agree)
+                                <strong class="big-label"><img src="~/Images/DisneyStarWars2018/pop/form/input-privacy.png" alt="개인정보 취급방침 동의"></strong>
+                            </label>
+                            <a @*href="@Url.Action("PrivacyPolicy")" target="_blank"*@ class="btn-agree"><img src="~/Images/DisneyStarWars2018/pop/form/btn-privacy.png" alt="자세히보기"></a>
+                            <div class="text-box">
+                                <b>[개인정보 수집 및 활용 동의]</b><br /><br />
+                                고객님이 입력한 개인정보는 ‘정보통신망 이용촉진 및 정보보호 등에 관한 법률’에 따라 주) 페레로 아시아 리미티드 한국지사가 수집, 활용 및 취급 위탁 시 본인의 동의를 얻어 야 하는 정보입니다. 입력하신 개인정보는 아래의 목적으로 프로모션 대행사에만 제공되며, 이외의 용도로는 활용되지 않습니다.<br /><br />
+                                1) 개인정보 수집 및 이용목적 - 참여자 본인 확인 및 경품 발송<br />
+                                2) 수집하는 개인정보 항목 - 이름, 연락처, 나이, 주소<br />
+                                3) 개인정보 보유 및 이용기간 - 이벤트 종료 후 3개월 이내 파기 (단, 관계법령의 규정에 의하여 보존할 필요가 있는 경우 관련 법령에 따라 보관)<br />
+                                4) 본 이벤트 참여 고객은 개인정보 수집, 활용에 대하여 동의를 거부할 권리가 있으며, 개인정보 수집, 활용에 대한 미동의 시 서비스에 참여하실 수 없습니다.<br />
+                                5) 페레로 아시아 리미티드 한국지사는 서비스 향상과 원활한 진행을 위하여 개인 정보 처리 업무를 외부 전문 업체에 위탁하여 처리하고 있습니다.* 이벤트 운영 및 경품 배송 : 메가존 ㈜<br /><br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // 개인정보 취급방침 동의 -->
+                <!-- 주소 검색 -->
+                <div class="form-group clearfix" v-show="instantEntry.prizeType != 1">
+                    <label for="address" class="col-xs-3 control-label"><img src="~/Images/DisneyStarWars2018/pop/form/input-address.png" alt="주소"></label>
+                    <div class="col-xs-9 no-space">
+                        <div class="row">
+                            <div class="col-xs-7" style="width:60%; padding-right:5px;">
+                                @Html.TextBoxFor(e => e.ZipCode,new { @class="form-control", @readonly="readonly",placeholder="우편번호"})
+                            </div>
+                            <div class="col-xs-5" style="width:40%;">
+                                <button type="button" class="btn-post" style="font-size:100%; margin-left:-5px;" v-on:click="openPostCode();"><img src="~/Images/DisneyStarWars2018/pop/form/button-search-zip.png" alt="우편번호"></button>
+                            </div>
+                            <div class="col-xs-12" style="margin-top:15px">
+                                @Html.TextBoxFor(e => e.Address,new { @class="form-control", @readonly ="readonly",placeholder="주소를 검색해주세요."})
+                            </div>
+                            <div class="col-xs-12" style="margin-top:15px">
+                                @Html.TextBoxFor(e => e.AddressDetail,new { @class="form-control", maxlength=200 , placeholder = "나머지 주소를 입력해주세요." })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // 주소 검색 -->
+                <div class="btns">                    
+                    <button id="btn-entry-complete" type="submit" v-if="instantEntry.prizeType === 1"   onclick="javascript:lab(4)"><img src="~/Images/DisneyStarWars2018/pop/form/button-complete.png" alt="응모 완료"></button>
+                    <button id="btn-entry-complete" type="submit" v-if="instantEntry.prizeType === 2"   onclick="javascript:lab(5)"><img src="~/Images/DisneyStarWars2018/pop/form/button-complete.png" alt="응모 완료"></button>
+                    <button id="btn-entry-complete" type="submit" v-if="instantEntry.prizeType === 3"   onclick="javascript:lab(6)"><img src="~/Images/DisneyStarWars2018/pop/form/button-complete.png" alt="응모 완료"></button>
+                </div>
+            </fieldset>
+            }
+        </div>
+    </div>
+    <button type="button" class="btn-close" onclick="closePop('entry'); return false;"><span>팝업 닫기</span></button>
+</div>
+
+<!-- 팝업 : 꽝 -->
+<div class="popup pop-fail" id="pop-fail" tabindex="0" role="dialog">
+    <div class="pop-deco"><img src="~/Images/DisneyStarWars2018/pop/popup-header-deco.png" alt="Alternate Text" /></div>
+    <div class="pop-header"></div>
+    <div class="pop-con">
+        <h3><img src="~/Images/DisneyStarWars2018/pop/popup-fail-message.png" alt="아쉽게도 꽝! 다시 킨더조이 크리스마스를 검색하여 즉석당첨에 재도전 해보세요!"></h3>
+        <div class="btns">
+            <a href="@Url.Action("InstantLotteryLanding", "DisneyStarWars2018")" onclick="javascript:lab(3)" target="_blank"><img src="~/Images/DisneyStarWars2018/pop/button-retry.png" id="btn-retry" alt="재도전 하기"></a>
+        </div>
+    </div>
+    <button type="button" class="btn-close" onclick="closePop('fail'); return false;"><span>팝업 닫기</span></button>
+</div>
+
+<!-- 팝업 : 우편번호 찾기 -->
+<div class="popup pop-post" id="pop-post" tabindex="0" role="dialog">
+    <div class="pop-deco"><img src="~/Images/DisneyStarWars2018/pop/popup-header-deco.png" alt="Alternate Text" /></div>
+    <div class="pop-header"></div>
+    <div class="pop-con">
+        <h3><span>우편번호 찾기</span></h3>
+        <div id="searchPostCode"></div>
+    </div>
+    <button type="button" class="btn-close" onclick="closePop('post'); openPop('entry'); return false;"><span>팝업 닫기</span></button>
+</div>
+
+
+<!-- 팝업 : 인앱 -->
+<div class="popup pop-inapp" id="pop-inapp">
+    <div class="inapp-img">
+        <img src="~/Images/DisneyStarWars2018/pop/inapp_img.png" alt="다른브라우저에서 참여해주세요" />
+    </div>
+    <button type="button" class="btn-close" onclick="closePop('inapp'); return false;"><span>팝업 닫기</span></button>
+</div>

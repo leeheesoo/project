@@ -1,0 +1,447 @@
+﻿@import "popup";
+@import "motion";
+
+@font-face {
+	font-family: "KoreanBDG R";
+	src: url('../../fonts/KoreanBDG_R.eot');
+	src: url('../../fonts/KoreanBDG_R.eot?#iefix') format('embedded-opentype'),
+	url('../../fonts/KoreanBDG_R.woff') format('woff'),
+	url('../../fonts/KoreanBDG_R.ttf') format('truetype');
+	src: local(※), url('../../fonts/KoreanBDG_R.woff') format('woff');
+}  
+.event-wrap {
+    position: relative;
+    width: 100%;
+    min-width: 1000px;
+    max-width: 2000px;
+    margin: 0 auto;
+    padding-top: 70px;
+    text-align: center;
+    overflow: hidden;
+    h2, h3, p {
+        font-size: 0;
+    }
+    .event-inner-con {
+        position: relative;
+        width: 1000px;
+        margin: 0 auto;
+    }
+    // S : event-visual
+    .event-visual {
+        height: 1041px;
+        background: skyblue;
+        background: url("/Images/MagicKinderAppLaunchingEvent/bg_event_visual.jpg") top center no-repeat;
+        h2 {
+            position: absolute;
+            top: 102px;
+            left: 174px;
+            z-index: 10;
+        }
+        .island-left {
+            position: absolute;
+            top: 264px;
+            left: -297px;
+            z-index: 8;
+        }
+        .island-right {
+            position: absolute;
+            top: 300px;
+            right: -273px;
+            z-index: 8;
+            .ferris-wheel-box {
+                position: absolute;
+                top: 82px;
+                left: 228px;
+                width: 184px;
+                height: 184px;
+                .ferris-wheel-line {
+                    position: absolute;
+                    top: 9px;
+                    left: 20px;
+                    z-index: 9;
+                }
+                .capsule-box {
+                    position: absolute;
+                    top: -10px;
+                    left: 0;
+                    //background: rgba(0, 0, 0, 0.5);
+                    width: 184px;
+                    height: 184px;
+                    z-index: 10;
+                    #capsule1 {
+                        position: absolute;
+                        top: 73px;
+                        left: 0px;
+                    }
+                    #capsule2 {
+                        position: absolute;
+                        top: 18px;
+                        left: 25px;
+                    }
+                    #capsule3 {
+                        position: absolute;
+                        top: 0px;
+                        left: 81px;
+                    }
+                    #capsule4 {
+                        position: absolute;
+                        top: 18px;
+                        right: 25px;
+                    }
+                    #capsule5 {
+                        position: absolute;
+                        top: 73px;
+                        right: 0px;
+                    }
+                    #capsule6 {
+                        position: absolute;
+                        bottom: 18px;
+                        right: 25px;
+                    }
+                    #capsule7 {
+                        position: absolute;
+                        bottom: 0px;
+                        left: 81px;
+                    }
+                    #capsule8 {
+                        position: absolute;
+                        bottom: 18px;
+                        left: 25px;
+                    }
+                }
+            }
+        }
+        .island-center {
+            position: absolute;
+            top: 301px;
+            left: 194px;
+            width: 604px;
+            height: 412px;
+            background: url("/Images/MagicKinderAppLaunchingEvent/img_island_center.png") bottom center no-repeat;
+            z-index: 9;
+            .charater-motion {
+                position: absolute;
+                top: -7px;
+                left: 126px;
+                width: 322px;
+                height: 318px;
+                overflow: hidden;
+                background: url("/Images/MagicKinderAppLaunchingEvent/character_motion1.png") 0 0 no-repeat;
+            }
+        }
+        .speech-bubble {
+            position: absolute;
+            top: 748px;
+            left: 52px;
+            width: 884px;
+            height: 232px;
+            background: url("/Images/MagicKinderAppLaunchingEvent/bg_speech_bubble.png") 0 0 no-repeat;
+            dl {
+                width: inherit;
+                dt {
+                    padding: 78px 0 16px 15px
+                }
+                dd {
+                    padding-left:26px;
+                }
+            }
+        }
+        ul.visual-cloud {
+            li {
+                position: absolute; 
+                z-index: 5;
+                &:nth-child(1) {
+                    top: 61px;       
+                    left: 993px;    
+                } 
+                &:nth-child(2) {
+                    top: 218px;       
+                    left: -176px;    
+                } 
+                &:nth-child(3) {
+                    top: 610px;       
+                    left: 1210px;    
+                } 
+                &:nth-child(4) {
+                    top: 150px;       
+                    left: -500px;    
+                } 
+                &:nth-child(5) {
+                    top: 300px;       
+                    left: 1400px;    
+                } 
+            }
+        }
+    }
+    // E : event-visual 
+
+    // S : event-announce-con  
+    .event-announce-con {
+        height: 1045px;
+        background: url("/Images/MagicKinderAppLaunchingEvent/bg_event_announce_con.jpg") top center no-repeat;
+        h3 {
+            padding: 20px 0 31px 0;
+        }
+        .announce-box {
+            padding: 36px 0 489px 0;
+            ul {
+                width: 686px;
+                margin-left: 163px;
+                overflow: hidden;
+                li {
+                    float: left;
+                    font-size: 0;
+                    &:first-child {
+                        margin-right: 23px;
+                    }
+                    &:last-child {
+                        margin-top: 7px;
+                    }
+                }
+            }
+        }
+        .btn-box {
+            width: 876px;
+            margin: 0 auto;
+            ul {
+                width: inherit;
+                overflow: hidden;
+                li {
+                    float: left;
+                    font-size: 0;
+                    margin: 0 10px;
+                    transition: all 0.1s ease 0s;
+                    -webkit-transition: all 0.1s ease 0s;
+                    &:hover {
+                        margin-top: 2px;
+                    }
+                }
+            }
+        }
+        .store-box {
+            position: absolute;
+            top: 545px;
+            right: -8px;
+            width: 294px;
+            height: 219px;
+            ul{
+                position: absolute;
+                width: inherit;
+                top: 60px;
+                left: 0;
+                text-align:left;
+                &:after {
+                    content: ""; 
+                    display: block; 
+                    clear: both;
+
+                }
+                li {
+                    float:left;
+                    z-index: 8;
+                    &.animate-app-store {
+                        margin-right: 8px;
+                        -webkit-animation-duration: 8s; // Safari 4.0 - 8.0 
+                        animation-duration: 8s;
+                    }
+                    &.animate-google-play {
+                        -webkit-animation-duration: 13s; // Safari 4.0 - 8.0 
+                        animation-duration: 13s;
+                    }
+                }
+            }
+            .cover-cloud {
+                position: absolute;
+                top: 173px;
+                left: 19px;
+                z-index: 9;
+            }
+            .animate-cursor {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 84px;
+                height: 91px;
+                background: url("/Images/MagicKinderAppLaunchingEvent/pointer_motion.png") 0 0 no-repeat;
+                z-index: 9;
+            }
+        }
+
+        
+
+    }
+    // E : event-announce-con 
+
+    // S : event-participation-con 
+    .event-participation-con {
+        height: 1673px;
+        background: url("/Images/MagicKinderAppLaunchingEvent/bg_event_participation_con.jpg") top center no-repeat;
+        .participation-method {
+            h3 {
+                padding: 20px 0 35px 0;
+            }
+             .participation-step {
+                position: relative;
+                padding-left: 11px;
+                .store-box {
+                    position: absolute;
+                    top: 55px;
+                    left: 248px;
+                    ul {
+                        width: 197px;
+                        li {
+                            margin-bottom: 5px; 
+                        }
+                    }
+                    .animate-cursor {
+                        position: absolute;
+                        top: -49px;
+                        left: 181px;
+                        width: 84px;
+                        height: 91px;
+                        background: url("/Images/MagicKinderAppLaunchingEvent/pointer_motion.png") 0 0 no-repeat;
+                    }
+                }
+            }
+        }
+        .participation-status {
+            h3 {
+                padding: 150px 0 103px 0;
+            }
+            .slide-area {
+                position: relative;
+                width: 899px;
+                margin: 0 auto;
+                ul#participationSlider li>ul {
+                    width: inherit;
+                    margin-bottom: 10px;
+                    overflow: hidden;
+                    li {
+                        float: left;
+                        width: 293px;
+                        margin-right: 10px;
+                        font-size: 0;
+                        &:last-child {
+                            margin: 0;
+                        }
+                    }
+                }
+                // bxslider bx-controls custom 
+                .bx-controls {
+                    position: relative;
+                    width: 275px;
+                    margin: 0 auto;
+                    margin-top: 16px;
+                    a {
+                        position: absolute;
+                        top: 0;
+                        height: 54px;
+                        background: url("/Images/MagicKinderAppLaunchingEvent/bg_slider_controls.png") no-repeat;
+                        text-indent: -999em;
+                        transition: all 0.1s ease 0s;
+                        -webkit-transition: all 0.1s ease 0s;
+                        &:hover {
+                            margin-top: 2px;
+                        }
+                    }
+                    .bx-prev {
+                        left: 0;
+                        width: 60px;
+                        background-position: 0 0;
+                    }
+                    .bx-next {
+                        right: 0;
+                        width: 60px;
+                        background-position: -215px 0;
+                    }
+                    .bx-stop {
+                        left: 80px;
+                        width: 52px;
+                        background-position: -80px 0;
+                    }
+                    .bx-start {
+                        left: 143px;
+                        width: 52px;
+                        background-position: -143px 0;
+                    }
+                }
+                #pop-review {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 518px;
+                    z-index: 10;
+                    background: #fff;
+                    .btn-close {
+                        position: absolute;
+                        top: 15px;
+                        right: 11px;
+                        z-index: 12;
+                    }
+                    .review-img-box {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: inherit;
+                        height: inherit;
+                        z-index: 11;
+                        img {
+                            width: inherit;
+                            height: inherit;
+                        }
+                    }
+                    .review-box {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;                        
+                        width: 806px;
+                        height: 84px;
+                        margin: -42px 0 0 -403px;
+                        background: #000;
+                        z-index: 12;
+                        p {
+                            line-height: 84px;
+                            color: #fff;
+                            font-size: 38px;
+                            font-family: 'KoreanBDG R', sans-serif;
+                            letter-spacing: -0.6px;
+                        }
+                    }
+                }
+            }
+        }
+        .animate-island1 {
+            position: absolute;
+            top: 665px;
+            left: -305px;
+        }
+        .animate-island2 {
+            position: absolute;
+            top: 949px;
+            right: -367px;
+        }
+    }
+    // E : event-participation-con 
+
+    .event-bottom {
+        height: 396px;
+        background: url("/Images/MagicKinderAppLaunchingEvent/bg_event_bottom.jpg") top center no-repeat;
+        text-align: left;
+        .event-inner-con {
+            padding-top: 102px;
+        }
+        .tl-event-notice {
+            font-size: 24px;
+            padding-bottom: 19px;
+            background: url("/Images/MagicKinderAppLaunchingEvent/tl_event_notice.png") 0 0 no-repeat;
+            text-indent: -999em;
+        }
+        .txt-event-notice {
+            font-size: 18px;
+            line-height: 29px;
+            background: url("/Images/MagicKinderAppLaunchingEvent/txt_event_notice.png") 0 0 no-repeat;
+            text-indent: -999em;
+        }
+    }
+}

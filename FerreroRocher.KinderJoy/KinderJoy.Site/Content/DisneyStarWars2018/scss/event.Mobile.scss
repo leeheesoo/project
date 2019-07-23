@@ -1,0 +1,32 @@
+﻿@charset 'UTF-8'; 
+
+$device: 'mob';
+
+//---------------------------------------------------
+// base
+//---------------------------------------------------
+@import "base/base";
+@import "base/font";
+//---------------------------------------------------
+// utils
+//---------------------------------------------------
+@import "utils/_mixin.scss";
+@import "utils/_prefix.scss";
+@import "utils/_a11y-hidden.scss";
+@import "utils/_variables.scss";
+//---------------------------------------------------
+// components
+//---------------------------------------------------
+@import "components/_animate.scss";
+@import "components/_effect.scss";
+//---------------------------------------------------
+// layout
+//---------------------------------------------------
+@import "layout/form-group";
+@import "layout/prizeWinner";
+//---------------------------------------------------
+// pages
+//---------------------------------------------------
+@import "pages/page-common";
+@import "pages/page-m";
+@import "pages/popup";

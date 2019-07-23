@@ -1,0 +1,25 @@
+﻿<!-- 팝업 dimmed -->
+<div class="pop-dim" id="dimmed"></div>
+
+<!-- 팝업 경품당첨 -->
+<div class="popup pop-win" id="pop-win">
+    <div class="pop-header">
+        <img src="~/Content/images/two-year-anniversary/popup/pop-header.jpg" alt="공식몰 2주년 기념 BIG EVENT"/>
+        <button type="button" class="btn-close" onclick="closePop('win');">닫기</button>
+    </div>
+    
+    <div class="win-gift">
+        <!-- 경품 -->
+        <!--src="~/Content/images/two-year-anniversary/popup/win-1.jpg"-->
+        <img v-bind:src="'/Content/images/two-year-anniversary/popup/'+prizeName+'.jpg'" alt="당첨을 축하합니다"/>
+
+        <button type="button" class="btn-check" onclick="closePop('win');">
+            <img src="~/Content/images/two-year-anniversary/popup/btn-check.jpg" id="btn-two-year-complete" alt="확인" />
+        </button>
+    </div>    
+
+    <div class="win-note">
+        <!--src="~/Content/images/two-year-anniversary/popup/win-note-1.jpg"-->
+        <img v-bind:src="'/Content/images/two-year-anniversary/popup/note-'+prizeName+'.jpg'" alt="꼭 확인해주세요" />
+    </div>  
+</div>

@@ -1,0 +1,71 @@
+html, body{
+  height: 100%;  
+}
+body{
+  font-family: 'Noto Sans KR', sans-serif
+}
+
+
+li{
+  list-style: none;
+}
+// div, section{
+//   outline: 1px dotted red;
+// }
+button{  
+  padding: 0; 
+  margin: 0;
+  background: none; 
+  border: none;
+  cursor: pointer;
+}
+
+// .app{
+//   //height: 100%;
+// }
+
+[v-cloak] {
+  display: none;
+}
+
+
+// temp / hanb / test UI
+.test-ui{
+  width: 100%;
+  display: none;
+
+  position: absolute;  
+  top: 100px;
+  left: 100px;
+  z-index: 20000;
+  a, button{
+    font-size: 30px;
+    color: red;
+  }  
+}
+
+// calculator page
+.facial__wrap{
+  input::placeholder {
+    color: #85e4ff;   
+  }
+  input::-webkit-input-placeholder {
+    color: #85e4ff;
+  }
+  input:-ms-input-placeholder {
+    color: #85e4ff;    
+  }
+}
+.body__wrap{
+  input::placeholder {
+    color: #fff;   
+  }
+  input::-webkit-input-placeholder {
+    color: #fff;
+  }
+  input:-ms-input-placeholder {
+    color: #fff;
+  }
+}
+
+

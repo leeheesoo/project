@@ -1,0 +1,38 @@
+.gradle
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+/out/
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+**/bin/
+/.metadata/
+
+/.vscode/
+/.vscode/*
+
+src/main/resources/.vscode/*
+
+src/main/resources/static/body/css/style.min.css
+src/main/resources/static/body/css/style.min.css

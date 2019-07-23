@@ -1,0 +1,87 @@
+button { border: 0; background: 0; cursor: pointer; margin: 0; padding: 0; }
+
+.share_sns_btn:after, .pop_tab_memu:after { content: ''; display: table; clear: both; }
+
+.blind { position: absolute; left: -4999em; font-size: 0; line-height: 0; }
+
+.dimm { display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: #000; opacity: 0.8; }
+.dimm.on { display: block; }
+
+.pop_close { position: absolute; right: 0; top: -55px; background: none; border: 0; }
+
+.pop { width: 640px; position: absolute; left: 50%; top: 0; margin-left: -320px; display: none; z-index: 10; }
+.pop.on { display: block; z-index: 10; }
+
+.pop_head { background: #f15b22; text-align: center; padding: 55px 0; }
+
+.pop_body { padding: 40px 50px 60px; background: #fff; margin-top: -1px; }
+
+/*
+.private_field_info_layout {
+	@extend %clearfix;
+	> dt {
+		float:left;
+		line-height: 55px;
+	}
+	> dd {
+		float:right;
+		margin-bottom:20px;
+		> input {
+			width:385px; height:48px;
+			border:1px solid #e6dbc3;
+			background:#fff5dc;
+			font-size:20px;
+			padding-left: 15px;
+		}
+		> select {
+			width:402px; height:48px;
+			border:1px solid #e6dbc3;
+			background:#fff5dc;
+			font-size:20px;
+			padding-left:15px;
+		}
+	}
+
+}
+
+.private_field_agree {
+	margin-top:20px;
+	> input {
+		width:25px; height:25px;
+		vertical-align:middle;
+	}
+	> label > img {
+		vertical-align:middle;
+	}
+}
+
+.pop_field_box {
+	height:	100px;
+	border:1px solid #999;
+	margin:10px 0 30px;
+}
+*/
+.pop_submit_area { text-align: center; }
+
+.share_sns_btn { width: 410px; margin: 0 auto; }
+.share_sns_btn > button { float: left; display: block; width: 118px; height: 119px; margin-left: 28px; background: transparent url("/Images/MainStream/pop/bg_sns_share.png") no-repeat left top; }
+.share_sns_btn > button.share_fb { background-position: 0 0; margin-left: 0; }
+.share_sns_btn > button.share_ks { background-position: -146px 0; }
+.share_sns_btn > button.share_kt { background-position: -292px 0; }
+
+.notice_share_sns { text-align: center; margin: 30px 0; }
+
+.pop_tab_memu { background: #fff; }
+.pop_tab_memu > a { display: block; width: 320px; height: 125px; float: left; background: transparent url("/Images/MainStream/pop/bg_tab_menu.png") no-repeat left top; }
+.pop_tab_memu > a.tab_menu_lottery { background-position: 0 0; }
+.pop_tab_memu > a.tab_menu_lottery.is_on { background-position: 0 -125px; }
+.pop_tab_memu > a.tab_menu_winner { background-position: -320px 0; }
+.pop_tab_memu > a.tab_menu_winner.is_on { background-position: -320px -125px; }
+
+.tab_con_lottery { text-align: center; }
+.tab_con_lottery dd { margin-top: 30px; }
+
+.tab_con_winner { display: none; }
+.tab_con_winner dt { text-align: center; margin-bottom: 20px; }
+.tab_con_winner dd ul { font-size: 0; background: #fff5dc; border: 1px solid #e6dbc3; height: 305px; overflow: auto; padding: 20px 0 20px 50px; }
+.tab_con_winner dd li { display: inline-block; font-size: 18px; line-height: 2.5; width: 230px; }

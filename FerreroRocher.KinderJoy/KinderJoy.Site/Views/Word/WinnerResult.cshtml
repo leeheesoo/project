@@ -1,0 +1,12 @@
+﻿@model List<KinderJoy.Domain.Entities.Word.WordWinner>
+@{
+    Layout = null;
+    var i = 1;
+}
+                    <ul>
+                        @foreach (var board in Model)
+                        {
+                            <li @(i/2 == 0 ? "class=\"name-right\"": "") >@board.Name (@board.Mobile)</li>
+                            i++;
+                        }
+                    </ul>

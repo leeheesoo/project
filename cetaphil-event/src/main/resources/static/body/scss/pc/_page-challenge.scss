@@ -1,0 +1,34 @@
+.page-challenge{    
+  background: url($imgPath + '/page-challenge/bg.png') #dadbde center top no-repeat;
+  .page__inner{
+    background: url($imgPath+'/page-challenge/visual.png') right top no-repeat; 
+
+    .btn-join-event{  
+      top: 469px;          
+      button{
+        background: url( $imgPath + '/page-challenge/btn-event-join.png') center top no-repeat;
+        width: 258px; 
+        height: 240px;
+      }      
+    }
+    .event-duration{
+      top: 746px;      
+    }
+    .event-notice{
+      background: url( $imgPath + '/page-challenge/event-notice.png') center top no-repeat;            
+      height: 380px;
+      top:881px;
+      button{
+        width: 201px; 
+        height: 45px;
+        position: absolute;
+        top: 181px;
+        left: 550px;        
+        border-radius: 1em;
+        background:rgba(0,0,0,.001);
+      }
+    }      
+  } 
+  
+}
+

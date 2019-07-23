@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Aspero 런칭 기념 이벤트";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.PentacleUrl = System.Web.Configuration.WebConfigurationManager.AppSettings["pentacle.api"] as string;
+}
+@section styles{
+    <link href="~/Content/css/aspero-launching/normalize.css" rel="stylesheet" />
+    <link href="~/Content/css/aspero-launching/slick.min.css" rel="stylesheet" />
+    <link href="~/Content/css/aspero-launching/style.min.css" rel="stylesheet" />
+}
+
+<div class="wrap" id="aspero-event">
+    <div class="aspro-kv">
+        <img src="~/Content/images/aspero-launching/kv.jpg" alt="ASPERO 런칭기념 이벤트" />
+    </div>
+    <!---event01 -->
+    <div class="event01-wrap">
+        <div class="video-wrap">
+            <div class="video-mute">
+                <div class="vd-cover" id="cover"><img src="~/Content/images/aspero-launching/vd_cover.jpg" alt="이제훈, 조진웅의 환상호흡!"/></div>
+            </div>
+            <div class="video-sound">
+                <div id="player-sound"></div>
+            </div>
+        </div>
+        <!--- 쿠폰영역 -->
+        <div class="coupon-wrap">
+            <span><img src="~/Content/images/aspero-launching/cupon_note.png" alt="아래 쿠폰번호를 복사하여 등록하시면 즉시 사용이 가능합니다." /></span>
+            <div class="coupon">
+                <p class="coupon-ex-text">영상을 끝까지 시청하시면 쿠폰코드가 나타납니다.</p>
+                <span id="copy">ASPERO</span>
+                <button class="codecopy clipboard" data-clipboard-target="#copy" type="button" name="button">복사하기</button>
+            </div>
+            <div class="coupon-method">
+                <img src="~/Content/images/aspero-launching/event_rull.png" alt="이벤트참여방법" />      
+                <a class="my-page-link" href="https://www.samsonitemall.co.kr/on/demandware.store/Sites-SamsoniteKr-Site/ko_KR/Coupon-MyAvailableCoupon" target="_blank"></a>       
+            </div>
+        </div>
+        <!--- 상품영역 -->
+        <div class="product">
+            <a href="http://www.samsonitemall.co.kr/KR_AZ555002.html?utm_source=Promotion&utm_campaign=17_SN_Aspero&utm_medium=Aspero" target="_blank"><img class="pr1" src="~/Content/images/aspero-launching/aspero.jpg" alt="aspero" /></a>
+            <a href="http://www.samsonitemall.co.kr/KR_98V01002.html?utm_source=Promotion&utm_campaign=17_SN_Aspero&utm_medium=LiteShock" target="_blank"><img class="pr2" src="~/Content/images/aspero-launching/liteshock.jpg" alt="liteshock" /></a>
+        </div>
+    </div>
+    <!---//event01 -->
+
+    <!--- event02 -->
+    <div class="event02-wrap">
+        <img src="~/Content/images/aspero-launching/event02.jpg" alt="공식온라인 몰 경품증정 이벤트" />
+    </div>
+    <!--- //event02 -->
+
+    <!--- event03 -->
+    <div class="event03-wrap" id="aspero-instagram">
+        <img src="~/Content/images/aspero-launching/event03_text.png" alt="퍼펙트쌤소나이트 해시태그 이벤트" />
+        <!--- slider -->
+        <div class="slider">
+            <div v-for="(item, index) in items" class="slider-item" style="display:none"><a href="javascript:void(0);" v-on:click="openDetailPop(index)"><img src="~/Content/images/aspero-launching/thum-logo.jpg" v-bind:src="item.ThumbnailSrc" /></a></div>
+        </div>
+        <div class="loader" style="text-align:center;vertical-align:middle;height:416px;"><img src="~/Content/images/aspero-launching/loading.gif" alt="" /></div>
+        @Html.Partial("_instagramPopup")
+    </div>
+    <!--- //event03 -->
+
+    <div class="event-note">
+        <img src="~/Content/images/aspero-launching/event_note.jpg" alt="이밴트 유의사항" />
+    </div>
+    <!--- 이벤트 종료 -->
+    <div class="end-wrap">
+        <div class="end-text">
+            <img src="~/Content/images/aspero-launching/end.png" alt="이벤트가 종료되었습니다."/>
+        </div>
+    </div>
+</div> <!--- //wrap -->
+
+
+
+@section scripts{
+    <script src="~/Content/js/aspero-launching/slick.min.js"></script>
+    <script src="~/Content/js/common/vue.min.js"></script>
+    <script src="~/Content/js/aspero-launching/clipboard.min.js"></script>
+    <script type="text/javascript">
+        var pentacleUrl = '@ViewBag.PentacleUrl';
+    </script>
+    <script src="~/Content/js/aspero-launching/aspero-dev.js"></script>
+    <script src="~/Content/js/aspero-launching/aspero-pub.js"></script>
+}
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>

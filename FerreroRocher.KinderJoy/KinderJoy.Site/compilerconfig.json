@@ -1,0 +1,82 @@
+﻿[
+  {
+    "outputFile": "Content/FindingDory2017/event.css",
+    "inputFile": "Content/FindingDory2017/Scss/event.scss"
+  },
+  {
+    "outputFile": "Content/FindingDory2017/event.Mobile.css",
+    "inputFile": "Content/FindingDory2017/Scss/event.Mobile.scss"
+  },
+  {
+    "outputFile": "Content/FindingDory2017/css3.effect.css",
+    "inputFile": "Content/FindingDory2017/Scss/css3.effect.scss"
+  },
+  {
+    "outputFile": "Content/FindingDory2017/popup.css",
+    "inputFile": "Content/FindingDory2017/Scss/popup.scss"
+  },
+  {
+    "outputFile": "Content/MagicKinderAppLaunchingEvent/style.css",
+    "inputFile": "Content/MagicKinderAppLaunchingEvent/style.scss"
+  },
+  {
+    "outputFile": "Content/MagicKinderAppLaunchingEvent/popup.css",
+    "inputFile": "Content/MagicKinderAppLaunchingEvent/popup.scss"
+  },
+  {
+    "outputFile": "Content/MagicKinderAppLaunchingEvent/style.Mobile.css",
+    "inputFile": "Content/MagicKinderAppLaunchingEvent/style.Mobile.scss"
+  },
+  {
+    "outputFile": "Content/MarvelFrozen_/style.css",
+    "inputFile": "Content/MarvelFrozen_/style.scss"
+  },
+  {
+    "outputFile": "Content/MarvelFrozen_/common-ui.css",
+    "inputFile": "Content/MarvelFrozen_/common-ui.scss"
+  },
+  {
+    "outputFile": "Content/MarvelFrozen_/style.m.css",
+    "inputFile": "Content/MarvelFrozen_/style.m.scss"
+  },
+  {
+    "outputFile": "Content/css/marvelDisneyMotion.css",
+    "inputFile": "Content/css/marvelDisneyMotion.scss"
+  },
+  {
+    "outputFile": "Content/css/toy_animate.css",
+    "inputFile": "Content/css/toy_animate.scss"
+  },
+  {
+    "outputFile": "Content/css/gate.css",
+    "inputFile": "Content/css/gate.scss"
+  },
+  {
+    "outputFile": "Content/css/gate.Mobile.css",
+    "inputFile": "Content/css/gate.Mobile.scss"
+  },
+  {
+    "outputFile": "Content/KittyJusticeLeague/css/event.css",
+    "inputFile": "Content/KittyJusticeLeague/scss/event.scss"
+  },
+  {
+    "outputFile": "Content/KittyJusticeLeague/css/event.Mobile.css",
+    "inputFile": "Content/KittyJusticeLeague/scss/event.Mobile.scss"
+  },  
+  {
+    "outputFile": "Content/Pororo2018/css/event.css",
+    "inputFile": "Content/Pororo2018/scss/event.scss"
+  },
+  {
+    "outputFile": "Content/Pororo2018/css/event.Mobile.css",
+    "inputFile": "Content/Pororo2018/scss/event.Mobile.scss"
+  },
+  {
+    "outputFile": "Content/DisneyStarWars2018/css/event.css",
+    "inputFile": "Content/DisneyStarWars2018/scss/event.scss"
+  },
+  {
+    "outputFile": "Content/DisneyStarWars2018/css/event.Mobile.css",
+    "inputFile": "Content/DisneyStarWars2018/scss/event.Mobile.scss"
+  }
+]

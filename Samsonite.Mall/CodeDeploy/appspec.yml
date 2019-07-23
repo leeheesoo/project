@@ -1,0 +1,11 @@
+version: 0.0
+os: windows
+files:
+  - source: \site
+    destination: D:\websites\Samsonite.Mall\package\site
+  - source: \new-website.ps1
+    destination: D:\websites\Samsonite.Mall\package
+hooks:
+  AfterInstall:
+    - location: \after-install1.bat
+      timeout: 900

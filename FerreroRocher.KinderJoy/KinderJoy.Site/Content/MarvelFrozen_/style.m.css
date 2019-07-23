@@ -1,0 +1,454 @@
+﻿@charset "UTF-8";
+* {
+  box-sizing: border-box; }
+
+.hidden, legend, caption {
+  position: absolute;
+  left: -9999em; }
+
+/* 현재 이벤트 페이지 공용 */
+form input {
+  padding: 4px;
+  height: 30px;
+  border: 1px solid #8fceda;
+  border-radius: 3px; }
+
+button:focus {
+  outline: 0; }
+
+.private-info {
+  width: 460px;
+  height: auto;
+  margin: 20px auto 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff; }
+  .private-info .title {
+    padding: 35px 0 24px 0;
+    background: #ebf9fe;
+    text-align: center; }
+  .private-info form {
+    margin-top: 25px;
+    padding-left: 40px; }
+    .private-info form p {
+      line-height: 30px;
+      margin-bottom: 9px;
+      /*border: 1px solid red;*/
+      text-align: left; }
+      .private-info form p img {
+        vertical-align: middle; }
+    .private-info form label {
+      display: inline-block;
+      width: 84px;
+      text-align: left; }
+    .private-info form label.short {
+      width: 35px; }
+    .private-info form .info-age input.short {
+      width: 110px; }
+    .private-info form .info-phone input {
+      width: 287px; }
+    .private-info form input[type="text"] {
+      width: 287px; }
+      .private-info form input[type="text"].short {
+        width: 110px; }
+      .private-info form input[type="text"].short2 {
+        width: 189px; }
+    .private-info form .info-name {
+      text-align: left;
+      padding-right: 27px; }
+    .private-info form .info-adress {
+      padding: 0;
+      margin: 0;
+      overflow: hidden; }
+      .private-info form .info-adress .short2 {
+        margin-right: 3px; }
+      .private-info form .info-adress .right {
+        display: inline-block;
+        margin-left: 84px; }
+    .private-info form .info-sex {
+      margin-top: 10px;
+      line-height: 30px;
+      text-align: left; }
+      .private-info form .info-sex img.label {
+        display: inline-block;
+        padding-right: 27px; }
+      .private-info form .info-sex input[type="radio"] {
+        display: none; }
+      .private-info form .info-sex input[type="radio"] + label {
+        width: 76px; }
+      .private-info form .info-sex input[type="radio"] + label span {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #fff;
+        border: 1px solid #d4d4d4;
+        margin-right: 7px;
+        vertical-align: middle;
+        cursor: pointer; }
+      .private-info form .info-sex input[type="radio"]:checked + label span {
+        background-color: #06a3f4; }
+    .private-info form .agree-policy {
+      height: 30px;
+      vertical-align: middle;
+      text-align: left; }
+      .private-info form .agree-policy input, .private-info form .agree-policy a {
+        vertical-align: middle; }
+      .private-info form .agree-policy input[type="checkbox"] {
+        width: 19px;
+        height: 19px;
+        display: inline-block;
+        margin: 0 8px 0 0; }
+      .private-info form .agree-policy label {
+        width: auto;
+        margin-right: 5px; }
+      .private-info form .agree-policy .btn-info-detail {
+        display: inline-block;
+        margin-top: -5px; }
+    .private-info form .inline {
+      display: inline-block; }
+    .private-info form button[type="submit"] {
+      background: none;
+      border: 0;
+      padding: 0;
+      display: inline-block;
+      margin: 10px auto 20px auto;
+      text-align: center;
+      padding-left: 88px;
+      /*margin-left: 80px;*/ }
+      .private-info form button[type="submit"] img {
+        cursor: pointer; }
+
+.popup-dimmed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: alpha(opacity=80);
+  opacity: 0.80;
+  background-color: #000;
+  z-index: 50; }
+
+.popup {
+  position: absolute;
+  left: 50%;
+  width: 640px;
+  z-index: 60;
+  padding-top: 50px;
+  margin-left: -320px;
+  overflow: hidden; }
+  .popup .btn-close {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    width: 41px;
+    height: 41px; }
+  .popup .pop-header {
+    height: 138px;
+    background: #f15c25;
+    text-align: center;
+    border-radius: 95px 95px 0 0;
+    padding: 50px 0; }
+  .popup .pop-con {
+    background: #fff;
+    height: auto;
+    border-radius: 0 0 95px 95px; }
+
+/* 우편번호 */
+#pop-post .pop-con {
+  height: 525px; }
+
+/* in app */
+#pop-inapp {
+  padding-left: 20px; }
+  #pop-inapp .btn-close {
+    top: 60px;
+    right: 30px; }
+
+/* 당첨자 발표 */
+#pop-dang {
+  top: 150px;
+  height: auto; }
+  #pop-dang .pop-header {
+    background: #fe703a; }
+  #pop-dang .pop-con {
+    background: #fff;
+    height: auto;
+    overflow: hidden;
+    border-radius: 0 0 95px 95px; }
+    #pop-dang .pop-con .dang-con {
+      width: 542px;
+      margin: 0 auto;
+      padding: 20px 0 40px 0; }
+      #pop-dang .pop-con .dang-con p {
+        padding: 20px 0; }
+      #pop-dang .pop-con .dang-con .dang-box {
+        width: inherit;
+        height: 110px;
+        border: 1px solid #e5e5e5;
+        background: #f4f4f4;
+        padding: 10px;
+        box-sizing: border-box;
+        overflow-y: scroll; }
+        #pop-dang .pop-con .dang-con .dang-box p {
+          padding: 0;
+          font-size: 18px;
+          font-family: 'KoreanBDG R', sans-serif;
+          text-align: center;
+          background: #bdbdbd;
+          line-height: 47px;
+          color: #fff; }
+        #pop-dang .pop-con .dang-con .dang-box ul {
+          font-size: 0; }
+          #pop-dang .pop-con .dang-con .dang-box ul li {
+            display: inline-block;
+            width: 50%;
+            font-size: 18px;
+            font-family: 'KoreanBDG R', sans-serif;
+            text-align: center;
+            line-height: 47px;
+            color: #323232; }
+        #pop-dang .pop-con .dang-con .dang-box:nth-of-type(1) {
+          height: 300px; }
+        #pop-dang .pop-con .dang-con .dang-box:nth-of-type(2) {
+          height: 160px; }
+    #pop-dang .pop-con .dang-note {
+      font-size: 0; }
+
+* {
+  box-sizing: border-box; }
+
+.hidden, legend, caption {
+  position: absolute;
+  left: -9999em; }
+
+.event-container {
+  width: 640px;
+  padding-top: 80px;
+  background: #faeee0;
+  overflow: hidden; }
+  .event-container a {
+    display: inline; }
+
+/*===*/
+.visual-wrap {
+  width: 100%;
+  height: 754px;
+  margin: 0 auto;
+  background: #faeee0;
+  position: relative; }
+  .visual-wrap .visual {
+    width: 100%;
+    height: 585px;
+    overflow: hidden;
+    background: #faeee0 url(../../Images/MarvelFrozen/m/visual-bg.jpg) center 0 no-repeat; }
+  .visual-wrap .title {
+    width: 235px;
+    height: 157px;
+    position: absolute;
+    right: 14px;
+    bottom: 122px; }
+  .visual-wrap .title-img {
+    position: absolute;
+    left: 12px;
+    bottom: 37px; }
+
+/*===*/
+.event-guide {
+  height: 1378px;
+  overflow: hidden;
+  background: #faeee0;
+  text-align: center; }
+  .event-guide .desc {
+    margin-top: 28px; }
+  .event-guide .contents {
+    width: 580px;
+    margin: 29px auto; }
+    .event-guide .contents .how {
+      margin-bottom: 10px; }
+    .event-guide .contents .given {
+      position: relative; }
+      .event-guide .contents .given .btn-check-win {
+        position: absolute;
+        display: inline-block;
+        left: 50%;
+        bottom: 40px;
+        margin-left: -119px; }
+
+/*===*/
+.game {
+  height: 941px;
+  position: relative;
+  overflow: hidden;
+  background: #faeee0; }
+  .game .steps {
+    margin-top: 44px;
+    height: 137px;
+    /*background: url(../../Images/MarvelFrozen/m/game/steps.png) center 60px no-repeat;*/ }
+  .game .stage {
+    width: 100%;
+    height: 897px;
+    position: relative;
+    overflow: hidden; }
+    .game .stage li {
+      position: absolute;
+      letf: 0;
+      top: 0;
+      width: 100%;
+      height: 710px; }
+      .game .stage li.current {
+        display: block; }
+      .game .stage li.bg1 {
+        background: url(../../Images/MarvelFrozen/m/game/stage-bg1.png) center 0 no-repeat; }
+      .game .stage li.bg2 {
+        background: url(../../Images/MarvelFrozen/m/game/stage-bg2.png) center 0 no-repeat; }
+      .game .stage li.bg3 {
+        background: url(../../Images/MarvelFrozen/m/game/stage-bg3.png) center 0 no-repeat; }
+    .game .stage li:nth-child(1) > * {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%); }
+    .game .stage li:nth-child(1) .baloon {
+      top: 188px; }
+    .game .stage li:nth-child(1) .btn-game-start {
+      top: 398px; }
+    .game .stage .private-info {
+      margin-top: 100px; }
+    .game .stage li:nth-child(3) {
+      text-align: center; }
+      .game .stage li:nth-child(3) .txt-start {
+        margin-top: 50px; }
+    .game .stage li:nth-child(4) .state {
+      margin-top: 26px;
+      overflow: hidden;
+      height: 148px;
+      line-height: 66px;
+      text-align: left;
+      position: relative; }
+      .game .stage li:nth-child(4) .state .timer {
+        position: absolute;
+        top: 0;
+        left: 64px;
+        font-family: 'KoreanBDG R', sans-serif !important;
+        font-size: 50px;
+        color: #027fff;
+        display: inline-block;
+        text-shadow: 0px 1px rgba(63, 107, 169, 0.3), 4px 4px 0px rgba(63, 107, 169, 0.3);
+        padding-bottom: 15px; }
+      .game .stage li:nth-child(4) .state .bar-wrap {
+        position: absolute;
+        left: 50%;
+        top: 74px;
+        width: 506px;
+        height: 20px;
+        border-radius: 10px;
+        background: #add4fd;
+        display: inline-block;
+        margin-left: -253px;
+        overflow: hidden; }
+        .game .stage li:nth-child(4) .state .bar-wrap .bar {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 10px;
+          background: #3594f5; }
+      .game .stage li:nth-child(4) .state .btn-hint {
+        position: absolute;
+        top: 0;
+        right: 67px;
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: pointer; }
+    .game .stage li:nth-child(5) > div {
+      margin: 0 auto;
+      text-align: center; }
+    .game .stage li:nth-child(5) .score {
+      margin-top: 110px;
+      padding-top: 35px;
+      width: 365px;
+      height: 246px;
+      background: url(../../Images/MarvelFrozen/w/game/score-bg.png) center 0 no-repeat; }
+      .game .stage li:nth-child(5) .score .score-num {
+        font-family: 'KoreanBDG R', sans-serif;
+        font-size: 60px;
+        color: #00a1e9;
+        padding: 18px 0 22px 0; }
+      .game .stage li:nth-child(5) .score .btn-retry {
+        border: 0;
+        padding: 0;
+        background: none;
+        cursor: pointer; }
+    .game .stage li:nth-child(5) .sns .txt {
+      padding: 2px 0 23px 0; }
+    .game .stage li:nth-child(5) .sns a:not(:last-child) {
+      padding-right: 18px; }
+
+#cards {
+  width: 100%;
+  position: absolute;
+  left: 2.5%;
+  top: 320px; }
+  #cards li {
+    float: left;
+    position: relative;
+    width: 140px;
+    height: 171px;
+    cursor: pointer;
+    margin: 5px;
+    -webkit-transition: transform .3s;
+    -moz-transition: transform .3s;
+    -o-transition: transform .3s;
+    transition: transform .3s;
+    transform: rotateY(0); }
+    #cards li.flipped {
+      transform: rotateY(180deg); }
+      #cards li.flipped .front {
+        z-index: 10; }
+    #cards li.matched {
+      cursor: default;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+      border-radius: 30px; }
+    #cards li .face {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%; }
+
+/*===*/
+.detail {
+  height: 540px;
+  background: #e0ecfa;
+  text-align: center;
+  overflow: hidden; }
+  .detail .title {
+    margin-top: 53px; }
+  .detail .list-imgs {
+    height: 195px;
+    margin-top: 30px;
+    overflow: hidden;
+    padding-left: 20px; }
+    .detail .list-imgs li {
+      float: left; }
+      .detail .list-imgs li:not(:last-child) {
+        padding-right: 6px; }
+  .detail .btns {
+    margin: 29px auto 0;
+    text-align: center; }
+    .detail .btns a {
+      display: inline; }
+    .detail .btns .btn-go-buy {
+      padding-left: 20px; }
+
+/*===*/
+.notice {
+  height: 492px;
+  background: #9cc9fd;
+  padding: 40px 0 0 20px; }
+  .notice .txt {
+    margin-top: 22px; }
+

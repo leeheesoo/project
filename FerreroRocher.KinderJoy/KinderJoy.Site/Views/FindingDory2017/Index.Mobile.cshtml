@@ -1,0 +1,261 @@
+﻿@model KinderJoy.Site.Models.FindingDory2017.FindingDory2017UserModel
+@{
+    ViewBag.Title = "2017 도리를찾아서 이벤트 모바일";
+    Layout = "~/Views/Shared/_Layout.Mobile.cshtml";
+
+    var isClose = DateTime.Now >= new DateTime(2017, 3, 11);
+
+    //테스트시 확인해야 할 부분을 위한 설정
+    //if (!Request.Url.Host.Equals("www.kinderjoy.co.kr"))
+    //{
+    //    isOpen = true;
+    //}
+}
+@section metas {
+    <meta property="og:title" content="킨더조이 도리를 찾아서 장난감 출시 기념 이벤트" />
+    <meta property="og:description" content="킨더조이 1,000개 증정!">
+    <meta property="og:image" content="http://@HttpContext.Current.Request["HTTP_HOST"]/Images/FindingDory2017/sns/kakaostory.jpg">
+    <meta property="og:url" content="http://@HttpContext.Current.Request["HTTP_HOST"]/event/2017-findingdory?utm_source=kakaostory&utm_medium=sharing&utm_campaign=findingdory">
+
+}
+@section styles {
+	<link rel="stylesheet" type="text/css" href="~/Content/js/jquery.bxslider.min.css" />
+	<link rel="styleSheet" href="~/Content/FindingDory2017/event.Mobile.min.css" />
+	<link rel="styleSheet" href="~/Content/FindingDory2017/popup.min.css" />
+	<link rel="styleSheet" href="~/Content/FindingDory2017/css3.effect.min.css" />
+	<link rel="stylesheet" href="~/Content/FindingDory2017/vendor/csshake.min.css" />
+}
+<div class="dory-wrap mobile_wrap" ng-app="app-finding-dory" ng-controller="ctrl-finding-dory">
+	<h2>@ViewBag.Title</h2>
+	<!-- 출시 안내 -->
+	<div class="page_visual">
+		<!-- 물고기들 -->
+		<div class="page_visual_obj">
+			<div class="obj octopusEffect"></div>
+		</div>
+		<div class="page_visual_obj2">
+			<div class="layer obj1" data-depth="0.30"><img src="~/Images/FindingDory2017/m/page_visual_obj1.png" alt="nemo"></div>
+			<div class="layer obj2 waftage"><img src="~/Images/FindingDory2017/m/page_visual_obj2.png" alt="dory"></div>
+		</div>
+		<!-- // 물고기들 -->
+		<!-- 거품효과 -->
+		<div class="bubble_group1">
+			<div class="bubble x1"></div>
+			<div class="bubble x2"></div>
+			<div class="bubble x3"></div>
+			<div class="bubble x4"></div>
+			<div class="bubble x5"></div>
+		</div>
+		<div class="bubble_group2">
+			<div class="bubble x1"></div>
+			<div class="bubble x2"></div>
+			<div class="bubble x3"></div>
+			<div class="bubble x4"></div>
+			<div class="bubble x5"></div>
+		</div>
+		<!-- // 거품효과 -->
+		<div class="tl"><img src="~/Images/FindingDory2017/m/page_visual_tl.png" alt="킨더조이 한정판 서프라이즈 도리를 찾아서 6종 출시"></div>
+		<div class="deco shake-slow shake-constant"><img src="~/Images/FindingDory2017/m/deco.png" alt="한정판"></div>
+		<div class="toy_group">
+			<a href="javascript:;" class="grow"><span class="bg waftage"></span><img src="~/Images/FindingDory2017/m/toy_1.png" class="waftage" alt="도리"></a>
+			<a href="javascript:;" class="grow"><span class="bg waftage2"></span><img src="~/Images/FindingDory2017/m/toy_2.png" class="waftage2" alt="니모"></a>
+			<a href="javascript:;" class="grow"><span class="bg waftage3"></span><img src="~/Images/FindingDory2017/m/toy_3.png" class="waftage3" alt="말린"></a>
+			<a href="javascript:;" class="grow"><span class="bg waftage2"></span><img src="~/Images/FindingDory2017/m/toy_4.png" class="waftage2" alt="행크"></a>
+			<a href="javascript:;" class="grow"><span class="bg waftage3"></span><img src="~/Images/FindingDory2017/m/toy_5.png" class="waftage3" alt="데스티니"></a>
+			<a href="javascript:;" class="grow"><span class="bg waftage"></span><img src="~/Images/FindingDory2017/m/toy_6.png" class="waftage" alt="해달"></a>
+		</div>
+		<div class="btn">
+			<a href="@Url.Action("Image", "Home")" target="_blank"><img src="~/Images/FindingDory2017/m/btn_toy_view.png" class="GA" data-category="@ViewBag.Title" data-action="도리를 찾아서 6종 보러가기" alt="도리를 찾아서 6종 보러가기"></a>
+		</div>
+	</div>
+	<!-- 이벤트 -->
+	<div class="event_visual bubbles">
+		<!-- bubbles: 거품효과 -->
+		<div class="inner">
+			<div class="tl"><img src="~/Images/FindingDory2017/m/event_visual_tl.png" alt="EVENT 도리와 함께 떠나는 서프라이즈 모험 이벤트 - 킨더조이의 새로운 도리를 찾아서 서프라이즈와 함께 모험을 떠나 보세요! 추첨을 통해 1,030분께 선물을 드립니다."></div>
+			<div class="date"><img src="~/Images/FindingDory2017/m/event_date.png" alt="이벤트 기간: 2017년 2우러 20일 (월) ~ 3월 10일 (금) / 당첨자 발표: 2017년 3월 15일 (수)"></div>
+			<div class="con"><img src="~/Images/FindingDory2017/m/event_con.png" alt="01 시작 버튼 클릭 후, 개인 정보 입력&#13; 02 도리와 함께 친구들을 찾아 모험&#13; 03 SNS 공유 시, 당첨 확률 UP"></div>
+			<div class="btns">
+				<a href="javascript:openPop('pop_gift');"><img src="~/Images/FindingDory2017/m/btn_event_gift.png" class="GA" data-category="@ViewBag.Title" data-action="경품 안내" alt="경품 안내"></a>
+				<a href="javascript:openPop('pop_dang');"><img src="~/Images/FindingDory2017/m/btn_event_dang.png" class="GA" data-category="@ViewBag.Title" data-action="당첨자 발표" alt="당첨자 발표"></a>
+			</div>
+			<!-- 게임 -->
+			<div class="event_play_wrap">
+				<!-- 이벤트 참여 영역 -->
+				<div class="play_area">
+					<!-- stage0: 시작버튼 누르기 -->
+					<!--
+						gameStageControl() : call 시 다음 stage 호출
+					-->
+					<div class="stage stage0">
+						<div class="layer bg" data-depth="0.10"></div>
+						<div class="layer obj1" data-depth="0.50"><img src="~/Images/FindingDory2017/m/stage0/obj1.png" class=""></div>
+						<div class="layer obj2 speechBubble" data-depth="0.20"><img src="~/Images/FindingDory2017/m/stage0/obj2.png" ng-click="startFindingDory()" style="cursor:pointer" class="GA" data-category="@ViewBag.Title" data-action="START" alt=""></div>
+					</div>
+					<!-- stage1: 개인정보입력 -->
+					<div class="stage stage1" style="display:none;">
+						<div class="obj1 waftage"><img src="~/Images/FindingDory2017/m/stage1/obj1.png" alt=""></div>
+						<div id="pop_event_info">
+							<div class="pop_con">
+								<div class="con-tl"><img src="~/Images/FindingDory2017/popup/form_tl.png" alt="개인정보 입력"></div>
+								<form id="frmFindingDory2017" ng-submit="saveFindingDoryUser()">
+									<div class="form_box">
+										<legend>개인정보 입력</legend>
+										<dl class="input_name">
+											<dt><img src="~/Images/FindingDory2017/popup/input_name.png" alt="이름"></dt>
+											<dd>@Html.TextBoxFor(x => x.Name, new { ng_model = "findingDoryUser.name", maxlength = 10, kr_input = "" })</dd>
+										</dl>
+										<dl class="input_age">
+											<dt><img src="~/Images/FindingDory2017/popup/input_age.png" alt="나이"></dt>
+											<dd>@Html.TextBoxFor(x => x.Age, new { type = "tel", ng_model = "findingDoryUser.age", maxlength = 3 })</dd>
+										</dl>
+										<dl class="input_phone">
+											<dt><img src="~/Images/FindingDory2017/popup/input_phone.png" alt="휴대폰"></dt>
+											<dd>@Html.TextBoxFor(x => x.Mobile, new { type = "tel", ng_model = "findingDoryUser.mobile", @class = "ph_phone", maxlength = 11 })></dd>
+										</dl>
+										<dl class="input_address1">
+											<dt><img src="~/Images/FindingDory2017/popup/input_address.png" alt="주소"></dt>
+											<dd>@Html.TextBoxFor(x => x.ZipCode, new { ng_model = "findingDoryUser.zipCode", maxlength = 7, @readonly = "readonly" }) <img src="~/Images/FindingDory2017/popup/btn_addressSearch.png" class="GA" data-category="@ViewBag.Title" data-action="우편번호" ng-click="openPostCode()" alt="우편번호"></dd>
+										</dl>
+										<dl class="input_address2">
+											<dd>@Html.TextBoxFor(x => x.Address, new { ng_model = "findingDoryUser.address", maxlength = 150, @readonly = "readonly" })</dd>
+											<dd>@Html.TextBoxFor(x => x.AddressDetail, new { ng_model = "findingDoryUser.addressDetail", maxlength = 150, kr_input = "" })</dd>
+										</dl>
+									</div>
+									<div class="agree_policy">
+										<div class="text">
+											<!-- label의 for와 input의 id를 동일하게 맞춰주세요~ -->
+											<label for="Agree" style="cursor:pointer">@Html.CheckBoxFor(x => x.Agree, new { ng_model = "findingDoryUser.agree" })<img src="~/Images/FindingDory2017/popup/input_agree.png" alt="개인정보 수집방침에 동의" /></label>
+										</div>
+										<div class="btn_agree">
+											<a href="@Url.Action("PrivacyPolicy", "FindingDory2017")" target="_blank"><img src="~/Images/FindingDory2017/popup/btn_policy.png" alt="자세히 보기" /></a>
+										</div>
+									</div>
+									@*<div class="btn"><button type="submit" style="cursor:pointer"><img src="~/Images/FindingDory2017/popup/btn_confirm.png" class="ga-event" data-action="[Event] 입력완료" alt="입력완료" /></button></div>*@
+									<div class="btn"><button type="submit" style="cursor:pointer"><img src="~/Images/FindingDory2017/popup/btn_confirm.png" class="GA" data-category="@ViewBag.Title" data-action="입력완료" alt="입력완료" /></button></div>
+								</form>
+							</div>
+						</div>
+						<!-- // 개인정보입력 -->
+					</div>
+					<!-- stage2:  -->
+					<div class="stage stage2" style="display:none;">
+						<div class="layer obj1" data-depth="0.30"><img src="~/Images/FindingDory2017/m/stage2/obj1.png" alt=""></div>
+						<div class="layer obj2 speechBubble" data-depth="0.25"><a href="javascript:gameStageControl();"><img src="~/Images/FindingDory2017/m/stage2/obj2.png" alt=""></a></div>
+						<div class="layer obj3" data-depth="0.10"><img src="~/Images/FindingDory2017/m/stage2/obj3.png" alt=""></div>
+						<div class="layer obj3 twinkle" data-depth="0.10"><img src="~/Images/FindingDory2017/m/stage2/obj3_on.png" alt=""></div>
+					</div>
+					<!-- stage3:  -->
+					<div class="stage stage3" style="display:none;">
+						<div class="layer obj1" data-depth="0.30"><img src="~/Images/FindingDory2017/m/stage3/obj1.png" alt=""></div>
+						<div class="layer obj2 speechBubble showDelay1" data-depth="0.10"><img src="~/Images/FindingDory2017/m/stage3/obj2.png" alt=""></div>
+						<div class="layer obj3 speechBubble showDelay2" data-depth="0.20"><img src="~/Images/FindingDory2017/m/stage3/obj3.png" alt=""></div>
+						<div class="layer obj4"><img src="~/Images/FindingDory2017/m/stage3/obj4.png" alt=""></div>
+						<div class="layer obj4 twinkle"><img src="~/Images/FindingDory2017/m/stage3/obj4_on.png" alt=""></div>
+					</div>
+					<!-- stage4:  -->
+					<div class="stage stage4" style="display:none;">
+						<div class="layer bg"></div>
+						<div class="layer bg2 twinkle"></div>
+						<div class="layer obj1 speechBubble" data-depth="0.10"><img src="~/Images/FindingDory2017/m/stage4/obj1.png" alt=""></div>
+					</div>
+					<!-- stage5:  -->
+					<div class="stage stage5" style="display:none;">
+						<div class="layer obj1" data-depth="0.10"><img src="~/Images/FindingDory2017/m/stage5/obj1.png" alt=""></div>
+						<div class="layer obj1 twinkle" data-depth="0.10"><img src="~/Images/FindingDory2017/m/stage5/obj1_on.png" alt=""></div>
+						<div class="layer obj2 speechBubble showDelay1" data-depth="0.20"><img src="~/Images/FindingDory2017/m/stage5/obj2.png" alt=""></div>
+						<div class="layer obj3" data-depth="0.05"><img src="~/Images/FindingDory2017/m/stage5/obj3.png" alt=""></div>
+						<div class="layer obj4 speechBubble showDelay2" data-depth="0.20"><img src="~/Images/FindingDory2017/m/stage5/obj4.png" alt=""></div>
+					</div>
+					<!-- stage6:  -->
+					<div class="stage stage6" style="display:none;">
+						<div class="layer bg"></div>
+						<div class="layer obj1" data-depth="0.05"><img src="~/Images/FindingDory2017/m/stage6/obj1.png" alt=""></div>
+						<div class="layer obj2" data-depth="0.10"><img src="~/Images/FindingDory2017/m/stage6/obj2.png" alt=""></div>
+						<div class="layer obj3" data-depth="0.70"><img src="~/Images/FindingDory2017/m/stage6/obj3.png" alt=""></div>
+						<div class="share_grouop">
+							<div><img src="~/Images/FindingDory2017/m/stage6/share_txt.png" alt="모두들 함께해줘서 고마워! 정말 즐거운 모험이었어!" /></div>
+							<img src="~/Images/FindingDory2017/m/stage6/icon_f.png" ng-click="snsShare('@KinderJoy.Domain.Abstract.SnsType.Facebook')" class="GA" data-category="@ViewBag.Title" data-action="페이스북 공유" style="cursor:pointer" alt="facebook" />
+							<img src="~/Images/FindingDory2017/m/stage6/icon_ks.png" ng-click="snsShare('@KinderJoy.Domain.Abstract.SnsType.Kakaostory')" class="GA" data-category="@ViewBag.Title" data-action="카카오스토리 공유" style="cursor:pointer" alt="kakaostory" />
+							<img src="~/Images/FindingDory2017/m/stage6/icon_kt.png" ng-click="snsShare('@KinderJoy.Domain.Abstract.SnsType.Kakaotalk')" class="GA" data-category="@ViewBag.Title" data-action="카카오톡 공유" style="cursor:pointer" alt="kakaotalk" />
+						</div>
+					</div>
+					<!-- 케릭터 선택기 -->
+					<div class="char_selector" style="display:none;">
+						<span class="txt"></span>
+						<div class="nemo"><a href="javascript:;"><img src="~/Images/FindingDory2017/m/stage/char_1.png" alt=""></a></div>
+						<div class="destiny"><a href="javascript:;"><img src="~/Images/FindingDory2017/m/stage/char_2.png" alt=""></a></div>
+						<div class="malin"><a href="javascript:;"><img src="~/Images/FindingDory2017/m/stage/char_3.png" alt=""></a></div>
+						<div class="hank"><a href="javascript:;"><img src="~/Images/FindingDory2017/m/stage/char_4.png" alt=""></a></div>
+						<div class="otter"><a href="javascript:;"><img src="~/Images/FindingDory2017/m/stage/char_5.png" alt=""></a></div>
+					</div>
+				</div>
+				<!-- 이벤트 단계 안내 -->
+				<div class="play_navi">
+					<div class="indi_box">
+						<div class="indi"></div>
+					</div>
+				</div>
+			</div>
+			<!-- // 게임 -->
+		</div>
+	</div>
+	<!-- 이벤트 유의사항 -->
+	<div class="event_note">
+		<div class="inner">
+			<div class="txt"><img src="~/Images/FindingDory2017/m/event_note.png" alt="이벤트 유의사항"></div>
+		</div>
+	</div>
+	<div><img src="~/Images/NinjaBarbie2016/m/footer.jpg" alt="" /></div>
+	<!-- 팝업 -->
+	@Html.Partial("_PopupZipCode")
+	@Html.Partial("_Popup")
+	@Html.Partial("_PopupInApp")
+	@Html.Partial("_PopupPrizeWinner")
+</div>
+@section scripts {
+	<script src="~/Content/js/jquery.easing.1.3.js"></script>
+	<script src="~/Scripts/jquery.shy4blue.placeholder.js"></script>
+	<script src="~/Scripts/FindingDory2017/jquery.parallax.js"></script>
+	<script src="~/Scripts/FindingDory2017/bubble.js"></script>
+	<script src="~/Scripts/FindingDory2017/pub.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-resource.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/kakako-1.8.0.min.js"></script>
+    <script type="text/javascript" src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
+    <script type="text/javascript" src="~/Scripts/Common/devCommon.js"></script>
+    <script type="text/javascript" src="~/Scripts/Common/snsCommon.js"></script>
+    <script src="~/Scripts/FindingDory2017/dev.js"></script>
+	<script type="text/javascript">
+        var isClose = "@isClose";
+
+		// 게임영역 패럴럭스 효과(web)
+		$('.page_visual_obj2, .play_area').parallax({
+			calibrateY: false
+		});
+
+		//카카오 javascript key
+		Kakao.init('@System.Configuration.ConfigurationManager.AppSettings["sns.kakao.key"]');
+		//페이스북
+		window.fbAsyncInit = function () {
+		    FB.init({
+		        appId: '@System.Configuration.ConfigurationManager.AppSettings["sns.facebook.apikey"]', // App ID
+		        channelUrl: '//@HttpContext.Current.Request["HTTP_HOST"]/facebook-channel.php', // Channel File
+		        status: true, // check login status
+		        xfbml: true  // parse XFBML
+		    });
+		    //팝업방지..
+		    FB.getLoginStatus(function (response) { });
+		};
+		(function (d, debug) {
+		    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+		    if (d.getElementById(id)) { return; }
+		    js = d.createElement('script'); js.id = id; js.async = true;
+		    js.src = "//connect.facebook.net/ko_KR/all" + (debug ? "/debug" : "") + ".js";
+		    ref.parentNode.insertBefore(js, ref);
+		}(document, /*debug*/false));
+	</script>
+}
+
+
+

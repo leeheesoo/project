@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "1주년 댓글등록 이벤트 > 참여자";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row" style="padding-left:30px; padding-right:30px" ng-app="app-admin-1st-anniversary">
+    <div class="panel panel-primary filterable" ng-controller="ctrl-admin-1st-anniversary">
+        <div class="panel-heading">
+            <h3 class="panel-title">참여자</h3>
+            <div class="pull-right">
+                <a class="btn btn-info btn-xs" href="@Url.Action("ExcelDownload", "AdminOneYearAnniversary")"><span class="glyphicon glyphicon-download-alt"></span> excel</a>
+                <span>{{totalItemCount}} 건</span>
+            </div>
+        </div>
+        <table class="table table-bordered table-hover table-sortable" style="margin:10px;width:98.5%">
+            <thead>
+                <tr class="filters">
+                    <th class="text-center" style="vertical-align:middle">No.</th>
+                    <th style="vertical-align:middle">
+                        @Html.TextBox("FromDate",null, new { ng_model= "filterBy1stAnniversary.fromDate", @class = "form-control datepicker", style = "cursor:pointer", placeholder = "시작일" })
+                        @Html.TextBox("ToDate", null, new { ng_model = "filterBy1stAnniversary.toDate", @class = "form-control datepicker", style = "cursor:pointer", placeholder = "종료일" })
+                    </th>
+                    <th style="vertical-align:middle">@Html.DropDownList("Channel",new SelectList(new string[] { "web", "mobile" }),"채널", new { ng_model = "filterBy1stAnniversary.channel", @class = "form-control" })</th>
+                    <th style="vertical-align:middle">@Html.TextBox("IpAddress", "", new { ng_model = "filterBy1stAnniversary.ipAddress", @class = "form-control", placeholder = "아이피주소" })</th>
+                    <th style="vertical-align:middle">@Html.TextBox("Name", "", new { ng_model = "filterBy1stAnniversary.name", @class = "form-control", placeholder = "이름" })</th>
+                    <th style="vertical-align:middle">@Html.TextBox("Mobile", "", new { ng_model = "filterBy1stAnniversary.mobile", @class = "form-control", placeholder = "연락처" })</th>
+                    <th style="vertical-align:middle">@Html.TextBox("SamsoniteId", "", new { ng_model = "filterBy1stAnniversary.samsoniteId", @class = "form-control", placeholder = "아이디" })</th>
+                    <th style="vertical-align:middle">@Html.TextBox("AcrosticPoemFirst", "", new { ng_model = "filterBy1stAnniversary.acrosticPoemFirst", @class = "form-control", placeholder = "오행시 \"쌤\"" })</th>
+                    <th style="vertical-align:middle">@Html.TextBox("AcrosticPoemSecond", "", new { ng_model = "filterBy1stAnniversary.acrosticPoemSecond", @class = "form-control", placeholder = "오행시 \"소\"" })</th>
+                    <th style="vertical-align:middle">@Html.TextBox("AcrosticPoemThird", "", new { ng_model = "filterBy1stAnniversary.acrosticPoemThird", @class = "form-control", placeholder = "오행시 \"나\"" })</th>
+                    <th style="vertical-align:middle">@Html.TextBox("AcrosticPoemFourth", "", new { ng_model = "filterBy1stAnniversary.acrosticPoemFourth", @class = "form-control", placeholder = "오행시 \"이\"" })</th>
+                    <th style="vertical-align:middle">@Html.TextBox("AcrosticPoemFifth", "", new { ng_model = "filterBy1stAnniversary.acrosticPoemFifth", @class = "form-control", placeholder = "오행시 \"트\"" })</th>
+                    <th style="vertical-align:middle;width:100px">@Html.TextBox("CongratulationMessage", "", new { ng_model = "filterBy1stAnniversary.congratulationMessage", @class = "form-control", placeholder = "축하메시지" })</th>
+                    <th style="vertical-align:middle">@Html.DropDownList("Channel", new SelectList(new string[] { "true", "false" }), "노출여부", new { ng_model = "filterBy1stAnniversary.isShow", @class = "form-control" })</th>
+                    <th style="text-align:center;vertical-align:middle"><button class="btn btn-primary btn-sm" ng-click="get1stAnniversaryList()"><i class="fa fa-search"></i> Search</button></th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in items">
+                    <td>{{((currentPage-1)*itemsPerPage)+$index+1}}</td>
+                    <td>{{item.CreateDate | convertToDate}}</td>
+                    <td>{{item.Channel}}</td>
+                    <td>{{item.IpAddress}}</td>
+                    <td><input type="text" class="form-control" ng-model="item.Name" maxlength="20" /></td>
+                    <td><input type="text" class="form-control" ng-model="item.Mobile" maxlength="11" /></td>
+                    <td><input type="text" class="form-control" ng-model="item.SamsoniteId" maxlength="50" /></td>
+                    <td><input type="text" class="form-control" ng-model="item.AcrosticPoemFirst" maxlength="20" /></td>
+                    <td><input type="text" class="form-control" ng-model="item.AcrosticPoemSecond" maxlength="20" /></td>
+                    <td><input type="text" class="form-control" ng-model="item.AcrosticPoemThird" maxlength="20" /></td>
+                    <td><input type="text" class="form-control" ng-model="item.AcrosticPoemFourth" maxlength="20" /></td>
+                    <td><input type="text" class="form-control" ng-model="item.AcrosticPoemFifth" maxlength="20" /></td>
+                    <td style="display: inline-block;border-left:0;border-right:0;border-bottom:0; width:150px; word-wrap: break-word;"><textarea class="form-control" style="height:150px" ng-model="item.CongratulationMessage" ng-keyup="checkMessageLength($event)" placeholder="100자 이내"></textarea></td>
+                    <td style="text-align:center;vertical-align:middle"><input type="checkbox" ng-model="item.IsShow" /></td>
+                    <td style="text-align:center;vertical-align:middle"><button class="btn btn-success btn-xs" ng-click="update1stAnniversary(item);"><span class="glyphicon glyphicon-pencil"></span> 수정</button></td>
+                </tr>
+            </tbody>
+            <tbody ng-show="items.length === 0">
+                <tr>
+                    <td style="color:red;text-align:center" colspan="11">데이터가 없습니다.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="text-align:center">
+            <pagination boundary-links="true"
+                        max-size="maxSize"
+                        items-per-page="itemsPerPage"
+                        total-items="totalItemCount"
+                        ng-model="currentPage"
+                        ng-change="get1stAnniversaryList()"></pagination>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script type="text/javascript" src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+    <script src="@Url.Content("~/Content/js/one-year-anniversary/one-year-anniversary-admin.js")"></script>
+    <script type="text/javascript">
+        var admin1stAnniversaryModule = angular.module('app-admin-1st-anniversary', ['ui.bootstrap']);
+        makeAdmin1stAnniversaryViewModel(admin1stAnniversaryModule,'ctrl-admin-1st-anniversary');
+    </script>
+}

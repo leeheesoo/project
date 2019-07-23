@@ -1,0 +1,12 @@
+// =============================
+// 2018.4.23
+// 한승철
+// disc: width, height settion
+// @params
+// 		$w: width;
+// 		$h: height (height를 따로 설정하지 않으면 width값으로 설정)
+// =============================
+@mixin size($w, $h: $w) {
+	width: $w;
+	height: $h;
+}

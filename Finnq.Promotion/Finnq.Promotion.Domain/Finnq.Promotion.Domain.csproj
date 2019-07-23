@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4942F05D-1CD6-4894-9683-EB9A6C9AE73E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Finnq.Promotion.Domain</RootNamespace>
+    <AssemblyName>Finnq.Promotion.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.1.9.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqKit.1.1.9.0\lib\net45\LinqKit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\CommonEnum.cs" />
+    <Compile Include="Abstract\InstantLottery.cs" />
+    <Compile Include="Abstract\InstantLotteryPrizeSetting.cs" />
+    <Compile Include="Entities\RouletteEvent\RouletteEventEntry.cs" />
+    <Compile Include="Entities\RouletteEvent\RouletteEventInstantLotteryPrizeSetting.cs" />
+    <Compile Include="Entities\RouletteEvent\TRouletteEventEntry.cs" />
+    <Compile Include="Entities\RouletteEvent\TRouletteEventInstantLotteryPrizeSetting.cs" />
+    <Compile Include="Entities\TmapEvent\TmapEventEntry.cs" />
+    <Compile Include="Entities\TWorldRouletteEvent\TWorldRouletteEventEntry.cs" />
+    <Compile Include="Entities\TWorldRouletteEvent\TWorldRouletteEventInstantLotteryPrizeSetting.cs" />
+    <Compile Include="Exceptions\EventServiceException.cs" />
+    <Compile Include="Identity\AppRole.cs" />
+    <Compile Include="Identity\AppUser.cs" />
+    <Compile Include="Identity\AppUserClaim.cs" />
+    <Compile Include="Identity\AppUserLogin.cs" />
+    <Compile Include="Identity\AppUserRole.cs" />
+    <Compile Include="Infrastructures\AppDbContext.cs" />
+    <Compile Include="Infrastructures\AppRoleManager.cs" />
+    <Compile Include="Infrastructures\AppUserManager.cs" />
+    <Compile Include="Infrastructures\InstantLotteryPrizeSelector.cs" />
+    <Compile Include="Infrastructures\IRepository.cs" />
+    <Compile Include="Infrastructures\ITimeProvider.cs" />
+    <Compile Include="Infrastructures\RepositoryBase.cs" />
+    <Compile Include="Infrastructures\TimeProvider.cs" />
+    <Compile Include="Migrations\201709260635245_create-identity.cs" />
+    <Compile Include="Migrations\201709260635245_create-identity.Designer.cs">
+      <DependentUpon>201709260635245_create-identity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709270538042_create-tmap-event-entry.cs" />
+    <Compile Include="Migrations\201709270538042_create-tmap-event-entry.Designer.cs">
+      <DependentUpon>201709270538042_create-tmap-event-entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710240632382_create-roulette-event.cs" />
+    <Compile Include="Migrations\201710240632382_create-roulette-event.Designer.cs">
+      <DependentUpon>201710240632382_create-roulette-event.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711080037537_create-t-roulette-event.cs" />
+    <Compile Include="Migrations\201711080037537_create-t-roulette-event.Designer.cs">
+      <DependentUpon>201711080037537_create-t-roulette-event.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711160507116_create-tworld-roulette-event.cs" />
+    <Compile Include="Migrations\201711160507116_create-tworld-roulette-event.Designer.cs">
+      <DependentUpon>201711160507116_create-tworld-roulette-event.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\RouletteEvent\ITRouletteEventEntryRepository.cs" />
+    <Compile Include="Repositories\RouletteEvent\IRouletteEventEntryRepository.cs" />
+    <Compile Include="Repositories\RouletteEvent\ITRouletteEventPrizeSettingRepository.cs" />
+    <Compile Include="Repositories\RouletteEvent\IRouletteEventPrizeSettingRepository.cs" />
+    <Compile Include="Repositories\RouletteEvent\TRouletteEventEntryRepository.cs" />
+    <Compile Include="Repositories\RouletteEvent\RouletteEventEntryRepository.cs" />
+    <Compile Include="Repositories\RouletteEvent\TRouletteEventPrizeSettingRepository.cs" />
+    <Compile Include="Repositories\RouletteEvent\RouletteEventPrizeSettingRepository.cs" />
+    <Compile Include="Repositories\TmapEvent\ITmapEventEntryRepository.cs" />
+    <Compile Include="Repositories\TmapEvent\TmapEventEntryRepository.cs" />
+    <Compile Include="Repositories\TWorldRouletteEvent\ITWorldRouletteEventEntryRepository.cs" />
+    <Compile Include="Repositories\TWorldRouletteEvent\ITWorldRouletteEventPrizeSettingRepository.cs" />
+    <Compile Include="Repositories\TWorldRouletteEvent\TWorldRouletteEventEntryRepository.cs" />
+    <Compile Include="Repositories\TWorldRouletteEvent\TWorldRouletteEventPrizeSettingRepository.cs" />
+    <Compile Include="Services\PageQueryOptions.cs" />
+    <Compile Include="Services\RouletteEvent\ITRouletteEventService.cs" />
+    <Compile Include="Services\RouletteEvent\IRouletteEventService.cs" />
+    <Compile Include="Services\RouletteEvent\TRouletteEventQueryOptions.cs" />
+    <Compile Include="Services\RouletteEvent\RouletteEventQueryOptions.cs" />
+    <Compile Include="Services\RouletteEvent\TRouletteEventService.cs" />
+    <Compile Include="Services\RouletteEvent\RouletteEventService.cs" />
+    <Compile Include="Services\TmapEvent\ITmapEventEntryService.cs" />
+    <Compile Include="Services\TmapEvent\TmapEventEntryQueryOptions.cs" />
+    <Compile Include="Services\TmapEvent\TmapEventEntryService.cs" />
+    <Compile Include="Services\TWorldRouletteEvent\ITWorldRouletteEventService.cs" />
+    <Compile Include="Services\TWorldRouletteEvent\TWorldRouletteEventQueryOptions.cs" />
+    <Compile Include="Services\TWorldRouletteEvent\TWorldRouletteEventService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709260635245_create-identity.resx">
+      <DependentUpon>201709260635245_create-identity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709270538042_create-tmap-event-entry.resx">
+      <DependentUpon>201709270538042_create-tmap-event-entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710240632382_create-roulette-event.resx">
+      <DependentUpon>201710240632382_create-roulette-event.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711080037537_create-t-roulette-event.resx">
+      <DependentUpon>201711080037537_create-t-roulette-event.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711160507116_create-tworld-roulette-event.resx">
+      <DependentUpon>201711160507116_create-tworld-roulette-event.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewBag.Title = "매직 킨더 앱 런칭 이벤트 - 모바일";
+    Layout = "~/Views/Shared/_Layout.Mobile.cshtml";
+
+    var isClose = DateTime.Now >= new DateTime(2017, 4, 15);
+}
+@section styles{
+    <link href="~/Content/MagicKinderAppLaunchingEvent/style.Mobile.min.css" rel="stylesheet">
+    <link href="~/Content/csshake.min.css" rel="stylesheet">
+}
+<div class="mobile_wrap" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+    <!-- S : event-visual -->
+    <div class="event-con event-visual">
+        <h2><img src="~/Images/MagicKinderAppLaunchingEvent/m/tl_event.png" alt="매직킨더 앱 런칭 기념 다운로드 캠페인"></h2>
+        <div class="island-left animate-floating2"><img src="~/Images/MagicKinderAppLaunchingEvent/m/img_island_left.png" alt="구름섬"></div>
+        <div class="island-right animate-floating">
+            <img src="~/Images/MagicKinderAppLaunchingEvent/m/img_island_right.png" alt="구름섬">
+            <div class="ferris-wheel-box">
+                <div class="ferris-wheel-line"><img src="~/Images/MagicKinderAppLaunchingEvent/m/ferris_wheel_line.png" alt="대관람차"></div>
+                <div class="capsule-box">
+                    <img src="~/Images/MagicKinderAppLaunchingEvent/m/capsule_blue.png" alt="대관람차" class="ferris-capsule" id="capsule1">
+                    <img src="~/Images/MagicKinderAppLaunchingEvent/m/capsule_green.png" alt="대관람차" class="ferris-capsule" id="capsule2">
+                    <img src="~/Images/MagicKinderAppLaunchingEvent/m/capsule_blue.png" alt="대관람차" class="ferris-capsule" id="capsule3">
+                    <img src="~/Images/MagicKinderAppLaunchingEvent/m/capsule_green.png" alt="대관람차" class="ferris-capsule" id="capsule4">
+                    <img src="~/Images/MagicKinderAppLaunchingEvent/m/capsule_blue.png" alt="대관람차" class="ferris-capsule" id="capsule5">
+                    <img src="~/Images/MagicKinderAppLaunchingEvent/m/capsule_green.png" alt="대관람차" class="ferris-capsule" id="capsule6">
+                    <img src="~/Images/MagicKinderAppLaunchingEvent/m/capsule_blue.png" alt="대관람차" class="ferris-capsule" id="capsule7">
+                    <img src="~/Images/MagicKinderAppLaunchingEvent/m/capsule_green.png" alt="대관람차" class="ferris-capsule" id="capsule8">
+                </div>
+            </div>
+        </div>
+        <div class="island-center animate-floating3">
+            <div class="charater-motion"></div>
+        </div>
+        <div class="speech-bubble">
+            <dl>
+                <dt><img src="~/Images/MagicKinderAppLaunchingEvent/m/tl_about_magickinder.png" alt="매직킨더 앱이란?"></dt>
+                <dd><img src="~/Images/MagicKinderAppLaunchingEvent/m/txt_about_magickinder.png" alt="킨더조이의 교육용 앱을 통해 아이들을 위한 다양한 게임과 이야기 컨텐츠를 만나보세요. 다양한 컨텐츠를 재미있게 즐기며 아이들의 창의력, 상상력, 호기심을 키워주세요."></dd>
+            </dl>
+        </div>
+        <ul class="visual-cloud">
+            <li data-speed="50"><img src="~/Images/MagicKinderAppLaunchingEvent/m/img_visual_cloud_s.png" alt="구름"></li>
+            <li data-speed="30"><img src="~/Images/MagicKinderAppLaunchingEvent/m/img_visual_cloud.png" alt="구름"></li>
+            <li data-speed="40"><img src="~/Images/MagicKinderAppLaunchingEvent/m/img_visual_cloud_m.png" alt="구름"></li>
+            <li data-speed="50"><img src="~/Images/MagicKinderAppLaunchingEvent/m/img_visual_cloud.png" alt="구름"></li>
+            <li data-speed="30"><img src="~/Images/MagicKinderAppLaunchingEvent/m/img_visual_cloud.png" alt="구름"></li>
+        </ul>
+    </div>
+    <!-- E : event-visual -->
+    <!-- S : event-announce-con -->
+    <div class="event-con event-announce-con">
+        <h3><img src="~/Images/MagicKinderAppLaunchingEvent/m/tl_announce_app.png" alt="매직킨더 앱 런칭 이벤트"></h3>
+        <p class="txt"><img src="~/Images/MagicKinderAppLaunchingEvent/m/txt_announce_app.png" alt="지금 킨더조이의 새로운 교육용 앱, 매직킨더를 다운로드 받으세요! 엄마와 아이가 함께하는 순간을 더욱 즐겁게 만들어 줍니다. 런칭 기념 이벤트에 응모하시면 추첨을 통해 푸짐한 경품을 드립니다."></p>
+        <div class="announce-box">
+            <ul>
+                <li><img src="~/Images/MagicKinderAppLaunchingEvent/m/txt_progress_period.png" alt="이벤트 기간 : 2017년 3월 16일~4월 14일"></li>
+                <li><img src="~/Images/MagicKinderAppLaunchingEvent/m/txt_winners_announced.png" alt="당첨자 발표 : 2017년 4월 19일"></li>
+                <li><img src="~/Images/MagicKinderAppLaunchingEvent/m/txt_event_gifts.png" alt="이벤트 경품 : 아이패드 에어2 32GB Wifi 2명, 신세계 모바일 상품권 5만원권 20명, 젤리캣 토끼M 30명, 킨더조이 기프티콘 1000명"></li>
+            </ul>
+        </div>
+        <div class="btn-box">
+            <ul>
+                @if (isClose) {
+                    <li><a href="javascript:;" onclick="alert('이벤트가 종료되었습니다.');"><img src="~/Images/MagicKinderAppLaunchingEvent/m/btn_participate_events.png" class="GA" data-category="@ViewBag.Title" data-action="이벤트 참여하기" alt="이벤트 참여하기"></a></li>
+                } else {
+                    <li><a href="javascript:;" onclick="openPop('entry'); return false;"><img src="~/Images/MagicKinderAppLaunchingEvent/m/btn_participate_events.png" class="GA" data-category="@ViewBag.Title" data-action="이벤트 참여하기" alt="이벤트 참여하기"></a></li>
+                }
+                <li><a href="javascript:;" onclick="openPop('app-detail'); return false;"><img src="~/Images/MagicKinderAppLaunchingEvent/m/btn_app_detail.png" class="GA" data-category="@ViewBag.Title" data-action="앱 자세히 보기" alt="앱 자세히 보기"></a></li>
+                <li><a href="javascript:;" onclick="openPop('winners'); return false;"><img src="~/Images/MagicKinderAppLaunchingEvent/m/btn_winners_check.png" class="GA" data-category="@ViewBag.Title" data-action="당첨자 확인하기" alt="당첨자 확인하기"></a></li>
+            </ul>
+        </div>
+        <div class="store-box">
+            <ul>
+                <li class="animate-app-store shake-rotate shake-constant"><a href="@ViewBag.AppStoreUrl"><img src="~/Images/MagicKinderAppLaunchingEvent/m/btn_app_store.png" class="GA" data-category="@ViewBag.Title" data-action="앱스토어" alt="앱스토어"></a></li>
+                <li class="animate-google-play shake-rotate shake-constant"><a href="@ViewBag.GooglePlayUrl"><img src="~/Images/MagicKinderAppLaunchingEvent/m/btn_google_play.png" class="GA" data-category="@ViewBag.Title" data-action="구글플레이" alt="구글 플레이"></a></li>
+            </ul>
+            <div class="cover-cloud"><img src="~/Images/MagicKinderAppLaunchingEvent/m/cover_cloud.png" alt="cover"></div>
+            <div class="animate-cursor"></div>
+        </div>
+    </div>
+    <!-- E : event-announce-con -->
+    <!-- S : event-participation-con" -->
+    <div class="event-con event-participation-con">
+        <div class="participation-method">
+            <h3><img src="~/Images/MagicKinderAppLaunchingEvent/m/tl_participation_method.png" alt="이벤트 참여방법"></h3>
+            <div class="participation-step">
+                <p><img src="~/Images/MagicKinderAppLaunchingEvent/m/img_participation_method.png" alt="1. 애플 앱 스토어 or구글 플레이에서 매직킨더 앱 다운로드 > 2.우리 아이와 함께 매직킨더 앱 탐험하고 아이가 제일 좋아하는 콘텐츠 스크린샷 찍기 > 3.캡쳐한 스크린샷에 해당하는 카테고리 선택 > 4.스크린샷 업로드하고 한 줄평 작성 > 5.개인 정보 입력 후, 참여 완료"></p>
+                <div class="store-box">
+                    <ul>
+                        <li class="animate-app-store"><a href="@ViewBag.AppStoreUrl"><img src="~/Images/MagicKinderAppLaunchingEvent/m/btn_app_store2.png" class="GA" data-category="@ViewBag.Title" data-action="참여방법-앱스토어" alt="앱스토어"></a></li>
+                        <li class="animate-google-play"><a href="@ViewBag.GooglePlayUrl"><img src="~/Images/MagicKinderAppLaunchingEvent/m/btn_google_play2.png" class="GA" data-category="@ViewBag.Title" data-action="참여방법-구글플레이" alt="구글 플레이"></a></li>
+                    </ul>
+                    <div class="animate-cursor"></div>
+                </div>
+            </div>
+        </div>
+        <div class="participation-status">
+            <h3><img src="~/Images/MagicKinderAppLaunchingEvent/m/tl_participation_status.png" alt="이벤트 참여현황"></h3>
+            <div class="slide-area">
+                <ul id="participationSlider" data-bind="foreach : reviewList">
+                    <li data-bind="foreach : $data">
+                        <ul data-bind="foreach : $data">
+                            <li>
+                                <!--ko if:  $data != null-->
+                                <img data-bind="attr:{src:screenShot}, click:function(){ $root.reviewDetail(screenShot,comment); }" style="cursor:pointer" width='256' height='145'>
+                                <!-- /ko -->
+                                <!--ko if:  $data == null-->
+                                <img src="~/Images/MagicKinderAppLaunchingEvent/m/img_slider_temporary.jpg" alt="임시이미지">
+                                <!-- /ko -->
+                            </li>
+                        </ul>
+                    </li>                  
+                </ul>
+                <div id="pop-review" style="display:none;">
+                    <div class="btn-close"><a href="javascript:;" onclick="closeReview(); return false;"><img src="~/Images/MagicKinderAppLaunchingEvent/m/btn_close_review.png" alt="닫기"></a></div>
+                    <div class="review-img-box">
+                        <img data-bind="attr:{src:reviewImage}" width='524' height='301' />
+                    </div>
+                    <div class="review-box">
+                        <p>"<span class="txt-review" data-bind="text : reviewComment"></span>"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- E : event-participation-con" -->
+
+    <div class="event-con event-bottom">
+        <p class="tl-event-notice">이벤트 유의사항</p>
+        <ul class="txt-event-notice">
+            <li>회사 내부 사정에 의하여 경품이 변경될 수 있습니다.</li>
+            <li>모든 이벤트 경품은 추첨을 통하여 1052명에게 발송됩니다.</li>
+            <li>부적절한 형태로 이벤트 응모 시, 당첨에서 제외됩니다.</li>
+            <li>잘못된 개인정보 (휴대전화번호/경품 수령 주소) 입력으로 연락이 불가능하거나, 경품이 반송 될 경우 이는 재발송 되지 않습니다.</li>
+            <li>당첨된 기프티콘은 남/여아용 구분 없이 랜덤으로 이벤트 종료 후 MMS를 통해 일괄 발송 됩니다.</li>
+            <li>배송 받는 경품은 당첨자 발표 후, 2주일 내 이벤트 참여 시, 입력한 주소지로 배송됩니다.</li>
+            <li>위 이벤트와 관련한 문의사항 발생 시, kinderkorea1@gmail.com 이메일 주소로 연락 부탁드립니다.</li>
+        </ul>
+    </div>
+    @Html.Partial("_Popup")
+</div>
+
+@section scripts{
+    <script src="~/Scripts/MagicKinderAppLaunchingEvent/common_pub.js"></script>
+    <script src="~/Content/js/jquery.animateSprite.min.js"></script>
+    <script src="~/Content/js/jQueryRotate.js"></script>
+    <script src="~/Scripts/MagicKinderAppLaunchingEvent/motion.js"></script>
+    <script src="~/Scripts/jquery.shy4blue.placeholder.js"></script>
+    <script src="~/Content/js/jquery.custom-file-input.js"></script>
+
+    <script type="text/javascript" src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
+    <script type="text/javascript" src="~/Scripts/Common/devCommon.js"></script>
+    <script type="text/javascript" src="~/Scripts/MagicKinderAppLaunchingEvent/dev.js"></script>
+    <script>
+            var magicKinderLaunchingViewModel = new magicKinderLaunchingModel();
+            ko.applyBindings(magicKinderLaunchingViewModel);
+    </script>
+}

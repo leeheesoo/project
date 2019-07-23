@@ -1,0 +1,41 @@
+﻿@model INGLife.Event.Models.KMCModels.ResponseKMCModel
+@{
+    ViewBag.Title = "오렌지라이프 본인확인 서비스 - 뉴브랜딩 상담동의";
+    ViewBag.ViewPortWidth = 750;
+}
+
+@section scripts{
+    <script src="~/Content/common/dev-common.js"></script>
+    <script type="text/javascript">
+    function resultKMC() {
+        $('#frmReabrandingMC').ajaxSubmit({
+            cache: false,
+            dataType: 'json',
+            success: function successKMC(res) {
+                if (res.Result) {
+                    alert(res.Message);
+                    opener.setConsultingKmcData(res.Data);
+                    self.close();
+                } else {
+                    alert(res.Message);
+                    self.close();
+                }
+            },
+            error: function failureKMC(xhr, err) {
+                alert('본인인증 실패되었습니다.');
+                self.close();
+            }
+        });
+    }
+    $(function () {
+        $('#frmReabrandingMC').target = opener.window.name;
+        resultKMC();
+    })
+    </script>
+}
+@using (Ajax.BeginRouteForm("CompleteRebrandingKMC", new { }, new AjaxOptions { HttpMethod = "post" }, new { id = "frmReabrandingMC" })) {
+    <input type="hidden" name="ResponseKMCModel.Rec_Cert" value="@Model.Rec_Cert">
+    <input type="hidden" name="ResponseKMCModel.CertNum" value="@Model.CertNum">
+    <input type="hidden" name="RebrandingEventType" value="1">
+}
+

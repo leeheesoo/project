@@ -1,0 +1,20 @@
+﻿@model List<KinderJoy.Domain.Entities.Word.WordWinner>
+@{
+    Layout = null;
+}
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>이름</th>
+            <th>연락처</th>
+            <th>남/여</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model) {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Mobile</td>
+            <td>@item.GiftType</td>
+        </tr>
+    }
+</table>

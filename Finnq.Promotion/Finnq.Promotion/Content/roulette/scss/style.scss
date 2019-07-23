@@ -1,0 +1,99 @@
+﻿@import "popup.scss";
+$location: '../images/';
+
+body {
+}
+
+.wrap { 
+    min-width:1080px;
+    width:100%;
+
+    .inner-wrap {
+        width:1080px;
+        margin:0 auto;
+        padding:90px 0;
+        text-align:center;
+    }
+
+    .kv {
+        background-color:#70d474;
+        .kv-inner {
+            position:relative;
+            width:1080px;
+            height:1582px;
+            margin:0 auto;
+            text-align:center;
+            background:url($location + 'main_bg.png') no-repeat center;
+            overflow: hidden;
+            h1 { 
+                width:1080px;
+                margin:0 auto;
+                padding:40px 0 35px 40px;
+                text-align:left;
+            }
+            .event-wrap {
+                position:relative;
+                width:1120px;
+                height:837px;
+                margin:30px auto 0;
+                background:url($location + 'main_roulette.png') no-repeat center;
+                &>span {
+                    position:absolute;
+                    display:block;
+                    bottom:170px;
+                    left:50%;
+                    margin-left:-250.5px;
+                }
+                &>button {
+                    position:absolute;
+                    bottom:0;
+                    left:50%;
+                    margin-left:-253px;
+                }
+            }
+            .finger {
+                position:absolute;
+                bottom:-20px;
+                right:170px;
+                cursor:pointer;
+            }
+        }
+
+        .event-rule {
+           background-color:#fff;
+           .rule {
+                padding:50px 0 60px;
+           }
+        }
+
+        .event-guide {
+            background-color:#ffdf4f;
+            .inner-wrap {
+                width:963px;
+                .inner-top {
+                    h3 {
+                        padding:10px 0 110px;
+                    }
+                    p {
+                        margin-bottom:50px;
+                        text-align:left;
+                    }
+                }
+                .inner-bottom {
+                    padding-top:100px;
+                    h4 {
+                        margin-bottom:56px;
+                    }
+                    p {
+                        margin-bottom:70px;
+                        text-align:left;
+                    }
+                    .event-note {
+                        margin-top:120px;
+                    }
+                }
+
+            }
+        }
+    }
+}
